@@ -1,0 +1,368 @@
+/* Team Page Custom Styles and Animations */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes kenBurnsZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.8s ease-out forwards;
+}
+
+.animate-slide-in-down {
+  animation: slideInDown 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.8s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  position: relative;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+}
+
+.ken-burns-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.ken-burns-container img {
+  animation: kenBurnsZoom 8s ease-out forwards;
+  will-change: transform;
+}
+
+.ken-burns-container:hover img {
+  animation-play-state: paused;
+}
+
+/* Team Page Container */
+.team-page {
+  background-color: #0a0a0a;
+  overflow-x: hidden;
+}
+
+/* Team Card Styles */
+.team-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 0;
+  backdrop-filter: blur(10px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.team-card:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
+  transform: translateY(-8px);
+}
+
+.team-card:hover::before {
+  left: 100%;
+}
+
+/* Smooth Grid Animation */
+.grid {
+  animation: slideInUp 0.6s ease-out forwards;
+}
+
+.grid > div:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.grid > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.grid > div:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* Navigation Transitions */
+.team-card {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Section Animations */
+section {
+  animation: slideInUp 0.8s ease-out forwards;
+}
+
+section:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+section:nth-of-type(3) {
+  animation-delay: 0.4s;
+}
+
+section:nth-of-type(4) {
+  animation-delay: 0.6s;
+}
+
+/* Dot Navigation */
+button.dot-nav {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+button.dot-nav:hover {
+  transform: scale(1.2);
+}
+
+/* Scroll Animation Trigger */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Responsive Animations */
+@media (max-width: 768px) {
+  .animate-fade-in,
+  .animate-slide-in-up,
+  .animate-scale-in {
+    animation-duration: 0.6s;
+  }
+
+  .ken-burns-container img {
+    animation-duration: 6s;
+  }
+
+  .team-card {
+    border-radius: 12px;
+  }
+}
+
+/* Stagger Animation Classes */
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+
+.stagger-6 {
+  animation-delay: 0.6s;
+}
+
+/* Glassmorphism Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hover Lift Effect */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Text Gradient Animation */
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth Page Transitions */
+.team-page {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Navigation Sticky Effect */
+nav {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: slideInDown 0.6s ease-out;
+}
+
+/* Hero Text Stagger */
+.hero-section h1 {
+  animation: slideInUp 0.8s ease-out;
+}
+
+.hero-section .section-tag {
+  animation: slideInUp 0.6s ease-out;
+  animation-delay: 0.2s;
+}
+
+.hero-section p {
+  animation: slideInUp 1s ease-out;
+  animation-delay: 0.4s;
+}
+
+/* Button Animations */
+button {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+button:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+button:not(:disabled):active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* Loading Shimmer */
+.shimmer-loading {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Container Animations */
+.container {
+  animation: slideInUp 0.8s ease-out;
+}
+
+/* Image Reveal Animation */
+img {
+  animation: scaleIn 0.8s ease-out;
+}
+
+/* Glow Effect for Blue Elements */
+.text-blue-500,
+[class*='bg-blue-'] {
+  transition: text-shadow 0.3s ease, box-shadow 0.3s ease;
+}
+
+.text-blue-500:hover {
+  text-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+}
+
+/* Fade in on scroll */
+.fade-in-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
