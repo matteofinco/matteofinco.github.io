@@ -7,7 +7,7 @@ export const StickyObject: React.FC = () => {
       <div className="process-container">
         <div className="process-media">
           <img
-            src="/images/workflow.jpg"
+            src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F0a6666a4c3754165bf5a7b9831b66b28"
             alt="Matteo Finco Design Process"
           />
           <div className="process-tag">
