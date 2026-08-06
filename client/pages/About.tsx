@@ -10,7 +10,7 @@ const translations = {
     curiosityText1: "Quando guardo un oggetto, il mio primo impulso non è chiedermi se sia bello o brutto, ma perché sia stato progettato in quel modo. Come è stato costruito, quali vincoli hanno guidato le decisioni e quali compromessi si celano dietro una forma apparentemente semplice.",
     curiosityText2: "Per me, la qualità di un prodotto risiede nella chiarezza della sua logica. Questo approccio mi ha portato al product design, dove curiosità, competenze tecniche e creatività lavorano costantemente insieme.",
     methodTitle: "Il design come metodo",
-    methodText1: "Studio Product Design all'Università Iuav di Venezia, campus di Vicenza. In questo percorso ho trasformato un interesse intuitivo in un metodo di lavoro, concentrandomi sul punto in cui un'idea incontra la sua fattibilità: materiali, processi e limiti produttivi.",
+    methodText1: "Studio Product Design all'Università Iuav di Venezia, sede di Vicenza. In questo percorso ho trasformato un interesse intuitivo in un metodo di lavoro, concentrandomi sul punto in cui un'idea incontra la sua fattibilità: materiali, processi e limiti produttivi.",
     methodText2: "Non vedo il design come una questione di stile. Mi interessa costruire oggetti e sistemi che abbiano una logica chiara e che semplifichino l'interazione quotidiana.",
     learningTitle: "Imparare da ciò che esiste",
     learningText1: "Per questo motivo, dedico molto tempo all'osservazione dei prodotti esistenti: smontarli, analizzarne la struttura interna, capire come sono fatti e individuarne i limiti è spesso il mio punto di partenza. Comprendere ciò che già esiste è, per me, il modo migliore per immaginare ciò che ancora non c'è.",
