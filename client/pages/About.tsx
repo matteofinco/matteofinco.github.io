@@ -9,7 +9,7 @@ const translations = {
     curiosityText1: "Quando guardo un oggetto, il mio primo impulso non è chiedermi se sia bello o brutto, ma perché sia stato progettato in quel modo. Come è stato costruito, quali vincoli hanno guidato le decisioni e quali compromessi si celano dietro una forma apparentemente semplice.",
     curiosityText2: "Per me, la qualità di un prodotto risiede nella chiarezza della sua logica. Questo approccio mi ha portato al product design, dove curiosità, competenze tecniche e creatività lavorano costantemente insieme.",
     methodTitle: "Il design come metodo",
-    methodText1: "Studio Product Design all'Università Iuav di Venezia, campus di Vicenza. In questo percorso ho trasformato un interesse intuitivo in un metodo di lavoro, concentrandomi sul punto in cui un'idea incontra la sua fattibilità: materiali, processi e limiti produttivi.",
+    methodText1: "Studio Product Design all'Università Iuav di Venezia, campus di Vicenza. In questo percorso ho trasformato un interesse intuitivo in un metodo di lavoro, concentrandosi sul punto in cui un'idea incontra la sua fattibilità: materiali, processi e limiti produttivi.",
     methodText2: "Non vedo il design come una questione di stile. Mi interessa costruire oggetti e sistemi che abbiano una logica chiara e che semplifichino l'interazione quotidiana.",
     learningTitle: "Imparare da ciò che esiste",
     learningText1: "Per questo motivo, dedico molto tempo all'osservazione dei prodotti esistenti: smontarli, analizzarne la struttura interna, capire come sono fatti e individuarne i limiti è spesso il mio punto di partenza. Comprendere ciò che già esiste è, per me, il modo migliore per immaginare ciò che ancora non c'è.",
@@ -24,12 +24,12 @@ const translations = {
     collaborationText2: "Oggi continuo a vedere il design come un modo per comprendere il mondo prima di cambiarlo. Ogni progetto è un'occasione per imparare qualcosa di nuovo e trasformare un problema complesso in una soluzione chiara.",
     expertiseHeader: "Competenze",
     capabilities: [
-      { num: "01", title: "ANALISI", items: ["Reverse engineering", "Analisi prodotto", "Ricerca progettuale"] },
-      { num: "02", title: "PROGETTAZIONE", items: ["CAD e modellazione 3D", "Disegni tecnici", "Design for Manufacturing"] },
-      { num: "03", title: "PROTOTIPAZIONE", items: ["Prototipazione rapida", "Stampa 3D FDM", "Sperimentazione materica"] },
-      { num: "04", title: "MATERIALI & PROCESSI", items: ["Studio dei materiali", "Processi produttivi", "Ottimizzazione costruttiva"] },
-      { num: "05", title: "COLLABORAZIONE", items: ["Coordinamento progettuale", "Leadership", "Team multidisciplinari"] },
-      { num: "06", title: "LINGUE", items: ["Italiano: Madrelingua", "Inglese: Intermedio (B2)"] }
+      { title: "ANALISI", items: ["Benchmarking di prodotto", "Reverse engineering", "Ricerca di scenario"] },
+      { title: "PROGETTAZIONE", items: ["Modellazione CAD 3D", "Design for Manufacturing (DFM)", "Documentazione tecnica"] },
+      { title: "PROTOTIPAZIONE", items: ["Stampa 3D (FDM)", "Prototipazione funzionale", "Modelleria e finitura manuale"] },
+      { title: "MATERIALI & PROCESSI", items: ["Selezione materiali", "Tecnologie di trasformazione", "Ottimizzazione costruttiva"] },
+      { title: "COLLABORAZIONE", items: ["Coordinamento di progetto", "Team multidisciplinari", "Presentazione visiva concept"] },
+      { title: "LINGUE", items: ["Italiano: Madrelingua", "Inglese: Intermedio (B2)"] }
     ],
     ctaTitle: "E adesso?",
     ctaSub: "Interessato a collaborare a un progetto di design? Sono sempre aperto a nuove sfide e a lavori significativi.",
@@ -57,12 +57,12 @@ const translations = {
     collaborationText2: "Today, I still see design as a way to understand the world before changing it. Every project is a chance to learn something new and to turn a complex problem into a clear solution.",
     expertiseHeader: "Capabilities",
     capabilities: [
-      { num: "01", title: "ANALYSIS", items: ["Reverse engineering", "Product analysis", "Design research"] },
-      { num: "02", title: "DESIGN", items: ["CAD & 3D modeling", "Technical drawings", "Design for Manufacturing"] },
-      { num: "03", title: "PROTOTYPING", items: ["Rapid prototyping", "FDM 3D printing", "Material experimentation"] },
-      { num: "04", title: "MATERIALS & PROCESSES", items: ["Material study", "Manufacturing processes", "Constructive optimization"] },
-      { num: "05", title: "COLLABORATION", items: ["Project coordination", "Leadership", "Multidisciplinary teams"] },
-      { num: "06", title: "LANGUAGES", items: ["Italian: Native", "English: Intermediate (B2)"] }
+      { title: "ANALYSIS", items: ["Product benchmarking", "Reverse engineering", "Context research"] },
+      { title: "DESIGN", items: ["3D CAD modeling", "Design for Manufacturing (DFM)", "Technical documentation"] },
+      { title: "PROTOTYPING", items: ["3D Printing (FDM)", "Functional prototyping", "Model making & finishing"] },
+      { title: "MATERIALS & PROCESSES", items: ["Material selection", "Manufacturing technologies", "Design optimization"] },
+      { title: "COLLABORATION", items: ["Project coordination", "Multidisciplinary teamwork", "Visual concept presentation"] },
+      { title: "LANGUAGES", items: ["Italian: Native", "English: Intermediate (B2)"] }
     ],
     ctaTitle: "What's next?",
     ctaSub: "Interested in collaborating on a design project? I'm always open to new challenges and meaningful work.",
@@ -122,22 +122,50 @@ export default function About() {
         .about-text h2 { font-size: clamp(2.2rem, 3.8vw, 3.5rem); font-weight: 800; margin-bottom: 25px; color: #ffffff; }
         .about-text p { color: #aaaaaa; font-size: 1.12rem; line-height: 1.85; max-width: 560px; }
         
-        /* GRID STYLES */
+        /* BOX STILIZZATI E STACCATI */
         .expertise-wrapper { max-width: 1200px; margin: 100px auto; padding: 0 6vw; }
-        .expertise-wrapper > h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 60px; color: #fff; }
-        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: #1a1a1a; border: 1px solid #1a1a1a; }
-        .expertise-card { padding: 40px; background: #070707; transition: all 0.4s ease; display: flex; flex-direction: column; cursor: default; }
-        .expertise-card:hover { transform: translateY(-5px); border: 1px solid #444; margin: -1px; z-index: 1; }
-        .expertise-num { font-size: 0.8rem; color: #555; margin-bottom: 15px; letter-spacing: 0.2em; font-family: monospace; }
-        .expertise-card h3 { font-size: 1.6rem; margin-bottom: 25px; color: #fff; font-weight: 700; }
+        .expertise-wrapper > h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 48px; color: #fff; letter-spacing: -0.02em; }
+        
+        .expertise-grid { 
+          display: grid; 
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+          gap: 24px; 
+        }
+
+        .expertise-card { 
+          padding: 36px 32px; 
+          background: #0d0d0d; 
+          border: 1px solid #1f1f1f; 
+          border-radius: 16px; 
+          transition: all 0.35s ease; 
+          display: flex; 
+          flex-direction: column;
+        }
+
+        .expertise-card:hover { 
+          transform: translateY(-4px); 
+          border-color: #383838; 
+          background: #111111;
+        }
+
+        .expertise-card h3 { 
+          font-size: 1.25rem; 
+          margin-bottom: 20px; 
+          color: #ffffff; 
+          font-weight: 700; 
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+        }
+
         .expertise-card ul { list-style: none; padding: 0; margin: 0; }
-        .expertise-card li { color: #999; font-size: 1.05rem; line-height: 2.2; }
+        .expertise-card li { color: #888888; font-size: 1rem; line-height: 2; transition: color 0.3s; }
+        .expertise-card:hover li { color: #b0b0b0; }
 
         .reveal-editorial { opacity: 0; filter: blur(10px); transition: 1.1s; }
         .reveal-active { opacity: 1; filter: blur(0); }
 
         .about-cta-section { width: 100%; padding: 120px 6vw; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 50px; }
-        .cta-button { display: inline-block; padding: 16px 40px; background: #ffffff; color: #070707; font-weight: 700; text-decoration: none; transition: 0.3s; }
+        .cta-button { display: inline-block; padding: 16px 40px; background: #ffffff; color: #070707; font-weight: 700; text-decoration: none; transition: 0.3s; border-radius: 8px; }
         .cta-button:hover { background: #070707; color: #ffffff; transform: translateY(-3px); border: 1px solid #fff; }
 
         @media (max-width: 1024px) {
@@ -169,7 +197,6 @@ export default function About() {
         <div className="expertise-grid">
           {t.capabilities.map((cap, i) => (
             <div className="expertise-card" key={i}>
-              <div className="expertise-num">{cap.num}</div>
               <h3>{cap.title}</h3>
               <ul>
                 {cap.items.map((item, idx) => <li key={idx}>{item}</li>)}
