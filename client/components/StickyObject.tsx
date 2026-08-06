@@ -1,257 +1,399 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-interface ImageItem {
-  id: string;
-  src: string;
-  alt: string;
-  title?: string;
-  description?: string;
+interface StickyObjectProps {
+  lang?: 'it' | 'en';
 }
 
-const imagesList: ImageItem[] = [
-  {
-    id: '01',
-    src: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80',
-    alt: 'Prototyping and CAD modeling',
-    title: 'PROTOTYPING & CAD',
-    description: 'Sviluppo di modelli tridimensionali e prototipi fisici per testare ergonomia e usabilità.'
-  },
-  {
-    id: '02',
-    src: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1600&q=80',
-    alt: '3D printing and digital fabrication',
-    title: 'DIGITAL FABRICATION',
-    description: 'Sperimentazione con stampa 3D FDM, taglio laser e lavorazioni CNC.'
-  },
-  {
-    id: '03',
-    src: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1600&q=80',
-    alt: 'Material exploration and mechanics',
-    title: 'MATERIALS & MECHANICS',
-    description: 'Studio dei materiali polimerici e integrazione di componenti meccanici e meccatronici.'
-  },
-  {
-    id: '04',
-    src: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1600&q=80',
-    alt: 'User testing and physical feedback',
-    title: 'PHYSICAL TESTING',
-    description: 'Verifica continua delle performance e affinamento dei dettagli costruttivi.'
-  }
-];
+const PROCESS_STEPS = {
+  it: [
+    {
+      step: '01 / OSSERVA E COMPRENDI',
+      title: 'Ogni progetto parte\nda una domanda.',
+      desc: 'Prima di cercare soluzioni, dedico tempo a comprendere le persone, i contesti e i comportamenti. Analizzo come vengono usati i prodotti, dove nascono le difficoltà e quali vincoli guidano ogni decisione progettuale.',
+      tag: 'IMMAGINE 01 // RICERCA E OSSERVAZIONE',
+      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80',
+    },
+    {
+      step: '02 / CREA E TESTA',
+      title: 'Le idee prendono forma\nattraverso i prototipi.',
+      desc: 'Gli schizzi diventano modelli CAD, prototipi funzionali ed esperimenti fisici. Costruire le idee permette di validare le ipotesi, scoprire problemi inattesi e migliorare ogni iterazione attraverso test diretti.',
+      tag: 'IMMAGINE 02 // PROTOTIPAZIONE E TEST',
+      image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80',
+    },
+    {
+      step: '03 / AFFINA E SEMPLIFICA',
+      title: 'Il buon design è\nsemplicità consapevole.',
+      desc: 'Ogni componente deve avere uno scopo chiaro. Affino geometrie, materiali e processi produttivi finché la complessità scompare e rimane solo ciò che migliora davvero l’esperienza d’uso.',
+      tag: 'IMMAGINE 03 // AFFINAMENTO E DETTAGLIO',
+      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+    },
+  ],
+  en: [
+    {
+      step: '01 / OBSERVE & UNDERSTAND',
+      title: 'Every project starts\nwith a question.',
+      desc: 'Before searching for solutions, I spend time understanding people, contexts and behaviours. I like analysing how products are used, where friction appears and which constraints influence every design decision.',
+      tag: 'IMAGE 01 // RESEARCH & OBSERVATION',
+      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80',
+    },
+    {
+      step: '02 / MAKE & TEST',
+      title: 'Ideas become real\nthrough prototyping.',
+      desc: 'Sketches evolve into CAD models, functional prototypes and physical experiments. Building ideas allows me to validate assumptions, discover unexpected problems and improve every iteration through direct testing.',
+      tag: 'IMAGE 02 // PROTOTYPING & TESTING',
+      image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80',
+    },
+    {
+      step: '03 / REFINE & SIMPLIFY',
+      title: 'Good design is\nthoughtful simplicity.',
+      desc: 'Every component should have a clear purpose. I refine geometry, materials and manufacturing processes until complexity disappears and only what truly improves the user experience remains.',
+      tag: 'IMAGE 03 // REFINEMENT & DETAIL',
+      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+    },
+  ],
+};
 
-export const StickyObject: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
+  const [activeStep, setActiveStep] = useState(0);
+  const [prevStep, setPrevStep] = useState<number | null>(null);
+  const triggerRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const steps = PROCESS_STEPS[lang] || PROCESS_STEPS.it;
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-
-      const rect = containerRef.current.getBoundingClientRect();
-      const totalScrollable = containerRef.current.offsetHeight - window.innerHeight;
-
-      if (totalScrollable <= 0) return;
-
-      // 1. Calcoliamo il progresso grezzo dello scroll interno [0 -> 1]
-      const rawProgress = Math.min(Math.max(-rect.top / totalScrollable, 0), 1);
-
-      // 2. INTRODUCIAMO LA DEAD ZONE PER LA PRIMA IMMAGINE:
-      // Fino al 18% di scroll, il progresso effettivo rimane a 0 (prima foto fissa).
-      const deadZone = 0.18;
-      let effectiveProgress = 0;
-
-      if (rawProgress > deadZone) {
-        // Rimappiamo il restante spazio (da 0.18 a 1.0) nell'intervallo [0 -> 1]
-        effectiveProgress = (rawProgress - deadZone) / (1 - deadZone);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute('data-step-index'));
+            setActiveStep((prev) => {
+              if (prev !== index) {
+                setPrevStep(prev);
+              }
+              return index;
+            });
+          }
+        });
+      },
+      {
+        // Focus sulla fascia centrale 20% della viewport per evitare cambi anticipati
+        rootMargin: '-40% 0px -40% 0px',
+        threshold: 0.1,
       }
+    );
 
-      // 3. Calcolo dell'indice dell'immagine in base al progresso rimappato
-      const totalImages = imagesList.length;
-      const calculatedIndex = Math.min(
-        Math.floor(effectiveProgress * totalImages),
-        totalImages - 1
-      );
+    triggerRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
 
-      setCurrentIndex(calculatedIndex);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Esecuzione iniziale
-
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => observer.disconnect();
   }, []);
 
+  const handleStepClick = (index: number) => {
+    if (index !== activeStep) {
+      setPrevStep(activeStep);
+      setActiveStep(index);
+      const targetTrigger = triggerRefs.current[index];
+      if (targetTrigger) {
+        targetTrigger.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  };
+
+  const currentStepData = steps[activeStep];
+  const prevStepData = prevStep !== null ? steps[prevStep] : null;
+
   return (
-    <div className="sticky-object-container" ref={containerRef}>
-      <style>{`
-        .sticky-object-container {
-          position: relative;
-          width: 100%;
-          /* Un'altezza di 250vh garantisce un'esperienza di scroll molto fluida e controllata */
-          height: 250vh;
-          background-color: #070707;
-          box-sizing: border-box;
-        }
+    <section className="process-section">
+      {/* FRAME STICKY FULL-BLEED A SINISTRA */}
+      <div className="process-sticky-frame">
+        <div className="process-media">
+          {/* Vecchia immagine (rimane sotto e sfuma via) */}
+          {prevStepData && (
+            <img
+              key={`prev-${prevStep}`}
+              src={prevStepData.image}
+              alt=""
+              className="process-img img-fade-out"
+            />
+          )}
 
-        .sticky-object-viewport {
-          position: sticky;
-          top: 0;
-          height: 100vh;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-        }
+          {/* Nuova immagine (si sovrappone sfumando delicatamente in ingresso) */}
+          <img
+            key={`curr-${activeStep}`}
+            src={currentStepData.image}
+            alt={currentStepData.step}
+            className="process-img img-fade-in"
+          />
 
-        .sticky-object-stage {
-          position: relative;
-          width: 100%;
-          max-width: 1400px;
-          height: 80vh;
-          max-height: 720px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          align-items: center;
-        }
-
-        /* FRAME IMMAGINI CON STACK E FADE IN/OUT */
-        .sticky-media-frame {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          max-height: 620px;
-          overflow: hidden;
-        }
-
-        .sticky-image-layer {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          opacity: 0;
-          transform: scale(1.05);
-          transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-          filter: grayscale(15%);
-          will-change: opacity, transform;
-        }
-
-        .sticky-image-layer.active {
-          opacity: 1;
-          transform: scale(1);
-        }
-
-        /* TESTI REATTIVI ALLA FOTO ATTIVATA */
-        .sticky-info-box {
-          padding: 0 6vw;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
-
-        .sticky-counter {
-          font-family: monospace;
-          font-size: 0.9rem;
-          color: #666666;
-          margin-bottom: 20px;
-          letter-spacing: 0.1em;
-        }
-
-        .sticky-info-content {
-          position: relative;
-          min-height: 180px;
-        }
-
-        .sticky-text-item {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          opacity: 0;
-          transform: translateY(15px);
-          transition: opacity 0.5s ease, transform 0.5s ease;
-          pointer-events: none;
-        }
-
-        .sticky-text-item.active {
-          opacity: 1;
-          transform: translateY(0);
-          pointer-events: auto;
-        }
-
-        .sticky-text-item h3 {
-          font-size: clamp(1.8rem, 3vw, 2.8rem);
-          font-weight: 800;
-          color: #ffffff;
-          margin: 0 0 16px 0;
-          line-height: 1.1;
-          letter-spacing: -0.01em;
-        }
-
-        .sticky-text-item p {
-          color: #a0a0a0;
-          font-size: clamp(0.95rem, 1.1vw, 1.1rem);
-          line-height: 1.7;
-          margin: 0;
-          max-width: 480px;
-        }
-
-        @media (max-width: 1024px) {
-          .sticky-object-container {
-            height: auto !important;
-          }
-          .sticky-object-viewport {
-            position: relative;
-            height: auto;
-            padding: 80px 0;
-          }
-          .sticky-object-stage {
-            grid-template-columns: 1fr;
-            gap: 30px;
-            height: auto;
-          }
-          .sticky-media-frame {
-            height: 380px;
-          }
-        }
-      `}</style>
-
-      <div className="sticky-object-viewport">
-        <div className="sticky-object-stage">
-          {/* LATO SINISTRO: IMMAGINI STACKATE */}
-          <div className="sticky-media-frame">
-            {imagesList.map((img, idx) => (
-              <img
-                key={img.id}
-                src={img.src}
-                alt={img.alt}
-                className={`sticky-image-layer ${idx === currentIndex ? 'active' : ''}`}
-              />
-            ))}
+          <div key={`tag-${activeStep}`} className="process-tag animate-tag-smooth">
+            {currentStepData.tag}
           </div>
+        </div>
 
-          {/* LATO DESTRO: TESTI Sincronizzati */}
-          <div className="sticky-info-box">
-            <div className="sticky-counter">
-              0{currentIndex + 1} / 0{imagesList.length}
-            </div>
-            <div className="sticky-info-content">
-              {imagesList.map((item, idx) => (
-                <div
-                  key={item.id}
-                  className={`sticky-text-item ${idx === currentIndex ? 'active' : ''}`}
-                >
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
+        {/* COLONNA TESTO DESTRA */}
+        <div className="process-text-column">
+          <div key={`${lang}-${activeStep}`} className="process-content-block animate-text-smooth">
+            <span className="step-number">{currentStepData.step}</span>
+
+            <h3 className="step-title">
+              {currentStepData.title.split('\n').map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+            </h3>
+
+            <p className="step-description">{currentStepData.desc}</p>
+
+            <div className="step-indicators">
+              {steps.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  aria-label={`Go to step ${i + 1}`}
+                  onClick={() => handleStepClick(i)}
+                  className={`indicator-dot ${i === activeStep ? 'active' : ''}`}
+                />
               ))}
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* STRATO SCROLLABILE TRASPARENTE */}
+      <div className="process-triggers-overlay">
+        {steps.map((_, index) => (
+          <div
+            key={index}
+            data-step-index={index}
+            ref={(el) => (triggerRefs.current[index] = el)}
+            className="step-trigger"
+          />
+        ))}
+      </div>
+
+      <style>{`
+        .process-section {
+          position: relative;
+          width: 100%;
+          background-color: #070707;
+          padding: 0 4vw 0 0;
+          box-sizing: border-box;
+        }
+
+        .process-sticky-frame {
+          position: sticky;
+          top: 90px;
+          height: calc(100vh - 130px);
+          max-height: 820px;
+          width: 100%;
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
+          align-items: center;
+          gap: 5vw;
+          border-radius: 0;
+          overflow: hidden;
+          z-index: 1;
+        }
+
+        .process-media {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          border-radius: 0;
+          overflow: hidden;
+          background-color: #070707;
+        }
+
+        .process-img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 0;
+          will-change: opacity, transform;
+        }
+
+        /* CROSS-FADE: La nuova immagine entra in dissolvenza soffice */
+        .img-fade-in {
+          z-index: 2;
+          animation: crossFadeIn 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        /* La vecchia immagine sfuma via dolcemente in sottofondo */
+        .img-fade-out {
+          z-index: 1;
+          animation: crossFadeOut 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes crossFadeIn {
+          from {
+            opacity: 0;
+            transform: scale(1.02);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes crossFadeOut {
+          from {
+            opacity: 1;
+            transform: scale(1);
+          }
+          to {
+            opacity: 0;
+            transform: scale(0.98);
+          }
+        }
+
+        /* BADGE TAG: Dissolvenza morbida */
+        .animate-tag-smooth {
+          animation: tagSmooth 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes tagSmooth {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .process-tag {
+          position: absolute;
+          bottom: 24px;
+          left: 24px;
+          font-family: monospace;
+          font-size: 0.75rem;
+          color: rgba(255, 255, 255, 0.9);
+          letter-spacing: 1.5px;
+          background: rgba(0, 0, 0, 0.65);
+          padding: 8px 16px;
+          border-radius: 0;
+          backdrop-filter: blur(8px);
+          z-index: 3;
+        }
+
+        .process-text-column {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding-right: 2vw;
+          z-index: 2;
+        }
+
+        .process-content-block {
+          max-width: 460px;
+          will-change: opacity;
+        }
+
+        /* TESTO: Dissolvenza incrociata naturale */
+        .animate-text-smooth {
+          animation: textSmooth 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes textSmooth {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .step-number {
+          display: inline-block;
+          font-family: monospace;
+          font-size: 0.8rem;
+          color: #777;
+          letter-spacing: 2px;
+          margin-bottom: 16px;
+        }
+
+        .step-title {
+          font-size: clamp(2rem, 2.8vw, 2.75rem);
+          line-height: 1.1;
+          letter-spacing: -0.02em;
+          font-weight: 700;
+          color: #ffffff;
+          margin: 0 0 20px 0;
+        }
+
+        .step-description {
+          font-size: 1rem;
+          line-height: 1.7;
+          color: #aaa;
+          margin: 0 0 32px 0;
+        }
+
+        .step-indicators {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+        }
+
+        .indicator-dot {
+          width: 32px;
+          height: 3px;
+          background: rgba(255, 255, 255, 0.2);
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          outline: none;
+          transition: background 0.6s ease, width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .indicator-dot:hover {
+          background: rgba(255, 255, 255, 0.6);
+        }
+
+        .indicator-dot.active {
+          background: #ffffff;
+          width: 52px;
+        }
+
+        .process-triggers-overlay {
+          position: relative;
+          z-index: 3;
+          margin-top: calc(-100vh + 130px);
+          pointer-events: none;
+        }
+
+        .step-trigger {
+          height: 100vh;
+          width: 100%;
+          pointer-events: none;
+        }
+
+        /* CUSCINETTO INIZIALE: il primo trigger ha un'altezza maggiore (140vh)
+           così la prima scheda rimane fissa mentre l'utente scrolla all'inizio */
+        .step-trigger:first-child {
+          height: 140vh;
+        }
+
+        @media (max-width: 900px) {
+          .process-section {
+            padding: 0 4vw;
+          }
+          .process-sticky-frame {
+            grid-template-columns: 1fr;
+            top: 70px;
+            height: auto;
+            max-height: none;
+          }
+          .process-media {
+            height: 350px;
+          }
+        }
+      `}</style>
+    </section>
   );
 };
 
