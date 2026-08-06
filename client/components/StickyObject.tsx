@@ -10,16 +10,22 @@ const PROCESS_STEPS = {
       step: '01 / OSSERVA E COMPRENDI',
       title: 'Ogni progetto parte\nda una domanda.',
       desc: 'Prima di cercare soluzioni, dedico tempo a comprendere le persone, i contesti e i comportamenti. Analizzo come vengono usati i prodotti, dove nascono le difficoltà e quali vincoli guidano ogni decisione progettuale.',
+      tag: 'IMMAGINE 01 // RICERCA E OSSERVAZIONE',
+      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80',
     },
     {
       step: '02 / CREA E TESTA',
       title: 'Le idee prendono forma\nattraverso i prototipi.',
       desc: 'Gli schizzi diventano modelli CAD, prototipi funzionali ed esperimenti fisici. Costruire le idee permette di validare le ipotesi, scoprire problemi inattesi e migliorare ogni iterazione attraverso test diretti.',
+      tag: 'IMMAGINE 02 // PROTOTIPAZIONE E TEST',
+      image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80',
     },
     {
       step: '03 / AFFINA E SEMPLIFICA',
       title: 'Il buon design è\nsemplicità consapevole.',
       desc: 'Ogni componente deve avere uno scopo chiaro. Affino geometrie, materiali e processi produttivi finché la complessità scompare e rimane solo ciò che migliora davvero l’esperienza d’uso.',
+      tag: 'IMMAGINE 03 // AFFINAMENTO E DETTAGLIO',
+      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
     },
   ],
   en: [
@@ -27,16 +33,22 @@ const PROCESS_STEPS = {
       step: '01 / OBSERVE & UNDERSTAND',
       title: 'Every project starts\nwith a question.',
       desc: 'Before searching for solutions, I spend time understanding people, contexts and behaviours. I like analysing how products are used, where friction appears and which constraints influence every design decision.',
+      tag: 'IMAGE 01 // RESEARCH & OBSERVATION',
+      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80',
     },
     {
       step: '02 / MAKE & TEST',
       title: 'Ideas become real\nthrough prototyping.',
       desc: 'Sketches evolve into CAD models, functional prototypes and physical experiments. Building ideas allows me to validate assumptions, discover unexpected problems and improve every iteration through direct testing.',
+      tag: 'IMAGE 02 // PROTOTYPING & TESTING',
+      image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80',
     },
     {
       step: '03 / REFINE & SIMPLIFY',
       title: 'Good design is\nthoughtful simplicity.',
       desc: 'Every component should have a clear purpose. I refine geometry, materials and manufacturing processes until complexity disappears and only what truly improves the user experience remains.',
+      tag: 'IMAGE 03 // REFINEMENT & DETAIL',
+      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
     },
   ],
 };
@@ -70,6 +82,14 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
     return () => observer.disconnect();
   }, []);
 
+  const handleStepClick = (index: number) => {
+    setActiveStep(index);
+    const targetTrigger = triggerRefs.current[index];
+    if (targetTrigger) {
+      targetTrigger.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
   const currentStep = steps[activeStep];
 
   return (
@@ -78,11 +98,13 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
       <div className="process-sticky-frame">
         <div className="process-media">
           <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F0a6666a4c3754165bf5a7b9831b66b28"
-            alt="Matteo Finco Design Process"
+            key={currentStep.image}
+            src={currentStep.image}
+            alt={currentStep.step}
+            className="animate-image-fade"
           />
-          <div className="process-tag">
-            {lang === 'it' ? 'COME LAVORO // OSSERVA · CREA · AFFINA' : 'HOW I WORK // OBSERVE · MAKE · REFINE'}
+          <div key={currentStep.tag} className="process-tag animate-fade">
+            {currentStep.tag}
           </div>
         </div>
 
@@ -104,8 +126,11 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
 
             <div className="step-indicators">
               {steps.map((_, i) => (
-                <span
+                <button
                   key={i}
+                  type="button"
+                  aria-label={`Go to step ${i + 1}`}
+                  onClick={() => handleStepClick(i)}
                   className={`indicator-dot ${i === activeStep ? 'active' : ''}`}
                 />
               ))}
@@ -156,6 +181,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           height: 100%;
           border-radius: 0;
           overflow: hidden;
+          background-color: #111;
         }
 
         .process-media img {
@@ -166,16 +192,31 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           filter: none;
         }
 
+        .animate-image-fade {
+          animation: imageFade 0.5s ease-out forwards;
+        }
+
+        @keyframes imageFade {
+          from {
+            opacity: 0.3;
+            transform: scale(1.02);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
         .process-tag {
           position: absolute;
           bottom: 24px;
           left: 24px;
           font-family: monospace;
           font-size: 0.75rem;
-          color: rgba(255,255,255,0.85);
+          color: rgba(255,255,255,0.9);
           letter-spacing: 1.5px;
-          background: rgba(0, 0, 0, 0.65);
-          padding: 6px 14px;
+          background: rgba(0, 0, 0, 0.7);
+          padding: 8px 16px;
           border-radius: 0;
           backdrop-filter: blur(8px);
           z-index: 2;
@@ -193,7 +234,8 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           max-width: 460px;
         }
 
-        .process-content-block.animate-fade {
+        .process-content-block.animate-fade,
+        .process-tag.animate-fade {
           animation: textFade 0.4s ease-out forwards;
         }
 
@@ -235,19 +277,28 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
 
         .step-indicators {
           display: flex;
-          gap: 8px;
+          gap: 10px;
+          align-items: center;
         }
 
         .indicator-dot {
-          width: 24px;
-          height: 2px;
-          background: rgba(255, 255, 255, 0.2);
-          transition: background 0.3s ease, width 0.3s ease;
+          width: 32px;
+          height: 3px;
+          background: rgba(255, 255, 255, 0.25);
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          outline: none;
+          transition: background 0.3s ease, width 0.3s ease, transform 0.2s ease;
+        }
+
+        .indicator-dot:hover {
+          background: rgba(255, 255, 255, 0.6);
         }
 
         .indicator-dot.active {
           background: #ffffff;
-          width: 40px;
+          width: 52px;
         }
 
         .process-triggers-overlay {
