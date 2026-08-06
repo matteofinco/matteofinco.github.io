@@ -2,91 +2,73 @@ import React from 'react';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="hero-viewport">
-      <div className="hero-bg-animator" />
-      <div className="hero-overlay-gradient" />
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-[#070707]">
+      <div className="w-[92vw] max-w-[1400px] h-auto relative z-10">
+        <svg className="w-full h-full block" viewBox="0 0 1400 360" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <pattern id="blueprintPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.2)" strokeWidth="1" />
+              <circle cx="20" cy="20" r="1.5" fill="rgba(255, 255, 255, 0.35)" />
+            </pattern>
 
-      <div className="hero-content">
-        <h1 className="hero-title-mask">
-          MATTEO FINCO
-        </h1>
-        <p className="hero-subtitle">PRODUCT DESIGNER &amp; MAKER</p>
+            <mask id="designTextMask" x="0" y="0" width="100%" height="100%">
+              <rect x="0" y="0" width="100%" height="100%" fill="#000000" />
+              <text
+                x="50%"
+                y="42%"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fill="#ffffff"
+                fontSize="110"
+                fontWeight="900"
+                fontFamily="-apple-system, BlinkMacSystemFont, sans-serif"
+                letterSpacing="-3"
+              >
+                PRODUCT DESIGN
+              </text>
+              <text
+                x="50%"
+                y="78%"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fill="#ffffff"
+                fontSize="85"
+                fontWeight="800"
+                fontFamily="-apple-system, BlinkMacSystemFont, sans-serif"
+                letterSpacing="4"
+              >
+                &amp; MAKER
+              </text>
+            </mask>
+          </defs>
+
+          <g mask="url(#designTextMask)">
+            <rect className="layer-blueprint" x="-10%" y="-10%" width="120%" height="120%" />
+            <g className="layer-sketches">
+              <image
+                href="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1600&q=80"
+                x="0"
+                y="0"
+                width="100%"
+                height="100%"
+                opacity="0.5"
+                preserveAspectRatio="xMidYMid slice"
+              />
+            </g>
+            <g className="layer-photo">
+              <image
+                href="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80"
+                x="0"
+                y="0"
+                width="100%"
+                height="100%"
+                opacity="0.45"
+                preserveAspectRatio="xMidYMid slice"
+              />
+            </g>
+          </g>
+        </svg>
       </div>
-
-      <style>{`
-        .hero-viewport {
-          position: relative;
-          width: 100%;
-          height: 100vh;
-          background-color: #070707;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-        }
-
-        .hero-bg-animator {
-          position: absolute;
-          inset: 0;
-          background-image: 
-            radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.12) 0%, transparent 60%),
-            url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=2000&q=80');
-          background-size: 180% 180%;
-          background-position: center;
-          animation: heroTextureMotion 16s ease-in-out infinite alternate;
-          z-index: 1;
-        }
-
-        .hero-overlay-gradient {
-          position: absolute;
-          inset: 0;
-          background: radial-gradient(circle at center, rgba(7,7,7,0.2) 0%, rgba(7,7,7,0.95) 90%);
-          z-index: 2;
-          pointer-events: none;
-        }
-
-        .hero-content {
-          position: relative;
-          z-index: 3;
-          text-align: center;
-          padding: 0 20px;
-        }
-
-        .hero-title-mask {
-          font-size: clamp(3.8rem, 10vw, 9rem);
-          font-weight: 900;
-          letter-spacing: -2px;
-          line-height: 1;
-          margin-bottom: 20px;
-          background-image: url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=2000&q=80');
-          background-size: 220% 220%;
-          background-position: center;
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-          animation: textTextureMove 14s ease-in-out infinite alternate;
-        }
-
-        .hero-subtitle {
-          font-family: monospace;
-          font-size: clamp(0.85rem, 1.6vw, 1.2rem);
-          color: #888888;
-          letter-spacing: 5px;
-          text-transform: uppercase;
-        }
-
-        @keyframes heroTextureMotion {
-          0% { transform: scale(1) translate(0, 0); opacity: 0.7; }
-          50% { transform: scale(1.08) translate(-2%, 2%); opacity: 0.95; }
-          100% { transform: scale(1.03) translate(2%, -1%); opacity: 0.75; }
-        }
-
-        @keyframes textTextureMove {
-          0% { background-position: 0% 40%; filter: brightness(1); }
-          50% { background-position: 100% 60%; filter: brightness(1.25); }
-          100% { background-position: 40% 100%; filter: brightness(0.95); }
-        }
-      `}</style>
     </section>
   );
 };
