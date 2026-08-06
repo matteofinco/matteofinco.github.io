@@ -30,6 +30,29 @@ const translations = {
         title: "ANALISI",
         items: ["Reverse engineering", "Analisi prodotto", "Ricerca progettuale"]
       },
+       .hero-arrow {
+
+          position:absolute;
+
+          bottom:40px;
+
+          left:50%;
+
+          transform:translateX(-50%);
+
+          opacity:0.6;
+
+        }
+
+
+        .hero-arrow svg {
+
+          width:32px;
+
+          height:32px;
+
+        }
+
       {
         num: "02",
         title: "PROGETTAZIONE",
