@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../components/Header'; // <-- Senza parentesi graffe
+
 
 export default function About() {
   return (
