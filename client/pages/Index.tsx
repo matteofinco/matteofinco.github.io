@@ -364,3 +364,4 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
     </section>
   );
 };
+export default Index;
