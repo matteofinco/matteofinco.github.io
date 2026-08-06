@@ -33,7 +33,6 @@ export const StickyObject: React.FC = () => {
         });
       },
       {
-        // Rileva lo step quando si trova nella fascia centrale del viewport
         rootMargin: '-30% 0px -30% 0px',
         threshold: 0.1,
       }
@@ -50,20 +49,19 @@ export const StickyObject: React.FC = () => {
 
   return (
     <section className="process-section">
-      {/* FRAME INCORNICIATO (NON VAI SOTTO LA NAVBAR) */}
+      {/* FRAME INCORNICIATO */}
       <div className="process-sticky-frame">
         <div className="process-media">
           <img
             src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F0a6666a4c3754165bf5a7b9831b66b28"
             alt="Matteo Finco Design Process"
           />
-          <div className="process-media-overlay" />
           <div className="process-tag">
             HOW I WORK // OBSERVE · MAKE · REFINE
           </div>
         </div>
 
-        {/* TESTO MINIMALE ED EDITORIALE (SENZA SCATOLA SCURA PESANTE) */}
+        {/* COLONNA TESTO DESTRA */}
         <div className="process-text-column">
           <div key={activeStep} className="process-content-block animate-fade">
             <span className="step-number">{currentStep.step}</span>
@@ -79,7 +77,6 @@ export const StickyObject: React.FC = () => {
 
             <p className="step-description">{currentStep.desc}</p>
 
-            {/* INDICATORE DI PROGRESSO DISCRETO */}
             <div className="step-indicators">
               {PROCESS_STEPS.map((_, i) => (
                 <span
@@ -104,6 +101,9 @@ export const StickyObject: React.FC = () => {
         ))}
       </div>
 
+      {/* SPAZIATORE NERO FINALE PER SEPARARE IL CONTENUTO SUCCESSIVO */}
+      <div className="process-bottom-spacer" />
+
       <style>{`
         .process-section {
           position: relative;
@@ -113,10 +113,10 @@ export const StickyObject: React.FC = () => {
           box-sizing: border-box;
         }
 
-        /* FRAME FISSO CON MARGINI DALLA NAVBAR E DAL FONDO */
+        /* FRAME FISSO CON MARGINI DALLA NAVBAR */
         .process-sticky-frame {
           position: sticky;
-          top: 90px; /* Spazio per la barra di navigazione */
+          top: 90px;
           height: calc(100vh - 130px);
           max-height: 820px;
           width: 100%;
@@ -129,7 +129,7 @@ export const StickyObject: React.FC = () => {
           z-index: 1;
         }
 
-        /* MEDIA LEFT CONTAINER */
+        /* IMMAGINE PULITA SENZA FILTRI NERI O GRADIENTI */
         .process-media {
           position: relative;
           width: 100%;
@@ -142,14 +142,7 @@ export const StickyObject: React.FC = () => {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          filter: brightness(0.7) contrast(1.05);
-        }
-
-        .process-media-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(to right, rgba(7,7,7,0.2), rgba(7,7,7,0.7));
-          pointer-events: none;
+          filter: none; /* Immagine nitida e senza oscuramento */
         }
 
         .process-tag {
@@ -158,16 +151,16 @@ export const StickyObject: React.FC = () => {
           left: 24px;
           font-family: monospace;
           font-size: 0.75rem;
-          color: rgba(255,255,255,0.6);
+          color: rgba(255,255,255,0.85);
           letter-spacing: 1.5px;
-          background: rgba(0,0,0,0.5);
+          background: rgba(0, 0, 0, 0.65);
           padding: 6px 14px;
           border-radius: 4px;
           backdrop-filter: blur(8px);
           z-index: 2;
         }
 
-        /* COLONNA TESTO DESTRA (PULITA, INTEGRATA) */
+        /* COLONNA TESTO DESTRA */
         .process-text-column {
           display: flex;
           flex-direction: column;
@@ -220,7 +213,6 @@ export const StickyObject: React.FC = () => {
           margin: 0 0 32px 0;
         }
 
-        /* PUNTINI INDICATORI SOTTO AL TESTO */
         .step-indicators {
           display: flex;
           gap: 8px;
@@ -238,7 +230,7 @@ export const StickyObject: React.FC = () => {
           width: 40px;
         }
 
-        /* TRACE DI SCROLL */
+        /* STRATO DI TRIGGER PER LO SCROLL */
         .process-triggers-overlay {
           position: relative;
           z-index: 3;
@@ -250,6 +242,12 @@ export const StickyObject: React.FC = () => {
           height: 80vh;
           width: 100%;
           pointer-events: none;
+        }
+
+        /* SPAZIATORE NERO SOTTO LA SEZIONE */
+        .process-bottom-spacer {
+          height: 25vh; /* Regola questa altezza per aumentare o diminuire lo stacco */
+          width: 100%;
         }
 
         @media (max-width: 900px) {
