@@ -25,7 +25,7 @@ const translations = {
     collaborationText2: "Oggi continuo a vedere il design come un modo per comprendere il mondo prima di cambiarlo. Ogni progetto è un'occasione per imparare qualcosa di nuovo e trasformare un problema complesso in una soluzione chiara.",
     ctaTitle: "What's next?",
     ctaSub: "Per ulteriori informazioni sul mio percorso, competenze e dettagli tecnici, consulta il mio CV completo.",
-    ctaButton: "CURRICULUM VITAE"
+    ctaButton: "VAI AL CV"
   },
   en: {
     heroTitle: "MATTEO FINCO",
@@ -49,7 +49,7 @@ const translations = {
     collaborationText2: "Today, I still see design as a way to understand the world before changing it. Every project is a chance to learn something new and to turn a complex problem into a clear solution.",
     ctaTitle: "What's next?",
     ctaSub: "For additional information about my background, technical skills, and experience, view my CV.",
-    ctaButton: "CURRICULUM VITAE"
+    ctaButton: "VIEW CV"
   }
 };
 
@@ -106,8 +106,10 @@ export default function About() {
 
   return (
     <div className="about-page editorial-portfolio bg-[#070707] text-[#e5e5e5] min-h-screen overflow-x-hidden">
+      {/* Header con abilitazione del nome/link alla home page */}
       <Header 
-        showBackToDesigns={false} 
+        showName={true}
+        showHomeLink={true}
         currentLang={lang} 
         onLanguageChange={toggleLanguage}
         setLang={toggleLanguage} 
@@ -116,7 +118,7 @@ export default function About() {
       <style>{`
         .about-page { padding-top: 80px; }
         .about-hero {
-          min-height: 75vh;
+          min-height: 85vh;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -145,16 +147,22 @@ export default function About() {
           max-width: 600px;
           text-align: left;
         }
-        .hero-arrow {
+
+        /* Freccia Chevron identica all'home page */
+        .hero-chevron-arrow {
           position: absolute;
-          bottom: 40px;
+          bottom: 35px;
           left: 50%;
           transform: translateX(-50%);
           opacity: 0.6;
+          transition: opacity 0.3s ease;
         }
-        .hero-arrow svg {
-          width: 32px;
-          height: 32px;
+        .hero-chevron-arrow:hover {
+          opacity: 1;
+        }
+        .hero-chevron-arrow svg {
+          width: 28px;
+          height: 28px;
           stroke: #ffffff;
         }
 
@@ -196,9 +204,11 @@ export default function About() {
           <h1>{t.heroTitle}</h1>
           <p>{t.heroSub}</p>
         </div>
-        <div className="hero-arrow">
+        
+        {/* Freccia Chevron a V dell'Home Page */}
+        <div className="hero-chevron-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 5v14M5 12l7 7 7-7" />
+            <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
       </section>
