@@ -58,7 +58,14 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
   const [prevStep, setPrevStep] = useState<number | null>(null);
   const triggerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const steps = PROCESS_STEPS[lang] || PROCESS_STEPS.it;
+  // Garantisce che il fallback funzioni sempre anche se lang viene passato non valido
+  const currentLang = PROCESS_STEPS[lang] ? lang : 'it';
+  const steps = PROCESS_STEPS[currentLang];
+
+  // Quando la lingua cambia dinamicamente, resetta la memoria dello step precedente
+  useEffect(() => {
+    setPrevStep(null);
+  }, [lang]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -76,7 +83,6 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
         });
       },
       {
-        // Focus sulla fascia centrale 20% della viewport per evitare cambi anticipati
         rootMargin: '-40% 0px -40% 0px',
         threshold: 0.1,
       }
@@ -100,40 +106,42 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
     }
   };
 
-  const currentStepData = steps[activeStep];
-  const prevStepData = prevStep !== null ? steps[prevStep] : null;
+  // Previene crash in caso di indici fuori range
+  const safeActiveStep = Math.min(activeStep, steps.length - 1);
+  const currentStepData = steps[safeActiveStep];
+  const prevStepData = prevStep !== null && prevStep < steps.length ? steps[prevStep] : null;
 
   return (
     <section className="process-section">
       {/* FRAME STICKY FULL-BLEED A SINISTRA */}
       <div className="process-sticky-frame">
         <div className="process-media">
-          {/* Vecchia immagine (rimane sotto e sfuma via) */}
+          {/* Vecchia immagine */}
           {prevStepData && (
             <img
-              key={`prev-${prevStep}`}
+              key={`prev-${currentLang}-${prevStep}`}
               src={prevStepData.image}
               alt=""
               className="process-img img-fade-out"
             />
           )}
 
-          {/* Nuova immagine (si sovrappone sfumando delicatamente in ingresso) */}
+          {/* Nuova immagine */}
           <img
-            key={`curr-${activeStep}`}
+            key={`curr-${currentLang}-${safeActiveStep}`}
             src={currentStepData.image}
             alt={currentStepData.step}
             className="process-img img-fade-in"
           />
 
-          <div key={`tag-${activeStep}`} className="process-tag animate-tag-smooth">
+          <div key={`tag-${currentLang}-${safeActiveStep}`} className="process-tag animate-tag-smooth">
             {currentStepData.tag}
           </div>
         </div>
 
         {/* COLONNA TESTO DESTRA */}
         <div className="process-text-column">
-          <div key={`${lang}-${activeStep}`} className="process-content-block animate-text-smooth">
+          <div key={`content-${currentLang}-${safeActiveStep}`} className="process-content-block animate-text-smooth">
             <span className="step-number">{currentStepData.step}</span>
 
             <h3 className="step-title">
@@ -154,7 +162,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
                   type="button"
                   aria-label={`Go to step ${i + 1}`}
                   onClick={() => handleStepClick(i)}
-                  className={`indicator-dot ${i === activeStep ? 'active' : ''}`}
+                  className={`indicator-dot ${i === safeActiveStep ? 'active' : ''}`}
                 />
               ))}
             </div>
@@ -218,13 +226,11 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           will-change: opacity, transform;
         }
 
-        /* CROSS-FADE: La nuova immagine entra in dissolvenza soffice */
         .img-fade-in {
           z-index: 2;
           animation: crossFadeIn 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
-        /* La vecchia immagine sfuma via dolcemente in sottofondo */
         .img-fade-out {
           z-index: 1;
           animation: crossFadeOut 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
@@ -252,7 +258,6 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           }
         }
 
-        /* BADGE TAG: Dissolvenza morbida */
         .animate-tag-smooth {
           animation: tagSmooth 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
@@ -294,7 +299,6 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           will-change: opacity;
         }
 
-        /* TESTO: Dissolvenza incrociata naturale */
         .animate-text-smooth {
           animation: textSmooth 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
@@ -372,8 +376,6 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           pointer-events: none;
         }
 
-        /* CUSCINETTO INIZIALE: il primo trigger ha un'altezza maggiore (140vh)
-           così la prima scheda rimane fissa mentre l'utente scrolla all'inizio */
         .step-trigger:first-child {
           height: 140vh;
         }
