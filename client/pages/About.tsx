@@ -5,8 +5,8 @@ import { Header } from '../components/Header';
 const translations = {
   it: {
     heroTitle: "MATTEO FINCO",
-    heroSub: "Product Designer\nbased in Italy\n\n",
-    curiosityTitle: "I like understanding how things work.",
+    heroSub: "Product Designer\nbased in Italy\n\nI like understanding how things work.",
+    curiosityTitle: "Mi piace capire come funzionano le cose.",
     curiosityText1: "Quando guardo un oggetto, il mio primo impulso non è chiedermi se sia bello o brutto, ma perché sia stato progettato in quel modo. Come è stato costruito, quali vincoli hanno guidato le decisioni e quali compromessi si celano dietro una forma apparentemente semplice.",
     curiosityText2: "Per me, la qualità di un prodotto risiede nella chiarezza della sua logica. Questo approccio mi ha portato al product design, dove curiosità, competenze tecniche e creatività lavorano costantemente insieme.",
     methodTitle: "Il design come metodo",
@@ -23,64 +23,13 @@ const translations = {
     collaborationTitle: "Il Design come Collaborazione",
     collaborationText1: "Nel design vedo la stessa dinamica: le soluzioni efficaci sono raramente individuali. Nascono dal confronto e dalla capacità di unire competenze diverse mantenendo una visione d'insieme chiara del sistema.",
     collaborationText2: "Oggi continuo a vedere il design come un modo per comprendere il mondo prima di cambiarlo. Ogni progetto è un'occasione per imparare qualcosa di nuovo e trasformare un problema complesso in una soluzione chiara.",
-    expertiseHeader: "Competenze",
-    capabilities: [
-      {
-        num: "01",
-        title: "ANALISI",
-        items: ["Reverse engineering", "Analisi prodotto", "Ricerca progettuale"]
-      },
-       .hero-arrow {
-
-          position:absolute;
-
-          bottom:40px;
-
-          left:50%;
-
-          transform:translateX(-50%);
-
-          opacity:0.6;
-
-        }
-
-
-        .hero-arrow svg {
-
-          width:32px;
-
-          height:32px;
-
-        }
-
-      {
-        num: "02",
-        title: "PROGETTAZIONE",
-        items: ["CAD e 3D", "Disegni tecnici", "Design for Manufacturing"]
-      },
-      {
-        num: "03",
-        title: "PROTOTIPAZIONE",
-        items: ["Prototipazione rapida", "Stampa 3D FDM", "Sperimentazione materica"]
-      },
-      {
-        num: "04",
-        title: "COLLABORAZIONE",
-        items: ["Coordinamento", "Leadership", "Team multidisciplinari"]
-      },
-      {
-        num: "05",
-        title: "LINGUE",
-        items: ["Italiano (Madrelingua)", "Inglese (B2)"]
-      }
-    ],
-    ctaTitle: "What's next?",
-    ctaSub: "Interessato a collaborare a un progetto di design? Sono sempre aperto a nuove sfide.",
-    ctaButton: "VISUALIZZA PORTFOLIO"
+    ctaTitle: "Vuoi saperne di più?",
+    ctaSub: "Per consultare l'elenco completo delle mie competenze, il percorso formativo e le mie esperienze, puoi dare un'occhiata al mio CV.",
+    ctaButton: "VISUALIZZA CURRICULUM"
   },
   en: {
     heroTitle: "MATTEO FINCO",
-    heroSub: "Product Designer\nbased in Italy\n\n",
+    heroSub: "Product Designer\nbased in Italy\n\nI like understanding how things work.",
     curiosityTitle: "I like understanding how things work.",
     curiosityText1: "When I look at an object, my first impulse is not to ask whether it is beautiful or not, but why it was designed that way. How it was built, which constraints shaped the decisions, and which compromises are hidden behind an apparently simple form.",
     curiosityText2: "For me, the quality of a product lies in the clarity of its logic. This approach led me to product design, where curiosity, technical skills, and creativity constantly work together.",
@@ -98,11 +47,9 @@ const translations = {
     collaborationTitle: "Design as Collaboration",
     collaborationText1: "In design, I see the same dynamic: effective solutions are rarely individual. They come from discussion and from the ability to combine different skills while keeping a clear overall vision of the system.",
     collaborationText2: "Today, I still see design as a way to understand the world before changing it. Every project is a chance to learn something new and to turn a complex problem into a clear solution.",
-    expertiseHeader: "Capabilities",
-    
-    ctaTitle: "What's next?",
-    ctaSub: "Interested in collaborating on a design project? I'm always open to new challenges and meaningful work.",
-    ctaButton: "VIEW PORTFOLIO"
+    ctaTitle: "Want to know more?",
+    ctaSub: "To check out my detailed skills, educational background, and experience, take a look at my full resume.",
+    ctaButton: "VIEW RESUME"
   }
 };
 
@@ -169,12 +116,13 @@ export default function About() {
       <style>{`
         .about-page { padding-top: 80px; }
         .about-hero {
-          min-height: 75vh;
+          min-height: 85vh;
           display: flex;
           align-items: center;
           justify-content: center;
           padding: 120px 6vw;
           border-bottom: 1px solid #1a1a1a;
+          position: relative;
         }
         .about-hero > div {
           width: 100%;
@@ -197,6 +145,25 @@ export default function About() {
           max-width: 600px;
           text-align: left;
         }
+        .hero-arrow {
+          position: absolute;
+          bottom: 40px;
+          left: 50%;
+          transform: translateX(-50%);
+          opacity: 0.5;
+          animation: bounce 2s infinite;
+        }
+        .hero-arrow svg {
+          width: 32px;
+          height: 32px;
+          stroke: #ffffff;
+        }
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+          40% { transform: translate(-50%, -10px); }
+          60% { transform: translate(-50%, -5px); }
+        }
+
         .about-fullbleed-wrapper { width: 100%; padding: 100px 0; display: flex; flex-direction: column; gap: 120px; box-sizing: border-box; }
         .about-row { display: grid; grid-template-columns: 1fr 1fr; align-items: center; width: 100%; min-height: 70vh; }
         .about-row.media-left .about-media { width: 100%; height: 620px; padding-left: 0; }
@@ -208,77 +175,16 @@ export default function About() {
         .about-text h2 { font-size: clamp(2.2rem, 3.8vw, 3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 25px; color: #ffffff; }
         .about-text p { color: #aaaaaa; font-size: 1.12rem; line-height: 1.85; max-width: 560px; margin-bottom: 20px; }
         .about-text p:last-child { margin-bottom: 0; }
+        
         .reveal-editorial { opacity: 0; filter: blur(10px); transition: opacity 1.1s cubic-bezier(.22,.61,.36,1), filter 1.1s cubic-bezier(.22,.61,.36,1), transform 1.1s cubic-bezier(.22,.61,.36,1); }
         .reveal-editorial.reveal-from-right { transform: translateX(35px); }
         .reveal-editorial.reveal-from-left { transform: translateX(-35px); }
         .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: translateX(0); }
-        
-        /* CAPABILITIES SECTION - INDUSTRIAL STUDIO STYLE */
-        .capabilities-section {
-          max-width: 1200px;
-          margin: 120px auto 0;
-          padding: 0 6vw 120px;
-        }
-        .capabilities-section h2 {
-          font-size: clamp(2.2rem, 4vw, 3.2rem);
-          font-weight: 800;
-          color: #ffffff;
-          margin-bottom: 60px;
-          letter-spacing: -0.02em;
-        }
-        .capabilities-list {
-          display: flex;
-          flex-direction: column;
-        }
-        .capability-row {
-          border-top: 1px solid #222222;
-          padding: 40px 0;
-          display: grid;
-          grid-template-columns: 120px 1fr;
-          align-items: baseline;
-          transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), border-color 0.4s ease;
-        }
-        .capability-row:last-child {
-          border-bottom: 1px solid #222222;
-        }
-        .capability-row:hover {
-          transform: translateX(12px);
-          border-color: #555555;
-        }
-        .capability-num {
-          font-size: 1.15rem;
-          font-weight: 700;
-          color: #666666;
-          letter-spacing: 0.05em;
-        }
-        .capability-info h3 {
-          font-size: clamp(1.5rem, 2.2vw, 2.1rem);
-          font-weight: 800;
-          color: #ffffff;
-          margin-bottom: 16px;
-          letter-spacing: -0.01em;
-        }
-        .capability-items {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 20px 30px;
-        }
-        .capability-items span {
-          color: #999999;
-          font-size: 1.05rem;
-          font-weight: 400;
-          position: relative;
-        }
-        .capability-items span:not(:last-child):after {
-          content: "—";
-          margin-left: 30px;
-          color: #444;
-        }
 
-        .about-cta-section { width: 100%; padding: 80px 6vw; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 100px; }
-        .about-cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #ffffff; margin-bottom: 30px; }
+        .about-cta-section { width: 100%; padding: 120px 6vw; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 40px; }
+        .about-cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #ffffff; margin-bottom: 20px; }
         .about-cta-section p { font-size: 1.1rem; color: #aaaaaa; max-width: 600px; margin: 0 auto 40px; }
-        .cta-button { display: inline-block; padding: 16px 40px; background: #ffffff; color: #070707; font-weight: 700; text-decoration: none; transition: all 0.3s ease; border: 1px solid #ffffff; }
+        .cta-button { display: inline-block; padding: 16px 40px; background: #ffffff; color: #070707; font-weight: 700; text-decoration: none; transition: all 0.3s ease; border: 1px solid #ffffff; border-radius: 8px; }
         .cta-button:hover { background: #070707; color: #ffffff; transform: translateY(-3px); }
         
         @media (max-width: 1024px) {
@@ -286,22 +192,7 @@ export default function About() {
           .about-row.media-left .about-text, .about-row.media-right .about-text { padding: 0 6vw; }
           .about-row.media-left .about-media, .about-row.media-right .about-media { height: 420px; }
           .about-hero { padding: 60px 6vw; }
-          .about-cta-section { padding: 60px 6vw; }
-        }
-        @media (max-width: 768px) {
-          .capability-row {
-            grid-template-columns: 1fr;
-            gap: 15px;
-            padding: 30px 0;
-          }
-          .capability-items span:not(:last-child):after {
-            content: "";
-            margin-left: 0;
-          }
-          .capability-items {
-            flex-direction: column;
-            gap: 8px;
-          }
+          .about-cta-section { padding: 80px 6vw; }
         }
       `}</style>
 
@@ -310,6 +201,11 @@ export default function About() {
         <div>
           <h1>{t.heroTitle}</h1>
           <p>{t.heroSub}</p>
+        </div>
+        <div className="hero-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 5v14M19 12l-7 7-7-7" />
+          </svg>
         </div>
       </section>
 
@@ -381,13 +277,11 @@ export default function About() {
         </section>
       </div>
 
-    
-
       {/* CTA SECTION */}
       <section className="about-cta-section">
         <h2>{t.ctaTitle}</h2>
         <p>{t.ctaSub}</p>
-        <a href="/" className="cta-button">
+        <a href="/cv" className="cta-button">
           {t.ctaButton}
         </a>
       </section>
