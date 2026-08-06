@@ -15,26 +15,25 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
         .intro-pinned-container {
           position: relative;
           width: 100%;
-          height: 100vh;
+          height: 220vh; /* Crea lo spazio di scroll prolungato stile editoriale */
           background-color: #070707;
           box-sizing: border-box;
-          display: flex;
-          align-items: center;
-          justify-content: center;
           scroll-snap-align: start;
           scroll-snap-stop: always;
           border-bottom: 1px solid #141414;
-          overflow: hidden;
+          /* IMPORTANTE: niente overflow: hidden qui, altrimenti position: sticky si disattiva */
         }
 
         .intro-sticky-viewport {
+          position: sticky;
+          top: 0;
           width: 100%;
+          height: 100vh;
           max-width: 1400px;
-          height: 80vh;
-          max-height: 720px;
           margin: 0 auto;
           display: flex;
           align-items: center;
+          justify-content: center;
           padding: 0 6vw;
           box-sizing: border-box;
         }
@@ -45,7 +44,8 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           align-items: center;
           gap: 60px;
           width: 100%;
-          height: 100%;
+          height: 80vh;
+          max-height: 720px;
         }
 
         /* TESTI (Sinistra) */
@@ -106,15 +106,15 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
         @media (max-width: 1024px) {
           .intro-pinned-container {
             height: auto;
-            padding: 80px 0;
           }
           .intro-sticky-viewport {
+            position: relative;
             height: auto;
-            max-height: none;
-            padding: 0 6vw;
+            padding: 80px 6vw;
           }
           .intro-step-row {
             grid-template-columns: 1fr;
+            height: auto;
             gap: 40px;
           }
           .intro-media-box {
