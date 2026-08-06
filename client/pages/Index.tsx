@@ -17,7 +17,7 @@ const projectList: ProjectStep[] = [
     year: '2026',
     desc: 'Sistema modulare interattivo sviluppato per l\'allenamento e il miglioramento del controllo del disco nell\'hockey su ghiaccio. Combina resistenza meccanica e flessibilità configurabile.',
     link: '/snake',
-    img: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80'
+    img: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1400&q=80'
   },
   {
     id: '02',
@@ -30,7 +30,7 @@ const projectList: ProjectStep[] = [
     year: '2026',
     desc: 'Un\'architettura di archiviazione minimale progettata per ottimizzare gli spazi di lavoro contemporanei, combinando modularità strutturale e finiture ad alta resa sensoriale.',
     link: '/archivia',
-    img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80'
+    img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1400&q=80'
   },
   {
     id: '03',
@@ -43,7 +43,7 @@ const projectList: ProjectStep[] = [
     year: '2026',
     desc: 'Progetto incentrato sull\'usabilità quotidiana e la trasportabilità. Nando reinterpreta gli accessori da viaggio attraverso un linguaggio formale essenziale e componenti facilmente sostituibili.',
     link: '/nando',
-    img: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1200&q=80'
+    img: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1400&q=80'
   },
   {
     id: '04',
@@ -56,7 +56,7 @@ const projectList: ProjectStep[] = [
     year: '2026',
     desc: 'Riflessione sulla sostenibilità e la tattilità nel settore del food packaging. Il contenitore elimina l\'uso di plastiche monouso offrendo una nuova ritualità di apertura e consumo.',
     link: '/pizzamente',
-    img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80'
+    img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1400&q=80'
   },
   {
     id: '05',
@@ -69,7 +69,7 @@ const projectList: ProjectStep[] = [
     year: '2025',
     desc: 'Esplorazione formale ed ergonomica applicata a piccoli elettrodomestici. Scomposizione dei volumi tradizionali per facilitare pulizia, ingombro verticale e manutenzione.',
     link: '/wafflemaker',
-    img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80'
+    img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1400&q=80'
   },
   {
     id: '06',
@@ -82,7 +82,7 @@ const projectList: ProjectStep[] = [
     year: '2025',
     desc: 'Elemento d\'arredo sviluppato attraverso l\'algoritmo parametrico. I componenti ad incastro meccanico eliminano completamente l\'uso di colle o ferramenta metallica.',
     link: '/ttable',
-    img: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80'
+    img: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80'
   },
   {
     id: '07',
@@ -95,7 +95,7 @@ const projectList: ProjectStep[] = [
     year: '2025',
     desc: 'Raccolta di prop fisici e componenti scenografici realizzati combinando modellazione 3D avanzata, taglio laser e finiture artigianali ad alto impatto visivo.',
     link: '/prop',
-    img: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1200&q=80'
+    img: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1400&q=80'
   }
 ];
 
@@ -122,7 +122,7 @@ export default function Index() {
   const [showNavName, setShowNavName] = useState<boolean>(false);
 
   useEffect(() => {
-    // Observer per mostrare il pulsante col nome nell'Header appena la Hero esce dallo schermo
+    // Observer per attivare la visibilità del nome nell'Header
     const heroEl = document.getElementById('hero-section');
     if (heroEl) {
       const heroObserver = new IntersectionObserver(
@@ -144,11 +144,11 @@ export default function Index() {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.25 }
     );
     revealElements.forEach((el) => revealObserver.observe(el));
 
-    // Observer per sincronizzare il cerchio sticky con la scheda attiva dei progetti
+    // Observer per sincronizzare il cerchio gigante sticky con la scheda di testo magnetica
     const processCards = document.querySelectorAll('.process-card');
     const processObserver = new IntersectionObserver(
       (entries) => {
@@ -159,7 +159,7 @@ export default function Index() {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.55 }
     );
     processCards.forEach((card) => processObserver.observe(card));
 
@@ -174,9 +174,10 @@ export default function Index() {
       <style>{`
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         
+        /* SCROLL SNAP MANDATORIO SU HTML / BODY */
         html {
           scroll-behavior: smooth;
-          scroll-snap-type: y proximity;
+          scroll-snap-type: y mandatory;
         }
 
         body {
@@ -209,12 +210,12 @@ export default function Index() {
         .editorial-section {
           max-width: 1400px;
           margin: 0 auto;
-          padding: 160px 6vw;
+          padding: 0 6vw;
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 100px;
           align-items: center;
-          min-height: 90vh;
+          height: 100vh;
         }
         .editorial-text h2 { font-size: clamp(2.4rem, 4.5vw, 4.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 25px; color: #fff; }
         .editorial-text h3.sub-grey { font-size: clamp(1.3rem, 2.2vw, 2rem); font-weight: 500; color: #888; margin-bottom: 30px; line-height: 1.4; }
@@ -231,50 +232,21 @@ export default function Index() {
         .reveal-editorial.reveal-from-left { transform: scale(1.04) translateX(-40px); }
         .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: scale(1) translateX(0); }
 
-        /* STICKY FEATURE */
-        .sticky-feature-section { position: relative; width: 100vw; min-height: 220vh; background-color: #050505; border-y: 1px solid #181818; }
-        .sticky-media-container { position: sticky; top: 0; height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center; z-index: 1; }
-        .sticky-media-box { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
-        .sticky-media-box img { width: 100vw; height: 100vh; object-fit: cover; filter: brightness(0.65) contrast(1.1); }
-        .sticky-technical-tag { position: absolute; bottom: 40px; left: 6vw; font-family: monospace; font-size: 0.8rem; color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.6); padding: 8px 16px; backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.1); }
-        
-        .scrolling-overlay-container { position: relative; z-index: 2; margin-top: -100vh; padding-bottom: 20vh; pointer-events: none; }
-        .scrolling-card {
-          min-height: 70vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          max-width: 460px;
-          margin-left: auto;
-          margin-right: 6vw;
-          margin-bottom: 15vh;
-          background: rgba(10, 10, 10, 0.85);
-          backdrop-filter: blur(20px);
-          padding: 45px 38px;
-          border-left: 2px solid #ffffff;
-          border-y: 1px solid rgba(255,255,255,0.05);
-          pointer-events: auto;
-          box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-        .scrolling-card .card-step { font-family: monospace; font-size: 0.8rem; color: #888; margin-bottom: 12px; letter-spacing: 1px; }
-        .scrolling-card h3 { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 16px; line-height: 1.25; }
-        .scrolling-card p { color: #bbb; font-size: 1.02rem; line-height: 1.75; }
-
-        /* CIRCLE SHOWCASE & STICKY CARDS */
+        /* CIRCLE SHOWCASE & STICKY CARDS MAGNETICI */
         .process-showcase-wrapper {
-          max-width: 1550px;
+          max-width: 1650px;
           margin: 0 auto;
-          padding: 120px 6vw;
+          padding: 0 6vw;
           display: grid;
-          grid-template-columns: 1.1fr 0.9fr;
+          grid-template-columns: 1.15fr 0.85fr;
           gap: 60px;
           align-items: start;
         }
 
         .process-sticky-left {
           position: sticky;
-          top: 80px;
-          height: calc(100vh - 120px);
+          top: 0;
+          height: 100vh;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -285,59 +257,73 @@ export default function Index() {
         .circle-technical-frame {
           position: relative;
           width: 100%;
-          max-width: 500px;
+          max-width: 640px;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
         }
-        .circle-hud-svg { width: 100%; height: auto; max-height: 440px; overflow: visible; }
+        .circle-hud-svg { width: 100%; height: auto; max-height: 580px; overflow: visible; }
 
-        .circle-img-layer { opacity: 0; transform: scale(1.05); transition: opacity 0.8s ease, transform 0.8s ease; }
-        .circle-img-layer.active-layer { opacity: 1; transform: scale(1); }
+        /* REGOLE ANTI-GLITCH SU IMMAGINI SVG */
+        .circle-images-container { isolation: isolate; }
+        .circle-img-layer {
+          opacity: 0;
+          transform: scale(1.04) translateZ(0);
+          backface-visibility: hidden;
+          will-change: opacity, transform;
+          transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .circle-img-layer.active-layer { opacity: 1; transform: scale(1) translateZ(0); }
 
-        @keyframes pulseRing { 0% { r: 8px; opacity: 1; } 100% { r: 20px; opacity: 0; } }
+        @keyframes pulseRing { 0% { r: 9px; opacity: 1; } 100% { r: 24px; opacity: 0; } }
         .node-pulse { animation: pulseRing 1.8s ease-out infinite; }
 
         .project-title-under-circle {
-          margin-top: 10px;
+          margin-top: 15px;
           text-align: center;
           width: 100%;
         }
-        .project-index-tag { font-family: monospace; font-size: 0.78rem; color: #777; letter-spacing: 2px; display: block; margin-bottom: 4px; }
-        .project-main-name { font-size: 2.2rem; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; line-height: 1.1; }
-        .project-sub-name { font-size: 0.95rem; color: #999; margin-top: 4px; }
+        .project-index-tag { font-family: monospace; font-size: 0.82rem; color: #777; letter-spacing: 2px; display: block; margin-bottom: 4px; }
+        .project-main-name { font-size: 2.5rem; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; line-height: 1.1; }
+        .project-sub-name { font-size: 1.05rem; color: #aaa; margin-top: 4px; font-weight: 500; }
 
-        .process-scroll-right { padding-top: 2vh; padding-bottom: 15vh; }
-        .process-card {
-          min-height: 85vh;
+        .process-scroll-right { padding: 0; }
+
+        /* EFFETTO STICKY / CALAMITA PER OGNI SCHEDA PROGETTO (CENTRO SCHERMO) */
+        .process-card.snap-card {
+          height: 100vh;
+          min-height: 100vh;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          padding: 40px 0;
-          opacity: 0.25;
-          filter: blur(4px);
+          scroll-snap-align: center;
+          scroll-snap-stop: always;
+          opacity: 0.15;
+          filter: blur(6px);
           transition: opacity 0.6s ease, filter 0.6s ease;
-          border-bottom: 1px solid #161616;
+          border-bottom: 1px solid #141414;
         }
-        .process-card.active-step { opacity: 1; filter: blur(0px); }
+        .process-card.snap-card.active-step { opacity: 1; filter: blur(0px); }
+
+        .card-content-wrapper { padding: 20px 0; }
         .process-card .phase-number { font-family: monospace; font-size: 0.85rem; color: #777; margin-bottom: 8px; }
-        .process-card .phase-title { font-size: 2.6rem; font-weight: 800; color: #fff; line-height: 1.15; }
-        .process-card .phase-subtitle { font-size: 1.2rem; color: #888; font-weight: 500; margin-bottom: 25px; }
-        .process-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; padding: 18px 0; border-y: 1px solid #1c1c1c; }
+        .process-card .phase-title { font-size: 2.8rem; font-weight: 800; color: #fff; line-height: 1.15; }
+        .process-card .phase-subtitle { font-size: 1.25rem; color: #888; font-weight: 500; margin-bottom: 25px; }
+        .process-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; padding: 20px 0; border-y: 1px solid #1c1c1c; }
         .meta-item .meta-label { font-family: monospace; font-size: 0.72rem; color: #555; text-transform: uppercase; margin-bottom: 4px; }
         .meta-item .meta-value { font-size: 0.95rem; color: #ccc; font-weight: 500; }
-        .process-card .phase-desc { color: #aaa; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; }
+        .process-card .phase-desc { color: #aaa; font-size: 1.1rem; line-height: 1.85; margin-bottom: 35px; }
 
         .project-detail-btn {
           display: inline-flex;
           align-items: center;
           gap: 12px;
           align-self: start;
-          padding: 14px 28px;
+          padding: 16px 32px;
           background: #ffffff;
           color: #070707;
-          font-size: 0.9rem;
+          font-size: 0.92rem;
           font-weight: 700;
           text-decoration: none;
           transition: all 0.3s ease;
@@ -348,26 +334,42 @@ export default function Index() {
           transform: translateX(6px);
         }
 
-        /* FOOTER REVISIONATO E PULITO */
+        /* FOOTER REVISIONATO CON CARENATURA E SPAZIATURA PUNTO DI DOMANDA */
         .whats-next-footer {
           background-color: #040404;
-          padding: 140px 6vw 60px;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 0 6vw;
           border-top: 1px solid #141414;
           text-align: center;
+          position: relative;
         }
         .whats-next-footer h2 {
-          font-size: clamp(3rem, 7vw, 6rem);
+          font-size: clamp(3.2rem, 7.5vw, 6.5rem);
           font-weight: 900;
           color: #ffffff;
           letter-spacing: -2px;
-          margin-bottom: 15px;
+          margin-bottom: 20px;
           line-height: 1;
         }
+        
+        /* SPAN DEDICATO PER IL PUNTO DI DOMANDA CON MEZZO SPAZIO E CARENATURA */
+        .question-mark-styled {
+          display: inline-block;
+          margin-left: 0.25em;
+          letter-spacing: 0.08em;
+          color: #ffffff;
+        }
+
         .whats-next-footer p.sub-lead {
           font-size: 1.25rem;
           color: #888;
-          max-width: 600px;
+          max-width: 620px;
           margin: 0 auto 50px;
+          line-height: 1.7;
         }
         .footer-actions {
           display: flex;
@@ -377,7 +379,7 @@ export default function Index() {
           margin-bottom: 80px;
         }
         .btn-footer-link {
-          padding: 16px 36px;
+          padding: 16px 38px;
           background: #ffffff;
           color: #070707;
           font-weight: 700;
@@ -391,7 +393,7 @@ export default function Index() {
           transform: translateY(-2px);
         }
         .btn-footer-outline {
-          padding: 16px 36px;
+          padding: 16px 38px;
           background: transparent;
           color: #ffffff;
           font-weight: 700;
@@ -407,11 +409,15 @@ export default function Index() {
         }
 
         .footer-bottom-info {
+          position: absolute;
+          bottom: 40px;
+          left: 6vw;
+          right: 6vw;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          border-top: 1px solid #121212;
-          padding-top: 40px;
+          border-top: 1px solid #141414;
+          padding-top: 25px;
           font-family: monospace;
           font-size: 0.82rem;
           color: #666;
@@ -421,31 +427,39 @@ export default function Index() {
         .footer-contacts-list a:hover { color: #fff; }
 
         @media (max-width: 1024px) {
-          .editorial-section, .process-showcase-wrapper { grid-template-columns: 1fr; gap: 60px; }
+          .editorial-section, .process-showcase-wrapper { grid-template-columns: 1fr; gap: 60px; height: auto; }
           .process-sticky-left { position: relative; top: 0; height: 500px; }
-          .scrolling-card { margin: 0 5vw 10vh 5vw; max-width: 100%; }
-          .footer-bottom-info { flex-direction: column; gap: 20px; text-align: center; }
+          .process-card.snap-card { height: auto; min-height: 80vh; }
+          .footer-bottom-info { flex-direction: column; gap: 15px; text-align: center; position: relative; bottom: 0; margin-top: 40px; }
         }
       `}</style>
 
-      {/* HEADER CON NOME/PULSANTE PER SCROLL TOP */}
+      {/* HEADER CON PULSANTE PER SCROLL TO TOP */}
       <Header lang={lang} setLang={setLang} showName={showNavName} />
       
+      {/* HERO GIGANTE */}
       <Hero />
 
+      {/* SEZIONE INTRO SNAP MAGNETICA */}
       <div className="snap-center">
         <IntroSection t={translations[lang]} />
       </div>
 
+      {/* SEZIONE STICKY OGGETTO MAGNETICA */}
       <div className="snap-center">
         <StickyObject />
       </div>
 
+      {/* SEZIONE CERCHIO GIGANTE CON CARD TESTO MAGNETICHE IN ALINEAMENTO CENTRALE */}
       <CircleShowcase steps={projectList} activeStep={activeStep} />
 
-      {/* FOOTER RISOLTO: WHAT'S NEXT? E BOTTONI CON LINK E STILI CORRETTI */}
+      {/* FOOTER WHAT'S NEXT CON PUNTO DI DOMANDA FORMATTATO E CALIBRATO */}
       <footer className="whats-next-footer snap-center">
-        <h2>WHAT&apos;S NEXT?</h2>
+        <h2>
+          WHAT&apos;S NEXT
+          <span className="question-mark-styled">?</span>
+        </h2>
+        
         <p className="sub-lead">
           Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale.
         </p>
