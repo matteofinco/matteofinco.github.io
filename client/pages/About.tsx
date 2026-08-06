@@ -5,8 +5,8 @@ import { Header } from '../components/Header';
 const translations = {
   it: {
     heroTitle: "MATTEO FINCO",
-    heroSub: "Product Designer\nbased in Italy\n\nI like understanding how things work.",
-    curiosityTitle: "Mi piace capire come funzionano le cose.",
+    heroSub: "Product Designer\nbased in Italy\n\n",
+    curiosityTitle: "I like understanding how things work.",
     curiosityText1: "Quando guardo un oggetto, il mio primo impulso non è chiedermi se sia bello o brutto, ma perché sia stato progettato in quel modo. Come è stato costruito, quali vincoli hanno guidato le decisioni e quali compromessi si celano dietro una forma apparentemente semplice.",
     curiosityText2: "Per me, la qualità di un prodotto risiede nella chiarezza della sua logica. Questo approccio mi ha portato al product design, dove curiosità, competenze tecniche e creatività lavorano costantemente insieme.",
     methodTitle: "Il design come metodo",
@@ -51,13 +51,13 @@ const translations = {
         items: ["Italiano (Madrelingua)", "Inglese (B2)"]
       }
     ],
-    ctaTitle: "E adesso?",
-    ctaSub: "Interessato a collaborare a un progetto di design? Sono sempre aperto a nuove sfide e a lavori significativi.",
+    ctaTitle: "What's next?",
+    ctaSub: "Interessato a collaborare a un progetto di design? Sono sempre aperto a nuove sfide.",
     ctaButton: "VISUALIZZA PORTFOLIO"
   },
   en: {
     heroTitle: "MATTEO FINCO",
-    heroSub: "Product Designer\nbased in Italy\n\nI like understanding how things work.",
+    heroSub: "Product Designer\nbased in Italy\n\n",
     curiosityTitle: "I like understanding how things work.",
     curiosityText1: "When I look at an object, my first impulse is not to ask whether it is beautiful or not, but why it was designed that way. How it was built, which constraints shaped the decisions, and which compromises are hidden behind an apparently simple form.",
     curiosityText2: "For me, the quality of a product lies in the clarity of its logic. This approach led me to product design, where curiosity, technical skills, and creativity constantly work together.",
