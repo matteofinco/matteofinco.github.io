@@ -59,6 +59,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           background-color: #070707;
           padding: 80px 6vw;
           box-sizing: border-box;
+          scroll-snap-type: y mandatory;
         }
 
         .showcase-sticky-layout {
