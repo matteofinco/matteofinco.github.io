@@ -1,5 +1,4 @@
-import React, { useState } from 'interface/react'; // o dai tuoi import standard
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 interface ProcessStep {
   step: string;
