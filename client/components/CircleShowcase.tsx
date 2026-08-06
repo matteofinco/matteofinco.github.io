@@ -3,13 +3,25 @@ import React, { useEffect, useRef, useState } from 'react';
 export interface ProjectStep {
   id: string;
   slug: string;
-  title: string;
-  subtitle: string;
-  category: string;
+  title: {
+    it: string;
+    en: string;
+  };
+  subtitle: {
+    it: string;
+    en: string;
+  };
+  category: {
+    it: string;
+    en: string;
+  };
+  desc: {
+    it: string;
+    en: string;
+  };
   tools: string;
   material: string;
   year: string;
-  desc: string;
   link: string;
   img: string;
 }
@@ -495,7 +507,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
                 <img
                   key={`curr-${currentProject.id}`}
                   src={currentProject.img}
-                  alt={currentProject.title}
+                  alt={currentProject.title[lang]}
                   className="hud-project-img hud-img-enter"
                 />
               </div>
@@ -512,14 +524,14 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
                   className={`process-card-item ${isActive ? 'active' : ''}`}
                 >
                   <div className="project-category-tag">
-                    {st.id} // {st.category} // {st.year}
+                    {st.id} // {st.category[lang]} // {st.year}
                   </div>
 
-                  <h2 className="project-main-title">{st.title}</h2>
+                  <h2 className="project-main-title">{st.title[lang]}</h2>
 
-                  <div className="project-subtitle-text">{st.subtitle}</div>
+                  <div className="project-subtitle-text">{st.subtitle[lang]}</div>
 
-                  <p className="project-desc-text">{st.desc}</p>
+                  <p className="project-desc-text">{st.desc[lang]}</p>
 
                   <div className="project-meta-grid">
                     <div className="meta-item">
