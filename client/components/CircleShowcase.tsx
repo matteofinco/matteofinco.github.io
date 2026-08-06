@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 export interface ProjectStep {
   id: string;
@@ -20,49 +20,82 @@ interface CircleShowcaseProps {
 }
 
 export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeStep }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const cards = container.querySelectorAll('.process-card-item');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute('data-index'));
+            const event = new CustomEvent('set-active-project', { detail: index });
+            window.dispatchEvent(event);
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.5,
+      }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
+
+  const currentProject = steps[activeStep] || steps[0];
+
   return (
-    <section className="circle-showcase-section">
+    <section className="circle-showcase-section" ref={containerRef}>
       <style>{`
         .circle-showcase-section {
           position: relative;
           width: 100%;
           background-color: #070707;
-          padding: 100px 6vw;
+          padding: 60px 6vw;
           box-sizing: border-box;
         }
 
-        .process-scroll-container {
-          display: flex;
-          flex-direction: column;
-          gap: 15vh;
-          max-width: 1300px;
-          margin: 0 auto;
-        }
-
-        .process-card {
+        .showcase-sticky-layout {
           display: grid;
           grid-template-columns: 1fr 1fr;
           align-items: center;
+          max-width: 1300px;
+          margin: 0 auto;
+          min-height: 90vh;
+          position: relative;
           gap: 60px;
-          min-height: 80vh;
-          scroll-snap-align: center;
         }
 
-        /* ADVANCED HUD GRAPHIC CONTAINER */
-        .hud-container {
-          position: relative;
-          width: 520px;
-          height: 520px;
+        /* COLONNA SINISTRA: HUD FISSA (STICKY) CON IMMAGINE PIÙ GRANDE */
+        .hud-sticky-wrapper {
+          position: sticky;
+          top: calc(50vh - 280px);
+          height: 560px;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin: 0 auto;
+          z-index: 10;
         }
 
+        .hud-container {
+          position: relative;
+          width: 560px;
+          height: 560px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        /* Cerchio centrale ingrandito per maggiore impatto visivo */
         .hud-center-circle {
           position: relative;
-          width: 320px;
-          height: 320px;
+          width: 360px;
+          height: 360px;
           background: #ffffff;
           border-radius: 50%;
           overflow: hidden;
@@ -70,7 +103,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           align-items: center;
           justify-content: center;
           z-index: 2;
-          box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+          box-shadow: 0 0 70px rgba(0, 0, 0, 0.85);
         }
 
         .inner-grid-pattern {
@@ -87,44 +120,40 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+          transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
         }
 
-        /* COMPLEX HUD RINGS & ARCS */
+        /* GEOMETRIE HUD AVANZATE */
         .hud-ring-base {
           position: absolute;
           border-radius: 50%;
           pointer-events: none;
         }
 
-        /* Anello esterno principale sottile */
         .hud-outer-ring {
-          width: 480px;
-          height: 480px;
+          width: 520px;
+          height: 520px;
           border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
-        /* Anello intermedio tratteggiato grande */
         .hud-dashed-ring {
-          width: 440px;
-          height: 440px;
+          width: 480px;
+          height: 480px;
           border: 1px dashed rgba(255, 255, 255, 0.2);
           animation: hud-spin 80s linear infinite;
         }
 
-        /* Anello interno tratteggiato stretto */
         .hud-inner-dashed {
-          width: 360px;
-          height: 360px;
+          width: 400px;
+          height: 400px;
           border: 1px dashed rgba(255, 255, 255, 0.15);
           animation: hud-spin-reverse 60s linear infinite;
         }
 
-        /* Archi tecnici angolari */
         .hud-tech-arc-1 {
           position: absolute;
-          width: 500px;
-          height: 500px;
+          width: 540px;
+          height: 540px;
           border-radius: 50%;
           border: 2px solid transparent;
           border-top-color: rgba(255, 255, 255, 0.6);
@@ -135,8 +164,8 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
 
         .hud-tech-arc-2 {
           position: absolute;
-          width: 410px;
-          height: 410px;
+          width: 440px;
+          height: 440px;
           border-radius: 50%;
           border: 2px solid transparent;
           border-bottom-color: rgba(255, 255, 255, 0.4);
@@ -145,11 +174,10 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           pointer-events: none;
         }
 
-        /* Gruppo tacche radiali in alto a sinistra */
         .hud-ticks-top-left {
           position: absolute;
-          width: 460px;
-          height: 460px;
+          width: 500px;
+          height: 500px;
           border-radius: 50%;
           border: 2px dotted rgba(255, 255, 255, 0.25);
           clip-path: polygon(0 0, 50% 0, 50% 50%, 0 50%);
@@ -157,22 +185,21 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           animation: hud-spin 100s linear infinite;
         }
 
-        /* Gruppo tacche radiali in basso a destra */
         .hud-ticks-bottom-right {
           position: absolute;
-          width: 460px;
-          height: 460px;
+          width: 500px;
+          height: 500px;
           border-radius: 50%;
           border: 2px dashed rgba(255, 255, 255, 0.2);
           clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%);
           pointer-events: none;
         }
 
-        /* Indicatore di stato a pallini in alto a destra (stile reference) */
+        /* INDICATORI DI STATO A PALLINI IN ALTO A DESTRA */
         .hud-status-dots {
           position: absolute;
-          top: 35px;
-          right: 35px;
+          top: 30px;
+          right: 30px;
           display: flex;
           flex-direction: column;
           gap: 6px;
@@ -200,7 +227,6 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           opacity: 0.8;
         }
 
-        /* Linea di puntamento laterale destra con pallino terminale */
         .hud-pointer-group {
           position: absolute;
           right: -25px;
@@ -235,11 +261,20 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           100% { transform: rotate(0deg); }
         }
 
-        /* PROJECT DETAILS INFO PANEL */
-        .showcase-info-panel {
+        /* COLONNA DESTRA: CONTENITORE DELLO SCROLL TESTUALE */
+        .process-scroll-column {
+          display: flex;
+          flex-direction: column;
+          gap: 30vh;
+          padding: 15vh 0;
+        }
+
+        .process-card-item {
           display: flex;
           flex-direction: column;
           gap: 20px;
+          min-height: 50vh;
+          justify-content: center;
         }
 
         .project-category-tag {
@@ -251,7 +286,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
         }
 
         .project-main-title {
-          font-size: clamp(2.5rem, 4.5vw, 4rem);
+          font-size: clamp(2.5rem, 4vw, 3.8rem);
           font-weight: 900;
           color: #ffffff;
           line-height: 1.1;
@@ -279,6 +314,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           border-top: 1px solid #1a1a1a;
           border-bottom: 1px solid #1a1a1a;
           padding: 20px 0;
+          max-width: 520px;
         }
 
         .meta-item span.label {
@@ -317,71 +353,71 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
         }
 
         @media (max-width: 1024px) {
-          .process-card {
+          .showcase-sticky-layout {
             grid-template-columns: 1fr;
-            text-align: center;
-            gap: 40px;
           }
-          .project-meta-grid {
-            text-align: left;
-          }
-          .project-action-link {
-            margin-left: auto;
-            margin-right: auto;
+          .hud-sticky-wrapper {
+            position: relative;
+            top: 0;
+            height: auto;
+            margin-bottom: 40px;
           }
           .hud-container {
             transform: scale(0.85);
-            margin: -20px auto;
+          }
+          .process-scroll-column {
+            gap: 10vh;
+            padding: 0;
           }
         }
       `}</style>
 
-      <div className="process-scroll-container">
-        {steps.map((st, index) => (
-          <div 
-            key={st.id} 
-            className="process-card" 
-            data-step={index}
-          >
-            {/* GRAFICA HUD AVANZATA */}
-            <div className="hud-container">
-              <div className="hud-ring-base hud-outer-ring"></div>
-              <div className="hud-ring-base hud-dashed-ring"></div>
-              <div className="hud-ring-base hud-inner-dashed"></div>
-              <div className="hud-tech-arc-1"></div>
-              <div className="hud-tech-arc-2"></div>
-              <div className="hud-ticks-top-left"></div>
-              <div className="hud-ticks-bottom-right"></div>
+      <div className="showcase-sticky-layout">
+        {/* COLONNA SINISTRA STICKY CON LA GRAFICA HUD E L'IMMAGINE ATTIVA */}
+        <div className="hud-sticky-wrapper">
+          <div className="hud-container">
+            <div className="hud-ring-base hud-outer-ring"></div>
+            <div className="hud-ring-base hud-dashed-ring"></div>
+            <div className="hud-ring-base hud-inner-dashed"></div>
+            <div className="hud-tech-arc-1"></div>
+            <div className="hud-tech-arc-2"></div>
+            <div className="hud-ticks-top-left"></div>
+            <div className="hud-ticks-bottom-right"></div>
 
-              {/* Indicatore di stato a pallini in alto a destra */}
-              <div className="hud-status-dots">
-                {steps.map((_, dotIdx) => (
-                  <div 
-                    key={dotIdx} 
-                    className={`status-dot ${dotIdx === activeStep ? 'active' : dotIdx === activeStep - 1 || dotIdx === activeStep + 1 ? 'highlight' : ''}`}
-                  ></div>
-                ))}
-              </div>
-
-              {/* Linea di puntamento laterale */}
-              <div className="hud-pointer-group">
-                <div className="hud-pointer-line"></div>
-                <div className="hud-pointer-node"></div>
-              </div>
-
-              {/* Cerchio centrale con immagine */}
-              <div className="hud-center-circle">
-                <div className="inner-grid-pattern"></div>
-                <img 
-                  src={st.img} 
-                  alt={st.title} 
-                  className="hud-project-img" 
-                />
-              </div>
+            {/* Indicatori di stato a pallini sincronizzati con i progetti */}
+            <div className="hud-status-dots">
+              {steps.map((_, dotIdx) => (
+                <div
+                  key={dotIdx}
+                  className={`status-dot ${dotIdx === activeStep ? 'active' : dotIdx === activeStep - 1 || dotIdx === activeStep + 1 ? 'highlight' : ''}`}
+                ></div>
+              ))}
             </div>
 
-            {/* PANNELLO INFORMAZIONI */}
-            <div className="showcase-info-panel">
+            <div className="hud-pointer-group">
+              <div className="hud-pointer-line"></div>
+              <div className="hud-pointer-node"></div>
+            </div>
+
+            <div className="hud-center-circle">
+              <div className="inner-grid-pattern"></div>
+              <img
+                src={currentProject.img}
+                alt={currentProject.title}
+                className="hud-project-img"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* COLONNA DESTRA CON LO SCROLL DEI TESTI */}
+        <div className="process-scroll-column">
+          {steps.map((st, index) => (
+            <div
+              key={st.id}
+              className="process-card-item"
+              data-index={index}
+            >
               <div className="project-category-tag">
                 {st.id} // {st.category} // {st.year}
               </div>
@@ -404,8 +440,8 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
                 ESPLORA PROGETTO →
               </a>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
