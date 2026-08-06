@@ -2,42 +2,61 @@ import React from 'react';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-[#070707]">
-      <div className="w-[92vw] max-w-[1400px] h-auto relative z-10">
-        <svg className="w-full h-full block" viewBox="0 0 1400 360" preserveAspectRatio="xMidYMid meet">
+    <section id="hero-section" className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-[#070707] snap-center">
+      <div className="w-[92vw] max-w-[1300px] h-[82vh] relative z-10 flex items-center justify-center">
+        <svg className="w-full h-full block" viewBox="0 0 1000 880" preserveAspectRatio="xMidYMid meet">
           <defs>
             <pattern id="blueprintPattern" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.2)" strokeWidth="1" />
-              <circle cx="20" cy="20" r="1.5" fill="rgba(255, 255, 255, 0.35)" />
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.22)" strokeWidth="1.2" />
+              <circle cx="20" cy="20" r="1.5" fill="rgba(255, 255, 255, 0.4)" />
             </pattern>
 
             <mask id="designTextMask" x="0" y="0" width="100%" height="100%">
               <rect x="0" y="0" width="100%" height="100%" fill="#000000" />
+              
+              {/* MATTEO (Gigante, prima riga) */}
               <text
                 x="50%"
-                y="42%"
+                y="27%"
                 textAnchor="middle"
                 dominantBaseline="middle"
                 fill="#ffffff"
-                fontSize="110"
+                fontSize="240"
                 fontWeight="900"
                 fontFamily="-apple-system, BlinkMacSystemFont, sans-serif"
-                letterSpacing="-3"
+                letterSpacing="-6"
               >
-                PRODUCT DESIGN
+                MATTEO
               </text>
+
+              {/* FINCO (Gigante, seconda riga) */}
               <text
                 x="50%"
-                y="78%"
+                y="57%"
                 textAnchor="middle"
                 dominantBaseline="middle"
                 fill="#ffffff"
-                fontSize="85"
-                fontWeight="800"
+                fontSize="240"
+                fontWeight="900"
                 fontFamily="-apple-system, BlinkMacSystemFont, sans-serif"
-                letterSpacing="4"
+                letterSpacing="-6"
               >
-                &amp; MAKER
+                FINCO
+              </text>
+
+              {/* PRODUCT DESIGN & MAKER (Sottotitolo centrato in basso) */}
+              <text
+                x="50%"
+                y="84%"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fill="#ffffff"
+                fontSize="44"
+                fontWeight="700"
+                fontFamily="-apple-system, BlinkMacSystemFont, sans-serif"
+                letterSpacing="10"
+              >
+                PRODUCT DESIGN &amp; MAKER
               </text>
             </mask>
           </defs>
@@ -51,7 +70,7 @@ export const Hero: React.FC = () => {
                 y="0"
                 width="100%"
                 height="100%"
-                opacity="0.5"
+                opacity="0.55"
                 preserveAspectRatio="xMidYMid slice"
               />
             </g>
@@ -62,7 +81,7 @@ export const Hero: React.FC = () => {
                 y="0"
                 width="100%"
                 height="100%"
-                opacity="0.45"
+                opacity="0.5"
                 preserveAspectRatio="xMidYMid slice"
               />
             </g>
