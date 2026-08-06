@@ -9,6 +9,27 @@ interface IntroProps {
     sec2P2: string;
   };
 }
+interface IntroSectionProps {
+  data?: {
+    sec1Title?: string;
+    sec1Text?: string;
+    // aggiungi qui gli altri campi opzionali se presenti
+  };
+}
+
+export const IntroSection: React.FC<IntroSectionProps> = ({ data }) => {
+  // Gestione del fallback in caso data non venga passato
+  const sec1Title = data?.sec1Title ?? "PROGETTAZIONE & METODO";
+  const sec1Text = data?.sec1Text ?? "Sviluppo soluzioni di design industriale e prototipazione con un approccio incentrato su funzionalità, forma e materiali.";
+
+  return (
+    <section className="intro-section">
+      <h2>{sec1Title}</h2>
+      <p>{sec1Text}</p>
+      {/* ... resto del codice del componente ... */}
+    </section>
+  );
+};
 
 export const IntroSection: React.FC<IntroProps> = ({ t }) => {
   return (
