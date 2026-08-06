@@ -2,17 +2,17 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const PROCESS_STEPS = [
   {
-    step: '01 // OBSERVE & UNDERSTAND',
+    step: '01 / OBSERVE & UNDERSTAND',
     title: 'Every project starts\nwith a question.',
-    desc: 'Before searching for solutions, I spend time understanding people, contexts and behaviours. I like analysing how products are used, where friction appears and which constraints influence every design decision. Observation is where every project begins.',
+    desc: 'Before searching for solutions, I spend time understanding people, contexts and behaviours. I like analysing how products are used, where friction appears and which constraints influence every design decision.',
   },
   {
-    step: '02 // MAKE & TEST',
+    step: '02 / MAKE & TEST',
     title: 'Ideas become real\nthrough prototyping.',
-    desc: 'Sketches evolve into CAD models, functional prototypes and physical experiments. Building ideas allows me to validate assumptions, discover unexpected problems and improve every iteration through direct testing rather than speculation.',
+    desc: 'Sketches evolve into CAD models, functional prototypes and physical experiments. Building ideas allows me to validate assumptions, discover unexpected problems and improve every iteration through direct testing.',
   },
   {
-    step: '03 // REFINE & SIMPLIFY',
+    step: '03 / REFINE & SIMPLIFY',
     title: 'Good design is\nthoughtful simplicity.',
     desc: 'Every component should have a clear purpose. I refine geometry, materials and manufacturing processes until complexity disappears and only what truly improves the user experience remains.',
   },
@@ -20,32 +20,22 @@ const PROCESS_STEPS = [
 
 export const StickyObject: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const isScrolling = useRef(false);
   const triggerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !isScrolling.current) {
+          if (entry.isIntersecting) {
             const index = Number(entry.target.getAttribute('data-step-index'));
-            
             setActiveStep(index);
-
-            isScrolling.current = true;
-            entry.target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'center',
-            });
-
-            setTimeout(() => {
-              isScrolling.current = false;
-            }, 700);
           }
         });
       },
       {
-        threshold: 0.6,
+        // Rileva lo step quando si trova nella fascia centrale del viewport
+        rootMargin: '-30% 0px -30% 0px',
+        threshold: 0.1,
       }
     );
 
@@ -60,24 +50,25 @@ export const StickyObject: React.FC = () => {
 
   return (
     <section className="process-section">
-      {/* IMMAGINE FISSA E SINGOLA CARD FISSA A DESTRA */}
-      <div className="process-sticky-container">
+      {/* FRAME INCORNICIATO (NON VAI SOTTO LA NAVBAR) */}
+      <div className="process-sticky-frame">
         <div className="process-media">
           <img
             src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F0a6666a4c3754165bf5a7b9831b66b28"
             alt="Matteo Finco Design Process"
           />
+          <div className="process-media-overlay" />
           <div className="process-tag">
             HOW I WORK // OBSERVE · MAKE · REFINE
           </div>
         </div>
 
-        {/* CARD UNICA POSIZIONATA AL CENTRO-DESTRA */}
-        <div className="process-card-wrapper">
-          <div key={activeStep} className="process-card animate-step">
-            <span className="card-step">{currentStep.step}</span>
+        {/* TESTO MINIMALE ED EDITORIALE (SENZA SCATOLA SCURA PESANTE) */}
+        <div className="process-text-column">
+          <div key={activeStep} className="process-content-block animate-fade">
+            <span className="step-number">{currentStep.step}</span>
 
-            <h3>
+            <h3 className="step-title">
               {currentStep.title.split('\n').map((line, i) => (
                 <React.Fragment key={i}>
                   {line}
@@ -86,12 +77,22 @@ export const StickyObject: React.FC = () => {
               ))}
             </h3>
 
-            <p>{currentStep.desc}</p>
+            <p className="step-description">{currentStep.desc}</p>
+
+            {/* INDICATORE DI PROGRESSO DISCRETO */}
+            <div className="step-indicators">
+              {PROCESS_STEPS.map((_, i) => (
+                <span
+                  key={i}
+                  className={`indicator-dot ${i === activeStep ? 'active' : ''}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* STRATO DI TRIGGER TRASPARENTI PER LO SCROLL ATTIVO (100VH CIASCUNO) */}
+      {/* STRATO SCROLLABILE TRASPARENTE */}
       <div className="process-triggers-overlay">
         {PROCESS_STEPS.map((_, index) => (
           <div
@@ -107,84 +108,86 @@ export const StickyObject: React.FC = () => {
         .process-section {
           position: relative;
           width: 100%;
-          background-color: #050505;
+          background-color: #070707;
+          padding: 0 4vw;
+          box-sizing: border-box;
         }
 
-        .process-sticky-container {
+        /* FRAME FISSO CON MARGINI DALLA NAVBAR E DAL FONDO */
+        .process-sticky-frame {
           position: sticky;
-          top: 0;
-          height: 100vh;
+          top: 90px; /* Spazio per la barra di navigazione */
+          height: calc(100vh - 130px);
+          max-height: 820px;
           width: 100%;
-          display: flex;
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
           align-items: center;
-          justify-content: flex-end;
-          z-index: 1;
+          gap: 5vw;
+          border-radius: 12px;
           overflow: hidden;
+          z-index: 1;
         }
 
+        /* MEDIA LEFT CONTAINER */
         .process-media {
-          position: absolute;
-          inset: 0;
+          position: relative;
           width: 100%;
-          height: 100vh;
-          z-index: 1;
+          height: 100%;
+          border-radius: 8px;
+          overflow: hidden;
         }
 
         .process-media img {
           width: 100%;
-          height: 100vh;
+          height: 100%;
           object-fit: cover;
-          filter: brightness(0.55) contrast(1.1);
+          filter: brightness(0.7) contrast(1.05);
+        }
+
+        .process-media-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to right, rgba(7,7,7,0.2), rgba(7,7,7,0.7));
+          pointer-events: none;
         }
 
         .process-tag {
           position: absolute;
-          bottom: 40px;
-          left: 6vw;
+          bottom: 24px;
+          left: 24px;
           font-family: monospace;
-          font-size: 0.8rem;
-          color: rgba(255,255,255,0.7);
-          background: rgba(0,0,0,0.6);
-          padding: 8px 16px;
-          backdrop-filter: blur(6px);
-          border: 1px solid rgba(255,255,255,0.1);
+          font-size: 0.75rem;
+          color: rgba(255,255,255,0.6);
+          letter-spacing: 1.5px;
+          background: rgba(0,0,0,0.5);
+          padding: 6px 14px;
+          border-radius: 4px;
+          backdrop-filter: blur(8px);
           z-index: 2;
         }
 
-        /* STRUTTURA DEL BOX UNICO */
-        .process-card-wrapper {
-          position: relative;
-          z-index: 2;
-          margin-right: 6vw;
-          width: 100%;
-          max-width: 520px;
-        }
-
-        .process-card {
-          width: 100%;
-          min-height: 380px;
+        /* COLONNA TESTO DESTRA (PULITA, INTEGRATA) */
+        .process-text-column {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          background: rgba(8, 8, 8, 0.72);
-          backdrop-filter: blur(28px);
-          padding: 48px;
-          border-left: 1px solid rgba(255, 255, 255, 0.35);
-          border-top: 1px solid rgba(255, 255, 255, 0.06);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-          box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-          box-sizing: border-box;
+          padding-right: 2vw;
+          z-index: 2;
         }
 
-        /* ANIMAZIONE EDITORIALE FADE + SLIDE QUANDO CAMBIA LO STEP */
-        .process-card.animate-step {
-          animation: textFadeSlide 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .process-content-block {
+          max-width: 460px;
         }
 
-        @keyframes textFadeSlide {
+        .process-content-block.animate-fade {
+          animation: textFade 0.4s ease-out forwards;
+        }
+
+        @keyframes textFade {
           from {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(12px);
           }
           to {
             opacity: 1;
@@ -192,49 +195,72 @@ export const StickyObject: React.FC = () => {
           }
         }
 
-        .process-card .card-step {
+        .step-number {
+          display: inline-block;
           font-family: monospace;
           font-size: 0.8rem;
-          color: #888888;
-          margin-bottom: 12px;
-          letter-spacing: 1px;
+          color: #777;
+          letter-spacing: 2px;
+          margin-bottom: 16px;
         }
 
-        .process-card h3 {
-          font-size: clamp(2rem, 3vw, 3rem);
-          line-height: 1.05;
-          letter-spacing: -1.5px;
-          font-weight: 800;
+        .step-title {
+          font-size: clamp(2rem, 2.8vw, 2.75rem);
+          line-height: 1.1;
+          letter-spacing: -0.02em;
+          font-weight: 700;
           color: #ffffff;
-          margin-bottom: 24px;
+          margin: 0 0 20px 0;
         }
 
-        .process-card p {
+        .step-description {
           font-size: 1rem;
-          line-height: 1.9;
-          color: #bdbdbd;
-          max-width: 38ch;
-          margin: 0;
+          line-height: 1.7;
+          color: #aaa;
+          margin: 0 0 32px 0;
         }
 
-        /* OVERLAY TRIGGER TRASPARENTE SCROLLABILE */
+        /* PUNTINI INDICATORI SOTTO AL TESTO */
+        .step-indicators {
+          display: flex;
+          gap: 8px;
+        }
+
+        .indicator-dot {
+          width: 24px;
+          height: 2px;
+          background: rgba(255, 255, 255, 0.2);
+          transition: background 0.3s ease, width 0.3s ease;
+        }
+
+        .indicator-dot.active {
+          background: #ffffff;
+          width: 40px;
+        }
+
+        /* TRACE DI SCROLL */
         .process-triggers-overlay {
           position: relative;
           z-index: 3;
-          margin-top: -100vh;
+          margin-top: calc(-100vh + 130px);
           pointer-events: none;
         }
 
         .step-trigger {
-          height: 100vh;
+          height: 80vh;
           width: 100%;
           pointer-events: none;
         }
 
-        @media (max-width: 768px) {
-          .process-card-wrapper {
-            margin: 0 auto;
-            padding: 0 5vw;
+        @media (max-width: 900px) {
+          .process-sticky-frame {
+            grid-template-columns: 1fr;
+            top: 70px;
+            height: auto;
+            max-height: none;
+          }
+          .process-media {
+            height: 350px;
           }
         }
       `}</style>
