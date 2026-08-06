@@ -279,6 +279,52 @@ export default function Index() {
   const [showNavName, setShowNavName] = useState<boolean>(false);
 
   useEffect(() => {
+    const intro = document.getElementById("intro-transition");
+    const sticky = document.getElementById("sticky-transition");
+
+    if(!intro || !sticky) return;
+
+    let triggered = false;
+
+    const handleWheel = (e: WheelEvent)=>{
+      const introBottom = intro.getBoundingClientRect().bottom;
+
+      // quando siamo alla fine dell'intro
+      if(
+        e.deltaY > 0 &&
+        introBottom <= window.innerHeight + 50 &&
+        !triggered
+      ){
+        triggered = true;
+
+        e.preventDefault();
+
+        sticky.scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
+
+        setTimeout(()=>{
+          triggered=false;
+        },1200);
+      }
+    };
+
+    window.addEventListener(
+      "wheel",
+      handleWheel,
+      {passive:false}
+    );
+
+    return()=>{
+      window.removeEventListener(
+        "wheel",
+        handleWheel
+      );
+    };
+  }, []);
+
+  useEffect(() => {
     const handleCustomStep = (e: CustomEvent) => {
       setActiveStep(e.detail);
     };
@@ -500,12 +546,18 @@ export default function Index() {
 
       <Header lang={lang} setLang={setLang} showName={showNavName} />
       <Hero />
-      <IntroSection t={t} />
+      
+      <div id="intro-transition">
+        <IntroSection t={t} />
+      </div>
       
       {/* FASCIA DI STACCO NERA TRA INTRO E STICKY OBJECT */}
       <div className="section-divider-gap" />
 
-      <StickyObject lang={lang} />
+      <div id="sticky-transition">
+        <StickyObject lang={lang} />
+      </div>
+
       {/* FASCIA DI STACCO NERA PRIMA DI CIRCLE SHOWCASE */}
       <div className="section-divider-gap" />
 
