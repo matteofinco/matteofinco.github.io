@@ -5,8 +5,8 @@ import { Header } from '../components/Header';
 const translations = {
   it: {
     heroTitle: "MATTEO FINCO",
-    heroSub: "Product Designer\nbased in Italy\n\n",
-    curiosityTitle: "I like understanding how things work.",
+    heroSub: "Product Designer\nbased in Italy\n\nI like understanding how things work.",
+    curiosityTitle: "Mi piace capire come funzionano le cose.",
     curiosityText1: "Quando guardo un oggetto, il mio primo impulso non è chiedermi se sia bello o brutto, ma perché sia stato progettato in quel modo. Come è stato costruito, quali vincoli hanno guidato le decisioni e quali compromessi si celano dietro una forma apparentemente semplice.",
     curiosityText2: "Per me, la qualità di un prodotto risiede nella chiarezza della sua logica. Questo approccio mi ha portato al product design, dove curiosità, competenze tecniche e creatività lavorano costantemente insieme.",
     methodTitle: "Il design come metodo",
@@ -23,26 +23,41 @@ const translations = {
     collaborationTitle: "Il Design come Collaborazione",
     collaborationText1: "Nel design vedo la stessa dinamica: le soluzioni efficaci sono raramente individuali. Nascono dal confronto e dalla capacità di unire competenze diverse mantenendo una visione d'insieme chiara del sistema.",
     collaborationText2: "Oggi continuo a vedere il design come un modo per comprendere il mondo prima di cambiarlo. Ogni progetto è un'occasione per imparare qualcosa di nuovo e trasformare un problema complesso in una soluzione chiara.",
-    expertiseHeader: "How I Design",
-    exp1Title: "01 — Concept to Product",
-    exp1Desc: "Trasformo problemi e osservazioni in prodotti fisici attraverso ricerca, concept, modellazione CAD e sviluppo orientato alla produzione.",
-    exp2Title: "02 — Digital to Physical",
-    exp2Desc: "Utilizzo strumenti digitali e tecnologie di fabbricazione per trasformare idee in prototipi reali: stampa 3D, CNC, taglio laser e sperimentazione dei materiali.",
-    exp3Title: "03 — Understanding Objects",
-    exp3Desc: "Analizzo prodotti esistenti attraverso smontaggio, studio dei componenti e comprensione delle logiche costruttive.",
-    exp4Title: "04 — Materials & Processes",
-    exp4Desc: "Studio materiali, processi produttivi e vincoli tecnici per progettare oggetti semplici, funzionali e realizzabili.",
-    exp5Title: "05 — Systems Thinking",
-    exp5Desc: "Progetto prodotti e sistemi considerando interazioni, modularità e relazione tra utente, oggetto e ambiente.",
-    exp6Title: "06 — Design Communication",
-    exp6Desc: "Rendo comprensibili idee complesse attraverso rendering, prototipi, documentazione tecnica e storytelling.",
+    expertiseHeader: "Competenze",
+    capabilities: [
+      {
+        num: "01",
+        title: "ANALISI",
+        items: ["Reverse engineering", "Analisi prodotto", "Ricerca progettuale"]
+      },
+      {
+        num: "02",
+        title: "PROGETTAZIONE",
+        items: ["CAD e 3D", "Disegni tecnici", "Design for Manufacturing"]
+      },
+      {
+        num: "03",
+        title: "PROTOTIPAZIONE",
+        items: ["Prototipazione rapida", "Stampa 3D FDM", "Sperimentazione materica"]
+      },
+      {
+        num: "04",
+        title: "COLLABORAZIONE",
+        items: ["Coordinamento", "Leadership", "Team multidisciplinari"]
+      },
+      {
+        num: "05",
+        title: "LINGUE",
+        items: ["Italiano (Madrelingua)", "Inglese (B2)"]
+      }
+    ],
     ctaTitle: "E adesso?",
     ctaSub: "Interessato a collaborare a un progetto di design? Sono sempre aperto a nuove sfide e a lavori significativi.",
     ctaButton: "VISUALIZZA PORTFOLIO"
   },
   en: {
     heroTitle: "MATTEO FINCO",
-    heroSub: "Product Designer\nbased in Italy\n\n",
+    heroSub: "Product Designer\nbased in Italy\n\nI like understanding how things work.",
     curiosityTitle: "I like understanding how things work.",
     curiosityText1: "When I look at an object, my first impulse is not to ask whether it is beautiful or not, but why it was designed that way. How it was built, which constraints shaped the decisions, and which compromises are hidden behind an apparently simple form.",
     curiosityText2: "For me, the quality of a product lies in the clarity of its logic. This approach led me to product design, where curiosity, technical skills, and creativity constantly work together.",
@@ -60,19 +75,34 @@ const translations = {
     collaborationTitle: "Design as Collaboration",
     collaborationText1: "In design, I see the same dynamic: effective solutions are rarely individual. They come from discussion and from the ability to combine different skills while keeping a clear overall vision of the system.",
     collaborationText2: "Today, I still see design as a way to understand the world before changing it. Every project is a chance to learn something new and to turn a complex problem into a clear solution.",
-    expertiseHeader: "How I Design",
-    exp1Title: "01 — Concept to Product",
-    exp1Desc: "I transform problems and observations into physical products through research, concept development, CAD modelling and production-oriented design.",
-    exp2Title: "02 — Digital to Physical",
-    exp2Desc: "I use digital tools and fabrication technologies to transform ideas into physical prototypes: 3D printing, CNC machining, laser cutting and material experimentation.",
-    exp3Title: "03 — Understanding Objects",
-    exp3Desc: "I analyse existing products through teardown, component study and understanding of construction logic.",
-    exp4Title: "04 — Materials & Processes",
-    exp4Desc: "I study materials, manufacturing processes and technical constraints to design simple, functional and feasible products.",
-    exp5Title: "05 — Systems Thinking",
-    exp5Desc: "I design products and systems considering interactions, modularity and the relationship between user, object and environment.",
-    exp6Title: "06 — Design Communication",
-    exp6Desc: "I communicate complex ideas through rendering, prototypes, technical documentation and storytelling.",
+    expertiseHeader: "Capabilities",
+    capabilities: [
+      {
+        num: "01",
+        title: "ANALYSIS",
+        items: ["Reverse engineering", "Product analysis", "Design research"]
+      },
+      {
+        num: "02",
+        title: "DESIGN & ENGINEERING",
+        items: ["CAD & 3D modeling", "Technical drawings", "Design for Manufacturing"]
+      },
+      {
+        num: "03",
+        title: "PROTOTYPING",
+        items: ["Rapid prototyping", "FDM 3D printing", "Material experimentation"]
+      },
+      {
+        num: "04",
+        title: "COLLABORATION",
+        items: ["Project coordination", "Leadership", "Multidisciplinary teams"]
+      },
+      {
+        num: "05",
+        title: "LANGUAGES",
+        items: ["Italian (Native)", "English (B2)"]
+      }
+    ],
     ctaTitle: "What's next?",
     ctaSub: "Interested in collaborating on a design project? I'm always open to new challenges and meaningful work.",
     ctaButton: "VIEW PORTFOLIO"
@@ -185,44 +215,69 @@ export default function About() {
         .reveal-editorial.reveal-from-right { transform: translateX(35px); }
         .reveal-editorial.reveal-from-left { transform: translateX(-35px); }
         .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: translateX(0); }
-        .about-expertise-wrapper { max-width: 1200px; margin: 100px auto 0; padding: 0 6vw 100px; }
-        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px; }
-        .expertise-card { padding: 40px; border: 1px solid #1a1a1a; background: rgba(255, 255, 255, 0.02); transition: all 0.4s ease; }
-        .expertise-card:hover { border-color: #444444; background: rgba(255, 255, 255, 0.05); transform: translateY(-6px); }
-        .expertise-card h3 { font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 15px; }
-        .expertise-card p { color: #888888; font-size: 1rem; line-height: 1.7; }
         
-        .tools-section {
+        /* CAPABILITIES SECTION - INDUSTRIAL STUDIO STYLE */
+        .capabilities-section {
           max-width: 1200px;
-          margin: 80px auto;
+          margin: 120px auto 0;
           padding: 0 6vw 120px;
         }
-        .tools-section h2 {
-          font-size: 3rem;
+        .capabilities-section h2 {
+          font-size: clamp(2.2rem, 4vw, 3.2rem);
           font-weight: 800;
-          margin-bottom: 50px;
           color: #ffffff;
+          margin-bottom: 60px;
+          letter-spacing: -0.02em;
         }
-        .tools-grid {
+        .capabilities-list {
+          display: flex;
+          flex-direction: column;
+        }
+        .capability-row {
+          border-top: 1px solid #222222;
+          padding: 40px 0;
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 30px;
+          grid-template-columns: 120px 1fr;
+          align-items: baseline;
+          transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), border-color 0.4s ease;
         }
-        .tools-grid div {
-          border-top: 1px solid #333;
-          padding-top: 25px;
+        .capability-row:last-child {
+          border-bottom: 1px solid #222222;
         }
-        .tools-grid h3 {
-          color: white;
-          font-size: 1.2rem;
-          margin-bottom: 15px;
+        .capability-row:hover {
+          transform: translateX(12px);
+          border-color: #555555;
         }
-        .tools-grid p {
-          color: #888;
-          line-height: 1.8;
-          font-size: 0.95rem;
+        .capability-num {
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: #666666;
+          letter-spacing: 0.05em;
         }
-        
+        .capability-info h3 {
+          font-size: clamp(1.5rem, 2.2vw, 2.1rem);
+          font-weight: 800;
+          color: #ffffff;
+          margin-bottom: 16px;
+          letter-spacing: -0.01em;
+        }
+        .capability-items {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px 30px;
+        }
+        .capability-items span {
+          color: #999999;
+          font-size: 1.05rem;
+          font-weight: 400;
+          position: relative;
+        }
+        .capability-items span:not(:last-child):after {
+          content: "—";
+          margin-left: 30px;
+          color: #444;
+        }
+
         .about-cta-section { width: 100%; padding: 80px 6vw; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 100px; }
         .about-cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #ffffff; margin-bottom: 30px; }
         .about-cta-section p { font-size: 1.1rem; color: #aaaaaa; max-width: 600px; margin: 0 auto 40px; }
@@ -234,12 +289,21 @@ export default function About() {
           .about-row.media-left .about-text, .about-row.media-right .about-text { padding: 0 6vw; }
           .about-row.media-left .about-media, .about-row.media-right .about-media { height: 420px; }
           .about-hero { padding: 60px 6vw; }
-          .expertise-grid { grid-template-columns: 1fr; }
           .about-cta-section { padding: 60px 6vw; }
         }
-        @media(max-width: 900px) {
-          .tools-grid {
-            grid-template-columns: 1fr 1fr;
+        @media (max-width: 768px) {
+          .capability-row {
+            grid-template-columns: 1fr;
+            gap: 15px;
+            padding: 30px 0;
+          }
+          .capability-items span:not(:last-child):after {
+            content: "";
+            margin-left: 0;
+          }
+          .capability-items {
+            flex-direction: column;
+            gap: 8px;
           }
         }
       `}</style>
@@ -320,59 +384,23 @@ export default function About() {
         </section>
       </div>
 
-      {/* EXPERTISE SECTION */}
-      <section className="about-expertise-wrapper">
-        <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', fontWeight: 800, color: '#ffffff' }}>
-          {t.expertiseHeader}
-        </h2>
-        <div className="expertise-grid">
-          <div className="expertise-card reveal-editorial reveal-from-left">
-            <h3>{t.exp1Title}</h3>
-            <p>{t.exp1Desc}</p>
-          </div>
-          <div className="expertise-card reveal-editorial reveal-from-left">
-            <h3>{t.exp2Title}</h3>
-            <p>{t.exp2Desc}</p>
-          </div>
-          <div className="expertise-card reveal-editorial reveal-from-left">
-            <h3>{t.exp3Title}</h3>
-            <p>{t.exp3Desc}</p>
-          </div>
-          <div className="expertise-card reveal-editorial reveal-from-left">
-            <h3>{t.exp4Title}</h3>
-            <p>{t.exp4Desc}</p>
-          </div>
-          <div className="expertise-card reveal-editorial reveal-from-left">
-            <h3>{t.exp5Title}</h3>
-            <p>{t.exp5Desc}</p>
-          </div>
-          <div className="expertise-card reveal-editorial reveal-from-left">
-            <h3>{t.exp6Title}</h3>
-            <p>{t.exp6Desc}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* TOOLS SECTION */}
-      <section className="tools-section">
-        <h2>Tools</h2>
-        <div className="tools-grid">
-          <div>
-            <h3>CAD</h3>
-            <p>Rhino 7<br />Fusion 360<br />Grasshopper</p>
-          </div>
-          <div>
-            <h3>Visualization</h3>
-            <p>KeyShot<br />Blender<br />Adobe Suite</p>
-          </div>
-          <div>
-            <h3>Fabrication</h3>
-            <p>3D Printing<br />CNC<br />Laser Cutting</p>
-          </div>
-          <div>
-            <h3>Digital</h3>
-            <p>Figma<br />Framer<br />Processing</p>
-          </div>
+      {/* CAPABILITIES / COMPETENZE SECTION */}
+      <section className="capabilities-section">
+        <h2>{t.expertiseHeader}</h2>
+        <div className="capabilities-list">
+          {t.capabilities.map((cap, index) => (
+            <div className="capability-row reveal-editorial reveal-from-left" key={index}>
+              <div className="capability-num">{cap.num}</div>
+              <div className="capability-info">
+                <h3>{cap.title}</h3>
+                <div className="capability-items">
+                  {cap.items.map((item, idx) => (
+                    <span key={idx}>{item}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
