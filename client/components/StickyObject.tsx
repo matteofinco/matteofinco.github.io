@@ -18,7 +18,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ t }) => {
   const [activeStep, setActiveStep] = useState(0);
   const triggerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Usa i dati passati dalla prop 't', garantendo un fallback sicuro
+  // Estrae l'array dei passi dalla prop 't' (con fallback di sicurezza)
   const steps = t?.steps || [];
 
   useEffect(() => {
@@ -64,6 +64,60 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ t }) => {
 
   return (
     <section className="process-section">
+      <div className="process-sticky-frame">
+        <div className="process-media">
+          <img
+            src={currentStepData.image}
+            alt={currentStepData.step}
+            className="process-img img-fade-in"
+          />
+
+          <div className="process-tag animate-tag-smooth">
+            {currentStepData.tag}
+          </div>
+        </div>
+
+        <div className="process-text-column">
+          <div className="process-content-block animate-text-smooth">
+            <span className="step-number">{currentStepData.step}</span>
+
+            <h3 className="step-title">
+              {currentStepData.title.split('\n').map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+            </h3>
+
+            <p className="step-description">{currentStepData.desc}</p>
+
+            <div className="step-indicators">
+              {steps.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  aria-label={`Go to step ${i + 1}`}
+                  onClick={() => handleStepClick(i)}
+                  className={`indicator-dot ${i === activeStep ? 'active' : ''}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="process-triggers-overlay">
+        {steps.map((_, index) => (
+          <div
+            key={index}
+            data-step-index={index}
+            ref={(el) => (triggerRefs.current[index] = el)}
+            className="step-trigger"
+          />
+        ))}
+      </div>
+
       <style>{`
         .process-section {
           position: relative;
@@ -83,6 +137,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ t }) => {
           grid-template-columns: 1.1fr 0.9fr;
           align-items: center;
           gap: 5vw;
+          border-radius: 0;
           overflow: hidden;
           z-index: 1;
         }
@@ -91,6 +146,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ t }) => {
           position: relative;
           width: 100%;
           height: 100%;
+          border-radius: 0;
           overflow: hidden;
           background-color: #070707;
         }
@@ -102,6 +158,27 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ t }) => {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          border-radius: 0;
+          will-change: opacity;
+        }
+
+        .img-fade-in {
+          z-index: 2;
+          animation: crossFadeIn 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes crossFadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        .animate-tag-smooth {
+          animation: tagSmooth 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes tagSmooth {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
 
         .process-tag {
@@ -114,6 +191,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ t }) => {
           letter-spacing: 1.5px;
           background: rgba(0, 0, 0, 0.65);
           padding: 8px 16px;
+          border-radius: 0;
           backdrop-filter: blur(8px);
           z-index: 3;
         }
@@ -128,6 +206,16 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ t }) => {
 
         .process-content-block {
           max-width: 460px;
+          will-change: opacity;
+        }
+
+        .animate-text-smooth {
+          animation: textSmooth 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes textSmooth {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
 
         .step-number {
@@ -213,62 +301,6 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ t }) => {
           }
         }
       `}</style>
-
-      {/* FRAME STICKY FULL-BLEED A SINISTRA */}
-      <div className="process-sticky-frame">
-        <div className="process-media">
-          <img
-            src={currentStepData.image}
-            alt={currentStepData.step}
-            className="process-img"
-          />
-          <div className="process-tag">
-            {currentStepData.tag}
-          </div>
-        </div>
-
-        {/* COLONNA TESTO DESTRA */}
-        <div className="process-text-column">
-          <div className="process-content-block">
-            <span className="step-number">{currentStepData.step}</span>
-
-            <h3 className="step-title">
-              {currentStepData.title.split('\n').map((line, i) => (
-                <React.Fragment key={i}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
-            </h3>
-
-            <p className="step-description">{currentStepData.desc}</p>
-
-            <div className="step-indicators">
-              {steps.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  aria-label={`Go to step ${i + 1}`}
-                  onClick={() => handleStepClick(i)}
-                  className={`indicator-dot ${i === activeStep ? 'active' : ''}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* STRATO SCROLLABILE TRASPARENTE */}
-      <div className="process-triggers-overlay">
-        {steps.map((_, index) => (
-          <div
-            key={index}
-            data-step-index={index}
-            ref={(el) => (triggerRefs.current[index] = el)}
-            className="step-trigger"
-          />
-        ))}
-      </div>
     </section>
   );
 };
