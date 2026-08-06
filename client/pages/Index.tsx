@@ -12,11 +12,10 @@ const projectList: ProjectStep[] = [
     title: 'Snake',
     subtitle: 'Interactive hockey training system',
     category: 'SPORT PRODUCT DESIGN',
-   tools:
-'Product Design / CAD Modelling / Mechatronics / Prototyping',
-
-material:
-'Laser Sensors / RGB Feedback / Modular Mechanical System',
+    tools:
+      'Product Design / CAD Modelling / Mechatronics / Prototyping',
+    material:
+      'Laser Sensors / RGB Feedback / Modular Mechanical System',
     year: '2026',
     desc: 'Interactive training system developed for inline and ice hockey players. Snake combines modular mechanical components, sensors and real-time feedback to create adaptive exercises focused on puck control, reaction speed and cognitive agility.',
     link: '/snake',
@@ -28,11 +27,10 @@ material:
     title: 'Archivia',
     subtitle: 'USB flash drive inspired pen holder',
     category: 'PRODUCT DESIGN & INDUSTRIAL PRODUCTION',
-   tools:
-'Industrial Design / Injection Moulding / Snap-fit Engineering',
-
-material:
-'Recycled Polymer / Monomaterial Construction / Mechanical Assembly',
+    tools:
+      'Industrial Design / Injection Moulding / Snap-fit Engineering',
+    material:
+      'Recycled Polymer / Monomaterial Construction / Mechanical Assembly',
     year: '2026',
     desc: 'Desk organizer developed for the PLEIADES design competition with Ewikon, Arburg and Uniform. Inspired by digital storage devices, Archivia translates the logic of a USB flash drive into a physical object assembled through integrated mechanical connections.',
     link: '/archivia',
@@ -45,10 +43,9 @@ material:
     subtitle: 'Hyperplastic adaptive handle',
     category: 'INCLUSIVE DESIGN & PARAMETRIC DESIGN',
     tools:
-'Inclusive Design / Ergonomic Research / Parametric Modelling',
-
-material:
-'ELASTO-1000 Flexible Polymer / FDM 3D Printing',
+      'Inclusive Design / Ergonomic Research / Parametric Modelling',
+    material:
+      'ELASTO-1000 Flexible Polymer / FDM 3D Printing',
     year: '2026',
     desc: 'Inclusive handle designed to improve the use of cutlery and everyday tools for people with reduced hand strength. Through flexible geometry and parametric design, Nando adapts to different users while improving comfort, grip stability and independence.',
     link: '/nando',
@@ -60,11 +57,10 @@ material:
     title: 'PizzaMente',
     subtitle: 'Automated multisensory pizza experience',
     category: 'SERVICE & SYSTEM DESIGN',
-   tools:
-'Service Design / UX-UI Design / System Thinking',
-
-material:
-'Automated Food System / Interactive Interface / Modular Architecture',
+    tools:
+      'Service Design / UX-UI Design / System Thinking',
+    material:
+      'Automated Food System / Interactive Interface / Modular Architecture',
     year: '2026',
     desc: 'Automated pizza service concept developed during a workshop with Daint. PizzaMente redesigns food automation by integrating ordering, preparation, consumption and disposal into a single system, using interactive experiences to transform waiting time into engagement.',
     link: '/pizzamente',
@@ -76,11 +72,10 @@ material:
     title: 'Waffle Maker',
     subtitle: 'Product analysis and decomposition study',
     category: 'BASIC DESIGN & PRODUCT ANALYSIS',
-   tools:
-'Reverse Engineering / Product Analysis / Editorial Design',
-
-material:
-'Mechanical Components / Thermal Systems / Product Language',
+    tools:
+      'Reverse Engineering / Product Analysis / Editorial Design',
+    material:
+      'Mechanical Components / Thermal Systems / Product Language',
     year: '2025',
     desc: 'Critical analysis of a domestic appliance through morphological and functional decomposition. The project investigates how components, mechanisms, materials and visual language interact to define the relationship between users and everyday objects.',
     link: '/wafflemaker',
@@ -92,11 +87,10 @@ material:
     title: 'T-Table',
     subtitle: 'Interactive table for digital awareness',
     category: 'INTERACTION DESIGN & HMI',
-   tools:
-'Interaction Design / HMI / Calm Technology',
-
-material:
-'Touchcode Ink / LED Matrix / Smart Surface System',
+    tools:
+      'Interaction Design / HMI / Calm Technology',
+    material:
+      'Touchcode Ink / LED Matrix / Smart Surface System',
     year: '2026',
     desc: 'Interactive table concept designed to reduce distracted eating in fast-food environments. T-Table uses adaptive technology to support social interaction, reducing digital distraction when food arrives and restoring attention to the meal experience.',
     link: '/ttable',
@@ -108,11 +102,10 @@ material:
     title: 'Prop',
     subtitle: 'Open-source 3D printed crutch system',
     category: 'SOCIAL DESIGN & OPEN SOURCE',
-  tools:
-'Open Source Design / CAD Modelling / FDM Manufacturing',
-
-material:
-'PETG Connectors / Nylon Fasteners / Adaptable Structure',
+    tools:
+      'Open Source Design / CAD Modelling / FDM Manufacturing',
+    material:
+      'PETG Connectors / Nylon Fasteners / Adaptable Structure',
     year: '2026',
     desc: 'Open-source emergency crutch system developed during the Ánako Design Challenge with Prusa Research. Prop uses 3D printed connectors to transform locally available sticks into functional mobility aids, enabling rapid and accessible production in crisis contexts.',
     link: '/prop',
@@ -217,10 +210,9 @@ export default function Index() {
           padding: 0;
         }
 
-       html {
-  scroll-behavior: smooth;
-
-}
+        html {
+          scroll-behavior: smooth;
+        }
 
         body {
           background-color: #070707;
@@ -243,6 +235,13 @@ export default function Index() {
         .reveal-editorial.reveal-from-right { transform: translateX(30px); }
         .reveal-editorial.reveal-from-left { transform: translateX(-30px); }
         .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: translateX(0); }
+
+        /* SPAZIATORE DEDICATO PER SEPARARE IL CIRCLE SHOWCASE DALLA SEZIONE STICKY */
+        .showcase-wrapper {
+          margin-top: 25vh; /* Regola questo valore per aumentare o diminuire la separazione */
+          position: relative;
+          z-index: 2;
+        }
 
         .whats-next-wrapper {
           margin-top: 20vh;
@@ -362,7 +361,11 @@ export default function Index() {
       <Hero />
       <IntroSection t={translations[lang]} />
       <StickyObject />
-      <CircleShowcase steps={projectList} activeStep={activeStep} />
+
+      {/* SEZIONE WRAPPER CON MARGINE SUPERIORE PER CREARE IL RESPIRO NECESSARIO */}
+      <div className="showcase-wrapper">
+        <CircleShowcase steps={projectList} activeStep={activeStep} />
+      </div>
 
       <div className="whats-next-wrapper">
         <footer className="whats-next-footer">
@@ -370,7 +373,7 @@ export default function Index() {
             WHAT&apos;S NEXT
             <span className="question-mark-styled">?</span>
           </h2>
-          
+
           <p className="sub-lead">
             Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale.
           </p>
