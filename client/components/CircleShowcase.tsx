@@ -54,13 +54,12 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
     <section className="circle-showcase-section" ref={containerRef}>
       <style>{`
         .circle-showcase-section {
-          position: relative;
-          width: 100%;
-          background-color: #070707;
-          padding: 80px 6vw;
-          box-sizing: border-box;
-          scroll-snap-type: y mandatory;
-        }
+  position: relative;
+  width: 100%;
+  background-color: #070707;
+  padding: 80px 6vw;
+  box-sizing: border-box;
+}
 
         .showcase-sticky-layout {
           display: grid;
@@ -254,11 +253,9 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
 
         /* COLONNA DESTRA: SCROLL MAGNETICO DEI TESTI */
         .process-scroll-column {
-          display: flex;
-          flex-direction: column;
-          scroll-snap-type: y mandatory;
-          overscroll-behavior: contain;
-        }
+  display: flex;
+  flex-direction: column;
+}
 
         .process-card-item {
           height: 100vh;
