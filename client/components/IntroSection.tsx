@@ -10,24 +10,24 @@ interface IntroProps {
 
 export const IntroSection: React.FC<IntroProps> = ({ t }) => {
   return (
-    <div className="intro-container" id="intro-section">
+    <div className="intro-pinned-container" id="intro-section">
       <style>{`
-        .intro-container {
+        .intro-pinned-container {
+          position: relative;
           width: 100%;
-          min-height: 100vh;
           height: 100vh;
           background-color: #070707;
           box-sizing: border-box;
           display: flex;
           align-items: center;
           justify-content: center;
-          position: relative;
           scroll-snap-align: start;
+          scroll-snap-stop: always;
           border-bottom: 1px solid #141414;
-          padding: 0 6vw;
+          overflow: hidden;
         }
 
-        .intro-stage-container {
+        .intro-sticky-viewport {
           width: 100%;
           max-width: 1400px;
           height: 80vh;
@@ -35,6 +35,8 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           margin: 0 auto;
           display: flex;
           align-items: center;
+          padding: 0 6vw;
+          box-sizing: border-box;
         }
 
         .intro-step-row {
@@ -102,13 +104,14 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
         }
 
         @media (max-width: 1024px) {
-          .intro-container {
+          .intro-pinned-container {
             height: auto;
-            padding: 80px 6vw;
+            padding: 80px 0;
           }
-          .intro-stage-container {
+          .intro-sticky-viewport {
             height: auto;
             max-height: none;
+            padding: 0 6vw;
           }
           .intro-step-row {
             grid-template-columns: 1fr;
@@ -120,7 +123,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
         }
       `}</style>
 
-      <div className="intro-stage-container">
+      <div className="intro-sticky-viewport">
         <div className="intro-step-row">
           {/* Testo a sinistra */}
           <div className="intro-text-box">
