@@ -120,20 +120,35 @@ material:
   }
 ];
 
-const translations = {
+cconst translations = {
   it: {
     sec1Title: "Matteo Finco",
-    sec1Sub: "Product Designer & Maker basato in Veneto, studente all'Università Iuav di Venezia.",
-    sec1P: "Progetto oggetti fisici e sistemi interattivi unendo il rigore della modellazione CAD alla concretezza della fabbricazione digitale. Ogni concept è guidato dall'analisi dei bisogni reali, dal prototyping rapido e dal controllo diretto dei materiali.",
-    sec2P1: "La cultura del 'Making' mi permette di testare istantaneamente le idee: dal primo modello concettuale fino alla prototipazione funzionale in scala 1:1.",
-    sec2P2: "Lavoro con un approccio incentrato sulla sostenibilità dei componenti, sulla facilità di disassemblaggio e sulla chiarezza dei volumi."
+    sec1Sub:
+      "Product Designer. Studente presso l'Università IUAV di Venezia.",
+
+    sec1P:
+      "Mi piace capire come funzionano le cose. Ogni progetto nasce dall'osservazione del comportamento delle persone e dalla curiosità verso i meccanismi che rendono un prodotto utile, intuitivo e significativo. Per me progettare significa trasformare un problema reale in un'esperienza concreta.",
+
+    sec2P1:
+      "Lavoro passando continuamente tra ricerca, modellazione CAD, prototipazione rapida e test fisici. Credo che le idee migliori emergano quando possono essere costruite, smontate, migliorate e rimesse alla prova.",
+
+    sec2P2:
+      "Sono interessato al design industriale, ai sistemi interattivi e alla fabbricazione digitale, con particolare attenzione alla semplicità costruttiva, alla sostenibilità e alla qualità dell'esperienza d'uso."
   },
+
   en: {
     sec1Title: "Matteo Finco",
-    sec1Sub: "Product Designer & Maker based in Veneto, studying at Iuav University of Venice.",
-    sec1P: "I design physical products and interactive systems combining CAD precision with hands-on digital fabrication. Every concept is driven by user needs, rapid prototyping, and direct material control.",
-    sec2P1: "The 'Maker' mindset enables immediate prototyping: from initial mockups to 1:1 scale functional validation.",
-    sec2P2: "My workflow focuses on component sustainability, ease of disassembly, and formal clarity."
+    sec1Sub:
+      "Product Designer. Student at IUAV University of Venice.",
+
+    sec1P:
+      "I like understanding how things work. Every project starts by observing people and questioning the mechanisms that make a product useful, intuitive and meaningful. For me, design is the process of turning real problems into tangible experiences.",
+
+    sec2P1:
+      "My workflow moves continuously between research, CAD modelling, rapid prototyping and physical testing. I believe the best ideas emerge when they can be built, taken apart, refined and tested again.",
+
+    sec2P2:
+      "I'm particularly interested in industrial design, interactive systems and digital fabrication, with a focus on simplicity, sustainability and thoughtful user experiences."
   }
 };
 
