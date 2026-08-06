@@ -1,45 +1,47 @@
-import React from "react";
+import React from 'react';
 
-export default function IntroSection() {
-  const images = [
-    {
-      src: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
-      alt: "Design Studio Placeholder 1",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80",
-      alt: "Design Studio Placeholder 2",
-    },
-  ];
-
-  return (
-    <section id="about" className="py-24 px-6 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6">
-          <h2 className="text-3xl md:text-5xl font-light tracking-tight leading-tight">
-            Esplorazione formale, materia e processi di produzione.
-          </h2>
-          <p className="text-neutral-400 text-lg leading-relaxed">
-            Un percorso integrato tra modellazione 3D, fabbricazione digitale e
-            ricerca sensoriale applicata ai prodotti industriali.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4">
-          {images.map((img, index) => (
-            <div
-              key={index}
-              className="aspect-[4/5] overflow-hidden rounded-xl bg-neutral-900 border border-neutral-800"
-            >
-              <img
-                src={img.src}
-                alt={img.alt}
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+interface IntroProps {
+  t: {
+    sec1Title: string;
+    sec1Sub: string;
+    sec1P: string;
+    sec2P1: string;
+    sec2P2: string;
+  };
 }
+
+export const IntroSection: React.FC<IntroProps> = ({ t }) => {
+  return (
+    <div className="intro-container-fullbleed">
+      {/* PRIMO BLOCCO: IMMAGINE A FILO SINISTRO */}
+      <section className="fullbleed-row media-left">
+        <div className="fullbleed-media reveal-editorial reveal-from-left">
+          <img
+            src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80"
+            alt="Matteo Finco Studio Work"
+          />
+        </div>
+        <div className="fullbleed-content reveal-editorial reveal-from-right">
+          <h2>{t.sec1Title}</h2>
+          <h3 className="sub-grey">{t.sec1Sub}</h3>
+          <p>{t.sec1P}</p>
+        </div>
+      </section>
+
+      {/* SECONDO BLOCCO: IMMAGINE A FILO DESTRO */}
+      <section className="fullbleed-row media-right">
+        <div className="fullbleed-content reveal-editorial reveal-from-left">
+          <h2>Making &amp;<br />Prototipazione</h2>
+          <p className="p-margin-bottom">{t.sec2P1}</p>
+          <p>{t.sec2P2}</p>
+        </div>
+        <div className="fullbleed-media reveal-editorial reveal-from-right">
+          <img
+            src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1600&q=80"
+            alt="Digital Fabrication & Hardware"
+          />
+        </div>
+      </section>
+    </div>
+  );
+};
