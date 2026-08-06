@@ -342,6 +342,7 @@ export default function Index() {
 
         html {
           scroll-behavior: smooth;
+          scroll-snap-type: y mandatory;
         }
 
         body {
@@ -349,12 +350,14 @@ export default function Index() {
           color: #e5e5e5;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           line-height: 1.8;
+          scroll-snap-type: y mandatory;
         }
 
         .editorial-portfolio {
           background-color: #070707;
           color: #e5e5e5;
           min-height: 100vh;
+          scroll-snap-type: y mandatory;
         }
 
         .reveal-editorial {
