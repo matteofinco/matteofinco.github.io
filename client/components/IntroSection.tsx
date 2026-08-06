@@ -10,77 +10,40 @@ interface IntroProps {
 
 export const IntroSection: React.FC<IntroProps> = ({ t }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isScrollingRef = useRef(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const handleWheel = (e: WheelEvent) => {
-      // Se stiamo già animando il passaggio, ignoriamo ulteriori eventi rotellina
-      if (isScrollingRef.current) return;
-
-      const rect = container.getBoundingClientRect();
-      // Verifichiamo se la sezione si trova attualmente agganciata a schermo
-      const isCentred = Math.abs(rect.top) < 50;
-
-      if (isCentred) {
-        if (e.deltaY > 0) {
-          // Scroll verso il BASSO -> Passa direttamente al componente successivo
-          e.preventDefault();
-          isScrollingRef.current = true;
-
-          const nextElement = container.nextElementSibling as HTMLElement;
-          if (nextElement) {
-            nextElement.scrollIntoView({ behavior: 'smooth' });
-          } else {
-            window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-          }
-
-          setTimeout(() => {
-            isScrollingRef.current = false;
-          }, 800);
-        } else if (e.deltaY < 0) {
-          // Scroll verso l'ALTO -> Torna direttamente all'elemento precedente (Hero)
-          e.preventDefault();
-          isScrollingRef.current = true;
-
-          const prevElement = container.previousElementSibling as HTMLElement;
-          if (prevElement) {
-            prevElement.scrollIntoView({ behavior: 'smooth' });
-          } else {
-            window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
-          }
-
-          setTimeout(() => {
-            isScrollingRef.current = false;
-          }, 800);
-        }
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const totalHeight = containerRef.current.offsetHeight - window.innerHeight;
+      
+      if (totalHeight > 0) {
+        // Calcola quanto siamo avanzati all'interno della sezione bloccata (da 0 a 1)
+        const progress = Math.min(Math.max(-rect.top / totalHeight, 0), 1);
+        setScrollProgress(progress);
       }
     };
 
-    // Aggiungiamo l'event listener con passive: false per poter usare e.preventDefault()
-    window.addEventListener('wheel', handleWheel, { passive: false });
-
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <div className="intro-pinned-container" ref={containerRef} id="intro-section">
       <style>{`
+        /* Ridotta l'altezza a 120vh: dà giusto la sensazione di aggancio senza "imprigionare" lo scroll */
         .intro-pinned-container {
           position: relative;
           width: 100%;
-          height: 100vh;
+          height: 120vh;
           background-color: #070707;
           box-sizing: border-box;
-          scroll-snap-align: start;
         }
 
         .intro-sticky-viewport {
-          position: relative;
+          position: sticky;
+          top: 0;
           height: 100vh;
           width: 100%;
           display: flex;
@@ -100,6 +63,8 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           margin: 0 auto;
           display: flex;
           align-items: center;
+          will-change: transform, opacity;
+          transition: transform 0.1s linear, opacity 0.1s linear;
         }
 
         .intro-step-row {
@@ -117,7 +82,6 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           width: 100%;
           height: 100%;
           max-height: 620px;
-          padding-left: 0;
         }
 
         .intro-media-box img {
@@ -127,7 +91,6 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           filter: grayscale(20%);
           transition: filter 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
           display: block;
-          will-change: transform, filter;
         }
 
         .intro-media-box:hover img {
@@ -173,12 +136,15 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
             height: auto !important;
           }
           .intro-sticky-viewport {
+            position: relative;
             height: auto;
             padding: 80px 0;
           }
           .intro-stage-container {
             height: auto;
             max-height: none;
+            transform: none !important;
+            opacity: 1 !important;
           }
           .intro-step-row {
             grid-template-columns: 1fr;
@@ -192,7 +158,14 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
       `}</style>
 
       <div className="intro-sticky-viewport">
-        <div className="intro-stage-container">
+        <div 
+          className="intro-stage-container"
+          style={{
+            // Effetto dissolvenza leggerissima e scale-out mentre si libera la sezione
+            opacity: 1 - scrollProgress * 0.4,
+            transform: `scale(${1 - scrollProgress * 0.03})`
+          }}
+        >
           <div className="intro-step-row">
             <div className="intro-media-box">
               <img
