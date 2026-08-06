@@ -1,252 +1,323 @@
 import React, { useState, useEffect } from "react";
+import { Header } from "../components/Header";
 
-// Inline Header component for a self-contained single-file implementation
-interface HeaderProps {
-showBackToDesigns?: boolean;
-currentLang: "it" | "en";
-onLanguageChange: (lang: "it" | "en") => void;
-}
+export default function Curriculum() {
+  const [language, setLanguage] = useState<'it' | 'en'>("en");
+  const [isMobile, setIsMobile] = useState(false);
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
 
-const Header: React.FC = ({ currentLang, onLanguageChange }) => {
-return (
+  // Stati per il caricamento differito degli iframe
+  const [shouldRenderIframes, setShouldRenderIframes] = useState(false);
+  const [itRendered, setItRendered] = useState(false);
 
+  // Link CDN Builder.io ai PDF del CV
+  const pdfUrls = {
+    it: "https://cdn.builder.io/o/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Febb4af0f796e4a149200098cc754c84d?alt=media&token=0437e3df-064c-45d1-8bcf-fc07f569c2c3&apiKey=b117f80db1214c899c967fecfbdcaa25",
+    en: "https://cdn.builder.io/o/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5b03c6980928461fa8fa8a0014ada7e3?alt=media&token=2845f631-5854-4563-8874-d2d6487327f3&apiKey=b117f80db1214c899c967fecfbdcaa25"
+  };
 
+  // Rileva lo schermo mobile e imposta la lingua di default
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile) {
+        setLanguage("en");
+      }
+    };
+    
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-Matteo Finco
+  // Timer di rendering e caricamento iniziale
+  useEffect(() => {
+    const iframeTimer = setTimeout(() => {
+      setShouldRenderIframes(true);
+    }, 300);
 
+    const loadingTimer = setTimeout(() => {
+      setIsInitialLoading(false);
+    }, 800);
 
-/ Portfolio & CV
+    return () => {
+      clearTimeout(iframeTimer);
+      clearTimeout(loadingTimer);
+    };
+  }, []);
 
+  const handleLanguageChange = (lang: 'it' | 'en') => {
+    if (lang !== language) {
+      if (lang === "it" && !itRendered) {
+        setItRendered(true);
+      }
+      setLanguage(lang);
+    }
+  };
 
+  const handleDownload = async () => {
+    const fileName = `CV_Matteo_Finco_${language.toUpperCase()}.pdf`;
+    try {
+      const response = await fetch(pdfUrls[language]);
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      window.open(pdfUrls[language], "_blank");
+    }
+  };
 
-  <div className="flex items-center gap-4">
-    {/* Language Selector */}
-    <div className="flex items-center bg-[#111111] p-1 rounded-lg border border-[#222222]">
-      <button
-        onClick={() => onLanguageChange("en")}
-        className={`px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
-          currentLang === "en"
-            ? "bg-[#ffffff] text-[#070707] shadow-sm font-semibold"
-            : "text-[#aaaaaa] hover:text-[#ffffff]"
-        }`}
-      >
-        EN
-      </button>
-      <button
-        onClick={() => onLanguageChange("it")}
-        className={`px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
-          currentLang === "it"
-            ? "bg-[#ffffff] text-[#070707] shadow-sm font-semibold"
-            : "text-[#aaaaaa] hover:text-[#ffffff]"
-        }`}
-      >
-        IT
-      </button>
-    </div>
-  </div>
-</header>
+  return (
+    <div className="bg-[#070707] text-[#e5e5e5] flex flex-col h-screen w-screen overflow-hidden m-0 p-0 relative">
+      
+      {/* HEADER INTEGRATO */}
+      <Header 
+        showBackToDesigns={false} 
+        currentLang={language} 
+        onLanguageChange={handleLanguageChange}
+      />
 
-
-);
-};
-
-export default function CV() {
-const [language, setLanguage] = useState<"it" | "en">("en");
-const [isMobile, setIsMobile] = useState(false);
-const [isLoading, setIsLoading] = useState(true);
-const [activeTab, setActiveTab] = useState<"en" | "it">("en");
-
-// PDF URLs
-const pdfUrls = {
-it: "https://cdn.builder.io/o/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Febb4af0f796e4a149200098cc754c84d?alt=media&token=0437e3df-064c-45d1-8bcf-fc07f569c2c3&apiKey=b117f80db1214c899c967fecfbdcaa25",
-en: "https://cdn.builder.io/o/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5b03c6980928461fa8fa8a0014ada7e3?alt=media&token=2845f631-5854-4563-8874-d2d6487327f3&apiKey=b117f80db1214c899c967fecfbdcaa25"
-};
-
-// Safe window detection on mount
-useEffect(() => {
-const handleResize = () => {
-const mobile = window.innerWidth < 768;
-setIsMobile(mobile);
-if (mobile) {
-setLanguage("en");
-}
-};
-
-handleResize();
-window.addEventListener("resize", handleResize);
-
-// Smooth loading transition
-const timer = setTimeout(() => {
-  setIsLoading(false);
-}, 600);
-
-return () => {
-  window.removeEventListener("resize", handleResize);
-  clearTimeout(timer);
-};
-
-
-}, []);
-
-const handleLanguageChange = (lang: "it" | "en") => {
-setLanguage(lang);
-setActiveTab(lang);
-};
-
-const handleDownload = async () => {
-const fileName = CV_Matteo_Finco_${language.toUpperCase()}.pdf;
-try {
-const response = await fetch(pdfUrls[language]);
-if (!response.ok) throw new Error("Download failed");
-
-  const blob = await response.blob();
-  const blobUrl = window.URL.createObjectURL(blob);
-
-  const link = document.createElement("a");
-  link.href = blobUrl;
-  link.download = fileName;
-  document.body.appendChild(link);
-  link.click();
-
-  document.body.removeChild(link);
-  window.URL.revokeObjectURL(blobUrl);
-} catch (error) {
-  // Fallback: direct download/open in new tab
-  window.open(pdfUrls[language], "_blank");
-}
-
-
-};
-
-return (
-
-{/* HEADER INTEGRATION */}
-
-
-  {/* MAIN CONTENT AREA */}
-  <main className="flex-1 flex flex-col w-full h-full overflow-hidden relative pt-[70px]">
-    <div className="flex-1 w-full h-full pb-[60px] relative overflow-hidden">
-      {isMobile ? (
-        /* MOBILE MINIMAL VIEW */
-        <div className="flex flex-col items-center justify-center h-full w-full p-6 text-center bg-[#070707]">
-          <span className="text-xs uppercase tracking-widest text-[#666666] mb-2 font-mono">
-            Curriculum Vitae
-          </span>
-          <h2 className="text-3xl font-light text-[#ffffff] tracking-wide mb-4">
-            Matteo Finco
-          </h2>
-          <p className="text-sm font-light text-[#aaaaaa] max-w-xs leading-relaxed mb-8">
-            For the best reading experience on mobile devices, open the resume in full screen or download the PDF file directly.
-          </p>
-
-          <div className="flex flex-col gap-3 w-full max-w-[260px]">
-            <a
-              href={pdfUrls[language]}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3 px-4 border border-[#ffffff] rounded-lg text-[#070707] bg-[#ffffff] text-xs font-semibold tracking-wider text-center transition-all hover:bg-neutral-200 active:scale-[0.98]"
-            >
-              View Full Screen ({language.toUpperCase()})
-            </a>
-            <button
-              onClick={handleDownload}
-              className="w-full py-3 px-4 border border-[#222222] rounded-lg text-[#e5e5e5] bg-[#111111] text-xs font-medium tracking-wider text-center transition-all hover:border-[#444444] active:scale-[0.98]"
-            >
-              Download PDF
-            </button>
-          </div>
-        </div>
-      ) : (
-        /* DESKTOP EMBEDDED PDF VIEW */
-        <div className="w-full h-full relative bg-[#070707] flex items-center justify-center">
-          {/* EN PDF Viewer */}
-          <div 
-            className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${
-              activeTab === "en" ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
-            }`}
-          >
-            <object
-              data={`${pdfUrls.en}#toolbar=0&navpanes=0&view=FitH`}
-              type="application/pdf"
-              className="w-full h-full border-0"
-            >
-              <iframe
-                src={`${pdfUrls.en}#toolbar=0&navpanes=0&view=FitH`}
-                className="w-full h-full border-0 bg-transparent"
-                title="Curriculum Vitae Matteo Finco EN"
-              />
-            </object>
-          </div>
-
-          {/* IT PDF Viewer */}
-          <div 
-            className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${
-              activeTab === "it" ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
-            }`}
-          >
-            <object
-              data={`${pdfUrls.it}#toolbar=0&navpanes=0&view=FitH`}
-              type="application/pdf"
-              className="w-full h-full border-0"
-            >
-              <iframe
-                src={`${pdfUrls.it}#toolbar=0&navpanes=0&view=FitH`}
-                className="w-full h-full border-0 bg-transparent"
-                title="Curriculum Vitae Matteo Finco IT"
-              />
-            </object>
-          </div>
-
-          {/* LOADING OVERLAY */}
-          <div
-            className={`absolute inset-0 bg-[#070707] z-20 flex items-center justify-center transition-opacity duration-500 pointer-events-none ${
-              isLoading ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <div className="flex flex-col items-center gap-3">
-              <div className="w-6 h-6 border-2 border-[#ffffff] border-t-transparent rounded-full animate-spin" />
-              <span className="text-xs font-mono text-[#888888] tracking-widest uppercase">
-                Loading Resume...
-              </span>
+      {/* CONTENITORE PRINCIPALE */}
+      <main style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden", width: "100%", margin: 0, padding: 0, position: "relative", paddingTop: "70px" }}>
+        
+        <div style={{ 
+          flex: 1, 
+          width: "100%", 
+          height: "100%", 
+          paddingBottom: "60px", 
+          boxSizing: "border-box",
+          position: "relative",
+          overflow: "hidden"
+        }}>
+          
+          {isMobile ? (
+            /* VISTA MOBILE */
+            <div style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
+              width: "100%",
+              padding: "24px",
+              textAlign: "center",
+              backgroundColor: "#070707"
+            }}>
+              <span className="text-xs uppercase tracking-widest text-[#666666] mb-2 font-mono">Curriculum Vitae</span>
+              <h2 className="text-2xl font-normal text-[#ffffff] tracking-wide mb-6">Matteo Finco</h2>
+              <p className="text-sm font-light text-[#aaaaaa] max-w-xs leading-relaxed mb-8">
+                For the best reading experience on mobile, view the resume in full screen or download the file directly.
+              </p>
+              
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px", width: "100%", maxWidth: "240px" }}>
+                <a 
+                  href={pdfUrls.en} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "block",
+                    padding: "12px",
+                    border: "1px solid #ffffff",
+                    borderRadius: "8px",
+                    textDecoration: "none",
+                    color: "#070707",
+                    backgroundColor: "#ffffff",
+                    fontSize: "12px",
+                    fontWeight: "600",
+                    letterSpacing: "0.05em",
+                    transition: "all 0.2s ease"
+                  }}
+                >
+                  View Full Screen
+                </a>
+                <button 
+                  onClick={handleDownload}
+                  style={{
+                    padding: "12px",
+                    border: "1px solid #1a1a1a",
+                    borderRadius: "8px",
+                    color: "#e5e5e5",
+                    backgroundColor: "#111111",
+                    fontSize: "12px",
+                    fontWeight: "500",
+                    letterSpacing: "0.05em",
+                    cursor: "pointer",
+                    transition: "all 0.2s ease"
+                  }}
+                >
+                  Download PDF
+                </button>
+              </div>
             </div>
-          </div>
+          ) : (
+            /* VISTA DESKTOP (IFRAMES PDF) */
+            <div style={{
+              width: "100%",
+              height: "100%",
+              overflow: "hidden",
+              position: "relative",
+              backgroundColor: "#070707"
+            }}>
+              
+              {shouldRenderIframes && (
+                <>
+                  {/* Iframe Italiano */}
+                  {itRendered && (
+                    <iframe 
+                      src={`${pdfUrls.it}#toolbar=0&navpanes=0&view=FitH`} 
+                      width="100%" 
+                      style={{ 
+                        position: "absolute",
+                        top: "-56px",
+                        left: "-12px", 
+                        width: "calc(100% + 36px)", 
+                        height: "calc(100% + 75px)",
+                        border: "none", 
+                        backgroundColor: "transparent",
+                        opacity: language === "it" ? 1 : 0,
+                        pointerEvents: language === "it" ? "auto" : "none",
+                        transition: "opacity 0.4s ease-in-out",
+                        zIndex: language === "it" ? 2 : 1
+                      }}
+                      title="Curriculum Vitae Matteo Finco IT"
+                    />
+                  )}
+
+                  {/* Iframe Inglese */}
+                  <iframe 
+                    src={`${pdfUrls.en}#toolbar=0&navpanes=0&view=FitH`} 
+                    width="100%" 
+                    style={{ 
+                      position: "absolute",
+                      top: "-56px",
+                      left: "-12px", 
+                      width: "calc(100% + 36px)", 
+                      height: "calc(100% + 75px)",
+                      border: "none", 
+                      backgroundColor: "transparent",
+                      opacity: language === "en" ? 1 : 0,
+                      pointerEvents: language === "en" ? "auto" : "none",
+                      transition: "opacity 0.4s ease-in-out",
+                      zIndex: language === "en" ? 2 : 1
+                    }}
+                    title="Curriculum Vitae Matteo Finco EN"
+                  />
+                </>
+              )}
+
+              {/* RETTANGOLI DI COPERTURA LATERALI */}
+              <div style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "12px",
+                height: "100%",
+                backgroundColor: "#070707",
+                zIndex: 3,
+                pointerEvents: "none"
+              }} />
+
+              <div style={{
+                position: "absolute",
+                top: 0,
+                right: -1,
+                width: "25px",
+                height: "100%",
+                backgroundColor: "#070707",
+                zIndex: 3,
+                pointerEvents: "none"
+              }} />
+
+              {/* Schermata Scura di Caricamento Iniziale */}
+              <div style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundColor: "#070707",
+                zIndex: 10,
+                opacity: isInitialLoading ? 1 : 0,
+                pointerEvents: "none",
+                transition: "opacity 0.5s ease-in-out"
+              }} />
+            </div>
+          )}
         </div>
-      )}
-    </div>
-
-    {/* BOTTOM FIXED BAR */}
-    <footer className="absolute bottom-0 left-0 w-full h-[60px] bg-[#070707]/90 backdrop-blur-md border-t border-[#1a1a1a] flex items-center justify-between px-8 z-30">
-      <button
-        onClick={() => window.location.href = "/contact"}
-        className="text-xs font-normal tracking-widest text-[#aaaaaa] uppercase hover:text-[#ffffff] transition-colors duration-200 bg-transparent border-0 cursor-pointer"
-      >
-        Get in touch
-      </button>
-
-      <button
-        onClick={handleDownload}
-        className="text-xs font-normal tracking-widest text-[#aaaaaa] uppercase hover:text-[#ffffff] transition-colors duration-200 bg-transparent border-0 cursor-pointer flex items-center gap-2"
-      >
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+        
+        {/* BARRA INFERIORE */}
+        <div 
+          style={{
+            position: "absolute",
+            bottom: "0px",
+            left: "0px", 
+            width: "100%",
+            height: "60px",
+            backgroundColor: "rgba(7, 7, 7, 0.9)", 
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            borderTop: "1px solid #1a1a1a", 
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 10
+          }}
         >
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-          <polyline points="7 10 12 15 17 10" />
-          <line x1="12" y1="15" x2="12" y2="3" />
-        </svg>
-        <span>Download PDF ({language.toUpperCase()})</span>
-      </button>
-    </footer>
-  </main>
-</div>
+          <button 
+            onClick={() => window.location.href = "/contact"}
+            className="text-xs font-normal tracking-widest text-[#aaaaaa] uppercase hover:text-[#ffffff] transition-colors duration-200"
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: 0
+            }}
+          >
+            Get in touch
+          </button>
 
-
-);
+          <button 
+            onClick={handleDownload}
+            className="text-xs font-normal tracking-widest text-[#aaaaaa] uppercase hover:text-[#ffffff] transition-colors duration-200"
+            style={{
+              position: "absolute",
+              right: "32px",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: 0
+            }}
+          >
+            <svg 
+              width="14" 
+              height="14" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="1.5" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            <span className="hidden sm:inline">Download PDF</span>
+          </button>
+        </div>
+      </main>
+    </div>
+  );
 }
