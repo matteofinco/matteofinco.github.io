@@ -2,45 +2,43 @@ import React from 'react';
 
 export const StickyObject: React.FC = () => {
   return (
-    <section className="sticky-feature-section">
-      <div className="sticky-media-container">
-        <div className="sticky-media-box">
+    <section className="sticky-shoe-section">
+      {/* IMMAGINE FISSA IN BACKGROUND DURANTE LO SCROLL */}
+      <div className="sticky-shoe-container">
+        <div className="sticky-shoe-media">
           <img
-            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1800&q=80"
-            alt="Product Focus"
+            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=2000&q=80"
+            alt="Prototipo Prodotto"
           />
-          <div className="sticky-technical-tag">[SYSTEM_ARCHITECTURE // CMF_STUDY_2026]</div>
+          <div className="sticky-shoe-tag">
+            PROTOTYPE_01 // HIGH PERFORMANCE FOOTWEAR
+          </div>
         </div>
       </div>
 
-      <div className="scrolling-overlay-container">
-        <div className="scrolling-card">
-          <span className="card-step">01 / ARCHITETTURA FORMALE</span>
-          <h3>Scomposizione ed Ergonomia</h3>
+      {/* CASALLE DI TESTO CHE SCORRONO SOPRA L'IMMAGINE */}
+      <div className="shoe-scrolling-overlay">
+        <div className="shoe-card">
+          <span className="card-step">01 // CONCETTO & ERGONOMIA</span>
+          <h3>Studio della Calzata Parametrica</h3>
           <p>
-            Ogni oggetto nasce dallo studio approfondito delle proporzioni e dell'interazione diretta con l'utente. 
-            L'approccio privilegia l'alleggerimento visivo e la pulizia formale, strutturando i volumi in modo che 
-            rispondano a precisi vincoli funzionali e sollecitazioni meccaniche.
+            Anatomia e supporto strutturale ingegnerizzati tramite modellazione algoritmica. Il volume principale si adatta ai movimenti ad alta sollecitazione.
           </p>
         </div>
 
-        <div className="scrolling-card">
-          <span className="card-step">02 / SENSORIALITÀ &amp; MATERIALI</span>
-          <h3>Integrazione Tattile e CMF</h3>
+        <div className="shoe-card">
+          <span className="card-step">02 // MATERIALI & STAMPA 3D</span>
+          <h3>Fabbricazione Additiva TPU</h3>
           <p>
-            La selezione dei materiali non è un dettaglio estetico, ma parte integrante dell'esperienza d'uso. 
-            Il contrasto tra superfici rigide strutturali e finiture ad alta resa tattile definisce la percezione 
-            di qualità e guida intuitivamente l'impugnatura e l'interfaccia dell'oggetto.
+            Struttura reticolare a densità differenziata stampata in TPU riciclabile. Riduzione del peso del 35% mantenendo il massimo assorbimento degli urti.
           </p>
         </div>
 
-        <div className="scrolling-card">
-          <span className="card-step">03 / FABBRICAZIONE SOSTENIBILE</span>
-          <h3>Design for Disassembly</h3>
+        <div className="shoe-card">
+          <span className="card-step">03 // INTAGLIO & FINITURA</span>
+          <h3>Assemblaggio Meccanico a Secco</h3>
           <p>
-            Progettare da Maker significa pensare all'intero ciclo di vita del prodotto: dall'ottimizzazione dei percorsi 
-            di stampa 3D e taglio laser, fino alla facilità di assemblaggio a secco che consente di separare rapidamente 
-            ogni componente per la manutenzione o il riciclo.
+            Senza l'uso di colle tossiche. Ogni componente è interamente disassemblabile e sostituibile per estendere il ciclo di vita del prodotto.
           </p>
         </div>
       </div>
