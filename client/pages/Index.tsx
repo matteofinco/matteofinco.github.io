@@ -67,7 +67,7 @@ const projectList: ProjectStep[] = [
     tools: 'Surface Modeling / Rendering CMF',
     material: 'Alluminio Spazzolato & Bakelite',
     year: '2025',
-    desc: 'Esplorazione formale ed ergonomica applicata a un piccoli elettrodomestici. Scomposizione dei volumi tradizionali per facilitare pulizia, ingombro verticale e manutenzione.',
+    desc: 'Esplorazione formale ed ergonomica applicata a piccoli elettrodomestici. Scomposizione dei volumi tradizionali per facilitare pulizia, ingombro verticale e manutenzione.',
     link: 'https://matteofinco.vercel.app/wafflemaker',
     img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80'
   },
@@ -119,8 +119,23 @@ const translations = {
 export default function Index() {
   const [lang, setLang] = useState<'it' | 'en'>('it');
   const [activeStep, setActiveStep] = useState<number>(0);
+  const [showNavName, setShowNavName] = useState<boolean>(false);
 
   useEffect(() => {
+    // Observer per mostrare il nome nell'Header solo quando la Hero esce dalla vista
+    const heroEl = document.getElementById('hero-section');
+    if (heroEl) {
+      const heroObserver = new IntersectionObserver(
+        ([entry]) => {
+          // Se la Hero NON è più interamente visibile, attiva il nome nell'Header
+          setShowNavName(!entry.isIntersecting);
+        },
+        { threshold: 0.15 }
+      );
+      heroObserver.observe(heroEl);
+    }
+
+    // Observer per dissolvenze immagini editoriali
     const revealElements = document.querySelectorAll('.reveal-editorial');
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -132,9 +147,9 @@ export default function Index() {
       },
       { threshold: 0.15 }
     );
-
     revealElements.forEach((el) => revealObserver.observe(el));
 
+    // Observer per avanzamento dei progetti nel Cerchio Sticky
     const processCards = document.querySelectorAll('.process-card');
     const processObserver = new IntersectionObserver(
       (entries) => {
@@ -147,7 +162,6 @@ export default function Index() {
       },
       { threshold: 0.45 }
     );
-
     processCards.forEach((card) => processObserver.observe(card));
 
     return () => {
@@ -207,7 +221,7 @@ export default function Index() {
         .reveal-editorial.reveal-from-left { transform: scale(1.04) translateX(-50px); }
         .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: scale(1) translateX(0); }
 
-        /* STICKY FEATURE (IMMAGINE AL VIVO A TUTTO SCHERMO) */
+        /* STICKY FEATURE */
         .sticky-feature-section { position: relative; width: 100vw; min-height: 240vh; background-color: #050505; border-y: 1px solid #181818; }
         .sticky-media-container { position: sticky; top: 0; height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center; z-index: 1; }
         .sticky-media-box { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
@@ -236,21 +250,21 @@ export default function Index() {
         .scrolling-card h3 { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 16px; line-height: 1.25; }
         .scrolling-card p { color: #bbb; font-size: 1.02rem; line-height: 1.75; }
 
-        /* CIRCLE SHOWCASE (INGRANDITO +20%) */
+        /* CIRCLE SHOWCASE LAYOUT RIGOROSO E CENTRATO */
         .process-showcase-wrapper {
           max-width: 1550px;
           margin: 0 auto;
           padding: 120px 6vw;
           display: grid;
           grid-template-columns: 1.1fr 0.9fr;
-          gap: 70px;
+          gap: 60px;
           align-items: start;
         }
 
         .process-sticky-left {
           position: sticky;
-          top: 60px;
-          height: calc(100vh - 100px);
+          top: 80px;
+          height: calc(100vh - 120px);
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -258,8 +272,16 @@ export default function Index() {
           z-index: 10;
         }
 
-        .circle-technical-frame { position: relative; width: 100%; max-width: 580px; height: 580px; display: flex; flex-direction: column; align-items: center; }
-        .circle-hud-svg { width: 100%; height: 100%; overflow: visible; }
+        .circle-technical-frame {
+          position: relative;
+          width: 100%;
+          max-width: 500px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .circle-hud-svg { width: 100%; height: auto; max-height: 440px; overflow: visible; }
 
         .circle-img-layer { opacity: 0; transform: scale(1.05); transition: opacity 0.8s ease, transform 0.8s ease; }
         .circle-img-layer.active-layer { opacity: 1; transform: scale(1); }
@@ -268,13 +290,13 @@ export default function Index() {
         .node-pulse { animation: pulseRing 1.8s ease-out infinite; }
 
         .project-title-under-circle {
-          margin-top: 15px;
+          margin-top: 10px;
           text-align: center;
           width: 100%;
         }
         .project-index-tag { font-family: monospace; font-size: 0.78rem; color: #777; letter-spacing: 2px; display: block; margin-bottom: 4px; }
-        .project-main-name { font-size: 2rem; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; }
-        .project-sub-name { font-size: 0.95rem; color: #999; }
+        .project-main-name { font-size: 2.2rem; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; line-height: 1.1; }
+        .project-sub-name { font-size: 0.95rem; color: #999; margin-top: 4px; }
 
         .process-scroll-right { padding-top: 2vh; padding-bottom: 15vh; }
         .process-card { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; opacity: 0.2; filter: blur(4px); transition: opacity 0.6s ease, filter 0.6s ease; border-bottom: 1px solid #161616; }
@@ -306,7 +328,7 @@ export default function Index() {
           transform: translateX(6px);
         }
 
-        /* FOOTER & WHAT'S NEXT */
+        /* FOOTER REVISIONATO */
         .whats-next-footer {
           background-color: #040404;
           padding: 140px 6vw 60px;
@@ -333,26 +355,33 @@ export default function Index() {
           flex-wrap: wrap;
           margin-bottom: 80px;
         }
-        .btn-primary-about {
+        .btn-footer-link {
           padding: 16px 36px;
           background: #ffffff;
-          color: #000;
+          color: #000000;
           font-weight: 700;
           font-size: 0.95rem;
           text-decoration: none;
-          transition: background 0.3s ease;
+          transition: background 0.3s ease, transform 0.3s ease;
         }
-        .btn-primary-about:hover { background: #dcdcdc; }
-        .btn-secondary-contact {
+        .btn-footer-link:hover {
+          background: #dcdcdc;
+          transform: translateY(-2px);
+        }
+        .btn-footer-secondary {
           padding: 16px 36px;
-          border: 1px solid rgba(255,255,255,0.25);
+          border: 1px solid rgba(255,255,255,0.3);
           color: #ffffff;
-          font-weight: 600;
+          font-weight: 700;
           font-size: 0.95rem;
           text-decoration: none;
-          transition: border-color 0.3s ease;
+          transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
         }
-        .btn-secondary-contact:hover { border-color: #ffffff; }
+        .btn-footer-secondary:hover {
+          border-color: #ffffff;
+          background: rgba(255,255,255,0.05);
+          transform: translateY(-2px);
+        }
 
         .footer-bottom-info {
           display: flex;
@@ -362,7 +391,7 @@ export default function Index() {
           padding-top: 40px;
           font-family: monospace;
           font-size: 0.82rem;
-          color: #555;
+          color: #666;
         }
         .footer-contacts-list { display: flex; gap: 30px; }
         .footer-contacts-list a { color: #888; text-decoration: none; transition: color 0.3s; }
@@ -376,34 +405,36 @@ export default function Index() {
         }
       `}</style>
 
-      <Header lang={lang} setLang={setLang} />
+      {/* HEADER CON TRANSIZIONE NOME SULLO SCROLL */}
+      <Header lang={lang} setLang={setLang} showName={showNavName} />
+      
       <Hero />
       <IntroSection t={translations[lang]} />
       <StickyObject />
       <CircleShowcase steps={projectList} activeStep={activeStep} />
 
-      {/* FOOTER - WHAT'S NEXT & CONTATTI */}
+      {/* FOOTER REVISIONATO CON WHAT'S NEXT? E CONTATTI AGGIORNATI */}
       <footer className="whats-next-footer">
-        <h2>WHAT'S NEXT</h2>
+        <h2>WHAT'S NEXT?</h2>
         <p className="sub-lead">
           Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale.
         </p>
 
         <div className="footer-actions">
-          <a href="https://matteofinco.vercel.app/about" className="btn-primary-about">
-            ABOUT ME &amp; CV
+          <a href="https://matteofinco.vercel.app/about" className="btn-footer-link">
+            ABOUT ME
           </a>
-          <a href="mailto:matteofinco.design@gmail.com" className="btn-secondary-contact">
-            MANDA UNA MAIL
+          <a href="https://matteofinco.vercel.app/about" className="btn-footer-secondary">
+            CURRICULUM VITAE
           </a>
         </div>
 
         <div className="footer-bottom-info">
-          <div>© 2026 MATTEO FINCO // PRODUCT DESIGN &amp; MAKER</div>
+          <div>2026 MATTEO FINCO // PRODUCT DESIGN &amp; MAKER</div>
           <div className="footer-contacts-list">
-            <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
             <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
             <a href="https://matteofinco.vercel.app/about">About</a>
+            <a href="https://matteofinco.vercel.app/about">CV</a>
           </div>
         </div>
       </footer>
