@@ -17,9 +17,14 @@ export interface ProjectStep {
 interface CircleShowcaseProps {
   steps: ProjectStep[];
   activeStep: number;
+  lang: 'it' | 'en';
 }
 
-export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeStep: parentActiveStep }) => {
+export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ 
+  steps, 
+  activeStep: parentActiveStep,
+  lang
+}) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [internalActiveStep, setInternalActiveStep] = useState(0);
   const [prevStep, setPrevStep] = useState<number | null>(null);
