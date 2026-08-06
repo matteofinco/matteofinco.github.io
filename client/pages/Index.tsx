@@ -1,374 +1,366 @@
-import React, { useState, useEffect } from 'react';
-import { Header } from '../components/Header';
-import { Hero } from '../components/Hero';
-import { IntroSection } from '../components/IntroSection';
-import { StickyObject } from '../components/StickyObject';
-import { CircleShowcase, ProjectStep } from '../components/CircleShowcase';
+import React from 'react';
 
-const projectList: ProjectStep[] = [
-  {
-    id: '01',
-    slug: 'snake',
-    title: 'Snake',
-    subtitle: 'Modulo di Allenamento per Hockey',
-    category: 'INDUSTRIAL & SPORT DESIGN',
-    tools: 'Rhino 7 / Fusion 360 / Stampa 3D',
-    material: 'Polimeri Tecnici & Sensori',
-    year: '2026',
-    desc: 'Sistema modulare interattivo sviluppato per l\'allenamento e il miglioramento del controllo del disco nell\'hockey su ghiaccio. Combina resistenza meccanica e flessibilità configurabile.',
-    link: '/snake',
-    img: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1400&q=80'
-  },
-  {
-    id: '02',
-    slug: 'archivia',
-    title: 'Archivia',
-    subtitle: 'Sistema Organizzativo Modulare',
-    category: 'PRODUCT & SYSTEM DESIGN',
-    tools: 'Parametric CAD / Laser Cutting',
-    material: 'Legno Curvato & Alluminio',
-    year: '2026',
-    desc: 'Un\'architettura di archiviazione minimale progettata per ottimizzare gli spazi di lavoro contemporanei, combinando modularità strutturale e finiture ad alta resa sensoriale.',
-    link: '/archivia',
-    img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1400&q=80'
-  },
-  {
-    id: '03',
-    slug: 'nando',
-    title: 'Nando',
-    subtitle: 'Soluzione per la Mobilità Urbana',
-    category: 'PRODUCT & MAKER EXPERIENCE',
-    tools: 'Prototipazione Fisica / Bambu Lab',
-    material: 'PLA Riciclato & Inserti Metallici',
-    year: '2026',
-    desc: 'Progetto incentrato sull\'usabilità quotidiana e la trasportabilità. Nando reinterpreta gli accessori da viaggio attraverso un linguaggio formale essenziale e componenti facilmente sostituibili.',
-    link: '/nando',
-    img: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1400&q=80'
-  },
-  {
-    id: '04',
-    slug: 'pizzamente',
-    title: 'Pizzamente',
-    subtitle: 'Packaging Esperienziale e Sostenibile',
-    category: 'PACKAGING & CMF DESIGN',
-    tools: 'Figma / Fustellatura Digitale',
-    material: 'Cartone Kraft Riciclato & Goffratura',
-    year: '2026',
-    desc: 'Riflessione sulla sostenibilità e la tattilità nel settore del food packaging. Il contenitore elimina l\'uso di plastiche monouso offrendo una nuova ritualità di apertura e consumo.',
-    link: '/pizzamente',
-    img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1400&q=80'
-  },
-  {
-    id: '05',
-    slug: 'wafflemaker',
-    title: 'Waffle Maker',
-    subtitle: 'Elettrodomestico Essenziale',
-    category: 'EQUIPMENT DESIGN',
-    tools: 'Surface Modeling / Rendering CMF',
-    material: 'Alluminio Spazzolato & Bakelite',
-    year: '2025',
-    desc: 'Esplorazione formale ed ergonomica applicata a piccoli elettrodomestici. Scomposizione dei volumi tradizionali per facilitare pulizia, ingombro verticale e manutenzione.',
-    link: '/wafflemaker',
-    img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1400&q=80'
-  },
-  {
-    id: '06',
-    slug: 'ttable',
-    title: 'TTable',
-    subtitle: 'Tavolo Parametrico con Giunzioni a Secco',
-    category: 'FURNITURE DESIGN',
-    tools: 'Grasshopper / CNC Milling',
-    material: 'Multistrato di Betulla',
-    year: '2025',
-    desc: 'Elemento d\'arredo sviluppato attraverso l\'algoritmo parametrico. I componenti ad incastro meccanico eliminano completamente l\'uso di colle o ferramenta metallica.',
-    link: '/ttable',
-    img: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80'
-  },
-  {
-    id: '07',
-    slug: 'prop',
-    title: 'Prop Collection',
-    subtitle: 'Fabbricazione Digitale & Accessori di Scena',
-    category: 'DIGITAL FABRICATION & PROPS',
-    tools: 'LightBurn / Post-Processing Manuale',
-    material: 'PETG, Vernici Acriliche & Resine',
-    year: '2025',
-    desc: 'Raccolta di prop fisici e componenti scenografici realizzati combinando modellazione 3D avanzata, taglio laser e finiture artigianali ad alto impatto visivo.',
-    link: '/prop',
-    img: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1400&q=80'
-  }
-];
+export interface ProjectStep {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  tools: string;
+  material: string;
+  year: string;
+  desc: string;
+  link: string;
+  img: string;
+}
 
-const translations = {
-  it: {
-    sec1Title: "Matteo Finco",
-    sec1Sub: "Product Designer & Maker basato in Veneto, studente all'Università Iuav di Venezia.",
-    sec1P: "Progetto oggetti fisici e sistemi interattivi unendo il rigore della modellazione CAD alla concretezza della fabbricazione digitale. Ogni concept è guidato dall'analisi dei bisogni reali e dal controllo diretto dei materiali.",
-    sec2P1: "La cultura del 'Making' mi permette di testare istantaneamente le idee: dal primo modello concettuale fino alla prototipazione funzionale in scala 1:1.",
-    sec2P2: "Lavoro con un approccio incentrato sulla sostenibilità dei componenti, sulla facilità di disassemblaggio e sulla chiarezza dei volumi."
-  },
-  en: {
-    sec1Title: "Matteo Finco",
-    sec1Sub: "Product Designer & Maker based in Veneto, studying at Iuav University of Venice.",
-    sec1P: "I design physical products and interactive systems combining CAD precision with hands-on digital fabrication. Every concept is driven by user needs and direct material control.",
-    sec2P1: "The 'Maker' mindset enables immediate prototyping: from initial mockups to 1:1 scale functional validation.",
-    sec2P2: "My workflow focuses on component sustainability, ease of disassembly, and formal clarity."
-  }
-};
+interface CircleShowcaseProps {
+  steps: ProjectStep[];
+  activeStep: number;
+}
 
-export default function Index() {
-  const [lang, setLang] = useState<'it' | 'en'>('it');
-  const [activeStep, setActiveStep] = useState<number>(0);
-  const [showNavName, setShowNavName] = useState<boolean>(false);
-
-  useEffect(() => {
-    // Header Observer
-    const heroEl = document.getElementById('hero-section');
-    if (heroEl) {
-      const heroObserver = new IntersectionObserver(
-        ([entry]) => {
-          setShowNavName(!entry.isIntersecting);
-        },
-        { threshold: 0.1 }
-      );
-      heroObserver.observe(heroEl);
-    }
-
-    // Reveal Animation Observer
-    const revealElements = document.querySelectorAll('.reveal-editorial');
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('reveal-active');
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-    revealElements.forEach((el) => revealObserver.observe(el));
-
-    // Project Cards Active Step Observer
-    const processCards = document.querySelectorAll('.process-card');
-    const processObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute('data-step'));
-            setActiveStep(index);
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-    processCards.forEach((card) => processObserver.observe(card));
-
-    return () => {
-      revealObserver.disconnect();
-      processObserver.disconnect();
-    };
-  }, []);
+export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeStep }) => {
+  const currentProject = steps[activeStep] || steps[0];
 
   return (
-    <div className="editorial-portfolio">
+    <section className="circle-showcase-section">
       <style>{`
-        *, *::before, *::after {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-        }
-
-        /* SCROLL SNAP NATURALE E FLUIDO (SENZA OVERFLOW CHE BLOCCHI STICKY) */
-        html {
-          scroll-behavior: smooth;
-          scroll-snap-type: y proximity;
-          scroll-padding-top: 70px;
-        }
-
-        body {
-          background-color: #070707;
-          color: #e5e5e5;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-          line-height: 1.8;
-          /* NESSUN OVERFLOW-X HIDDEN QUI PER NON SPEZZARE POSITION: STICKY */
-        }
-
-        .editorial-portfolio {
-          background-color: #070707;
-          color: #e5e5e5;
-          min-height: 100vh;
-        }
-
-        .reveal-editorial {
-          opacity: 0;
-          filter: blur(10px);
-          transition: opacity 1s cubic-bezier(.22,.61,.36,1), filter 1s cubic-bezier(.22,.61,.36,1), transform 1s cubic-bezier(.22,.61,.36,1);
-        }
-        .reveal-editorial.reveal-from-right { transform: translateX(30px); }
-        .reveal-editorial.reveal-from-left { transform: translateX(-30px); }
-        .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: translateX(0); }
-
-        /* SEZIONE FINALE WHAT'S NEXT ISOLATA A 100VH */
-        .whats-next-wrapper {
-          margin-top: 20vh; /* Ampio stacco di sfondo nero dai progetti */
+        .circle-showcase-section {
+          position: relative;
           width: 100%;
-          background-color: #040404;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 80px 6vw;
+          box-sizing: border-box;
+          background-color: #070707;
+          overflow: hidden;
         }
 
-        .whats-next-footer {
-          min-height: 100vh;
-          height: 100vh;
+        .showcase-grid-layout {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+          max-width: 1300px;
+          width: 100%;
+          gap: 60px;
+          z-index: 2;
+        }
+
+        /* HUD GRAPHIC CONTAINER */
+        .hud-container {
+          position: relative;
+          width: 480px;
+          height: 480px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto;
+        }
+
+        .hud-center-content {
+          position: relative;
+          width: 290px;
+          height: 290px;
+          background: #ffffff;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2;
+          box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+        }
+
+        .inner-grid-pattern {
+          position: absolute;
+          inset: 0;
+          background-image: radial-gradient(circle, #e0e0e0 1px, transparent 1px);
+          background-size: 14px 14px;
+          opacity: 0.7;
+        }
+
+        .hud-project-img {
+          position: relative;
+          z-index: 2;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+        }
+
+        /* HUD Rings & Elements */
+        .hud-ring {
+          position: absolute;
+          border-radius: 50%;
+          pointer-events: none;
+        }
+
+        .hud-ring-1 {
+          width: 390px;
+          height: 390px;
+          border: 1px dashed rgba(255, 255, 255, 0.18);
+          animation: hud-spin 50s linear infinite;
+        }
+
+        .hud-ring-2 {
+          width: 450px;
+          height: 450px;
+          border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .hud-ring-dotted {
+          width: 420px;
+          height: 420px;
+          border: 2px dotted rgba(255, 255, 255, 0.22);
+          border-radius: 50%;
+          animation: hud-spin-reverse 70s linear infinite;
+        }
+
+        .hud-arc {
+          position: absolute;
+          border-radius: 50%;
+          border: 2px solid transparent;
+          pointer-events: none;
+        }
+
+        .hud-arc-1 {
+          width: 470px;
+          height: 470px;
+          border-top-color: rgba(255, 255, 255, 0.55);
+          border-right-color: rgba(255, 255, 255, 0.08);
+          transform: rotate(-45deg);
+        }
+
+        .hud-arc-2 {
+          width: 370px;
+          height: 370px;
+          border-bottom-color: rgba(255, 255, 255, 0.35);
+          border-left-color: rgba(255, 255, 255, 0.08);
+          transform: rotate(30deg);
+        }
+
+        .hud-pointer-line {
+          position: absolute;
+          right: 5px;
+          top: 50%;
+          width: 65px;
+          height: 1px;
+          background: rgba(255, 255, 255, 0.35);
+        }
+
+        .hud-pointer-dot {
+          position: absolute;
+          right: 1px;
+          top: calc(50% - 3px);
+          width: 6px;
+          height: 6px;
+          background: #ffffff;
+          border-radius: 50%;
+          box-shadow: 0 0 10px #ffffff;
+        }
+
+        @keyframes hud-spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        @keyframes hud-spin-reverse {
+          0% { transform: rotate(360deg); }
+          100% { transform: rotate(0deg); }
+        }
+
+        /* PROJECT DETAILS INFO PANEL */
+        .showcase-info-panel {
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          padding: 60px 6vw 40px;
-          text-align: center;
-          position: relative;
-          scroll-snap-align: start;
-          box-sizing: border-box;
+          gap: 20px;
         }
 
-        .whats-next-footer h2 {
-          font-size: clamp(3.2rem, 7.5vw, 6.5rem);
+        .project-category-tag {
+          font-family: monospace;
+          font-size: 0.85rem;
+          color: #888888;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+        }
+
+        .project-main-title {
+          font-size: clamp(2.5rem, 4.5vw, 4rem);
           font-weight: 900;
           color: #ffffff;
-          letter-spacing: -2px;
-          margin-bottom: 20px;
-          line-height: 1;
-        }
-        
-        .question-mark-styled {
-          display: inline-block;
-          margin-left: 0.25em;
-          color: #ffffff;
+          line-height: 1.1;
+          letter-spacing: -1px;
         }
 
-        .whats-next-footer p.sub-lead {
-          font-size: 1.25rem;
-          color: #888888;
-          max-width: 620px;
-          margin: 0 auto 50px;
-          line-height: 1.7;
+        .project-subtitle-text {
+          font-size: 1.15rem;
+          color: #cccccc;
+          font-weight: 500;
         }
 
-        .footer-actions {
-          display: flex;
-          justify-content: center;
+        .project-desc-text {
+          font-size: 1rem;
+          color: #999999;
+          line-height: 1.75;
+          max-width: 520px;
+          margin-top: 5px;
+        }
+
+        .project-meta-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
           gap: 20px;
-          flex-wrap: wrap;
-          margin-bottom: 80px;
+          margin-top: 15px;
+          border-top: 1px solid #1a1a1a;
+          border-bottom: 1px solid #1a1a1a;
+          padding: 20px 0;
         }
 
-        .btn-footer-link {
-          padding: 16px 38px;
+        .meta-item span.label {
+          display: block;
+          font-size: 0.75rem;
+          color: #666666;
+          font-family: monospace;
+          margin-bottom: 4px;
+          text-transform: uppercase;
+        }
+
+        .meta-item span.value {
+          font-size: 0.95rem;
+          color: #dddddd;
+          font-weight: 600;
+        }
+
+        .project-action-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          margin-top: 10px;
+          padding: 14px 28px;
           background: #ffffff;
           color: #070707;
           font-weight: 700;
-          font-size: 0.95rem;
+          font-size: 0.9rem;
           text-decoration: none;
-          border: 1px solid #ffffff;
-          transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+          width: fit-content;
+          transition: background 0.3s ease, transform 0.3s ease;
         }
-        .btn-footer-link:hover {
+
+        .project-action-link:hover {
           background: #dcdcdc;
           transform: translateY(-2px);
         }
 
-        .btn-footer-outline {
-          padding: 16px 38px;
-          background: transparent;
-          color: #ffffff;
-          font-weight: 700;
-          font-size: 0.95rem;
-          text-decoration: none;
-          border: 1px solid #ffffff;
-          transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        /* LISTA RAPIDA DEI PROGETTI PER CAMBIO STATO */
+        .project-steps-selector {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          margin-top: 10px;
         }
-        .btn-footer-outline:hover {
+
+        .step-pill {
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid #222222;
+          color: #777777;
+          padding: 6px 14px;
+          font-size: 0.8rem;
+          font-family: monospace;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .step-pill.active {
           background: #ffffff;
           color: #070707;
-          transform: translateY(-2px);
+          border-color: #ffffff;
+          font-weight: 700;
         }
-
-        .footer-bottom-info {
-          position: absolute;
-          bottom: 40px;
-          left: 6vw;
-          right: 6vw;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          border-top: 1px solid #141414;
-          padding-top: 25px;
-          font-family: monospace;
-          font-size: 0.82rem;
-          color: #666666;
-        }
-        .footer-contacts-list { display: flex; gap: 30px; }
-        .footer-contacts-list a { color: #888888; text-decoration: none; transition: color 0.3s; }
-        .footer-contacts-list a:hover { color: #ffffff; }
 
         @media (max-width: 1024px) {
-          .footer-bottom-info {
-            position: relative;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            flex-direction: column;
-            gap: 15px;
+          .showcase-grid-layout {
+            grid-template-columns: 1fr;
             text-align: center;
-            margin-top: 40px;
+            gap: 40px;
+          }
+          .project-meta-grid {
+            text-align: left;
+          }
+          .project-action-link, .project-steps-selector {
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .hud-container {
+            transform: scale(0.85);
+            margin: -30px auto;
           }
         }
       `}</style>
 
-      {/* HEADER BAR */}
-      <Header lang={lang} setLang={setLang} showName={showNavName} />
-      
-      {/* HERO SECTION CON SVG NOME MASCHERA */}
-      <Hero />
-
-      {/* SEZIONE PRESENTAZIONE (IMMAGINI 100% BORDO PAGINA) */}
-      <IntroSection t={translations[lang]} />
-
-      {/* STICKY SHOE (BACKGROUND FISSO + SCHEDE CHE SCORRONO) */}
-      <StickyObject />
-
-      {/* SHOWCASE CERCHIO CON MAGNETE SUI PROGETTI */}
-      <CircleShowcase steps={projectList} activeStep={activeStep} />
-
-      {/* WHAT'S NEXT ISOLATO A TUTTO SCHERMO */}
-      <div className="whats-next-wrapper">
-        <footer className="whats-next-footer">
-          <h2>
-            WHAT&apos;S NEXT
-            <span className="question-mark-styled">?</span>
-          </h2>
+      <div className="showcase-grid-layout">
+        {/* GRAFICA HUD CON CERCHIO CENTRALE */}
+        <div className="hud-container">
+          <div className="hud-ring hud-ring-1"></div>
+          <div className="hud-ring hud-ring-2"></div>
+          <div className="hud-ring hud-ring-dotted"></div>
+          <div className="hud-arc hud-arc-1"></div>
+          <div className="hud-arc hud-arc-2"></div>
           
-          <p className="sub-lead">
-            Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale.
-          </p>
+          <div className="hud-pointer-line"></div>
+          <div className="hud-pointer-dot"></div>
 
-          <div className="footer-actions">
-            <a href="/about" className="btn-footer-link">
-              ABOUT ME
-            </a>
-            <a href="/cv" className="btn-footer-outline">
-              CURRICULUM VITAE
-            </a>
+          <div className="hud-center-content">
+            <div className="inner-grid-pattern"></div>
+            <img 
+              src={currentProject.img} 
+              alt={currentProject.title} 
+              className="hud-project-img" 
+            />
           </div>
+        </div>
 
-          <div className="footer-bottom-info">
-            <div>2026 MATTEO FINCO // PRODUCT DESIGN &amp; MAKER</div>
-            <div className="footer-contacts-list">
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="/about">About</a>
-              <a href="/cv">CV</a>
+        {/* PANNELLO INFORMAZIONI PROGETTO ATTIVO */}
+        <div className="showcase-info-panel">
+          <div className="project-category-tag">
+            {currentProject.category} // {currentProject.year}
+          </div>
+          <h2 className="project-main-title">{currentProject.title}</h2>
+          <div className="project-subtitle-text">{currentProject.subtitle}</div>
+          <p className="project-desc-text">{currentProject.desc}</p>
+
+          <div className="project-meta-grid">
+            <div className="meta-item">
+              <span className="label">Strumenti & CAD</span>
+              <span className="value">{currentProject.tools}</span>
+            </div>
+            <div className="meta-item">
+              <span className="label">Materiali & CMF</span>
+              <span className="value">{currentProject.material}</span>
             </div>
           </div>
-        </footer>
+
+          <div className="project-steps-selector">
+            {steps.map((st, idx) => (
+              <button 
+                key={st.id} 
+                className={`step-pill ${idx === activeStep ? 'active' : ''}`}
+                onClick={() => {
+                  const ev = new CustomEvent('set-active-project', { detail: idx });
+                  window.dispatchEvent(ev);
+                }}
+              >
+                {st.id}
+              </button>
+            ))}
+          </div>
+
+          <a href={currentProject.link} className="project-action-link">
+            ESPLORA PROGETTO →
+          </a>
+        </div>
       </div>
-    </div>
+    </section>
   );
-}
+};
