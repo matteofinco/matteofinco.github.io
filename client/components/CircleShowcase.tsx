@@ -20,28 +20,28 @@ interface ShowcaseProps {
 }
 
 export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) => {
-  const radius = 180;
+  const radius = 170;
   const centerX = 250;
-  const centerY = 250;
+  const centerY = 230;
 
   return (
     <section className="process-showcase-wrapper">
-      {/* COLONNA STICKY A SINISTRA (CERCHIO INGRANDITO DEL 20%) */}
+      {/* COLONNA FISSA (STICKY) A SINISTRA */}
       <div className="process-sticky-left">
         <div className="circle-technical-frame">
-          <svg className="circle-hud-svg" viewBox="0 0 500 500">
+          <svg className="circle-hud-svg" viewBox="0 0 500 460">
             <defs>
               <clipPath id="circleImageClip">
-                <circle cx={centerX} cy={centerY} r={radius - 15} />
+                <circle cx={centerX} cy={centerY} r={radius - 12} />
               </clipPath>
             </defs>
 
-            {/* Anelli di riferimento geometrico */}
-            <circle cx={centerX} cy={centerY} r={radius + 20} stroke="rgba(255,255,255,0.08)" strokeWidth="1" fill="none" />
-            <circle cx={centerX} cy={centerY} r={radius} stroke="rgba(255,255,255,0.22)" strokeWidth="1.5" strokeDasharray="6,6" fill="none" />
-            <circle cx={centerX} cy={centerY} r={radius - 15} stroke="rgba(255,255,255,0.35)" strokeWidth="1" fill="none" />
+            {/* Cerchi guida concentrici */}
+            <circle cx={centerX} cy={centerY} r={radius + 18} stroke="rgba(255,255,255,0.1)" strokeWidth="1" fill="none" />
+            <circle cx={centerX} cy={centerY} r={radius} stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeDasharray="6,6" fill="none" />
+            <circle cx={centerX} cy={centerY} r={radius - 12} stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
 
-            {/* Immagine del progetto attivo */}
+            {/* Foto ritagliata all'interno del cerchio */}
             <g clipPath="url(#circleImageClip)">
               {steps.map((step, idx) => (
                 <image
@@ -57,7 +57,7 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
               ))}
             </g>
 
-            {/* 7 Nodi distribuiti lungo la circonferenza */}
+            {/* 7 Pallini/Nodi interattivi lungo la circonferenza */}
             {steps.map((step, idx) => {
               const angleDeg = -90 + idx * (360 / steps.length);
               const angleRad = (angleDeg * Math.PI) / 180;
@@ -73,7 +73,7 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
                   <circle
                     cx={px}
                     cy={py}
-                    r={isActive ? "6.5" : "4"}
+                    r={isActive ? "6" : "4"}
                     fill={isActive ? "#ffffff" : "#444444"}
                     stroke="#070707"
                     strokeWidth="2"
@@ -93,12 +93,12 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
               );
             })}
 
-            {/* Reticolo di centraggio */}
-            <line x1={centerX - 15} y1={centerY} x2={centerX + 15} y2={centerY} stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-            <line x1={centerX} y1={centerY - 15} x2={centerX} y2={centerY + 15} stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+            {/* Mirino centrale */}
+            <line x1={centerX - 12} y1={centerY} x2={centerX + 12} y2={centerY} stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+            <line x1={centerX} y1={centerY - 12} x2={centerX} y2={centerY + 12} stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
           </svg>
 
-          {/* TITOLO DEL PROGETTO SOTTO IL CERCHIO */}
+          {/* TITOLO DEL PROGETTO CENTRATO SOTTO IL CERCHIO */}
           <div className="project-title-under-circle">
             <span className="project-index-tag">PROJECT_0{activeStep + 1} // {steps[activeStep].year}</span>
             <h3 className="project-main-name">{steps[activeStep].title}</h3>
@@ -107,7 +107,7 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
         </div>
       </div>
 
-      {/* COLONNA TESTI E PULSANTI LINK A DESTRA */}
+      {/* SCHEDE PROGETTI A DESTRA */}
       <div className="process-scroll-right">
         {steps.map((step, idx) => (
           <div
@@ -132,7 +132,6 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
 
             <p className="phase-desc">{step.desc}</p>
 
-            {/* BOTTONE LINK DI APPROFONDIMENTO */}
             <a href={step.link} className="project-detail-btn">
               <span>Scopri il progetto {step.title}</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
