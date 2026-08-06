@@ -1,28 +1,17 @@
 import React from 'react';
 
-export interface IntroData {
-  sec1Title?: string;
-  sec1Sub?: string;
-  sec1P?: string;
-  sec2P1?: string;
-  sec2P2?: string;
+interface IntroProps {
+  t: {
+    sec1Title: string;
+    sec1Sub: string;
+    sec1P: string;
+    sec2P1: string;
+    sec2P2: string;
+  };
 }
 
-export interface IntroSectionProps {
-  t?: IntroData;
-  data?: IntroData;
-}
 
-export const IntroSection: React.FC<IntroSectionProps> = ({ t, data }) => {
-  // Supporta sia la prop 't' che la prop 'data' con valori di fallback predefiniti
-  const content = t || data || {};
-
-  const sec1Title = content.sec1Title ?? "PROGETTAZIONE & METODO";
-  const sec1Sub = content.sec1Sub ?? "Dall'idea al prototipo funzionale";
-  const sec1P = content.sec1P ?? "Sviluppo soluzioni di design industriale e prototipazione con un approccio incentrato su funzionalità, forma e materiali.";
-  const sec2P1 = content.sec2P1 ?? "Integrazione tra modellaizone CAD avanzata, stampa 3D (PLA e materiali tecnici) e lavorazioni CNC / Laser.";
-  const sec2P2 = content.sec2P2 ?? "Sperimentazione costante su forme organiche, finiture di superficie e sostenibilità dei materiali.";
-
+export const IntroSection: React.FC<IntroProps> = ({ t }) => {
   return (
     <div className="intro-fullbleed-wrapper">
       {/* RIGA 1: IMMAGINE A FILO BORDO SINISTRO */}
@@ -30,13 +19,13 @@ export const IntroSection: React.FC<IntroSectionProps> = ({ t, data }) => {
         <div className="intro-media-box reveal-editorial reveal-from-left">
           <img
             src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80"
-            alt="Studio Work"
+            alt="Matteo Finco Studio Work"
           />
         </div>
         <div className="intro-text-box reveal-editorial reveal-from-right">
-          <h2>{sec1Title}</h2>
-          <h3 className="sub-grey">{sec1Sub}</h3>
-          <p>{sec1P}</p>
+          <h2>{t.sec1Title}</h2>
+          <h3 className="sub-grey">{t.sec1Sub}</h3>
+          <p>{t.sec1P}</p>
         </div>
       </section>
 
@@ -44,8 +33,8 @@ export const IntroSection: React.FC<IntroSectionProps> = ({ t, data }) => {
       <section className="intro-row media-right">
         <div className="intro-text-box reveal-editorial reveal-from-left">
           <h2>Making &amp;<br />Prototipazione</h2>
-          <p className="p-spacer">{sec2P1}</p>
-          <p>{sec2P2}</p>
+          <p className="p-spacer">{t.sec2P1}</p>
+          <p>{t.sec2P2}</p>
         </div>
         <div className="intro-media-box reveal-editorial reveal-from-right">
           <img
@@ -63,7 +52,6 @@ export const IntroSection: React.FC<IntroSectionProps> = ({ t, data }) => {
           flex-direction: column;
           gap: 120px;
           box-sizing: border-box;
-          background-color: #070707;
         }
 
         .intro-row {
