@@ -112,7 +112,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
   const prevStepData = prevStep !== null && prevStep < steps.length ? steps[prevStep] : null;
 
   return (
-    <section className="process-section">
+    <section className="sticky-object-section">
       {/* FRAME STICKY FULL-BLEED A SINISTRA */}
       <div className="process-sticky-frame">
         <div className="process-media">
@@ -183,7 +183,10 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
       </div>
 
       <style>{`
-        .process-section {
+        .sticky-object-section {
+          height: 100vh;
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
           position: relative;
           width: 100%;
           background-color: #070707;
@@ -381,8 +384,9 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
         }
 
         @media (max-width: 900px) {
-          .process-section {
+          .sticky-object-section {
             padding: 0 4vw;
+            height: auto;
           }
           .process-sticky-frame {
             grid-template-columns: 1fr;
