@@ -10,41 +10,77 @@ interface IntroProps {
 
 export const IntroSection: React.FC<IntroProps> = ({ t }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isPinned, setIsPinned] = useState(false);
+  const isScrollingRef = useRef(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      
-      // Controlla se la sezione è attualmente agganciata al centro/top della viewport
-      if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
-        setIsPinned(true);
-      } else {
-        setIsPinned(false);
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      // Se stiamo già animando il passaggio, ignoriamo ulteriori eventi rotellina
+      if (isScrollingRef.current) return;
+
+      const rect = container.getBoundingClientRect();
+      // Verifichiamo se la sezione si trova attualmente agganciata a schermo
+      const isCentred = Math.abs(rect.top) < 50;
+
+      if (isCentred) {
+        if (e.deltaY > 0) {
+          // Scroll verso il BASSO -> Passa direttamente al componente successivo
+          e.preventDefault();
+          isScrollingRef.current = true;
+
+          const nextElement = container.nextElementSibling as HTMLElement;
+          if (nextElement) {
+            nextElement.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+          }
+
+          setTimeout(() => {
+            isScrollingRef.current = false;
+          }, 800);
+        } else if (e.deltaY < 0) {
+          // Scroll verso l'ALTO -> Torna direttamente all'elemento precedente (Hero)
+          e.preventDefault();
+          isScrollingRef.current = true;
+
+          const prevElement = container.previousElementSibling as HTMLElement;
+          if (prevElement) {
+            prevElement.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+          }
+
+          setTimeout(() => {
+            isScrollingRef.current = false;
+          }, 800);
+        }
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Aggiungiamo l'event listener con passive: false per poter usare e.preventDefault()
+    window.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+    };
   }, []);
 
   return (
-    <div className="intro-pinned-container" ref={containerRef}>
+    <div className="intro-pinned-container" ref={containerRef} id="intro-section">
       <style>{`
-        /* Il contenitore è alto 160vh per dare una "resistenza" / blocco durante lo scroll */
         .intro-pinned-container {
           position: relative;
           width: 100%;
-          height: 160vh;
+          height: 100vh;
           background-color: #070707;
           box-sizing: border-box;
+          scroll-snap-align: start;
         }
 
-        /* La viewport rimane bloccata al centro a 100vh durante lo scroll interno */
         .intro-sticky-viewport {
-          position: sticky;
-          top: 0;
+          position: relative;
           height: 100vh;
           width: 100%;
           display: flex;
@@ -64,7 +100,6 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           margin: 0 auto;
           display: flex;
           align-items: center;
-          transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .intro-step-row {
@@ -138,7 +173,6 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
             height: auto !important;
           }
           .intro-sticky-viewport {
-            position: relative;
             height: auto;
             padding: 80px 0;
           }
