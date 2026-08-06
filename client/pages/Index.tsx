@@ -1,109 +1,92 @@
 import React, { useState, useEffect } from 'react';
 
-const projects = [
+const processSteps = [
   {
-    name: 'CEDRIC C.',
-    role: 'Designer della prima versione di [NOME PRODOTTO 1]',
-    meta: 'Lavora in [NOME AZIENDA] da 23 anni | [HUB DESIGN] - [CITTA], [PAESE]',
-    quote: '"Per me, DESIGN significa comprendere le aspirazioni delle persone e saper anticipare i loro bisogni."',
-    img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80'
+    id: '01',
+    phase: 'RESEARCH & ANALYSIS',
+    title: 'Indagine Formale e Sociale',
+    tools: 'Desk Research / User Interviews',
+    material: 'Context & Behavioral Mapping',
+    year: '2026',
+    role: 'Product Strategy & Concept',
+    desc: 'L\'osservazione dei comportamenti quotidiani e la decompressione delle necessità primarie guida la prima definizione dell\'architettura dell\'oggetto.',
+    quote: '"Comprendere il contesto d\'uso significa anticipare la relazione affettiva tra utente e prodotto."',
+    img: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80'
   },
   {
-    name: 'MATHIEU C.',
-    role: 'Designer del prodotto [NOME PRODOTTO 2]',
-    meta: 'Lavora in [NOME AZIENDA] da 10 anni | [LABORATORIO] - [CITTA], [PAESE]',
-    quote: '"Il DESIGN è un processo creativo che aiuta a risolvere le sfide quotidiane, unendo funzione ed estetica."',
-    img: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=600&q=80'
+    id: '02',
+    phase: 'CONCEPT & SKETCHING',
+    title: 'Esplorazione Ideativa',
+    tools: 'Analog Sketching / Form Studies',
+    material: 'Paper & Cardboard Mockups',
+    year: '2026',
+    role: 'Industrial Design',
+    desc: 'Tracciare le linee guida volumetriche attraverso lo schizzo rapido e la modellazione di studio per testare pesi, ingombri ed ergonomia.',
+    quote: '"La linea sulla carta definisce il confine tra la funzione pura e la carica espressiva del volume."',
+    img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80'
   },
   {
-    name: 'THOMAS C.',
-    role: 'DESIGN Manager per [NOME CATEGORIA / PRODOTTO 3]',
-    meta: "Lavora in [NOME AZIENDA] da 6 anni | [CENTRO SVILUPPO] - [CITTA], [PAESE]",
-    quote: '"Co-creare con professionisti del settore ci spinge a superare i limiti della resistenza meccanica e dello stile."',
-    img: 'https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=600&q=80'
+    id: '03',
+    phase: 'CAD & SURFACING',
+    title: 'Modellazione Parametrica',
+    tools: 'NURBS / Solid Modeling / FEA',
+    material: 'Digital Surfaces & Tolerance Check',
+    year: '2026',
+    role: 'Technical & Surface Design',
+    desc: 'Traduzione dell\'idea informale in geometrie matematiche complesse, ottimizzando raggi di raccordo, incastri e spessori di parete.',
+    quote: '"Il controllo millimetrico delle superfici garantisce la continuità della luce sul pezzo finale."',
+    img: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1200&q=80'
   },
   {
-    name: 'ELENA R.',
-    role: 'Senior Footwear Designer per [SETTORE / LINEA]',
-    meta: 'Lavora in [NOME AZIENDA] da 8 anni | [LABORATORIO] - [CITTA], [PAESE]',
-    quote: '"Ogni dettaglio ottimizzato sul prodotto è una vittoria per la performance finale dell\'utente."',
-    img: 'https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=600&q=80'
+    id: '04',
+    phase: 'PROTOTYPING & TESTING',
+    title: 'Validazione Materiale',
+    tools: 'Additive Mfg / CNC / Laser Cutting',
+    material: 'PLA / Recycled Polymers / Metal',
+    year: '2026',
+    role: 'Physical Fabrication',
+    desc: 'Fabbricazione digitale di prototipi funzionali in scala 1:1 per valutare tolleranze accoppiamenti, resistenza meccanica e usabilità.',
+    quote: '"Il prototipo fisico è l\'unico giudice infallibile della bontà di un\'intuizione CAD."',
+    img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80'
   },
   {
-    name: 'LUCAS M.',
-    role: 'Hardware & Outdoor Gear Specialist',
-    meta: 'Lavora in [NOME AZIENDA] da 12 anni | [HUB TECNICO] - [CITTA], [PAESE]',
-    quote: '"Progettare equipaggiamento specifico richiede un\'affidabilità totale in condizioni estreme."',
-    img: 'https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    name: 'SOPHIE B.',
-    role: 'Color & Material Lead Designer',
-    meta: 'Lavora in [NOME AZIENDA] da 5 anni | [DESIGN HUB] - [CITTA], [PAESE]',
-    quote: '"La palette cromatica definisce l\'identità visiva ed emozionale dell\'esperienza d\'uso."',
-    img: 'https://images.unsplash.com/photo-1483721063386-cc26459e13ba?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    name: 'ANTOINE T.',
-    role: 'Digital Concept & Smart Products',
-    meta: 'Lavora in [NOME AZIENDA] da 7 anni | [TECH CENTRE] - [CITTA], [PAESE]',
-    quote: '"Integrando l\'elettronica discreta e le tecnologie connesse miglioriamo l\'analisi della performance."',
-    img: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    name: 'CAMILLE L.',
-    role: 'Eco-Design & Circular Economy Lead',
-    meta: 'Lavora in [NOME AZIENDA] da 9 anni | [ECOLAB] - [CITTA], [PAESE]',
-    quote: '"Il miglior prodotto è quello progettato per essere interamente smontato, riparato e riciclato."',
-    img: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    name: 'JULIEN V.',
-    role: 'Urban Mobility Designer',
-    meta: 'Lavora in [NOME AZIENDA] da 11 anni | [CENTRO MOBILITÀ] - [CITTA], [PAESE]',
-    quote: '"Riprogettare i trasporti urbani significa plasmare le città del futuro rendendole più vivibili."',
-    img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    name: 'MARIE D.',
-    role: '3D Prototyping & Additive Manufacturing',
-    meta: 'Lavora in [NOME AZIENDA] da 4 anni | [PROTOTYPE LAB] - [CITTA], [PAESE]',
-    quote: '"Stampare in 3D in poche ore quello che prima richiedeva settimane accelera l\'innovazione immediata."',
-    img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80'
+    id: '05',
+    phase: 'FINAL SYSTEM & DETAILS',
+    title: 'Integrazione e Finitura',
+    tools: 'Design for Assembly (DFA)',
+    material: 'Tactile Finishes & CMF',
+    year: '2026',
+    role: 'System Design',
+    desc: 'Ingegnerizzazione dei componenti finali, definizione delle texture superficiali e semplificazione delle fasi di montaggio e riciclo.',
+    quote: '"Un oggetto ben progettato si smonta con la stessa eleganza con cui è stato assemblato."',
+    img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80'
   }
-];
-
-const dotsCoordinates = [
-  { cx: 420, cy: 180 }, { cx: 435, cy: 210 }, { cx: 440, cy: 245 },
-  { cx: 438, cy: 280 }, { cx: 425, cy: 315 }, { cx: 405, cy: 350 },
-  { cx: 378, cy: 380 }, { cx: 345, cy: 405 }, { cx: 310, cy: 422 },
-  { cx: 270, cy: 432 }
 ];
 
 const translations = {
   it: {
-    sec1Title: "Progettare un prodotto è un mestiere.",
-    sec1Sub: "In realtà è un insieme di tanti mestieri. Scopriamoli.",
-    sec1P: "Al centro del DESIGN in [NOME AZIENDA] ci sono persone che lavorano ogni giorno per progettare prodotti innovativi. Le specialità creative e le competenze non si limitano solo al prodotto: ci sono designer nel retail, nel digitale e nella comunicazione. I designer lavorano su oltre dodici campi di competenza, dall'abbigliamento alle calzature, fino ai componenti e al 3D.",
-    sec2P1: "Parte del lavoro di un designer consiste nel conferire ai prodotti la loro personalità, oltre alla funzione. Fondamentalmente, oltre la percezione comune, [NOME AZIENDA] vuole stringere un legame profondo tra l'esperienza d'uso, il DESIGN e la società.",
-    sec2P2: "I team si sono uniti per creare il progetto \"[NOME PROGETTO]\". Una strategia unica che pone il valore emozionale al centro della propria missione. Attraverso motivazioni e desideri, i prodotti sono pensati per essere compagni e partner di ogni giorno."
+    sec1Title: "Progettare un prodotto è una sequenza di scelte.",
+    sec1Sub: "Un dialogo costante tra vincoli tecnici e visione espressiva.",
+    sec1P: "Il design di prodotto non è un atto isolato, ma una stratificazione di competenze. Dall'analisi antropometrica alla scelta dei materiali, ogni passaggio costruisce la personalità dell'oggetto e la sua relazione con la persona che lo vive.",
+    sec2P1: "Attribuire una forma significa conferire una voce. Oltre alla pura funzione meccanica, l'oggetto industriale instaura un legame profondo con lo spazio e la cultura quotidiana.",
+    sec2P2: "I progetti sono pensati come sistemi aperti: soluzioni sostenibili, materiali trasparenti e geometrie pronte ad evolversi nel tempo."
   },
   en: {
-    sec1Title: "Designing a product is a trade.",
-    sec1Sub: "It's actually a whole heap of trades. Let's take a look.",
-    sec1P: "At the heart of DESIGN at [COMPANY NAME] are people working day in, day out to design innovative products. The creative specialities and expertise within DESIGN are not just limited to products. There are designers in retail, digital and communications departments. Designers work across more than twelve expert fields from apparel DESIGN to footwear DESIGN, components, 3D and others.",
-    sec2P1: "Part of a designer's work consists in giving products their personality, in addition to their function. Essentially, beyond the usual perception, [COMPANY NAME] wants to forge a link between user experience, DESIGN and society.",
-    sec2P2: "[COMPANY NAME] teams came together to create the '[PROJECT NAME]' project. A unique strategy that places emotional value at the heart of their mission. Through motivations, desires and persistence, products are designed to be companions and partners."
+    sec1Title: "Designing a product is a sequence of choices.",
+    sec1Sub: "A constant dialogue between technical constraints and expressive vision.",
+    sec1P: "Product design is not an isolated act, but a layering of skills. From anthropometric analysis to material selection, every step builds the object's personality and its relationship with the user.",
+    sec2P1: "Giving form means giving a voice. Beyond pure mechanical function, industrial objects forge a deep link with space and everyday culture.",
+    sec2P2: "Projects are conceived as open systems: sustainable solutions, transparent materials, and geometries ready to evolve over time."
   }
 };
 
 export default function Index() {
   const [lang, setLang] = useState<'it' | 'en'>('it');
-  const [activeProject, setActiveProject] = useState<number>(0);
+  const [activeStep, setActiveStep] = useState<number>(0);
 
   useEffect(() => {
-    // Reveal Animations
-    const revealElements = document.querySelectorAll('.reveal-from-right, .reveal-from-left');
+    // Reveal Animations morbide con Blur & Scale
+    const revealElements = document.querySelectorAll('.reveal-editorial');
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -112,37 +95,37 @@ export default function Index() {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.12 }
     );
 
     revealElements.forEach((el) => revealObserver.observe(el));
 
-    // Pinned Sticky Showcase Observer
-    const projectCards = document.querySelectorAll('.project-card');
-    const projectObserver = new IntersectionObserver(
+    // Observer per la sezione Showcase dei Progetti/Processo
+    const processCards = document.querySelectorAll('.process-card');
+    const processObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute('data-project'));
-            setActiveProject(index);
+            const index = Number(entry.target.getAttribute('data-step'));
+            setActiveStep(index);
           }
         });
       },
-      { threshold: 0.55 }
+      { threshold: 0.5 }
     );
 
-    projectCards.forEach((card) => projectObserver.observe(card));
+    processCards.forEach((card) => processObserver.observe(card));
 
     return () => {
       revealObserver.disconnect();
-      projectObserver.disconnect();
+      processObserver.disconnect();
     };
   }, []);
 
   const t = translations[lang];
 
   return (
-    <div className="portfolio-page">
+    <div className="editorial-portfolio">
       <style>{`
         *, *::before, *::after {
           box-sizing: border-box;
@@ -151,31 +134,40 @@ export default function Index() {
         }
 
         html, body {
-          background-color: #050505;
-          color: #ffffff;
-          font-family: 'Helvetica Neue', Arial, sans-serif;
-          line-height: 1.6;
+          background-color: #070707;
+          color: #e5e5e5;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+          line-height: 1.7;
+          overflow-x: hidden;
         }
 
-        .portfolio-page {
-          --accent-blue: #0082c3;
-          background-color: #050505;
-          color: #ffffff;
+        .editorial-portfolio {
+          background-color: #070707;
+          color: #e5e5e5;
           min-height: 100vh;
         }
 
-        /* HEADER */
+        /* HEADER EDITORIALE MINIMALE */
         header {
           position: fixed;
           top: 0;
           left: 0;
           width: 100%;
-          padding: 25px 40px;
+          padding: 35px 6vw;
           display: flex;
-          justify-content: flex-end;
+          justify-content: space-between;
           align-items: center;
           z-index: 1000;
-          background: linear-gradient(to bottom, rgba(5,5,5,0.95), rgba(5,5,5,0));
+          background: linear-gradient(to bottom, rgba(7,7,7,0.85), rgba(7,7,7,0));
+          backdrop-filter: blur(8px);
+        }
+
+        .header-brand {
+          font-size: 0.85rem;
+          font-weight: 700;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: #888888;
         }
 
         .lang-switcher {
@@ -187,26 +179,20 @@ export default function Index() {
         .lang-btn {
           background: none;
           border: none;
-          color: #777;
-          font-weight: 700;
-          font-size: 0.95rem;
+          color: #555555;
+          font-weight: 600;
+          font-size: 0.85rem;
+          letter-spacing: 1px;
           cursor: pointer;
-          transition: color 0.3s ease;
+          transition: color 0.4s ease;
         }
 
         .lang-btn.active, .lang-btn:hover {
           color: #ffffff;
         }
 
-        .header-stripes {
-          color: var(--accent-blue);
-          font-weight: 900;
-          letter-spacing: -2px;
-          margin-left: 10px;
-        }
-
-        /* HERO SECTION */
-        .hero {
+        /* 1. HERO CON MASCHERA SVG "DESIGN" E LAYER IN CONTINUO FADE */
+        .hero-section {
           position: relative;
           width: 100%;
           height: 100vh;
@@ -214,389 +200,615 @@ export default function Index() {
           align-items: center;
           justify-content: center;
           overflow: hidden;
+          background-color: #070707;
         }
 
-        .hero-tech-bg {
-          position: absolute;
-          inset: 0;
-          background-image: 
-            radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.12) 1.5px, transparent 1.5px),
-            linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-          background-size: 40px 40px, 80px 80px, 80px 80px;
-          animation: techBgPulse 10s ease-in-out infinite alternate;
-          z-index: 1;
-        }
-
-        @keyframes techBgPulse {
-          0% { transform: scale(1) translate(0, 0); opacity: 0.5; }
-          100% { transform: scale(1.08) translate(-15px, -15px); opacity: 0.9; }
-        }
-
-        .hero-title-container {
+        .hero-svg-wrapper {
+          width: 90vw;
+          max-width: 1300px;
+          height: auto;
           position: relative;
           z-index: 2;
-          width: 90%;
-          max-width: 1200px;
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 0px;
-          text-transform: uppercase;
-          font-weight: 900;
-          font-size: clamp(6rem, 18vw, 16rem);
-          line-height: 0.78;
-          letter-spacing: -6px;
-          user-select: none;
         }
 
-        .hero-block span {
+        .hero-svg-mask {
+          width: 100%;
+          height: 100%;
           display: block;
-          color: rgba(255, 255, 255, 0.15);
-          -webkit-text-stroke: 2px rgba(255, 255, 255, 0.85);
-          mix-blend-mode: overlay;
-          transition: transform 0.5s ease;
         }
 
-        .hero-block:nth-child(2) { transform: translateY(25px); }
-        .hero-block:nth-child(3) { transform: translateY(-20px); }
-        .hero-block:nth-child(4) { transform: translateY(15px); }
+        /* Layer Animati dietro la Maschera */
+        .layer-blueprint {
+          fill: url(#blueprintPattern);
+          animation: layerMove1 22s ease-in-out infinite alternate;
+        }
 
-        /* SEZIONI INTRODUTTIVE */
-        .section-container {
-          max-width: 1300px;
+        .layer-sketches {
+          animation: layerMove2 18s ease-in-out infinite alternate, layerFade1 14s ease-in-out infinite alternate;
+        }
+
+        .layer-photo {
+          animation: layerMove3 24s ease-in-out infinite alternate, layerFade2 16s ease-in-out infinite alternate;
+        }
+
+        @keyframes layerMove1 {
+          0% { transform: scale(1) translate(0, 0); }
+          100% { transform: scale(1.12) translate(-30px, -15px); }
+        }
+
+        @keyframes layerMove2 {
+          0% { transform: scale(1.05) translate(20px, -20px); }
+          100% { transform: scale(1.2) translate(-20px, 20px); }
+        }
+
+        @keyframes layerMove3 {
+          0% { transform: scale(1) translate(-15px, 15px); }
+          100% { transform: scale(1.1) translate(25px, -25px); }
+        }
+
+        @keyframes layerFade1 {
+          0%, 100% { opacity: 0.25; }
+          50% { opacity: 0.75; }
+        }
+
+        @keyframes layerFade2 {
+          0%, 100% { opacity: 0.7; }
+          50% { opacity: 0.2; }
+        }
+
+        /* 2. SEZIONI INTRODUTTIVE CON TANTO RESPIRO E ANIMAZIONI MORBIDE */
+        .editorial-section {
+          max-width: 1400px;
           margin: 0 auto;
-          padding: 120px 40px;
+          padding: 160px 6vw;
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 70px;
+          gap: 100px;
           align-items: center;
         }
 
-        .text-content h2 {
-          font-size: clamp(2.2rem, 4vw, 3.8rem);
-          font-weight: 900;
-          line-height: 1.05;
-          margin-bottom: 15px;
-          letter-spacing: -1px;
+        .editorial-text h2 {
+          font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+          font-weight: 800;
+          line-height: 1.1;
+          margin-bottom: 25px;
+          letter-spacing: -1.5px;
           color: #ffffff;
         }
 
-        .text-content h3.sub-grey {
-          font-size: clamp(1.8rem, 3.5vw, 3rem);
-          font-weight: 800;
-          color: #555555;
-          margin-bottom: 30px;
-          line-height: 1.1;
+        .editorial-text h3.sub-grey {
+          font-size: clamp(1.6rem, 3vw, 2.4rem);
+          font-weight: 500;
+          color: #666666;
+          margin-bottom: 40px;
+          line-height: 1.25;
+          letter-spacing: -0.5px;
         }
 
-        .text-content p {
-          color: #a0a0a0;
-          font-size: 1.1rem;
-          line-height: 1.7;
+        .editorial-text p {
+          color: #999999;
+          font-size: 1.15rem;
+          line-height: 1.8;
+          max-width: 540px;
         }
 
-        .media-box {
+        .editorial-media-box {
           position: relative;
           width: 100%;
-          height: 480px;
+          height: 560px;
           overflow: hidden;
-          border-radius: 2px;
-          background: #111;
+          background: #111111;
         }
 
-        .media-box img {
+        .editorial-media-box img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           display: block;
+          filter: grayscale(30%);
+          transition: filter 0.8s ease;
         }
 
-        .hatch-lines {
-          position: absolute;
-          top: -15px;
-          right: -15px;
-          font-size: 2.2rem;
-          font-weight: 900;
-          color: rgba(255,255,255,0.25);
-          letter-spacing: -4px;
-          pointer-events: none;
-          z-index: 2;
+        .editorial-media-box:hover img {
+          filter: grayscale(0%);
         }
 
-        .reveal-from-right {
+        /* Nuova animazione morbida: opacity + blur + scale + translateX */
+        .reveal-editorial {
           opacity: 0;
-          transform: translateX(90px);
-          transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+          filter: blur(12px);
+          transform: scale(1.04) translateX(35px);
+          transition: opacity 1.4s cubic-bezier(.22,.61,.36,1), 
+                      filter 1.4s cubic-bezier(.22,.61,.36,1), 
+                      transform 1.4s cubic-bezier(.22,.61,.36,1);
         }
 
-        .reveal-from-left {
-          opacity: 0;
-          transform: translateX(-90px);
-          transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        .reveal-editorial.reveal-from-left {
+          transform: scale(1.04) translateX(-35px);
         }
 
-        .reveal-active {
+        .reveal-editorial.reveal-active {
           opacity: 1;
-          transform: translateX(0);
+          filter: blur(0);
+          transform: scale(1) translateX(0);
         }
 
-        /* SEZIONE PARALLAX FISSA */
-        .parallax-window-section {
+        /* 3. SEZIONE STICKY CON PRODOTTO/SCARPA ANCORATA E TESTO CHE SCORRE SOPRA */
+        .sticky-feature-section {
           position: relative;
           width: 100%;
-          height: 85vh;
-          background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1920&q=80');
-          background-attachment: fixed;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          margin: 100px 0;
-          border-top: 2px solid #111;
-          border-bottom: 2px solid #111;
+          min-height: 240vh;
+          background-color: #050505;
+          border-top: 1px solid #181818;
+          border-bottom: 1px solid #181818;
         }
 
-        /* SHOWCASE DESIGNER STICKY */
-        .showcase-wrapper {
-          position: relative;
-          max-width: 1400px;
-          margin: 0 auto;
-          padding: 60px 40px;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 60px;
-          align-items: start;
-        }
-
-        .showcase-sticky-left {
+        .sticky-media-container {
           position: sticky;
-          top: 15vh;
-          height: 70vh;
+          top: 0;
+          height: 100vh;
+          width: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
-        }
-
-        .svg-frame-container {
-          position: relative;
-          width: 480px;
-          height: 480px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .circle-image-holder {
-          position: absolute;
-          width: 320px;
-          height: 320px;
-          border-radius: 50%;
           overflow: hidden;
-          z-index: 2;
-          background-color: #0d0d0d;
-          box-shadow: 0 0 40px rgba(0,0,0,0.9);
+          z-index: 1;
         }
 
-        .circle-image-holder img {
+        .sticky-media-box {
+          position: relative;
+          width: 75vw;
+          max-width: 1100px;
+          height: 70vh;
+          overflow: hidden;
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+
+        .sticky-media-box img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: opacity 0.4s ease, transform 0.4s ease;
+          display: block;
+          filter: brightness(0.7) contrast(1.1);
         }
 
-        .svg-ring-overlay {
+        .sticky-technical-tag {
+          position: absolute;
+          bottom: 30px;
+          left: 30px;
+          font-family: monospace;
+          font-size: 0.8rem;
+          color: rgba(255,255,255,0.6);
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          background: rgba(0,0,0,0.5);
+          padding: 6px 12px;
+          backdrop-filter: blur(4px);
+        }
+
+        /* Testi che scorrono sopra l'oggetto sticky */
+        .scrolling-overlay-container {
+          position: relative;
+          z-index: 2;
+          margin-top: -100vh;
+          padding-bottom: 20vh;
+          pointer-events: none;
+        }
+
+        .scrolling-card {
+          min-height: 80vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          max-width: 520px;
+          margin: 0 auto 10vh 10vw;
+          background: rgba(12, 12, 12, 0.85);
+          backdrop-filter: blur(16px);
+          padding: 50px 40px;
+          border-left: 2px solid #ffffff;
+          pointer-events: auto;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .scrolling-card .card-step {
+          font-family: monospace;
+          font-size: 0.85rem;
+          color: #777777;
+          letter-spacing: 2px;
+          margin-bottom: 15px;
+          display: block;
+        }
+
+        .scrolling-card h3 {
+          font-size: 2rem;
+          font-weight: 700;
+          color: #ffffff;
+          margin-bottom: 20px;
+          letter-spacing: -0.5px;
+        }
+
+        .scrolling-card p {
+          color: #aaaaaa;
+          font-size: 1.05rem;
+          line-height: 1.7;
+        }
+
+        /* 4. SEZIONE SHOWCASE PROCESSO/PROGETTI IN STILE EDITORIALE E TECNICO */
+        .process-showcase-wrapper {
+          position: relative;
+          max-width: 1500px;
+          margin: 0 auto;
+          padding: 120px 6vw;
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 90px;
+          align-items: start;
+        }
+
+        /* Colonna Sticky di Sinistra con Telaio Tecnico */
+        .process-sticky-left {
+          position: sticky;
+          top: 12vh;
+          height: 76vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .technical-frame {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          max-height: 620px;
+          background-color: #0c0c0c;
+          border: 1px solid #1a1a1a;
+          overflow: hidden;
+        }
+
+        .technical-img-wrapper {
           position: absolute;
           inset: 0;
           width: 100%;
           height: 100%;
-          z-index: 3;
+        }
+
+        .technical-img-wrapper img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.22,.61,.36,1);
+        }
+
+        /* Sovrapposizione grafica con quote, coordinate e indicatori tecnici */
+        .technical-hud-overlay {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
           pointer-events: none;
+          z-index: 3;
         }
 
-        .dot-indicator {
-          fill: #333333;
-          transition: fill 0.3s ease, r 0.3s ease;
-        }
-
-        .dot-indicator.active {
-          fill: #ffffff;
-          r: 6px;
-          filter: drop-shadow(0px 0px 8px rgba(255,255,255,0.9));
-        }
-
-        .showcase-scroll-right {
-          padding-top: 5vh;
+        /* Colonna di Destra con i blocchi del processo */
+        .process-scroll-right {
+          padding-top: 6vh;
           padding-bottom: 20vh;
         }
 
-        .project-card {
-          min-height: 70vh;
+        .process-card {
+          min-height: 75vh;
           display: flex;
           flex-direction: column;
           justify-content: center;
           padding: 40px 0;
-          opacity: 0.2;
-          transition: opacity 0.5s ease;
+          opacity: 0.25;
+          filter: blur(4px);
+          transition: opacity 0.6s ease, filter 0.6s ease;
+          border-bottom: 1px solid #141414;
         }
 
-        .project-card.active-project {
+        .process-card.active-step {
           opacity: 1;
+          filter: blur(0px);
         }
 
-        .project-card .designer-name {
-          font-size: 2.3rem;
-          font-weight: 900;
-          margin-top: 15px;
+        .process-card .phase-number {
+          font-family: monospace;
+          font-size: 0.9rem;
+          color: #666666;
+          letter-spacing: 3px;
+          margin-bottom: 10px;
+        }
+
+        .process-card .phase-title {
+          font-size: 2.5rem;
+          font-weight: 800;
           color: #ffffff;
-          letter-spacing: -0.5px;
-        }
-
-        .project-card .designer-role {
-          font-size: 1.15rem;
-          font-weight: 700;
-          color: #ffffff;
-          margin-bottom: 12px;
-        }
-
-        .project-card .designer-meta {
-          font-size: 0.95rem;
-          color: #888888;
           margin-bottom: 25px;
+          letter-spacing: -1px;
         }
 
-        .project-card blockquote {
+        .process-meta-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+          margin-bottom: 30px;
+          padding: 20px 0;
+          border-top: 1px solid #1a1a1a;
+          border-bottom: 1px solid #1a1a1a;
+        }
+
+        .meta-item .meta-label {
+          font-family: monospace;
+          font-size: 0.75rem;
+          color: #555555;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 4px;
+        }
+
+        .meta-item .meta-value {
+          font-size: 0.95rem;
+          color: #cccccc;
+          font-weight: 500;
+        }
+
+        .process-card .phase-desc {
+          color: #a0a0a0;
+          font-size: 1.1rem;
+          line-height: 1.8;
+          margin-bottom: 30px;
+        }
+
+        .process-card blockquote {
           font-style: italic;
-          color: #aaaaaa;
-          border-left: 2px solid #ffffff;
-          padding-left: 18px;
-          margin-top: 10px;
+          color: #888888;
+          border-left: 2px solid #555555;
+          padding-left: 20px;
           font-size: 1.05rem;
           line-height: 1.6;
         }
 
         footer {
-          background-color: #000;
-          padding: 80px 20px 40px;
+          background-color: #040404;
+          padding: 100px 6vw 50px;
           text-align: center;
-          border-top: 1px solid #151515;
+          border-top: 1px solid #121212;
         }
 
-        @media (max-width: 900px) {
-          .section-container, .showcase-wrapper {
+        footer p {
+          color: #444444;
+          font-size: 0.85rem;
+          letter-spacing: 1px;
+          font-family: monospace;
+        }
+
+        @media (max-width: 1024px) {
+          .editorial-section, .process-showcase-wrapper {
             grid-template-columns: 1fr;
+            gap: 60px;
           }
-          .showcase-sticky-left {
+          .process-sticky-left {
             position: relative;
             top: 0;
-            height: 380px;
+            height: 450px;
           }
-          .svg-frame-container {
-            width: 320px;
-            height: 320px;
-          }
-          .circle-image-holder {
-            width: 200px;
-            height: 200px;
+          .scrolling-card {
+            margin: 0 5vw 10vh 5vw;
           }
         }
       `}</style>
 
-      {/* HEADER */}
+      {/* HEADER EDITORIALE */}
       <header>
+        <div className="header-brand">PORTFOLIO // INDUSTRIAL DESIGN</div>
         <div className="lang-switcher">
           <button className={`lang-btn ${lang === 'it' ? 'active' : ''}`} onClick={() => setLang('it')}>IT</button>
-          <span style={{ color: '#444' }}>|</span>
+          <span style={{ color: '#333' }}>|</span>
           <button className={`lang-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
-          <span className="header-stripes">///</span>
         </div>
       </header>
 
-      {/* HERO SECTION */}
-      <section className="hero">
-        <div className="hero-tech-bg" />
-        <div className="hero-title-container">
-          <div className="hero-block"><span>DE</span></div>
-          <div className="hero-block"><span>SI</span></div>
-          <div className="hero-block"><span>G</span></div>
-          <div className="hero-block"><span>N</span></div>
+      {/* 1. HERO CON MASCHERA SVG "DESIGN" & FADE CONTINUI DEI LAYER */}
+      <section className="hero-section">
+        <div className="hero-svg-wrapper">
+          <svg className="hero-svg-mask" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              {/* Pattern Blueprint */}
+              <pattern id="blueprintPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="1" />
+                <circle cx="20" cy="20" r="1.5" fill="rgba(255, 255, 255, 0.4)" />
+              </pattern>
+
+              {/* Maschera di testo DESIGN */}
+              <mask id="designTextMask" x="0" y="0" width="100%" height="100%">
+                <rect x="0" y="0" width="100%" height="100%" fill="#000000" />
+                <text
+                  x="50%"
+                  y="55%"
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fill="#ffffff"
+                  fontSize="220"
+                  fontWeight="900"
+                  fontFamily="-apple-system, Helvetica Neue, Arial, sans-serif"
+                  letterSpacing="-8"
+                >
+                  DESIGN
+                </text>
+              </mask>
+            </defs>
+
+            {/* Layer in movimento ritmico mascherati dentro il testo DESIGN */}
+            <g mask="url(#designTextMask)">
+              {/* Layer 1: Blueprint Grid */}
+              <rect className="layer-blueprint" x="-10%" y="-10%" width="120%" height="120%" />
+
+              {/* Layer 2: Schizzi a Matita */}
+              <g className="layer-sketches">
+                <image
+                  href="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1600&q=80"
+                  x="0"
+                  y="0"
+                  width="100%"
+                  height="100%"
+                  opacity="0.5"
+                  preserveAspectRatio="xMidYMid slice"
+                />
+              </g>
+
+              {/* Layer 3: Immagine Desaturata Tecnico/Cromatico */}
+              <g className="layer-photo">
+                <image
+                  href="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80"
+                  x="0"
+                  y="0"
+                  width="100%"
+                  height="100%"
+                  opacity="0.45"
+                  preserveAspectRatio="xMidYMid slice"
+                />
+              </g>
+            </g>
+          </svg>
         </div>
       </section>
 
-      {/* SEZIONE 1 */}
-      <section className="section-container">
-        <div className="text-content">
+      {/* 2. SEZIONI INTRODUTTIVE CON ANIMAZIONI EDITORIALI (BLUR + SCALE + FADE) */}
+      <section className="editorial-section">
+        <div className="editorial-text">
           <h2>{t.sec1Title}</h2>
           <h3 className="sub-grey">{t.sec1Sub}</h3>
           <p>{t.sec1P}</p>
         </div>
-        <div className="media-box reveal-from-right">
-          <div className="hatch-lines">///////////////</div>
-          <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80" alt="Design Workshop" />
+        <div className="editorial-media-box reveal-editorial">
+          <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1000&q=80" alt="Design Lab" />
         </div>
       </section>
 
-      {/* SEZIONE 2 */}
-      <section className="section-container">
-        <div className="media-box reveal-from-left">
-          <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" alt="Design Process" />
+      <section className="editorial-section">
+        <div className="editorial-media-box reveal-editorial reveal-from-left">
+          <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1000&q=80" alt="Process Sketch" />
         </div>
-        <div className="text-content">
+        <div className="editorial-text">
           <p>{t.sec2P1}</p>
           <br />
           <p>{t.sec2P2}</p>
         </div>
       </section>
 
-      {/* FINESTRA PARALLAX FISSA */}
-      <section className="parallax-window-section" />
+      {/* 3. SEZIONE STICKY: SCARPA / PRODOTTO ANCORATO CON CONTENUTI CHE SCORRONO */}
+      <section className="sticky-feature-section">
+        <div className="sticky-media-container">
+          <div className="sticky-media-box">
+            <img
+              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1600&q=80"
+              alt="Featured Design Object"
+            />
+            <div className="sticky-technical-tag">[OBJECT_REF_01 // SYSTEM_PROTOTYPE]</div>
+          </div>
+        </div>
 
-      {/* SHOWCASE DESIGNER STICKY */}
-      <section className="showcase-wrapper">
-        <div className="showcase-sticky-left">
-          <div className="svg-frame-container">
-            <div className="circle-image-holder">
-              <img src={projects[activeProject]?.img} alt={projects[activeProject]?.name} />
+        <div className="scrolling-overlay-container">
+          <div className="scrolling-card">
+            <span className="card-step">01 / ARCHITETTURA FORMALE</span>
+            <h3>Scomposizione dei Volumi</h3>
+            <p>Il progetto nasce dalla necessità di alleggerire la percezione visiva, concentrando la massa strutturale solo nei punti di sollecitazione meccanica.</p>
+          </div>
+
+          <div className="scrolling-card">
+            <span className="card-step">02 / INTERAZIONE E MATERIALI</span>
+            <h3>Integrazione Sensoriale</h3>
+            <p>L'accoppiamento tra polimeri rigidi e superfici tattili crea una transizione fluida tra i punti di presa manuale e la struttura di supporto.</p>
+          </div>
+
+          <div className="scrolling-card">
+            <span className="card-step">03 / SOSTENIBILITÀ E MONTAGGIO</span>
+            <h3>Design for Disassembly</h3>
+            <p>Senza l'impiego di colle permanenti, ogni componente può essere separato in meno di due minuti per favorire il riciclo o la sostituzione singola.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. SHOWCASE PROCESSO/PROGETTI IN STILE EDITORIALE E TELAIO TECNICO */}
+      <section className="process-showcase-wrapper">
+        {/* Colonna Fissa a Sinistra con Sovrapposizioni Tecniche */}
+        <div className="process-sticky-left">
+          <div className="technical-frame">
+            <div className="technical-img-wrapper">
+              <img
+                src={processSteps[activeStep]?.img}
+                alt={processSteps[activeStep]?.title}
+              />
             </div>
 
-            <svg className="svg-ring-overlay" viewBox="0 0 500 500">
-              <circle cx="250" cy="250" r="190" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" fill="none" />
-              <circle cx="250" cy="250" r="215" stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray="4,4" fill="none" />
+            {/* Telaio di quote e coordinate SVG */}
+            <svg className="technical-hud-overlay" viewBox="0 0 500 600">
+              {/* Crocette di registro agli angoli */}
+              <path d="M 20 30 L 20 20 L 30 20" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
+              <path d="M 470 20 L 480 20 L 480 30" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
+              <path d="M 20 570 L 20 580 L 30 580" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
+              <path d="M 470 580 L 480 580 L 480 570" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
 
-              <g>
-                {dotsCoordinates.map((dot, idx) => (
-                  <circle
-                    key={idx}
-                    className={`dot-indicator ${activeProject === idx ? 'active' : ''}`}
-                    cx={dot.cx}
-                    cy={dot.cy}
-                    r={4}
-                  />
-                ))}
-              </g>
+              {/* Indicatori e Coordinate */}
+              <text x="35" y="32" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="monospace">
+                SEC_REF // A-0{activeStep + 1}
+              </text>
+              
+              <circle cx="450" cy="50" r="14" stroke="rgba(255,255,255,0.2)" strokeWidth="1" fill="none" />
+              <text x="444" y="53" fill="rgba(255,255,255,0.6)" fontSize="8" fontFamily="monospace">12°</text>
 
-              <path d="M 420 180 L 470 180 L 490 200" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
-              <circle cx="490" cy="200" r="4" fill="#ffffff" />
+              {/* Linea di quota inferiore */}
+              <line x1="30" y1="560" x2="470" y2="560" stroke="rgba(255,255,255,0.15)" strokeWidth="1" strokeDasharray="3,3" />
+              <text x="35" y="550" fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="monospace">
+                SCALE 1:1 // TOLERANCE 0.05mm
+              </text>
+              <text x="390" y="550" fill="rgba(255,255,255,0.6)" fontSize="9" fontFamily="monospace" fontWeight="bold">
+                [{processSteps[activeStep]?.id} / 05]
+              </text>
             </svg>
           </div>
         </div>
 
-        <div className="showcase-scroll-right">
-          {projects.map((proj, idx) => (
+        {/* Colonna di Destra con lo scorrimento dei blocchi editoriali */}
+        <div className="process-scroll-right">
+          {processSteps.map((step, idx) => (
             <div
               key={idx}
-              className={`project-card ${activeProject === idx ? 'active-project' : ''}`}
-              data-project={idx}
+              className={`process-card ${activeStep === idx ? 'active-step' : ''}`}
+              data-step={idx}
             >
-              <div className="designer-name">{proj.name}</div>
-              <div className="designer-role">{proj.role}</div>
-              <div className="designer-meta">{proj.meta}</div>
-              <blockquote>{proj.quote}</blockquote>
+              <div className="phase-number">PHASE_{step.id} // {step.phase}</div>
+              <div className="phase-title">{step.title}</div>
+
+              <div className="process-meta-grid">
+                <div className="meta-item">
+                  <div className="meta-label">Strumenti</div>
+                  <div className="meta-value">{step.tools}</div>
+                </div>
+                <div className="meta-item">
+                  <div className="meta-label">Materiali / Output</div>
+                  <div className="meta-value">{step.material}</div>
+                </div>
+                <div className="meta-item">
+                  <div className="meta-label">Anno / Stato</div>
+                  <div className="meta-value">{step.year}</div>
+                </div>
+                <div className="meta-item">
+                  <div className="meta-label">Ruolo</div>
+                  <div className="meta-value">{step.role}</div>
+                </div>
+              </div>
+
+              <p className="phase-desc">{step.desc}</p>
+              <blockquote>{step.quote}</blockquote>
             </div>
           ))}
         </div>
       </section>
 
       <footer>
-        <p style={{ color: '#555', fontSize: '0.85rem' }}>© [NOME AZIENDA] Design Showcase</p>
+        <p>© 2026 INDUSTRIAL DESIGN PORTFOLIO // ALL RIGHTS RESERVED</p>
       </footer>
     </div>
   );
