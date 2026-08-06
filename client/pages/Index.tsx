@@ -380,7 +380,7 @@ export default function Index() {
       <div className="section-divider-gap" />
 
       <div className="showcase-wrapper">
-        <CircleShowcase steps={projectList} activeStep={activeStep} />
+        <CircleShowcase steps={projectList} activeStep={activeStep} lang={lang}/>
       </div>
 
       <div className="whats-next-wrapper">
