@@ -212,7 +212,7 @@ const translations = {
     sec2P1: "Lavoro passando continuamente tra ricerca, modellazione CAD, prototipazione rapida e test fisici. Credo che le idee migliori emergano quando possono essere costruite, smontate, migliorate e rimesse alla prova.",
     sec2P2: "Sono interessato al design industriale, ai sistemi interattivi e alla fabbricazione digitale, con particolare attenzione alla semplicità costruttiva, alla sostenibilità e alla qualità dell'esperienza d'uso.",
     whatsNextSub: "Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale.",
-    aboutBtn: "CHI SONO",
+    aboutBtn: "ABOUT ME",
     cvBtn: "CURRICULUM VITAE",
     infoText: "Info"
   },
