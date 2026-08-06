@@ -28,24 +28,26 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
         .circle-showcase-section {
           position: relative;
           width: 100%;
-          min-height: 100vh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 80px 6vw;
-          box-sizing: border-box;
           background-color: #070707;
-          overflow: hidden;
+          padding: 100px 6vw;
+          box-sizing: border-box;
         }
 
-        .showcase-grid-layout {
+        .process-scroll-container {
+          display: flex;
+          flex-direction: column;
+          gap: 15vh;
+          max-width: 1300px;
+          margin: 0 auto;
+        }
+
+        .process-card {
           display: grid;
           grid-template-columns: 1fr 1fr;
           align-items: center;
-          max-width: 1300px;
-          width: 100%;
           gap: 60px;
-          z-index: 2;
+          min-height: 80vh;
+          scroll-snap-align: center;
         }
 
         /* HUD GRAPHIC CONTAINER */
@@ -87,7 +89,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+          transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         /* HUD Rings & Elements */
@@ -205,14 +207,13 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           color: #999999;
           line-height: 1.75;
           max-width: 520px;
-          margin-top: 5px;
         }
 
         .project-meta-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 20px;
-          margin-top: 15px;
+          margin-top: 10px;
           border-top: 1px solid #1a1a1a;
           border-bottom: 1px solid #1a1a1a;
           padding: 20px 0;
@@ -253,34 +254,8 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           transform: translateY(-2px);
         }
 
-        /* LISTA RAPIDA DEI PROGETTI PER CAMBIO STATO */
-        .project-steps-selector {
-          display: flex;
-          gap: 10px;
-          flex-wrap: wrap;
-          margin-top: 10px;
-        }
-
-        .step-pill {
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid #222222;
-          color: #777777;
-          padding: 6px 14px;
-          font-size: 0.8rem;
-          font-family: monospace;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-
-        .step-pill.active {
-          background: #ffffff;
-          color: #070707;
-          border-color: #ffffff;
-          font-weight: 700;
-        }
-
         @media (max-width: 1024px) {
-          .showcase-grid-layout {
+          .process-card {
             grid-template-columns: 1fr;
             text-align: center;
             gap: 40px;
@@ -288,80 +263,74 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           .project-meta-grid {
             text-align: left;
           }
-          .project-action-link, .project-steps-selector {
+          .project-action-link {
             margin-left: auto;
             margin-right: auto;
           }
           .hud-container {
             transform: scale(0.85);
-            margin: -30px auto;
+            margin: -20px auto;
           }
         }
       `}</style>
 
-      <div className="showcase-grid-layout">
-        {/* GRAFICA HUD CON CERCHIO CENTRALE */}
-        <div className="hud-container">
-          <div className="hud-ring hud-ring-1"></div>
-          <div className="hud-ring hud-ring-2"></div>
-          <div className="hud-ring hud-ring-dotted"></div>
-          <div className="hud-arc hud-arc-1"></div>
-          <div className="hud-arc hud-arc-2"></div>
-          
-          <div className="hud-pointer-line"></div>
-          <div className="hud-pointer-dot"></div>
+      <div className="process-scroll-container">
+        {steps.map((st, index) => (
+          <div 
+            key={st.id} 
+            className="process-card" 
+            data-step={index}
+          >
+            {/* GRAFICA HUD CON CERCHIO CENTRALE */}
+            <div className="hud-container">
+              <div className="hud-ring hud-ring-1"></div>
+              <div className="hud-ring hud-ring-2"></div>
+              <div className="hud-ring hud-ring-dotted"></div>
+              <div className="hud-arc hud-arc-1"></div>
+              <div className="hud-arc hud-arc-2"></div>
+              
+              <div className="hud-pointer-line"></div>
+              <div className="hud-pointer-dot"></div>
 
-          <div className="hud-center-content">
-            <div className="inner-grid-pattern"></div>
-            <img 
-              src={currentProject.img} 
-              alt={currentProject.title} 
-              className="hud-project-img" 
-            />
-          </div>
-        </div>
-
-        {/* PANNELLO INFORMAZIONI PROGETTO ATTIVO */}
-        <div className="showcase-info-panel">
-          <div className="project-category-tag">
-            {currentProject.category} // {currentProject.year}
-          </div>
-          <h2 className="project-main-title">{currentProject.title}</h2>
-          <div className="project-subtitle-text">{currentProject.subtitle}</div>
-          <p className="project-desc-text">{currentProject.desc}</p>
-
-          <div className="project-meta-grid">
-            <div className="meta-item">
-              <span className="label">Strumenti & CAD</span>
-              <span className="value">{currentProject.tools}</span>
+              <div className="hud-center-content">
+                <div className="inner-grid-pattern"></div>
+                <img 
+                  src={st.img} 
+                  alt={st.title} 
+                  className="hud-project-img" 
+                />
+              </div>
             </div>
-            <div className="meta-item">
-              <span className="label">Materiali & CMF</span>
-              <span className="value">{currentProject.material}</span>
+
+            {/* PANNELLO INFORMAZIONI ASSOCIATO AL SINGOLO STEP */}
+            <div className="showcase-info-panel">
+              <div className="project-category-tag">
+                {st.id} // {st.category} // {st.year}
+              </div>
+              <h2 className="project-main-title">{st.title}</h2>
+              <div className="project-subtitle-text">{st.subtitle}</div>
+              <p className="project-desc-text">{st.desc}</p>
+
+              <div className="project-meta-grid">
+                <div className="meta-item">
+                  <span className="label">Strumenti & CAD</span>
+                  <span className="value">{st.tools}</span>
+                </div>
+                <div className="meta-item">
+                  <span className="label">Materiali & CMF</span>
+                  <span className="value">{st.material}</span>
+                </div>
+              </div>
+
+              <a href={st.link} className="project-action-link">
+                ESPLORA PROGETTO →
+              </a>
             </div>
           </div>
-
-          <div className="project-steps-selector">
-            {steps.map((st, idx) => (
-              <button 
-                key={st.id} 
-                className={`step-pill ${idx === activeStep ? 'active' : ''}`}
-                onClick={() => {
-                  const ev = new CustomEvent('set-active-project', { detail: idx });
-                  window.dispatchEvent(ev);
-                }}
-              >
-                {st.id}
-              </button>
-            ))}
-          </div>
-
-          <a href={currentProject.link} className="project-action-link">
-            ESPLORA PROGETTO →
-          </a>
-        </div>
+        ))}
       </div>
     </section>
   );
 };
+
 export default CircleShowcase;
