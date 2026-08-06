@@ -37,6 +37,7 @@ const projectList: ProjectStep[] = [
     link: '/snake',
     img: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1400&q=80'
   },
+
   {
     id: '02',
     slug: 'archivia',
@@ -68,6 +69,7 @@ const projectList: ProjectStep[] = [
     link: '/archivia',
     img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1400&q=80'
   },
+
   {
     id: '03',
     slug: 'nando',
@@ -99,6 +101,7 @@ const projectList: ProjectStep[] = [
     link: '/nando',
     img: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1400&q=80'
   },
+
   {
     id: '04',
     slug: 'pizzamente',
@@ -130,6 +133,7 @@ const projectList: ProjectStep[] = [
     link: '/pizzamente',
     img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1400&q=80'
   },
+
   {
     id: '05',
     slug: 'wafflemaker',
@@ -161,6 +165,7 @@ const projectList: ProjectStep[] = [
     link: '/wafflemaker',
     img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1400&q=80'
   },
+
   {
     id: '06',
     slug: 'ttable',
@@ -192,6 +197,7 @@ const projectList: ProjectStep[] = [
     link: '/ttable',
     img: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80'
   },
+
   {
     id: '07',
     slug: 'prop',
@@ -228,17 +234,38 @@ const projectList: ProjectStep[] = [
 const translations = {
   it: {
     sec1Title: "Matteo Finco",
-    sec1Sub: "Product Designer. Studente presso l'Università IUAV di Venezia.",
-    sec1P: "Mi piace capire come funzionano le cose. Ogni progetto nasce dall'osservazione del comportamento delle persone e dalla curiosità verso i meccanismi che rendono un prodotto utile, intuitivo e significativo. Per me progettare significa trasformare un problema reale in un'esperienza concreta.",
+    sec1Sub:
+      "Product Designer. Studente presso l'Università IUAV di Venezia.",
+
+    sec1P:
+      "Mi piace capire come funzionano le cose. Ogni progetto nasce dall'osservazione del comportamento delle persone e dalla curiosità verso i meccanismi che rendono un prodotto utile, intuitivo e significativo. Per me progettare significa trasformare un problema reale in un'esperienza concreta.",
+
+    sec2P1:
+      "Lavoro passando continuamente tra ricerca, modellazione CAD, prototipazione rapida e test fisici. Credo che le idee migliori emergano quando possono essere costruite, smontate, migliorate e rimesse alla prova.",
+
+    sec2P2:
+      "Sono interessato al design industriale, ai sistemi interattivi e alla fabbricazione digitale, con particolare attenzione alla semplicità costruttiva, alla sostenibilità e alla qualità dell'esperienza d'uso.",
+
     whatsNextSub: "Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale.",
     aboutBtn: "CHI SONO",
     cvBtn: "CURRICULUM VITAE",
     infoText: "Info"
   },
+
   en: {
     sec1Title: "Matteo Finco",
-    sec1Sub: "Product Designer. Student at IUAV University of Venice.",
-    sec1P: "I like understanding how things work. Every project starts by observing people and questioning the mechanisms that make a product useful, intuitive and meaningful. For me, design is the process of turning real problems into tangible experiences.",
+    sec1Sub:
+      "Product Designer. Student at IUAV University of Venice.",
+
+    sec1P:
+      "I like understanding how things work. Every project starts by observing people and questioning the mechanisms that make a product useful, intuitive and meaningful. For me, design is the process of turning real problems into tangible experiences.",
+
+    sec2P1:
+      "My workflow moves continuously between research, CAD modelling, rapid prototyping and physical testing. I believe the best ideas emerge when they can be built, taken apart, refined and tested again.",
+
+    sec2P2:
+      "I'm particularly interested in industrial design, interactive systems and digital fabrication, with a focus on simplicity, sustainability and thoughtful user experiences.",
+
     whatsNextSub: "Always open to new collaborations, industrial design projects, and digital fabrication experiments.",
     aboutBtn: "ABOUT ME",
     cvBtn: "CURRICULUM VITAE",
@@ -268,6 +295,19 @@ export default function Index() {
       heroObserver.observe(heroEl);
     }
 
+    const revealElements = document.querySelectorAll('.reveal-editorial');
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-active');
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    revealElements.forEach((el) => revealObserver.observe(el));
+
     const processCards = document.querySelectorAll('.process-card');
     const processObserver = new IntersectionObserver(
       (entries) => {
@@ -284,7 +324,7 @@ export default function Index() {
 
     return () => {
       window.removeEventListener('set-active-project' as any, handleCustomStep);
-      heroObserver.disconnect();
+      revealObserver.disconnect();
       processObserver.disconnect();
     };
   }, []);
@@ -308,15 +348,33 @@ export default function Index() {
           background-color: #070707;
           color: #e5e5e5;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          line-height: 1.8;
         }
 
-        /* ATTIVAZIONE DELLO SCROLL SNAP PULITO SUL CONTENITORE PRINCIPALE */
         .editorial-portfolio {
           background-color: #070707;
           color: #e5e5e5;
           min-height: 100vh;
-          overflow-y: auto;
-          scroll-snap-type: y mandatory;
+        }
+
+        .reveal-editorial {
+          opacity: 0;
+          filter: blur(10px);
+          transition: opacity 1s cubic-bezier(.22,.61,.36,1), filter 1s cubic-bezier(.22,.61,.36,1), transform 1s cubic-bezier(.22,.61,.36,1);
+        }
+        .reveal-editorial.reveal-from-right { transform: translateX(30px); }
+        .reveal-editorial.reveal-from-left { transform: translateX(-30px); }
+        .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: translateX(0); }
+
+        /* FASCIA SCURA E SPATIO DEDICATO DI SEPARAZIONE */
+        .section-divider-gap {
+          width: 100%;
+          height: 16vh;
+          background-color: #070707;
+          border-top: 1px solid #141414;
+          border-bottom: 1px solid #141414;
+          position: relative;
+          z-index: 5;
         }
 
         .showcase-wrapper {
@@ -341,7 +399,6 @@ export default function Index() {
           position: relative;
           scroll-snap-align: start;
           box-sizing: border-box;
-          border-top: 1px solid #141414;
         }
 
         .whats-next-footer h2 {
@@ -425,6 +482,9 @@ export default function Index() {
         .footer-contacts-list a:hover { color: #ffffff; }
 
         @media (max-width: 1024px) {
+          .section-divider-gap {
+            height: 80px;
+          }
           .footer-bottom-info {
             position: relative;
             bottom: 0;
@@ -441,7 +501,13 @@ export default function Index() {
       <Header lang={lang} setLang={setLang} showName={showNavName} />
       <Hero />
       <IntroSection t={t} />
+      
+      {/* FASCIA DI STACCO NERA TRA INTRO E STICKY OBJECT */}
+      <div className="section-divider-gap" />
+
       <StickyObject lang={lang} />
+      {/* FASCIA DI STACCO NERA PRIMA DI CIRCLE SHOWCASE */}
+      <div className="section-divider-gap" />
 
       <div className="showcase-wrapper">
         <CircleShowcase steps={projectList} activeStep={activeStep} lang={lang} />
