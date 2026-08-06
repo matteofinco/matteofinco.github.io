@@ -14,137 +14,286 @@ export interface ProjectStep {
   img: string;
 }
 
-interface ShowcaseProps {
+interface CircleShowcaseProps {
   steps: ProjectStep[];
   activeStep: number;
 }
 
-export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) => {
-  const radius = 240;
-  const centerX = 290;
-  const centerY = 280;
+export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeStep }) => {
+  const currentProject = steps[activeStep] || steps[0];
 
   return (
-    <section className="process-showcase-wrapper">
-      {/* COLONNA FISSA STICKY CON MARGINE TOP DEDICATO PER EVITARE L'HEADER */}
-      <div className="process-sticky-left">
-        <div className="circle-technical-frame">
-          <svg className="circle-hud-svg" viewBox="0 0 580 560">
-            <defs>
-              <clipPath id="circleImageClip" clipPathUnits="userSpaceOnUse">
-                <circle cx={centerX} cy={centerY} r={radius - 2} />
-              </clipPath>
-            </defs>
+    <section className="circle-showcase-container">
+      <div className="sticky-viewport">
+        {/* LATO SINISTRO: Cerchio Sticky Visivo con Titolo Dinamico In Sottofondo */}
+        <div className="visual-sticky-pane">
+          <div className="circle-frame">
+            <div 
+              className="circle-image" 
+              style={{ backgroundImage: `url(${currentProject.img})` }}
+            />
+            <div className="circle-overlay-ring" />
+          </div>
 
-            {/* Anelli HUD Esterni */}
-            <circle cx={centerX} cy={centerY} r={radius + 20} stroke="rgba(255,255,255,0.12)" strokeWidth="1" fill="none" />
-            <circle cx={centerX} cy={centerY} r={radius + 6} stroke="rgba(255,255,255,0.22)" strokeWidth="1.5" strokeDasharray="8,8" fill="none" />
-            
-            {/* Fondo scuro anti-glitch */}
-            <circle cx={centerX} cy={centerY} r={radius - 2} fill="#070707" />
-
-            {/* Layer Immagini */}
-            <g clipPath="url(#circleImageClip)" className="circle-images-container">
-              {steps.map((step, idx) => (
-                <image
-                  key={step.id}
-                  href={step.img}
-                  x={centerX - radius}
-                  y={centerY - radius}
-                  width={radius * 2}
-                  height={radius * 2}
-                  preserveAspectRatio="xMidYMid slice"
-                  className={`circle-img-layer ${activeStep === idx ? 'active-layer' : ''}`}
-                />
-              ))}
-            </g>
-
-            <circle cx={centerX} cy={centerY} r={radius - 2} stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" fill="none" />
-
-            {/* Nodi sulla circonferenza */}
-            {steps.map((step, idx) => {
-              const angleDeg = -90 + idx * (360 / steps.length);
-              const angleRad = (angleDeg * Math.PI) / 180;
-              const px = centerX + radius * Math.cos(angleRad);
-              const py = centerY + radius * Math.sin(angleRad);
-              const isActive = activeStep === idx;
-
-              return (
-                <g key={step.id} className="circle-node-group">
-                  {isActive && (
-                    <circle cx={px} cy={py} r="14" fill="none" stroke="#ffffff" strokeWidth="1" className="node-pulse" />
-                  )}
-                  <circle
-                    cx={px}
-                    cy={py}
-                    r={isActive ? "6.5" : "4"}
-                    fill={isActive ? "#ffffff" : "#333333"}
-                    stroke="#070707"
-                    strokeWidth="2"
-                  />
-                  <text
-                    x={px + Math.cos(angleRad) * 26}
-                    y={py + Math.sin(angleRad) * 26 + 4}
-                    fill={isActive ? "#ffffff" : "#666666"}
-                    fontSize="10"
-                    fontFamily="monospace"
-                    textAnchor="middle"
-                  >
-                    0{idx + 1}
-                  </text>
-                </g>
-              );
-            })}
-
-            <line x1={centerX - 12} y1={centerY} x2={centerX + 12} y2={centerY} stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-            <line x1={centerX} y1={centerY - 12} x2={centerX} y2={centerY + 12} stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-          </svg>
-
-          {/* Titoli sotto il cerchio */}
-          <div className="project-title-under-circle">
-            <span className="project-index-tag">PROJECT_0{activeStep + 1} // {steps[activeStep].year}</span>
-            <h3 className="project-main-name">{steps[activeStep].title}</h3>
-            <p className="project-sub-name">{steps[activeStep].subtitle}</p>
+          {/* Titolo Dinamico sotto al Cerchio Sticky che cambia con lo scroll */}
+          <div className="sticky-project-meta">
+            <span className="project-step-badge">{currentProject.id} / 0{steps.length}</span>
+            <h3 className="project-sticky-title">{currentProject.title}</h3>
+            <p className="project-sticky-sub">{currentProject.subtitle}</p>
           </div>
         </div>
-      </div>
 
-      {/* SCHEDE TESTO CON SNAP MAGNETICO SUI PROGETTI */}
-      <div className="process-scroll-right">
-        {steps.map((step, idx) => (
-          <div
-            key={step.id}
-            className={`process-card snap-card ${activeStep === idx ? 'active-step' : ''}`}
-            data-step={idx}
-          >
-            <div className="card-content-wrapper">
-              <div className="phase-number">0{idx + 1} // {step.category}</div>
-              <div className="phase-title">{step.title}</div>
-              <div className="phase-subtitle">{step.subtitle}</div>
+        {/* LATO DESTRO: Lista Schede Descrittive che Scorrono e Attivano i Progetti */}
+        <div className="scrollable-cards-pane">
+          {steps.map((step, idx) => (
+            <div 
+              key={step.id} 
+              className={`process-card ${idx === activeStep ? 'is-active' : ''}`}
+              data-step={idx}
+            >
+              <div className="card-header-tags">
+                <span className="category-tag">{step.category}</span>
+                <span className="year-tag">{step.year}</span>
+              </div>
 
-              <div className="process-meta-grid">
-                <div className="meta-item">
-                  <div className="meta-label">Strumenti &amp; Software</div>
-                  <div className="meta-value">{step.tools}</div>
+              <h2 className="card-title">{step.title}</h2>
+              <p className="card-subtitle">{step.subtitle}</p>
+              
+              <p className="card-desc">{step.desc}</p>
+
+              <div className="card-specs-grid">
+                <div>
+                  <span className="spec-label">STRUMENTI</span>
+                  <span className="spec-val">{step.tools}</span>
                 </div>
-                <div className="meta-item">
-                  <div className="meta-label">Materiali / Output</div>
-                  <div className="meta-value">{step.material}</div>
+                <div>
+                  <span className="spec-label">MATERIALI</span>
+                  <span className="spec-val">{step.material}</span>
                 </div>
               </div>
 
-              <p className="phase-desc">{step.desc}</p>
-
-              <a href={step.link} className="project-detail-btn">
-                <span>Scopri il progetto {step.title}</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
+              <a href={step.link} className="project-details-btn">
+                ESPLORA PROGETTO →
               </a>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        .circle-showcase-container {
+          position: relative;
+          width: 100%;
+          background-color: #070707;
+        }
+
+        .sticky-viewport {
+          display: flex;
+          align-items: flex-start;
+          width: 100%;
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 0 5vw;
+          position: relative;
+        }
+
+        /* VISTA FISSA STICKY A SINISTRA */
+        .visual-sticky-pane {
+          position: sticky;
+          top: 80px;
+          height: calc(100vh - 100px);
+          width: 48%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          z-index: 10;
+        }
+
+        .circle-frame {
+          position: relative;
+          width: clamp(260px, 28vw, 420px);
+          height: clamp(260px, 28vw, 420px);
+          border-radius: 50%;
+          overflow: hidden;
+          box-shadow: 0 0 50px rgba(0,0,0,0.8);
+          border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .circle-image {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          transition: background-image 0.6s ease-in-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .circle-frame:hover .circle-image {
+          transform: scale(1.05);
+        }
+
+        .circle-overlay-ring {
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
+          pointer-events: none;
+        }
+
+        .sticky-project-meta {
+          margin-top: 35px;
+          text-align: center;
+          transition: opacity 0.4s ease;
+        }
+
+        .project-step-badge {
+          font-family: monospace;
+          font-size: 0.85rem;
+          color: #666;
+          letter-spacing: 2px;
+          display: block;
+          margin-bottom: 6px;
+        }
+
+        .project-sticky-title {
+          font-size: 2.2rem;
+          font-weight: 800;
+          color: #ffffff;
+          letter-spacing: -1px;
+          margin: 0;
+        }
+
+        .project-sticky-sub {
+          font-size: 0.95rem;
+          color: #888888;
+          margin-top: 4px;
+        }
+
+        /* LATO DESTRO CHE SCORRE */
+        .scrollable-cards-pane {
+          width: 52%;
+          padding-top: 10vh;
+          padding-bottom: 20vh;
+          padding-left: 4vw;
+        }
+
+        .process-card {
+          min-height: 80vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          opacity: 0.25;
+          transform: translateY(20px);
+          transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .process-card.is-active {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .card-header-tags {
+          display: flex;
+          gap: 15px;
+          font-family: monospace;
+          font-size: 0.78rem;
+          margin-bottom: 12px;
+        }
+
+        .category-tag {
+          color: #aaa;
+          letter-spacing: 1.5px;
+        }
+
+        .year-tag {
+          color: #555;
+        }
+
+        .card-title {
+          font-size: clamp(2rem, 3.5vw, 3.2rem);
+          font-weight: 800;
+          color: #ffffff;
+          line-height: 1.1;
+          margin-bottom: 8px;
+        }
+
+        .card-subtitle {
+          font-size: 1.1rem;
+          color: #999;
+          margin-bottom: 24px;
+        }
+
+        .card-desc {
+          font-size: 1rem;
+          color: #cccccc;
+          line-height: 1.8;
+          max-width: 520px;
+          margin-bottom: 30px;
+        }
+
+        .card-specs-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+          padding: 20px 0;
+          border-top: 1px solid #1a1a1a;
+          border-bottom: 1px solid #1a1a1a;
+          margin-bottom: 30px;
+          max-width: 520px;
+        }
+
+        .spec-label {
+          display: block;
+          font-family: monospace;
+          font-size: 0.72rem;
+          color: #555555;
+          letter-spacing: 1px;
+          margin-bottom: 4px;
+        }
+
+        .spec-val {
+          font-size: 0.88rem;
+          color: #dddddd;
+        }
+
+        .project-details-btn {
+          display: inline-block;
+          font-family: monospace;
+          font-size: 0.85rem;
+          color: #ffffff;
+          text-decoration: none;
+          letter-spacing: 1.5px;
+          border-bottom: 1px solid #ffffff;
+          padding-bottom: 4px;
+          align-self: flex-start;
+          transition: opacity 0.3s ease;
+        }
+
+        .project-details-btn:hover {
+          opacity: 0.6;
+        }
+
+        @media (max-width: 900px) {
+          .sticky-viewport {
+            flex-direction: column;
+          }
+          .visual-sticky-pane {
+            position: relative;
+            top: 0;
+            height: auto;
+            width: 100%;
+            padding-top: 60px;
+          }
+          .scrollable-cards-pane {
+            width: 100%;
+            padding-left: 0;
+          }
+          .process-card {
+            min-height: auto;
+            padding: 60px 0;
+          }
+        }
+      `}</style>
     </section>
   );
 };
