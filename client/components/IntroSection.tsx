@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface IntroProps {
   t: {
@@ -9,23 +9,49 @@ interface IntroProps {
 }
 
 export const IntroSection: React.FC<IntroProps> = ({ t }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isPinned, setIsPinned] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      
+      // Controlla se la sezione è attualmente agganciata al centro/top della viewport
+      if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+        setIsPinned(true);
+      } else {
+        setIsPinned(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section className="intro-snap-section" id="intro-section">
+    <div className="intro-pinned-container" ref={containerRef}>
       <style>{`
-        .intro-snap-section {
+        /* Il contenitore è alto 160vh per dare una "resistenza" / blocco durante lo scroll */
+        .intro-pinned-container {
+          position: relative;
           width: 100%;
-          height: 100vh;
-          min-height: 100vh;
+          height: 160vh;
           background-color: #070707;
+          box-sizing: border-box;
+        }
+
+        /* La viewport rimane bloccata al centro a 100vh durante lo scroll interno */
+        .intro-sticky-viewport {
+          position: sticky;
+          top: 0;
+          height: 100vh;
+          width: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
-          position: relative;
-          z-index: 10;
+          overflow: hidden;
           box-sizing: border-box;
-          /* Abilita l'aggancio di precisione durante lo scroll */
-          scroll-snap-align: center;
-          scroll-snap-stop: always;
           border-bottom: 1px solid #141414;
         }
 
@@ -38,6 +64,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           margin: 0 auto;
           display: flex;
           align-items: center;
+          transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .intro-step-row {
@@ -48,7 +75,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           height: 100%;
         }
 
-        /* MEDIA BOX CON DISSOLVENZA E CORNICI */
+        /* MEDIA BOX */
         .intro-media-box {
           position: relative;
           overflow: hidden;
@@ -73,7 +100,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           transform: scale(1.03);
         }
 
-        /* TESTO ED ELEGANZA EDITORIALE */
+        /* TESTI */
         .intro-text-box {
           display: flex;
           flex-direction: column;
@@ -107,11 +134,13 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
         }
 
         @media (max-width: 1024px) {
-          .intro-snap-section {
+          .intro-pinned-container {
+            height: auto !important;
+          }
+          .intro-sticky-viewport {
+            position: relative;
             height: auto;
-            min-height: auto;
             padding: 80px 0;
-            scroll-snap-align: none;
           }
           .intro-stage-container {
             height: auto;
@@ -128,22 +157,24 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
         }
       `}</style>
 
-      <div className="intro-stage-container">
-        <div className="intro-step-row">
-          <div className="intro-media-box">
-            <img
-              src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80"
-              alt="Matteo Finco Studio Work"
-            />
-          </div>
-          <div className="intro-text-box">
-            <h2>{t.sec1Title}</h2>
-            <h3 className="sub-grey">{t.sec1Sub}</h3>
-            <p>{t.sec1P}</p>
+      <div className="intro-sticky-viewport">
+        <div className="intro-stage-container">
+          <div className="intro-step-row">
+            <div className="intro-media-box">
+              <img
+                src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80"
+                alt="Matteo Finco Studio Work"
+              />
+            </div>
+            <div className="intro-text-box">
+              <h2>{t.sec1Title}</h2>
+              <h3 className="sub-grey">{t.sec1Sub}</h3>
+              <p>{t.sec1P}</p>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
