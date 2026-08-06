@@ -32,6 +32,7 @@ export const Header: React.FC<HeaderProps> = ({ lang, setLang, showName }) => {
           </button>
         </div>
 
+        <a href="#process-section" className="nav-link">Progetti</a>
         <a href="/about" className="nav-link">About</a>
         <a href="/cv" className="nav-link">CV</a>
       </nav>
@@ -42,32 +43,27 @@ export const Header: React.FC<HeaderProps> = ({ lang, setLang, showName }) => {
           top: 0;
           left: 0;
           width: 100%;
-          height: 64px;
+          height: 70px;
           padding: 0 5vw;
           display: flex;
           justify-content: space-between;
           align-items: center;
           z-index: 100;
-          background: rgba(7, 7, 7, 0.6);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
+          background: rgba(7, 7, 7, 0.75);
+          backdrop-filter: blur(14px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
           box-sizing: border-box;
         }
 
-        /* NOME DISCRETO E NON PREVALENTE IN ALTO A SINISTRA */
         .nav-brand-name {
-          font-weight: 500;
-          font-size: 0.78rem;
-          letter-spacing: 1.8px;
-          color: rgba(255, 255, 255, 0.7);
+          font-weight: 800;
+          font-size: 0.95rem;
+          letter-spacing: 2px;
+          color: #fff;
           text-decoration: none;
           opacity: 0;
-          transform: translateY(-4px);
-          transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease;
-        }
-
-        .nav-brand-name:hover {
-          color: #ffffff;
+          transform: translateY(-6px);
+          transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
         .nav-brand-name.visible {
@@ -78,21 +74,21 @@ export const Header: React.FC<HeaderProps> = ({ lang, setLang, showName }) => {
         .header-right {
           display: flex;
           align-items: center;
-          gap: 24px;
+          gap: 28px;
         }
 
         .lang-selector {
           display: flex;
           align-items: center;
-          gap: 4px;
+          gap: 6px;
           font-family: monospace;
-          font-size: 0.8rem;
+          font-size: 0.85rem;
         }
 
         .lang-btn {
           background: none;
           border: none;
-          color: #555555;
+          color: #666;
           cursor: pointer;
           font-family: inherit;
           font-size: inherit;
@@ -101,24 +97,24 @@ export const Header: React.FC<HeaderProps> = ({ lang, setLang, showName }) => {
         }
 
         .lang-btn.active, .lang-btn:hover {
-          color: #ffffff;
+          color: #fff;
         }
 
         .lang-divider {
-          color: #333333;
+          color: #444;
         }
 
         .nav-link {
-          color: #888888;
+          color: #aaa;
           text-decoration: none;
-          font-size: 0.82rem;
+          font-size: 0.88rem;
           font-weight: 500;
           letter-spacing: 0.5px;
           transition: color 0.3s ease;
         }
 
         .nav-link:hover {
-          color: #ffffff;
+          color: #fff;
         }
       `}</style>
     </header>
