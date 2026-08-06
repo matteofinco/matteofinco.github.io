@@ -1,26 +1,51 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const PROCESS_STEPS = [
-  {
-    step: '01 / OBSERVE & UNDERSTAND',
-    title: 'Every project starts\nwith a question.',
-    desc: 'Before searching for solutions, I spend time understanding people, contexts and behaviours. I like analysing how products are used, where friction appears and which constraints influence every design decision.',
-  },
-  {
-    step: '02 / MAKE & TEST',
-    title: 'Ideas become real\nthrough prototyping.',
-    desc: 'Sketches evolve into CAD models, functional prototypes and physical experiments. Building ideas allows me to validate assumptions, discover unexpected problems and improve every iteration through direct testing.',
-  },
-  {
-    step: '03 / REFINE & SIMPLIFY',
-    title: 'Good design is\nthoughtful simplicity.',
-    desc: 'Every component should have a clear purpose. I refine geometry, materials and manufacturing processes until complexity disappears and only what truly improves the user experience remains.',
-  },
-];
+interface StickyObjectProps {
+  lang?: 'it' | 'en';
+}
 
-export const StickyObject: React.FC = () => {
+const PROCESS_STEPS = {
+  it: [
+    {
+      step: '01 / OSSERVA E COMPRENDI',
+      title: 'Ogni progetto parte\nda una domanda.',
+      desc: 'Prima di cercare soluzioni, dedico tempo a comprendere le persone, i contesti e i comportamenti. Analizzo come vengono usati i prodotti, dove nascono le difficoltà e quali vincoli guidano ogni decisione progettuale.',
+    },
+    {
+      step: '02 / CREA E TESTA',
+      title: 'Le idee prendono forma\nattraverso i prototipi.',
+      desc: 'Gli schizzi diventano modelli CAD, prototipi funzionali ed esperimenti fisici. Costruire le idee permette di validare le ipotesi, scoprire problemi inattesi e migliorare ogni iterazione attraverso test diretti.',
+    },
+    {
+      step: '03 / AFFINA E SEMPLIFICA',
+      title: 'Il buon design è\nsemplicità consapevole.',
+      desc: 'Ogni componente deve avere uno scopo chiaro. Affino geometrie, materiali e processi produttivi finché la complessità scompare e rimane solo ciò che migliora davvero l’esperienza d’uso.',
+    },
+  ],
+  en: [
+    {
+      step: '01 / OBSERVE & UNDERSTAND',
+      title: 'Every project starts\nwith a question.',
+      desc: 'Before searching for solutions, I spend time understanding people, contexts and behaviours. I like analysing how products are used, where friction appears and which constraints influence every design decision.',
+    },
+    {
+      step: '02 / MAKE & TEST',
+      title: 'Ideas become real\nthrough prototyping.',
+      desc: 'Sketches evolve into CAD models, functional prototypes and physical experiments. Building ideas allows me to validate assumptions, discover unexpected problems and improve every iteration through direct testing.',
+    },
+    {
+      step: '03 / REFINE & SIMPLIFY',
+      title: 'Good design is\nthoughtful simplicity.',
+      desc: 'Every component should have a clear purpose. I refine geometry, materials and manufacturing processes until complexity disappears and only what truly improves the user experience remains.',
+    },
+  ],
+};
+
+export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
   const [activeStep, setActiveStep] = useState(0);
   const triggerRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const steps = PROCESS_STEPS[lang] || PROCESS_STEPS.it;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,7 +70,7 @@ export const StickyObject: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const currentStep = PROCESS_STEPS[activeStep];
+  const currentStep = steps[activeStep];
 
   return (
     <section className="process-section">
@@ -57,13 +82,13 @@ export const StickyObject: React.FC = () => {
             alt="Matteo Finco Design Process"
           />
           <div className="process-tag">
-            HOW I WORK // OBSERVE · MAKE · REFINE
+            {lang === 'it' ? 'COME LAVORO // OSSERVA · CREA · AFFINA' : 'HOW I WORK // OBSERVE · MAKE · REFINE'}
           </div>
         </div>
 
         {/* COLONNA TESTO DESTRA */}
         <div className="process-text-column">
-          <div key={activeStep} className="process-content-block animate-fade">
+          <div key={`${lang}-${activeStep}`} className="process-content-block animate-fade">
             <span className="step-number">{currentStep.step}</span>
 
             <h3 className="step-title">
@@ -78,7 +103,7 @@ export const StickyObject: React.FC = () => {
             <p className="step-description">{currentStep.desc}</p>
 
             <div className="step-indicators">
-              {PROCESS_STEPS.map((_, i) => (
+              {steps.map((_, i) => (
                 <span
                   key={i}
                   className={`indicator-dot ${i === activeStep ? 'active' : ''}`}
@@ -91,7 +116,7 @@ export const StickyObject: React.FC = () => {
 
       {/* STRATO SCROLLABILE TRASPARENTE */}
       <div className="process-triggers-overlay">
-        {PROCESS_STEPS.map((_, index) => (
+        {steps.map((_, index) => (
           <div
             key={index}
             data-step-index={index}
@@ -106,7 +131,7 @@ export const StickyObject: React.FC = () => {
           position: relative;
           width: 100%;
           background-color: #070707;
-          padding: 0 4vw 0 0; /* Rimosso padding a sinistra per toccare il bordo schermo */
+          padding: 0 4vw 0 0;
           box-sizing: border-box;
         }
 
@@ -120,7 +145,7 @@ export const StickyObject: React.FC = () => {
           grid-template-columns: 1.1fr 0.9fr;
           align-items: center;
           gap: 5vw;
-          border-radius: 0; /* Spigoli vivi */
+          border-radius: 0;
           overflow: hidden;
           z-index: 1;
         }
@@ -129,7 +154,7 @@ export const StickyObject: React.FC = () => {
           position: relative;
           width: 100%;
           height: 100%;
-          border-radius: 0; /* Spigoli vivi */
+          border-radius: 0;
           overflow: hidden;
         }
 
@@ -137,7 +162,7 @@ export const StickyObject: React.FC = () => {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          border-radius: 0; /* Spigoli vivi */
+          border-radius: 0;
           filter: none;
         }
 
@@ -151,7 +176,7 @@ export const StickyObject: React.FC = () => {
           letter-spacing: 1.5px;
           background: rgba(0, 0, 0, 0.65);
           padding: 6px 14px;
-          border-radius: 0; /* Spigoli vivi per coerenza col visual */
+          border-radius: 0;
           backdrop-filter: blur(8px);
           z-index: 2;
         }
