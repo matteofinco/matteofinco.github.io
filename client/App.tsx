@@ -1,22 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { Component, ReactNode } from "react";
 import Index from "@/pages/Index";
-import NotFound from "@/pages/NotFound";
 
-export default function App() {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+interface Props {
+  children?: ReactNode;
+}
 
-  useEffect(() => {
-    const handleLocationChange = () => {
-      setCurrentPath(window.location.pathname);
-    };
+interface State {
+  hasError: boolean;
+  error: Error | null;
+}
 
-    window.addEventListener("popstate", handleLocationChange);
-    return () => window.removeEventListener("popstate", handleLocationChange);
-  }, []);
+class ErrorBoundary extends Component<Props, State> {
+  public state: State = {
+    hasError: false,
+    error: null,
+  };
 
-  if (currentPath === "/" || currentPath === "") {
-    return <Index />;
+  public static getDerivedStateFromError(error: Error): State {
+    return { hasError: true, error };
   }
 
-  return <NotFound />;
+  public render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: "40px", color: "#ff5555", background: "#111", fontFamily: "sans-serif" }}>
+          <h2>🚨 Errore di Rendering Rilevato!</h2>
+          <pre style={{ background: "#222", padding: "16px", borderRadius: "8px", overflowX: "auto", color: "#fff" }}>
+            {this.state.error?.toString()}
+            {"\n\n"}
+            {this.state.error?.stack}
+          </pre>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
+export default function App() {
+  return (
+    <ErrorBoundary>
+      <Index />
+    </ErrorBoundary>
+  );
 }
