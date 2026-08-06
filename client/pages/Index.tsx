@@ -21,10 +21,14 @@ const projectList: ProjectStep[] = [
       it: 'DESIGN DI PRODOTTO SPORTIVO',
       en: 'SPORT PRODUCT DESIGN'
     },
-    tools:
-      'Product Design / CAD Modelling / Mechatronics / Prototyping',
-    material:
-      'Laser Sensors / RGB Feedback / Modular Mechanical System',
+    tools: {
+      it: 'Design di prodotto / Modellazione CAD / Meccatronica / Prototipazione',
+      en: 'Product Design / CAD Modelling / Mechatronics / Prototyping'
+    },
+    material: {
+      it: 'Sensori laser / Feedback RGB / Sistema meccanico modulare',
+      en: 'Laser Sensors / RGB Feedback / Modular Mechanical System'
+    },
     year: '2026',
     desc: {
       it: 'Sistema di allenamento interattivo sviluppato per giocatori di hockey su ghiaccio e inline. Snake combina componenti meccanici modulari, sensori e feedback luminosi in tempo reale per creare esercizi adattivi focalizzati sul controllo del disco, velocità di reazione e agilità cognitiva.',
@@ -49,10 +53,14 @@ const projectList: ProjectStep[] = [
       it: 'DESIGN DI PRODOTTO & PRODUZIONE INDUSTRIALE',
       en: 'PRODUCT DESIGN & INDUSTRIAL PRODUCTION'
     },
-    tools:
-      'Industrial Design / Injection Moulding / Snap-fit Engineering',
-    material:
-      'Recycled Polymer / Monomaterial Construction / Mechanical Assembly',
+    tools: {
+      it: 'Design industriale / Stampaggio a iniezione / Connessioni snap-fit',
+      en: 'Industrial Design / Injection Moulding / Snap-fit Engineering'
+    },
+    material: {
+      it: 'Polimero riciclato / Costruzione monomateriale / Assemblaggio meccanico',
+      en: 'Recycled Polymer / Monomaterial Construction / Mechanical Assembly'
+    },
     year: '2026',
     desc: {
       it: 'Organizzatore da scrivania sviluppato per il concorso PLEIADES con Ewikon, Arburg e Uniform. Archivia traduce la logica della memoria USB in un oggetto fisico caratterizzato da connessioni meccaniche integrate e semplicità costruttiva.',
@@ -77,10 +85,14 @@ const projectList: ProjectStep[] = [
       it: 'DESIGN INCLUSIVO & DESIGN PARAMETRICO',
       en: 'INCLUSIVE DESIGN & PARAMETRIC DESIGN'
     },
-    tools:
-      'Inclusive Design / Ergonomic Research / Parametric Modelling',
-    material:
-      'ELASTO-1000 Flexible Polymer / FDM 3D Printing',
+    tools: {
+      it: 'Design inclusivo / Ricerca ergonomica / Modellazione parametrica',
+      en: 'Inclusive Design / Ergonomic Research / Parametric Modelling'
+    },
+    material: {
+      it: 'Polimero flessibile ELASTO-1000 / Stampa 3D FDM',
+      en: 'ELASTO-1000 Flexible Polymer / FDM 3D Printing'
+    },
     year: '2026',
     desc: {
       it: 'Impugnatura inclusiva progettata per migliorare l’utilizzo di posate e strumenti quotidiani da parte di persone con ridotta forza nella mano. Attraverso geometrie flessibili e progettazione parametrica, Nando si adatta a diversi utenti migliorando comfort, stabilità e autonomia.',
@@ -105,10 +117,14 @@ const projectList: ProjectStep[] = [
       it: 'SERVICE & SYSTEM DESIGN',
       en: 'SERVICE & SYSTEM DESIGN'
     },
-    tools:
-      'Service Design / UX-UI Design / System Thinking',
-    material:
-      'Automated Food System / Interactive Interface / Modular Architecture',
+    tools: {
+      it: 'Service Design / UX-UI Design / System Thinking',
+      en: 'Service Design / UX-UI Design / System Thinking'
+    },
+    material: {
+      it: 'Sistema alimentare automatizzato / Interfaccia interattiva / Architettura modulare',
+      en: 'Automated Food System / Interactive Interface / Modular Architecture'
+    },
     year: '2026',
     desc: {
       it: 'Concept di servizio automatizzato sviluppato durante un workshop con Daint. PizzaMente ripensa il processo della pizza integrando ordinazione, preparazione, consumo e smaltimento in un unico sistema capace di trasformare l’attesa in esperienza.',
@@ -133,10 +149,14 @@ const projectList: ProjectStep[] = [
       it: 'DESIGN DI BASE & ANALISI DEL PRODOTTO',
       en: 'BASIC DESIGN & PRODUCT ANALYSIS'
     },
-    tools:
-      'Reverse Engineering / Product Analysis / Editorial Design',
-    material:
-      'Mechanical Components / Thermal Systems / Product Language',
+    tools: {
+      it: 'Reverse Engineering / Analisi del prodotto / Design editoriale',
+      en: 'Reverse Engineering / Product Analysis / Editorial Design'
+    },
+    material: {
+      it: 'Componenti meccanici / Sistemi termici / Linguaggio del prodotto',
+      en: 'Mechanical Components / Thermal Systems / Product Language'
+    },
     year: '2025',
     desc: {
       it: 'Analisi critica di un elettrodomestico attraverso la decomposizione morfologica e funzionale. Il progetto esplora il rapporto tra componenti, meccanismi, materiali e linguaggio visivo nella relazione tra utenti e oggetti quotidiani.',
@@ -161,10 +181,14 @@ const projectList: ProjectStep[] = [
       it: 'INTERACTION DESIGN & HMI',
       en: 'INTERACTION DESIGN & HMI'
     },
-    tools:
-      'Interaction Design / HMI / Calm Technology',
-    material:
-      'Touchcode Ink / LED Matrix / Smart Surface System',
+    tools: {
+      it: 'Interaction Design / HMI / Calm Technology',
+      en: 'Interaction Design / HMI / Calm Technology'
+    },
+    material: {
+      it: 'Touchcode Ink / Matrice LED / Sistema smart surface',
+      en: 'Touchcode Ink / LED Matrix / Smart Surface System'
+    },
     year: '2026',
     desc: {
       it: 'Concept di tavolo interattivo progettato per ridurre la distrazione digitale negli ambienti fast-food. T-Table utilizza tecnologie adattive per favorire l’interazione sociale e riportare attenzione all’esperienza del pasto.',
@@ -189,10 +213,14 @@ const projectList: ProjectStep[] = [
       it: 'SOCIAL DESIGN & OPEN SOURCE',
       en: 'SOCIAL DESIGN & OPEN SOURCE'
     },
-    tools:
-      'Open Source Design / CAD Modelling / FDM Manufacturing',
-    material:
-      'PETG Connectors / Nylon Fasteners / Adaptable Structure',
+    tools: {
+      it: 'Design open source / Modellazione CAD / Produzione FDM',
+      en: 'Open Source Design / CAD Modelling / FDM Manufacturing'
+    },
+    material: {
+      it: 'Connettori PETG / Fissaggi in nylon / Struttura adattabile',
+      en: 'PETG Connectors / Nylon Fasteners / Adaptable Structure'
+    },
     year: '2026',
     desc: {
       it: 'Sistema open-source di stampelle sviluppato durante la Ánako Design Challenge con Prusa Research. Prop utilizza connettori stampati in 3D per trasformare bastoni disponibili localmente in ausili funzionali, permettendo una produzione rapida e accessibile in contesti di emergenza.',
