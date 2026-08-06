@@ -10,32 +10,24 @@ interface IntroProps {
 
 export const IntroSection: React.FC<IntroProps> = ({ t }) => {
   return (
-    <div className="intro-pinned-container" id="intro-section">
+    <div className="intro-container" id="intro-section">
       <style>{`
-        /* Sezione pinned/sticky */
-        .intro-pinned-container {
-          position: relative;
+        .intro-container {
           width: 100%;
-          height: 120vh;
+          min-height: 100vh;
+          height: 100vh;
           background-color: #070707;
           box-sizing: border-box;
-        }
-
-        .intro-sticky-viewport {
-          position: sticky;
-          top: 0;
-          height: 100vh;
-          width: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
-          overflow: hidden;
-          box-sizing: border-box;
+          position: relative;
+          scroll-snap-align: start;
           border-bottom: 1px solid #141414;
+          padding: 0 6vw;
         }
 
         .intro-stage-container {
-          position: relative;
           width: 100%;
           max-width: 1400px;
           height: 80vh;
@@ -43,46 +35,22 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           margin: 0 auto;
           display: flex;
           align-items: center;
-          opacity: 1; /* Opacità fissa al 100% per nitidezza e leggibilità totale */
         }
 
         .intro-step-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
           align-items: center;
+          gap: 60px;
           width: 100%;
           height: 100%;
         }
 
-        /* MEDIA BOX */
-        .intro-media-box {
-          position: relative;
-          overflow: hidden;
-          width: 100%;
-          height: 100%;
-          max-height: 620px;
-        }
-
-        .intro-media-box img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          filter: grayscale(20%);
-          transition: filter 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-          display: block;
-        }
-
-        .intro-media-box:hover img {
-          filter: grayscale(0%);
-          transform: scale(1.03);
-        }
-
-        /* TESTI */
+        /* TESTI (Sinistra) */
         .intro-text-box {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          padding: 0 6vw;
         }
 
         .intro-text-box h2 {
@@ -110,14 +78,33 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           margin: 0;
         }
 
+        /* MEDIA BOX (Destra) */
+        .intro-media-box {
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          height: 100%;
+          max-height: 620px;
+        }
+
+        .intro-media-box img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(20%);
+          transition: filter 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+          display: block;
+        }
+
+        .intro-media-box:hover img {
+          filter: grayscale(0%);
+          transform: scale(1.03);
+        }
+
         @media (max-width: 1024px) {
-          .intro-pinned-container {
-            height: auto !important;
-          }
-          .intro-sticky-viewport {
-            position: relative;
+          .intro-container {
             height: auto;
-            padding: 80px 0;
+            padding: 80px 6vw;
           }
           .intro-stage-container {
             height: auto;
@@ -125,8 +112,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           }
           .intro-step-row {
             grid-template-columns: 1fr;
-            gap: 30px;
-            height: auto;
+            gap: 40px;
           }
           .intro-media-box {
             height: 380px;
@@ -134,20 +120,21 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
         }
       `}</style>
 
-      <div className="intro-sticky-viewport">
-        <div className="intro-stage-container">
-          <div className="intro-step-row">
-            <div className="intro-media-box">
-              <img
-                src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80"
-                alt="Matteo Finco Studio Work"
-              />
-            </div>
-            <div className="intro-text-box">
-              <h2>{t.sec1Title}</h2>
-              <h3 className="sub-grey">{t.sec1Sub}</h3>
-              <p>{t.sec1P}</p>
-            </div>
+      <div className="intro-stage-container">
+        <div className="intro-step-row">
+          {/* Testo a sinistra */}
+          <div className="intro-text-box">
+            <h2>{t.sec1Title}</h2>
+            <h3 className="sub-grey">{t.sec1Sub}</h3>
+            <p>{t.sec1P}</p>
+          </div>
+
+          {/* Immagine a destra */}
+          <div className="intro-media-box">
+            <img
+              src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80"
+              alt="Matteo Finco Studio Work"
+            />
           </div>
         </div>
       </div>
