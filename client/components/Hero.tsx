@@ -2,92 +2,290 @@ import React from 'react';
 
 export const Hero: React.FC = () => {
   return (
-    <section id="hero-section" className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-[#070707] snap-center">
-      <div className="w-[92vw] max-w-[1300px] h-[82vh] relative z-10 flex items-center justify-center">
-        <svg className="w-full h-full block" viewBox="0 0 1000 880" preserveAspectRatio="xMidYMid meet">
-          <defs>
-            <pattern id="blueprintPattern" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.22)" strokeWidth="1.2" />
-              <circle cx="20" cy="20" r="1.5" fill="rgba(255, 255, 255, 0.4)" />
-            </pattern>
+    <section id="hero-section" className="hero-section">
 
-            <mask id="designTextMask" x="0" y="0" width="100%" height="100%">
-              <rect x="0" y="0" width="100%" height="100%" fill="#000000" />
-              
-              {/* MATTEO (Gigante, prima riga) */}
-              <text
-                x="50%"
-                y="27%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fill="#ffffff"
-                fontSize="240"
-                fontWeight="900"
-                fontFamily="-apple-system, BlinkMacSystemFont, sans-serif"
-                letterSpacing="-6"
-              >
-                MATTEO
-              </text>
+      <style>{`
 
-              {/* FINCO (Gigante, seconda riga) */}
-              <text
-                x="50%"
-                y="57%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fill="#ffffff"
-                fontSize="240"
-                fontWeight="900"
-                fontFamily="-apple-system, BlinkMacSystemFont, sans-serif"
-                letterSpacing="-6"
-              >
-                FINCO
-              </text>
+        .hero-section {
+          width: 100%;
+          height: 100vh;
+          background: #070707;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          overflow:hidden;
+          position:relative;
+        }
 
-              {/* PRODUCT DESIGN & MAKER (Sottotitolo centrato in basso) */}
-              <text
-                x="50%"
-                y="84%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fill="#ffffff"
-                fontSize="44"
-                fontWeight="700"
-                fontFamily="-apple-system, BlinkMacSystemFont, sans-serif"
-                letterSpacing="10"
-              >
-                PRODUCT DESIGN &amp; MAKER
-              </text>
-            </mask>
-          </defs>
 
-          <g mask="url(#designTextMask)">
-            <rect className="layer-blueprint" x="-10%" y="-10%" width="120%" height="120%" />
-            <g className="layer-sketches">
-              <image
-                href="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fbe86c1cc389d455eb6f0512af86b90bc"
-                x="0"
-                y="0"
-                width="100%"
-                height="100%"
-                opacity="0.55"
-                preserveAspectRatio="xMidYMid slice"
-              />
-            </g>
-            <g className="layer-photo">
-              <image
-                href="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fbe86c1cc389d455eb6f0512af86b90bc"
-                x="0"
-                y="0"
-                width="100%"
-                height="100%"
-                opacity="0.5"
-                preserveAspectRatio="xMidYMid slice"
-              />
-            </g>
-          </g>
-        </svg>
+        .hero-container {
+          width:92vw;
+          max-width:1500px;
+          height:85vh;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+          position:relative;
+        }
+
+
+        /* TITOLO PRINCIPALE */
+
+        .hero-title {
+
+          font-size:clamp(5rem, 17vw, 15rem);
+          line-height:0.78;
+          font-weight:900;
+          letter-spacing:-0.08em;
+          text-align:center;
+
+          background-image:
+          url("https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fbe86c1cc389d455eb6f0512af86b90bc");
+
+          background-size:120%;
+          background-position:center;
+
+          -webkit-background-clip:text;
+          background-clip:text;
+
+          color:transparent;
+
+          animation:
+          textureMove 18s ease-in-out infinite alternate;
+
+          margin:0;
+
+          user-select:none;
+        }
+
+
+        @keyframes textureMove {
+
+          from {
+            background-position:
+            40% 50%;
+          }
+
+          to {
+            background-position:
+            60% 50%;
+          }
+
+        }
+
+
+
+        /* RUOLO */
+
+        .hero-role {
+
+          margin-top:55px;
+
+          font-family:monospace;
+          font-size:0.9rem;
+
+          letter-spacing:6px;
+          text-transform:uppercase;
+
+          color:#999;
+
+          opacity:0;
+
+          animation:
+          fadeUp 1.5s ease forwards;
+
+          animation-delay:1s;
+
+        }
+
+
+
+        /* CLAIM */
+
+        .hero-claim {
+
+          margin-top:35px;
+
+          max-width:650px;
+
+          text-align:center;
+
+          font-size:
+          clamp(1.2rem,2vw,1.8rem);
+
+          line-height:1.4;
+
+          font-weight:600;
+
+          letter-spacing:-0.02em;
+
+          color:white;
+
+          opacity:0;
+
+          animation:
+          fadeUp 1.5s ease forwards;
+
+          animation-delay:1.5s;
+
+        }
+
+
+
+        /* INDICATORE */
+
+        .hero-scroll {
+
+          position:absolute;
+
+          bottom:45px;
+
+          left:50%;
+
+          transform:translateX(-50%);
+
+          color:#666;
+
+          font-family:monospace;
+
+          font-size:0.75rem;
+
+          letter-spacing:4px;
+
+          display:flex;
+          flex-direction:column;
+          align-items:center;
+
+          gap:15px;
+
+          opacity:0;
+
+          animation:
+          fadeUp 1s ease forwards;
+
+          animation-delay:2.2s;
+
+        }
+
+
+
+        .hero-scroll-line {
+
+          width:1px;
+          height:45px;
+
+          background:#555;
+
+          animation:
+          scrollPulse 2s infinite;
+
+        }
+
+
+        @keyframes scrollPulse {
+
+          0%,100% {
+            opacity:.3;
+            transform:scaleY(.7);
+          }
+
+          50% {
+            opacity:1;
+            transform:scaleY(1);
+          }
+
+        }
+
+
+
+        @keyframes fadeUp {
+
+          from {
+
+            opacity:0;
+            transform:
+            translateY(25px);
+
+          }
+
+          to {
+
+            opacity:1;
+            transform:
+            translateY(0);
+
+          }
+
+        }
+
+
+
+        @media(max-width:768px){
+
+          .hero-title {
+            font-size:clamp(4rem,20vw,8rem);
+          }
+
+
+          .hero-role {
+            margin-top:35px;
+            font-size:.7rem;
+          }
+
+
+          .hero-claim {
+
+            font-size:1.1rem;
+
+          }
+
+        }
+
+
+      `}</style>
+
+
+      <div className="hero-container">
+
+
+        <h1 className="hero-title">
+
+          MATTEO
+          <br/>
+          FINCO
+
+        </h1>
+
+
+        <div className="hero-role">
+
+          PRODUCT DESIGNER
+
+        </div>
+
+
+        <div className="hero-claim">
+
+          I LIKE UNDERSTANDING
+          <br/>
+          HOW THINGS WORK
+
+        </div>
+
+
+        <div className="hero-scroll">
+
+          SCROLL
+
+          <div className="hero-scroll-line"></div>
+
+        </div>
+
+
       </div>
+
+
     </section>
   );
 };
