@@ -10,7 +10,6 @@ interface IntroProps {
   };
 }
 
-
 export const IntroSection: React.FC<IntroProps> = ({ t }) => {
   return (
     <div className="intro-fullbleed-wrapper">
@@ -52,6 +51,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           flex-direction: column;
           gap: 120px;
           box-sizing: border-box;
+          overflow-x: hidden; /* Evita qualsiasi sbordamento orizzontale generale */
         }
 
         .intro-row {
@@ -62,10 +62,16 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           min-height: 70vh;
         }
 
-        /* Immagine che tocca il margine sinistro dello schermo */
-        .intro-row.media-left .intro-media-box {
+        /* Contenitore immagine con overflow hidden per bloccare la scrollbar in hover */
+        .intro-media-box {
+          overflow: hidden; 
           width: 100%;
           height: 620px;
+          will-change: transform;
+        }
+
+        /* Immagine che tocca il margine sinistro dello schermo */
+        .intro-row.media-left .intro-media-box {
           padding-left: 0;
         }
         .intro-row.media-left .intro-text-box {
@@ -74,8 +80,6 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
 
         /* Immagine che tocca il margine destro dello schermo */
         .intro-row.media-right .intro-media-box {
-          width: 100%;
-          height: 620px;
           padding-right: 0;
         }
         .intro-row.media-right .intro-text-box {
@@ -87,13 +91,14 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           height: 100%;
           object-fit: cover;
           filter: grayscale(20%);
-          transition: filter 0.8s ease, transform 0.8s ease;
+          transition: filter 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
           display: block;
+          will-change: transform;
         }
 
         .intro-media-box:hover img {
           filter: grayscale(0%);
-          transform: scale(1.01);
+          transform: scale(1.03); /* Leggermente più fluido e contenuto nel box */
         }
 
         .intro-text-box h2 {
@@ -142,3 +147,5 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
     </div>
   );
 };
+
+export default IntroSection;
