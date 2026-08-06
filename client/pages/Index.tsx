@@ -16,7 +16,7 @@ const projectList: ProjectStep[] = [
     material: 'Polimeri Tecnici & Sensori',
     year: '2026',
     desc: 'Sistema modulare interattivo sviluppato per l\'allenamento e il miglioramento del controllo del disco nell\'hockey su ghiaccio. Combina resistenza meccanica e flessibilità configurabile.',
-    link: 'https://matteofinco.vercel.app/snake',
+    link: '/snake',
     img: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80'
   },
   {
@@ -29,7 +29,7 @@ const projectList: ProjectStep[] = [
     material: 'Legno Curvato & Alluminio',
     year: '2026',
     desc: 'Un\'architettura di archiviazione minimale progettata per ottimizzare gli spazi di lavoro contemporanei, combinando modularità strutturale e finiture ad alta resa sensoriale.',
-    link: 'https://matteofinco.vercel.app/archivia',
+    link: '/archivia',
     img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80'
   },
   {
@@ -42,7 +42,7 @@ const projectList: ProjectStep[] = [
     material: 'PLA Riciclato & Inserti Metallici',
     year: '2026',
     desc: 'Progetto incentrato sull\'usabilità quotidiana e la trasportabilità. Nando reinterpreta gli accessori da viaggio attraverso un linguaggio formale essenziale e componenti facilmente sostituibili.',
-    link: 'https://matteofinco.vercel.app/nando',
+    link: '/nando',
     img: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1200&q=80'
   },
   {
@@ -55,7 +55,7 @@ const projectList: ProjectStep[] = [
     material: 'Cartone Kraft Riciclato & Goffratura',
     year: '2026',
     desc: 'Riflessione sulla sostenibilità e la tattilità nel settore del food packaging. Il contenitore elimina l\'uso di plastiche monouso offrendo una nuova ritualità di apertura e consumo.',
-    link: 'https://matteofinco.vercel.app/pizzamente',
+    link: '/pizzamente',
     img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80'
   },
   {
@@ -68,7 +68,7 @@ const projectList: ProjectStep[] = [
     material: 'Alluminio Spazzolato & Bakelite',
     year: '2025',
     desc: 'Esplorazione formale ed ergonomica applicata a piccoli elettrodomestici. Scomposizione dei volumi tradizionali per facilitare pulizia, ingombro verticale e manutenzione.',
-    link: 'https://matteofinco.vercel.app/wafflemaker',
+    link: '/wafflemaker',
     img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80'
   },
   {
@@ -81,7 +81,7 @@ const projectList: ProjectStep[] = [
     material: 'Multistrato di Betulla',
     year: '2025',
     desc: 'Elemento d\'arredo sviluppato attraverso l\'algoritmo parametrico. I componenti ad incastro meccanico eliminano completamente l\'uso di colle o ferramenta metallica.',
-    link: 'https://matteofinco.vercel.app/ttable',
+    link: '/ttable',
     img: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80'
   },
   {
@@ -94,7 +94,7 @@ const projectList: ProjectStep[] = [
     material: 'PETG, Vernici Acriliche & Resine',
     year: '2025',
     desc: 'Raccolta di prop fisici e componenti scenografici realizzati combinando modellazione 3D avanzata, taglio laser e finiture artigianali ad alto impatto visivo.',
-    link: 'https://matteofinco.vercel.app/prop',
+    link: '/prop',
     img: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1200&q=80'
   }
 ];
@@ -122,20 +122,19 @@ export default function Index() {
   const [showNavName, setShowNavName] = useState<boolean>(false);
 
   useEffect(() => {
-    // Observer per mostrare il nome nell'Header solo quando la Hero esce dalla vista
+    // Observer per mostrare il pulsante col nome nell'Header appena la Hero esce dallo schermo
     const heroEl = document.getElementById('hero-section');
     if (heroEl) {
       const heroObserver = new IntersectionObserver(
         ([entry]) => {
-          // Se la Hero NON è più interamente visibile, attiva il nome nell'Header
           setShowNavName(!entry.isIntersecting);
         },
-        { threshold: 0.15 }
+        { threshold: 0.1 }
       );
       heroObserver.observe(heroEl);
     }
 
-    // Observer per dissolvenze immagini editoriali
+    // Observer per attivare le dissolvenze editoriali
     const revealElements = document.querySelectorAll('.reveal-editorial');
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -145,11 +144,11 @@ export default function Index() {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.2 }
     );
     revealElements.forEach((el) => revealObserver.observe(el));
 
-    // Observer per avanzamento dei progetti nel Cerchio Sticky
+    // Observer per sincronizzare il cerchio sticky con la scheda attiva dei progetti
     const processCards = document.querySelectorAll('.process-card');
     const processObserver = new IntersectionObserver(
       (entries) => {
@@ -160,7 +159,7 @@ export default function Index() {
           }
         });
       },
-      { threshold: 0.45 }
+      { threshold: 0.5 }
     );
     processCards.forEach((card) => processObserver.observe(card));
 
@@ -175,7 +174,12 @@ export default function Index() {
       <style>{`
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         
-        html, body {
+        html {
+          scroll-behavior: smooth;
+          scroll-snap-type: y proximity;
+        }
+
+        body {
           background-color: #070707;
           color: #e5e5e5;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -184,6 +188,11 @@ export default function Index() {
         }
 
         .editorial-portfolio { background-color: #070707; color: #e5e5e5; min-height: 100vh; overflow-x: clip; }
+
+        .snap-center {
+          scroll-snap-align: center;
+          scroll-snap-stop: always;
+        }
 
         /* HERO LAYER ANIMATIONS */
         .layer-blueprint { fill: url(#blueprintPattern); animation: layerMove1 22s ease-in-out infinite alternate; }
@@ -205,6 +214,7 @@ export default function Index() {
           grid-template-columns: 1fr 1fr;
           gap: 100px;
           align-items: center;
+          min-height: 90vh;
         }
         .editorial-text h2 { font-size: clamp(2.4rem, 4.5vw, 4.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 25px; color: #fff; }
         .editorial-text h3.sub-grey { font-size: clamp(1.3rem, 2.2vw, 2rem); font-weight: 500; color: #888; margin-bottom: 30px; line-height: 1.4; }
@@ -215,14 +225,14 @@ export default function Index() {
 
         .reveal-editorial {
           opacity: 0; filter: blur(12px);
-          transition: opacity 1.4s cubic-bezier(.22,.61,.36,1), filter 1.4s cubic-bezier(.22,.61,.36,1), transform 1.4s cubic-bezier(.22,.61,.36,1);
+          transition: opacity 1.2s cubic-bezier(.22,.61,.36,1), filter 1.2s cubic-bezier(.22,.61,.36,1), transform 1.2s cubic-bezier(.22,.61,.36,1);
         }
-        .reveal-editorial.reveal-from-right { transform: scale(1.04) translateX(50px); }
-        .reveal-editorial.reveal-from-left { transform: scale(1.04) translateX(-50px); }
+        .reveal-editorial.reveal-from-right { transform: scale(1.04) translateX(40px); }
+        .reveal-editorial.reveal-from-left { transform: scale(1.04) translateX(-40px); }
         .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: scale(1) translateX(0); }
 
         /* STICKY FEATURE */
-        .sticky-feature-section { position: relative; width: 100vw; min-height: 240vh; background-color: #050505; border-y: 1px solid #181818; }
+        .sticky-feature-section { position: relative; width: 100vw; min-height: 220vh; background-color: #050505; border-y: 1px solid #181818; }
         .sticky-media-container { position: sticky; top: 0; height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center; z-index: 1; }
         .sticky-media-box { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
         .sticky-media-box img { width: 100vw; height: 100vh; object-fit: cover; filter: brightness(0.65) contrast(1.1); }
@@ -238,7 +248,7 @@ export default function Index() {
           margin-left: auto;
           margin-right: 6vw;
           margin-bottom: 15vh;
-          background: rgba(10, 10, 10, 0.82);
+          background: rgba(10, 10, 10, 0.85);
           backdrop-filter: blur(20px);
           padding: 45px 38px;
           border-left: 2px solid #ffffff;
@@ -250,7 +260,7 @@ export default function Index() {
         .scrolling-card h3 { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 16px; line-height: 1.25; }
         .scrolling-card p { color: #bbb; font-size: 1.02rem; line-height: 1.75; }
 
-        /* CIRCLE SHOWCASE LAYOUT RIGOROSO E CENTRATO */
+        /* CIRCLE SHOWCASE & STICKY CARDS */
         .process-showcase-wrapper {
           max-width: 1550px;
           margin: 0 auto;
@@ -299,7 +309,17 @@ export default function Index() {
         .project-sub-name { font-size: 0.95rem; color: #999; margin-top: 4px; }
 
         .process-scroll-right { padding-top: 2vh; padding-bottom: 15vh; }
-        .process-card { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; opacity: 0.2; filter: blur(4px); transition: opacity 0.6s ease, filter 0.6s ease; border-bottom: 1px solid #161616; }
+        .process-card {
+          min-height: 85vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 40px 0;
+          opacity: 0.25;
+          filter: blur(4px);
+          transition: opacity 0.6s ease, filter 0.6s ease;
+          border-bottom: 1px solid #161616;
+        }
         .process-card.active-step { opacity: 1; filter: blur(0px); }
         .process-card .phase-number { font-family: monospace; font-size: 0.85rem; color: #777; margin-bottom: 8px; }
         .process-card .phase-title { font-size: 2.6rem; font-weight: 800; color: #fff; line-height: 1.15; }
@@ -328,7 +348,7 @@ export default function Index() {
           transform: translateX(6px);
         }
 
-        /* FOOTER REVISIONATO */
+        /* FOOTER REVISIONATO E PULITO */
         .whats-next-footer {
           background-color: #040404;
           padding: 140px 6vw 60px;
@@ -341,6 +361,7 @@ export default function Index() {
           color: #ffffff;
           letter-spacing: -2px;
           margin-bottom: 15px;
+          line-height: 1;
         }
         .whats-next-footer p.sub-lead {
           font-size: 1.25rem;
@@ -358,28 +379,30 @@ export default function Index() {
         .btn-footer-link {
           padding: 16px 36px;
           background: #ffffff;
-          color: #000000;
+          color: #070707;
           font-weight: 700;
           font-size: 0.95rem;
           text-decoration: none;
-          transition: background 0.3s ease, transform 0.3s ease;
+          border: 1px solid #ffffff;
+          transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
         }
         .btn-footer-link:hover {
           background: #dcdcdc;
           transform: translateY(-2px);
         }
-        .btn-footer-secondary {
+        .btn-footer-outline {
           padding: 16px 36px;
-          border: 1px solid rgba(255,255,255,0.3);
+          background: transparent;
           color: #ffffff;
           font-weight: 700;
           font-size: 0.95rem;
           text-decoration: none;
-          transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+          border: 1px solid #ffffff;
+          transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
         }
-        .btn-footer-secondary:hover {
-          border-color: #ffffff;
-          background: rgba(255,255,255,0.05);
+        .btn-footer-outline:hover {
+          background: #ffffff;
+          color: #070707;
           transform: translateY(-2px);
         }
 
@@ -405,26 +428,33 @@ export default function Index() {
         }
       `}</style>
 
-      {/* HEADER CON TRANSIZIONE NOME SULLO SCROLL */}
+      {/* HEADER CON NOME/PULSANTE PER SCROLL TOP */}
       <Header lang={lang} setLang={setLang} showName={showNavName} />
       
       <Hero />
-      <IntroSection t={translations[lang]} />
-      <StickyObject />
+
+      <div className="snap-center">
+        <IntroSection t={translations[lang]} />
+      </div>
+
+      <div className="snap-center">
+        <StickyObject />
+      </div>
+
       <CircleShowcase steps={projectList} activeStep={activeStep} />
 
-      {/* FOOTER REVISIONATO CON WHAT'S NEXT? E CONTATTI AGGIORNATI */}
-      <footer className="whats-next-footer">
-        <h2>WHAT'S NEXT?</h2>
+      {/* FOOTER RISOLTO: WHAT'S NEXT? E BOTTONI CON LINK E STILI CORRETTI */}
+      <footer className="whats-next-footer snap-center">
+        <h2>WHAT&apos;S NEXT?</h2>
         <p className="sub-lead">
           Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale.
         </p>
 
         <div className="footer-actions">
-          <a href="https://matteofinco.vercel.app/about" className="btn-footer-link">
+          <a href="/about" className="btn-footer-link">
             ABOUT ME
           </a>
-          <a href="https://matteofinco.vercel.app/about" className="btn-footer-secondary">
+          <a href="/cv" className="btn-footer-outline">
             CURRICULUM VITAE
           </a>
         </div>
@@ -433,8 +463,8 @@ export default function Index() {
           <div>2026 MATTEO FINCO // PRODUCT DESIGN &amp; MAKER</div>
           <div className="footer-contacts-list">
             <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="https://matteofinco.vercel.app/about">About</a>
-            <a href="https://matteofinco.vercel.app/about">CV</a>
+            <a href="/about">About</a>
+            <a href="/cv">CV</a>
           </div>
         </div>
       </footer>
