@@ -1,53 +1,26 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 interface IntroProps {
   t: {
     sec1Title: string;
     sec1Sub: string;
     sec1P: string;
-    sec2P1: string;
-    sec2P2: string;
   };
 }
 
 export const IntroSection: React.FC<IntroProps> = ({ t }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const [activeStep, setActiveStep] = useState(0);
-
-  const TOTAL_STEPS = 2;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!wrapperRef.current) return;
-      const rect = wrapperRef.current.getBoundingClientRect();
-      const totalScrollableHeight = rect.height - window.innerHeight;
-
-      if (totalScrollableHeight <= 0) return;
-
-      const currentScroll = -rect.top;
-      const progress = Math.max(0, Math.min(1, currentScroll / totalScrollableHeight));
-      const stepIndex = Math.min(TOTAL_STEPS - 1, Math.floor(progress * TOTAL_STEPS));
-
-      setActiveStep(stepIndex);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
-    <div
-      className="intro-pinned-wrapper"
-      ref={wrapperRef}
-      style={{ height: `${TOTAL_STEPS * 100}vh` }}
-    >
+    <div className="intro-pinned-wrapper" ref={wrapperRef}>
       <style>{`
         .intro-pinned-wrapper {
           position: relative;
           width: 100%;
+          height: 120vh; /* Permette un breve momento di lock durante lo scroll */
           background-color: #070707;
           box-sizing: border-box;
-          border-bottom: 1px solid #1a1a1a; /* Bordo scuro di separazione a fine sezione */
+          border-bottom: 1px solid #1a1a1a;
         }
 
         /* VIEWPORT FISSA CENTRATA AL 100vh */
@@ -72,26 +45,13 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           margin: 0 auto;
         }
 
-        /* STRIP STEP IN SOVRAPPOSIZIONE */
+        /* RIGA SINGOLA */
         .intro-step-row {
-          position: absolute;
-          inset: 0;
           display: grid;
           grid-template-columns: 1fr 1fr;
           align-items: center;
           width: 100%;
           height: 100%;
-          opacity: 0;
-          pointer-events: none;
-          transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-          transform: translateY(20px);
-          will-change: opacity, transform;
-        }
-
-        .intro-step-row.active {
-          opacity: 1;
-          pointer-events: auto;
-          transform: translateY(0);
         }
 
         /* MEDIA BOX CON DISSOLVENZA E CORNICI SPINTI AI BORDI */
@@ -101,14 +61,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           width: 100%;
           height: 100%;
           max-height: 620px;
-        }
-
-        .intro-step-row.media-left .intro-media-box {
           padding-left: 0;
-        }
-
-        .intro-step-row.media-right .intro-media-box {
-          padding-right: 0;
         }
 
         .intro-media-box img {
@@ -126,18 +79,11 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           transform: scale(1.03);
         }
 
-        /* TESTI E PADDING EDITORIALI */
+        /* TESTO E PADDING EDITORIALE */
         .intro-text-box {
           display: flex;
           flex-direction: column;
           justify-content: center;
-        }
-
-        .intro-step-row.media-left .intro-text-box {
-          padding: 0 6vw;
-        }
-
-        .intro-step-row.media-right .intro-text-box {
           padding: 0 6vw;
         }
 
@@ -166,10 +112,6 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           margin: 0;
         }
 
-        .p-spacer {
-          margin-bottom: 20px !important;
-        }
-
         @media (max-width: 1024px) {
           .intro-pinned-wrapper {
             height: auto !important;
@@ -182,18 +124,10 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           .intro-stage-container {
             height: auto;
             max-height: none;
-            display: flex;
-            flex-direction: column;
-            gap: 80px;
           }
           .intro-step-row {
-            position: relative;
-            inset: auto;
             grid-template-columns: 1fr;
             gap: 30px;
-            opacity: 1;
-            transform: none;
-            pointer-events: auto;
             height: auto;
           }
           .intro-media-box {
@@ -205,9 +139,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
       {/* VIEWPORT FISSO PINNED */}
       <div className="intro-sticky-viewport">
         <div className="intro-stage-container">
-          
-          {/* STEP 01: MEDIA A SINISTRA / TESTO A DESTRA */}
-          <div className={`intro-step-row media-left ${activeStep === 0 ? 'active' : ''}`}>
+          <div className="intro-step-row media-left">
             <div className="intro-media-box">
               <img
                 src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80"
@@ -220,26 +152,6 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
               <p>{t.sec1P}</p>
             </div>
           </div>
-
-          {/* STEP 02: TESTO A SINISTRA / MEDIA A DESTRA */}
-          <div className={`intro-step-row media-right ${activeStep === 1 ? 'active' : ''}`}>
-            <div className="intro-text-box">
-              <h2>
-                Making &amp;
-                <br />
-                Prototipazione
-              </h2>
-              <p className="p-spacer">{t.sec2P1}</p>
-              <p>{t.sec2P2}</p>
-            </div>
-            <div className="intro-media-box">
-              <img
-                src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1600&q=80"
-                alt="Digital Fabrication & Hardware"
-              />
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
