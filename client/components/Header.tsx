@@ -48,3 +48,4 @@ export const Header: React.FC<HeaderProps> = ({ lang, setLang, showName }) => {
     </header>
   );
 };
+export default Header;
