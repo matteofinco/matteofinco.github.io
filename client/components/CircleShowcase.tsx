@@ -397,31 +397,67 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
         </div>
 
         {/* COLONNA TESTUALE MAGNETICA A DESTRA */}
-        <div className="process-scroll-column">
-          {steps.map((st, index) => (
-            <div 
-              key={st.id} 
-              className="process-card-item" 
-              data-index={index}
-            >
-            <div className="project-meta-grid">
-  <div className="meta-item">
-    <span className="label">Design Approach</span>
-    <span className="value">{st.tools}</span>
-  </div>
+    <div className="process-scroll-column">
+  {steps.map((st, index) => (
+    <div 
+      key={st.id} 
+      className="process-card-item" 
+      data-index={index}
+    >
 
-  <div className="meta-item">
-    <span className="label">Tools & Technologies</span>
-    <span className="value">{st.material}</span>
-  </div>
-</div>
+      <div className="project-category-tag">
+        {st.id} // {st.category} // {st.year}
+      </div>
 
-              <a href={st.link} className="project-action-link">
-                ESPLORA PROGETTO →
-              </a>
-            </div>
-          ))}
+      <h2 className="project-main-title">
+        {st.title}
+      </h2>
+
+      <div className="project-subtitle-text">
+        {st.subtitle}
+      </div>
+
+      <p className="project-desc-text">
+        {st.desc}
+      </p>
+
+
+      <div className="project-meta-grid">
+
+        <div className="meta-item">
+          <span className="label">
+            Design Approach
+          </span>
+
+          <span className="value">
+            {st.tools}
+          </span>
         </div>
+
+
+        <div className="meta-item">
+          <span className="label">
+            Materials & Technologies
+          </span>
+
+          <span className="value">
+            {st.material}
+          </span>
+        </div>
+
+      </div>
+
+
+      <a 
+        href={st.link} 
+        className="project-action-link"
+      >
+        ESPLORA PROGETTO →
+      </a>
+
+    </div>
+  ))}
+</div>
       </div>
     </section>
   );
