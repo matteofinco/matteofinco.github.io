@@ -404,23 +404,17 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
               className="process-card-item" 
               data-index={index}
             >
-              <div className="project-category-tag">
-                {st.id} // {st.category} // {st.year}
-              </div>
-              <h2 className="project-main-title">{st.title}</h2>
-              <div className="project-subtitle-text">{st.subtitle}</div>
-              <p className="project-desc-text">{st.desc}</p>
+            <div className="project-meta-grid">
+  <div className="meta-item">
+    <span className="label">Design Approach</span>
+    <span className="value">{st.tools}</span>
+  </div>
 
-              <div className="project-meta-grid">
-                <div className="meta-item">
-                  <span className="label">Strumenti & CAD</span>
-                  <span className="value">{st.tools}</span>
-                </div>
-                <div className="meta-item">
-                  <span className="label">Materiali & CMF</span>
-                  <span className="value">{st.material}</span>
-                </div>
-              </div>
+  <div className="meta-item">
+    <span className="label">Tools & Technologies</span>
+    <span className="value">{st.material}</span>
+  </div>
+</div>
 
               <a href={st.link} className="project-action-link">
                 ESPLORA PROGETTO →
