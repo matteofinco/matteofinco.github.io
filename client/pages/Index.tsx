@@ -3,71 +3,71 @@ import React, { useState, useEffect } from 'react';
 const projects = [
   {
     name: 'CEDRIC C.',
-    role: 'Designer della prima versione della maschera EasyBreath',
-    meta: 'Lavora in DECATHLON da 23 anni | Water Sports Centre - Hendaye, Francia',
-    quote: '"Per me, DESIGN significa comprendere le aspirazioni delle persone e saper anticipare i loro bisogni in acqua."',
+    role: 'Designer della prima versione di [NOME PRODOTTO 1]',
+    meta: 'Lavora in [NOME AZIENDA] da 23 anni | [HUB DESIGN] - [CITTA], [PAESE]',
+    quote: '"Per me, DESIGN significa comprendere le aspirazioni delle persone e saper anticipare i loro bisogni."',
     img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80'
   },
   {
     name: 'MATHIEU C.',
-    role: 'Designer delle scarpe da calcio Traxium Compressor',
-    meta: 'Lavora in DECATHLON da 10 anni | Kipstadium - Tourcoing, Francia',
-    quote: '"Il DESIGN è un processo creativo che aiuta a risolvere le sfide quotidiane sul campo da gioco, unendo funzione ed estetica."',
+    role: 'Designer del prodotto [NOME PRODOTTO 2]',
+    meta: 'Lavora in [NOME AZIENDA] da 10 anni | [LABORATORIO] - [CITTA], [PAESE]',
+    quote: '"Il DESIGN è un processo creativo che aiuta a risolvere le sfide quotidiane, unendo funzione ed estetica."',
     img: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=600&q=80'
   },
   {
     name: 'THOMAS C.',
-    role: 'DESIGN Manager per lo skateboard DK900',
-    meta: "Lavora in DECATHLON da 6 anni | B'Twin Village - Lille, Francia",
-    quote: '"Co-creare con atleti professionisti ci spinge a superare i limiti della resistenza meccanica e dello stile urbano."',
+    role: 'DESIGN Manager per [NOME CATEGORIA / PRODOTTO 3]',
+    meta: "Lavora in [NOME AZIENDA] da 6 anni | [CENTRO SVILUPPO] - [CITTA], [PAESE]",
+    quote: '"Co-creare con professionisti del settore ci spinge a superare i limiti della resistenza meccanica e dello stile."',
     img: 'https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=600&q=80'
   },
   {
     name: 'ELENA R.',
-    role: 'Senior Footwear Designer per il Running',
-    meta: 'Lavora in DECATHLON da 8 anni | Kalenji Lab - Lille, Francia',
-    quote: '"Ogni grammo risparmiato sulla scarpa è una vittoria per la maratona dell\'atleta."',
+    role: 'Senior Footwear Designer per [SETTORE / LINEA]',
+    meta: 'Lavora in [NOME AZIENDA] da 8 anni | [LABORATORIO] - [CITTA], [PAESE]',
+    quote: '"Ogni dettaglio ottimizzato sul prodotto è una vittoria per la performance finale dell\'utente."',
     img: 'https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=600&q=80'
   },
   {
     name: 'LUCAS M.',
     role: 'Hardware & Outdoor Gear Specialist',
-    meta: 'Lavora in DECATHLON da 12 anni | Mountain Store - Passy, Francia',
-    quote: '"Progettare tende ed equipaggiamento da montagna richiede un\'affidabilità totale in condizioni estreme."',
+    meta: 'Lavora in [NOME AZIENDA] da 12 anni | [HUB TECNICO] - [CITTA], [PAESE]',
+    quote: '"Progettare equipaggiamento specifico richiede un\'affidabilità totale in condizioni estreme."',
     img: 'https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=600&q=80'
   },
   {
     name: 'SOPHIE B.',
     role: 'Color & Material Lead Designer',
-    meta: 'Lavora in DECATHLON da 5 anni | Design Hub - Lille, Francia',
-    quote: '"La palette cromatica definisce l\'identità visiva ed emozionale dell\'esperienza sportiva."',
+    meta: 'Lavora in [NOME AZIENDA] da 5 anni | [DESIGN HUB] - [CITTA], [PAESE]',
+    quote: '"La palette cromatica definisce l\'identità visiva ed emozionale dell\'esperienza d\'uso."',
     img: 'https://images.unsplash.com/photo-1483721063386-cc26459e13ba?auto=format&fit=crop&w=600&q=80'
   },
   {
     name: 'ANTOINE T.',
     role: 'Digital Concept & Smart Products',
-    meta: 'Lavora in DECATHLON da 7 anni | Tech Centre - Parigi, Francia',
-    quote: '"Integrando l\'elettronica discreta e l\'IoT miglioriamo la sicurezza e l\'analisi della performance."',
+    meta: 'Lavora in [NOME AZIENDA] da 7 anni | [TECH CENTRE] - [CITTA], [PAESE]',
+    quote: '"Integrando l\'elettronica discreta e le tecnologie connesse miglioriamo l\'analisi della performance."',
     img: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=600&q=80'
   },
   {
     name: 'CAMILLE L.',
     role: 'Eco-Design & Circular Economy Lead',
-    meta: 'Lavora in DECATHLON da 9 anni | EcoLab - Hendaye, Francia',
+    meta: 'Lavora in [NOME AZIENDA] da 9 anni | [ECOLAB] - [CITTA], [PAESE]',
     quote: '"Il miglior prodotto è quello progettato per essere interamente smontato, riparato e riciclato."',
     img: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=600&q=80'
   },
   {
     name: 'JULIEN V.',
-    role: 'Urban Mobility & E-Bike Designer',
-    meta: 'Lavora in DECATHLON da 11 anni | B\'Twin Village - Lille, Francia',
+    role: 'Urban Mobility Designer',
+    meta: 'Lavora in [NOME AZIENDA] da 11 anni | [CENTRO MOBILITÀ] - [CITTA], [PAESE]',
     quote: '"Riprogettare i trasporti urbani significa plasmare le città del futuro rendendole più vivibili."',
     img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80'
   },
   {
     name: 'MARIE D.',
     role: '3D Prototyping & Additive Manufacturing',
-    meta: 'Lavora in DECATHLON da 4 anni | Prototype Lab - Lille, Francia',
+    meta: 'Lavora in [NOME AZIENDA] da 4 anni | [PROTOTYPE LAB] - [CITTA], [PAESE]',
     quote: '"Stampare in 3D in poche ore quello che prima richiedeva settimane accelera l\'innovazione immediata."',
     img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80'
   }
@@ -84,16 +84,16 @@ const translations = {
   it: {
     sec1Title: "Progettare un prodotto è un mestiere.",
     sec1Sub: "In realtà è un insieme di tanti mestieri. Scopriamoli.",
-    sec1P: "Al centro del DESIGN in DECATHLON ci sono persone che, prima di tutto, sono appassionate di sport e lavorano ogni giorno per progettare prodotti sportivi. Ma le specialità creative e le competenze non si limitano solo al prodotto: ci sono designer nel retail, nel digitale e nella comunicazione. I designer lavorano su oltre dodici campi di competenza, dall'abbigliamento alle calzature, fino ai componenti e al 3D.",
-    sec2P1: "Parte del lavoro di un designer consiste nel conferire ai prodotti la loro personalità, oltre alla funzione. Fondamentalmente, oltre la percezione comune, DECATHLON vuole stringere un legame profondo tra lo sport, il DESIGN e la società.",
-    sec2P2: "I team si sono uniti per creare il progetto \"Sports Mates\". Una strategia unica nel mondo dello sport che pone il valore emozionale al centro della propria missione. Attraverso motivazioni e desideri, i prodotti sono pensati per essere compagni, partner e motivatori."
+    sec1P: "Al centro del DESIGN in [NOME AZIENDA] ci sono persone che lavorano ogni giorno per progettare prodotti innovativi. Le specialità creative e le competenze non si limitano solo al prodotto: ci sono designer nel retail, nel digitale e nella comunicazione. I designer lavorano su oltre dodici campi di competenza, dall'abbigliamento alle calzature, fino ai componenti e al 3D.",
+    sec2P1: "Parte del lavoro di un designer consiste nel conferire ai prodotti la loro personalità, oltre alla funzione. Fondamentalmente, oltre la percezione comune, [NOME AZIENDA] vuole stringere un legame profondo tra l'esperienza d'uso, il DESIGN e la società.",
+    sec2P2: "I team si sono uniti per creare il progetto \"[NOME PROGETTO]\". Una strategia unica che pone il valore emozionale al centro della propria missione. Attraverso motivazioni e desideri, i prodotti sono pensati per essere compagni e partner di ogni giorno."
   },
   en: {
     sec1Title: "Designing a product is a trade.",
     sec1Sub: "It's actually a whole heap of trades. Let's take a look.",
-    sec1P: "At the heart of DESIGN at DECATHLON are people who, above all, are passionate sports enthusiasts working day in, day out to design sports products. But the creative specialities and expertise within DESIGN are not just limited to products. There are designers in retail, digital and communications departments. Designers work across more than twelve expert fields from apparel DESIGN to footwear DESIGN, components, 3D and others.",
-    sec2P1: "Part of a designer's work consists in giving products their personality, in addition to their function. Essentially, beyond the usual perception, DECATHLON wants to forge a link between sport, DESIGN and society.",
-    sec2P2: "DECATHLON teams came together to create the 'Sports Mates' project. A unique strategy in the world of sport that places emotional value at the heart of their mission. Through motivations, desires and persistence, products are designed to be companions and partners."
+    sec1P: "At the heart of DESIGN at [COMPANY NAME] are people working day in, day out to design innovative products. The creative specialities and expertise within DESIGN are not just limited to products. There are designers in retail, digital and communications departments. Designers work across more than twelve expert fields from apparel DESIGN to footwear DESIGN, components, 3D and others.",
+    sec2P1: "Part of a designer's work consists in giving products their personality, in addition to their function. Essentially, beyond the usual perception, [COMPANY NAME] wants to forge a link between user experience, DESIGN and society.",
+    sec2P2: "[COMPANY NAME] teams came together to create the '[PROJECT NAME]' project. A unique strategy that places emotional value at the heart of their mission. Through motivations, desires and persistence, products are designed to be companions and partners."
   }
 };
 
@@ -164,7 +164,7 @@ export default function Index() {
           min-height: 100vh;
         }
 
-        /* 1. HEADER (TOLLTO TITOLO BLU A SINISTRA) */
+        /* HEADER */
         header {
           position: fixed;
           top: 0;
@@ -205,7 +205,7 @@ export default function Index() {
           margin-left: 10px;
         }
 
-        /* 2. HERO SECTION CON TESTO TRASPARENTE STENCIL */
+        /* HERO SECTION */
         .hero {
           position: relative;
           width: 100%;
@@ -249,7 +249,6 @@ export default function Index() {
           user-select: none;
         }
 
-        /* Trasparenza e sfondamento visibile della scritta DESIGN */
         .hero-block span {
           display: block;
           color: rgba(255, 255, 255, 0.15);
@@ -262,7 +261,7 @@ export default function Index() {
         .hero-block:nth-child(3) { transform: translateY(-20px); }
         .hero-block:nth-child(4) { transform: translateY(15px); }
 
-        /* 3. SEZIONI INTRODUTTIVE & ANIMAZIONI */
+        /* SEZIONI INTRODUTTIVE */
         .section-container {
           max-width: 1300px;
           margin: 0 auto;
@@ -341,7 +340,7 @@ export default function Index() {
           transform: translateX(0);
         }
 
-        /* 4. SEZIONE SCARPA CON SFONDO ESTRATTO FISSO (PARALLAX CUT-OUT) */
+        /* SEZIONE PARALLAX FISSA */
         .parallax-window-section {
           position: relative;
           width: 100%;
@@ -356,7 +355,7 @@ export default function Index() {
           border-bottom: 2px solid #111;
         }
 
-        /* 5. SHOWCASE DESIGNER CON PINNING STICKY GARANTITO */
+        /* SHOWCASE DESIGNER STICKY */
         .showcase-wrapper {
           position: relative;
           max-width: 1400px;
@@ -365,7 +364,7 @@ export default function Index() {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 60px;
-          align-items: start; /* Fondamentale per il corretto funzionamento di position: sticky */
+          align-items: start;
         }
 
         .showcase-sticky-left {
@@ -501,7 +500,7 @@ export default function Index() {
         }
       `}</style>
 
-      {/* HEADER SENZA IL TITOLO IN ALTO A SINISTRA */}
+      {/* HEADER */}
       <header>
         <div className="lang-switcher">
           <button className={`lang-btn ${lang === 'it' ? 'active' : ''}`} onClick={() => setLang('it')}>IT</button>
@@ -511,7 +510,7 @@ export default function Index() {
         </div>
       </header>
 
-      {/* HERO SECTION CON SCRITTA DESIGN IN TRASPARENZA */}
+      {/* HERO SECTION */}
       <section className="hero">
         <div className="hero-tech-bg" />
         <div className="hero-title-container">
@@ -522,7 +521,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* SEZIONE 1 CON DISSOLVENZA DA DESTRI */}
+      {/* SEZIONE 1 */}
       <section className="section-container">
         <div className="text-content">
           <h2>{t.sec1Title}</h2>
@@ -535,10 +534,10 @@ export default function Index() {
         </div>
       </section>
 
-      {/* SEZIONE 2 CON DISSOLVENZA DA SINISTRA */}
+      {/* SEZIONE 2 */}
       <section className="section-container">
         <div className="media-box reveal-from-left">
-          <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" alt="Sketching Shoes" />
+          <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" alt="Design Process" />
         </div>
         <div className="text-content">
           <p>{t.sec2P1}</p>
@@ -547,10 +546,10 @@ export default function Index() {
         </div>
       </section>
 
-      {/* FINESTRA PARALLAX CON SCARPA FISSA */}
+      {/* FINESTRA PARALLAX FISSA */}
       <section className="parallax-window-section" />
 
-      {/* SHOWCASE DESIGNER STICKY BLOCATO */}
+      {/* SHOWCASE DESIGNER STICKY */}
       <section className="showcase-wrapper">
         <div className="showcase-sticky-left">
           <div className="svg-frame-container">
@@ -597,7 +596,7 @@ export default function Index() {
       </section>
 
       <footer>
-        <p style={{ color: '#555', fontSize: '0.85rem' }}>© Decathlon Design Showcase</p>
+        <p style={{ color: '#555', fontSize: '0.85rem' }}>© [NOME AZIENDA] Design Showcase</p>
       </footer>
     </div>
   );
