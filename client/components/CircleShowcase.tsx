@@ -25,7 +25,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
   return (
     <section className="circle-showcase-container">
       <div className="sticky-viewport">
-        {/* LATO SINISTRO: Cerchio Sticky Visivo con Titolo Dinamico In Sottofondo */}
+        {/* Pane Fisso Sticky Sinistra */}
         <div className="visual-sticky-pane">
           <div className="circle-frame">
             <div 
@@ -35,7 +35,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
             <div className="circle-overlay-ring" />
           </div>
 
-          {/* Titolo Dinamico sotto al Cerchio Sticky che cambia con lo scroll */}
+          {/* Titolo Sotto il Cerchio */}
           <div className="sticky-project-meta">
             <span className="project-step-badge">{currentProject.id} / 0{steps.length}</span>
             <h3 className="project-sticky-title">{currentProject.title}</h3>
@@ -43,7 +43,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           </div>
         </div>
 
-        {/* LATO DESTRO: Lista Schede Descrittive che Scorrono e Attivano i Progetti */}
+        {/* Schede Descrittive a Destra */}
         <div className="scrollable-cards-pane">
           {steps.map((step, idx) => (
             <div 
@@ -58,7 +58,6 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
 
               <h2 className="card-title">{step.title}</h2>
               <p className="card-subtitle">{step.subtitle}</p>
-              
               <p className="card-desc">{step.desc}</p>
 
               <div className="card-specs-grid">
@@ -94,14 +93,12 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           max-width: 1400px;
           margin: 0 auto;
           padding: 0 5vw;
-          position: relative;
         }
 
-        /* VISTA FISSA STICKY A SINISTRA */
         .visual-sticky-pane {
           position: sticky;
-          top: 80px;
-          height: calc(100vh - 100px);
+          top: 100px;
+          height: calc(100vh - 120px);
           width: 48%;
           display: flex;
           flex-direction: column;
@@ -125,11 +122,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           height: 100%;
           background-size: cover;
           background-position: center;
-          transition: background-image 0.6s ease-in-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .circle-frame:hover .circle-image {
-          transform: scale(1.05);
+          transition: background-image 0.5s ease-in-out, transform 0.6s ease;
         }
 
         .circle-overlay-ring {
@@ -141,9 +134,9 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
         }
 
         .sticky-project-meta {
-          margin-top: 35px;
+          margin-top: 30px;
           text-align: center;
-          transition: opacity 0.4s ease;
+          transition: opacity 0.3s ease;
         }
 
         .project-step-badge {
@@ -169,7 +162,6 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           margin-top: 4px;
         }
 
-        /* LATO DESTRO CHE SCORRE */
         .scrollable-cards-pane {
           width: 52%;
           padding-top: 10vh;
@@ -184,7 +176,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           justify-content: center;
           opacity: 0.25;
           transform: translateY(20px);
-          transition: opacity 0.6s ease, transform 0.6s ease;
+          transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .process-card.is-active {
@@ -200,14 +192,8 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           margin-bottom: 12px;
         }
 
-        .category-tag {
-          color: #aaa;
-          letter-spacing: 1.5px;
-        }
-
-        .year-tag {
-          color: #555;
-        }
+        .category-tag { color: #aaa; letter-spacing: 1.5px; }
+        .year-tag { color: #555; }
 
         .card-title {
           font-size: clamp(2rem, 3.5vw, 3.2rem);
@@ -266,32 +252,13 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           border-bottom: 1px solid #ffffff;
           padding-bottom: 4px;
           align-self: flex-start;
-          transition: opacity 0.3s ease;
-        }
-
-        .project-details-btn:hover {
-          opacity: 0.6;
         }
 
         @media (max-width: 900px) {
-          .sticky-viewport {
-            flex-direction: column;
-          }
-          .visual-sticky-pane {
-            position: relative;
-            top: 0;
-            height: auto;
-            width: 100%;
-            padding-top: 60px;
-          }
-          .scrollable-cards-pane {
-            width: 100%;
-            padding-left: 0;
-          }
-          .process-card {
-            min-height: auto;
-            padding: 60px 0;
-          }
+          .sticky-viewport { flex-direction: column; }
+          .visual-sticky-pane { position: relative; top: 0; height: auto; width: 100%; }
+          .scrollable-cards-pane { width: 100%; padding-left: 0; }
+          .process-card { min-height: auto; padding: 60px 0; }
         }
       `}</style>
     </section>
