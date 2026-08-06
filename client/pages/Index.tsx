@@ -204,8 +204,7 @@ export default function Index() {
 
        html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-  scroll-padding-top: 0;
+
 }
 
         body {
