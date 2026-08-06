@@ -4,62 +4,67 @@ interface StickyObjectProps {
   lang?: 'it' | 'en';
 }
 
-const PROCESS_STEPS = {
-  it: [
-    {
-      step: '01 / OSSERVA E COMPRENDI',
-      title: 'Ogni progetto parte\nda una domanda.',
-      desc: 'Prima di cercare soluzioni, dedico tempo a comprendere le persone, i contesti e i comportamenti. Analizzo come vengono usati i prodotti, dove nascono le difficoltà e quali vincoli guidano ogni decisione progettuale.',
-      tag: 'IMMAGINE 01 // RICERCA E OSSERVAZIONE',
-      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80',
-    },
-    {
-      step: '02 / CREA E TESTA',
-      title: 'Le idee prendono forma\nattraverso i prototipi.',
-      desc: 'Gli schizzi diventano modelli CAD, prototipi funzionali ed esperimenti fisici. Costruire le idee permette di validare le ipotesi, scoprire problemi inattesi e migliorare ogni iterazione attraverso test diretti.',
-      tag: 'IMMAGINE 02 // PROTOTIPAZIONE E TEST',
-      image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80',
-    },
-    {
-      step: '03 / AFFINA E SEMPLIFICA',
-      title: 'Il buon design è\nsemplicità consapevole.',
-      desc: 'Ogni componente deve avere uno scopo chiaro. Affino geometrie, materiali e processi produttivi finché la complessità scompare e rimane solo ciò che migliora davvero l’esperienza d’uso.',
-      tag: 'IMMAGINE 03 // AFFINAMENTO E DETTAGLIO',
-      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
-    },
-  ],
-  en: [
-    {
-      step: '01 / OBSERVE & UNDERSTAND',
-      title: 'Every project starts\nwith a question.',
-      desc: 'Before searching for solutions, I spend time understanding people, contexts and behaviours. I like analysing how products are used, where friction appears and which constraints influence every design decision.',
-      tag: 'IMAGE 01 // RESEARCH & OBSERVATION',
-      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80',
-    },
-    {
-      step: '02 / MAKE & TEST',
-      title: 'Ideas become real\nthrough prototyping.',
-      desc: 'Sketches evolve into CAD models, functional prototypes and physical experiments. Building ideas allows me to validate assumptions, discover unexpected problems and improve every iteration through direct testing.',
-      tag: 'IMAGE 02 // PROTOTYPING & TESTING',
-      image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80',
-    },
-    {
-      step: '03 / REFINE & SIMPLIFY',
-      title: 'Good design is\nthoughtful simplicity.',
-      desc: 'Every component should have a clear purpose. I refine geometry, materials and manufacturing processes until complexity disappears and only what truly improves the user experience remains.',
-      tag: 'IMAGE 03 // REFINEMENT & DETAIL',
-      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
-    },
-  ],
-};
+// Dizionario dati separato per massima chiarezza
+const DATA_IT = [
+  {
+    step: '01 / OSSERVA E COMPRENDI',
+    title: 'Ogni progetto parte\nda una domanda.',
+    desc: 'Prima di cercare soluzioni, dedico tempo a comprendere le persone, i contesti e i comportamenti. Analizzo come vengono usati i prodotti, dove nascono le difficoltà e quali vincoli guidano ogni decisione progettuale.',
+    tag: 'IMMAGINE 01 // RICERCA E OSSERVAZIONE',
+    image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    step: '02 / CREA E TESTA',
+    title: 'Le idee prendono forma\nattraverso i prototipi.',
+    desc: 'Gli schizzi diventano modelli CAD, prototipi funzionali ed esperimenti fisici. Costruire le idee permette di validare le ipotesi, scoprire problemi inattesi e migliorare ogni iterazione attraverso test diretti.',
+    tag: 'IMMAGINE 02 // PROTOTIPAZIONE E TEST',
+    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    step: '03 / AFFINA E SEMPLIFICA',
+    title: 'Il buon design è\nsemplicità consapevole.',
+    desc: 'Ogni componente deve avere uno scopo chiaro. Affino geometrie, materiali e processi produttivi finché la complessità scompare e rimane solo ciò che migliora davvero l’esperienza d’uso.',
+    tag: 'IMMAGINE 03 // AFFINAMENTO E DETTAGLIO',
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+  },
+];
+
+const DATA_EN = [
+  {
+    step: '01 / OBSERVE & UNDERSTAND',
+    title: 'Every project starts\nwith a question.',
+    desc: 'Before searching for solutions, I spend time understanding people, contexts and behaviours. I like analysing how products are used, where friction appears and which constraints influence every design decision.',
+    tag: 'IMAGE 01 // RESEARCH & OBSERVATION',
+    image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    step: '02 / MAKE & TEST',
+    title: 'Ideas become real\nthrough prototyping.',
+    desc: 'Sketches evolve into CAD models, functional prototypes and physical experiments. Building ideas allows me to validate assumptions, discover unexpected problems and improve every iteration through direct testing.',
+    tag: 'IMAGE 02 // PROTOTYPING & TESTING',
+    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    step: '03 / REFINE & SIMPLIFY',
+    title: 'Good design is\nthoughtful simplicity.',
+    desc: 'Every component should have a clear purpose. I refine geometry, materials and manufacturing processes until complexity disappears and only what truly improves the user experience remains.',
+    tag: 'IMAGE 03 // REFINEMENT & DETAIL',
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+  },
+];
 
 export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
   const [activeStep, setActiveStep] = useState(0);
+  const [activeLang, setActiveLang] = useState<'it' | 'en'>(lang);
   const triggerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Garantisce che la lingua attiva sia sempre aggiornata ad ogni render
-  const currentLang = (lang === 'en' || lang === 'it') ? lang : 'it';
-  const steps = PROCESS_STEPS[currentLang];
+  // Sincronizza lo stato interno se la prop 'lang' cambia dall'esterno
+  useEffect(() => {
+    setActiveLang(lang === 'en' ? 'en' : 'it');
+  }, [lang]);
+
+  // Seleziona l'array corretto in base alla lingua attiva
+  const steps = activeLang === 'en' ? DATA_EN : DATA_IT;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -82,7 +87,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [activeLang]);
 
   const handleStepClick = (index: number) => {
     setActiveStep(index);
@@ -95,26 +100,23 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
   const currentStepData = steps[activeStep] || steps[0];
 
   return (
-    // La key su section forza un rimontaggio pulito del componente ad ogni cambio lingua
-    <section key={currentLang} className="process-section">
-      {/* FRAME STICKY FULL-BLEED A SINISTRA */}
+    <section key={activeLang} className="process-section">
       <div className="process-sticky-frame">
         <div className="process-media">
           <img
-            key={`${currentLang}-img-${activeStep}`}
+            key={`${activeLang}-img-${activeStep}`}
             src={currentStepData.image}
             alt={currentStepData.step}
             className="process-img img-fade-in"
           />
 
-          <div key={`${currentLang}-tag-${activeStep}`} className="process-tag animate-tag-smooth">
+          <div key={`${activeLang}-tag-${activeStep}`} className="process-tag animate-tag-smooth">
             {currentStepData.tag}
           </div>
         </div>
 
-        {/* COLONNA TESTO DESTRA */}
         <div className="process-text-column">
-          <div key={`${currentLang}-text-${activeStep}`} className="process-content-block animate-text-smooth">
+          <div key={`${activeLang}-text-${activeStep}`} className="process-content-block animate-text-smooth">
             <span className="step-number">{currentStepData.step}</span>
 
             <h3 className="step-title">
@@ -143,7 +145,6 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
         </div>
       </div>
 
-      {/* STRATO SCROLLABILE TRASPARENTE */}
       <div className="process-triggers-overlay">
         {steps.map((_, index) => (
           <div
@@ -205,12 +206,8 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
         }
 
         @keyframes crossFadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
 
         .animate-tag-smooth {
@@ -218,12 +215,8 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
         }
 
         @keyframes tagSmooth {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
 
         .process-tag {
@@ -259,12 +252,8 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
         }
 
         @keyframes textSmooth {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
 
         .step-number {
