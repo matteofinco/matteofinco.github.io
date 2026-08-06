@@ -1,16 +1,22 @@
-import { Switch, Route } from "wouter";
+import React, { useState, useEffect } from "react";
 import Index from "@/pages/Index";
 import NotFound from "@/pages/NotFound";
 
-function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={Index} />
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
-
 export default function App() {
-  return <Router />;
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    window.addEventListener("popstate", handleLocationChange);
+    return () => window.removeEventListener("popstate", handleLocationChange);
+  }, []);
+
+  if (currentPath === "/" || currentPath === "") {
+    return <Index />;
+  }
+
+  return <NotFound />;
 }
