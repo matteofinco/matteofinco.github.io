@@ -49,7 +49,7 @@ export const StickyObject: React.FC = () => {
 
   return (
     <section className="process-section">
-      {/* FRAME INCORNICIATO */}
+      {/* FRAME STICKY FULL-BLEED A SINISTRA */}
       <div className="process-sticky-frame">
         <div className="process-media">
           <img
@@ -101,19 +101,15 @@ export const StickyObject: React.FC = () => {
         ))}
       </div>
 
-      {/* SPAZIATORE NERO FINALE PER SEPARARE IL CONTENUTO SUCCESSIVO */}
-      <div className="process-bottom-spacer" />
-
       <style>{`
         .process-section {
           position: relative;
           width: 100%;
           background-color: #070707;
-          padding: 0 4vw;
+          padding: 0 4vw 0 0; /* Rimosso padding a sinistra per toccare il bordo schermo */
           box-sizing: border-box;
         }
 
-        /* FRAME FISSO CON MARGINI DALLA NAVBAR */
         .process-sticky-frame {
           position: sticky;
           top: 90px;
@@ -124,17 +120,16 @@ export const StickyObject: React.FC = () => {
           grid-template-columns: 1.1fr 0.9fr;
           align-items: center;
           gap: 5vw;
-          border-radius: 12px;
+          border-radius: 0; /* Spigoli vivi */
           overflow: hidden;
           z-index: 1;
         }
 
-        /* IMMAGINE PULITA SENZA FILTRI NERI O GRADIENTI */
         .process-media {
           position: relative;
           width: 100%;
           height: 100%;
-          border-radius: 8px;
+          border-radius: 0; /* Spigoli vivi */
           overflow: hidden;
         }
 
@@ -142,7 +137,8 @@ export const StickyObject: React.FC = () => {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          filter: none; /* Immagine nitida e senza oscuramento */
+          border-radius: 0; /* Spigoli vivi */
+          filter: none;
         }
 
         .process-tag {
@@ -155,12 +151,11 @@ export const StickyObject: React.FC = () => {
           letter-spacing: 1.5px;
           background: rgba(0, 0, 0, 0.65);
           padding: 6px 14px;
-          border-radius: 4px;
+          border-radius: 0; /* Spigoli vivi per coerenza col visual */
           backdrop-filter: blur(8px);
           z-index: 2;
         }
 
-        /* COLONNA TESTO DESTRA */
         .process-text-column {
           display: flex;
           flex-direction: column;
@@ -230,7 +225,6 @@ export const StickyObject: React.FC = () => {
           width: 40px;
         }
 
-        /* STRATO DI TRIGGER PER LO SCROLL */
         .process-triggers-overlay {
           position: relative;
           z-index: 3;
@@ -244,13 +238,10 @@ export const StickyObject: React.FC = () => {
           pointer-events: none;
         }
 
-        /* SPAZIATORE NERO SOTTO LA SEZIONE */
-        .process-bottom-spacer {
-          height: 25vh; /* Regola questa altezza per aumentare o diminuire lo stacco */
-          width: 100%;
-        }
-
         @media (max-width: 900px) {
+          .process-section {
+            padding: 0 4vw;
+          }
           .process-sticky-frame {
             grid-template-columns: 1fr;
             top: 70px;
