@@ -1,5 +1,6 @@
 import React, { Component, ReactNode } from "react";
 import Index from "@/pages/Index";
+import About from "@/pages/About";
 
 interface Props {
   children?: ReactNode;
