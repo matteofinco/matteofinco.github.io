@@ -1,6 +1,8 @@
 import React from "react";
 import Index from "./pages/Index";
 import About from "./pages/About";
+import About from "./pages/Curriculum";
+
 
 export default function App() {
   // Legge l'URL attuale direttamente al caricamento
