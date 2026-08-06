@@ -80,19 +80,14 @@ const translations = {
 };
 
 export default function About() {
-  // 1. Legge la lingua iniziale (es. da localStorage, dal tag html lang, o fallback su 'it')
   const [lang, setLang] = useState<'it' | 'en'>(() => {
     const savedLang = localStorage.getItem('app_lang');
     if (savedLang === 'it' || savedLang === 'en') return savedLang;
-    
-    // Altrimenti controlla l'attributo lang del documento se impostato da altre parti
     const docLang = document.documentElement.lang;
     if (docLang === 'en') return 'en';
-    
-    return 'it'; // Default iniziale
+    return 'it';
   });
 
-  // Sincronizza lo stato con eventuali eventi custom o cambiamenti globali della lingua scatenati dall'Header
   useEffect(() => {
     const handleLanguageChange = (e: CustomEvent) => {
       if (e.detail && (e.detail === 'it' || e.detail === 'en')) {
@@ -107,7 +102,6 @@ export default function About() {
     };
   }, []);
 
-  // Funzione per cambiare lingua manualmente (se vuoi passarla al Header o gestirla qui)
   const toggleLanguage = (newLang: 'it' | 'en') => {
     setLang(newLang);
     localStorage.setItem('app_lang', newLang);
@@ -134,11 +128,16 @@ export default function About() {
     return () => {
       revealObserver.disconnect();
     };
-  }, [lang]); // Ri-esegue l'observer se cambia la lingua (se ricarica il DOM)
+  }, [lang]);
 
   return (
     <div className="about-page editorial-portfolio bg-[#070707] text-[#e5e5e5] min-h-screen overflow-x-hidden">
-      <Header showBackToDesigns={false} currentLang={lang} onLanguageChange={toggleLanguage} />
+      <Header 
+        showBackToDesigns={false} 
+        currentLang={lang} 
+        onLanguageChange={toggleLanguage}
+        setLang={toggleLanguage} 
+      />
 
       <style>{`
         .about-page { padding-top: 80px; }
