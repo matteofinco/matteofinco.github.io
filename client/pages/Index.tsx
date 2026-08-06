@@ -244,7 +244,12 @@ const translations = {
       "Lavoro passando continuamente tra ricerca, modellazione CAD, prototipazione rapida e test fisici. Credo che le idee migliori emergano quando possono essere costruite, smontate, migliorate e rimesse alla prova.",
 
     sec2P2:
-      "Sono interessato al design industriale, ai sistemi interattivi e alla fabbricazione digitale, con particolare attenzione alla semplicità costruttiva, alla sostenibilità e alla qualità dell'esperienza d'uso."
+      "Sono interessato al design industriale, ai sistemi interattivi e alla fabbricazione digitale, con particolare attenzione alla semplicità costruttiva, alla sostenibilità e alla qualità dell'esperienza d'uso.",
+
+    whatsNextSub: "Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale.",
+    aboutBtn: "CHI SONO",
+    cvBtn: "CURRICULUM VITAE",
+    infoText: "Info"
   },
 
   en: {
@@ -259,7 +264,12 @@ const translations = {
       "My workflow moves continuously between research, CAD modelling, rapid prototyping and physical testing. I believe the best ideas emerge when they can be built, taken apart, refined and tested again.",
 
     sec2P2:
-      "I'm particularly interested in industrial design, interactive systems and digital fabrication, with a focus on simplicity, sustainability and thoughtful user experiences."
+      "I'm particularly interested in industrial design, interactive systems and digital fabrication, with a focus on simplicity, sustainability and thoughtful user experiences.",
+
+    whatsNextSub: "Always open to new collaborations, industrial design projects, and digital fabrication experiments.",
+    aboutBtn: "ABOUT ME",
+    cvBtn: "CURRICULUM VITAE",
+    infoText: "About"
   }
 };
 
@@ -318,6 +328,8 @@ export default function Index() {
       processObserver.disconnect();
     };
   }, []);
+
+  const t = translations[lang];
 
   return (
     <div className="editorial-portfolio">
@@ -488,16 +500,20 @@ export default function Index() {
 
       <Header lang={lang} setLang={setLang} showName={showNavName} />
       <Hero />
-      <IntroSection t={translations[lang]} />
+      <IntroSection t={t} />
       
       {/* FASCIA DI STACCO NERA TRA INTRO E STICKY OBJECT */}
       <div className="section-divider-gap" />
 
-     <StickyObject lang={lang} />
+      <StickyObject lang={lang} />
       {/* FASCIA DI STACCO NERA PRIMA DI CIRCLE SHOWCASE */}
       <div className="section-divider-gap" />
 
-<div className="whats-next-wrapper">
+      <div className="showcase-wrapper">
+        <CircleShowcase steps={projectList} activeStep={activeStep} lang={lang} />
+      </div>
+
+      <div className="whats-next-wrapper">
         <footer className="whats-next-footer">
           <h2>
             WHAT&apos;S NEXT
@@ -505,17 +521,15 @@ export default function Index() {
           </h2>
 
           <p className="sub-lead">
-            {lang === 'it' 
-              ? "Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale." 
-              : "Always open to new collaborations, industrial design projects, and digital fabrication experiments."}
+            {t.whatsNextSub}
           </p>
 
           <div className="footer-actions">
             <a href="/about" className="btn-footer-link">
-              {lang === 'it' ? "CHI SONO" : "ABOUT ME"}
+              {t.aboutBtn}
             </a>
             <a href="/cv" className="btn-footer-outline">
-              {lang === 'it' ? "CURRICULUM VITAE" : "CURRICULUM VITAE"}
+              {t.cvBtn}
             </a>
           </div>
 
@@ -523,11 +537,12 @@ export default function Index() {
             <div>2026 MATTEO FINCO // PRODUCT DESIGN &amp; MAKER</div>
             <div className="footer-contacts-list">
               <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="/about">{lang === 'it' ? "Info" : "About"}</a>
+              <a href="/about">{t.infoText}</a>
               <a href="/cv">CV</a>
             </div>
           </div>
         </footer>
       </div>
+    </div>
   );
 }
