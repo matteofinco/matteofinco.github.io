@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Header } from '../components/Header';
+import { Hero } from '../components/Hero';
+import { IntroSection } from '../components/IntroSection';
+import { StickyObject } from '../components/StickyObject';
+import { CircleShowcase, ProcessStep } from '../components/CircleShowcase';
 
-const processSteps = [
+const processSteps: ProcessStep[] = [
   {
     id: '01',
     phase: 'RESEARCH & ANALYSIS',
@@ -85,7 +90,7 @@ export default function Index() {
   const [activeStep, setActiveStep] = useState<number>(0);
 
   useEffect(() => {
-    // Reveal Animations per le immagini in entrata da Destra / Sinistra
+    // Reveal Animations (Immagini in entrata)
     const revealElements = document.querySelectorAll('.reveal-editorial');
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -100,7 +105,7 @@ export default function Index() {
 
     revealElements.forEach((el) => revealObserver.observe(el));
 
-    // Observer per sincronizzare lo scroll a destra con il cambio foto nella cornice fissa a sinistra
+    // Observer per sincronizzare lo scroll a destra con i pallini del cerchio SVG
     const processCards = document.querySelectorAll('.process-card');
     const processObserver = new IntersectionObserver(
       (entries) => {
@@ -122,140 +127,32 @@ export default function Index() {
     };
   }, []);
 
-  const t = translations[lang];
-
   return (
     <div className="editorial-portfolio">
       <style>{`
-        *, *::before, *::after {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-        }
-
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html, body {
           background-color: #070707;
           color: #e5e5e5;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           line-height: 1.7;
           overflow-x: hidden;
         }
 
-        .editorial-portfolio {
-          background-color: #070707;
-          color: #e5e5e5;
-          min-height: 100vh;
-        }
+        .editorial-portfolio { background-color: #070707; color: #e5e5e5; min-height: 100vh; }
 
-        /* HEADER EDITORIALE */
-        header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          padding: 35px 6vw;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 1000;
-          background: linear-gradient(to bottom, rgba(7,7,7,0.85), rgba(7,7,7,0));
-          backdrop-filter: blur(8px);
-        }
+        /* HERO LAYER ANIMATIONS */
+        .layer-blueprint { fill: url(#blueprintPattern); animation: layerMove1 22s ease-in-out infinite alternate; }
+        .layer-sketches { animation: layerMove2 18s ease-in-out infinite alternate, layerFade1 14s ease-in-out infinite alternate; }
+        .layer-photo { animation: layerMove3 24s ease-in-out infinite alternate, layerFade2 16s ease-in-out infinite alternate; }
 
-        .header-brand {
-          font-size: 0.85rem;
-          font-weight: 700;
-          letter-spacing: 3px;
-          text-transform: uppercase;
-          color: #888888;
-        }
+        @keyframes layerMove1 { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.12) translate(-30px, -15px); } }
+        @keyframes layerMove2 { 0% { transform: scale(1.05) translate(20px, -20px); } 100% { transform: scale(1.2) translate(-20px, 20px); } }
+        @keyframes layerMove3 { 0% { transform: scale(1) translate(-15px, 15px); } 100% { transform: scale(1.1) translate(25px, -25px); } }
+        @keyframes layerFade1 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.75; } }
+        @keyframes layerFade2 { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.2; } }
 
-        .lang-switcher {
-          display: flex;
-          gap: 15px;
-          align-items: center;
-        }
-
-        .lang-btn {
-          background: none;
-          border: none;
-          color: #555555;
-          font-weight: 600;
-          font-size: 0.85rem;
-          letter-spacing: 1px;
-          cursor: pointer;
-          transition: color 0.4s ease;
-        }
-
-        .lang-btn.active, .lang-btn:hover {
-          color: #ffffff;
-        }
-
-        /* HERO CON MASCHERA SVG E LAYER ANIMATI */
-        .hero-section {
-          position: relative;
-          width: 100%;
-          height: 100vh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-          background-color: #070707;
-        }
-
-        .hero-svg-wrapper {
-          width: 90vw;
-          max-width: 1300px;
-          height: auto;
-          position: relative;
-          z-index: 2;
-        }
-
-        .hero-svg-mask {
-          width: 100%;
-          height: 100%;
-          display: block;
-        }
-
-        .layer-blueprint {
-          fill: url(#blueprintPattern);
-          animation: layerMove1 22s ease-in-out infinite alternate;
-        }
-
-        .layer-sketches {
-          animation: layerMove2 18s ease-in-out infinite alternate, layerFade1 14s ease-in-out infinite alternate;
-        }
-
-        .layer-photo {
-          animation: layerMove3 24s ease-in-out infinite alternate, layerFade2 16s ease-in-out infinite alternate;
-        }
-
-        @keyframes layerMove1 {
-          0% { transform: scale(1) translate(0, 0); }
-          100% { transform: scale(1.12) translate(-30px, -15px); }
-        }
-
-        @keyframes layerMove2 {
-          0% { transform: scale(1.05) translate(20px, -20px); }
-          100% { transform: scale(1.2) translate(-20px, 20px); }
-        }
-
-        @keyframes layerMove3 {
-          0% { transform: scale(1) translate(-15px, 15px); }
-          100% { transform: scale(1.1) translate(25px, -25px); }
-        }
-
-        @keyframes layerFade1 {
-          0%, 100% { opacity: 0.25; }
-          50% { opacity: 0.75; }
-        }
-
-        @keyframes layerFade2 {
-          0%, 100% { opacity: 0.7; }
-          50% { opacity: 0.2; }
-        }
-
-        /* SEZIONI INTRODUTTIVE - IMMAGINI IN ENTRATA DA SINISTRA E DESTRA */
+        /* INTRO SECTIONS */
         .editorial-section {
           max-width: 1400px;
           margin: 0 auto;
@@ -265,553 +162,75 @@ export default function Index() {
           gap: 100px;
           align-items: center;
         }
+        .editorial-text h2 { font-size: clamp(2.4rem, 4.5vw, 4.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 25px; color: #fff; }
+        .editorial-text h3.sub-grey { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 500; color: #666; margin-bottom: 40px; }
+        .editorial-text p { color: #999; font-size: 1.15rem; line-height: 1.8; max-width: 540px; }
+        .editorial-media-box { position: relative; width: 100%; height: 560px; overflow: hidden; background: #111; }
+        .editorial-media-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); transition: filter 0.8s ease; }
+        .editorial-media-box:hover img { filter: grayscale(0%); }
 
-        .editorial-text h2 {
-          font-size: clamp(2.4rem, 4.5vw, 4.2rem);
-          font-weight: 800;
-          line-height: 1.1;
-          margin-bottom: 25px;
-          letter-spacing: -1.5px;
-          color: #ffffff;
-        }
-
-        .editorial-text h3.sub-grey {
-          font-size: clamp(1.6rem, 3vw, 2.4rem);
-          font-weight: 500;
-          color: #666666;
-          margin-bottom: 40px;
-          line-height: 1.25;
-          letter-spacing: -0.5px;
-        }
-
-        .editorial-text p {
-          color: #999999;
-          font-size: 1.15rem;
-          line-height: 1.8;
-          max-width: 540px;
-        }
-
-        .editorial-media-box {
-          position: relative;
-          width: 100%;
-          height: 560px;
-          overflow: hidden;
-          background: #111111;
-        }
-
-        .editorial-media-box img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-          filter: grayscale(30%);
-          transition: filter 0.8s ease;
-        }
-
-        .editorial-media-box:hover img {
-          filter: grayscale(0%);
-        }
-
-        /* Animazioni di entrata da Destra e Sinistra con Blur e Scale */
         .reveal-editorial {
-          opacity: 0;
-          filter: blur(12px);
-          transition: opacity 1.4s cubic-bezier(.22,.61,.36,1), 
-                      filter 1.4s cubic-bezier(.22,.61,.36,1), 
-                      transform 1.4s cubic-bezier(.22,.61,.36,1);
+          opacity: 0; filter: blur(12px);
+          transition: opacity 1.4s cubic-bezier(.22,.61,.36,1), filter 1.4s cubic-bezier(.22,.61,.36,1), transform 1.4s cubic-bezier(.22,.61,.36,1);
         }
+        .reveal-editorial.reveal-from-right { transform: scale(1.04) translateX(50px); }
+        .reveal-editorial.reveal-from-left { transform: scale(1.04) translateX(-50px); }
+        .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: scale(1) translateX(0); }
 
-        .reveal-editorial.reveal-from-right {
-          transform: scale(1.04) translateX(50px);
-        }
+        /* STICKY FEATURE */
+        .sticky-feature-section { position: relative; width: 100%; min-height: 240vh; background-color: #050505; border-y: 1px solid #181818; }
+        .sticky-media-container { position: sticky; top: 0; height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; z-index: 1; }
+        .sticky-media-box { position: relative; width: 75vw; max-width: 1100px; height: 70vh; overflow: hidden; }
+        .sticky-media-box img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7) contrast(1.1); }
+        .sticky-technical-tag { position: absolute; bottom: 30px; left: 30px; font-family: monospace; font-size: 0.8rem; color: rgba(255,255,255,0.6); background: rgba(0,0,0,0.5); padding: 6px 12px; backdrop-filter: blur(4px); }
+        .scrolling-overlay-container { position: relative; z-index: 2; margin-top: -100vh; padding-bottom: 20vh; pointer-events: none; }
+        .scrolling-card { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; max-width: 520px; margin: 0 auto 10vh 10vw; background: rgba(12, 12, 12, 0.85); backdrop-filter: blur(16px); padding: 50px 40px; border-left: 2px solid #fff; pointer-events: auto; }
+        .scrolling-card .card-step { font-family: monospace; font-size: 0.85rem; color: #777; margin-bottom: 15px; }
+        .scrolling-card h3 { font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 20px; }
+        .scrolling-card p { color: #aaa; font-size: 1.05rem; }
 
-        .reveal-editorial.reveal-from-left {
-          transform: scale(1.04) translateX(-50px);
-        }
+        /* CIRCLE SHOWCASE */
+        .process-showcase-wrapper { max-width: 1500px; margin: 0 auto; padding: 120px 6vw; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 90px; align-items: start; }
+        .process-sticky-left { position: sticky; top: 12vh; height: 76vh; display: flex; items-center: center; justify-content: center; }
+        .circle-technical-frame { position: relative; width: 100%; max-width: 500px; height: 500px; }
+        .circle-hud-svg { width: 100%; height: 100%; overflow: visible; }
 
-        .reveal-editorial.reveal-active {
-          opacity: 1;
-          filter: blur(0);
-          transform: scale(1) translateX(0);
-        }
+        .circle-img-layer { opacity: 0; transform: scale(1.05); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .circle-img-layer.active-layer { opacity: 1; transform: scale(1); }
 
-        /* SEZIONE STICKY OGGETTO/SCARPA */
-        .sticky-feature-section {
-          position: relative;
-          width: 100%;
-          min-height: 240vh;
-          background-color: #050505;
-          border-top: 1px solid #181818;
-          border-bottom: 1px solid #181818;
-        }
+        @keyframes pulseRing { 0% { r: 8px; opacity: 1; } 100% { r: 18px; opacity: 0; } }
+        .node-pulse { animation: pulseRing 1.8s ease-out infinite; }
 
-        .sticky-media-container {
-          position: sticky;
-          top: 0;
-          height: 100vh;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-          z-index: 1;
-        }
+        .process-scroll-right { padding-top: 6vh; padding-bottom: 20vh; }
+        .process-card { min-height: 75vh; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; opacity: 0.2; filter: blur(4px); transition: opacity 0.6s ease, filter 0.6s ease; border-bottom: 1px solid #141414; }
+        .process-card.active-step { opacity: 1; filter: blur(0px); }
+        .process-card .phase-number { font-family: monospace; font-size: 0.9rem; color: #666; margin-bottom: 10px; }
+        .process-card .phase-title { font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 25px; }
+        .process-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; padding: 20px 0; border-y: 1px solid #1a1a1a; }
+        .meta-item .meta-label { font-family: monospace; font-size: 0.75rem; color: #555; text-transform: uppercase; margin-bottom: 4px; }
+        .meta-item .meta-value { font-size: 0.95rem; color: #ccc; font-weight: 500; }
+        .process-card .phase-desc { color: #a0a0a0; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; }
+        .process-card blockquote { font-style: italic; color: #888; border-left: 2px solid #555; padding-left: 20px; font-size: 1.05rem; }
 
-        .sticky-media-box {
-          position: relative;
-          width: 75vw;
-          max-width: 1100px;
-          height: 70vh;
-          overflow: hidden;
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
-        }
-
-        .sticky-media-box img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-          filter: brightness(0.7) contrast(1.1);
-        }
-
-        .sticky-technical-tag {
-          position: absolute;
-          bottom: 30px;
-          left: 30px;
-          font-family: monospace;
-          font-size: 0.8rem;
-          color: rgba(255,255,255,0.6);
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          background: rgba(0,0,0,0.5);
-          padding: 6px 12px;
-          backdrop-filter: blur(4px);
-        }
-
-        .scrolling-overlay-container {
-          position: relative;
-          z-index: 2;
-          margin-top: -100vh;
-          padding-bottom: 20vh;
-          pointer-events: none;
-        }
-
-        .scrolling-card {
-          min-height: 80vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          max-width: 520px;
-          margin: 0 auto 10vh 10vw;
-          background: rgba(12, 12, 12, 0.85);
-          backdrop-filter: blur(16px);
-          padding: 50px 40px;
-          border-left: 2px solid #ffffff;
-          pointer-events: auto;
-          box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        }
-
-        .scrolling-card .card-step {
-          font-family: monospace;
-          font-size: 0.85rem;
-          color: #777777;
-          letter-spacing: 2px;
-          margin-bottom: 15px;
-          display: block;
-        }
-
-        .scrolling-card h3 {
-          font-size: 2rem;
-          font-weight: 700;
-          color: #ffffff;
-          margin-bottom: 20px;
-          letter-spacing: -0.5px;
-        }
-
-        .scrolling-card p {
-          color: #aaaaaa;
-          font-size: 1.05rem;
-          line-height: 1.7;
-        }
-
-        /* SHOWCASE PROCESSO CON CORNICE STATICA E TRANSIZIONE FOTO */
-        .process-showcase-wrapper {
-          position: relative;
-          max-width: 1500px;
-          margin: 0 auto;
-          padding: 120px 6vw;
-          display: grid;
-          grid-template-columns: 1.1fr 0.9fr;
-          gap: 90px;
-          align-items: start;
-        }
-
-        .process-sticky-left {
-          position: sticky;
-          top: 12vh;
-          height: 76vh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .technical-frame {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          max-height: 620px;
-          background-color: #0c0c0c;
-          border: 1px solid #1a1a1a;
-          overflow: hidden;
-        }
-
-        .technical-img-stack {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-        }
-
-        .process-frame-img {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          opacity: 0;
-          transform: scale(1.08);
-          transition: opacity 0.85s cubic-bezier(.22,.61,.36,1), transform 0.85s cubic-bezier(.22,.61,.36,1);
-          pointer-events: none;
-        }
-
-        .process-frame-img.active-img {
-          opacity: 1;
-          transform: scale(1);
-        }
-
-        .technical-hud-overlay {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          pointer-events: none;
-          z-index: 3;
-        }
-
-        .process-scroll-right {
-          padding-top: 6vh;
-          padding-bottom: 20vh;
-        }
-
-        .process-card {
-          min-height: 75vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          padding: 40px 0;
-          opacity: 0.2;
-          filter: blur(4px);
-          transition: opacity 0.6s ease, filter 0.6s ease;
-          border-bottom: 1px solid #141414;
-        }
-
-        .process-card.active-step {
-          opacity: 1;
-          filter: blur(0px);
-        }
-
-        .process-card .phase-number {
-          font-family: monospace;
-          font-size: 0.9rem;
-          color: #666666;
-          letter-spacing: 3px;
-          margin-bottom: 10px;
-        }
-
-        .process-card .phase-title {
-          font-size: 2.5rem;
-          font-weight: 800;
-          color: #ffffff;
-          margin-bottom: 25px;
-          letter-spacing: -1px;
-        }
-
-        .process-meta-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 20px;
-          margin-bottom: 30px;
-          padding: 20px 0;
-          border-top: 1px solid #1a1a1a;
-          border-bottom: 1px solid #1a1a1a;
-        }
-
-        .meta-item .meta-label {
-          font-family: monospace;
-          font-size: 0.75rem;
-          color: #555555;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          margin-bottom: 4px;
-        }
-
-        .meta-item .meta-value {
-          font-size: 0.95rem;
-          color: #cccccc;
-          font-weight: 500;
-        }
-
-        .process-card .phase-desc {
-          color: #a0a0a0;
-          font-size: 1.1rem;
-          line-height: 1.8;
-          margin-bottom: 30px;
-        }
-
-        .process-card blockquote {
-          font-style: italic;
-          color: #888888;
-          border-left: 2px solid #555555;
-          padding-left: 20px;
-          font-size: 1.05rem;
-          line-height: 1.6;
-        }
-
-        footer {
-          background-color: #040404;
-          padding: 100px 6vw 50px;
-          text-align: center;
-          border-top: 1px solid #121212;
-        }
-
-        footer p {
-          color: #444444;
-          font-size: 0.85rem;
-          letter-spacing: 1px;
-          font-family: monospace;
-        }
+        footer { background-color: #040404; padding: 100px 6vw 50px; text-align: center; border-top: 1px solid #121212; }
+        footer p { color: #444; font-size: 0.85rem; font-family: monospace; }
 
         @media (max-width: 1024px) {
-          .editorial-section, .process-showcase-wrapper {
-            grid-template-columns: 1fr;
-            gap: 60px;
-          }
-          .process-sticky-left {
-            position: relative;
-            top: 0;
-            height: 450px;
-          }
-          .scrolling-card {
-            margin: 0 5vw 10vh 5vw;
-          }
+          .editorial-section, .process-showcase-wrapper { grid-template-columns: 1fr; gap: 60px; }
+          .process-sticky-left { position: relative; top: 0; height: 400px; }
+          .scrolling-card { margin: 0 5vw 10vh 5vw; }
         }
       `}</style>
 
-      {/* HEADER EDITORIALE */}
-      <header>
-        <div className="header-brand">PORTFOLIO // INDUSTRIAL DESIGN</div>
-        <div className="lang-switcher">
-          <button className={`lang-btn ${lang === 'it' ? 'active' : ''}`} onClick={() => setLang('it')}>IT</button>
-          <span style={{ color: '#333' }}>|</span>
-          <button className={`lang-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
-        </div>
-      </header>
-
-      {/* 1. HERO CON MASCHERA SVG "DESIGN" */}
-      <section className="hero-section">
-        <div className="hero-svg-wrapper">
-          <svg className="hero-svg-mask" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <pattern id="blueprintPattern" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="1" />
-                <circle cx="20" cy="20" r="1.5" fill="rgba(255, 255, 255, 0.4)" />
-              </pattern>
-
-              <mask id="designTextMask" x="0" y="0" width="100%" height="100%">
-                <rect x="0" y="0" width="100%" height="100%" fill="#000000" />
-                <text
-                  x="50%"
-                  y="55%"
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                  fill="#ffffff"
-                  fontSize="220"
-                  fontWeight="900"
-                  fontFamily="-apple-system, Helvetica Neue, Arial, sans-serif"
-                  letterSpacing="-8"
-                >
-                  DESIGN
-                </text>
-              </mask>
-            </defs>
-
-            <g mask="url(#designTextMask)">
-              <rect className="layer-blueprint" x="-10%" y="-10%" width="120%" height="120%" />
-              <g className="layer-sketches">
-                <image
-                  href="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1600&q=80"
-                  x="0"
-                  y="0"
-                  width="100%"
-                  height="100%"
-                  opacity="0.5"
-                  preserveAspectRatio="xMidYMid slice"
-                />
-              </g>
-              <g className="layer-photo">
-                <image
-                  href="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80"
-                  x="0"
-                  y="0"
-                  width="100%"
-                  height="100%"
-                  opacity="0.45"
-                  preserveAspectRatio="xMidYMid slice"
-                />
-              </g>
-            </g>
-          </svg>
-        </div>
-      </section>
-
-      {/* 2. SEZIONI INTRODUTTIVE - IMMAGINI IN ENTRATA ALTERNATE (DESTRA / SINISTRA) */}
-      <section className="editorial-section">
-        <div className="editorial-text">
-          <h2>{t.sec1Title}</h2>
-          <h3 className="sub-grey">{t.sec1Sub}</h3>
-          <p>{t.sec1P}</p>
-        </div>
-        {/* Entrata da Destra */}
-        <div className="editorial-media-box reveal-editorial reveal-from-right">
-          <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1000&q=80" alt="Design Lab" />
-        </div>
-      </section>
-
-      <section className="editorial-section">
-        {/* Entrata da Sinistra */}
-        <div className="editorial-media-box reveal-editorial reveal-from-left">
-          <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1000&q=80" alt="Process Sketch" />
-        </div>
-        <div className="editorial-text">
-          <p>{t.sec2P1}</p>
-          <br />
-          <p>{t.sec2P2}</p>
-        </div>
-      </section>
-
-      {/* 3. SEZIONE STICKY OGGETTO */}
-      <section className="sticky-feature-section">
-        <div className="sticky-media-container">
-          <div className="sticky-media-box">
-            <img
-              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1600&q=80"
-              alt="Featured Design Object"
-            />
-            <div className="sticky-technical-tag">[OBJECT_REF_01 // SYSTEM_PROTOTYPE]</div>
-          </div>
-        </div>
-
-        <div className="scrolling-overlay-container">
-          <div className="scrolling-card">
-            <span className="card-step">01 / ARCHITETTURA FORMALE</span>
-            <h3>Scomposizione dei Volumi</h3>
-            <p>Il progetto nasce dalla necessità di alleggerire la percezione visiva, concentrando la massa strutturale solo nei punti di sollecitazione meccanica.</p>
-          </div>
-
-          <div className="scrolling-card">
-            <span className="card-step">02 / INTERAZIONE E MATERIALI</span>
-            <h3>Integrazione Sensoriale</h3>
-            <p>L'accoppiamento tra polimeri rigidi e superfici tattili crea una transizione fluida tra i punti di presa manuale e la struttura di supporto.</p>
-          </div>
-
-          <div className="scrolling-card">
-            <span className="card-step">03 / SOSTENIBILITÀ E MONTAGGIO</span>
-            <h3>Design for Disassembly</h3>
-            <p>Senza l'impiego di colle permanenti, ogni componente può essere separato in meno di due minuti per favorire il riciclo o la sostituzione singola.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. SHOWCASE PROCESSO CON CORNICE STATICA A SINISTRA E CAMBIO FOTO FLUIDO */}
-      <section className="process-showcase-wrapper">
-        {/* CORNICE STATICA A SINISTRA */}
-        <div className="process-sticky-left">
-          <div className="technical-frame">
-            <div className="technical-img-stack">
-              {processSteps.map((step, idx) => (
-                <img
-                  key={step.id}
-                  src={step.img}
-                  alt={step.title}
-                  className={`process-frame-img ${activeStep === idx ? 'active-img' : ''}`}
-                />
-              ))}
-            </div>
-
-            {/* Overlays grafici e coordinate tecniche */}
-            <svg className="technical-hud-overlay" viewBox="0 0 500 600">
-              <path d="M 20 30 L 20 20 L 30 20" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
-              <path d="M 470 20 L 480 20 L 480 30" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
-              <path d="M 20 570 L 20 580 L 30 580" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
-              <path d="M 470 580 L 480 580 L 480 570" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
-
-              <text x="35" y="32" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="monospace">
-                SEC_REF // A-0{activeStep + 1}
-              </text>
-              
-              <circle cx="450" cy="50" r="14" stroke="rgba(255,255,255,0.2)" strokeWidth="1" fill="none" />
-              <text x="444" y="53" fill="rgba(255,255,255,0.6)" fontSize="8" fontFamily="monospace">12°</text>
-
-              <line x1="30" y1="560" x2="470" y2="560" stroke="rgba(255,255,255,0.15)" strokeWidth="1" strokeDasharray="3,3" />
-              <text x="35" y="550" fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="monospace">
-                SCALE 1:1 // TOLERANCE 0.05mm
-              </text>
-              <text x="390" y="550" fill="rgba(255,255,255,0.6)" fontSize="9" fontFamily="monospace" fontWeight="bold">
-                [{processSteps[activeStep]?.id} / 05]
-              </text>
-            </svg>
-          </div>
-        </div>
-
-        {/* SPIEGAZIONI A DESTRA CHE CAMBIANO MAN MANO CHE SCORRI */}
-        <div className="process-scroll-right">
-          {processSteps.map((step, idx) => (
-            <div
-              key={idx}
-              className={`process-card ${activeStep === idx ? 'active-step' : ''}`}
-              data-step={idx}
-            >
-              <div className="phase-number">PHASE_{step.id} // {step.phase}</div>
-              <div className="phase-title">{step.title}</div>
-
-              <div className="process-meta-grid">
-                <div className="meta-item">
-                  <div className="meta-label">Strumenti</div>
-                  <div className="meta-value">{step.tools}</div>
-                </div>
-                <div className="meta-item">
-                  <div className="meta-label">Materiali / Output</div>
-                  <div className="meta-value">{step.material}</div>
-                </div>
-                <div className="meta-item">
-                  <div className="meta-label">Anno / Stato</div>
-                  <div className="meta-value">{step.year}</div>
-                </div>
-                <div className="meta-item">
-                  <div className="meta-label">Ruolo</div>
-                  <div className="meta-value">{step.role}</div>
-                </div>
-              </div>
-
-              <p className="phase-desc">{step.desc}</p>
-              <blockquote>{step.quote}</blockquote>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* COMPONENTI MODULARI */}
+      <Header lang={lang} setLang={setLang} />
+      <Hero />
+      <IntroSection t={translations[lang]} />
+      <StickyObject />
+      <CircleShowcase steps={processSteps} activeStep={activeStep} />
 
       <footer>
-        <p>© 2026 INDUSTRIAL DESIGN PORTFOLIO // ALL RIGHTS RESERVED</p>
+        <p>© 2026 MATTEO FINCO // ALL RIGHTS RESERVED</p>
       </footer>
     </div>
   );
