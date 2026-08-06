@@ -101,16 +101,16 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
             key={currentStep.image}
             src={currentStep.image}
             alt={currentStep.step}
-            className="animate-image-slide-fade"
+            className="animate-image-slow"
           />
-          <div key={currentStep.tag} className="process-tag animate-tag-fade">
+          <div key={currentStep.tag} className="process-tag animate-tag-slow">
             {currentStep.tag}
           </div>
         </div>
 
         {/* COLONNA TESTO DESTRA */}
         <div className="process-text-column">
-          <div key={`${lang}-${activeStep}`} className="process-content-block animate-text-fade">
+          <div key={`${lang}-${activeStep}`} className="process-content-block animate-text-slow">
             <span className="step-number">{currentStep.step}</span>
 
             <h3 className="step-title">
@@ -181,7 +181,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           height: 100%;
           border-radius: 0;
           overflow: hidden;
-          background-color: #0d0d0d;
+          background-color: #070707;
         }
 
         .process-media img {
@@ -193,32 +193,32 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           will-change: transform, opacity;
         }
 
-        /* IMMAGINE: Scivolamento morbido da sinistra + Fade in graduale */
-        .animate-image-slide-fade {
-          animation: imageSlideFade 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        /* IMMAGINE: 1.4 secondi per un passaggio impercettibile e fluido */
+        .animate-image-slow {
+          animation: imageSlowSlide 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes imageSlideFade {
-          from {
-            opacity: 0;
-            transform: translateX(-35px) scale(1.01);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0) scale(1);
-          }
-        }
-
-        /* BADGE TAG: Entrata delicata con leggero offset */
-        .animate-tag-fade {
-          animation: tagSoftFade 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
-          opacity: 0;
-        }
-
-        @keyframes tagSoftFade {
+        @keyframes imageSlowSlide {
           from {
             opacity: 0;
             transform: translateX(-15px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        /* BADGE TAG: 1.1 secondi di dissolvenza con lieve ritardo */
+        .animate-tag-slow {
+          animation: tagSlowFade 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+          opacity: 0;
+        }
+
+        @keyframes tagSlowFade {
+          from {
+            opacity: 0;
+            transform: translateX(-8px);
           }
           to {
             opacity: 1;
@@ -254,15 +254,15 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           will-change: transform, opacity;
         }
 
-        /* TESTO: Fade in puro, senza sbalzi bruschi, impercettibile translateY */
-        .animate-text-fade {
-          animation: textSoftFade 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        /* TESTO: 1.1 secondi di fade in morbido */
+        .animate-text-slow {
+          animation: textSlowFade 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes textSoftFade {
+        @keyframes textSlowFade {
           from {
             opacity: 0;
-            transform: translateY(8px);
+            transform: translateY(6px);
           }
           to {
             opacity: 1;
@@ -309,7 +309,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           padding: 0;
           cursor: pointer;
           outline: none;
-          transition: background 0.4s ease, width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+          transition: background 0.6s ease, width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .indicator-dot:hover {
