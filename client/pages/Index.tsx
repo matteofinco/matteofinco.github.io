@@ -9,10 +9,7 @@ const projectList: ProjectStep[] = [
   {
     id: '01',
     slug: 'snake',
-    title: {
-      it: 'Snake',
-      en: 'Snake'
-    },
+    title: { it: 'Snake', en: 'Snake' },
     subtitle: {
       it: 'Sistema interattivo per l’allenamento hockey',
       en: 'Interactive hockey training system'
@@ -37,14 +34,10 @@ const projectList: ProjectStep[] = [
     link: '/snake',
     img: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1400&q=80'
   },
-
   {
     id: '02',
     slug: 'archivia',
-    title: {
-      it: 'Archivia',
-      en: 'Archivia'
-    },
+    title: { it: 'Archivia', en: 'Archivia' },
     subtitle: {
       it: 'Portapenne ispirato alla memoria digitale',
       en: 'USB flash drive inspired pen holder'
@@ -69,14 +62,10 @@ const projectList: ProjectStep[] = [
     link: '/archivia',
     img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1400&q=80'
   },
-
   {
     id: '03',
     slug: 'nando',
-    title: {
-      it: 'Nando',
-      en: 'Nando'
-    },
+    title: { it: 'Nando', en: 'Nando' },
     subtitle: {
       it: 'Impugnatura adattiva iperplastica',
       en: 'Hyperplastic adaptive handle'
@@ -101,14 +90,10 @@ const projectList: ProjectStep[] = [
     link: '/nando',
     img: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1400&q=80'
   },
-
   {
     id: '04',
     slug: 'pizzamente',
-    title: {
-      it: 'PizzaMente',
-      en: 'PizzaMente'
-    },
+    title: { it: 'PizzaMente', en: 'PizzaMente' },
     subtitle: {
       it: 'Esperienza automatizzata multisensoriale della pizza',
       en: 'Automated multisensory pizza experience'
@@ -133,14 +118,10 @@ const projectList: ProjectStep[] = [
     link: '/pizzamente',
     img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1400&q=80'
   },
-
   {
     id: '05',
     slug: 'wafflemaker',
-    title: {
-      it: 'Waffle Maker',
-      en: 'Waffle Maker'
-    },
+    title: { it: 'Waffle Maker', en: 'Waffle Maker' },
     subtitle: {
       it: 'Analisi e decomposizione di un prodotto',
       en: 'Product analysis and decomposition study'
@@ -165,14 +146,10 @@ const projectList: ProjectStep[] = [
     link: '/wafflemaker',
     img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1400&q=80'
   },
-
   {
     id: '06',
     slug: 'ttable',
-    title: {
-      it: 'T-Table',
-      en: 'T-Table'
-    },
+    title: { it: 'T-Table', en: 'T-Table' },
     subtitle: {
       it: 'Tavolo interattivo per la consapevolezza digitale',
       en: 'Interactive table for digital awareness'
@@ -197,14 +174,10 @@ const projectList: ProjectStep[] = [
     link: '/ttable',
     img: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80'
   },
-
   {
     id: '07',
     slug: 'prop',
-    title: {
-      it: 'Prop',
-      en: 'Prop'
-    },
+    title: { it: 'Prop', en: 'Prop' },
     subtitle: {
       it: 'Sistema open-source di stampelle stampate in 3D',
       en: 'Open-source 3D printed crutch system'
@@ -234,38 +207,21 @@ const projectList: ProjectStep[] = [
 const translations = {
   it: {
     sec1Title: "Matteo Finco",
-    sec1Sub:
-      "Product Designer. Studente presso l'Università IUAV di Venezia.",
-
-    sec1P:
-      "Mi piace capire come funzionano le cose. Ogni progetto nasce dall'osservazione del comportamento delle persone e dalla curiosità verso i meccanismi che rendono un prodotto utile, intuitivo e significativo. Per me progettare significa trasformare un problema reale in un'esperienza concreta.",
-
-    sec2P1:
-      "Lavoro passando continuamente tra ricerca, modellazione CAD, prototipazione rapida e test fisici. Credo che le idee migliori emergano quando possono essere costruite, smontate, migliorate e rimesse alla prova.",
-
-    sec2P2:
-      "Sono interessato al design industriale, ai sistemi interattivi e alla fabbricazione digitale, con particolare attenzione alla semplicità costruttiva, alla sostenibilità e alla qualità dell'esperienza d'uso.",
-
+    sec1Sub: "Product Designer. Studente presso l'Università IUAV di Venezia.",
+    sec1P: "Mi piace capire come funzionano le cose. Ogni progetto nasce dall'osservazione del comportamento delle persone e dalla curiosità verso i meccanismi che rendono un prodotto utile, intuitivo e significativo. Per me progettare significa trasformare un problema reale in un'esperienza concreta.",
+    sec2P1: "Lavoro passando continuamente tra ricerca, modellazione CAD, prototipazione rapida e test fisici. Credo che le idee migliori emergano quando possono essere costruite, smontate, migliorate e rimesse alla prova.",
+    sec2P2: "Sono interessato al design industriale, ai sistemi interattivi e alla fabbricazione digitale, con particolare attenzione alla semplicità costruttiva, alla sostenibilità e alla qualità dell'esperienza d'uso.",
     whatsNextSub: "Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale.",
     aboutBtn: "CHI SONO",
     cvBtn: "CURRICULUM VITAE",
     infoText: "Info"
   },
-
   en: {
     sec1Title: "Matteo Finco",
-    sec1Sub:
-      "Product Designer. Student at IUAV University of Venice.",
-
-    sec1P:
-      "I like understanding how things work. Every project starts by observing people and questioning the mechanisms that make a product useful, intuitive and meaningful. For me, design is the process of turning real problems into tangible experiences.",
-
-    sec2P1:
-      "My workflow moves continuously between research, CAD modelling, rapid prototyping and physical testing. I believe the best ideas emerge when they can be built, taken apart, refined and tested again.",
-
-    sec2P2:
-      "I'm particularly interested in industrial design, interactive systems and digital fabrication, with a focus on simplicity, sustainability and thoughtful user experiences.",
-
+    sec1Sub: "Product Designer. Student at IUAV University of Venice.",
+    sec1P: "I like understanding how things work. Every project starts by observing people and questioning the mechanisms that make a product useful, intuitive and meaningful. For me, design is the process of turning real problems into tangible experiences.",
+    sec2P1: "My workflow moves continuously between research, CAD modelling, rapid prototyping and physical testing. I believe the best ideas emerge when they can be built, taken apart, refined and tested again.",
+    sec2P2: "I'm particularly interested in industrial design, interactive systems and digital fabrication, with a focus on simplicity, sustainability and thoughtful user experiences.",
     whatsNextSub: "Always open to new collaborations, industrial design projects, and digital fabrication experiments.",
     aboutBtn: "ABOUT ME",
     cvBtn: "CURRICULUM VITAE",
@@ -291,33 +247,15 @@ export default function Index() {
 
       const introBottom = intro.getBoundingClientRect().bottom;
 
-      if (
-        e.deltaY > 0 &&
-        introBottom <= window.innerHeight + 80
-      ) {
+      if (e.deltaY > 0 && introBottom <= window.innerHeight + 80) {
         e.preventDefault();
-
         hasMovedToSticky = true;
-
-        sticky.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+        sticky.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     };
 
-    window.addEventListener(
-      "wheel",
-      handleWheel,
-      { passive: false }
-    );
-
-    return () => {
-      window.removeEventListener(
-        "wheel",
-        handleWheel
-      );
-    };
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
   }, []);
 
   useEffect(() => {
@@ -371,6 +309,10 @@ export default function Index() {
     };
   }, []);
 
+  const handleLanguageChange = (newLang: 'it' | 'en') => {
+    setLang(newLang);
+  };
+
   const t = translations[lang];
 
   return (
@@ -408,7 +350,6 @@ export default function Index() {
         .reveal-editorial.reveal-from-left { transform: translateX(-30px); }
         .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: translateX(0); }
 
-        /* FASCIA SCURA E SPATIO DEDICATO DI SEPARAZIONE */
         .section-divider-gap {
           width: 100%;
           height: 16vh;
@@ -524,9 +465,7 @@ export default function Index() {
         .footer-contacts-list a:hover { color: #ffffff; }
 
         @media (max-width: 1024px) {
-          .section-divider-gap {
-            height: 80px;
-          }
+          .section-divider-gap { height: 80px; }
           .footer-bottom-info {
             position: relative;
             bottom: 0;
@@ -540,21 +479,25 @@ export default function Index() {
         }
       `}</style>
 
-      <Header lang={lang} setLang={setLang} showName={showNavName} />
+      {/* HEADER CORRETTO */}
+      <Header 
+        currentLang={lang} 
+        onLanguageChange={handleLanguageChange} 
+        showName={showNavName} 
+      />
+      
       <Hero />
       
       <div id="intro-transition">
         <IntroSection t={t} />
       </div>
       
-      {/* FASCIA DI STACCO NERA TRA INTRO E STICKY OBJECT */}
       <div className="section-divider-gap" />
 
       <div id="sticky-transition">
         <StickyObject lang={lang} />
       </div>
 
-      {/* FASCIA DI STACCO NERA PRIMA DI CIRCLE SHOWCASE */}
       <div className="section-divider-gap" />
 
       <div className="showcase-wrapper">
