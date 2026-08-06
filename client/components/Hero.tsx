@@ -98,7 +98,7 @@ export const Hero: React.FC = () => {
 
           font-weight:900;
 
-          color:#fff;
+          color:#999;
 
           white-space:nowrap;
 
