@@ -2,64 +2,56 @@ import React from 'react';
 
 export const Hero: React.FC = () => {
   return (
-    <section id="hero-section" className="hero-section">
+    <section 
+      id="hero-section"
+      className="hero-section"
+    >
 
       <style>{`
 
         .hero-section {
-          width:100%;
-          height:100vh;
+          width: 100%;
+          height: 100vh;
           background:#070707;
           color:white;
-          position:relative;
-          overflow:hidden;
-
           display:flex;
           align-items:center;
+          justify-content:center;
+          overflow:hidden;
+          position:relative;
+        }
+
+
+        .hero-container {
+          width:90vw;
+          max-width:1500px;
+          height:85vh;
+          display:grid;
+          grid-template-columns: 1fr 150px;
+          align-items:center;
+          gap:40px;
+          position:relative;
+        }
+
+
+        /* TESTO PRINCIPALE */
+
+        .hero-main {
+          display:flex;
+          flex-direction:column;
           justify-content:center;
         }
 
 
-        .hero-layout {
-
-          width:88%;
-          max-width:1500px;
-
-          display:grid;
-
-          grid-template-columns:
-          1fr auto;
-
-          align-items:center;
-
-          gap:60px;
-
-        }
-
-
-
-        .hero-content {
-
-          animation:heroReveal 1.4s cubic-bezier(.16,1,.3,1);
-
-        }
-
-
-
         .hero-title {
 
-          margin:0;
-
-          font-size:
-          clamp(3.5rem,7vw,8rem);
-
-          line-height:.9;
-
+          font-size:clamp(4rem,8vw,9rem);
+          line-height:0.88;
+          letter-spacing:-0.06em;
           font-weight:900;
-
-          letter-spacing:-0.07em;
-
           text-transform:uppercase;
+
+          margin:0;
 
         }
 
@@ -67,117 +59,75 @@ export const Hero: React.FC = () => {
 
         .hero-subtitle {
 
-          margin-top:45px;
+          margin-top:35px;
 
-          font-size:
-          clamp(.9rem,1.2vw,1.3rem);
+          font-size:clamp(1rem,1.5vw,1.5rem);
 
-          letter-spacing:.35em;
+          letter-spacing:0.35em;
 
           font-weight:600;
 
-          color:#888;
-
-        }
-
-
-
-        /* NOME A DESTRA */
-
-        .hero-name {
-
-          font-size:
-          clamp(2.5rem,4vw,5rem);
-
-          font-weight:900;
-
-          letter-spacing:-0.05em;
-
-          white-space:nowrap;
+          color:#999;
 
           text-transform:uppercase;
 
+        }
+
+
+
+        /* NOME VERTICALE */
+
+
+        .hero-name {
+
+          height:100%;
+
+          display:flex;
+
+          align-items:center;
+
+          justify-content:center;
+
+          writing-mode:vertical-rl;
+
+          transform:rotate(180deg);
+
+          font-size:clamp(3rem,5vw,5.5rem);
+
+          letter-spacing:-0.04em;
+
+          font-weight:900;
+
           color:#fff;
 
-          animation:nameReveal 1.5s cubic-bezier(.16,1,.3,1);
+          white-space:nowrap;
 
         }
 
 
 
-
-        /* FRECCIA SVG */
+        /* FRECCIA */
 
         .hero-arrow {
 
           position:absolute;
 
-          bottom:35px;
+          bottom:40px;
 
           left:50%;
 
           transform:translateX(-50%);
 
-          width:18px;
-
-          height:35px;
-
-          opacity:.6;
+          opacity:0.6;
 
         }
 
 
         .hero-arrow svg {
 
-          width:100%;
-          height:100%;
+          width:32px;
 
-        }
-
-
-
-        @keyframes heroReveal {
-
-          from {
-
-            opacity:0;
-
-            transform:translateY(40px);
-
-            filter:blur(10px);
-
-          }
-
-          to {
-
-            opacity:1;
-
-            transform:none;
-
-            filter:blur(0);
-
-          }
-
-        }
-
-
-        @keyframes nameReveal {
-
-          from {
-
-            opacity:0;
-
-            transform:translateX(40px);
-
-          }
-
-          to {
-
-            opacity:1;
-
-            transform:none;
-
-          }
+          height:32px;
 
         }
 
@@ -185,7 +135,7 @@ export const Hero: React.FC = () => {
 
         @media(max-width:900px){
 
-          .hero-layout {
+          .hero-container {
 
             grid-template-columns:1fr;
 
@@ -194,23 +144,29 @@ export const Hero: React.FC = () => {
 
           .hero-name {
 
-            white-space:normal;
+            display:none;
 
-            font-size:2.5rem;
+          }
+
+
+          .hero-title {
+
+            font-size:clamp(3rem,12vw,5rem);
 
           }
 
         }
 
 
+
       `}</style>
 
 
+      <div className="hero-container">
 
-      <div className="hero-layout">
 
+        <div className="hero-main">
 
-        <div className="hero-content">
 
           <h1 className="hero-title">
 
@@ -222,11 +178,13 @@ export const Hero: React.FC = () => {
           </h1>
 
 
+
           <div className="hero-subtitle">
 
             PRODUCT DESIGN & MAKER
 
           </div>
+
 
         </div>
 
@@ -246,28 +204,15 @@ export const Hero: React.FC = () => {
       <div className="hero-arrow">
 
         <svg 
-          viewBox="0 0 20 40"
+          viewBox="0 0 24 24"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
 
-          <line
-            x1="10"
-            y1="0"
-            x2="10"
-            y2="25"
-            stroke="white"
-            strokeWidth="1"
-          />
-
-          <polyline
-            points="3,20 10,28 17,20"
-            stroke="white"
-            strokeWidth="1"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+          <path d="M6 9L12 15L18 9"/>
 
         </svg>
 
