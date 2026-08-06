@@ -107,7 +107,7 @@ export default function CV() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justify-content: "center",
+              justifyContent: "center",
               height: "100%",
               width: "100%",
               padding: "24px",
