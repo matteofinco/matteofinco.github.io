@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 interface IntroProps {
   t: {
@@ -9,30 +9,10 @@ interface IntroProps {
 }
 
 export const IntroSection: React.FC<IntroProps> = ({ t }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const totalHeight = containerRef.current.offsetHeight - window.innerHeight;
-      
-      if (totalHeight > 0) {
-        // Calcola quanto siamo avanzati all'interno della sezione bloccata (da 0 a 1)
-        const progress = Math.min(Math.max(-rect.top / totalHeight, 0), 1);
-        setScrollProgress(progress);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <div className="intro-pinned-container" ref={containerRef} id="intro-section">
+    <div className="intro-pinned-container" id="intro-section">
       <style>{`
-        /* Ridotta l'altezza a 120vh: dà giusto la sensazione di aggancio senza "imprigionare" lo scroll */
+        /* Sezione pinned/sticky */
         .intro-pinned-container {
           position: relative;
           width: 100%;
@@ -63,8 +43,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           margin: 0 auto;
           display: flex;
           align-items: center;
-          will-change: transform, opacity;
-          transition: transform 0.1s linear, opacity 0.1s linear;
+          opacity: 1; /* Opacità fissa al 100% per nitidezza e leggibilità totale */
         }
 
         .intro-step-row {
@@ -143,8 +122,6 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           .intro-stage-container {
             height: auto;
             max-height: none;
-            transform: none !important;
-            opacity: 1 !important;
           }
           .intro-step-row {
             grid-template-columns: 1fr;
@@ -158,14 +135,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
       `}</style>
 
       <div className="intro-sticky-viewport">
-        <div 
-          className="intro-stage-container"
-          style={{
-            // Effetto dissolvenza leggerissima e scale-out mentre si libera la sezione
-            opacity: 1 - scrollProgress * 0.4,
-            transform: `scale(${1 - scrollProgress * 0.03})`
-          }}
-        >
+        <div className="intro-stage-container">
           <div className="intro-step-row">
             <div className="intro-media-box">
               <img
