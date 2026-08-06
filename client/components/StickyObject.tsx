@@ -1,59 +1,49 @@
-import React, { useRef, useState, useCallback } from "react";
+import React from 'react';
 
-interface StickyObjectProps {
-  children: React.ReactNode;
-  className?: string;
-  strength?: number;
-}
-
-export const StickyObject: React.FC<StickyObjectProps> = ({
-  children,
-  className = "",
-  strength = 0.25,
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current || !isHovered) return;
-
-    const { left, top, width, height } = ref.current.getBoundingClientRect();
-    const centerX = left + width / 2;
-    const centerY = top + height / 2;
-
-    const distanceX = (e.clientX - centerX) * strength;
-    const distanceY = (e.clientY - centerY) * strength;
-
-    setPosition({ x: distanceX, y: distanceY });
-  }, [isHovered, strength]);
-
-  const handleMouseEnter = useCallback(() => {
-    setIsHovered(true);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    setIsHovered(false);
-    setPosition({ x: 0, y: 0 });
-  }, []);
-
+export const StickyObject: React.FC = () => {
   return (
-    <div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className={`inline-block ${className}`}
-      style={{
-        transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
-        transition: isHovered
-          ? "transform 0.08s cubic-bezier(0.34, 1.56, 0.64, 1)"
-          : "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)",
-        willChange: "transform",
-        backfaceVisibility: "hidden",
-      }}
-    >
-      {children}
-    </div>
+    <section className="sticky-feature-section">
+      <div className="sticky-media-container">
+        <div className="sticky-media-box">
+          <img
+            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1800&q=80"
+            alt="Product Focus"
+          />
+          <div className="sticky-technical-tag">[SYSTEM_ARCHITECTURE // CMF_STUDY_2026]</div>
+        </div>
+      </div>
+
+      <div className="scrolling-overlay-container">
+        <div className="scrolling-card">
+          <span className="card-step">01 / ARCHITETTURA FORMALE</span>
+          <h3>Scomposizione ed Ergonomia</h3>
+          <p>
+            Ogni oggetto nasce dallo studio approfondito delle proporzioni e dell'interazione diretta con l'utente. 
+            L'approccio privilegia l'alleggerimento visivo e la pulizia formale, strutturando i volumi in modo che 
+            rispondano a precisi vincoli funzionali e sollecitazioni meccaniche.
+          </p>
+        </div>
+
+        <div className="scrolling-card">
+          <span className="card-step">02 / SENSORIALITÀ &amp; MATERIALI</span>
+          <h3>Integrazione Tattile e CMF</h3>
+          <p>
+            La selezione dei materiali non è un dettaglio estetico, ma parte integrante dell'esperienza d'uso. 
+            Il contrasto tra superfici rigide strutturali e finiture ad alta resa tattile definisce la percezione 
+            di qualità e guida intuitivamente l'impugnatura e l'interfaccia dell'oggetto.
+          </p>
+        </div>
+
+        <div className="scrolling-card">
+          <span className="card-step">03 / FABBRICAZIONE SOSTENIBILE</span>
+          <h3>Design for Disassembly</h3>
+          <p>
+            Progettare da Maker significa pensare all'intero ciclo di vita del prodotto: dall'ottimizzazione dei percorsi 
+            di stampa 3D e taglio laser, fino alla facilità di assemblaggio a secco che consente di separare rapidamente 
+            ogni componente per la manutenzione o il riciclo.
+          </p>
+        </div>
+      </div>
+    </section>
   );
 };
