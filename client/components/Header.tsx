@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface HeaderProps {
   showBackToDesigns?: boolean;
@@ -11,18 +11,36 @@ export const Header: React.FC<HeaderProps> = ({
   currentLang,
   onLanguageChange,
 }) => {
+  const [showLogo, setShowLogo] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Quando lo scroll supera i 150px, fa comparire il nome nell'header
+      if (window.scrollY > 150) {
+        setShowLogo(true);
+      } else {
+        setShowLogo(false);
+      }
+    };
+
+    // Controlla subito la posizione di scroll al caricamento della pagina
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleLogoClick = (e: React.MouseEvent) => {
-    // Verifica se l'utente si trova attualmente nella Home Page
     const isHomePage =
       window.location.pathname === '/' ||
       window.location.pathname.endsWith('/index.html') ||
       window.location.pathname === '';
 
     if (!isHomePage) {
-      // Se si trova in /about o in un'altra pagina, va alla Home Page
+      // Se si trova in /about o altra pagina, torna alla Home
       window.location.href = '/';
     } else {
-      // Se è già in Home Page, esegue lo scroll fluido in cima
+      // Se è già in Home Page, torna in cima con scroll fluido
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -30,11 +48,15 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#070707]/90 backdrop-blur-md border-b border-[#1a1a1a] px-8 py-5 flex justify-between items-center text-[#ffffff]">
-      {/* NOME / LOGO - Sempre visibile ed esplicitamente bianco */}
+      {/* NOME / LOGO - Minimal, non bold, con transizione in dissolvenza allo scroll */}
       <a
         href="/"
         onClick={handleLogoClick}
-        className="text-base font-bold tracking-wider text-[#ffffff] hover:opacity-70 transition-opacity cursor-pointer no-underline select-none"
+        className={`text-sm font-normal tracking-widest text-[#ffffff] uppercase transition-all duration-500 ease-in-out cursor-pointer no-underline select-none ${
+          showLogo
+            ? 'opacity-100 translate-y-0 pointer-events-auto'
+            : 'opacity-0 -translate-y-1 pointer-events-none'
+        }`}
       >
         MATTEO FINCO
       </a>
