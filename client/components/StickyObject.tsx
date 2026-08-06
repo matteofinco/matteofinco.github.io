@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
 
 interface StickyObjectProps {
   children: React.ReactNode;
@@ -14,6 +13,7 @@ export default function StickyObject({
 }: StickyObjectProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -27,20 +27,29 @@ export default function StickyObject({
     setPosition({ x: distanceX, y: distanceY });
   };
 
+  const handleMouseEnter = () => setIsHovered(true);
+
   const handleMouseLeave = () => {
+    setIsHovered(false);
     setPosition({ x: 0, y: 0 });
   };
 
   return (
-    <motion.div
+    <div
       ref={ref}
       onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      animate={{ x: position.x, y: position.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
       className={`inline-block ${className}`}
+      style={{
+        transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
+        transition: isHovered
+          ? "transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)"
+          : "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)",
+        willChange: "transform",
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
