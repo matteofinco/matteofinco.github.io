@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Header } from '../components/Header';
 
+// Dizionario dei testi per Italiano e Inglese
 const translations = {
   it: {
     heroTitle: "MATTEO FINCO",
@@ -24,12 +25,31 @@ const translations = {
     collaborationText2: "Oggi continuo a vedere il design come un modo per comprendere il mondo prima di cambiarlo. Ogni progetto è un'occasione per imparare qualcosa di nuovo e trasformare un problema complesso in una soluzione chiara.",
     expertiseHeader: "Competenze",
     capabilities: [
-      { num: "01", title: "ANALISI", items: ["Reverse engineering", "Analisi prodotto", "Ricerca progettuale"] },
-      { num: "02", title: "PROGETTAZIONE", items: ["CAD e modellazione 3D", "Disegni tecnici", "Design for Manufacturing"] },
-      { num: "03", title: "PROTOTIPAZIONE", items: ["Prototipazione rapida", "Stampa 3D FDM", "Sperimentazione materica"] },
-      { num: "04", title: "MATERIALI & PROCESSI", items: ["Studio dei materiali", "Processi produttivi", "Ottimizzazione costruttiva"] },
-      { num: "05", title: "COLLABORAZIONE", items: ["Coordinamento progettuale", "Leadership", "Team multidisciplinari"] },
-      { num: "06", title: "LINGUE", items: ["Italiano: Madrelingua", "Inglese: Intermedio (B2)"] }
+      {
+        num: "01",
+        title: "ANALISI",
+        items: ["Reverse engineering", "Analisi prodotto", "Ricerca progettuale"]
+      },
+      {
+        num: "02",
+        title: "PROGETTAZIONE",
+        items: ["CAD e 3D", "Disegni tecnici", "Design for Manufacturing"]
+      },
+      {
+        num: "03",
+        title: "PROTOTIPAZIONE",
+        items: ["Prototipazione rapida", "Stampa 3D FDM", "Sperimentazione materica"]
+      },
+      {
+        num: "04",
+        title: "COLLABORAZIONE",
+        items: ["Coordinamento", "Leadership", "Team multidisciplinari"]
+      },
+      {
+        num: "05",
+        title: "LINGUE",
+        items: ["Italiano (Madrelingua)", "Inglese (B2)"]
+      }
     ],
     ctaTitle: "E adesso?",
     ctaSub: "Interessato a collaborare a un progetto di design? Sono sempre aperto a nuove sfide e a lavori significativi.",
@@ -57,12 +77,31 @@ const translations = {
     collaborationText2: "Today, I still see design as a way to understand the world before changing it. Every project is a chance to learn something new and to turn a complex problem into a clear solution.",
     expertiseHeader: "Capabilities",
     capabilities: [
-      { num: "01", title: "ANALYSIS", items: ["Reverse engineering", "Product analysis", "Design research"] },
-      { num: "02", title: "DESIGN", items: ["CAD & 3D modeling", "Technical drawings", "Design for Manufacturing"] },
-      { num: "03", title: "PROTOTYPING", items: ["Rapid prototyping", "FDM 3D printing", "Material experimentation"] },
-      { num: "04", title: "MATERIALS & PROCESSES", items: ["Material study", "Manufacturing processes", "Constructive optimization"] },
-      { num: "05", title: "COLLABORATION", items: ["Project coordination", "Leadership", "Multidisciplinary teams"] },
-      { num: "06", title: "LANGUAGES", items: ["Italian: Native", "English: Intermediate (B2)"] }
+      {
+        num: "01",
+        title: "ANALYSIS",
+        items: ["Reverse engineering", "Product analysis", "Design research"]
+      },
+      {
+        num: "02",
+        title: "DESIGN & ENGINEERING",
+        items: ["CAD & 3D modeling", "Technical drawings", "Design for Manufacturing"]
+      },
+      {
+        num: "03",
+        title: "PROTOTYPING",
+        items: ["Rapid prototyping", "FDM 3D printing", "Material experimentation"]
+      },
+      {
+        num: "04",
+        title: "COLLABORATION",
+        items: ["Project coordination", "Leadership", "Multidisciplinary teams"]
+      },
+      {
+        num: "05",
+        title: "LANGUAGES",
+        items: ["Italian (Native)", "English (B2)"]
+      }
     ],
     ctaTitle: "What's next?",
     ctaSub: "Interested in collaborating on a design project? I'm always open to new challenges and meaningful work.",
@@ -78,6 +117,20 @@ export default function About() {
     if (docLang === 'en') return 'en';
     return 'it';
   });
+
+  useEffect(() => {
+    const handleLanguageChange = (e: CustomEvent) => {
+      if (e.detail && (e.detail === 'it' || e.detail === 'en')) {
+        setLang(e.detail);
+        localStorage.setItem('app_lang', e.detail);
+      }
+    };
+
+    window.addEventListener('languagechange-custom' as any, handleLanguageChange);
+    return () => {
+      window.removeEventListener('languagechange-custom' as any, handleLanguageChange);
+    };
+  }, []);
 
   const toggleLanguage = (newLang: 'it' | 'en') => {
     setLang(newLang);
@@ -101,51 +154,161 @@ export default function About() {
       { threshold: 0.2 }
     );
     revealElements.forEach((el) => revealObserver.observe(el));
-    return () => revealObserver.disconnect();
+
+    return () => {
+      revealObserver.disconnect();
+    };
   }, [lang]);
 
   return (
     <div className="about-page editorial-portfolio bg-[#070707] text-[#e5e5e5] min-h-screen overflow-x-hidden">
-      <Header showBackToDesigns={false} currentLang={lang} onLanguageChange={toggleLanguage} setLang={toggleLanguage} />
+      <Header 
+        showBackToDesigns={false} 
+        currentLang={lang} 
+        onLanguageChange={toggleLanguage}
+        setLang={toggleLanguage} 
+      />
 
       <style>{`
         .about-page { padding-top: 80px; }
-        .about-hero { min-height: 75vh; display: flex; align-items: center; justify-content: center; padding: 120px 6vw; border-bottom: 1px solid #1a1a1a; }
-        .about-hero h1 { font-size: clamp(4rem, 9vw, 9rem); font-weight: 900; letter-spacing: -0.05em; line-height: 0.9; color: #ffffff; margin-bottom: 40px; }
-        .about-hero p { white-space: pre-line; font-size: clamp(1.3rem, 2vw, 2rem); color: #888; line-height: 1.5; max-width: 600px; }
-        
-        .about-fullbleed-wrapper { width: 100%; padding: 100px 0; display: flex; flex-direction: column; gap: 120px; }
+        .about-hero {
+          min-height: 75vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 120px 6vw;
+          border-bottom: 1px solid #1a1a1a;
+        }
+        .about-hero > div {
+          width: 100%;
+          max-width: 1200px;
+        }
+        .about-hero h1 {
+          font-size: clamp(4rem, 9vw, 9rem);
+          font-weight: 900;
+          letter-spacing: -0.05em;
+          line-height: 0.9;
+          color: #ffffff;
+          margin-bottom: 40px;
+          text-align: left;
+        }
+        .about-hero p {
+          white-space: pre-line;
+          font-size: clamp(1.3rem, 2vw, 2rem);
+          color: #888;
+          line-height: 1.5;
+          max-width: 600px;
+          text-align: left;
+        }
+        .about-fullbleed-wrapper { width: 100%; padding: 100px 0; display: flex; flex-direction: column; gap: 120px; box-sizing: border-box; }
         .about-row { display: grid; grid-template-columns: 1fr 1fr; align-items: center; width: 100%; min-height: 70vh; }
-        .about-media { height: 620px; }
-        .about-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: 0.8s; }
+        .about-row.media-left .about-media { width: 100%; height: 620px; padding-left: 0; }
+        .about-row.media-left .about-text { padding: 0 8vw 0 6vw; }
+        .about-row.media-right .about-media { width: 100%; height: 620px; padding-right: 0; }
+        .about-row.media-right .about-text { padding: 0 6vw 0 8vw; }
+        .about-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: filter 0.8s ease, transform 0.8s ease; display: block; }
         .about-media:hover img { filter: grayscale(0%); transform: scale(1.01); }
-        .about-text h2 { font-size: clamp(2.2rem, 3.8vw, 3.5rem); font-weight: 800; margin-bottom: 25px; color: #ffffff; }
-        .about-text p { color: #aaaaaa; font-size: 1.12rem; line-height: 1.85; max-width: 560px; }
+        .about-text h2 { font-size: clamp(2.2rem, 3.8vw, 3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 25px; color: #ffffff; }
+        .about-text p { color: #aaaaaa; font-size: 1.12rem; line-height: 1.85; max-width: 560px; margin-bottom: 20px; }
+        .about-text p:last-child { margin-bottom: 0; }
+        .reveal-editorial { opacity: 0; filter: blur(10px); transition: opacity 1.1s cubic-bezier(.22,.61,.36,1), filter 1.1s cubic-bezier(.22,.61,.36,1), transform 1.1s cubic-bezier(.22,.61,.36,1); }
+        .reveal-editorial.reveal-from-right { transform: translateX(35px); }
+        .reveal-editorial.reveal-from-left { transform: translateX(-35px); }
+        .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: translateX(0); }
         
-        /* GRID STYLES */
-        .expertise-wrapper { max-width: 1200px; margin: 100px auto; padding: 0 6vw; }
-        .expertise-wrapper > h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 60px; color: #fff; }
-        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: #1a1a1a; border: 1px solid #1a1a1a; }
-        .expertise-card { padding: 40px; background: #070707; transition: all 0.4s ease; display: flex; flex-direction: column; cursor: default; }
-        .expertise-card:hover { transform: translateY(-5px); border: 1px solid #444; margin: -1px; z-index: 1; }
-        .expertise-num { font-size: 0.8rem; color: #555; margin-bottom: 15px; letter-spacing: 0.2em; font-family: monospace; }
-        .expertise-card h3 { font-size: 1.6rem; margin-bottom: 25px; color: #fff; font-weight: 700; }
-        .expertise-card ul { list-style: none; padding: 0; margin: 0; }
-        .expertise-card li { color: #999; font-size: 1.05rem; line-height: 2.2; }
+        /* CAPABILITIES SECTION - INDUSTRIAL STUDIO STYLE */
+        .capabilities-section {
+          max-width: 1200px;
+          margin: 120px auto 0;
+          padding: 0 6vw 120px;
+        }
+        .capabilities-section h2 {
+          font-size: clamp(2.2rem, 4vw, 3.2rem);
+          font-weight: 800;
+          color: #ffffff;
+          margin-bottom: 60px;
+          letter-spacing: -0.02em;
+        }
+        .capabilities-list {
+          display: flex;
+          flex-direction: column;
+        }
+        .capability-row {
+          border-top: 1px solid #222222;
+          padding: 40px 0;
+          display: grid;
+          grid-template-columns: 120px 1fr;
+          align-items: baseline;
+          transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), border-color 0.4s ease;
+        }
+        .capability-row:last-child {
+          border-bottom: 1px solid #222222;
+        }
+        .capability-row:hover {
+          transform: translateX(12px);
+          border-color: #555555;
+        }
+        .capability-num {
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: #666666;
+          letter-spacing: 0.05em;
+        }
+        .capability-info h3 {
+          font-size: clamp(1.5rem, 2.2vw, 2.1rem);
+          font-weight: 800;
+          color: #ffffff;
+          margin-bottom: 16px;
+          letter-spacing: -0.01em;
+        }
+        .capability-items {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px 30px;
+        }
+        .capability-items span {
+          color: #999999;
+          font-size: 1.05rem;
+          font-weight: 400;
+          position: relative;
+        }
+        .capability-items span:not(:last-child):after {
+          content: "—";
+          margin-left: 30px;
+          color: #444;
+        }
 
-        .reveal-editorial { opacity: 0; filter: blur(10px); transition: 1.1s; }
-        .reveal-active { opacity: 1; filter: blur(0); }
-
-        .about-cta-section { width: 100%; padding: 120px 6vw; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 50px; }
-        .cta-button { display: inline-block; padding: 16px 40px; background: #ffffff; color: #070707; font-weight: 700; text-decoration: none; transition: 0.3s; }
-        .cta-button:hover { background: #070707; color: #ffffff; transform: translateY(-3px); border: 1px solid #fff; }
-
+        .about-cta-section { width: 100%; padding: 80px 6vw; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 100px; }
+        .about-cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #ffffff; margin-bottom: 30px; }
+        .about-cta-section p { font-size: 1.1rem; color: #aaaaaa; max-width: 600px; margin: 0 auto 40px; }
+        .cta-button { display: inline-block; padding: 16px 40px; background: #ffffff; color: #070707; font-weight: 700; text-decoration: none; transition: all 0.3s ease; border: 1px solid #ffffff; }
+        .cta-button:hover { background: #070707; color: #ffffff; transform: translateY(-3px); }
+        
         @media (max-width: 1024px) {
           .about-row { grid-template-columns: 1fr; gap: 40px; height: auto; }
-          .about-media { height: 400px; }
+          .about-row.media-left .about-text, .about-row.media-right .about-text { padding: 0 6vw; }
+          .about-row.media-left .about-media, .about-row.media-right .about-media { height: 420px; }
+          .about-hero { padding: 60px 6vw; }
+          .about-cta-section { padding: 60px 6vw; }
+        }
+        @media (max-width: 768px) {
+          .capability-row {
+            grid-template-columns: 1fr;
+            gap: 15px;
+            padding: 30px 0;
+          }
+          .capability-items span:not(:last-child):after {
+            content: "";
+            margin-left: 0;
+          }
+          .capability-items {
+            flex-direction: column;
+            gap: 8px;
+          }
         }
       `}</style>
 
+      {/* HERO SECTION */}
       <section className="about-hero">
         <div>
           <h1>{t.heroTitle}</h1>
@@ -153,36 +316,101 @@ export default function About() {
         </div>
       </section>
 
+      {/* FULLBLEED EDITORIAL CONTENT */}
       <div className="about-fullbleed-wrapper">
         <section className="about-row media-left">
-          <div className="about-media reveal-editorial"><img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80" alt="" /></div>
-          <div className="about-text reveal-editorial"><h2>{t.curiosityTitle}</h2><p>{t.curiosityText1}<br/><br/>{t.curiosityText2}</p></div>
+          <div className="about-media reveal-editorial reveal-from-left">
+            <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80" alt="Studio workspace" />
+          </div>
+          <div className="about-text reveal-editorial reveal-from-right">
+            <h2>{t.curiosityTitle}</h2>
+            <p>{t.curiosityText1}</p>
+            <p>{t.curiosityText2}</p>
+          </div>
         </section>
+
         <section className="about-row media-right">
-          <div className="about-text reveal-editorial"><h2>{t.methodTitle}</h2><p>{t.methodText1}<br/><br/>{t.methodText2}</p></div>
-          <div className="about-media reveal-editorial"><img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1600&q=80" alt="" /></div>
+          <div className="about-text reveal-editorial reveal-from-left">
+            <h2>{t.methodTitle}</h2>
+            <p>{t.methodText1}</p>
+            <p>{t.methodText2}</p>
+          </div>
+          <div className="about-media reveal-editorial reveal-from-right">
+            <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1600&q=80" alt="Digital fabrication" />
+          </div>
+        </section>
+
+        <section className="about-row media-left">
+          <div className="about-media reveal-editorial reveal-from-left">
+            <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1600&q=80" alt="Product research" />
+          </div>
+          <div className="about-text reveal-editorial reveal-from-right">
+            <h2>{t.learningTitle}</h2>
+            <p>{t.learningText1}</p>
+          </div>
+        </section>
+
+        <section className="about-row media-right">
+          <div className="about-text reveal-editorial reveal-from-left">
+            <h2>{t.digitalTitle}</h2>
+            <p>{t.digitalText1}</p>
+            <p>{t.digitalText2}</p>
+          </div>
+          <div className="about-media reveal-editorial reveal-from-right">
+            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1600&q=80" alt="Materials and prototyping" />
+          </div>
+        </section>
+
+        <section className="about-row media-left">
+          <div className="about-media reveal-editorial reveal-from-left">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80" alt="Teamwork" />
+          </div>
+          <div className="about-text reveal-editorial reveal-from-right">
+            <h2>{t.beyondTitle}</h2>
+            <p>{t.beyondText1}</p>
+            <p>{t.beyondText2}</p>
+          </div>
+        </section>
+
+        <section className="about-row media-right">
+          <div className="about-text reveal-editorial reveal-from-left">
+            <h2>{t.collaborationTitle}</h2>
+            <p>{t.collaborationText1}</p>
+            <p>{t.collaborationText2}</p>
+          </div>
+          <div className="about-media reveal-editorial reveal-from-right">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80" alt="Collaboration" />
+          </div>
         </section>
       </div>
 
-      <section className="expertise-wrapper">
+      {/* CAPABILITIES / COMPETENZE SECTION */}
+      <section className="capabilities-section">
         <h2>{t.expertiseHeader}</h2>
-        <div className="expertise-grid">
-          {t.capabilities.map((cap, i) => (
-            <div className="expertise-card" key={i}>
-              <div className="expertise-num">{cap.num}</div>
-              <h3>{cap.title}</h3>
-              <ul>
-                {cap.items.map((item, idx) => <li key={idx}>{item}</li>)}
-              </ul>
+        <div className="capabilities-list">
+          {t.capabilities.map((cap, index) => (
+            <div className="capability-row reveal-editorial reveal-from-left" key={index}>
+              <div className="capability-num">{cap.num}</div>
+              <div className="capability-info">
+                <h3>{cap.title}</h3>
+                <div className="capability-items">
+                  {cap.items.map((item, idx) => (
+                    <span key={idx}>{item}</span>
+                  ))}
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
+      {/* CTA SECTION */}
       <section className="about-cta-section">
-        <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>{t.ctaTitle}</h2>
-        <p style={{ color: '#aaa', maxWidth: '600px', margin: '0 auto 40px' }}>{t.ctaSub}</p>
-        <a href="/" className="cta-button">{t.ctaButton}</a>
+        <h2>{t.ctaTitle}</h2>
+        <p>{t.ctaSub}</p>
+        <a href="/" className="cta-button">
+          {t.ctaButton}
+        </a>
       </section>
     </div>
   );
