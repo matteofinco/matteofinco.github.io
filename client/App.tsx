@@ -1,7 +1,7 @@
 import React from "react";
 import Index from "./pages/Index";
 import About from "./pages/About";
-import About from "./pages/Curriculum";
+import Curriculum from "./pages/Curriculum";
 
 
 export default function App() {
