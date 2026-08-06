@@ -10,23 +10,21 @@ interface IntroProps {
 
 export const IntroSection: React.FC<IntroProps> = ({ t }) => {
   return (
-    <div className="intro-pinned-container" id="intro-section">
+    <div className="intro-scroll-container" id="intro-section">
       <style>{`
-        .intro-pinned-container {
+        .intro-scroll-container {
           position: relative;
           width: 100%;
-          height: 220vh; /* Crea lo spazio di scroll prolungato stile editoriale */
+          height: 100vh;
           background-color: #070707;
           box-sizing: border-box;
           scroll-snap-align: start;
           scroll-snap-stop: always;
           border-bottom: 1px solid #141414;
-          /* IMPORTANTE: niente overflow: hidden qui, altrimenti position: sticky si disattiva */
         }
 
-        .intro-sticky-viewport {
-          position: sticky;
-          top: 0;
+        .intro-sticky {
+          position: relative;
           width: 100%;
           height: 100vh;
           max-width: 1400px;
@@ -104,11 +102,10 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
         }
 
         @media (max-width: 1024px) {
-          .intro-pinned-container {
+          .intro-scroll-container {
             height: auto;
           }
-          .intro-sticky-viewport {
-            position: relative;
+          .intro-sticky {
             height: auto;
             padding: 80px 6vw;
           }
@@ -123,7 +120,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
         }
       `}</style>
 
-      <div className="intro-sticky-viewport">
+      <div className="intro-sticky">
         <div className="intro-step-row">
           {/* Testo a sinistra */}
           <div className="intro-text-box">
