@@ -12,8 +12,11 @@ const projectList: ProjectStep[] = [
     title: 'Snake',
     subtitle: 'Interactive hockey training system',
     category: 'SPORT PRODUCT DESIGN',
-    tools: 'Product Design / CAD / Mechatronics / Prototyping',
-    focus: 'Modular training device with digital feedback',
+   tools:
+'Product Design / CAD Modelling / Mechatronics / Prototyping',
+
+material:
+'Laser Sensors / RGB Feedback / Modular Mechanical System',
     year: '2026',
     desc: 'Interactive training system developed for inline and ice hockey players. Snake combines modular mechanical components, sensors and real-time feedback to create adaptive exercises focused on puck control, reaction speed and cognitive agility.',
     link: '/snake',
@@ -25,8 +28,11 @@ const projectList: ProjectStep[] = [
     title: 'Archivia',
     subtitle: 'USB flash drive inspired pen holder',
     category: 'PRODUCT DESIGN & INDUSTRIAL PRODUCTION',
-    tools: 'Injection Moulding / CAD / Snap-fit Design',
-    focus: 'Recycled polymer product system',
+   tools:
+'Industrial Design / Injection Moulding / Snap-fit Engineering',
+
+material:
+'Recycled Polymer / Monomaterial Construction / Mechanical Assembly',
     year: '2026',
     desc: 'Desk organizer developed for the PLEIADES design competition with Ewikon, Arburg and Uniform. Inspired by digital storage devices, Archivia translates the logic of a USB flash drive into a physical object assembled through integrated mechanical connections.',
     link: '/archivia',
@@ -38,8 +44,11 @@ const projectList: ProjectStep[] = [
     title: 'Nando',
     subtitle: 'Hyperplastic adaptive handle',
     category: 'INCLUSIVE DESIGN & PARAMETRIC DESIGN',
-    tools: 'Ergonomic Design / Parametric Modelling / 3D Printing',
-    focus: 'Flexible adaptive interface',
+    tools:
+'Inclusive Design / Ergonomic Research / Parametric Modelling',
+
+material:
+'ELASTO-1000 Flexible Polymer / FDM 3D Printing',
     year: '2026',
     desc: 'Inclusive handle designed to improve the use of cutlery and everyday tools for people with reduced hand strength. Through flexible geometry and parametric design, Nando adapts to different users while improving comfort, grip stability and independence.',
     link: '/nando',
@@ -51,8 +60,11 @@ const projectList: ProjectStep[] = [
     title: 'PizzaMente',
     subtitle: 'Automated multisensory pizza experience',
     category: 'SERVICE & SYSTEM DESIGN',
-    tools: 'Service Design / UX-UI Design / System Thinking',
-    focus: 'Automated food service ecosystem',
+   tools:
+'Service Design / UX-UI Design / System Thinking',
+
+material:
+'Automated Food System / Interactive Interface / Modular Architecture',
     year: '2026',
     desc: 'Automated pizza service concept developed during a workshop with Daint. PizzaMente redesigns food automation by integrating ordering, preparation, consumption and disposal into a single system, using interactive experiences to transform waiting time into engagement.',
     link: '/pizzamente',
@@ -64,8 +76,11 @@ const projectList: ProjectStep[] = [
     title: 'Waffle Maker',
     subtitle: 'Product analysis and decomposition study',
     category: 'BASIC DESIGN & PRODUCT ANALYSIS',
-    tools: 'Product Analysis / 3D Modelling / Editorial Design',
-    focus: 'Mechanical systems and product language',
+   tools:
+'Reverse Engineering / Product Analysis / Editorial Design',
+
+material:
+'Mechanical Components / Thermal Systems / Product Language',
     year: '2025',
     desc: 'Critical analysis of a domestic appliance through morphological and functional decomposition. The project investigates how components, mechanisms, materials and visual language interact to define the relationship between users and everyday objects.',
     link: '/wafflemaker',
@@ -77,8 +92,11 @@ const projectList: ProjectStep[] = [
     title: 'T-Table',
     subtitle: 'Interactive table for digital awareness',
     category: 'INTERACTION DESIGN & HMI',
-    tools: 'Calm Technology / Interaction Design / Electronics',
-    focus: 'Smart surface and responsive interface',
+   tools:
+'Interaction Design / HMI / Calm Technology',
+
+material:
+'Touchcode Ink / LED Matrix / Smart Surface System',
     year: '2026',
     desc: 'Interactive table concept designed to reduce distracted eating in fast-food environments. T-Table uses adaptive technology to support social interaction, reducing digital distraction when food arrives and restoring attention to the meal experience.',
     link: '/ttable',
@@ -90,8 +108,11 @@ const projectList: ProjectStep[] = [
     title: 'Prop',
     subtitle: 'Open-source 3D printed crutch system',
     category: 'SOCIAL DESIGN & OPEN SOURCE',
-    tools: 'FDM Printing / CAD / Open Source Design',
-    focus: 'Adaptable emergency connector system',
+  tools:
+'Open Source Design / CAD Modelling / FDM Manufacturing',
+
+material:
+'PETG Connectors / Nylon Fasteners / Adaptable Structure',
     year: '2026',
     desc: 'Open-source emergency crutch system developed during the Ánako Design Challenge with Prusa Research. Prop uses 3D printed connectors to transform locally available sticks into functional mobility aids, enabling rapid and accessible production in crisis contexts.',
     link: '/prop',
