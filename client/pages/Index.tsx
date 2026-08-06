@@ -497,11 +497,7 @@ export default function Index() {
       {/* FASCIA DI STACCO NERA PRIMA DI CIRCLE SHOWCASE */}
       <div className="section-divider-gap" />
 
-      <div className="showcase-wrapper">
-        <CircleShowcase steps={projectList} activeStep={activeStep} lang={lang}/>
-      </div>
-
-      <div className="whats-next-wrapper">
+<div className="whats-next-wrapper">
         <footer className="whats-next-footer">
           <h2>
             WHAT&apos;S NEXT
@@ -509,15 +505,17 @@ export default function Index() {
           </h2>
 
           <p className="sub-lead">
-            Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale.
+            {lang === 'it' 
+              ? "Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale." 
+              : "Always open to new collaborations, industrial design projects, and digital fabrication experiments."}
           </p>
 
           <div className="footer-actions">
             <a href="/about" className="btn-footer-link">
-              ABOUT ME
+              {lang === 'it' ? "CHI SONO" : "ABOUT ME"}
             </a>
             <a href="/cv" className="btn-footer-outline">
-              CURRICULUM VITAE
+              {lang === 'it' ? "CURRICULUM VITAE" : "CURRICULUM VITAE"}
             </a>
           </div>
 
@@ -525,12 +523,11 @@ export default function Index() {
             <div>2026 MATTEO FINCO // PRODUCT DESIGN &amp; MAKER</div>
             <div className="footer-contacts-list">
               <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="/about">About</a>
+              <a href="/about">{lang === 'it' ? "Info" : "About"}</a>
               <a href="/cv">CV</a>
             </div>
           </div>
         </footer>
       </div>
-    </div>
   );
 }
