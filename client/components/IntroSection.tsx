@@ -13,7 +13,6 @@ interface IntroProps {
 export const IntroSection: React.FC<IntroProps> = ({ t }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [activeStep, setActiveStep] = useState(0);
-  const [prevStep, setPrevStep] = useState<number | null>(null);
 
   const TOTAL_STEPS = 2;
 
@@ -29,13 +28,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
       const progress = Math.max(0, Math.min(1, currentScroll / totalScrollableHeight));
       const stepIndex = Math.min(TOTAL_STEPS - 1, Math.floor(progress * TOTAL_STEPS));
 
-      setActiveStep((prev) => {
-        if (prev !== stepIndex) {
-          setPrevStep(prev);
-          return stepIndex;
-        }
-        return prev;
-      });
+      setActiveStep(stepIndex);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -54,6 +47,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           width: 100%;
           background-color: #070707;
           box-sizing: border-box;
+          border-bottom: 1px solid #1a1a1a; /* Bordo scuro di separazione a fine sezione */
         }
 
         /* VIEWPORT FISSA CENTRATA AL 100vh */
@@ -140,11 +134,11 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
         }
 
         .intro-step-row.media-left .intro-text-box {
-          padding: 0 6vw 0 6vw;
+          padding: 0 6vw;
         }
 
         .intro-step-row.media-right .intro-text-box {
-          padding: 0 6vw 0 6vw;
+          padding: 0 6vw;
         }
 
         .intro-text-box h2 {
@@ -176,29 +170,6 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           margin-bottom: 20px !important;
         }
 
-        /* INDICATORE PUNTINI DISCRETO IN BASSO PER FAR CAPIRE IL PROGRESSO */
-        .intro-progress-dots {
-          position: absolute;
-          bottom: 24px;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          gap: 8px;
-          z-index: 10;
-        }
-
-        .intro-dot {
-          width: 24px;
-          height: 3px;
-          background: rgba(255, 255, 255, 0.2);
-          transition: background 0.5s ease, width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .intro-dot.active {
-          background: #ffffff;
-          width: 40px;
-        }
-
         @media (max-width: 1024px) {
           .intro-pinned-wrapper {
             height: auto !important;
@@ -227,9 +198,6 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           }
           .intro-media-box {
             height: 380px;
-          }
-          .intro-progress-dots {
-            display: none;
           }
         }
       `}</style>
@@ -272,12 +240,6 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
             </div>
           </div>
 
-        </div>
-
-        {/* INDICATORI MINIMALI DI PROGRESSO IN BASSO */}
-        <div className="intro-progress-dots">
-          <div className={`intro-dot ${activeStep === 0 ? 'active' : ''}`} />
-          <div className={`intro-dot ${activeStep === 1 ? 'active' : ''}`} />
         </div>
       </div>
     </div>
