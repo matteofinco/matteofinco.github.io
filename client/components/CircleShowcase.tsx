@@ -20,6 +20,19 @@ interface CircleShowcaseProps {
   lang: 'it' | 'en';
 }
 
+const labels = {
+  it: {
+    approach: 'Approccio progettuale',
+    materials: 'Materiali & Tecnologie',
+    explore: 'ESPLORA PROGETTO'
+  },
+  en: {
+    approach: 'Design Approach',
+    materials: 'Materials & Technologies',
+    explore: 'EXPLORE PROJECT'
+  }
+};
+
 export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ 
   steps, 
   activeStep: parentActiveStep,
@@ -510,18 +523,18 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
 
                   <div className="project-meta-grid">
                     <div className="meta-item">
-                      <span className="label">Design Approach</span>
+                      <span className="label">{labels[lang].approach}</span>
                       <span className="value">{st.tools}</span>
                     </div>
 
                     <div className="meta-item">
-                      <span className="label">Materials &amp; Technologies</span>
+                      <span className="label">{labels[lang].materials}</span>
                       <span className="value">{st.material}</span>
                     </div>
                   </div>
 
                   <a href={st.link} className="project-action-link">
-                    ESPLORA PROGETTO →
+                    {labels[lang].explore} →
                   </a>
                 </div>
               );
