@@ -2,13 +2,11 @@ import React from 'react';
 
 export const Hero: React.FC = () => {
   return (
-    <section id="hero-section" className="hero-viewport">
-      {/* Sfondo dinamico animato con dissolvenze */}
+    <section className="hero-viewport">
       <div className="hero-bg-animator" />
       <div className="hero-overlay-gradient" />
 
       <div className="hero-content">
-        {/* Titolo trasparente che rivela il movimento e la dissolvenza sottostante */}
         <h1 className="hero-title-mask">
           MATTEO FINCO
         </h1>
@@ -27,12 +25,11 @@ export const Hero: React.FC = () => {
           overflow: hidden;
         }
 
-        /* Strato di sfondi in dissolvenza incrociata */
         .hero-bg-animator {
           position: absolute;
           inset: 0;
           background-image: 
-            radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+            radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.12) 0%, transparent 60%),
             url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=2000&q=80');
           background-size: 180% 180%;
           background-position: center;
@@ -55,7 +52,6 @@ export const Hero: React.FC = () => {
           padding: 0 20px;
         }
 
-        /* Testo mascherato trasparente */
         .hero-title-mask {
           font-size: clamp(3.8rem, 10vw, 9rem);
           font-weight: 900;
@@ -80,33 +76,15 @@ export const Hero: React.FC = () => {
         }
 
         @keyframes heroTextureMotion {
-          0% {
-            transform: scale(1) translate(0, 0);
-            opacity: 0.7;
-          }
-          50% {
-            transform: scale(1.08) translate(-2%, 2%);
-            opacity: 0.95;
-          }
-          100% {
-            transform: scale(1.03) translate(2%, -1%);
-            opacity: 0.75;
-          }
+          0% { transform: scale(1) translate(0, 0); opacity: 0.7; }
+          50% { transform: scale(1.08) translate(-2%, 2%); opacity: 0.95; }
+          100% { transform: scale(1.03) translate(2%, -1%); opacity: 0.75; }
         }
 
         @keyframes textTextureMove {
-          0% {
-            background-position: 0% 40%;
-            filter: brightness(1) contrast(1.1);
-          }
-          50% {
-            background-position: 100% 60%;
-            filter: brightness(1.3) contrast(1.25);
-          }
-          100% {
-            background-position: 40% 100%;
-            filter: brightness(0.95) contrast(1.15);
-          }
+          0% { background-position: 0% 40%; filter: brightness(1); }
+          50% { background-position: 100% 60%; filter: brightness(1.25); }
+          100% { background-position: 40% 100%; filter: brightness(0.95); }
         }
       `}</style>
     </section>
