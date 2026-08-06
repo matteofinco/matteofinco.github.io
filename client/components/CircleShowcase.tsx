@@ -19,92 +19,109 @@ interface CircleShowcaseProps {
   activeStep: number;
 }
 
-export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeStep }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeStep: parentActiveStep }) => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [internalActiveStep, setInternalActiveStep] = useState(0);
   const [prevStep, setPrevStep] = useState<number | null>(null);
+
+  // Sincronizza lo step corrente tra lo scroll interno e la callback del genitore
+  const activeStep = parentActiveStep !== undefined ? parentActiveStep : internalActiveStep;
 
   useEffect(() => {
     setPrevStep((prev) => (prev !== activeStep ? activeStep : prev));
   }, [activeStep]);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const totalScrollableHeight = rect.height - window.innerHeight;
 
-    const cards = container.querySelectorAll('.process-card-item');
-    
-    // Observer ottimizzato: zero ScrollIntoView forzato, rileva solo il passaggio della card al centro
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute('data-index'));
-            const event = new CustomEvent('set-active-project', { detail: index });
-            window.dispatchEvent(event);
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: '-35% 0px -35% 0px',
-        threshold: 0.2,
+      if (totalScrollableHeight <= 0) return;
+
+      // Calcola quanto siamo entrati nella sezione (da 0 a 1)
+      const currentScroll = -rect.top;
+      const progress = Math.max(0, Math.min(1, currentScroll / totalScrollableHeight));
+
+      // Calcola l'indice dello step in base alla percentuale di scroll
+      const stepIndex = Math.min(
+        steps.length - 1,
+        Math.floor(progress * steps.length)
+      );
+
+      if (stepIndex !== activeStep) {
+        setInternalActiveStep(stepIndex);
+        const event = new CustomEvent('set-active-project', { detail: stepIndex });
+        window.dispatchEvent(event);
       }
-    );
+    };
 
-    cards.forEach((card) => observer.observe(card));
-    return () => observer.disconnect();
-  }, []);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [activeStep, steps.length]);
 
   const currentProject = steps[activeStep] || steps[0];
   const previousProject = prevStep !== null && prevStep !== activeStep ? steps[prevStep] : null;
 
   return (
-    <section className="circle-showcase-section" ref={containerRef}>
+    <section 
+      className="circle-showcase-section" 
+      ref={sectionRef}
+      style={{ height: `${steps.length * 100}vh` }} // Genera l'altezza necessaria per lo scroll a step
+    >
       <style>{`
         .circle-showcase-section {
           position: relative;
           width: 100%;
           background-color: #070707;
+          box-sizing: border-box;
+        }
+
+        /* L'INTERO CONTAINER RIMANE STICKY AL CENTRO SCHERMO */
+        .showcase-pinned-viewport {
+          position: sticky;
+          top: 0;
+          height: 100vh;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
           padding: 0 6vw;
           box-sizing: border-box;
         }
 
-        .showcase-sticky-layout {
+        .showcase-layout-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          align-items: flex-start;
+          align-items: center;
           max-width: 1300px;
+          width: 100%;
           margin: 0 auto;
-          position: relative;
           gap: 60px;
         }
 
-        /* COLONNA SINISTRA: HUD FISSA (STICKY CON AGGANCIO FLUIDO) */
-        .hud-sticky-wrapper {
-          position: sticky;
-          top: calc(50vh - 290px);
-          height: 580px;
+        /* COLONNA SINISTRA: HUD CENTRATO */
+        .hud-wrapper {
           display: flex;
           align-items: center;
           justify-content: center;
-          z-index: 10;
-          will-change: transform;
         }
 
         .hud-container {
           position: relative;
-          width: 580px;
-          height: 580px;
+          width: 540px;
+          height: 540px;
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
-        /* CERCHIO CENTRALE E DISSOLVENZA INCROCIATA (CROSS-FADE) */
+        /* CERCHIO CENTRALE E DISSOLVENZA IMMAGINE (CROSS-FADE) */
         .hud-center-circle {
           position: relative;
-          width: 460px;
-          height: 460px;
+          width: 440px;
+          height: 440px;
           background: #111111;
           border-radius: 50%;
           overflow: hidden;
@@ -134,7 +151,6 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           will-change: opacity, transform;
         }
 
-        /* Animazioni di cambio immagine morbide */
         .hud-img-enter {
           animation: hudImgFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           z-index: 3;
@@ -148,7 +164,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
         @keyframes hudImgFadeIn {
           from {
             opacity: 0;
-            transform: scale(1.03);
+            transform: scale(1.04);
           }
           to {
             opacity: 1;
@@ -163,7 +179,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           }
           to {
             opacity: 0;
-            transform: scale(0.97);
+            transform: scale(0.96);
           }
         }
 
@@ -175,29 +191,29 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
         }
 
         .hud-outer-ring {
-          width: 540px;
-          height: 540px;
+          width: 520px;
+          height: 520px;
           border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .hud-dashed-ring {
-          width: 500px;
-          height: 500px;
+          width: 480px;
+          height: 480px;
           border: 1px dashed rgba(255, 255, 255, 0.2);
           animation: hud-spin 80s linear infinite;
         }
 
         .hud-inner-dashed {
-          width: 480px;
-          height: 480px;
+          width: 460px;
+          height: 460px;
           border: 1px dashed rgba(255, 255, 255, 0.15);
           animation: hud-spin-reverse 60s linear infinite;
         }
 
         .hud-tech-arc-1 {
           position: absolute;
-          width: 560px;
-          height: 560px;
+          width: 540px;
+          height: 540px;
           border-radius: 50%;
           border: 2px solid transparent;
           border-top-color: rgba(255, 255, 255, 0.6);
@@ -208,8 +224,8 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
 
         .hud-tech-arc-2 {
           position: absolute;
-          width: 480px;
-          height: 480px;
+          width: 460px;
+          height: 460px;
           border-radius: 50%;
           border: 2px solid transparent;
           border-bottom-color: rgba(255, 255, 255, 0.4);
@@ -220,8 +236,8 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
 
         .hud-curved-dots-wrapper {
           position: absolute;
-          width: 500px;
-          height: 500px;
+          width: 480px;
+          height: 480px;
           border-radius: 50%;
           pointer-events: none;
           z-index: 5;
@@ -236,7 +252,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           border-radius: 50%;
           top: 0;
           left: 50%;
-          transform-origin: 50% 250px;
+          transform-origin: 50% 240px;
           transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -294,23 +310,25 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           100% { transform: rotate(0deg); }
         }
 
-        /* COLONNA DESTRA: SCROLL NATURALE */
-        .process-scroll-column {
+        /* COLONNA DESTRA: STRUTTURA A SOVRAPPOSIZIONE FISSA */
+        .process-text-stage {
+          position: relative;
+          width: 100%;
+          height: 480px;
           display: flex;
-          flex-direction: column;
+          align-items: center;
         }
 
-        /* TRANSIZIONE EDITORIALE CARD (MORBIDA E GRADUALE) */
         .process-card-item {
-          min-height: 90vh;
+          position: absolute;
+          inset: 0;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          gap: clamp(12px, 1.8vh, 24px);
-          padding: 60px 0;
-          box-sizing: border-box;
-          opacity: 0.15;
-          transform: translateY(30px);
+          gap: clamp(12px, 1.8vh, 20px);
+          opacity: 0;
+          transform: translateY(20px);
+          pointer-events: none;
           transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
           will-change: opacity, transform;
         }
@@ -318,6 +336,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
         .process-card-item.active {
           opacity: 1;
           transform: translateY(0);
+          pointer-events: auto;
         }
 
         .project-category-tag {
@@ -334,6 +353,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           color: #ffffff;
           line-height: 1.05;
           letter-spacing: -1px;
+          margin: 0;
         }
 
         .project-subtitle-text {
@@ -347,6 +367,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           color: #999999;
           line-height: 1.6;
           max-width: 480px;
+          margin: 0;
         }
 
         .project-meta-grid {
@@ -356,7 +377,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           margin-top: 10px;
           border-top: 1px solid #1a1a1a;
           border-bottom: 1px solid #1a1a1a;
-          padding: 20px 0;
+          padding: 16px 0;
           max-width: 520px;
         }
 
@@ -379,7 +400,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          margin-top: 10px;
+          margin-top: 6px;
           padding: 14px 28px;
           background: #ffffff;
           color: #070707;
@@ -396,117 +417,112 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
         }
 
         @media (max-width: 1024px) {
-          .showcase-sticky-layout {
+          .showcase-layout-grid {
             grid-template-columns: 1fr;
           }
-          .hud-sticky-wrapper {
-            position: relative;
-            top: 0;
+          .process-text-stage {
             height: auto;
-            margin-bottom: 40px;
-          }
-          .hud-container {
-            transform: scale(0.85);
-          }
-          .process-card-item {
-            min-height: auto;
-            padding: 80px 0;
+            min-height: 400px;
           }
         }
       `}</style>
 
-      <div className="showcase-sticky-layout">
-        {/* COLONNA SINISTRA: HUD FISSO */}
-        <div className="hud-sticky-wrapper">
-          <div className="hud-container">
-            <div className="hud-ring-base hud-outer-ring"></div>
-            <div className="hud-ring-base hud-dashed-ring"></div>
-            <div className="hud-ring-base hud-inner-dashed"></div>
-            <div className="hud-tech-arc-1"></div>
-            <div className="hud-tech-arc-2"></div>
+      {/* VIEWPORT FISSO AL CENTRO DELLO SCHERMO */}
+      <div className="showcase-pinned-viewport">
+        <div className="showcase-layout-grid">
+          
+          {/* COLONNA SINISTRA: HUD FISSO */}
+          <div className="hud-wrapper">
+            <div className="hud-container">
+              <div className="hud-ring-base hud-outer-ring"></div>
+              <div className="hud-ring-base hud-dashed-ring"></div>
+              <div className="hud-ring-base hud-inner-dashed"></div>
+              <div className="hud-tech-arc-1"></div>
+              <div className="hud-tech-arc-2"></div>
 
-            <div className="hud-curved-dots-wrapper">
-              {steps.map((_, dotIdx) => (
-                <div
-                  key={dotIdx}
-                  className={`curved-dot ${
-                    dotIdx === activeStep
-                      ? 'active'
-                      : dotIdx === activeStep - 1 || dotIdx === activeStep + 1
-                      ? 'highlight'
-                      : ''
-                  }`}
-                ></div>
-              ))}
-            </div>
+              <div className="hud-curved-dots-wrapper">
+                {steps.map((_, dotIdx) => (
+                  <div
+                    key={dotIdx}
+                    className={`curved-dot ${
+                      dotIdx === activeStep
+                        ? 'active'
+                        : dotIdx === activeStep - 1 || dotIdx === activeStep + 1
+                        ? 'highlight'
+                        : ''
+                    }`}
+                  ></div>
+                ))}
+              </div>
 
-            <div className="hud-pointer-group">
-              <div className="hud-pointer-line"></div>
-              <div className="hud-pointer-node"></div>
-            </div>
+              <div className="hud-pointer-group">
+                <div className="hud-pointer-line"></div>
+                <div className="hud-pointer-node"></div>
+              </div>
 
-            <div className="hud-center-circle">
-              <div className="inner-grid-pattern"></div>
+              <div className="hud-center-circle">
+                <div className="inner-grid-pattern"></div>
 
-              {/* Vecchia immagine che esce in dissolvenza */}
-              {previousProject && (
+                {/* Immagine precedente in dissolvenza di uscita */}
+                {previousProject && (
+                  <img
+                    key={`prev-${previousProject.id}`}
+                    src={previousProject.img}
+                    alt=""
+                    className="hud-project-img hud-img-exit"
+                  />
+                )}
+
+                {/* Immagine corrente in dissolvenza di ingresso */}
                 <img
-                  key={`prev-${previousProject.id}`}
-                  src={previousProject.img}
-                  alt=""
-                  className="hud-project-img hud-img-exit"
+                  key={`curr-${currentProject.id}`}
+                  src={currentProject.img}
+                  alt={currentProject.title}
+                  className="hud-project-img hud-img-enter"
                 />
-              )}
-
-              {/* Nuova immagine che entra in dissolvenza */}
-              <img
-                key={`curr-${currentProject.id}`}
-                src={currentProject.img}
-                alt={currentProject.title}
-                className="hud-project-img hud-img-enter"
-              />
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* COLONNA DESTRA: SCROLL NATURALE SENZA SCATTI */}
-        <div className="process-scroll-column">
-          {steps.map((st, index) => {
-            const isActive = index === activeStep;
-            return (
-              <div
-                key={st.id}
-                className={`process-card-item ${isActive ? 'active' : ''}`}
-                data-index={index}
-              >
-                <div className="project-category-tag">
-                  {st.id} // {st.category} // {st.year}
-                </div>
-
-                <h2 className="project-main-title">{st.title}</h2>
-
-                <div className="project-subtitle-text">{st.subtitle}</div>
-
-                <p className="project-desc-text">{st.desc}</p>
-
-                <div className="project-meta-grid">
-                  <div className="meta-item">
-                    <span className="label">Design Approach</span>
-                    <span className="value">{st.tools}</span>
+          {/* COLONNA DESTRA: SCHEDA DI TESTO FISSA SULLO STESSO PUNTO */}
+          <div className="process-text-stage">
+            {steps.map((st, index) => {
+              const isActive = index === activeStep;
+              return (
+                <div
+                  key={st.id}
+                  className={`process-card-item ${isActive ? 'active' : ''}`}
+                >
+                  <div className="project-category-tag">
+                    {st.id} // {st.category} // {st.year}
                   </div>
 
-                  <div className="meta-item">
-                    <span className="label">Materials &amp; Technologies</span>
-                    <span className="value">{st.material}</span>
-                  </div>
-                </div>
+                  <h2 className="project-main-title">{st.title}</h2>
 
-                <a href={st.link} className="project-action-link">
-                  ESPLORA PROGETTO →
-                </a>
-              </div>
-            );
-          })}
+                  <div className="project-subtitle-text">{st.subtitle}</div>
+
+                  <p className="project-desc-text">{st.desc}</p>
+
+                  <div className="project-meta-grid">
+                    <div className="meta-item">
+                      <span className="label">Design Approach</span>
+                      <span className="value">{st.tools}</span>
+                    </div>
+
+                    <div className="meta-item">
+                      <span className="label">Materials &amp; Technologies</span>
+                      <span className="value">{st.material}</span>
+                    </div>
+                  </div>
+
+                  <a href={st.link} className="project-action-link">
+                    ESPLORA PROGETTO →
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+
         </div>
       </div>
     </section>
