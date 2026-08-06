@@ -2,7 +2,10 @@ import React from 'react';
 
 export const Hero: React.FC = () => {
   return (
-    <section id="hero-section" className="hero-section">
+    <section 
+      id="hero-section"
+      className="hero-section"
+    >
 
       <style>{`
 
@@ -13,124 +16,116 @@ export const Hero: React.FC = () => {
           color:white;
           position:relative;
           overflow:hidden;
-
           display:flex;
           align-items:center;
           justify-content:center;
         }
 
 
-        .hero-layout {
+        /* NOME VERTICALE */
+        .hero-name {
+          position:absolute;
+          left:35px;
+          top:50%;
+          transform:translateY(-50%) rotate(-90deg);
+          
+          font-size:14px;
+          font-weight:600;
+          letter-spacing:8px;
+          color:#888;
 
-          width:88%;
-          max-width:1500px;
+          text-transform:uppercase;
 
-          display:grid;
-
-          grid-template-columns: 
-          minmax(0, 1fr) auto;
-
-          align-items:center;
-
-          gap:80px;
-
+          animation:fadeIn 1.5s ease forwards;
         }
 
 
-
-        /* TESTO PRINCIPALE */
-
+        /* CONTENUTO CENTRALE */
         .hero-content {
 
-          animation:heroReveal 1.4s cubic-bezier(.16,1,.3,1);
+          width:90%;
+          max-width:1400px;
 
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+
+          animation:heroReveal 1.5s cubic-bezier(.16,1,.3,1);
         }
 
 
         .hero-title {
 
-          margin:0;
-
           font-size:
-          clamp(3.5rem,7vw,8rem);
+          clamp(3.8rem, 8vw, 9rem);
 
-          line-height:.9;
+          line-height:.92;
 
           font-weight:900;
 
-          letter-spacing:-0.07em;
+          letter-spacing:-0.06em;
+
+          max-width:1200px;
 
           text-transform:uppercase;
 
-        }
+          margin:0;
 
+        }
 
 
         .hero-subtitle {
 
-          margin-top:45px;
+          margin-top:40px;
 
           font-size:
-          clamp(.9rem,1.2vw,1.3rem);
+          clamp(1rem,1.5vw,1.4rem);
 
-          letter-spacing:.35em;
-
-          font-weight:600;
+          letter-spacing:0.35em;
 
           color:#888;
 
-        }
-
-
-
-        /* NOME DESTRA */
-
-        .hero-name {
-
-          writing-mode:vertical-rl;
-
-          transform:rotate(180deg);
-
-
-          font-size:
-          clamp(3rem,5vw,6rem);
-
-          line-height:.9;
-
-          font-weight:900;
-
-          letter-spacing:.12em;
-
-          text-transform:uppercase;
-
-          color:#ffffff;
-
-
-          animation:nameReveal 1.6s cubic-bezier(.16,1,.3,1);
+          font-weight:500;
 
         }
 
 
 
-        /* FRECCIA */
+        /* SCROLL INDICATOR */
 
-        .hero-arrow {
+        .hero-scroll {
 
           position:absolute;
 
-          bottom:35px;
+          bottom:45px;
+          right:50%;
 
-          left:50%;
+          transform:translateX(50%);
 
-          transform:translateX(-50%);
+          font-size:11px;
 
-          font-size:32px;
+          letter-spacing:5px;
 
-          font-weight:200;
+          color:#555;
 
-          color:#777;
+          text-transform:uppercase;
 
-          line-height:1;
+        }
+
+
+        .hero-scroll::after {
+
+          content:"";
+
+          display:block;
+
+          width:1px;
+
+          height:45px;
+
+          background:#444;
+
+          margin:15px auto 0;
 
         }
 
@@ -144,7 +139,7 @@ export const Hero: React.FC = () => {
 
             transform:translateY(40px);
 
-            filter:blur(10px);
+            filter:blur(12px);
 
           }
 
@@ -161,96 +156,82 @@ export const Hero: React.FC = () => {
         }
 
 
-        @keyframes nameReveal {
+        @keyframes fadeIn {
 
           from {
-
             opacity:0;
-
-            transform:rotate(180deg) translateY(-40px);
-
           }
 
           to {
-
             opacity:1;
-
-            transform:rotate(180deg) translateY(0);
-
           }
 
         }
 
 
 
-        @media(max-width:900px){
-
-          .hero-layout {
-
-            grid-template-columns:1fr;
-
-            gap:40px;
-
-          }
-
+        @media(max-width:768px){
 
           .hero-name {
 
-            writing-mode:horizontal-tb;
+            left:15px;
 
-            transform:none;
-
-            font-size:2rem;
+            font-size:11px;
 
           }
 
 
-        }
+          .hero-title {
 
+            font-size:3.2rem;
+
+          }
+
+
+          .hero-subtitle {
+
+            letter-spacing:.2em;
+
+          }
+
+        }
 
       `}</style>
 
 
 
-      <div className="hero-layout">
-
-
-        <div className="hero-content">
-
-          <h1 className="hero-title">
-
-            I LIKE<br/>
-            UNDERSTANDING<br/>
-            HOW THINGS<br/>
-            WORK
-
-          </h1>
-
-
-          <div className="hero-subtitle">
-
-            PRODUCT DESIGN & MAKER
-
-          </div>
-
-        </div>
+      <div className="hero-name">
+        MATTEO FINCO
+      </div>
 
 
 
-        <div className="hero-name">
+      <div className="hero-content">
 
-          MATTEO<br/>
-          FINCO
+        <h1 className="hero-title">
+
+          I LIKE<br/>
+          UNDERSTANDING<br/>
+          HOW THINGS<br/>
+          WORK
+
+        </h1>
+
+
+        <div className="hero-subtitle">
+
+          PRODUCT DESIGN & MAKER
 
         </div>
-
 
       </div>
 
 
 
-      <div className="hero-arrow">
-        ∨
+      <div className="hero-scroll">
+
+        SCROLL
+
       </div>
 
 
