@@ -2,179 +2,156 @@ import React from 'react';
 
 export const Hero: React.FC = () => {
   return (
-    <section 
-      id="hero-section"
-      className="hero-section"
-    >
+    <section id="hero-section" className="hero-section">
+
       <style>{`
 
         .hero-section {
-          width: 100%;
-          height: 100vh;
-          background: #070707;
-          color: white;
-          position: relative;
-          overflow: hidden;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          height:100vh;
+          width:100%;
+          background:#070707;
+          color:white;
+          position:relative;
+          overflow:hidden;
+          display:flex;
+          align-items:center;
         }
 
 
-        /* NOME IN ALTO */
         .hero-name {
-          position: absolute;
-          top: 45px;
-          left: 6vw;
 
-          font-family: monospace;
-          font-size: 0.9rem;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
+          position:absolute;
 
-          color: #888;
+          top:40px;
+          left:6vw;
 
-          z-index: 5;
+          font-family:monospace;
+          font-size:0.85rem;
+
+          letter-spacing:0.18em;
+          text-transform:uppercase;
+
+          color:#777;
+
         }
 
 
-        /* CONTENUTO CENTRALE */
+
         .hero-content {
 
-          width: 88vw;
-          max-width: 1500px;
-
-          display:flex;
-          flex-direction:column;
-          justify-content:center;
+          width:88vw;
+          margin:auto;
 
         }
+
 
 
         .hero-title {
 
-          font-size: clamp(3.5rem, 8.5vw, 9rem);
+          font-size:clamp(4rem,9.5vw,10rem);
+
+          line-height:0.88;
+
+          letter-spacing:-0.07em;
 
           font-weight:900;
 
-          line-height:0.9;
-
-          letter-spacing:-0.06em;
-
           text-transform:uppercase;
+
+          margin:0;
 
           max-width:1400px;
 
-          color:white;
-
         }
+
 
 
         .hero-role {
 
-          margin-top:40px;
+          margin-top:45px;
 
-          font-family: monospace;
+          font-family:monospace;
 
-          font-size: clamp(0.9rem,1.2vw,1.2rem);
+          font-size:1rem;
 
           letter-spacing:0.35em;
 
-          color:#999;
-
           text-transform:uppercase;
 
+          color:#888;
+
         }
 
 
 
-        /* SFONDO TECNICO */
-        .hero-grid {
+        /* elemento tecnico discreto */
+
+        .hero-meta {
 
           position:absolute;
 
-          inset:0;
+          bottom:45px;
 
-          opacity:0.12;
+          left:6vw;
 
-          background-image:
+          font-family:monospace;
 
-          linear-gradient(
-          rgba(255,255,255,.2) 1px,
-          transparent 1px
-          ),
+          font-size:0.75rem;
 
-          linear-gradient(
-          90deg,
-          rgba(255,255,255,.2) 1px,
-          transparent 1px
-          );
+          color:#555;
 
-          background-size:80px 80px;
-
-          animation:gridMove 25s linear infinite;
-
-        }
-
-
-        @keyframes gridMove {
-
-          from {
-            transform:translate(0,0);
-          }
-
-          to {
-            transform:translate(80px,80px);
-          }
+          letter-spacing:0.15em;
 
         }
 
 
 
-        /* SCHIZZI / IMMAGINE TECNICA */
-        .hero-image {
+        /* linea verticale */
+
+        .hero-line {
 
           position:absolute;
 
-          right:-10%;
+          right:6vw;
 
-          bottom:-20%;
+          top:20%;
 
-          width:60vw;
+          height:60%;
 
-          opacity:0.12;
+          width:1px;
 
-          filter:grayscale(100%);
-
-          animation:floatImage 18s ease-in-out infinite;
+          background:#222;
 
         }
 
 
-        @keyframes floatImage {
 
-          0%,100%{
-            transform:translateY(0);
-          }
+        .hero-dot {
 
-          50%{
-            transform:translateY(-30px);
-          }
+          position:absolute;
+
+          right:calc(6vw - 3px);
+
+          top:20%;
+
+          width:7px;
+
+          height:7px;
+
+          background:white;
+
+          border-radius:50%;
 
         }
-
 
 
 
         @media(max-width:900px){
 
           .hero-title{
+
             font-size:4rem;
-          }
 
-
-          .hero-role{
-            margin-top:25px;
           }
 
         }
@@ -184,17 +161,13 @@ export const Hero: React.FC = () => {
 
 
 
-      <div className="hero-grid"></div>
-
-
       <div className="hero-name">
-        Matteo Finco
+        MATTEO FINCO
       </div>
 
 
 
       <div className="hero-content">
-
 
         <h1 className="hero-title">
 
@@ -207,21 +180,20 @@ export const Hero: React.FC = () => {
 
 
         <div className="hero-role">
-
-          Product Designer & Maker
-
+          PRODUCT DESIGNER & MAKER
         </div>
-
 
       </div>
 
 
 
-      <img
-        className="hero-image"
-        src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fbe86c1cc389d455eb6f0512af86b90bc"
-        alt=""
-      />
+      <div className="hero-meta">
+        IUAV UNIVERSITY OF VENICE — 2026
+      </div>
+
+
+      <div className="hero-line"></div>
+      <div className="hero-dot"></div>
 
 
     </section>
