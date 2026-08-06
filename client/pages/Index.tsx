@@ -8,80 +8,80 @@ import { CircleShowcase, ProcessStep } from '../components/CircleShowcase';
 const processSteps: ProcessStep[] = [
   {
     id: '01',
-    phase: 'RESEARCH & ANALYSIS',
-    title: 'Indagine Formale e Sociale',
-    tools: 'Desk Research / User Interviews',
-    material: 'Context & Behavioral Mapping',
+    phase: 'RESEARCH & USER ANALYSIS',
+    title: 'Analisi Funzionale e Contestuale',
+    tools: 'Desk Research / Antropometria',
+    material: 'Mappe concettuali & Brief',
     year: '2026',
-    role: 'Product Strategy & Concept',
-    desc: 'L\'osservazione dei comportamenti quotidiani e la decompressione delle necessità primarie guida la prima definizione dell\'architettura dell\'oggetto.',
-    quote: '"Comprendere il contesto d\'uso significa anticipare la relazione affettiva tra utente e prodotto."',
+    role: 'Industrial Designer',
+    desc: 'Studio delle interazioni fisiche e dei vincoli d\'uso. L\'obiettivo è individuare i punti critici di usabilità e definire le linee guida di progetto.',
+    quote: '"Comprendere il contesto d\'uso è il primo passo per dare forma a oggetti con un valore reale."',
     img: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80'
   },
   {
     id: '02',
-    phase: 'CONCEPT & SKETCHING',
-    title: 'Esplorazione Ideativa',
-    tools: 'Analog Sketching / Form Studies',
-    material: 'Paper & Cardboard Mockups',
+    phase: 'CONCEPT & FORM STUDIES',
+    title: 'Esplorazione Formale',
+    tools: 'Schizzi Analogici / Mockup Rapidi',
+    material: 'Cartone, Polistirolo & Argilla',
     year: '2026',
-    role: 'Industrial Design',
-    desc: 'Tracciare le linee guida volumetriche attraverso lo schizzo rapido e la modellazione di studio per testare pesi, ingombri ed ergonomia.',
-    quote: '"La linea sulla carta definisce il confine tra la funzione pura e la carica espressiva del volume."',
+    role: 'Product Designer',
+    desc: 'Definizione dei volumi primari e test di presa ergonomica attraverso modelli di studio in scala reale.',
+    quote: '"Lo schizzo rapido permette di esplorare decine di alternative prima di passare al modello tridimensionale."',
     img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80'
   },
   {
     id: '03',
-    phase: 'CAD & SURFACING',
-    title: 'Modellazione Parametrica',
-    tools: 'NURBS / Solid Modeling / FEA',
-    material: 'Digital Surfaces & Tolerance Check',
+    phase: 'CAD & PARAMETRIC MODELING',
+    title: 'Sviluppo Superfici e Volumi',
+    tools: 'Rhino 7 / Fusion 360',
+    material: 'Superfici NURBS & Mesh',
     year: '2026',
-    role: 'Technical & Surface Design',
-    desc: 'Traduzione dell\'idea informale in geometrie matematiche complesse, ottimizzando raggi di raccordo, incastri e spessori di parete.',
-    quote: '"Il controllo millimetrico delle superfici garantisce la continuità della luce sul pezzo finale."',
+    role: 'CAD Modeler',
+    desc: 'Modellazione matematica ad alta precisione. Gestione dei raccordi, degli spessori di parete e degli incastri meccanici tra i componenti.',
+    quote: '"La precisione parametrica trasforma la visione concettuale in una geometria pronta alla produzione."',
     img: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1200&q=80'
   },
   {
     id: '04',
-    phase: 'PROTOTYPING & TESTING',
-    title: 'Validazione Materiale',
-    tools: 'Additive Mfg / CNC / Laser Cutting',
-    material: 'PLA / Recycled Polymers / Metal',
+    phase: 'RAPID PROTOTYPING',
+    title: 'Stampa 3D e Validazione',
+    tools: 'Bambu Lab P2S / Slicing',
+    material: 'Filamento PLA / Polimeri Riciclati',
     year: '2026',
-    role: 'Physical Fabrication',
-    desc: 'Fabbricazione digitale di prototipi funzionali in scala 1:1 per valutare tolleranze accoppiamenti, resistenza meccanica e usabilità.',
-    quote: '"Il prototipo fisico è l\'unico giudice infallibile della bontà di un\'intuizione CAD."',
+    role: 'Prototipazione Fisica',
+    desc: 'Fabbricazione digitale e test tolleranze. Ogni prototipo stampato viene verificato sul campo per affinare il fit meccanico e la resa estetica.',
+    quote: '"La prototipazione rapida è il ponte fondamentale tra il modello digitale e il prodotto fisico."',
     img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80'
   },
   {
     id: '05',
-    phase: 'FINAL SYSTEM & DETAILS',
-    title: 'Integrazione e Finitura',
-    tools: 'Design for Assembly (DFA)',
-    material: 'Tactile Finishes & CMF',
+    phase: 'PRODUCTION & DETAILS',
+    title: 'Ingegnerizzazione Finale',
+    tools: 'Design for Assembly (DFA) / CMF',
+    material: 'Documentazione Tecnica',
     year: '2026',
-    role: 'System Design',
-    desc: 'Ingegnerizzazione dei componenti finali, definizione delle texture superficiali e semplificazione delle fasi di montaggio e riciclo.',
-    quote: '"Un oggetto ben progettato si smonta con la stessa eleganza con cui è stato assemblato."',
+    role: 'System Designer',
+    desc: 'Ottimizzazione del prodotto per la disassemblabilità e la sostenibilità dei materiali, riducendo al minimo colle o giunzioni irreversibili.',
+    quote: '"Un buon progetto di design pensa alla fine del ciclo di vita dell\'oggetto fin dal primo giorno."',
     img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80'
   }
 ];
 
 const translations = {
   it: {
-    sec1Title: "Progettare un prodotto è una sequenza di scelte.",
-    sec1Sub: "Un dialogo costante tra vincoli tecnici e visione espressiva.",
-    sec1P: "Il design di prodotto non è un atto isolato, ma una stratificazione di competenze. Dall'analisi antropometrica alla scelta dei materiali, ogni passaggio costruisce la personalità dell'oggetto e la sua relazione con la persona che lo vive.",
-    sec2P1: "Attribuire una forma significa conferire una voce. Oltre alla pura funzione meccanica, l'oggetto industriale instaura un legame profondo con lo spazio e la cultura quotidiana.",
-    sec2P2: "I progetti sono pensati come sistemi aperti: soluzioni sostenibili, materiali trasparenti e geometrie pronte ad evolversi nel tempo."
+    sec1Title: "Matteo Finco",
+    sec1Sub: "Student in Industrial & Product Design presso l'Università Iuav di Venezia.",
+    sec1P: "Mi occupo della progettazione di prodotti fisici, esplorando l'equilibrio tra usabilità quotidiana, modellazione parametrica e tecniche di prototipazione rapida.",
+    sec2P1: "Ogni progetto parte dall'analisi dei bisogni dell'utente per tradursi in geometrie pulite, funzionali e attente alla sostenibilità dei materiali.",
+    sec2P2: "Dallo schizzo iniziale al prototipo stampato in 3D, controllo ogni fase del processo per verificare forme, usabilità e dettagli costruttivi."
   },
   en: {
-    sec1Title: "Designing a product is a sequence of choices.",
-    sec1Sub: "A constant dialogue between technical constraints and expressive vision.",
-    sec1P: "Product design is not an isolated act, but a layering of skills. From anthropometric analysis to material selection, every step builds the object's personality and its relationship with the user.",
-    sec2P1: "Giving form means giving a voice. Beyond pure mechanical function, industrial objects forge a deep link with space and everyday culture.",
-    sec2P2: "Projects are conceived as open systems: sustainable solutions, transparent materials, and geometries ready to evolve over time."
+    sec1Title: "Matteo Finco",
+    sec1Sub: "Industrial & Product Design Student at Iuav University of Venice.",
+    sec1P: "Focused on physical product design, balancing everyday usability, parametric modeling, and rapid prototyping techniques.",
+    sec2P1: "Every project starts from user needs analysis, translating into clean, functional geometries mindful of material sustainability.",
+    sec2P2: "From the initial sketch to the 3D printed prototype, I manage every phase to test shapes, usability, and technical details."
   }
 };
 
@@ -90,7 +90,7 @@ export default function Index() {
   const [activeStep, setActiveStep] = useState<number>(0);
 
   useEffect(() => {
-    // Reveal Animations (Immagini in entrata)
+    // Observer per le immagini editoriali
     const revealElements = document.querySelectorAll('.reveal-editorial');
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -105,7 +105,7 @@ export default function Index() {
 
     revealElements.forEach((el) => revealObserver.observe(el));
 
-    // Observer per sincronizzare lo scroll a destra con i pallini del cerchio SVG
+    // Observer per sincronizzare lo scroll a destra con il cerchio sticky a sinistra
     const processCards = document.querySelectorAll('.process-card');
     const processObserver = new IntersectionObserver(
       (entries) => {
@@ -131,17 +131,19 @@ export default function Index() {
     <div className="editorial-portfolio">
       <style>{`
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        /* Uso di overflow-x: clip per non rompere position: sticky */
         html, body {
           background-color: #070707;
           color: #e5e5e5;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           line-height: 1.7;
-          overflow-x: hidden;
+          overflow-x: clip;
         }
 
-        .editorial-portfolio { background-color: #070707; color: #e5e5e5; min-height: 100vh; }
+        .editorial-portfolio { background-color: #070707; color: #e5e5e5; min-height: 100vh; overflow-x: clip; }
 
-        /* HERO LAYER ANIMATIONS */
+        /* HERO ANIMATIONS */
         .layer-blueprint { fill: url(#blueprintPattern); animation: layerMove1 22s ease-in-out infinite alternate; }
         .layer-sketches { animation: layerMove2 18s ease-in-out infinite alternate, layerFade1 14s ease-in-out infinite alternate; }
         .layer-photo { animation: layerMove3 24s ease-in-out infinite alternate, layerFade2 16s ease-in-out infinite alternate; }
@@ -163,8 +165,8 @@ export default function Index() {
           align-items: center;
         }
         .editorial-text h2 { font-size: clamp(2.4rem, 4.5vw, 4.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 25px; color: #fff; }
-        .editorial-text h3.sub-grey { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 500; color: #666; margin-bottom: 40px; }
-        .editorial-text p { color: #999; font-size: 1.15rem; line-height: 1.8; max-width: 540px; }
+        .editorial-text h3.sub-grey { font-size: clamp(1.4rem, 2.5vw, 2.2rem); font-weight: 500; color: #888; margin-bottom: 30px; }
+        .editorial-text p { color: #aaa; font-size: 1.15rem; line-height: 1.8; max-width: 540px; }
         .editorial-media-box { position: relative; width: 100%; height: 560px; overflow: hidden; background: #111; }
         .editorial-media-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); transition: filter 0.8s ease; }
         .editorial-media-box:hover img { filter: grayscale(0%); }
@@ -189,10 +191,28 @@ export default function Index() {
         .scrolling-card h3 { font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 20px; }
         .scrolling-card p { color: #aaa; font-size: 1.05rem; }
 
-        /* CIRCLE SHOWCASE */
-        .process-showcase-wrapper { max-width: 1500px; margin: 0 auto; padding: 120px 6vw; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 90px; align-items: start; }
-        .process-sticky-left { position: sticky; top: 12vh; height: 76vh; display: flex; items-center: center; justify-content: center; }
-        .circle-technical-frame { position: relative; width: 100%; max-width: 500px; height: 500px; }
+        /* CIRCLE SHOWCASE - STICKY LAYOUT CORRETTO */
+        .process-showcase-wrapper {
+          max-width: 1500px;
+          margin: 0 auto;
+          padding: 100px 6vw;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 80px;
+          align-items: start;
+        }
+
+        .process-sticky-left {
+          position: sticky;
+          top: 80px;
+          height: calc(100vh - 120px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 10;
+        }
+
+        .circle-technical-frame { position: relative; width: 100%; max-width: 480px; height: 480px; }
         .circle-hud-svg { width: 100%; height: 100%; overflow: visible; }
 
         .circle-img-layer { opacity: 0; transform: scale(1.05); transition: opacity 0.8s ease, transform 0.8s ease; }
@@ -201,28 +221,27 @@ export default function Index() {
         @keyframes pulseRing { 0% { r: 8px; opacity: 1; } 100% { r: 18px; opacity: 0; } }
         .node-pulse { animation: pulseRing 1.8s ease-out infinite; }
 
-        .process-scroll-right { padding-top: 6vh; padding-bottom: 20vh; }
+        .process-scroll-right { padding-top: 4vh; padding-bottom: 15vh; }
         .process-card { min-height: 75vh; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; opacity: 0.2; filter: blur(4px); transition: opacity 0.6s ease, filter 0.6s ease; border-bottom: 1px solid #141414; }
         .process-card.active-step { opacity: 1; filter: blur(0px); }
         .process-card .phase-number { font-family: monospace; font-size: 0.9rem; color: #666; margin-bottom: 10px; }
-        .process-card .phase-title { font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 25px; }
+        .process-card .phase-title { font-size: 2.4rem; font-weight: 800; color: #fff; margin-bottom: 25px; }
         .process-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; padding: 20px 0; border-y: 1px solid #1a1a1a; }
         .meta-item .meta-label { font-family: monospace; font-size: 0.75rem; color: #555; text-transform: uppercase; margin-bottom: 4px; }
         .meta-item .meta-value { font-size: 0.95rem; color: #ccc; font-weight: 500; }
         .process-card .phase-desc { color: #a0a0a0; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; }
         .process-card blockquote { font-style: italic; color: #888; border-left: 2px solid #555; padding-left: 20px; font-size: 1.05rem; }
 
-        footer { background-color: #040404; padding: 100px 6vw 50px; text-align: center; border-top: 1px solid #121212; }
+        footer { background-color: #040404; padding: 80px 6vw 40px; text-align: center; border-top: 1px solid #121212; }
         footer p { color: #444; font-size: 0.85rem; font-family: monospace; }
 
         @media (max-width: 1024px) {
           .editorial-section, .process-showcase-wrapper { grid-template-columns: 1fr; gap: 60px; }
-          .process-sticky-left { position: relative; top: 0; height: 400px; }
+          .process-sticky-left { position: relative; top: 0; height: 420px; }
           .scrolling-card { margin: 0 5vw 10vh 5vw; }
         }
       `}</style>
 
-      {/* COMPONENTI MODULARI */}
       <Header lang={lang} setLang={setLang} />
       <Hero />
       <IntroSection t={translations[lang]} />
@@ -230,7 +249,7 @@ export default function Index() {
       <CircleShowcase steps={processSteps} activeStep={activeStep} />
 
       <footer>
-        <p>© 2026 MATTEO FINCO // ALL RIGHTS RESERVED</p>
+        <p>© 2026 MATTEO FINCO // INDUSTRIAL DESIGN PORTFOLIO</p>
       </footer>
     </div>
   );
