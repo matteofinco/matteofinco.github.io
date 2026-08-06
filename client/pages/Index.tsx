@@ -375,8 +375,7 @@ export default function Index() {
       {/* FASCIA DI STACCO NERA TRA INTRO E STICKY OBJECT */}
       <div className="section-divider-gap" />
 
-      <StickyObject />
-
+     <StickyObject lang={lang} />
       {/* FASCIA DI STACCO NERA PRIMA DI CIRCLE SHOWCASE */}
       <div className="section-divider-gap" />
 
