@@ -14,253 +14,134 @@ export interface ProjectStep {
   img: string;
 }
 
-interface CircleShowcaseProps {
+interface ShowcaseProps {
   steps: ProjectStep[];
   activeStep: number;
 }
 
-export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeStep }) => {
-  const currentProject = steps[activeStep] || steps[0];
+export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) => {
+  const radius = 180;
+  const centerX = 250;
+  const centerY = 250;
 
   return (
-    <section className="circle-showcase-container">
-      <div className="sticky-viewport">
-        {/* Pane Fisso Sticky Sinistra */}
-        <div className="visual-sticky-pane">
-          <div className="circle-frame">
-            <div 
-              className="circle-image" 
-              style={{ backgroundImage: `url(${currentProject.img})` }}
-            />
-            <div className="circle-overlay-ring" />
+    <section className="process-showcase-wrapper">
+      {/* COLONNA STICKY A SINISTRA (CERCHIO INGRANDITO DEL 20%) */}
+      <div className="process-sticky-left">
+        <div className="circle-technical-frame">
+          <svg className="circle-hud-svg" viewBox="0 0 500 500">
+            <defs>
+              <clipPath id="circleImageClip">
+                <circle cx={centerX} cy={centerY} r={radius - 15} />
+              </clipPath>
+            </defs>
+
+            {/* Anelli di riferimento geometrico */}
+            <circle cx={centerX} cy={centerY} r={radius + 20} stroke="rgba(255,255,255,0.08)" strokeWidth="1" fill="none" />
+            <circle cx={centerX} cy={centerY} r={radius} stroke="rgba(255,255,255,0.22)" strokeWidth="1.5" strokeDasharray="6,6" fill="none" />
+            <circle cx={centerX} cy={centerY} r={radius - 15} stroke="rgba(255,255,255,0.35)" strokeWidth="1" fill="none" />
+
+            {/* Immagine del progetto attivo */}
+            <g clipPath="url(#circleImageClip)">
+              {steps.map((step, idx) => (
+                <image
+                  key={step.id}
+                  href={step.img}
+                  x={centerX - radius}
+                  y={centerY - radius}
+                  width={radius * 2}
+                  height={radius * 2}
+                  preserveAspectRatio="xMidYMid slice"
+                  className={`circle-img-layer ${activeStep === idx ? 'active-layer' : ''}`}
+                />
+              ))}
+            </g>
+
+            {/* 7 Nodi distribuiti lungo la circonferenza */}
+            {steps.map((step, idx) => {
+              const angleDeg = -90 + idx * (360 / steps.length);
+              const angleRad = (angleDeg * Math.PI) / 180;
+              const px = centerX + radius * Math.cos(angleRad);
+              const py = centerY + radius * Math.sin(angleRad);
+              const isActive = activeStep === idx;
+
+              return (
+                <g key={step.id} className="circle-node-group">
+                  {isActive && (
+                    <circle cx={px} cy={py} r="13" fill="none" stroke="#ffffff" strokeWidth="1" className="node-pulse" />
+                  )}
+                  <circle
+                    cx={px}
+                    cy={py}
+                    r={isActive ? "6.5" : "4"}
+                    fill={isActive ? "#ffffff" : "#444444"}
+                    stroke="#070707"
+                    strokeWidth="2"
+                    className="transition-all duration-300"
+                  />
+                  <text
+                    x={px + Math.cos(angleRad) * 24}
+                    y={py + Math.sin(angleRad) * 24 + 4}
+                    fill={isActive ? "#ffffff" : "#666666"}
+                    fontSize="10"
+                    fontFamily="monospace"
+                    textAnchor="middle"
+                  >
+                    0{idx + 1}
+                  </text>
+                </g>
+              );
+            })}
+
+            {/* Reticolo di centraggio */}
+            <line x1={centerX - 15} y1={centerY} x2={centerX + 15} y2={centerY} stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+            <line x1={centerX} y1={centerY - 15} x2={centerX} y2={centerY + 15} stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+          </svg>
+
+          {/* TITOLO DEL PROGETTO SOTTO IL CERCHIO */}
+          <div className="project-title-under-circle">
+            <span className="project-index-tag">PROJECT_0{activeStep + 1} // {steps[activeStep].year}</span>
+            <h3 className="project-main-name">{steps[activeStep].title}</h3>
+            <p className="project-sub-name">{steps[activeStep].subtitle}</p>
           </div>
-
-          {/* Titolo Sotto il Cerchio */}
-          <div className="sticky-project-meta">
-            <span className="project-step-badge">{currentProject.id} / 0{steps.length}</span>
-            <h3 className="project-sticky-title">{currentProject.title}</h3>
-            <p className="project-sticky-sub">{currentProject.subtitle}</p>
-          </div>
-        </div>
-
-        {/* Schede Descrittive a Destra */}
-        <div className="scrollable-cards-pane">
-          {steps.map((step, idx) => (
-            <div 
-              key={step.id} 
-              className={`process-card ${idx === activeStep ? 'is-active' : ''}`}
-              data-step={idx}
-            >
-              <div className="card-header-tags">
-                <span className="category-tag">{step.category}</span>
-                <span className="year-tag">{step.year}</span>
-              </div>
-
-              <h2 className="card-title">{step.title}</h2>
-              <p className="card-subtitle">{step.subtitle}</p>
-              <p className="card-desc">{step.desc}</p>
-
-              <div className="card-specs-grid">
-                <div>
-                  <span className="spec-label">STRUMENTI</span>
-                  <span className="spec-val">{step.tools}</span>
-                </div>
-                <div>
-                  <span className="spec-label">MATERIALI</span>
-                  <span className="spec-val">{step.material}</span>
-                </div>
-              </div>
-
-              <a href={step.link} className="project-details-btn">
-                ESPLORA PROGETTO →
-              </a>
-            </div>
-          ))}
         </div>
       </div>
 
-      <style>{`
-        .circle-showcase-container {
-          position: relative;
-          width: 100%;
-          background-color: #070707;
-        }
+      {/* COLONNA TESTI E PULSANTI LINK A DESTRA */}
+      <div className="process-scroll-right">
+        {steps.map((step, idx) => (
+          <div
+            key={step.id}
+            className={`process-card ${activeStep === idx ? 'active-step' : ''}`}
+            data-step={idx}
+          >
+            <div className="phase-number">0{idx + 1} // {step.category}</div>
+            <div className="phase-title">{step.title}</div>
+            <div className="phase-subtitle">{step.subtitle}</div>
 
-        .sticky-viewport {
-          display: flex;
-          align-items: flex-start;
-          width: 100%;
-          max-width: 1400px;
-          margin: 0 auto;
-          padding: 0 5vw;
-        }
+            <div className="process-meta-grid">
+              <div className="meta-item">
+                <div className="meta-label">Strumenti &amp; Software</div>
+                <div className="meta-value">{step.tools}</div>
+              </div>
+              <div className="meta-item">
+                <div className="meta-label">Materiali / Output</div>
+                <div className="meta-value">{step.material}</div>
+              </div>
+            </div>
 
-        .visual-sticky-pane {
-          position: sticky;
-          top: 100px;
-          height: calc(100vh - 120px);
-          width: 48%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          z-index: 10;
-        }
+            <p className="phase-desc">{step.desc}</p>
 
-        .circle-frame {
-          position: relative;
-          width: clamp(260px, 28vw, 420px);
-          height: clamp(260px, 28vw, 420px);
-          border-radius: 50%;
-          overflow: hidden;
-          box-shadow: 0 0 50px rgba(0,0,0,0.8);
-          border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .circle-image {
-          width: 100%;
-          height: 100%;
-          background-size: cover;
-          background-position: center;
-          transition: background-image 0.5s ease-in-out, transform 0.6s ease;
-        }
-
-        .circle-overlay-ring {
-          position: absolute;
-          inset: 0;
-          border-radius: 50%;
-          box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
-          pointer-events: none;
-        }
-
-        .sticky-project-meta {
-          margin-top: 30px;
-          text-align: center;
-          transition: opacity 0.3s ease;
-        }
-
-        .project-step-badge {
-          font-family: monospace;
-          font-size: 0.85rem;
-          color: #666;
-          letter-spacing: 2px;
-          display: block;
-          margin-bottom: 6px;
-        }
-
-        .project-sticky-title {
-          font-size: 2.2rem;
-          font-weight: 800;
-          color: #ffffff;
-          letter-spacing: -1px;
-          margin: 0;
-        }
-
-        .project-sticky-sub {
-          font-size: 0.95rem;
-          color: #888888;
-          margin-top: 4px;
-        }
-
-        .scrollable-cards-pane {
-          width: 52%;
-          padding-top: 10vh;
-          padding-bottom: 20vh;
-          padding-left: 4vw;
-        }
-
-        .process-card {
-          min-height: 80vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          opacity: 0.25;
-          transform: translateY(20px);
-          transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .process-card.is-active {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .card-header-tags {
-          display: flex;
-          gap: 15px;
-          font-family: monospace;
-          font-size: 0.78rem;
-          margin-bottom: 12px;
-        }
-
-        .category-tag { color: #aaa; letter-spacing: 1.5px; }
-        .year-tag { color: #555; }
-
-        .card-title {
-          font-size: clamp(2rem, 3.5vw, 3.2rem);
-          font-weight: 800;
-          color: #ffffff;
-          line-height: 1.1;
-          margin-bottom: 8px;
-        }
-
-        .card-subtitle {
-          font-size: 1.1rem;
-          color: #999;
-          margin-bottom: 24px;
-        }
-
-        .card-desc {
-          font-size: 1rem;
-          color: #cccccc;
-          line-height: 1.8;
-          max-width: 520px;
-          margin-bottom: 30px;
-        }
-
-        .card-specs-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 20px;
-          padding: 20px 0;
-          border-top: 1px solid #1a1a1a;
-          border-bottom: 1px solid #1a1a1a;
-          margin-bottom: 30px;
-          max-width: 520px;
-        }
-
-        .spec-label {
-          display: block;
-          font-family: monospace;
-          font-size: 0.72rem;
-          color: #555555;
-          letter-spacing: 1px;
-          margin-bottom: 4px;
-        }
-
-        .spec-val {
-          font-size: 0.88rem;
-          color: #dddddd;
-        }
-
-        .project-details-btn {
-          display: inline-block;
-          font-family: monospace;
-          font-size: 0.85rem;
-          color: #ffffff;
-          text-decoration: none;
-          letter-spacing: 1.5px;
-          border-bottom: 1px solid #ffffff;
-          padding-bottom: 4px;
-          align-self: flex-start;
-        }
-
-        @media (max-width: 900px) {
-          .sticky-viewport { flex-direction: column; }
-          .visual-sticky-pane { position: relative; top: 0; height: auto; width: 100%; }
-          .scrollable-cards-pane { width: 100%; padding-left: 0; }
-          .process-card { min-height: auto; padding: 60px 0; }
-        }
-      `}</style>
+            {/* BOTTONE LINK DI APPROFONDIMENTO */}
+            <a href={step.link} className="project-detail-btn">
+              <span>Scopri il progetto {step.title}</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
