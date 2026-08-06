@@ -55,6 +55,7 @@ const PROCESS_STEPS = {
 
 export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
   const [activeStep, setActiveStep] = useState(0);
+  const [prevStep, setPrevStep] = useState<number | null>(null);
   const triggerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const steps = PROCESS_STEPS[lang] || PROCESS_STEPS.it;
@@ -65,7 +66,12 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = Number(entry.target.getAttribute('data-step-index'));
-            setActiveStep(index);
+            setActiveStep((prev) => {
+              if (prev !== index) {
+                setPrevStep(prev);
+              }
+              return index;
+            });
           }
         });
       },
@@ -83,38 +89,54 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
   }, []);
 
   const handleStepClick = (index: number) => {
-    setActiveStep(index);
-    const targetTrigger = triggerRefs.current[index];
-    if (targetTrigger) {
-      targetTrigger.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (index !== activeStep) {
+      setPrevStep(activeStep);
+      setActiveStep(index);
+      const targetTrigger = triggerRefs.current[index];
+      if (targetTrigger) {
+        targetTrigger.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     }
   };
 
-  const currentStep = steps[activeStep];
+  const currentStepData = steps[activeStep];
+  const prevStepData = prevStep !== null ? steps[prevStep] : null;
 
   return (
     <section className="process-section">
       {/* FRAME STICKY FULL-BLEED A SINISTRA */}
       <div className="process-sticky-frame">
         <div className="process-media">
+          {/* Vecchia immagine (rimane sotto e sfuma via) */}
+          {prevStepData && (
+            <img
+              key={`prev-${prevStep}`}
+              src={prevStepData.image}
+              alt=""
+              className="process-img img-fade-out"
+            />
+          )}
+
+          {/* Nuova immagine (si sovrappone sfumando delicatamente in ingresso) */}
           <img
-            key={currentStep.image}
-            src={currentStep.image}
-            alt={currentStep.step}
-            className="animate-image-slow"
+            key={`curr-${activeStep}`}
+            src={currentStepData.image}
+            alt={currentStepData.step}
+            className="process-img img-fade-in"
           />
-          <div key={currentStep.tag} className="process-tag animate-tag-slow">
-            {currentStep.tag}
+
+          <div key={`tag-${activeStep}`} className="process-tag animate-tag-smooth">
+            {currentStepData.tag}
           </div>
         </div>
 
         {/* COLONNA TESTO DESTRA */}
         <div className="process-text-column">
-          <div key={`${lang}-${activeStep}`} className="process-content-block animate-text-slow">
-            <span className="step-number">{currentStep.step}</span>
+          <div key={`${lang}-${activeStep}`} className="process-content-block animate-text-smooth">
+            <span className="step-number">{currentStepData.step}</span>
 
             <h3 className="step-title">
-              {currentStep.title.split('\n').map((line, i) => (
+              {currentStepData.title.split('\n').map((line, i) => (
                 <React.Fragment key={i}>
                   {line}
                   <br />
@@ -122,7 +144,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
               ))}
             </h3>
 
-            <p className="step-description">{currentStep.desc}</p>
+            <p className="step-description">{currentStepData.desc}</p>
 
             <div className="step-indicators">
               {steps.map((_, i) => (
@@ -184,45 +206,62 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           background-color: #070707;
         }
 
-        .process-media img {
+        .process-img {
+          position: absolute;
+          top: 0;
+          left: 0;
           width: 100%;
           height: 100%;
           object-fit: cover;
           border-radius: 0;
-          filter: none;
-          will-change: transform, opacity;
+          will-change: opacity, transform;
         }
 
-        /* IMMAGINE: 1.4 secondi per un passaggio impercettibile e fluido */
-        .animate-image-slow {
-          animation: imageSlowSlide 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        /* CROSS-FADE: La nuova immagine entra in dissolvenza soffice */
+        .img-fade-in {
+          z-index: 2;
+          animation: crossFadeIn 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
-        @keyframes imageSlowSlide {
+        /* La vecchia immagine sfuma via dolcemente in sottofondo */
+        .img-fade-out {
+          z-index: 1;
+          animation: crossFadeOut 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes crossFadeIn {
           from {
             opacity: 0;
-            transform: translateX(-15px);
+            transform: scale(1.02);
           }
           to {
             opacity: 1;
-            transform: translateX(0);
+            transform: scale(1);
           }
         }
 
-        /* BADGE TAG: 1.1 secondi di dissolvenza con lieve ritardo */
-        .animate-tag-slow {
-          animation: tagSlowFade 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
-          opacity: 0;
+        @keyframes crossFadeOut {
+          from {
+            opacity: 1;
+            transform: scale(1);
+          }
+          to {
+            opacity: 0;
+            transform: scale(0.98);
+          }
         }
 
-        @keyframes tagSlowFade {
+        /* BADGE TAG: Dissolvenza morbida */
+        .animate-tag-smooth {
+          animation: tagSmooth 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes tagSmooth {
           from {
             opacity: 0;
-            transform: translateX(-8px);
           }
           to {
             opacity: 1;
-            transform: translateX(0);
           }
         }
 
@@ -238,7 +277,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           padding: 8px 16px;
           border-radius: 0;
           backdrop-filter: blur(8px);
-          z-index: 2;
+          z-index: 3;
         }
 
         .process-text-column {
@@ -251,22 +290,20 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
 
         .process-content-block {
           max-width: 460px;
-          will-change: transform, opacity;
+          will-change: opacity;
         }
 
-        /* TESTO: 1.1 secondi di fade in morbido */
-        .animate-text-slow {
-          animation: textSlowFade 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        /* TESTO: Dissolvenza incrociata naturale */
+        .animate-text-smooth {
+          animation: textSmooth 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
-        @keyframes textSlowFade {
+        @keyframes textSmooth {
           from {
             opacity: 0;
-            transform: translateY(6px);
           }
           to {
             opacity: 1;
-            transform: translateY(0);
           }
         }
 
@@ -309,7 +346,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           padding: 0;
           cursor: pointer;
           outline: none;
-          transition: background 0.6s ease, width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: background 0.6s ease, width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .indicator-dot:hover {
