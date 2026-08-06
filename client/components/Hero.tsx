@@ -76,7 +76,7 @@ export const Hero: React.FC = () => {
             </g>
             <g className="layer-photo">
               <image
-                href="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80"
+                href="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fbe86c1cc389d455eb6f0512af86b90bc"
                 x="0"
                 y="0"
                 width="100%"
