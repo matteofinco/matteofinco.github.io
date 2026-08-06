@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Header from '../components/Header';
 
 export default function About() {
   useEffect(() => {
@@ -22,18 +23,17 @@ export default function About() {
   }, []);
 
   return (
-    <div className="about-page editorial-portfolio">
+    <div className="about-page editorial-portfolio bg-[#070707] text-[#e5e5e5] min-h-screen overflow-x-hidden">
+      {/* Header coerente con la navigazione e il selettore IT/EN */}
+      <Header showBackToDesigns={false} />
+
       <style>{`
         .about-page {
-          background-color: #070707;
-          color: #e5e5e5;
-          min-height: 100vh;
-          overflow-x: hidden;
-          padding-top: 100px;
+          padding-top: 80px;
         }
 
         .about-hero {
-          min-height: 60vh;
+          min-height: 50vh;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -113,19 +113,11 @@ export default function About() {
         }
 
         .about-text h2 {
-          font-size: clamp(2.4rem, 4.2vw, 4rem);
+          font-size: clamp(2.2rem, 3.8vw, 3.5rem);
           font-weight: 800;
           line-height: 1.15;
           margin-bottom: 25px;
           color: #ffffff;
-        }
-
-        .about-text h3 {
-          font-size: clamp(1.2rem, 2vw, 1.8rem);
-          font-weight: 500;
-          color: #888888;
-          margin-bottom: 30px;
-          line-height: 1.4;
         }
 
         .about-text p {
@@ -163,7 +155,7 @@ export default function About() {
           transform: translateX(0);
         }
 
-        /* TIMELINE/EXPERTISE SECTION */
+        /* EXPERTISE SECTION */
         .about-expertise-wrapper {
           max-width: 1200px;
           margin: 100px auto 0;
@@ -273,32 +265,6 @@ export default function About() {
             padding: 60px 6vw;
           }
         }
-
-        @media (max-width: 640px) {
-          .about-page {
-            padding-top: 80px;
-          }
-
-          .about-hero {
-            padding: 40px 6vw;
-          }
-
-          .about-hero h1 {
-            margin-bottom: 20px;
-          }
-
-          .about-text h2 {
-            font-size: 1.8rem;
-          }
-
-          .about-row {
-            gap: 30px;
-          }
-
-          .about-fullbleed-wrapper {
-            gap: 80px;
-          }
-        }
       `}</style>
 
       {/* HERO SECTION */}
@@ -311,7 +277,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* FULLBLEED EDITORIAL CONTENT */}
+      {/* FULLBLEED EDITORIAL CONTENT CON I TUOI TESTI ORIGINALI */}
       <div className="about-fullbleed-wrapper">
         {/* SECTION 1: CURIOSITY */}
         <section className="about-row media-left">
@@ -322,7 +288,7 @@ export default function About() {
             />
           </div>
           <div className="about-text reveal-editorial reveal-from-right">
-            <h2>I Like Understanding How Things Work</h2>
+            <h2>I like understanding how things work.</h2>
             <p>
               When I look at an object, my first impulse is not to ask whether it is beautiful or not, but why it was designed that way. How it was built, which constraints shaped the decisions, and which compromises are hidden behind an apparently simple form.
             </p>
@@ -362,7 +328,7 @@ export default function About() {
           <div className="about-text reveal-editorial reveal-from-right">
             <h2>Learning From What Exists</h2>
             <p>
-              I spend a lot of time observing existing products: taking them apart, analysing their internal structure, understanding how they are made, and identifying their limits is often my starting point. Understanding what already exists is, for me, the best way to imagine what does not yet exist.
+              For this reason, I spend a lot of time observing existing products: taking them apart, analysing their internal structure, understanding how they are made, and identifying their limits is often my starting point. Understanding what already exists is, for me, the best way to imagine what does not yet exist.
             </p>
           </div>
         </section>
@@ -370,7 +336,7 @@ export default function About() {
         {/* SECTION 4: DIGITAL & MAKING */}
         <section className="about-row media-right">
           <div className="about-text reveal-editorial reveal-from-left">
-            <h2>Making &amp; Prototipazione</h2>
+            <h2>Digital &amp; Physical Prototyping</h2>
             <p>
               I consider digital tools and making practices as extensions of the same design process. The digital space is an environment where I test the rules of a system, not just a stage for representation.
             </p>
@@ -413,7 +379,7 @@ export default function About() {
               In design, I see the same dynamic: effective solutions are rarely individual. They come from discussion and from the ability to combine different skills while keeping a clear overall vision of the system.
             </p>
             <p>
-              Today, I still see design as a way to understand the world before changing it. Every project is a chance to learn something new and to turn a complex problem into a clear solution.
+              Today, I still see design as a way to understand the world before changing it. Every project is a chance to learn something new and to turn a complex problem into a clear solution. I am interested in working on systems that combine logic, matter, and interaction. I see each project as an exercise in possibility: not only asking how things work, but how they could work better.
             </p>
           </div>
           <div className="about-media reveal-editorial reveal-from-right">
@@ -472,7 +438,7 @@ export default function About() {
 
       {/* CTA SECTION */}
       <section className="about-cta-section">
-        <h2>Let's Create Something Together</h2>
+        <h2>What's next?</h2>
         <p>
           Interested in collaborating on a design project? I'm always open to new challenges and meaningful work.
         </p>
