@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 interface IntroProps {
   t: {
@@ -9,31 +9,24 @@ interface IntroProps {
 }
 
 export const IntroSection: React.FC<IntroProps> = ({ t }) => {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
   return (
-    <div className="intro-pinned-wrapper" ref={wrapperRef}>
+    <section className="intro-snap-section" id="intro-section">
       <style>{`
-        .intro-pinned-wrapper {
-          position: relative;
+        .intro-snap-section {
           width: 100%;
-          height: 120vh; /* Permette un breve momento di lock durante lo scroll */
-          background-color: #070707;
-          box-sizing: border-box;
-          border-bottom: 1px solid #1a1a1a;
-        }
-
-        /* VIEWPORT FISSA CENTRATA AL 100vh */
-        .intro-sticky-viewport {
-          position: sticky;
-          top: 0;
           height: 100vh;
-          width: 100%;
+          min-height: 100vh;
+          background-color: #070707;
           display: flex;
           align-items: center;
           justify-content: center;
-          overflow: hidden;
+          position: relative;
+          z-index: 10;
           box-sizing: border-box;
+          /* Abilita l'aggancio di precisione durante lo scroll */
+          scroll-snap-align: center;
+          scroll-snap-stop: always;
+          border-bottom: 1px solid #141414;
         }
 
         .intro-stage-container {
@@ -43,9 +36,10 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           height: 80vh;
           max-height: 720px;
           margin: 0 auto;
+          display: flex;
+          align-items: center;
         }
 
-        /* RIGA SINGOLA */
         .intro-step-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -54,7 +48,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           height: 100%;
         }
 
-        /* MEDIA BOX CON DISSOLVENZA E CORNICI SPINTI AI BORDI */
+        /* MEDIA BOX CON DISSOLVENZA E CORNICI */
         .intro-media-box {
           position: relative;
           overflow: hidden;
@@ -79,7 +73,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           transform: scale(1.03);
         }
 
-        /* TESTO E PADDING EDITORIALE */
+        /* TESTO ED ELEGANZA EDITORIALE */
         .intro-text-box {
           display: flex;
           flex-direction: column;
@@ -113,13 +107,11 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
         }
 
         @media (max-width: 1024px) {
-          .intro-pinned-wrapper {
-            height: auto !important;
-          }
-          .intro-sticky-viewport {
-            position: relative;
+          .intro-snap-section {
             height: auto;
+            min-height: auto;
             padding: 80px 0;
+            scroll-snap-align: none;
           }
           .intro-stage-container {
             height: auto;
@@ -136,25 +128,22 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
         }
       `}</style>
 
-      {/* VIEWPORT FISSO PINNED */}
-      <div className="intro-sticky-viewport">
-        <div className="intro-stage-container">
-          <div className="intro-step-row media-left">
-            <div className="intro-media-box">
-              <img
-                src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80"
-                alt="Matteo Finco Studio Work"
-              />
-            </div>
-            <div className="intro-text-box">
-              <h2>{t.sec1Title}</h2>
-              <h3 className="sub-grey">{t.sec1Sub}</h3>
-              <p>{t.sec1P}</p>
-            </div>
+      <div className="intro-stage-container">
+        <div className="intro-step-row">
+          <div className="intro-media-box">
+            <img
+              src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80"
+              alt="Matteo Finco Studio Work"
+            />
+          </div>
+          <div className="intro-text-box">
+            <h2>{t.sec1Title}</h2>
+            <h3 className="sub-grey">{t.sec1Sub}</h3>
+            <p>{t.sec1P}</p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
