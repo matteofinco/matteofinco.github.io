@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useCallback } from "react";
 
 interface StickyObjectProps {
   children: React.ReactNode;
@@ -6,17 +6,18 @@ interface StickyObjectProps {
   strength?: number;
 }
 
-export default function StickyObject({
+export const StickyObject: React.FC<StickyObjectProps> = ({
   children,
   className = "",
-  strength = 0.3,
-}: StickyObjectProps) {
+  strength = 0.25,
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current || !isHovered) return;
+
     const { left, top, width, height } = ref.current.getBoundingClientRect();
     const centerX = left + width / 2;
     const centerY = top + height / 2;
@@ -25,14 +26,16 @@ export default function StickyObject({
     const distanceY = (e.clientY - centerY) * strength;
 
     setPosition({ x: distanceX, y: distanceY });
-  };
+  }, [isHovered, strength]);
 
-  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseEnter = useCallback(() => {
+    setIsHovered(true);
+  }, []);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setIsHovered(false);
     setPosition({ x: 0, y: 0 });
-  };
+  }, []);
 
   return (
     <div
@@ -44,12 +47,13 @@ export default function StickyObject({
       style={{
         transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
         transition: isHovered
-          ? "transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)"
-          : "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)",
+          ? "transform 0.08s cubic-bezier(0.34, 1.56, 0.64, 1)"
+          : "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)",
         willChange: "transform",
+        backfaceVisibility: "hidden",
       }}
     >
       {children}
     </div>
   );
-}
+};
