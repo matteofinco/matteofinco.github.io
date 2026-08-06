@@ -1,5 +1,4 @@
-import React, { Component, ReactNode } from "react";
-import { Switch, Route } from "wouter";
+import React, { Component, ReactNode, useState, useEffect } from "react";
 import Index from "./pages/Index";
 import About from "./pages/About";
 
@@ -45,16 +44,38 @@ class ErrorBoundary extends Component<Props, State> {
 }
 
 export default function App() {
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  // Funzione di supporto per cambiare pagina senza ricaricare l'intera app (intercetta i click sui link interni)
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement).closest("a");
+      if (target && target.href && target.href.startsWith(window.location.origin)) {
+        const url = new URL(target.href);
+        if (url.pathname !== window.location.pathname) {
+          e.preventDefault();
+          window.history.pushState({}, "", url.pathname);
+          setCurrentPath(url.pathname);
+        }
+      }
+    };
+
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, []);
+
   return (
     <ErrorBoundary>
-      <Switch>
-        <Route path="/about" component={About} />
-        <Route path="/" component={Index} />
-        {/* Fallback per qualsiasi altro URL */}
-        <Route>
-          <Index />
-        </Route>
-      </Switch>
+      {currentPath === "/about" ? <About /> : <Index />}
     </ErrorBoundary>
   );
 }
