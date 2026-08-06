@@ -1,70 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-interface StickyObjectProps {
-  lang?: 'it' | 'en';
+interface ProcessStep {
+  step: string;
+  title: string;
+  desc: string;
+  tag: string;
+  image: string;
 }
 
-// Dizionario dati separato per massima chiarezza
-const DATA_IT = [
-  {
-    step: '01 / OSSERVA E COMPRENDI',
-    title: 'Ogni progetto parte\nda una domanda.',
-    desc: 'Prima di cercare soluzioni, dedico tempo a comprendere le persone, i contesti e i comportamenti. Analizzo come vengono usati i prodotti, dove nascono le difficoltà e quali vincoli guidano ogni decisione progettuale.',
-    tag: 'IMMAGINE 01 // RICERCA E OSSERVAZIONE',
-    image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    step: '02 / CREA E TESTA',
-    title: 'Le idee prendono forma\nattraverso i prototipi.',
-    desc: 'Gli schizzi diventano modelli CAD, prototipi funzionali ed esperimenti fisici. Costruire le idee permette di validare le ipotesi, scoprire problemi inattesi e migliorare ogni iterazione attraverso test diretti.',
-    tag: 'IMMAGINE 02 // PROTOTIPAZIONE E TEST',
-    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    step: '03 / AFFINA E SEMPLIFICA',
-    title: 'Il buon design è\nsemplicità consapevole.',
-    desc: 'Ogni componente deve avere uno scopo chiaro. Affino geometrie, materiali e processi produttivi finché la complessità scompare e rimane solo ciò che migliora davvero l’esperienza d’uso.',
-    tag: 'IMMAGINE 03 // AFFINAMENTO E DETTAGLIO',
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
-  },
-];
+interface StickyObjectProps {
+  t: {
+    steps: ProcessStep[];
+  };
+}
 
-const DATA_EN = [
-  {
-    step: '01 / OBSERVE & UNDERSTAND',
-    title: 'Every project starts\nwith a question.',
-    desc: 'Before searching for solutions, I spend time understanding people, contexts and behaviours. I like analysing how products are used, where friction appears and which constraints influence every design decision.',
-    tag: 'IMAGE 01 // RESEARCH & OBSERVATION',
-    image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    step: '02 / MAKE & TEST',
-    title: 'Ideas become real\nthrough prototyping.',
-    desc: 'Sketches evolve into CAD models, functional prototypes and physical experiments. Building ideas allows me to validate assumptions, discover unexpected problems and improve every iteration through direct testing.',
-    tag: 'IMAGE 02 // PROTOTYPING & TESTING',
-    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    step: '03 / REFINE & SIMPLIFY',
-    title: 'Good design is\nthoughtful simplicity.',
-    desc: 'Every component should have a clear purpose. I refine geometry, materials and manufacturing processes until complexity disappears and only what truly improves the user experience remains.',
-    tag: 'IMAGE 03 // REFINEMENT & DETAIL',
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
-  },
-];
-
-export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
+export const StickyObject: React.FC<StickyObjectProps> = ({ t }) => {
   const [activeStep, setActiveStep] = useState(0);
-  const [activeLang, setActiveLang] = useState<'it' | 'en'>(lang);
   const triggerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Sincronizza lo stato interno se la prop 'lang' cambia dall'esterno
-  useEffect(() => {
-    setActiveLang(lang === 'en' ? 'en' : 'it');
-  }, [lang]);
-
-  // Seleziona l'array corretto in base alla lingua attiva
-  const steps = activeLang === 'en' ? DATA_EN : DATA_IT;
+  // Usa i dati passati dalla prop 't', garantendo un fallback sicuro
+  const steps = t?.steps || [];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -72,7 +27,9 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = Number(entry.target.getAttribute('data-step-index'));
-            setActiveStep(index);
+            if (!isNaN(index)) {
+              setActiveStep(index);
+            }
           }
         });
       },
@@ -87,7 +44,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
     });
 
     return () => observer.disconnect();
-  }, [activeLang]);
+  }, [steps]);
 
   const handleStepClick = (index: number) => {
     setActiveStep(index);
@@ -97,65 +54,16 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
     }
   };
 
-  const currentStepData = steps[activeStep] || steps[0];
+  const currentStepData = steps[activeStep] || steps[0] || {
+    step: '',
+    title: '',
+    desc: '',
+    tag: '',
+    image: ''
+  };
 
   return (
-    <section key={activeLang} className="process-section">
-      <div className="process-sticky-frame">
-        <div className="process-media">
-          <img
-            key={`${activeLang}-img-${activeStep}`}
-            src={currentStepData.image}
-            alt={currentStepData.step}
-            className="process-img img-fade-in"
-          />
-
-          <div key={`${activeLang}-tag-${activeStep}`} className="process-tag animate-tag-smooth">
-            {currentStepData.tag}
-          </div>
-        </div>
-
-        <div className="process-text-column">
-          <div key={`${activeLang}-text-${activeStep}`} className="process-content-block animate-text-smooth">
-            <span className="step-number">{currentStepData.step}</span>
-
-            <h3 className="step-title">
-              {currentStepData.title.split('\n').map((line, i) => (
-                <React.Fragment key={i}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
-            </h3>
-
-            <p className="step-description">{currentStepData.desc}</p>
-
-            <div className="step-indicators">
-              {steps.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  aria-label={`Go to step ${i + 1}`}
-                  onClick={() => handleStepClick(i)}
-                  className={`indicator-dot ${i === activeStep ? 'active' : ''}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="process-triggers-overlay">
-        {steps.map((_, index) => (
-          <div
-            key={index}
-            data-step-index={index}
-            ref={(el) => (triggerRefs.current[index] = el)}
-            className="step-trigger"
-          />
-        ))}
-      </div>
-
+    <section className="process-section">
       <style>{`
         .process-section {
           position: relative;
@@ -175,7 +83,6 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           grid-template-columns: 1.1fr 0.9fr;
           align-items: center;
           gap: 5vw;
-          border-radius: 0;
           overflow: hidden;
           z-index: 1;
         }
@@ -184,7 +91,6 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           position: relative;
           width: 100%;
           height: 100%;
-          border-radius: 0;
           overflow: hidden;
           background-color: #070707;
         }
@@ -196,27 +102,6 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          border-radius: 0;
-          will-change: opacity;
-        }
-
-        .img-fade-in {
-          z-index: 2;
-          animation: crossFadeIn 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-
-        @keyframes crossFadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        .animate-tag-smooth {
-          animation: tagSmooth 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-
-        @keyframes tagSmooth {
-          from { opacity: 0; }
-          to { opacity: 1; }
         }
 
         .process-tag {
@@ -229,7 +114,6 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           letter-spacing: 1.5px;
           background: rgba(0, 0, 0, 0.65);
           padding: 8px 16px;
-          border-radius: 0;
           backdrop-filter: blur(8px);
           z-index: 3;
         }
@@ -244,16 +128,6 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
 
         .process-content-block {
           max-width: 460px;
-          will-change: opacity;
-        }
-
-        .animate-text-smooth {
-          animation: textSmooth 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-
-        @keyframes textSmooth {
-          from { opacity: 0; }
-          to { opacity: 1; }
         }
 
         .step-number {
@@ -339,6 +213,62 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           }
         }
       `}</style>
+
+      {/* FRAME STICKY FULL-BLEED A SINISTRA */}
+      <div className="process-sticky-frame">
+        <div className="process-media">
+          <img
+            src={currentStepData.image}
+            alt={currentStepData.step}
+            className="process-img"
+          />
+          <div className="process-tag">
+            {currentStepData.tag}
+          </div>
+        </div>
+
+        {/* COLONNA TESTO DESTRA */}
+        <div className="process-text-column">
+          <div className="process-content-block">
+            <span className="step-number">{currentStepData.step}</span>
+
+            <h3 className="step-title">
+              {currentStepData.title.split('\n').map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+            </h3>
+
+            <p className="step-description">{currentStepData.desc}</p>
+
+            <div className="step-indicators">
+              {steps.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  aria-label={`Go to step ${i + 1}`}
+                  onClick={() => handleStepClick(i)}
+                  className={`indicator-dot ${i === activeStep ? 'active' : ''}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* STRATO SCROLLABILE TRASPARENTE */}
+      <div className="process-triggers-overlay">
+        {steps.map((_, index) => (
+          <div
+            key={index}
+            data-step-index={index}
+            ref={(el) => (triggerRefs.current[index] = el)}
+            className="step-trigger"
+          />
+        ))}
+      </div>
     </section>
   );
 };
