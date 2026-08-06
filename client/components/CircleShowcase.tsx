@@ -91,7 +91,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           justify-content: center;
         }
 
-        /* CERCHIO CENTRALE E IMMAGINE ANCORA PIÙ GRANDI (500px) */
+        /* CERCHIO CENTRALE E IMMAGINE (500px) */
         .hud-center-circle {
           position: relative;
           width: 500px;
@@ -182,7 +182,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           border-radius: 50%;
           pointer-events: none;
           z-index: 5;
-          transform: rotate(-35deg); /* Posiziona lo spicchio esattamente in alto a destra */
+          transform: rotate(-35deg);
         }
 
         .curved-dot {
@@ -193,11 +193,10 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           border-radius: 50%;
           top: 0;
           left: 50%;
-          transform-origin: 50% 270px; /* Raggio di rotazione centrato sull'HUD */
+          transform-origin: 50% 270px;
           transition: all 0.3s ease;
         }
 
-        /* Distribuzione geometrica dei pallini lungo l'arco dello spicchio */
         .curved-dot:nth-child(1) { transform: rotate(0deg); }
         .curved-dot:nth-child(2) { transform: rotate(5deg); }
         .curved-dot:nth-child(3) { transform: rotate(10deg); }
@@ -258,13 +257,15 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           flex-direction: column;
         }
 
+        /* STEP 1 MODIFICATO */
         .process-card-item {
-          min-height: 90vh;
+          height: 100vh;
+          max-height: 100vh;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          gap: 20px;
-          padding: 40px 0;
+          gap: clamp(10px, 1.5vh, 20px);
+          padding: 20px 0;
           box-sizing: border-box;
           scroll-snap-align: center;
         }
@@ -277,11 +278,12 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           text-transform: uppercase;
         }
 
+        /* STEP 2 MODIFICATO */
         .project-main-title {
-          font-size: clamp(2.5rem, 4vw, 3.8rem);
+          font-size: clamp(2rem, 3vw, 3rem);
           font-weight: 900;
           color: #ffffff;
-          line-height: 1.1;
+          line-height: 1;
           letter-spacing: -1px;
         }
 
@@ -291,11 +293,12 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           font-weight: 500;
         }
 
+        /* STEP 3 MODIFICATO */
         .project-desc-text {
-          font-size: 1rem;
+          font-size: clamp(0.85rem, 1vw, 0.95rem);
           color: #999999;
-          line-height: 1.75;
-          max-width: 520px;
+          line-height: 1.55;
+          max-width: 480px;
         }
 
         .project-meta-grid {
@@ -397,67 +400,58 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
         </div>
 
         {/* COLONNA TESTUALE MAGNETICA A DESTRA */}
-    <div className="process-scroll-column">
-  {steps.map((st, index) => (
-    <div 
-      key={st.id} 
-      className="process-card-item" 
-      data-index={index}
-    >
+        <div className="process-scroll-column">
+          {steps.map((st, index) => (
+            <div 
+              key={st.id} 
+              className="process-card-item" 
+              data-index={index}
+            >
+              <div className="project-category-tag">
+                {st.id} // {st.category} // {st.year}
+              </div>
 
-      <div className="project-category-tag">
-        {st.id} // {st.category} // {st.year}
-      </div>
+              <h2 className="project-main-title">
+                {st.title}
+              </h2>
 
-      <h2 className="project-main-title">
-        {st.title}
-      </h2>
+              <div className="project-subtitle-text">
+                {st.subtitle}
+              </div>
 
-      <div className="project-subtitle-text">
-        {st.subtitle}
-      </div>
+              <p className="project-desc-text">
+                {st.desc}
+              </p>
 
-      <p className="project-desc-text">
-        {st.desc}
-      </p>
+              <div className="project-meta-grid">
+                <div className="meta-item">
+                  <span className="label">
+                    Design Approach
+                  </span>
+                  <span className="value">
+                    {st.tools}
+                  </span>
+                </div>
 
+                <div className="meta-item">
+                  <span className="label">
+                    Materials &amp; Technologies
+                  </span>
+                  <span className="value">
+                    {st.material}
+                  </span>
+                </div>
+              </div>
 
-      <div className="project-meta-grid">
-
-        <div className="meta-item">
-          <span className="label">
-            Design Approach
-          </span>
-
-          <span className="value">
-            {st.tools}
-          </span>
+              <a 
+                href={st.link} 
+                className="project-action-link"
+              >
+                ESPLORA PROGETTO →
+              </a>
+            </div>
+          ))}
         </div>
-
-
-        <div className="meta-item">
-          <span className="label">
-            Materials & Technologies
-          </span>
-
-          <span className="value">
-            {st.material}
-          </span>
-        </div>
-
-      </div>
-
-
-      <a 
-        href={st.link} 
-        className="project-action-link"
-      >
-        ESPLORA PROGETTO →
-      </a>
-
-    </div>
-  ))}
-</div>
       </div>
     </section>
   );
