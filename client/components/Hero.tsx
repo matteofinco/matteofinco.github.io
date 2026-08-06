@@ -3,8 +3,8 @@ import React from 'react';
 export const Hero: React.FC = () => {
   return (
     <section id="hero-section" className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-[#070707] snap-center">
-      <div className="w-[88vw] max-w-[1100px] h-[75vh] relative z-10 flex items-center justify-center">
-        <svg className="w-full h-full block" viewBox="0 0 900 800" preserveAspectRatio="xMidYMid meet">
+      <div className="w-[92vw] max-w-[1300px] h-[82vh] relative z-10 flex items-center justify-center">
+        <svg className="w-full h-full block" viewBox="0 0 1000 880" preserveAspectRatio="xMidYMid meet">
           <defs>
             <pattern id="blueprintPattern" width="40" height="40" patternUnits="userSpaceOnUse">
               <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.22)" strokeWidth="1.2" />
@@ -14,32 +14,32 @@ export const Hero: React.FC = () => {
             <mask id="designTextMask" x="0" y="0" width="100%" height="100%">
               <rect x="0" y="0" width="100%" height="100%" fill="#000000" />
               
-              {/* MATTEO (Prima riga, imponente) */}
+              {/* MATTEO (Gigante, prima riga) */}
               <text
                 x="50%"
-                y="28%"
+                y="27%"
                 textAnchor="middle"
                 dominantBaseline="middle"
                 fill="#ffffff"
-                fontSize="185"
+                fontSize="240"
                 fontWeight="900"
                 fontFamily="-apple-system, BlinkMacSystemFont, sans-serif"
-                letterSpacing="-4"
+                letterSpacing="-6"
               >
                 MATTEO
               </text>
 
-              {/* FINCO (Seconda riga, imponente) */}
+              {/* FINCO (Gigante, seconda riga) */}
               <text
                 x="50%"
-                y="55%"
+                y="57%"
                 textAnchor="middle"
                 dominantBaseline="middle"
                 fill="#ffffff"
-                fontSize="185"
+                fontSize="240"
                 fontWeight="900"
                 fontFamily="-apple-system, BlinkMacSystemFont, sans-serif"
-                letterSpacing="-4"
+                letterSpacing="-6"
               >
                 FINCO
               </text>
@@ -47,14 +47,14 @@ export const Hero: React.FC = () => {
               {/* PRODUCT DESIGN & MAKER (Sottotitolo centrato in basso) */}
               <text
                 x="50%"
-                y="80%"
+                y="84%"
                 textAnchor="middle"
                 dominantBaseline="middle"
                 fill="#ffffff"
-                fontSize="40"
+                fontSize="44"
                 fontWeight="700"
                 fontFamily="-apple-system, BlinkMacSystemFont, sans-serif"
-                letterSpacing="8"
+                letterSpacing="10"
               >
                 PRODUCT DESIGN &amp; MAKER
               </text>
