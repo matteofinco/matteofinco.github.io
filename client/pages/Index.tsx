@@ -122,7 +122,6 @@ export default function Index() {
   const [showNavName, setShowNavName] = useState<boolean>(false);
 
   useEffect(() => {
-    // Observer per attivare la visibilità del nome nell'Header
     const heroEl = document.getElementById('hero-section');
     if (heroEl) {
       const heroObserver = new IntersectionObserver(
@@ -134,7 +133,6 @@ export default function Index() {
       heroObserver.observe(heroEl);
     }
 
-    // Observer per attivare le dissolvenze editoriali
     const revealElements = document.querySelectorAll('.reveal-editorial');
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -144,11 +142,10 @@ export default function Index() {
           }
         });
       },
-      { threshold: 0.25 }
+      { threshold: 0.2 }
     );
     revealElements.forEach((el) => revealObserver.observe(el));
 
-    // Observer per sincronizzare il cerchio gigante sticky con la scheda di testo magnetica
     const processCards = document.querySelectorAll('.process-card');
     const processObserver = new IntersectionObserver(
       (entries) => {
@@ -159,7 +156,7 @@ export default function Index() {
           }
         });
       },
-      { threshold: 0.55 }
+      { threshold: 0.5 }
     );
     processCards.forEach((card) => processObserver.observe(card));
 
@@ -174,10 +171,10 @@ export default function Index() {
       <style>{`
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         
-        /* SCROLL SNAP MANDATORIO SU HTML / BODY */
+        /* SCROLL SNAP FLUIDO (PROXIMITY ANZICHÉ MANDATORY) */
         html {
           scroll-behavior: smooth;
-          scroll-snap-type: y mandatory;
+          scroll-snap-type: y proximity;
         }
 
         body {
@@ -190,9 +187,8 @@ export default function Index() {
 
         .editorial-portfolio { background-color: #070707; color: #e5e5e5; min-height: 100vh; overflow-x: clip; }
 
-        .snap-center {
-          scroll-snap-align: center;
-          scroll-snap-stop: always;
+        .soft-snap {
+          scroll-snap-align: start;
         }
 
         /* HERO LAYER ANIMATIONS */
@@ -210,12 +206,12 @@ export default function Index() {
         .editorial-section {
           max-width: 1400px;
           margin: 0 auto;
-          padding: 0 6vw;
+          padding: 120px 6vw;
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 100px;
           align-items: center;
-          height: 100vh;
+          min-height: 90vh;
         }
         .editorial-text h2 { font-size: clamp(2.4rem, 4.5vw, 4.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 25px; color: #fff; }
         .editorial-text h3.sub-grey { font-size: clamp(1.3rem, 2.2vw, 2rem); font-weight: 500; color: #888; margin-bottom: 30px; line-height: 1.4; }
@@ -232,7 +228,78 @@ export default function Index() {
         .reveal-editorial.reveal-from-left { transform: scale(1.04) translateX(-40px); }
         .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: scale(1) translateX(0); }
 
-        /* CIRCLE SHOWCASE & STICKY CARDS MAGNETICI */
+        /* STICKY SHOE SECTION FIXED */
+        .sticky-shoe-section {
+          position: relative;
+          width: 100%;
+          min-height: 240vh;
+          background-color: #050505;
+          border-y: 1px solid #141414;
+        }
+        .sticky-shoe-container {
+          position: sticky;
+          top: 0;
+          height: 100vh;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1;
+        }
+        .sticky-shoe-media {
+          position: relative;
+          width: 100vw;
+          height: 100vh;
+          overflow: hidden;
+        }
+        .sticky-shoe-media img {
+          width: 100vw;
+          height: 100vh;
+          object-fit: cover;
+          filter: brightness(0.6) contrast(1.1);
+        }
+        .sticky-shoe-tag {
+          position: absolute;
+          bottom: 40px;
+          left: 6vw;
+          font-family: monospace;
+          font-size: 0.8rem;
+          color: rgba(255,255,255,0.7);
+          background: rgba(0,0,0,0.6);
+          padding: 8px 16px;
+          backdrop-filter: blur(6px);
+          border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .shoe-scrolling-overlay {
+          position: relative;
+          z-index: 2;
+          margin-top: -100vh;
+          padding-bottom: 20vh;
+          pointer-events: none;
+        }
+        .shoe-card {
+          min-height: 65vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          max-width: 480px;
+          margin-left: auto;
+          margin-right: 6vw;
+          margin-bottom: 12vh;
+          background: rgba(10, 10, 10, 0.88);
+          backdrop-filter: blur(20px);
+          padding: 42px 36px;
+          border-left: 2px solid #ffffff;
+          border-y: 1px solid rgba(255,255,255,0.06);
+          pointer-events: auto;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+        .shoe-card .card-step { font-family: monospace; font-size: 0.8rem; color: #888; margin-bottom: 12px; letter-spacing: 1px; }
+        .shoe-card h3 { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 16px; line-height: 1.25; }
+        .shoe-card p { color: #bbb; font-size: 1.02rem; line-height: 1.75; }
+
+        /* CIRCLE SHOWCASE & STICKY CARDS CON OFFSET ANTI-HEADER */
         .process-showcase-wrapper {
           max-width: 1650px;
           margin: 0 auto;
@@ -245,8 +312,8 @@ export default function Index() {
 
         .process-sticky-left {
           position: sticky;
-          top: 0;
-          height: 100vh;
+          top: 90px; /* DISTANZA DALL'HEADER IN ALTO */
+          height: calc(100vh - 100px);
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -257,15 +324,20 @@ export default function Index() {
         .circle-technical-frame {
           position: relative;
           width: 100%;
-          max-width: 640px;
+          max-width: 580px;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
         }
-        .circle-hud-svg { width: 100%; height: auto; max-height: 580px; overflow: visible; }
+        .circle-hud-svg {
+          width: 100%;
+          height: auto;
+          max-height: calc(100vh - 220px); /* ADATTIVO PER NON FORARE LO SCHERMO */
+          max-width: min(580px, 42vw);
+          overflow: visible;
+        }
 
-        /* REGOLE ANTI-GLITCH SU IMMAGINI SVG */
         .circle-images-container { isolation: isolate; }
         .circle-img-layer {
           opacity: 0;
@@ -276,21 +348,21 @@ export default function Index() {
         }
         .circle-img-layer.active-layer { opacity: 1; transform: scale(1) translateZ(0); }
 
-        @keyframes pulseRing { 0% { r: 9px; opacity: 1; } 100% { r: 24px; opacity: 0; } }
+        @keyframes pulseRing { 0% { r: 8px; opacity: 1; } 100% { r: 22px; opacity: 0; } }
         .node-pulse { animation: pulseRing 1.8s ease-out infinite; }
 
         .project-title-under-circle {
-          margin-top: 15px;
+          margin-top: 10px;
           text-align: center;
           width: 100%;
         }
-        .project-index-tag { font-family: monospace; font-size: 0.82rem; color: #777; letter-spacing: 2px; display: block; margin-bottom: 4px; }
-        .project-main-name { font-size: 2.5rem; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; line-height: 1.1; }
-        .project-sub-name { font-size: 1.05rem; color: #aaa; margin-top: 4px; font-weight: 500; }
+        .project-index-tag { font-family: monospace; font-size: 0.8rem; color: #777; letter-spacing: 2px; display: block; margin-bottom: 4px; }
+        .project-main-name { font-size: 2.3rem; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; line-height: 1.1; }
+        .project-sub-name { font-size: 1rem; color: #aaa; margin-top: 4px; font-weight: 500; }
 
         .process-scroll-right { padding: 0; }
 
-        /* EFFETTO STICKY / CALAMITA PER OGNI SCHEDA PROGETTO (CENTRO SCHERMO) */
+        /* SCHEDE PROGETTI A DESTRA CON CALAMITA CALIBRATA */
         .process-card.snap-card {
           height: 100vh;
           min-height: 100vh;
@@ -298,7 +370,7 @@ export default function Index() {
           flex-direction: column;
           justify-content: center;
           scroll-snap-align: center;
-          scroll-snap-stop: always;
+          scroll-snap-stop: normal;
           opacity: 0.15;
           filter: blur(6px);
           transition: opacity 0.6s ease, filter 0.6s ease;
@@ -334,18 +406,19 @@ export default function Index() {
           transform: translateX(6px);
         }
 
-        /* FOOTER REVISIONATO CON CARENATURA E SPAZIATURA PUNTO DI DOMANDA */
+        /* FOOTER SOFT SNAP */
         .whats-next-footer {
           background-color: #040404;
-          height: 100vh;
+          min-height: 80vh;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          padding: 0 6vw;
+          padding: 100px 6vw 60px;
           border-top: 1px solid #141414;
           text-align: center;
           position: relative;
+          scroll-snap-align: start;
         }
         .whats-next-footer h2 {
           font-size: clamp(3.2rem, 7.5vw, 6.5rem);
@@ -356,7 +429,6 @@ export default function Index() {
           line-height: 1;
         }
         
-        /* SPAN DEDICATO PER IL PUNTO DI DOMANDA CON MEZZO SPAZIO E CARENATURA */
         .question-mark-styled {
           display: inline-block;
           margin-left: 0.25em;
@@ -409,13 +481,11 @@ export default function Index() {
         }
 
         .footer-bottom-info {
-          position: absolute;
-          bottom: 40px;
-          left: 6vw;
-          right: 6vw;
           display: flex;
           justify-content: space-between;
           align-items: center;
+          width: 100%;
+          max-width: 1400px;
           border-top: 1px solid #141414;
           padding-top: 25px;
           font-family: monospace;
@@ -427,34 +497,34 @@ export default function Index() {
         .footer-contacts-list a:hover { color: #fff; }
 
         @media (max-width: 1024px) {
-          .editorial-section, .process-showcase-wrapper { grid-template-columns: 1fr; gap: 60px; height: auto; }
-          .process-sticky-left { position: relative; top: 0; height: 500px; }
+          .editorial-section, .process-showcase-wrapper { grid-template-columns: 1fr; gap: 60px; }
+          .process-sticky-left { position: relative; top: 0; height: auto; padding-top: 40px; }
           .process-card.snap-card { height: auto; min-height: 80vh; }
-          .footer-bottom-info { flex-direction: column; gap: 15px; text-align: center; position: relative; bottom: 0; margin-top: 40px; }
+          .footer-bottom-info { flex-direction: column; gap: 15px; text-align: center; }
         }
       `}</style>
 
-      {/* HEADER CON PULSANTE PER SCROLL TO TOP */}
+      {/* HEADER FIX CON PULSANTE TORNA SU */}
       <Header lang={lang} setLang={setLang} showName={showNavName} />
       
-      {/* HERO GIGANTE */}
-      <Hero />
+      {/* HERO HERO SECTION */}
+      <div className="soft-snap">
+        <Hero />
+      </div>
 
-      {/* SEZIONE INTRO SNAP MAGNETICA */}
-      <div className="snap-center">
+      {/* INTRO SECTION */}
+      <div className="soft-snap">
         <IntroSection t={translations[lang]} />
       </div>
 
-      {/* SEZIONE STICKY OGGETTO MAGNETICA */}
-      <div className="snap-center">
-        <StickyObject />
-      </div>
+      {/* SEZIONE SCARPA STICKY CON CASELLE TESTO FLUTTUANTI RIPRISTINATE */}
+      <StickyObject />
 
-      {/* SEZIONE CERCHIO GIGANTE CON CARD TESTO MAGNETICHE IN ALINEAMENTO CENTRALE */}
+      {/* SHOWCASE CERCHIO CON MAGNETE PROGETTI */}
       <CircleShowcase steps={projectList} activeStep={activeStep} />
 
-      {/* FOOTER WHAT'S NEXT CON PUNTO DI DOMANDA FORMATTATO E CALIBRATO */}
-      <footer className="whats-next-footer snap-center">
+      {/* FOOTER WHAT'S NEXT SOFT SNAP */}
+      <footer className="whats-next-footer">
         <h2>
           WHAT&apos;S NEXT
           <span className="question-mark-styled">?</span>
