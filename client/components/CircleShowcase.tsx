@@ -22,80 +22,94 @@ interface CircleShowcaseProps {
 export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeStep }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Calcolo dello scroll per cambiare progetto senza muovere la colonna testo
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const handleScroll = () => {
+      if (!containerRef.current) return;
 
-    const cards = container.querySelectorAll('.process-card-item');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute('data-index'));
-            const event = new CustomEvent('set-active-project', { detail: index });
-            window.dispatchEvent(event);
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: '-20% 0px -40% 0px',
-        threshold: 0.3,
-      }
-    );
+      const rect = containerRef.current.getBoundingClientRect();
+      const sectionHeight = rect.height - window.innerHeight;
+      
+      if (sectionHeight <= 0) return;
 
-    cards.forEach((card) => observer.observe(card));
-    return () => observer.disconnect();
-  }, []);
+      // Calcola quanto si è scrollato all'interno della sezione (da 0 a 1)
+      const scrolled = -rect.top;
+      const progress = Math.max(0, Math.min(1, scrolled / sectionHeight));
+
+      // Determina l'indice del progetto attivo
+      const index = Math.min(
+        steps.length - 1,
+        Math.floor(progress * steps.length)
+      );
+
+      const event = new CustomEvent('set-active-project', { detail: index });
+      window.dispatchEvent(event);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [steps.length]);
 
   const currentProject = steps[activeStep] || steps[0];
 
   return (
-    <section className="circle-showcase-section" ref={containerRef}>
+    <section 
+      className="circle-showcase-section" 
+      ref={containerRef}
+      style={{ height: `${steps.length * 100}vh` }}
+    >
       <style>{`
         .circle-showcase-section {
-  position: relative;
-  width: 100%;
-  background-color: #070707;
-  padding: 80px 6vw;
-  box-sizing: border-box;
-}
+          position: relative;
+          width: 100%;
+          background-color: #070707;
+          box-sizing: border-box;
+        }
+
+        /* SCHERMATA FISSA AL CENTRO DEL VIEWPORT */
+        .sticky-viewport {
+          position: sticky;
+          top: 0;
+          height: 100vh;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 6vw;
+          box-sizing: border-box;
+          overflow: hidden;
+        }
 
         .showcase-sticky-layout {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          align-items: flex-start;
+          align-items: center;
           max-width: 1300px;
+          width: 100%;
           margin: 0 auto;
-          position: relative;
           gap: 60px;
         }
 
-        /* COLONNA SINISTRA: HUD FISSA (STICKY) */
+        /* COLONNA SINISTRA: HUD FISSO */
         .hud-sticky-wrapper {
-          position: sticky;
-          top: calc(50vh - 310px);
-          height: 620px;
           display: flex;
           align-items: center;
           justify-content: center;
-          z-index: 10;
         }
 
         .hud-container {
           position: relative;
-          width: 620px;
-          height: 620px;
+          width: 580px;
+          height: 580px;
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
-        /* CERCHIO CENTRALE E IMMAGINE (500px) */
         .hud-center-circle {
           position: relative;
-          width: 500px;
-          height: 500px;
+          width: 460px;
+          height: 460px;
           background: #ffffff;
           border-radius: 50%;
           overflow: hidden;
@@ -123,7 +137,6 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
         }
 
-        /* GEOMETRIE HUD ESTERNE */
         .hud-ring-base {
           position: absolute;
           border-radius: 50%;
@@ -131,29 +144,29 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
         }
 
         .hud-outer-ring {
-          width: 580px;
-          height: 580px;
+          width: 540px;
+          height: 540px;
           border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .hud-dashed-ring {
-          width: 540px;
-          height: 540px;
+          width: 500px;
+          height: 500px;
           border: 1px dashed rgba(255, 255, 255, 0.2);
           animation: hud-spin 80s linear infinite;
         }
 
         .hud-inner-dashed {
-          width: 520px;
-          height: 520px;
+          width: 480px;
+          height: 480px;
           border: 1px dashed rgba(255, 255, 255, 0.15);
           animation: hud-spin-reverse 60s linear infinite;
         }
 
         .hud-tech-arc-1 {
           position: absolute;
-          width: 600px;
-          height: 600px;
+          width: 560px;
+          height: 560px;
           border-radius: 50%;
           border: 2px solid transparent;
           border-top-color: rgba(255, 255, 255, 0.6);
@@ -164,8 +177,8 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
 
         .hud-tech-arc-2 {
           position: absolute;
-          width: 520px;
-          height: 520px;
+          width: 480px;
+          height: 480px;
           border-radius: 50%;
           border: 2px solid transparent;
           border-bottom-color: rgba(255, 255, 255, 0.4);
@@ -174,11 +187,10 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           pointer-events: none;
         }
 
-        /* INDICATORI DI STATO DISPOSTI A SPICCHIO LUNGO LA CURVA (ALTO A DESTRA) */
         .hud-curved-dots-wrapper {
           position: absolute;
-          width: 540px;
-          height: 540px;
+          width: 500px;
+          height: 500px;
           border-radius: 50%;
           pointer-events: none;
           z-index: 5;
@@ -193,7 +205,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           border-radius: 50%;
           top: 0;
           left: 50%;
-          transform-origin: 50% 270px;
+          transform-origin: 50% 250px;
           transition: all 0.3s ease;
         }
 
@@ -251,23 +263,33 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           100% { transform: rotate(0deg); }
         }
 
-        /* COLONNA DESTRA: SCROLL MAGNETICO DEI TESTI */
-        .process-scroll-column {
-  display: flex;
-  flex-direction: column;
-}
+        /* COLONNA DESTRA: TESTI SOVRAPPOSTI (STAGED) */
+        .text-stage-wrapper {
+          position: relative;
+          height: 480px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+        }
 
         .process-card-item {
-          height: 100vh;
-          max-height: 100vh;
+          position: absolute;
+          inset: 0;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          gap: clamp(10px, 1.5vh, 20px);
-          padding: 20px 0;
-          box-sizing: border-box;
-          scroll-snap-align: center;
-          scroll-snap-stop: always;
+          gap: clamp(10px, 1.5vh, 18px);
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          pointer-events: none;
+        }
+
+        .process-card-item.active {
+          opacity: 1;
+          transform: translateY(0);
+          pointer-events: auto;
+          z-index: 2;
         }
 
         .project-category-tag {
@@ -303,10 +325,10 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 20px;
-          margin-top: 10px;
+          margin-top: 6px;
           border-top: 1px solid #1a1a1a;
           border-bottom: 1px solid #1a1a1a;
-          padding: 20px 0;
+          padding: 16px 0;
           max-width: 520px;
         }
 
@@ -329,7 +351,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          margin-top: 10px;
+          margin-top: 6px;
           padding: 14px 28px;
           background: #ffffff;
           color: #070707;
@@ -349,106 +371,89 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           .showcase-sticky-layout {
             grid-template-columns: 1fr;
           }
-          .hud-sticky-wrapper {
-            position: relative;
-            top: 0;
-            height: auto;
-            margin-bottom: 40px;
-          }
           .hud-container {
-            transform: scale(0.85);
+            transform: scale(0.8);
           }
         }
       `}</style>
 
-      <div className="showcase-sticky-layout">
-        {/* HUD STICKY A SINISTRA */}
-        <div className="hud-sticky-wrapper">
-          <div className="hud-container">
-            <div className="hud-ring-base hud-outer-ring"></div>
-            <div className="hud-ring-base hud-dashed-ring"></div>
-            <div className="hud-ring-base hud-inner-dashed"></div>
-            <div className="hud-tech-arc-1"></div>
-            <div className="hud-tech-arc-2"></div>
+      <div className="sticky-viewport">
+        <div className="showcase-sticky-layout">
+          {/* HUD FISSO A SINISTRA */}
+          <div className="hud-sticky-wrapper">
+            <div className="hud-container">
+              <div className="hud-ring-base hud-outer-ring"></div>
+              <div className="hud-ring-base hud-dashed-ring"></div>
+              <div className="hud-ring-base hud-inner-dashed"></div>
+              <div className="hud-tech-arc-1"></div>
+              <div className="hud-tech-arc-2"></div>
 
-            {/* SPICCHIO DI PALLINI CURVI IN ALTO A DESTRA */}
-            <div className="hud-curved-dots-wrapper">
-              {steps.map((_, dotIdx) => (
-                <div 
-                  key={dotIdx} 
-                  className={`curved-dot ${dotIdx === activeStep ? 'active' : dotIdx === activeStep - 1 || dotIdx === activeStep + 1 ? 'highlight' : ''}`}
-                ></div>
-              ))}
-            </div>
+              <div className="hud-curved-dots-wrapper">
+                {steps.map((_, dotIdx) => (
+                  <div 
+                    key={dotIdx} 
+                    className={`curved-dot ${dotIdx === activeStep ? 'active' : dotIdx === activeStep - 1 || dotIdx === activeStep + 1 ? 'highlight' : ''}`}
+                  ></div>
+                ))}
+              </div>
 
-            <div className="hud-pointer-group">
-              <div className="hud-pointer-line"></div>
-              <div className="hud-pointer-node"></div>
-            </div>
+              <div className="hud-pointer-group">
+                <div className="hud-pointer-line"></div>
+                <div className="hud-pointer-node"></div>
+              </div>
 
-            <div className="hud-center-circle">
-              <div className="inner-grid-pattern"></div>
-              <img 
-                src={currentProject.img} 
-                alt={currentProject.title} 
-                className="hud-project-img" 
-              />
+              <div className="hud-center-circle">
+                <div className="inner-grid-pattern"></div>
+                <img 
+                  src={currentProject.img} 
+                  alt={currentProject.title} 
+                  className="hud-project-img" 
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* COLONNA TESTUALE MAGNETICA A DESTRA */}
-        <div className="process-scroll-column">
-          {steps.map((st, index) => (
-            <div 
-              key={st.id} 
-              className="process-card-item" 
-              data-index={index}
-            >
-              <div className="project-category-tag">
-                {st.id} // {st.category} // {st.year}
-              </div>
-
-              <h2 className="project-main-title">
-                {st.title}
-              </h2>
-
-              <div className="project-subtitle-text">
-                {st.subtitle}
-              </div>
-
-              <p className="project-desc-text">
-                {st.desc}
-              </p>
-
-              <div className="project-meta-grid">
-                <div className="meta-item">
-                  <span className="label">
-                    Design Approach
-                  </span>
-                  <span className="value">
-                    {st.tools}
-                  </span>
-                </div>
-
-                <div className="meta-item">
-                  <span className="label">
-                    Materials &amp; Technologies
-                  </span>
-                  <span className="value">
-                    {st.material}
-                  </span>
-                </div>
-              </div>
-
-              <a 
-                href={st.link} 
-                className="project-action-link"
+          {/* STAGE TESTI A DESTRA (UN SOLO PROGETTO VISIBILE ALLA VOLTA) */}
+          <div className="text-stage-wrapper">
+            {steps.map((st, index) => (
+              <div 
+                key={st.id} 
+                className={`process-card-item ${index === activeStep ? 'active' : ''}`}
               >
-                ESPLORA PROGETTO →
-              </a>
-            </div>
-          ))}
+                <div className="project-category-tag">
+                  {st.id} // {st.category} // {st.year}
+                </div>
+
+                <h2 className="project-main-title">
+                  {st.title}
+                </h2>
+
+                <div className="project-subtitle-text">
+                  {st.subtitle}
+                </div>
+
+                <p className="project-desc-text">
+                  {st.desc}
+                </p>
+
+                <div className="project-meta-grid">
+                  <div className="meta-item">
+                    <span className="label">Design Approach</span>
+                    <span className="value">{st.tools}</span>
+                  </div>
+
+                  <div className="meta-item">
+                    <span className="label">Materials &amp; Technologies</span>
+                    <span className="value">{st.material}</span>
+                  </div>
+                </div>
+
+                <a href={st.link} className="project-action-link">
+                  ESPLORA PROGETTO →
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
