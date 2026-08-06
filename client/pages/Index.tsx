@@ -156,7 +156,7 @@ export default function Index() {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.4 }
     );
     processCards.forEach((card) => processObserver.observe(card));
 
@@ -171,10 +171,11 @@ export default function Index() {
       <style>{`
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         
-        /* SCROLL SNAP FLUIDO (PROXIMITY ANZICHÉ MANDATORY) */
+        /* SCROLL SNAP NATURALE E NON INVASIVO */
         html {
           scroll-behavior: smooth;
           scroll-snap-type: y proximity;
+          scroll-padding-top: 80px;
         }
 
         body {
@@ -182,59 +183,112 @@ export default function Index() {
           color: #e5e5e5;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           line-height: 1.8;
-          overflow-x: clip;
+          overflow-x: hidden;
         }
 
-        .editorial-portfolio { background-color: #070707; color: #e5e5e5; min-height: 100vh; overflow-x: clip; }
-
-        .soft-snap {
-          scroll-snap-align: start;
+        .editorial-portfolio {
+          background-color: #070707;
+          color: #e5e5e5;
+          min-height: 100vh;
+          overflow-x: hidden;
         }
 
-        /* HERO LAYER ANIMATIONS */
-        .layer-blueprint { fill: url(#blueprintPattern); animation: layerMove1 22s ease-in-out infinite alternate; }
-        .layer-sketches { animation: layerMove2 18s ease-in-out infinite alternate, layerFade1 14s ease-in-out infinite alternate; }
-        .layer-photo { animation: layerMove3 24s ease-in-out infinite alternate, layerFade2 16s ease-in-out infinite alternate; }
+        /* STRUTTURA PRESENTAZIONE FULL-BLEED (IMMAGINI A FILO SCHERMO) */
+        .intro-container-fullbleed {
+          width: 100vw;
+          margin-left: calc(-50vw + 50%);
+          padding: 80px 0;
+          display: flex;
+          flex-direction: column;
+          gap: 140px;
+        }
 
-        @keyframes layerMove1 { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.12) translate(-30px, -15px); } }
-        @keyframes layerMove2 { 0% { transform: scale(1.05) translate(20px, -20px); } 100% { transform: scale(1.2) translate(-20px, 20px); } }
-        @keyframes layerMove3 { 0% { transform: scale(1) translate(-15px, 15px); } 100% { transform: scale(1.1) translate(25px, -25px); } }
-        @keyframes layerFade1 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.75; } }
-        @keyframes layerFade2 { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.2; } }
-
-        /* INTRO SECTIONS */
-        .editorial-section {
-          max-width: 1400px;
-          margin: 0 auto;
-          padding: 120px 6vw;
+        .fullbleed-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 100px;
           align-items: center;
-          min-height: 90vh;
+          width: 100%;
+          min-height: 75vh;
         }
-        .editorial-text h2 { font-size: clamp(2.4rem, 4.5vw, 4.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 25px; color: #fff; }
-        .editorial-text h3.sub-grey { font-size: clamp(1.3rem, 2.2vw, 2rem); font-weight: 500; color: #888; margin-bottom: 30px; line-height: 1.4; }
-        .editorial-text p { color: #aaa; font-size: 1.15rem; line-height: 1.85; max-width: 560px; }
-        .editorial-media-box { position: relative; width: 100%; height: 580px; overflow: hidden; background: #111; }
-        .editorial-media-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(25%); transition: filter 0.8s ease; }
-        .editorial-media-box:hover img { filter: grayscale(0%); }
+
+        /* Immagine a filo sinistro */
+        .fullbleed-row.media-left .fullbleed-media {
+          width: 100%;
+          height: 620px;
+          padding-left: 0;
+        }
+
+        .fullbleed-row.media-left .fullbleed-content {
+          padding: 0 8vw 0 6vw;
+        }
+
+        /* Immagine a filo destro */
+        .fullbleed-row.media-right .fullbleed-media {
+          width: 100%;
+          height: 620px;
+          padding-right: 0;
+        }
+
+        .fullbleed-row.media-right .fullbleed-content {
+          padding: 0 6vw 0 8vw;
+        }
+
+        .fullbleed-media img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(20%);
+          transition: filter 0.8s ease, transform 0.8s ease;
+          display: block;
+        }
+
+        .fullbleed-media:hover img {
+          filter: grayscale(0%);
+          transform: scale(1.01);
+        }
+
+        .fullbleed-content h2 {
+          font-size: clamp(2.4rem, 4.2vw, 4rem);
+          font-weight: 800;
+          line-height: 1.15;
+          margin-bottom: 25px;
+          color: #fff;
+        }
+
+        .fullbleed-content h3.sub-grey {
+          font-size: clamp(1.2rem, 2vw, 1.8rem);
+          font-weight: 500;
+          color: #888;
+          margin-bottom: 30px;
+          line-height: 1.4;
+        }
+
+        .fullbleed-content p {
+          color: #aaa;
+          font-size: 1.12rem;
+          line-height: 1.85;
+          max-width: 560px;
+        }
+
+        .p-margin-bottom {
+          margin-bottom: 20px;
+        }
 
         .reveal-editorial {
-          opacity: 0; filter: blur(12px);
-          transition: opacity 1.2s cubic-bezier(.22,.61,.36,1), filter 1.2s cubic-bezier(.22,.61,.36,1), transform 1.2s cubic-bezier(.22,.61,.36,1);
+          opacity: 0;
+          filter: blur(10px);
+          transition: opacity 1.1s cubic-bezier(.22,.61,.36,1), filter 1.1s cubic-bezier(.22,.61,.36,1), transform 1.1s cubic-bezier(.22,.61,.36,1);
         }
-        .reveal-editorial.reveal-from-right { transform: scale(1.04) translateX(40px); }
-        .reveal-editorial.reveal-from-left { transform: scale(1.04) translateX(-40px); }
-        .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: scale(1) translateX(0); }
+        .reveal-editorial.reveal-from-right { transform: translateX(35px); }
+        .reveal-editorial.reveal-from-left { transform: translateX(-35px); }
+        .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: translateX(0); }
 
-        /* STICKY SHOE SECTION FIXED */
+        /* SEZIONE SCARPA STICKY */
         .sticky-shoe-section {
           position: relative;
           width: 100%;
-          min-height: 240vh;
+          min-height: 220vh;
           background-color: #050505;
-          border-y: 1px solid #141414;
         }
         .sticky-shoe-container {
           position: sticky;
@@ -275,18 +329,18 @@ export default function Index() {
           position: relative;
           z-index: 2;
           margin-top: -100vh;
-          padding-bottom: 20vh;
+          padding-bottom: 15vh;
           pointer-events: none;
         }
         .shoe-card {
-          min-height: 65vh;
+          min-height: 60vh;
           display: flex;
           flex-direction: column;
           justify-content: center;
           max-width: 480px;
           margin-left: auto;
           margin-right: 6vw;
-          margin-bottom: 12vh;
+          margin-bottom: 15vh;
           background: rgba(10, 10, 10, 0.88);
           backdrop-filter: blur(20px);
           padding: 42px 36px;
@@ -299,7 +353,7 @@ export default function Index() {
         .shoe-card h3 { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 16px; line-height: 1.25; }
         .shoe-card p { color: #bbb; font-size: 1.02rem; line-height: 1.75; }
 
-        /* CIRCLE SHOWCASE & STICKY CARDS CON OFFSET ANTI-HEADER */
+        /* CIRCLE SHOWCASE */
         .process-showcase-wrapper {
           max-width: 1650px;
           margin: 0 auto;
@@ -312,7 +366,7 @@ export default function Index() {
 
         .process-sticky-left {
           position: sticky;
-          top: 90px; /* DISTANZA DALL'HEADER IN ALTO */
+          top: 90px;
           height: calc(100vh - 100px);
           display: flex;
           flex-direction: column;
@@ -333,7 +387,7 @@ export default function Index() {
         .circle-hud-svg {
           width: 100%;
           height: auto;
-          max-height: calc(100vh - 220px); /* ADATTIVO PER NON FORARE LO SCHERMO */
+          max-height: calc(100vh - 220px);
           max-width: min(580px, 42vw);
           overflow: visible;
         }
@@ -362,7 +416,6 @@ export default function Index() {
 
         .process-scroll-right { padding: 0; }
 
-        /* SCHEDE PROGETTI A DESTRA CON CALAMITA CALIBRATA */
         .process-card.snap-card {
           height: 100vh;
           min-height: 100vh;
@@ -406,20 +459,28 @@ export default function Index() {
           transform: translateX(6px);
         }
 
-        /* FOOTER SOFT SNAP */
-        .whats-next-footer {
+        /* SEPARATORE NERO & FOOTER WHAT'S NEXT A TUTTO SCHERMO */
+        .whats-next-wrapper {
+          margin-top: 25vh; /* Ampio spazio di stacco tra progetti e finale */
+          width: 100%;
           background-color: #040404;
-          min-height: 80vh;
+        }
+
+        .whats-next-footer {
+          min-height: 100vh;
+          height: 100vh;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          padding: 100px 6vw 60px;
-          border-top: 1px solid #141414;
+          padding: 60px 6vw 40px;
           text-align: center;
           position: relative;
           scroll-snap-align: start;
+          scroll-snap-stop: always;
+          box-sizing: border-box;
         }
+
         .whats-next-footer h2 {
           font-size: clamp(3.2rem, 7.5vw, 6.5rem);
           font-weight: 900;
@@ -443,6 +504,7 @@ export default function Index() {
           margin: 0 auto 50px;
           line-height: 1.7;
         }
+
         .footer-actions {
           display: flex;
           justify-content: center;
@@ -450,6 +512,7 @@ export default function Index() {
           flex-wrap: wrap;
           margin-bottom: 80px;
         }
+
         .btn-footer-link {
           padding: 16px 38px;
           background: #ffffff;
@@ -464,6 +527,7 @@ export default function Index() {
           background: #dcdcdc;
           transform: translateY(-2px);
         }
+
         .btn-footer-outline {
           padding: 16px 38px;
           background: transparent;
@@ -481,11 +545,13 @@ export default function Index() {
         }
 
         .footer-bottom-info {
+          position: absolute;
+          bottom: 40px;
+          left: 6vw;
+          right: 6vw;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          width: 100%;
-          max-width: 1400px;
           border-top: 1px solid #141414;
           padding-top: 25px;
           font-family: monospace;
@@ -497,61 +563,66 @@ export default function Index() {
         .footer-contacts-list a:hover { color: #fff; }
 
         @media (max-width: 1024px) {
-          .editorial-section, .process-showcase-wrapper { grid-template-columns: 1fr; gap: 60px; }
+          .fullbleed-row { grid-template-columns: 1fr; gap: 40px; height: auto; padding: 40px 0; }
+          .fullbleed-row.media-left .fullbleed-content,
+          .fullbleed-row.media-right .fullbleed-content { padding: 0 6vw; }
+          .fullbleed-row.media-left .fullbleed-media,
+          .fullbleed-row.media-right .fullbleed-media { height: 400px; }
+          .process-showcase-wrapper { grid-template-columns: 1fr; gap: 60px; }
           .process-sticky-left { position: relative; top: 0; height: auto; padding-top: 40px; }
           .process-card.snap-card { height: auto; min-height: 80vh; }
-          .footer-bottom-info { flex-direction: column; gap: 15px; text-align: center; }
+          .footer-bottom-info { position: relative; bottom: 0; left: 0; right: 0; flex-direction: column; gap: 15px; text-align: center; margin-top: 40px; }
         }
       `}</style>
 
-      {/* HEADER FIX CON PULSANTE TORNA SU */}
+      {/* HEADER FIX */}
       <Header lang={lang} setLang={setLang} showName={showNavName} />
       
-      {/* HERO HERO SECTION */}
-      <div className="soft-snap">
+      {/* HERO SECTION */}
+      <div>
         <Hero />
       </div>
 
-      {/* INTRO SECTION */}
-      <div className="soft-snap">
-        <IntroSection t={translations[lang]} />
-      </div>
+      {/* SEZIONE PRESENTAZIONE CON IMMAGINI FULL-BLEED */}
+      <IntroSection t={translations[lang]} />
 
-      {/* SEZIONE SCARPA STICKY CON CASELLE TESTO FLUTTUANTI RIPRISTINATE */}
+      {/* SEZIONE SCARPA STICKY */}
       <StickyObject />
 
-      {/* SHOWCASE CERCHIO CON MAGNETE PROGETTI */}
+      {/* SHOWCASE CERCHIO CON PROGETTI */}
       <CircleShowcase steps={projectList} activeStep={activeStep} />
 
-      {/* FOOTER WHAT'S NEXT SOFT SNAP */}
-      <footer className="whats-next-footer">
-        <h2>
-          WHAT&apos;S NEXT
-          <span className="question-mark-styled">?</span>
-        </h2>
-        
-        <p className="sub-lead">
-          Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale.
-        </p>
+      {/* SCHERMATA FINALE WHAT'S NEXT ISOLATA A TUTTO SCHERMO */}
+      <div className="whats-next-wrapper">
+        <footer className="whats-next-footer">
+          <h2>
+            WHAT&apos;S NEXT
+            <span className="question-mark-styled">?</span>
+          </h2>
+          
+          <p className="sub-lead">
+            Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale.
+          </p>
 
-        <div className="footer-actions">
-          <a href="/about" className="btn-footer-link">
-            ABOUT ME
-          </a>
-          <a href="/cv" className="btn-footer-outline">
-            CURRICULUM VITAE
-          </a>
-        </div>
-
-        <div className="footer-bottom-info">
-          <div>2026 MATTEO FINCO // PRODUCT DESIGN &amp; MAKER</div>
-          <div className="footer-contacts-list">
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="/about">About</a>
-            <a href="/cv">CV</a>
+          <div className="footer-actions">
+            <a href="/about" className="btn-footer-link">
+              ABOUT ME
+            </a>
+            <a href="/cv" className="btn-footer-outline">
+              CURRICULUM VITAE
+            </a>
           </div>
-        </div>
-      </footer>
+
+          <div className="footer-bottom-info">
+            <div>2026 MATTEO FINCO // PRODUCT DESIGN &amp; MAKER</div>
+            <div className="footer-contacts-list">
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="/about">About</a>
+              <a href="/cv">CV</a>
+            </div>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 }
