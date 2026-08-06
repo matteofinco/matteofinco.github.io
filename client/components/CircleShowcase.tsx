@@ -74,8 +74,8 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
         /* COLONNA SINISTRA: HUD FISSA (STICKY) */
         .hud-sticky-wrapper {
           position: sticky;
-          top: calc(50vh - 290px);
-          height: 580px;
+          top: calc(50vh - 310px);
+          height: 620px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -84,18 +84,18 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
 
         .hud-container {
           position: relative;
-          width: 580px;
-          height: 580px;
+          width: 620px;
+          height: 620px;
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
-        /* CERCHIO CENTRALE E IMMAGINE MAGGIORATI DEL 20% */
+        /* CERCHIO CENTRALE E IMMAGINE ANCORA PIÙ GRANDI (500px) */
         .hud-center-circle {
           position: relative;
-          width: 432px;
-          height: 432px;
+          width: 500px;
+          height: 500px;
           background: #ffffff;
           border-radius: 50%;
           overflow: hidden;
@@ -103,7 +103,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           align-items: center;
           justify-content: center;
           z-index: 2;
-          box-shadow: 0 0 75px rgba(0, 0, 0, 0.85);
+          box-shadow: 0 0 80px rgba(0, 0, 0, 0.9);
         }
 
         .inner-grid-pattern {
@@ -131,29 +131,29 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
         }
 
         .hud-outer-ring {
-          width: 540px;
-          height: 540px;
+          width: 580px;
+          height: 580px;
           border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .hud-dashed-ring {
-          width: 500px;
-          height: 500px;
+          width: 540px;
+          height: 540px;
           border: 1px dashed rgba(255, 255, 255, 0.2);
           animation: hud-spin 80s linear infinite;
         }
 
         .hud-inner-dashed {
-          width: 460px;
-          height: 460px;
+          width: 520px;
+          height: 520px;
           border: 1px dashed rgba(255, 255, 255, 0.15);
           animation: hud-spin-reverse 60s linear infinite;
         }
 
         .hud-tech-arc-1 {
           position: absolute;
-          width: 560px;
-          height: 560px;
+          width: 600px;
+          height: 600px;
           border-radius: 50%;
           border: 2px solid transparent;
           border-top-color: rgba(255, 255, 255, 0.6);
@@ -164,8 +164,8 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
 
         .hud-tech-arc-2 {
           position: absolute;
-          width: 480px;
-          height: 480px;
+          width: 520px;
+          height: 520px;
           border-radius: 50%;
           border: 2px solid transparent;
           border-bottom-color: rgba(255, 255, 255, 0.4);
@@ -174,55 +174,46 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           pointer-events: none;
         }
 
-        .hud-ticks-top-left {
+        /* INDICATORI DI STATO DISPOSTI A SPICCHIO LUNGO LA CURVA (ALTO A DESTRA) */
+        .hud-curved-dots-wrapper {
           position: absolute;
-          width: 520px;
-          height: 520px;
+          width: 540px;
+          height: 540px;
           border-radius: 50%;
-          border: 2px dotted rgba(255, 255, 255, 0.25);
-          clip-path: polygon(0 0, 50% 0, 50% 50%, 0 50%);
           pointer-events: none;
-          animation: hud-spin 100s linear infinite;
-        }
-
-        .hud-ticks-bottom-right {
-          position: absolute;
-          width: 520px;
-          height: 520px;
-          border-radius: 50%;
-          border: 2px dashed rgba(255, 255, 255, 0.2);
-          clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%);
-          pointer-events: none;
-        }
-
-        /* PALLINI DI STATO */
-        .hud-status-dots {
-          position: absolute;
-          top: 35px;
-          right: 35px;
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
           z-index: 5;
-          align-items: center;
+          transform: rotate(-35deg); /* Posiziona lo spicchio esattamente in alto a destra */
         }
 
-        .status-dot {
+        .curved-dot {
+          position: absolute;
           width: 4px;
           height: 4px;
           background: rgba(255, 255, 255, 0.25);
           border-radius: 50%;
+          top: 0;
+          left: 50%;
+          transform-origin: 50% 270px; /* Raggio di rotazione centrato sull'HUD */
           transition: all 0.3s ease;
         }
 
-        .status-dot.active {
+        /* Distribuzione geometrica dei pallini lungo l'arco dello spicchio */
+        .curved-dot:nth-child(1) { transform: rotate(0deg); }
+        .curved-dot:nth-child(2) { transform: rotate(5deg); }
+        .curved-dot:nth-child(3) { transform: rotate(10deg); }
+        .curved-dot:nth-child(4) { transform: rotate(15deg); }
+        .curved-dot:nth-child(5) { transform: rotate(20deg); }
+        .curved-dot:nth-child(6) { transform: rotate(25deg); }
+        .curved-dot:nth-child(7) { transform: rotate(30deg); }
+
+        .curved-dot.active {
           width: 6px;
           height: 6px;
           background: #ffffff;
-          box-shadow: 0 0 8px #ffffff;
+          box-shadow: 0 0 10px #ffffff;
         }
 
-        .status-dot.highlight {
+        .curved-dot.highlight {
           background: #ffffff;
           opacity: 0.8;
         }
@@ -378,14 +369,13 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
             <div className="hud-ring-base hud-inner-dashed"></div>
             <div className="hud-tech-arc-1"></div>
             <div className="hud-tech-arc-2"></div>
-            <div className="hud-ticks-top-left"></div>
-            <div className="hud-ticks-bottom-right"></div>
 
-            <div className="hud-status-dots">
+            {/* SPICCHIO DI PALLINI CURVI IN ALTO A DESTRA */}
+            <div className="hud-curved-dots-wrapper">
               {steps.map((_, dotIdx) => (
                 <div 
                   key={dotIdx} 
-                  className={`status-dot ${dotIdx === activeStep ? 'active' : dotIdx === activeStep - 1 || dotIdx === activeStep + 1 ? 'highlight' : ''}`}
+                  className={`curved-dot ${dotIdx === activeStep ? 'active' : dotIdx === activeStep - 1 || dotIdx === activeStep + 1 ? 'highlight' : ''}`}
                 ></div>
               ))}
             </div>
