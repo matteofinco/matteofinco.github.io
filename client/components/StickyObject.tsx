@@ -101,16 +101,16 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
             key={currentStep.image}
             src={currentStep.image}
             alt={currentStep.step}
-            className="animate-image-fade"
+            className="animate-image-slide-fade"
           />
-          <div key={currentStep.tag} className="process-tag animate-fade">
+          <div key={currentStep.tag} className="process-tag animate-tag-fade">
             {currentStep.tag}
           </div>
         </div>
 
         {/* COLONNA TESTO DESTRA */}
         <div className="process-text-column">
-          <div key={`${lang}-${activeStep}`} className="process-content-block animate-fade">
+          <div key={`${lang}-${activeStep}`} className="process-content-block animate-text-fade">
             <span className="step-number">{currentStep.step}</span>
 
             <h3 className="step-title">
@@ -181,7 +181,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           height: 100%;
           border-radius: 0;
           overflow: hidden;
-          background-color: #111;
+          background-color: #0d0d0d;
         }
 
         .process-media img {
@@ -190,20 +190,39 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           object-fit: cover;
           border-radius: 0;
           filter: none;
+          will-change: transform, opacity;
         }
 
-        .animate-image-fade {
-          animation: imageFade 0.5s ease-out forwards;
+        /* IMMAGINE: Scivolamento morbido da sinistra + Fade in graduale */
+        .animate-image-slide-fade {
+          animation: imageSlideFade 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
-        @keyframes imageFade {
+        @keyframes imageSlideFade {
           from {
-            opacity: 0.3;
-            transform: scale(1.02);
+            opacity: 0;
+            transform: translateX(-35px) scale(1.01);
           }
           to {
             opacity: 1;
-            transform: scale(1);
+            transform: translateX(0) scale(1);
+          }
+        }
+
+        /* BADGE TAG: Entrata delicata con leggero offset */
+        .animate-tag-fade {
+          animation: tagSoftFade 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+          opacity: 0;
+        }
+
+        @keyframes tagSoftFade {
+          from {
+            opacity: 0;
+            transform: translateX(-15px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
           }
         }
 
@@ -213,9 +232,9 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           left: 24px;
           font-family: monospace;
           font-size: 0.75rem;
-          color: rgba(255,255,255,0.9);
+          color: rgba(255, 255, 255, 0.9);
           letter-spacing: 1.5px;
-          background: rgba(0, 0, 0, 0.7);
+          background: rgba(0, 0, 0, 0.65);
           padding: 8px 16px;
           border-radius: 0;
           backdrop-filter: blur(8px);
@@ -232,17 +251,18 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
 
         .process-content-block {
           max-width: 460px;
+          will-change: transform, opacity;
         }
 
-        .process-content-block.animate-fade,
-        .process-tag.animate-fade {
-          animation: textFade 0.4s ease-out forwards;
+        /* TESTO: Fade in puro, senza sbalzi bruschi, impercettibile translateY */
+        .animate-text-fade {
+          animation: textSoftFade 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
-        @keyframes textFade {
+        @keyframes textSoftFade {
           from {
             opacity: 0;
-            transform: translateY(12px);
+            transform: translateY(8px);
           }
           to {
             opacity: 1;
@@ -284,12 +304,12 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
         .indicator-dot {
           width: 32px;
           height: 3px;
-          background: rgba(255, 255, 255, 0.25);
+          background: rgba(255, 255, 255, 0.2);
           border: none;
           padding: 0;
           cursor: pointer;
           outline: none;
-          transition: background 0.3s ease, width 0.3s ease, transform 0.2s ease;
+          transition: background 0.4s ease, width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .indicator-dot:hover {
