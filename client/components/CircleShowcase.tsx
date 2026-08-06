@@ -14,261 +14,401 @@ export interface ProjectStep {
   img: string;
 }
 
-interface ShowcaseProps {
+interface CircleShowcaseProps {
   steps: ProjectStep[];
   activeStep: number;
 }
 
-export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) => {
-  const radius = 240;
-  const centerX = 290;
-  const centerY = 280;
-
+export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeStep }) => {
   return (
-    <section id="process-section" className="process-showcase-wrapper">
-      {/* COLONNA FISSA STICKY A SINISTRA (CON RISPETTO HEADER) */}
-      <div className="process-sticky-left">
-        <div className="circle-technical-frame">
-          <svg className="circle-hud-svg" viewBox="0 0 580 560">
-            <defs>
-              <clipPath id="circleImageClip" clipPathUnits="userSpaceOnUse">
-                <circle cx={centerX} cy={centerY} r={radius - 2} />
-              </clipPath>
-            </defs>
+    <section className="circle-showcase-section">
+      <style>{`
+        .circle-showcase-section {
+          position: relative;
+          width: 100%;
+          background-color: #070707;
+          padding: 100px 6vw;
+          box-sizing: border-box;
+        }
 
-            {/* Anelli HUD Esterni */}
-            <circle cx={centerX} cy={centerY} r={radius + 20} stroke="rgba(255,255,255,0.12)" strokeWidth="1" fill="none" />
-            <circle cx={centerX} cy={centerY} r={radius + 6} stroke="rgba(255,255,255,0.22)" strokeWidth="1.5" strokeDasharray="8,8" fill="none" />
-            
-            {/* Fondo scuro */}
-            <circle cx={centerX} cy={centerY} r={radius - 2} fill="#070707" />
+        .process-scroll-container {
+          display: flex;
+          flex-direction: column;
+          gap: 15vh;
+          max-width: 1300px;
+          margin: 0 auto;
+        }
 
-            {/* Layer Immagini */}
-            <g clipPath="url(#circleImageClip)" className="circle-images-container">
-              {steps.map((step, idx) => (
-                <image
-                  key={step.id}
-                  href={step.img}
-                  x={centerX - radius}
-                  y={centerY - radius}
-                  width={radius * 2}
-                  height={radius * 2}
-                  preserveAspectRatio="xMidYMid slice"
-                  className={`circle-img-layer ${activeStep === idx ? 'active-layer' : ''}`}
-                />
-              ))}
-            </g>
+        .process-card {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+          gap: 60px;
+          min-height: 80vh;
+          scroll-snap-align: center;
+        }
 
-            <circle cx={centerX} cy={centerY} r={radius - 2} stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" fill="none" />
+        /* ADVANCED HUD GRAPHIC CONTAINER */
+        .hud-container {
+          position: relative;
+          width: 520px;
+          height: 520px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto;
+        }
 
-            {/* Nodi sulla circonferenza */}
-            {steps.map((step, idx) => {
-              const angleDeg = -90 + idx * (360 / steps.length);
-              const angleRad = (angleDeg * Math.PI) / 180;
-              const px = centerX + radius * Math.cos(angleRad);
-              const py = centerY + radius * Math.sin(angleRad);
-              const isActive = activeStep === idx;
+        .hud-center-circle {
+          position: relative;
+          width: 320px;
+          height: 320px;
+          background: #ffffff;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2;
+          box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+        }
 
-              return (
-                <g key={step.id} className="circle-node-group">
-                  {isActive && (
-                    <circle cx={px} cy={py} r="14" fill="none" stroke="#ffffff" strokeWidth="1" className="node-pulse" />
-                  )}
-                  <circle
-                    cx={px}
-                    cy={py}
-                    r={isActive ? "6.5" : "4"}
-                    fill={isActive ? "#ffffff" : "#333333"}
-                    stroke="#070707"
-                    strokeWidth="2"
-                  />
-                  <text
-                    x={px + Math.cos(angleRad) * 26}
-                    y={py + Math.sin(angleRad) * 26 + 4}
-                    fill={isActive ? "#ffffff" : "#666666"}
-                    fontSize="10"
-                    fontFamily="monospace"
-                    textAnchor="middle"
-                  >
-                    0{idx + 1}
-                  </text>
-                </g>
-              );
-            })}
+        .inner-grid-pattern {
+          position: absolute;
+          inset: 0;
+          background-image: radial-gradient(circle, #cccccc 1px, transparent 1px);
+          background-size: 16px 16px;
+          opacity: 0.5;
+        }
 
-            <line x1={centerX - 12} y1={centerY} x2={centerX + 12} y2={centerY} stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-            <line x1={centerX} y1={centerY - 12} x2={centerX} y2={centerY + 12} stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-          </svg>
+        .hud-project-img {
+          position: relative;
+          z-index: 2;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
 
-          {/* Dettagli sotto il cerchio */}
-          <div className="project-title-under-circle">
-            <span className="project-index-tag">PROJECT_0{activeStep + 1} // {steps[activeStep].year}</span>
-            <h3 className="project-main-name">{steps[activeStep].title}</h3>
-            <p className="project-sub-name">{steps[activeStep].subtitle}</p>
-          </div>
-        </div>
-      </div>
+        /* COMPLEX HUD RINGS & ARCS */
+        .hud-ring-base {
+          position: absolute;
+          border-radius: 50%;
+          pointer-events: none;
+        }
 
-      {/* SCHEDE PROGETTO A DESTRA CON MAGNETO DELICATO */}
-      <div className="process-scroll-right">
-        {steps.map((step, idx) => (
-          <div
-            key={step.id}
-            className={`process-card snap-card ${activeStep === idx ? 'active-step' : ''}`}
-            data-step={idx}
+        /* Anello esterno principale sottile */
+        .hud-outer-ring {
+          width: 480px;
+          height: 480px;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        /* Anello intermedio tratteggiato grande */
+        .hud-dashed-ring {
+          width: 440px;
+          height: 440px;
+          border: 1px dashed rgba(255, 255, 255, 0.2);
+          animation: hud-spin 80s linear infinite;
+        }
+
+        /* Anello interno tratteggiato stretto */
+        .hud-inner-dashed {
+          width: 360px;
+          height: 360px;
+          border: 1px dashed rgba(255, 255, 255, 0.15);
+          animation: hud-spin-reverse 60s linear infinite;
+        }
+
+        /* Archi tecnici angolari */
+        .hud-tech-arc-1 {
+          position: absolute;
+          width: 500px;
+          height: 500px;
+          border-radius: 50%;
+          border: 2px solid transparent;
+          border-top-color: rgba(255, 255, 255, 0.6);
+          border-right-color: rgba(255, 255, 255, 0.1);
+          transform: rotate(-30deg);
+          pointer-events: none;
+        }
+
+        .hud-tech-arc-2 {
+          position: absolute;
+          width: 410px;
+          height: 410px;
+          border-radius: 50%;
+          border: 2px solid transparent;
+          border-bottom-color: rgba(255, 255, 255, 0.4);
+          border-left-color: rgba(255, 255, 255, 0.1);
+          transform: rotate(45deg);
+          pointer-events: none;
+        }
+
+        /* Gruppo tacche radiali in alto a sinistra */
+        .hud-ticks-top-left {
+          position: absolute;
+          width: 460px;
+          height: 460px;
+          border-radius: 50%;
+          border: 2px dotted rgba(255, 255, 255, 0.25);
+          clip-path: polygon(0 0, 50% 0, 50% 50%, 0 50%);
+          pointer-events: none;
+          animation: hud-spin 100s linear infinite;
+        }
+
+        /* Gruppo tacche radiali in basso a destra */
+        .hud-ticks-bottom-right {
+          position: absolute;
+          width: 460px;
+          height: 460px;
+          border-radius: 50%;
+          border: 2px dashed rgba(255, 255, 255, 0.2);
+          clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%);
+          pointer-events: none;
+        }
+
+        /* Indicatore di stato a pallini in alto a destra (stile reference) */
+        .hud-status-dots {
+          position: absolute;
+          top: 35px;
+          right: 35px;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          z-index: 5;
+          align-items: center;
+        }
+
+        .status-dot {
+          width: 4px;
+          height: 4px;
+          background: rgba(255, 255, 255, 0.25);
+          border-radius: 50%;
+          transition: all 0.3s ease;
+        }
+
+        .status-dot.active {
+          width: 6px;
+          height: 6px;
+          background: #ffffff;
+          box-shadow: 0 0 8px #ffffff;
+        }
+
+        .status-dot.highlight {
+          background: #ffffff;
+          opacity: 0.8;
+        }
+
+        /* Linea di puntamento laterale destra con pallino terminale */
+        .hud-pointer-group {
+          position: absolute;
+          right: -25px;
+          top: 50%;
+          display: flex;
+          align-items: center;
+          pointer-events: none;
+          z-index: 5;
+        }
+
+        .hud-pointer-line {
+          width: 60px;
+          height: 1px;
+          background: rgba(255, 255, 255, 0.4);
+        }
+
+        .hud-pointer-node {
+          width: 6px;
+          height: 6px;
+          background: #ffffff;
+          border-radius: 50%;
+          box-shadow: 0 0 10px #ffffff;
+        }
+
+        @keyframes hud-spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        @keyframes hud-spin-reverse {
+          0% { transform: rotate(360deg); }
+          100% { transform: rotate(0deg); }
+        }
+
+        /* PROJECT DETAILS INFO PANEL */
+        .showcase-info-panel {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .project-category-tag {
+          font-family: monospace;
+          font-size: 0.85rem;
+          color: #888888;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+        }
+
+        .project-main-title {
+          font-size: clamp(2.5rem, 4.5vw, 4rem);
+          font-weight: 900;
+          color: #ffffff;
+          line-height: 1.1;
+          letter-spacing: -1px;
+        }
+
+        .project-subtitle-text {
+          font-size: 1.15rem;
+          color: #cccccc;
+          font-weight: 500;
+        }
+
+        .project-desc-text {
+          font-size: 1rem;
+          color: #999999;
+          line-height: 1.75;
+          max-width: 520px;
+        }
+
+        .project-meta-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+          margin-top: 10px;
+          border-top: 1px solid #1a1a1a;
+          border-bottom: 1px solid #1a1a1a;
+          padding: 20px 0;
+        }
+
+        .meta-item span.label {
+          display: block;
+          font-size: 0.75rem;
+          color: #666666;
+          font-family: monospace;
+          margin-bottom: 4px;
+          text-transform: uppercase;
+        }
+
+        .meta-item span.value {
+          font-size: 0.95rem;
+          color: #dddddd;
+          font-weight: 600;
+        }
+
+        .project-action-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          margin-top: 10px;
+          padding: 14px 28px;
+          background: #ffffff;
+          color: #070707;
+          font-weight: 700;
+          font-size: 0.9rem;
+          text-decoration: none;
+          width: fit-content;
+          transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .project-action-link:hover {
+          background: #dcdcdc;
+          transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+          .process-card {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 40px;
+          }
+          .project-meta-grid {
+            text-align: left;
+          }
+          .project-action-link {
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .hud-container {
+            transform: scale(0.85);
+            margin: -20px auto;
+          }
+        }
+      `}</style>
+
+      <div className="process-scroll-container">
+        {steps.map((st, index) => (
+          <div 
+            key={st.id} 
+            className="process-card" 
+            data-step={index}
           >
-            <div className="card-content-wrapper">
-              <div className="phase-number">0{idx + 1} // {step.category}</div>
-              <div className="phase-title">{step.title}</div>
-              <div className="phase-subtitle">{step.subtitle}</div>
+            {/* GRAFICA HUD AVANZATA */}
+            <div className="hud-container">
+              <div className="hud-ring-base hud-outer-ring"></div>
+              <div className="hud-ring-base hud-dashed-ring"></div>
+              <div className="hud-ring-base hud-inner-dashed"></div>
+              <div className="hud-tech-arc-1"></div>
+              <div className="hud-tech-arc-2"></div>
+              <div className="hud-ticks-top-left"></div>
+              <div className="hud-ticks-bottom-right"></div>
 
-              <div className="process-meta-grid">
+              {/* Indicatore di stato a pallini in alto a destra */}
+              <div className="hud-status-dots">
+                {steps.map((_, dotIdx) => (
+                  <div 
+                    key={dotIdx} 
+                    className={`status-dot ${dotIdx === activeStep ? 'active' : dotIdx === activeStep - 1 || dotIdx === activeStep + 1 ? 'highlight' : ''}`}
+                  ></div>
+                ))}
+              </div>
+
+              {/* Linea di puntamento laterale */}
+              <div className="hud-pointer-group">
+                <div className="hud-pointer-line"></div>
+                <div className="hud-pointer-node"></div>
+              </div>
+
+              {/* Cerchio centrale con immagine */}
+              <div className="hud-center-circle">
+                <div className="inner-grid-pattern"></div>
+                <img 
+                  src={st.img} 
+                  alt={st.title} 
+                  className="hud-project-img" 
+                />
+              </div>
+            </div>
+
+            {/* PANNELLO INFORMAZIONI */}
+            <div className="showcase-info-panel">
+              <div className="project-category-tag">
+                {st.id} // {st.category} // {st.year}
+              </div>
+              <h2 className="project-main-title">{st.title}</h2>
+              <div className="project-subtitle-text">{st.subtitle}</div>
+              <p className="project-desc-text">{st.desc}</p>
+
+              <div className="project-meta-grid">
                 <div className="meta-item">
-                  <div className="meta-label">Strumenti &amp; Software</div>
-                  <div className="meta-value">{step.tools}</div>
+                  <span className="label">Strumenti & CAD</span>
+                  <span className="value">{st.tools}</span>
                 </div>
                 <div className="meta-item">
-                  <div className="meta-label">Materiali / Output</div>
-                  <div className="meta-value">{step.material}</div>
+                  <span className="label">Materiali & CMF</span>
+                  <span className="value">{st.material}</span>
                 </div>
               </div>
 
-              <p className="phase-desc">{step.desc}</p>
-
-              <a href={step.link} className="project-detail-btn">
-                <span>Scopri il progetto {step.title}</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
+              <a href={st.link} className="project-action-link">
+                ESPLORA PROGETTO →
               </a>
             </div>
           </div>
         ))}
       </div>
-
-      <style>{`
-        .process-showcase-wrapper {
-          max-width: 1650px;
-          margin: 0 auto;
-          padding: 0 6vw;
-          display: grid;
-          grid-template-columns: 1.15fr 0.85fr;
-          gap: 60px;
-          align-items: start;
-          box-sizing: border-box;
-        }
-
-        .process-sticky-left {
-          position: sticky;
-          top: 90px;
-          height: calc(100vh - 100px);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          z-index: 10;
-        }
-
-        .circle-technical-frame {
-          position: relative;
-          width: 100%;
-          max-width: 580px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .circle-hud-svg {
-          width: 100%;
-          height: auto;
-          max-height: calc(100vh - 230px);
-          max-width: min(580px, 42vw);
-          overflow: visible;
-        }
-
-        .circle-images-container { isolation: isolate; }
-
-        .circle-img-layer {
-          opacity: 0;
-          transform: scale(1.04) translateZ(0);
-          backface-visibility: hidden;
-          transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .circle-img-layer.active-layer { opacity: 1; transform: scale(1) translateZ(0); }
-
-        @keyframes pulseRing { 0% { r: 8px; opacity: 1; } 100% { r: 22px; opacity: 0; } }
-        .node-pulse { animation: pulseRing 1.8s ease-out infinite; }
-
-        .project-title-under-circle {
-          margin-top: 10px;
-          text-align: center;
-          width: 100%;
-        }
-
-        .project-index-tag { font-family: monospace; font-size: 0.8rem; color: #777; letter-spacing: 2px; display: block; margin-bottom: 4px; }
-        .project-main-name { font-size: 2.3rem; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; line-height: 1.1; }
-        .project-sub-name { font-size: 1rem; color: #aaa; margin-top: 4px; font-weight: 500; }
-
-        .process-card.snap-card {
-          height: 100vh;
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          scroll-snap-align: center;
-          scroll-snap-stop: normal;
-          opacity: 0.15;
-          filter: blur(6px);
-          transition: opacity 0.6s ease, filter 0.6s ease;
-          border-bottom: 1px solid #141414;
-        }
-
-        .process-card.snap-card.active-step { opacity: 1; filter: blur(0px); }
-
-        .card-content-wrapper { padding: 20px 0; }
-        .process-card .phase-number { font-family: monospace; font-size: 0.85rem; color: #777777; margin-bottom: 8px; }
-        .process-card .phase-title { font-size: 2.8rem; font-weight: 800; color: #ffffff; line-height: 1.15; }
-        .process-card .phase-subtitle { font-size: 1.25rem; color: #888888; font-weight: 500; margin-bottom: 25px; }
-
-        .process-meta-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 20px;
-          margin-bottom: 25px;
-          padding: 20px 0;
-          border-y: 1px solid #1c1c1c;
-        }
-
-        .meta-item .meta-label { font-family: monospace; font-size: 0.72rem; color: #555555; text-transform: uppercase; margin-bottom: 4px; }
-        .meta-item .meta-value { font-size: 0.95rem; color: #cccccc; font-weight: 500; }
-        .process-card .phase-desc { color: #aaaaaa; font-size: 1.1rem; line-height: 1.85; margin-bottom: 35px; }
-
-        .project-detail-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 12px;
-          align-self: start;
-          padding: 16px 32px;
-          background: #ffffff;
-          color: #070707;
-          font-size: 0.92rem;
-          font-weight: 700;
-          text-decoration: none;
-          transition: all 0.3s ease;
-          border-radius: 2px;
-        }
-        .project-detail-btn:hover {
-          background: #e0e0e0;
-          transform: translateX(6px);
-        }
-
-        @media (max-width: 1024px) {
-          .process-showcase-wrapper { grid-template-columns: 1fr; gap: 60px; }
-          .process-sticky-left { position: relative; top: 0; height: auto; padding-top: 40px; }
-          .process-card.snap-card { height: auto; min-height: 80vh; }
-        }
-      `}</style>
     </section>
   );
 };
+
+export default CircleShowcase;
