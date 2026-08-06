@@ -122,7 +122,7 @@ export default function Index() {
   const [showNavName, setShowNavName] = useState<boolean>(false);
 
   useEffect(() => {
-    // Header Observer
+    // Observer mostrare nome nell'header solo quando si esce dalla Hero
     const heroEl = document.getElementById('hero-section');
     if (heroEl) {
       const heroObserver = new IntersectionObserver(
@@ -134,7 +134,7 @@ export default function Index() {
       heroObserver.observe(heroEl);
     }
 
-    // Reveal Animation Observer
+    // Observer Animazioni d'Ingresso
     const revealElements = document.querySelectorAll('.reveal-editorial');
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -148,7 +148,7 @@ export default function Index() {
     );
     revealElements.forEach((el) => revealObserver.observe(el));
 
-    // Project Cards Active Step Observer
+    // Observer Schede Progetti
     const processCards = document.querySelectorAll('.process-card');
     const processObserver = new IntersectionObserver(
       (entries) => {
@@ -178,11 +178,10 @@ export default function Index() {
           padding: 0;
         }
 
-        /* SCROLL SNAP NATURALE E FLUIDO (SENZA OVERFLOW CHE BLOCCHI STICKY) */
         html {
           scroll-behavior: smooth;
           scroll-snap-type: y proximity;
-          scroll-padding-top: 70px;
+          scroll-padding-top: 64px;
         }
 
         body {
@@ -190,7 +189,6 @@ export default function Index() {
           color: #e5e5e5;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           line-height: 1.8;
-          /* NESSUN OVERFLOW-X HIDDEN QUI PER NON SPEZZARE POSITION: STICKY */
         }
 
         .editorial-portfolio {
@@ -210,7 +208,7 @@ export default function Index() {
 
         /* SEZIONE FINALE WHAT'S NEXT ISOLATA A 100VH */
         .whats-next-wrapper {
-          margin-top: 20vh; /* Ampio stacco di sfondo nero dai progetti */
+          margin-top: 20vh;
           width: 100%;
           background-color: #040404;
         }
@@ -236,12 +234,6 @@ export default function Index() {
           letter-spacing: -2px;
           margin-bottom: 20px;
           line-height: 1;
-        }
-        
-        .question-mark-styled {
-          display: inline-block;
-          margin-left: 0.25em;
-          color: #ffffff;
         }
 
         .whats-next-footer p.sub-lead {
@@ -326,10 +318,10 @@ export default function Index() {
       {/* HEADER BAR */}
       <Header lang={lang} setLang={setLang} showName={showNavName} />
       
-      {/* HERO SECTION CON SVG NOME MASCHERA */}
+      {/* HERO SECTION REVERTITA */}
       <Hero />
 
-      {/* SEZIONE PRESENTAZIONE (IMMAGINI 100% BORDO PAGINA) */}
+      {/* SEZIONE PRESENTAZIONE (IMMAGINI A FILO BORDO) */}
       <IntroSection t={translations[lang]} />
 
       {/* STICKY SHOE (BACKGROUND FISSO + SCHEDE CHE SCORRONO) */}
@@ -342,8 +334,7 @@ export default function Index() {
       <div className="whats-next-wrapper">
         <footer className="whats-next-footer">
           <h2>
-            WHAT&apos;S NEXT
-            <span className="question-mark-styled">?</span>
+            WHAT&apos;S NEXT?
           </h2>
           
           <p className="sub-lead">
