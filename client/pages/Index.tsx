@@ -236,15 +236,23 @@ export default function Index() {
         .reveal-editorial.reveal-from-left { transform: translateX(-30px); }
         .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: translateX(0); }
 
-        /* SPAZIATORE DEDICATO PER SEPARARE IL CIRCLE SHOWCASE DALLA SEZIONE STICKY */
+        /* FASCIA SCURA E SPATIO DEDICATO DI SEPARAZIONE */
+        .section-divider-gap {
+          width: 100%;
+          height: 16vh;
+          background-color: #070707;
+          border-top: 1px solid #141414;
+          border-bottom: 1px solid #141414;
+          position: relative;
+          z-index: 5;
+        }
+
         .showcase-wrapper {
-          margin-top: 25vh; /* Regola questo valore per aumentare o diminuire la separazione */
           position: relative;
           z-index: 2;
         }
 
         .whats-next-wrapper {
-          margin-top: 20vh;
           width: 100%;
           background-color: #040404;
         }
@@ -344,6 +352,9 @@ export default function Index() {
         .footer-contacts-list a:hover { color: #ffffff; }
 
         @media (max-width: 1024px) {
+          .section-divider-gap {
+            height: 80px;
+          }
           .footer-bottom-info {
             position: relative;
             bottom: 0;
@@ -360,9 +371,15 @@ export default function Index() {
       <Header lang={lang} setLang={setLang} showName={showNavName} />
       <Hero />
       <IntroSection t={translations[lang]} />
+      
+      {/* FASCIA DI STACCO NERA TRA INTRO E STICKY OBJECT */}
+      <div className="section-divider-gap" />
+
       <StickyObject />
 
-      {/* SEZIONE WRAPPER CON MARGINE SUPERIORE PER CREARE IL RESPIRO NECESSARIO */}
+      {/* FASCIA DI STACCO NERA PRIMA DI CIRCLE SHOWCASE */}
+      <div className="section-divider-gap" />
+
       <div className="showcase-wrapper">
         <CircleShowcase steps={projectList} activeStep={activeStep} />
       </div>
