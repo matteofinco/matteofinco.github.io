@@ -5,7 +5,7 @@ import { Header } from '../components/Header';
 const translations = {
   it: {
     heroTitle: "MATTEO FINCO",
-    heroSub: "Product Designer\nbased in Italy\n\nMi piace capire come funzionano le cose.",
+    heroSub: "Product Designer\nbased in Italy\n\n",
     curiosityTitle: "Mi piace capire come funzionano le cose.",
     curiosityText1: "Quando guardo un oggetto, il mio primo impulso non è chiedermi se sia bello o brutto, ma perché sia stato progettato in quel modo. Come è stato costruito, quali vincoli hanno guidato le decisioni e quali compromessi si celano dietro una forma apparentemente semplice.",
     curiosityText2: "Per me, la qualità di un prodotto risiede nella chiarezza della sua logica. Questo approccio mi ha portato al product design, dove curiosità, competenze tecniche e creatività lavorano costantemente insieme.",
