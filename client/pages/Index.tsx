@@ -120,7 +120,7 @@ material:
   }
 ];
 
-cconst translations = {
+const translations = {
   it: {
     sec1Title: "Matteo Finco",
     sec1Sub:
