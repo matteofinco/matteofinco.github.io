@@ -1,46 +1,62 @@
 import React from 'react';
 
 interface HeaderProps {
-  lang: 'it' | 'en';
-  setLang: (lang: 'it' | 'en') => void;
-  showName: boolean;
+  showBackToDesigns?: boolean;
+  currentLang: 'it' | 'en';
+  onLanguageChange: (lang: 'it' | 'en') => void;
+  setLang?: (lang: 'it' | 'en') => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ lang, setLang, showName }) => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+export const Header: React.FC<HeaderProps> = ({
+  currentLang,
+  onLanguageChange,
+}) => {
+  const handleLogoClick = (e: React.MouseEvent) => {
+    // Verifica se l'utente si trova attualmente nella Home Page
+    const isHomePage =
+      window.location.pathname === '/' ||
+      window.location.pathname.endsWith('/index.html') ||
+      window.location.pathname === '';
+
+    if (!isHomePage) {
+      // Se si trova in /about o in un'altra pagina, va alla Home Page
+      window.location.href = '/';
+    } else {
+      // Se è già in Home Page, esegue lo scroll fluido in cima
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full px-[6vw] py-6 flex justify-between items-center z-[1000] bg-gradient-to-b from-[#070707]/90 to-transparent backdrop-blur-md">
-      {/* NOME IN ALTO A SINISTRA: ORA PULSANTE SCROLL TO TOP */}
-      <button
-        onClick={scrollToTop}
-        aria-label="Torna all'inizio"
-        className={`bg-transparent border-none cursor-pointer text-sm font-bold tracking-[3px] uppercase text-white font-mono transition-all duration-500 ease-out hover:text-neutral-300 ${
-          showName
-            ? 'opacity-100 translate-y-0 pointer-events-auto'
-            : 'opacity-0 -translate-y-3 pointer-events-none'
-        }`}
+    <header className="fixed top-0 left-0 w-full z-50 bg-[#070707]/90 backdrop-blur-md border-b border-[#1a1a1a] px-8 py-5 flex justify-between items-center text-[#ffffff]">
+      {/* NOME / LOGO - Sempre visibile ed esplicitamente bianco */}
+      <a
+        href="/"
+        onClick={handleLogoClick}
+        className="text-base font-bold tracking-wider text-[#ffffff] hover:opacity-70 transition-opacity cursor-pointer no-underline select-none"
       >
         MATTEO FINCO
-      </button>
+      </a>
 
-      <div className="flex gap-4 items-center ml-auto">
+      {/* SELETTORE LINGUA */}
+      <div className="flex items-center gap-3 text-xs font-semibold tracking-widest">
         <button
-          className={`bg-none border-none font-semibold text-xs tracking-wider cursor-pointer transition-colors duration-300 ${
-            lang === 'it' ? 'text-white font-bold' : 'text-neutral-500 hover:text-neutral-300'
+          type="button"
+          onClick={() => onLanguageChange('it')}
+          className={`transition-colors cursor-pointer ${
+            currentLang === 'it' ? 'text-[#ffffff] font-bold' : 'text-[#666666] hover:text-[#ffffff]'
           }`}
-          onClick={() => setLang('it')}
         >
           IT
         </button>
-        <span className="text-neutral-700">|</span>
+        <span className="text-[#333333]">/</span>
         <button
-          className={`bg-none border-none font-semibold text-xs tracking-wider cursor-pointer transition-colors duration-300 ${
-            lang === 'en' ? 'text-white font-bold' : 'text-neutral-500 hover:text-neutral-300'
+          type="button"
+          onClick={() => onLanguageChange('en')}
+          className={`transition-colors cursor-pointer ${
+            currentLang === 'en' ? 'text-[#ffffff] font-bold' : 'text-[#666666] hover:text-[#ffffff]'
           }`}
-          onClick={() => setLang('en')}
         >
           EN
         </button>
