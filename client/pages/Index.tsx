@@ -1,20 +1,12 @@
-import React from "react";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import IntroSection from "@/components/IntroSection";
-import CircleShowcase from "@/components/CircleShowcase";
-
-export default function Index() {
-  return (
-    <div style={{ background: "#000", color: "#fff", minHeight: "100vh", padding: "40px" }}>
-      <h1>Portfolio Matte</h1>
-      <p>Test di rendering base ok!</p>
-      
-      {/* Scommenta uno alla volta per trovare quale componente fa crashare la pagina: */}
-      {/* <Header /> */}
-      {/* <Hero /> */}
-      {/* <IntroSection /> */}
-      {/* <CircleShowcase /> */}
-    </div>
-  );
-}
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Matteo Finco</title>
+  </head>
+  <body className="bg-black text-white">
+    <div id="root"></div>
+    <script type="module" src="/client/main.tsx"></script>
+  </body>
+</html>
