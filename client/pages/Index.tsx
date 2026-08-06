@@ -9,105 +9,195 @@ const projectList: ProjectStep[] = [
   {
     id: '01',
     slug: 'snake',
-    title: 'Snake',
-    subtitle: 'Interactive hockey training system',
-    category: 'SPORT PRODUCT DESIGN',
+    title: {
+      it: 'Snake',
+      en: 'Snake'
+    },
+    subtitle: {
+      it: 'Sistema interattivo per l’allenamento hockey',
+      en: 'Interactive hockey training system'
+    },
+    category: {
+      it: 'DESIGN DI PRODOTTO SPORTIVO',
+      en: 'SPORT PRODUCT DESIGN'
+    },
     tools:
       'Product Design / CAD Modelling / Mechatronics / Prototyping',
     material:
       'Laser Sensors / RGB Feedback / Modular Mechanical System',
     year: '2026',
-    desc: 'Interactive training system developed for inline and ice hockey players. Snake combines modular mechanical components, sensors and real-time feedback to create adaptive exercises focused on puck control, reaction speed and cognitive agility.',
+    desc: {
+      it: 'Sistema di allenamento interattivo sviluppato per giocatori di hockey su ghiaccio e inline. Snake combina componenti meccanici modulari, sensori e feedback luminosi in tempo reale per creare esercizi adattivi focalizzati sul controllo del disco, velocità di reazione e agilità cognitiva.',
+      en: 'Interactive training system developed for inline and ice hockey players. Snake combines modular mechanical components, sensors and real-time feedback to create adaptive exercises focused on puck control, reaction speed and cognitive agility.'
+    },
     link: '/snake',
     img: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1400&q=80'
   },
+
   {
     id: '02',
     slug: 'archivia',
-    title: 'Archivia',
-    subtitle: 'USB flash drive inspired pen holder',
-    category: 'PRODUCT DESIGN & INDUSTRIAL PRODUCTION',
+    title: {
+      it: 'Archivia',
+      en: 'Archivia'
+    },
+    subtitle: {
+      it: 'Portapenne ispirato alla memoria digitale',
+      en: 'USB flash drive inspired pen holder'
+    },
+    category: {
+      it: 'DESIGN DI PRODOTTO & PRODUZIONE INDUSTRIALE',
+      en: 'PRODUCT DESIGN & INDUSTRIAL PRODUCTION'
+    },
     tools:
       'Industrial Design / Injection Moulding / Snap-fit Engineering',
     material:
       'Recycled Polymer / Monomaterial Construction / Mechanical Assembly',
     year: '2026',
-    desc: 'Desk organizer developed for the PLEIADES design competition with Ewikon, Arburg and Uniform. Inspired by digital storage devices, Archivia translates the logic of a USB flash drive into a physical object assembled through integrated mechanical connections.',
+    desc: {
+      it: 'Organizzatore da scrivania sviluppato per il concorso PLEIADES con Ewikon, Arburg e Uniform. Archivia traduce la logica della memoria USB in un oggetto fisico caratterizzato da connessioni meccaniche integrate e semplicità costruttiva.',
+      en: 'Desk organizer developed for the PLEIADES design competition with Ewikon, Arburg and Uniform. Archivia translates the logic of digital storage devices into a physical object assembled through integrated mechanical connections.'
+    },
     link: '/archivia',
     img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1400&q=80'
   },
+
   {
     id: '03',
     slug: 'nando',
-    title: 'Nando',
-    subtitle: 'Hyperplastic adaptive handle',
-    category: 'INCLUSIVE DESIGN & PARAMETRIC DESIGN',
+    title: {
+      it: 'Nando',
+      en: 'Nando'
+    },
+    subtitle: {
+      it: 'Impugnatura adattiva iperplastica',
+      en: 'Hyperplastic adaptive handle'
+    },
+    category: {
+      it: 'DESIGN INCLUSIVO & DESIGN PARAMETRICO',
+      en: 'INCLUSIVE DESIGN & PARAMETRIC DESIGN'
+    },
     tools:
       'Inclusive Design / Ergonomic Research / Parametric Modelling',
     material:
       'ELASTO-1000 Flexible Polymer / FDM 3D Printing',
     year: '2026',
-    desc: 'Inclusive handle designed to improve the use of cutlery and everyday tools for people with reduced hand strength. Through flexible geometry and parametric design, Nando adapts to different users while improving comfort, grip stability and independence.',
+    desc: {
+      it: 'Impugnatura inclusiva progettata per migliorare l’utilizzo di posate e strumenti quotidiani da parte di persone con ridotta forza nella mano. Attraverso geometrie flessibili e progettazione parametrica, Nando si adatta a diversi utenti migliorando comfort, stabilità e autonomia.',
+      en: 'Inclusive handle designed to improve the use of cutlery and everyday tools for people with reduced hand strength. Through flexible geometry and parametric design, Nando adapts to different users while improving comfort, grip stability and independence.'
+    },
     link: '/nando',
     img: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1400&q=80'
   },
+
   {
     id: '04',
     slug: 'pizzamente',
-    title: 'PizzaMente',
-    subtitle: 'Automated multisensory pizza experience',
-    category: 'SERVICE & SYSTEM DESIGN',
+    title: {
+      it: 'PizzaMente',
+      en: 'PizzaMente'
+    },
+    subtitle: {
+      it: 'Esperienza automatizzata multisensoriale della pizza',
+      en: 'Automated multisensory pizza experience'
+    },
+    category: {
+      it: 'SERVICE & SYSTEM DESIGN',
+      en: 'SERVICE & SYSTEM DESIGN'
+    },
     tools:
       'Service Design / UX-UI Design / System Thinking',
     material:
       'Automated Food System / Interactive Interface / Modular Architecture',
     year: '2026',
-    desc: 'Automated pizza service concept developed during a workshop with Daint. PizzaMente redesigns food automation by integrating ordering, preparation, consumption and disposal into a single system, using interactive experiences to transform waiting time into engagement.',
+    desc: {
+      it: 'Concept di servizio automatizzato sviluppato durante un workshop con Daint. PizzaMente ripensa il processo della pizza integrando ordinazione, preparazione, consumo e smaltimento in un unico sistema capace di trasformare l’attesa in esperienza.',
+      en: 'Automated pizza service concept developed during a workshop with Daint. PizzaMente redesigns food automation by integrating ordering, preparation, consumption and disposal into a single system that transforms waiting time into engagement.'
+    },
     link: '/pizzamente',
     img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1400&q=80'
   },
+
   {
     id: '05',
     slug: 'wafflemaker',
-    title: 'Waffle Maker',
-    subtitle: 'Product analysis and decomposition study',
-    category: 'BASIC DESIGN & PRODUCT ANALYSIS',
+    title: {
+      it: 'Waffle Maker',
+      en: 'Waffle Maker'
+    },
+    subtitle: {
+      it: 'Analisi e decomposizione di un prodotto',
+      en: 'Product analysis and decomposition study'
+    },
+    category: {
+      it: 'DESIGN DI BASE & ANALISI DEL PRODOTTO',
+      en: 'BASIC DESIGN & PRODUCT ANALYSIS'
+    },
     tools:
       'Reverse Engineering / Product Analysis / Editorial Design',
     material:
       'Mechanical Components / Thermal Systems / Product Language',
     year: '2025',
-    desc: 'Critical analysis of a domestic appliance through morphological and functional decomposition. The project investigates how components, mechanisms, materials and visual language interact to define the relationship between users and everyday objects.',
+    desc: {
+      it: 'Analisi critica di un elettrodomestico attraverso la decomposizione morfologica e funzionale. Il progetto esplora il rapporto tra componenti, meccanismi, materiali e linguaggio visivo nella relazione tra utenti e oggetti quotidiani.',
+      en: 'Critical analysis of a domestic appliance through morphological and functional decomposition. The project investigates how components, mechanisms, materials and visual language define the relationship between users and everyday objects.'
+    },
     link: '/wafflemaker',
     img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1400&q=80'
   },
+
   {
     id: '06',
     slug: 'ttable',
-    title: 'T-Table',
-    subtitle: 'Interactive table for digital awareness',
-    category: 'INTERACTION DESIGN & HMI',
+    title: {
+      it: 'T-Table',
+      en: 'T-Table'
+    },
+    subtitle: {
+      it: 'Tavolo interattivo per la consapevolezza digitale',
+      en: 'Interactive table for digital awareness'
+    },
+    category: {
+      it: 'INTERACTION DESIGN & HMI',
+      en: 'INTERACTION DESIGN & HMI'
+    },
     tools:
       'Interaction Design / HMI / Calm Technology',
     material:
       'Touchcode Ink / LED Matrix / Smart Surface System',
     year: '2026',
-    desc: 'Interactive table concept designed to reduce distracted eating in fast-food environments. T-Table uses adaptive technology to support social interaction, reducing digital distraction when food arrives and restoring attention to the meal experience.',
+    desc: {
+      it: 'Concept di tavolo interattivo progettato per ridurre la distrazione digitale negli ambienti fast-food. T-Table utilizza tecnologie adattive per favorire l’interazione sociale e riportare attenzione all’esperienza del pasto.',
+      en: 'Interactive table concept designed to reduce distracted eating in fast-food environments. T-Table uses adaptive technology to support social interaction and restore attention to the meal experience.'
+    },
     link: '/ttable',
     img: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80'
   },
+
   {
     id: '07',
     slug: 'prop',
-    title: 'Prop',
-    subtitle: 'Open-source 3D printed crutch system',
-    category: 'SOCIAL DESIGN & OPEN SOURCE',
+    title: {
+      it: 'Prop',
+      en: 'Prop'
+    },
+    subtitle: {
+      it: 'Sistema open-source di stampelle stampate in 3D',
+      en: 'Open-source 3D printed crutch system'
+    },
+    category: {
+      it: 'SOCIAL DESIGN & OPEN SOURCE',
+      en: 'SOCIAL DESIGN & OPEN SOURCE'
+    },
     tools:
       'Open Source Design / CAD Modelling / FDM Manufacturing',
     material:
       'PETG Connectors / Nylon Fasteners / Adaptable Structure',
     year: '2026',
-    desc: 'Open-source emergency crutch system developed during the Ánako Design Challenge with Prusa Research. Prop uses 3D printed connectors to transform locally available sticks into functional mobility aids, enabling rapid and accessible production in crisis contexts.',
+    desc: {
+      it: 'Sistema open-source di stampelle sviluppato durante la Ánako Design Challenge con Prusa Research. Prop utilizza connettori stampati in 3D per trasformare bastoni disponibili localmente in ausili funzionali, permettendo una produzione rapida e accessibile in contesti di emergenza.',
+      en: 'Open-source emergency crutch system developed during the Ánako Design Challenge with Prusa Research. Prop uses 3D printed connectors to transform locally available sticks into functional mobility aids, enabling rapid and accessible production in crisis contexts.'
+    },
     link: '/prop',
     img: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1400&q=80'
   }
