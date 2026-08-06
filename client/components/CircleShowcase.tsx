@@ -255,9 +255,10 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
         .process-scroll-column {
           display: flex;
           flex-direction: column;
+          scroll-snap-type: y mandatory;
+          overscroll-behavior: contain;
         }
 
-        /* STEP 1 MODIFICATO */
         .process-card-item {
           height: 100vh;
           max-height: 100vh;
@@ -268,6 +269,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           padding: 20px 0;
           box-sizing: border-box;
           scroll-snap-align: center;
+          scroll-snap-stop: always;
         }
 
         .project-category-tag {
@@ -278,7 +280,6 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           text-transform: uppercase;
         }
 
-        /* STEP 2 MODIFICATO */
         .project-main-title {
           font-size: clamp(2rem, 3vw, 3rem);
           font-weight: 900;
@@ -293,7 +294,6 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ steps, activeSte
           font-weight: 500;
         }
 
-        /* STEP 3 MODIFICATO */
         .project-desc-text {
           font-size: clamp(0.85rem, 1vw, 0.95rem);
           color: #999999;
