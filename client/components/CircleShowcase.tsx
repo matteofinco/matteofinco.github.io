@@ -15,13 +15,19 @@ export interface ProjectStep {
     it: string;
     en: string;
   };
+  tools: {
+    it: string;
+    en: string;
+  };
+  material: {
+    it: string;
+    en: string;
+  };
+  year: string;
   desc: {
     it: string;
     en: string;
   };
-  tools: string;
-  material: string;
-  year: string;
   link: string;
   img: string;
 }
@@ -536,12 +542,12 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
                   <div className="project-meta-grid">
                     <div className="meta-item">
                       <span className="label">{labels[lang].approach}</span>
-                      <span className="value">{st.tools}</span>
+                      <span className="value">{st.tools[lang]}</span>
                     </div>
 
                     <div className="meta-item">
                       <span className="label">{labels[lang].materials}</span>
-                      <span className="value">{st.material}</span>
+                      <span className="value">{st.material[lang]}</span>
                     </div>
                   </div>
 
