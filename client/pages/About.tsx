@@ -23,9 +23,9 @@ const translations = {
     collaborationTitle: "Il Design come Collaborazione",
     collaborationText1: "Nel design vedo la stessa dinamica: le soluzioni efficaci sono raramente individuali. Nascono dal confronto e dalla capacità di unire competenze diverse mantenendo una visione d'insieme chiara del sistema.",
     collaborationText2: "Oggi continuo a vedere il design come un modo per comprendere il mondo prima di cambiarlo. Ogni progetto è un'occasione per imparare qualcosa di nuovo e trasformare un problema complesso in una soluzione chiara.",
-    ctaTitle: "Vuoi saperne di più?",
-    ctaSub: "Per consultare l'elenco completo delle mie competenze, il percorso formativo e le mie esperienze, puoi dare un'occhiata al mio CV.",
-    ctaButton: "VISUALIZZA CURRICULUM"
+    ctaTitle: "What's next?",
+    ctaSub: "Per ulteriori informazioni sul mio percorso, competenze e dettagli tecnici, consulta il mio CV completo.",
+    ctaButton: "CURRICULUM VITAE"
   },
   en: {
     heroTitle: "MATTEO FINCO",
@@ -47,9 +47,9 @@ const translations = {
     collaborationTitle: "Design as Collaboration",
     collaborationText1: "In design, I see the same dynamic: effective solutions are rarely individual. They come from discussion and from the ability to combine different skills while keeping a clear overall vision of the system.",
     collaborationText2: "Today, I still see design as a way to understand the world before changing it. Every project is a chance to learn something new and to turn a complex problem into a clear solution.",
-    ctaTitle: "Want to know more?",
-    ctaSub: "To check out my detailed skills, educational background, and experience, take a look at my full resume.",
-    ctaButton: "VIEW RESUME"
+    ctaTitle: "What's next?",
+    ctaSub: "For additional information about my background, technical skills, and experience, view my CV.",
+    ctaButton: "CURRICULUM VITAE"
   }
 };
 
@@ -116,7 +116,7 @@ export default function About() {
       <style>{`
         .about-page { padding-top: 80px; }
         .about-hero {
-          min-height: 85vh;
+          min-height: 75vh;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -150,18 +150,12 @@ export default function About() {
           bottom: 40px;
           left: 50%;
           transform: translateX(-50%);
-          opacity: 0.5;
-          animation: bounce 2s infinite;
+          opacity: 0.6;
         }
         .hero-arrow svg {
           width: 32px;
           height: 32px;
           stroke: #ffffff;
-        }
-        @keyframes bounce {
-          0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-          40% { transform: translate(-50%, -10px); }
-          60% { transform: translate(-50%, -5px); }
         }
 
         .about-fullbleed-wrapper { width: 100%; padding: 100px 0; display: flex; flex-direction: column; gap: 120px; box-sizing: border-box; }
@@ -181,10 +175,10 @@ export default function About() {
         .reveal-editorial.reveal-from-left { transform: translateX(-35px); }
         .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: translateX(0); }
 
-        .about-cta-section { width: 100%; padding: 120px 6vw; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 40px; }
-        .about-cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #ffffff; margin-bottom: 20px; }
-        .about-cta-section p { font-size: 1.1rem; color: #aaaaaa; max-width: 600px; margin: 0 auto 40px; }
-        .cta-button { display: inline-block; padding: 16px 40px; background: #ffffff; color: #070707; font-weight: 700; text-decoration: none; transition: all 0.3s ease; border: 1px solid #ffffff; border-radius: 8px; }
+        .about-cta-section { width: 100%; padding: 100px 6vw; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 40px; }
+        .about-cta-section h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; color: #ffffff; margin-bottom: 16px; letter-spacing: -0.02em; }
+        .about-cta-section p { font-size: 1.1rem; color: #aaaaaa; max-width: 580px; margin: 0 auto 36px; line-height: 1.6; }
+        .cta-button { display: inline-block; padding: 16px 40px; background: #ffffff; color: #070707; font-weight: 700; text-decoration: none; transition: all 0.3s ease; border: 1px solid #ffffff; border-radius: 8px; letter-spacing: 0.03em; }
         .cta-button:hover { background: #070707; color: #ffffff; transform: translateY(-3px); }
         
         @media (max-width: 1024px) {
@@ -192,7 +186,7 @@ export default function About() {
           .about-row.media-left .about-text, .about-row.media-right .about-text { padding: 0 6vw; }
           .about-row.media-left .about-media, .about-row.media-right .about-media { height: 420px; }
           .about-hero { padding: 60px 6vw; }
-          .about-cta-section { padding: 80px 6vw; }
+          .about-cta-section { padding: 70px 6vw; }
         }
       `}</style>
 
@@ -203,8 +197,8 @@ export default function About() {
           <p>{t.heroSub}</p>
         </div>
         <div className="hero-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 5v14M19 12l-7 7-7-7" />
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 5v14M5 12l7 7 7-7" />
           </svg>
         </div>
       </section>
