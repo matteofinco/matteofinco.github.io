@@ -85,7 +85,7 @@ export default function Index() {
   const [activeStep, setActiveStep] = useState<number>(0);
 
   useEffect(() => {
-    // Reveal Animations morbide con Blur & Scale
+    // Reveal Animations per le immagini in entrata da Destra / Sinistra
     const revealElements = document.querySelectorAll('.reveal-editorial');
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -95,12 +95,12 @@ export default function Index() {
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.15 }
     );
 
     revealElements.forEach((el) => revealObserver.observe(el));
 
-    // Observer per la sezione Showcase dei Progetti/Processo
+    // Observer per sincronizzare lo scroll a destra con il cambio foto nella cornice fissa a sinistra
     const processCards = document.querySelectorAll('.process-card');
     const processObserver = new IntersectionObserver(
       (entries) => {
@@ -111,7 +111,7 @@ export default function Index() {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.45 }
     );
 
     processCards.forEach((card) => processObserver.observe(card));
@@ -147,7 +147,7 @@ export default function Index() {
           min-height: 100vh;
         }
 
-        /* HEADER EDITORIALE MINIMALE */
+        /* HEADER EDITORIALE */
         header {
           position: fixed;
           top: 0;
@@ -191,7 +191,7 @@ export default function Index() {
           color: #ffffff;
         }
 
-        /* 1. HERO CON MASCHERA SVG "DESIGN" E LAYER IN CONTINUO FADE */
+        /* HERO CON MASCHERA SVG E LAYER ANIMATI */
         .hero-section {
           position: relative;
           width: 100%;
@@ -217,7 +217,6 @@ export default function Index() {
           display: block;
         }
 
-        /* Layer Animati dietro la Maschera */
         .layer-blueprint {
           fill: url(#blueprintPattern);
           animation: layerMove1 22s ease-in-out infinite alternate;
@@ -256,7 +255,7 @@ export default function Index() {
           50% { opacity: 0.2; }
         }
 
-        /* 2. SEZIONI INTRODUTTIVE CON TANTO RESPIRO E ANIMAZIONI MORBIDE */
+        /* SEZIONI INTRODUTTIVE - IMMAGINI IN ENTRATA DA SINISTRA E DESTRA */
         .editorial-section {
           max-width: 1400px;
           margin: 0 auto;
@@ -313,18 +312,21 @@ export default function Index() {
           filter: grayscale(0%);
         }
 
-        /* Nuova animazione morbida: opacity + blur + scale + translateX */
+        /* Animazioni di entrata da Destra e Sinistra con Blur e Scale */
         .reveal-editorial {
           opacity: 0;
           filter: blur(12px);
-          transform: scale(1.04) translateX(35px);
           transition: opacity 1.4s cubic-bezier(.22,.61,.36,1), 
                       filter 1.4s cubic-bezier(.22,.61,.36,1), 
                       transform 1.4s cubic-bezier(.22,.61,.36,1);
         }
 
+        .reveal-editorial.reveal-from-right {
+          transform: scale(1.04) translateX(50px);
+        }
+
         .reveal-editorial.reveal-from-left {
-          transform: scale(1.04) translateX(-35px);
+          transform: scale(1.04) translateX(-50px);
         }
 
         .reveal-editorial.reveal-active {
@@ -333,7 +335,7 @@ export default function Index() {
           transform: scale(1) translateX(0);
         }
 
-        /* 3. SEZIONE STICKY CON PRODOTTO/SCARPA ANCORATA E TESTO CHE SCORRE SOPRA */
+        /* SEZIONE STICKY OGGETTO/SCARPA */
         .sticky-feature-section {
           position: relative;
           width: 100%;
@@ -386,7 +388,6 @@ export default function Index() {
           backdrop-filter: blur(4px);
         }
 
-        /* Testi che scorrono sopra l'oggetto sticky */
         .scrolling-overlay-container {
           position: relative;
           z-index: 2;
@@ -433,7 +434,7 @@ export default function Index() {
           line-height: 1.7;
         }
 
-        /* 4. SEZIONE SHOWCASE PROCESSO/PROGETTI IN STILE EDITORIALE E TECNICO */
+        /* SHOWCASE PROCESSO CON CORNICE STATICA E TRANSIZIONE FOTO */
         .process-showcase-wrapper {
           position: relative;
           max-width: 1500px;
@@ -445,7 +446,6 @@ export default function Index() {
           align-items: start;
         }
 
-        /* Colonna Sticky di Sinistra con Telaio Tecnico */
         .process-sticky-left {
           position: sticky;
           top: 12vh;
@@ -465,21 +465,30 @@ export default function Index() {
           overflow: hidden;
         }
 
-        .technical-img-wrapper {
+        .technical-img-stack {
           position: absolute;
           inset: 0;
           width: 100%;
           height: 100%;
         }
 
-        .technical-img-wrapper img {
+        .process-frame-img {
+          position: absolute;
+          inset: 0;
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.22,.61,.36,1);
+          opacity: 0;
+          transform: scale(1.08);
+          transition: opacity 0.85s cubic-bezier(.22,.61,.36,1), transform 0.85s cubic-bezier(.22,.61,.36,1);
+          pointer-events: none;
         }
 
-        /* Sovrapposizione grafica con quote, coordinate e indicatori tecnici */
+        .process-frame-img.active-img {
+          opacity: 1;
+          transform: scale(1);
+        }
+
         .technical-hud-overlay {
           position: absolute;
           inset: 0;
@@ -489,7 +498,6 @@ export default function Index() {
           z-index: 3;
         }
 
-        /* Colonna di Destra con i blocchi del processo */
         .process-scroll-right {
           padding-top: 6vh;
           padding-bottom: 20vh;
@@ -501,7 +509,7 @@ export default function Index() {
           flex-direction: column;
           justify-content: center;
           padding: 40px 0;
-          opacity: 0.25;
+          opacity: 0.2;
           filter: blur(4px);
           transition: opacity 0.6s ease, filter 0.6s ease;
           border-bottom: 1px solid #141414;
@@ -609,18 +617,16 @@ export default function Index() {
         </div>
       </header>
 
-      {/* 1. HERO CON MASCHERA SVG "DESIGN" & FADE CONTINUI DEI LAYER */}
+      {/* 1. HERO CON MASCHERA SVG "DESIGN" */}
       <section className="hero-section">
         <div className="hero-svg-wrapper">
           <svg className="hero-svg-mask" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid meet">
             <defs>
-              {/* Pattern Blueprint */}
               <pattern id="blueprintPattern" width="40" height="40" patternUnits="userSpaceOnUse">
                 <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="1" />
                 <circle cx="20" cy="20" r="1.5" fill="rgba(255, 255, 255, 0.4)" />
               </pattern>
 
-              {/* Maschera di testo DESIGN */}
               <mask id="designTextMask" x="0" y="0" width="100%" height="100%">
                 <rect x="0" y="0" width="100%" height="100%" fill="#000000" />
                 <text
@@ -639,12 +645,8 @@ export default function Index() {
               </mask>
             </defs>
 
-            {/* Layer in movimento ritmico mascherati dentro il testo DESIGN */}
             <g mask="url(#designTextMask)">
-              {/* Layer 1: Blueprint Grid */}
               <rect className="layer-blueprint" x="-10%" y="-10%" width="120%" height="120%" />
-
-              {/* Layer 2: Schizzi a Matita */}
               <g className="layer-sketches">
                 <image
                   href="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1600&q=80"
@@ -656,8 +658,6 @@ export default function Index() {
                   preserveAspectRatio="xMidYMid slice"
                 />
               </g>
-
-              {/* Layer 3: Immagine Desaturata Tecnico/Cromatico */}
               <g className="layer-photo">
                 <image
                   href="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80"
@@ -674,19 +674,21 @@ export default function Index() {
         </div>
       </section>
 
-      {/* 2. SEZIONI INTRODUTTIVE CON ANIMAZIONI EDITORIALI (BLUR + SCALE + FADE) */}
+      {/* 2. SEZIONI INTRODUTTIVE - IMMAGINI IN ENTRATA ALTERNATE (DESTRA / SINISTRA) */}
       <section className="editorial-section">
         <div className="editorial-text">
           <h2>{t.sec1Title}</h2>
           <h3 className="sub-grey">{t.sec1Sub}</h3>
           <p>{t.sec1P}</p>
         </div>
-        <div className="editorial-media-box reveal-editorial">
+        {/* Entrata da Destra */}
+        <div className="editorial-media-box reveal-editorial reveal-from-right">
           <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1000&q=80" alt="Design Lab" />
         </div>
       </section>
 
       <section className="editorial-section">
+        {/* Entrata da Sinistra */}
         <div className="editorial-media-box reveal-editorial reveal-from-left">
           <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1000&q=80" alt="Process Sketch" />
         </div>
@@ -697,7 +699,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* 3. SEZIONE STICKY: SCARPA / PRODOTTO ANCORATO CON CONTENUTI CHE SCORRONO */}
+      {/* 3. SEZIONE STICKY OGGETTO */}
       <section className="sticky-feature-section">
         <div className="sticky-media-container">
           <div className="sticky-media-box">
@@ -730,27 +732,29 @@ export default function Index() {
         </div>
       </section>
 
-      {/* 4. SHOWCASE PROCESSO/PROGETTI IN STILE EDITORIALE E TELAIO TECNICO */}
+      {/* 4. SHOWCASE PROCESSO CON CORNICE STATICA A SINISTRA E CAMBIO FOTO FLUIDO */}
       <section className="process-showcase-wrapper">
-        {/* Colonna Fissa a Sinistra con Sovrapposizioni Tecniche */}
+        {/* CORNICE STATICA A SINISTRA */}
         <div className="process-sticky-left">
           <div className="technical-frame">
-            <div className="technical-img-wrapper">
-              <img
-                src={processSteps[activeStep]?.img}
-                alt={processSteps[activeStep]?.title}
-              />
+            <div className="technical-img-stack">
+              {processSteps.map((step, idx) => (
+                <img
+                  key={step.id}
+                  src={step.img}
+                  alt={step.title}
+                  className={`process-frame-img ${activeStep === idx ? 'active-img' : ''}`}
+                />
+              ))}
             </div>
 
-            {/* Telaio di quote e coordinate SVG */}
+            {/* Overlays grafici e coordinate tecniche */}
             <svg className="technical-hud-overlay" viewBox="0 0 500 600">
-              {/* Crocette di registro agli angoli */}
               <path d="M 20 30 L 20 20 L 30 20" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
               <path d="M 470 20 L 480 20 L 480 30" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
               <path d="M 20 570 L 20 580 L 30 580" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
               <path d="M 470 580 L 480 580 L 480 570" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
 
-              {/* Indicatori e Coordinate */}
               <text x="35" y="32" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="monospace">
                 SEC_REF // A-0{activeStep + 1}
               </text>
@@ -758,7 +762,6 @@ export default function Index() {
               <circle cx="450" cy="50" r="14" stroke="rgba(255,255,255,0.2)" strokeWidth="1" fill="none" />
               <text x="444" y="53" fill="rgba(255,255,255,0.6)" fontSize="8" fontFamily="monospace">12°</text>
 
-              {/* Linea di quota inferiore */}
               <line x1="30" y1="560" x2="470" y2="560" stroke="rgba(255,255,255,0.15)" strokeWidth="1" strokeDasharray="3,3" />
               <text x="35" y="550" fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="monospace">
                 SCALE 1:1 // TOLERANCE 0.05mm
@@ -770,7 +773,7 @@ export default function Index() {
           </div>
         </div>
 
-        {/* Colonna di Destra con lo scorrimento dei blocchi editoriali */}
+        {/* SPIEGAZIONI A DESTRA CHE CAMBIANO MAN MANO CHE SCORRI */}
         <div className="process-scroll-right">
           {processSteps.map((step, idx) => (
             <div
