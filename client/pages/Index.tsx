@@ -127,7 +127,6 @@ export default function Index() {
     };
     window.addEventListener('set-active-project' as any, handleCustomStep);
 
-    // Header Observer
     const heroEl = document.getElementById('hero-section');
     if (heroEl) {
       const heroObserver = new IntersectionObserver(
@@ -139,7 +138,6 @@ export default function Index() {
       heroObserver.observe(heroEl);
     }
 
-    // Reveal Animation Observer
     const revealElements = document.querySelectorAll('.reveal-editorial');
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -153,7 +151,6 @@ export default function Index() {
     );
     revealElements.forEach((el) => revealObserver.observe(el));
 
-    // Project Cards Active Step Observer
     const processCards = document.querySelectorAll('.process-card');
     const processObserver = new IntersectionObserver(
       (entries) => {
