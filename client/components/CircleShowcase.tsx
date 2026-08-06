@@ -19,14 +19,13 @@ interface ShowcaseProps {
 }
 
 export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) => {
-  // Calcolo delle posizioni dei pallini sul cerchio SVG (Raggio = 180, Centro = 250,250)
   const radius = 180;
   const centerX = 250;
   const centerY = 250;
 
   return (
     <section className="process-showcase-wrapper">
-      {/* COLONNA FISSA A SINISTRA CON CERCHIO SVG E PALLINI DINAMICI */}
+      {/* COLONNA FISSA (STICKY) A SINISTRA */}
       <div className="process-sticky-left">
         <div className="circle-technical-frame">
           <svg className="circle-hud-svg" viewBox="0 0 500 500">
@@ -36,12 +35,12 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
               </clipPath>
             </defs>
 
-            {/* Cerchi concentrici di guida e scala numerica */}
+            {/* Guide geometriche di sfondo */}
             <circle cx={centerX} cy={centerY} r={radius + 15} stroke="rgba(255,255,255,0.08)" strokeWidth="1" fill="none" />
             <circle cx={centerX} cy={centerY} r={radius} stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" strokeDasharray="6,6" fill="none" />
             <circle cx={centerX} cy={centerY} r={radius - 20} stroke="rgba(255,255,255,0.3)" strokeWidth="1" fill="none" />
 
-            {/* Foto ritagliata all'interno del cerchio */}
+            {/* Immagini ad altezza cerchio */}
             <g clipPath="url(#circleImageClip)">
               {steps.map((step, idx) => (
                 <image
@@ -57,7 +56,7 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
               ))}
             </g>
 
-            {/* Pallini interattivi lungo la circonferenza */}
+            {/* Pallini e numeri dinamici lungo la circonferenza */}
             {steps.map((step, idx) => {
               const angleDeg = -90 + idx * (360 / steps.length);
               const angleRad = (angleDeg * Math.PI) / 180;
@@ -67,11 +66,9 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
 
               return (
                 <g key={step.id} className="circle-node-group">
-                  {/* Anello esterno pulsante se attivo */}
                   {isActive && (
                     <circle cx={px} cy={py} r="12" fill="none" stroke="#ffffff" strokeWidth="1" className="node-pulse" />
                   )}
-                  {/* Pallino principale */}
                   <circle
                     cx={px}
                     cy={py}
@@ -81,7 +78,6 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
                     strokeWidth="2"
                     className="transition-all duration-300"
                   />
-                  {/* Etichetta numerica del pallino */}
                   <text
                     x={px + (Math.cos(angleRad) * 22)}
                     y={py + (Math.sin(angleRad) * 22) + 4}
@@ -96,7 +92,7 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
               );
             })}
 
-            {/* Dettagli tecnici centrali e reticolo */}
+            {/* Mirino tecnico centrale */}
             <line x1={centerX - 15} y1={centerY} x2={centerX + 15} y2={centerY} stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
             <line x1={centerX} y1={centerY - 15} x2={centerX} y2={centerY + 15} stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
             <text x={centerX} y={centerY + 45} textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="monospace">
@@ -106,7 +102,7 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
         </div>
       </div>
 
-      {/* SPIEGAZIONI A DESTRA */}
+      {/* COLONNA TESTI A DESTRA */}
       <div className="process-scroll-right">
         {steps.map((step, idx) => (
           <div
