@@ -1,6 +1,7 @@
 import React, { Component, ReactNode } from "react";
-import Index from "@/pages/Index";
-import About from "@/pages/About";
+import { Switch, Route } from "wouter";
+import Index from "./pages/Index";
+import About from "./pages/About";
 
 interface Props {
   children?: ReactNode;
@@ -46,7 +47,14 @@ class ErrorBoundary extends Component<Props, State> {
 export default function App() {
   return (
     <ErrorBoundary>
-      <Index />
+      <Switch>
+        <Route path="/about" component={About} />
+        <Route path="/" component={Index} />
+        {/* Fallback per qualsiasi altro URL */}
+        <Route>
+          <Index />
+        </Route>
+      </Switch>
     </ErrorBoundary>
   );
 }
