@@ -4,8 +4,8 @@ import { Header } from '../components/Header';
 // Dizionario dei testi per Italiano e Inglese
 const translations = {
   it: {
-    heroTitle: "Capire il design attraverso il fare",
-    heroSub: "Un viaggio nel product design, negli strumenti digitali e nell'arte di costruire cose che funzionano.",
+    heroTitle: "MATTEO FINCO",
+    heroSub: "Product Designer\nbased in Italy\n\nMi piace capire come funzionano le cose.",
     curiosityTitle: "Mi piace capire come funzionano le cose.",
     curiosityText1: "Quando guardo un oggetto, il mio primo impulso non è chiedermi se sia bello o brutto, ma perché sia stato progettato in quel modo. Come è stato costruito, quali vincoli hanno guidato le decisioni e quali compromessi si celano dietro una forma apparentemente semplice.",
     curiosityText2: "Per me, la qualità di un prodotto risiede nella chiarezza della sua logica. Questo approccio mi ha portato al product design, dove curiosità, competenze tecniche e creatività lavorano costantemente insieme.",
@@ -23,26 +23,26 @@ const translations = {
     collaborationTitle: "Il Design come Collaborazione",
     collaborationText1: "Nel design vedo la stessa dinamica: le soluzioni efficaci sono raramente individuali. Nascono dal confronto e dalla capacità di unire competenze diverse mantenendo una visione d'insieme chiara del sistema.",
     collaborationText2: "Oggi continuo a vedere il design come un modo per comprendere il mondo prima di cambiarlo. Ogni progetto è un'occasione per imparare qualcosa di nuovo e trasformare un problema complesso in una soluzione chiara.",
-    expertiseHeader: "Aree Chiave e Competenze",
-    exp1Title: "Product Design",
-    exp1Desc: "Dal concept iniziale alla modellazione CAD dettagliata, design for manufacturability e rendering digitale. Competenza in Rhino 7, Fusion 360 e modellazione parametrica.",
-    exp2Title: "Digital Fabrication",
-    exp2Desc: "Tecnologie di stampa 3D, taglio laser, fresatura CNC e tecniche di post-produzione. Esperienza pratica con Bambu Lab, LightBurn e metodi di finitura dei materiali.",
-    exp3Title: "Materiali e Processi",
-    exp3Desc: "Profonda comprensione delle proprietà dei materiali, vincoli produttivi, considerazioni sulla sostenibilità e metodi di assemblaggio. Competenza in legno, polimeri, metalli e compositi.",
-    exp4Title: "Ricerca e Analisi",
-    exp4Desc: "Ricerca incentrata sull'utente, analisi competitiva, teardown di prodotti e risoluzione sistematica dei problemi.",
-    exp5Title: "System Design",
-    exp5Desc: "Progettazione di sistemi modulari, approcci di design parametrico e soluzioni scalabili.",
-    exp6Title: "Comunicazione",
-    exp6Desc: "Presentazione chiara del pensiero progettuale attraverso rendering, prototipi, documentazione tecnica e storytelling.",
+    expertiseHeader: "How I Design",
+    exp1Title: "01 — Concept to Product",
+    exp1Desc: "Trasformo problemi e osservazioni in prodotti fisici attraverso ricerca, concept, modellazione CAD e sviluppo orientato alla produzione.",
+    exp2Title: "02 — Digital to Physical",
+    exp2Desc: "Utilizzo strumenti digitali e tecnologie di fabbricazione per trasformare idee in prototipi reali: stampa 3D, CNC, taglio laser e sperimentazione dei materiali.",
+    exp3Title: "03 — Understanding Objects",
+    exp3Desc: "Analizzo prodotti esistenti attraverso smontaggio, studio dei componenti e comprensione delle logiche costruttive.",
+    exp4Title: "04 — Materials & Processes",
+    exp4Desc: "Studio materiali, processi produttivi e vincoli tecnici per progettare oggetti semplici, funzionali e realizzabili.",
+    exp5Title: "05 — Systems Thinking",
+    exp5Desc: "Progetto prodotti e sistemi considerando interazioni, modularità e relazione tra utente, oggetto e ambiente.",
+    exp6Title: "06 — Design Communication",
+    exp6Desc: "Rendo comprensibili idee complesse attraverso rendering, prototipi, documentazione tecnica e storytelling.",
     ctaTitle: "E adesso?",
     ctaSub: "Interessato a collaborare a un progetto di design? Sono sempre aperto a nuove sfide e a lavori significativi.",
     ctaButton: "VISUALIZZA PORTFOLIO"
   },
   en: {
-    heroTitle: "Understanding Design Through Making",
-    heroSub: "A journey into product design, digital tools, and the art of building things that work.",
+    heroTitle: "MATTEO FINCO",
+    heroSub: "Product Designer\nbased in Italy\n\nI like understanding how things work.",
     curiosityTitle: "I like understanding how things work.",
     curiosityText1: "When I look at an object, my first impulse is not to ask whether it is beautiful or not, but why it was designed that way. How it was built, which constraints shaped the decisions, and which compromises are hidden behind an apparently simple form.",
     curiosityText2: "For me, the quality of a product lies in the clarity of its logic. This approach led me to product design, where curiosity, technical skills, and creativity constantly work together.",
@@ -60,19 +60,19 @@ const translations = {
     collaborationTitle: "Design as Collaboration",
     collaborationText1: "In design, I see the same dynamic: effective solutions are rarely individual. They come from discussion and from the ability to combine different skills while keeping a clear overall vision of the system.",
     collaborationText2: "Today, I still see design as a way to understand the world before changing it. Every project is a chance to learn something new and to turn a complex problem into a clear solution.",
-    expertiseHeader: "Core Areas & Skills",
-    exp1Title: "Product Design",
-    exp1Desc: "From initial concept through detailed CAD modeling, design for manufacturability, and digital rendering. Proficiency in Rhino 7, Fusion 360, and parametric modeling.",
-    exp2Title: "Digital Fabrication",
-    exp2Desc: "3D printing technologies, laser cutting, CNC milling, and post-processing techniques. Hands-on experience with Bambu Lab, LightBurn, and various material finishing methods.",
-    exp3Title: "Materials & Process",
-    exp3Desc: "Deep understanding of material properties, manufacturing constraints, sustainability considerations, and assembly methods. Expertise in wood, polymers, metals, and composites.",
-    exp4Title: "Research & Analysis",
-    exp4Desc: "User-centered research, competitive analysis, product teardowns, and systematic problem-solving.",
-    exp5Title: "System Design",
-    exp5Desc: "Design of modular systems, parametric design approaches, and scalable solutions.",
-    exp6Title: "Communication",
-    exp6Desc: "Clear presentation of design thinking through renderings, prototypes, technical documentation, and storytelling.",
+    expertiseHeader: "How I Design",
+    exp1Title: "01 — Concept to Product",
+    exp1Desc: "I transform problems and observations into physical products through research, concept development, CAD modelling and production-oriented design.",
+    exp2Title: "02 — Digital to Physical",
+    exp2Desc: "I use digital tools and fabrication technologies to transform ideas into physical prototypes: 3D printing, CNC machining, laser cutting and material experimentation.",
+    exp3Title: "03 — Understanding Objects",
+    exp3Desc: "I analyse existing products through teardown, component study and understanding of construction logic.",
+    exp4Title: "04 — Materials & Processes",
+    exp4Desc: "I study materials, manufacturing processes and technical constraints to design simple, functional and feasible products.",
+    exp5Title: "05 — Systems Thinking",
+    exp5Desc: "I design products and systems considering interactions, modularity and the relationship between user, object and environment.",
+    exp6Title: "06 — Design Communication",
+    exp6Desc: "I communicate complex ideas through rendering, prototypes, technical documentation and storytelling.",
     ctaTitle: "What's next?",
     ctaSub: "Interested in collaborating on a design project? I'm always open to new challenges and meaningful work.",
     ctaButton: "VIEW PORTFOLIO"
@@ -141,9 +141,35 @@ export default function About() {
 
       <style>{`
         .about-page { padding-top: 80px; }
-        .about-hero { min-height: 50vh; display: flex; align-items: center; justify-content: center; padding: 80px 6vw; text-align: center; border-bottom: 1px solid #1a1a1a; }
-        .about-hero h1 { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 900; line-height: 1.1; color: #ffffff; max-width: 900px; margin-bottom: 30px; letter-spacing: -1px; }
-        .about-hero p { font-size: 1.25rem; color: #888888; max-width: 700px; margin: 0 auto; line-height: 1.7; }
+        .about-hero {
+          min-height: 75vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 120px 6vw;
+          border-bottom: 1px solid #1a1a1a;
+        }
+        .about-hero > div {
+          width: 100%;
+          max-width: 1200px;
+        }
+        .about-hero h1 {
+          font-size: clamp(4rem, 9vw, 9rem);
+          font-weight: 900;
+          letter-spacing: -0.05em;
+          line-height: 0.9;
+          color: #ffffff;
+          margin-bottom: 40px;
+          text-align: left;
+        }
+        .about-hero p {
+          white-space: pre-line;
+          font-size: clamp(1.3rem, 2vw, 2rem);
+          color: #888;
+          line-height: 1.5;
+          max-width: 600px;
+          text-align: left;
+        }
         .about-fullbleed-wrapper { width: 100%; padding: 100px 0; display: flex; flex-direction: column; gap: 120px; box-sizing: border-box; }
         .about-row { display: grid; grid-template-columns: 1fr 1fr; align-items: center; width: 100%; min-height: 70vh; }
         .about-row.media-left .about-media { width: 100%; height: 620px; padding-left: 0; }
@@ -165,11 +191,44 @@ export default function About() {
         .expertise-card:hover { border-color: #444444; background: rgba(255, 255, 255, 0.05); transform: translateY(-6px); }
         .expertise-card h3 { font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 15px; }
         .expertise-card p { color: #888888; font-size: 1rem; line-height: 1.7; }
+        
+        .tools-section {
+          max-width: 1200px;
+          margin: 80px auto;
+          padding: 0 6vw 120px;
+        }
+        .tools-section h2 {
+          font-size: 3rem;
+          font-weight: 800;
+          margin-bottom: 50px;
+          color: #ffffff;
+        }
+        .tools-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 30px;
+        }
+        .tools-grid div {
+          border-top: 1px solid #333;
+          padding-top: 25px;
+        }
+        .tools-grid h3 {
+          color: white;
+          font-size: 1.2rem;
+          margin-bottom: 15px;
+        }
+        .tools-grid p {
+          color: #888;
+          line-height: 1.8;
+          font-size: 0.95rem;
+        }
+        
         .about-cta-section { width: 100%; padding: 80px 6vw; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 100px; }
         .about-cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #ffffff; margin-bottom: 30px; }
         .about-cta-section p { font-size: 1.1rem; color: #aaaaaa; max-width: 600px; margin: 0 auto 40px; }
         .cta-button { display: inline-block; padding: 16px 40px; background: #ffffff; color: #070707; font-weight: 700; text-decoration: none; transition: all 0.3s ease; border: 1px solid #ffffff; }
         .cta-button:hover { background: #070707; color: #ffffff; transform: translateY(-3px); }
+        
         @media (max-width: 1024px) {
           .about-row { grid-template-columns: 1fr; gap: 40px; height: auto; }
           .about-row.media-left .about-text, .about-row.media-right .about-text { padding: 0 6vw; }
@@ -177,6 +236,11 @@ export default function About() {
           .about-hero { padding: 60px 6vw; }
           .expertise-grid { grid-template-columns: 1fr; }
           .about-cta-section { padding: 60px 6vw; }
+        }
+        @media(max-width: 900px) {
+          .tools-grid {
+            grid-template-columns: 1fr 1fr;
+          }
         }
       `}</style>
 
@@ -285,6 +349,29 @@ export default function About() {
           <div className="expertise-card reveal-editorial reveal-from-left">
             <h3>{t.exp6Title}</h3>
             <p>{t.exp6Desc}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* TOOLS SECTION */}
+      <section className="tools-section">
+        <h2>Tools</h2>
+        <div className="tools-grid">
+          <div>
+            <h3>CAD</h3>
+            <p>Rhino 7<br />Fusion 360<br />Grasshopper</p>
+          </div>
+          <div>
+            <h3>Visualization</h3>
+            <p>KeyShot<br />Blender<br />Adobe Suite</p>
+          </div>
+          <div>
+            <h3>Fabrication</h3>
+            <p>3D Printing<br />CNC<br />Laser Cutting</p>
+          </div>
+          <div>
+            <h3>Digital</h3>
+            <p>Figma<br />Framer<br />Processing</p>
           </div>
         </div>
       </section>
