@@ -55,17 +55,11 @@ const PROCESS_STEPS = {
 
 export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
   const [activeStep, setActiveStep] = useState(0);
-  const [prevStep, setPrevStep] = useState<number | null>(null);
   const triggerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Garantisce che il fallback funzioni sempre anche se lang viene passato non valido
-  const currentLang = PROCESS_STEPS[lang] ? lang : 'it';
+  // Garantisce che la lingua attiva sia sempre aggiornata ad ogni render
+  const currentLang = (lang === 'en' || lang === 'it') ? lang : 'it';
   const steps = PROCESS_STEPS[currentLang];
-
-  // Quando la lingua cambia dinamicamente, resetta la memoria dello step precedente
-  useEffect(() => {
-    setPrevStep(null);
-  }, [lang]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -73,12 +67,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = Number(entry.target.getAttribute('data-step-index'));
-            setActiveStep((prev) => {
-              if (prev !== index) {
-                setPrevStep(prev);
-              }
-              return index;
-            });
+            setActiveStep(index);
           }
         });
       },
@@ -96,52 +85,36 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
   }, []);
 
   const handleStepClick = (index: number) => {
-    if (index !== activeStep) {
-      setPrevStep(activeStep);
-      setActiveStep(index);
-      const targetTrigger = triggerRefs.current[index];
-      if (targetTrigger) {
-        targetTrigger.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+    setActiveStep(index);
+    const targetTrigger = triggerRefs.current[index];
+    if (targetTrigger) {
+      targetTrigger.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
 
-  // Previene crash in caso di indici fuori range
-  const safeActiveStep = Math.min(activeStep, steps.length - 1);
-  const currentStepData = steps[safeActiveStep];
-  const prevStepData = prevStep !== null && prevStep < steps.length ? steps[prevStep] : null;
+  const currentStepData = steps[activeStep] || steps[0];
 
   return (
-    <section className="process-section">
+    // La key su section forza un rimontaggio pulito del componente ad ogni cambio lingua
+    <section key={currentLang} className="process-section">
       {/* FRAME STICKY FULL-BLEED A SINISTRA */}
       <div className="process-sticky-frame">
         <div className="process-media">
-          {/* Vecchia immagine */}
-          {prevStepData && (
-            <img
-              key={`prev-${currentLang}-${prevStep}`}
-              src={prevStepData.image}
-              alt=""
-              className="process-img img-fade-out"
-            />
-          )}
-
-          {/* Nuova immagine */}
           <img
-            key={`curr-${currentLang}-${safeActiveStep}`}
+            key={`${currentLang}-img-${activeStep}`}
             src={currentStepData.image}
             alt={currentStepData.step}
             className="process-img img-fade-in"
           />
 
-          <div key={`tag-${currentLang}-${safeActiveStep}`} className="process-tag animate-tag-smooth">
+          <div key={`${currentLang}-tag-${activeStep}`} className="process-tag animate-tag-smooth">
             {currentStepData.tag}
           </div>
         </div>
 
         {/* COLONNA TESTO DESTRA */}
         <div className="process-text-column">
-          <div key={`content-${currentLang}-${safeActiveStep}`} className="process-content-block animate-text-smooth">
+          <div key={`${currentLang}-text-${activeStep}`} className="process-content-block animate-text-smooth">
             <span className="step-number">{currentStepData.step}</span>
 
             <h3 className="step-title">
@@ -162,7 +135,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
                   type="button"
                   aria-label={`Go to step ${i + 1}`}
                   onClick={() => handleStepClick(i)}
-                  className={`indicator-dot ${i === safeActiveStep ? 'active' : ''}`}
+                  className={`indicator-dot ${i === activeStep ? 'active' : ''}`}
                 />
               ))}
             </div>
@@ -223,43 +196,25 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           height: 100%;
           object-fit: cover;
           border-radius: 0;
-          will-change: opacity, transform;
+          will-change: opacity;
         }
 
         .img-fade-in {
           z-index: 2;
-          animation: crossFadeIn 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-
-        .img-fade-out {
-          z-index: 1;
-          animation: crossFadeOut 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+          animation: crossFadeIn 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
         @keyframes crossFadeIn {
           from {
             opacity: 0;
-            transform: scale(1.02);
           }
           to {
             opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        @keyframes crossFadeOut {
-          from {
-            opacity: 1;
-            transform: scale(1);
-          }
-          to {
-            opacity: 0;
-            transform: scale(0.98);
           }
         }
 
         .animate-tag-smooth {
-          animation: tagSmooth 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+          animation: tagSmooth 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
         @keyframes tagSmooth {
@@ -300,7 +255,7 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
         }
 
         .animate-text-smooth {
-          animation: textSmooth 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+          animation: textSmooth 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
         @keyframes textSmooth {
