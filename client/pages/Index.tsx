@@ -282,41 +282,37 @@ export default function Index() {
     const intro = document.getElementById("intro-transition");
     const sticky = document.getElementById("sticky-transition");
 
-    if(!intro || !sticky) return;
+    if (!intro || !sticky) return;
 
-    let triggered = false;
+    let hasMovedToSticky = false;
 
-    const handleWheel = (e: WheelEvent)=>{
+    const handleWheel = (e: WheelEvent) => {
+      if (hasMovedToSticky) return;
+
       const introBottom = intro.getBoundingClientRect().bottom;
 
-      // quando siamo alla fine dell'intro
-      if(
+      if (
         e.deltaY > 0 &&
-        introBottom <= window.innerHeight + 50 &&
-        !triggered
-      ){
-        triggered = true;
-
+        introBottom <= window.innerHeight + 80
+      ) {
         e.preventDefault();
 
-        sticky.scrollIntoView({
-          behavior:"smooth",
-          block:"start"
-        });
+        hasMovedToSticky = true;
 
-        setTimeout(()=>{
-          triggered=false;
-        },1200);
+        sticky.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
       }
     };
 
     window.addEventListener(
       "wheel",
       handleWheel,
-      {passive:false}
+      { passive: false }
     );
 
-    return()=>{
+    return () => {
       window.removeEventListener(
         "wheel",
         handleWheel
