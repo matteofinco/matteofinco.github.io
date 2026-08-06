@@ -2,56 +2,88 @@ import React from 'react';
 
 export const StickyObject: React.FC = () => {
   return (
-    <section className="sticky-shoe-section">
+    <section className="process-section">
       {/* IMMAGINE FISSA IN BACKGROUND DURANTE LO SCROLL */}
-      <div className="sticky-shoe-container">
-        <div className="sticky-shoe-media">
+      <div className="process-container">
+        <div className="process-media">
           <img
-            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=2000&q=80"
-            alt="Prototipo Prodotto"
+            src="/images/workflow.jpg"
+            alt="Matteo Finco Design Process"
           />
-          <div className="sticky-shoe-tag">
-            PROTOTYPE_01 // HIGH PERFORMANCE FOOTWEAR
+          <div className="process-tag">
+            HOW I WORK // OBSERVE · MAKE · REFINE
           </div>
         </div>
       </div>
 
       {/* CASELLE DI TESTO FLUTTUANTI CHE SCORRONO SOPRA */}
-      <div className="shoe-scrolling-overlay">
-        <div className="shoe-card">
-          <span className="card-step">01 // CONCETTO & ERGONOMIA</span>
-          <h3>Studio della Calzata Parametrica</h3>
+      <div className="process-overlay">
+        <div className="process-card">
+          <span className="card-step">
+            01 // OBSERVE &amp; UNDERSTAND
+          </span>
+
+          <h3>
+            Every project starts
+            <br />
+            with a question.
+          </h3>
+
           <p>
-            Anatomia e supporto strutturale ingegnerizzati tramite modellazione algoritmica. Il volume principale si adatta ai movimenti ad alta sollecitazione.
+            Before searching for solutions, I spend time understanding people,
+            contexts and behaviours. I like analysing how products are used,
+            where friction appears and which constraints influence every design
+            decision. Observation is where every project begins.
           </p>
         </div>
 
-        <div className="shoe-card">
-          <span className="card-step">02 // MATERIALI & STAMPA 3D</span>
-          <h3>Fabbricazione Additiva TPU</h3>
+        <div className="process-card">
+          <span className="card-step">
+            02 // MAKE &amp; TEST
+          </span>
+
+          <h3>
+            Ideas become real
+            <br />
+            through prototyping.
+          </h3>
+
           <p>
-            Struttura reticolare a densità differenziata stampata in TPU riciclabile. Riduzione del peso del 35% mantenendo il massimo assorbimento degli urti.
+            Sketches evolve into CAD models, functional prototypes and physical
+            experiments. Building ideas allows me to validate assumptions,
+            discover unexpected problems and improve every iteration through
+            direct testing rather than speculation.
           </p>
         </div>
 
-        <div className="shoe-card">
-          <span className="card-step">03 // INTAGLIO & FINITURA</span>
-          <h3>Assemblaggio Meccanico a Secco</h3>
+        <div className="process-card">
+          <span className="card-step">
+            03 // REFINE &amp; SIMPLIFY
+          </span>
+
+          <h3>
+            Good design is
+            <br />
+            thoughtful simplicity.
+          </h3>
+
           <p>
-            Senza l'uso di colle tossiche. Ogni componente è interamente disassemblabile e sostituibile per estendere il ciclo di vita del prodotto.
+            Every component should have a clear purpose. I refine geometry,
+            materials and manufacturing processes until complexity disappears
+            and only what truly improves the user experience remains.
           </p>
         </div>
       </div>
 
       <style>{`
-        .sticky-shoe-section {
+        .process-section {
           position: relative;
           width: 100%;
           min-height: 240vh;
           background-color: #050505;
         }
 
-        .sticky-shoe-container {
+        .process-container {
           position: sticky;
           top: 0;
           height: 100vh;
@@ -62,21 +94,21 @@ export const StickyObject: React.FC = () => {
           z-index: 1;
         }
 
-        .sticky-shoe-media {
+        .process-media {
           position: relative;
           width: 100%;
           height: 100vh;
           overflow: hidden;
         }
 
-        .sticky-shoe-media img {
+        .process-media img {
           width: 100%;
           height: 100vh;
           object-fit: cover;
           filter: brightness(0.55) contrast(1.1);
         }
 
-        .sticky-shoe-tag {
+        .process-tag {
           position: absolute;
           bottom: 40px;
           left: 6vw;
@@ -89,7 +121,7 @@ export const StickyObject: React.FC = () => {
           border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .shoe-scrolling-overlay {
+        .process-overlay {
           position: relative;
           z-index: 2;
           margin-top: -100vh;
@@ -97,26 +129,27 @@ export const StickyObject: React.FC = () => {
           pointer-events: none;
         }
 
-        .shoe-card {
-          min-height: 65vh;
+        .process-card {
+          min-height: 60vh;
+          max-width: 520px;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          max-width: 480px;
           margin-left: auto;
           margin-right: 6vw;
           margin-bottom: 15vh;
-          background: rgba(10, 10, 10, 0.88);
-          backdrop-filter: blur(20px);
-          padding: 42px 36px;
-          border-left: 2px solid #ffffff;
-          border-y: 1px solid rgba(255,255,255,0.06);
+          background: rgba(8, 8, 8, 0.72);
+          backdrop-filter: blur(28px);
+          padding: 48px;
+          border-left: 1px solid rgba(255, 255, 255, 0.35);
+          border-top: 1px solid rgba(255, 255, 255, 0.06);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
           pointer-events: auto;
           box-shadow: 0 20px 50px rgba(0,0,0,0.6);
           box-sizing: border-box;
         }
 
-        .shoe-card .card-step {
+        .process-card .card-step {
           font-family: monospace;
           font-size: 0.8rem;
           color: #888888;
@@ -124,20 +157,25 @@ export const StickyObject: React.FC = () => {
           letter-spacing: 1px;
         }
 
-        .shoe-card h3 {
-          font-size: 1.8rem;
-          font-weight: 700;
+        .process-card h3 {
+          font-size: clamp(2rem, 3vw, 3rem);
+          line-height: 1.05;
+          letter-spacing: -1.5px;
+          font-weight: 800;
           color: #ffffff;
-          margin-bottom: 16px;
-          line-height: 1.25;
+          margin-bottom: 24px;
         }
 
-        .shoe-card p {
-          color: #bbbbbb;
-          font-size: 1.02rem;
-          line-height: 1.75;
+        .process-card p {
+          font-size: 1rem;
+          line-height: 1.9;
+          color: #bdbdbd;
+          max-width: 38ch;
+          margin: 0;
         }
       `}</style>
     </section>
   );
 };
+
+export default StickyObject;
