@@ -79,24 +79,12 @@ export default function Curriculum() {
   return (
     <div className="bg-[#070707] text-[#e5e5e5] flex flex-col h-screen w-screen overflow-hidden m-0 p-0 relative">
       
-      {/* NOME / PULSANTE TOP LEFT */}
+      {/* LOGO / PULSANTE SEMPRE PRESENTE IN ALTO A SINISTRA */}
       <a
         href="/"
-        style={{
-          position: "fixed",
-          top: "24px",
-          left: "32px",
-          zIndex: 50,
-          textDecoration: "none",
-          color: "#ffffff",
-          fontSize: "13px",
-          fontWeight: "500",
-          letterSpacing: "0.08em",
-          textTransform: "uppercase"
-        }}
-        className="hover:opacity-60 transition-opacity duration-200"
+        className="fixed top-5 left-8 z-[60] text-sm font-normal tracking-widest text-[#ffffff] uppercase transition-all duration-500 ease-in-out cursor-pointer no-underline select-none opacity-100 translate-y-0 pointer-events-auto"
       >
-        Matteo Finco
+        MATTEO FINCO
       </a>
 
       {/* HEADER INTEGRATO */}
@@ -252,7 +240,7 @@ export default function Curriculum() {
                 right: -1,
                 width: "25px",
                 height: "100%",
-                backgroundColor: "#070707",
+                backgroundColor: "#ffffffff",
                 zIndex: 3,
                 pointerEvents: "none"
               }} />
