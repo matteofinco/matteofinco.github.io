@@ -25,7 +25,7 @@ const translations = {
     collaborationText2: "Oggi continuo a vedere il design come un modo per comprendere il mondo prima di cambiarlo. Ogni progetto è un'occasione per imparare qualcosa di nuovo e trasformare un problema complesso in una soluzione chiara.",
     ctaTitle: "What's next?",
     ctaSub: "Per ulteriori informazioni sul mio percorso, competenze e dettagli tecnici, consulta il mio CV completo.",
-    ctaButton: "VAI AL CV"
+    ctaButton: "CURRICULUM VITAE"
   },
   en: {
     heroTitle: "MATTEO FINCO",
@@ -49,7 +49,7 @@ const translations = {
     collaborationText2: "Today, I still see design as a way to understand the world before changing it. Every project is a chance to learn something new and to turn a complex problem into a clear solution.",
     ctaTitle: "What's next?",
     ctaSub: "For additional information about my background, technical skills, and experience, view my CV.",
-    ctaButton: "VIEW CV"
+    ctaButton: "CURRICULUM VITAE"
   }
 };
 
@@ -106,10 +106,8 @@ export default function About() {
 
   return (
     <div className="about-page editorial-portfolio bg-[#070707] text-[#e5e5e5] min-h-screen overflow-x-hidden">
-      {/* Header con abilitazione del nome/link alla home page */}
       <Header 
-        showName={true}
-        showHomeLink={true}
+        showBackToDesigns={false} 
         currentLang={lang} 
         onLanguageChange={toggleLanguage}
         setLang={toggleLanguage} 
@@ -118,13 +116,14 @@ export default function About() {
       <style>{`
         .about-page { padding-top: 80px; }
         .about-hero {
-          min-height: 85vh;
+          min-height: 75vh;
           display: flex;
           align-items: center;
           justify-content: center;
           padding: 120px 6vw;
           border-bottom: 1px solid #1a1a1a;
           position: relative;
+          width: 100%;
         }
         .about-hero > div {
           width: 100%;
@@ -147,20 +146,20 @@ export default function About() {
           max-width: 600px;
           text-align: left;
         }
-
-        /* Freccia Chevron identica all'home page */
-        .hero-chevron-arrow {
+        
+        /* Centratura assoluta rispetto alla larghezza dello schermo */
+        .hero-arrow {
           position: absolute;
           bottom: 35px;
           left: 50%;
           transform: translateX(-50%);
           opacity: 0.6;
-          transition: opacity 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          pointer-events: none;
         }
-        .hero-chevron-arrow:hover {
-          opacity: 1;
-        }
-        .hero-chevron-arrow svg {
+        .hero-arrow svg {
           width: 28px;
           height: 28px;
           stroke: #ffffff;
@@ -205,8 +204,8 @@ export default function About() {
           <p>{t.heroSub}</p>
         </div>
         
-        {/* Freccia Chevron a V dell'Home Page */}
-        <div className="hero-chevron-arrow">
+        {/* Freccia Chevron a V centrata nello schermo */}
+        <div className="hero-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="6 9 12 15 18 9" />
           </svg>
