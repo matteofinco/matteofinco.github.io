@@ -2,160 +2,199 @@ import React from 'react';
 
 export const Hero: React.FC = () => {
   return (
-    <section id="hero-section" className="hero-section">
+    <section 
+      id="hero-section"
+      className="hero-section"
+    >
 
       <style>{`
 
         .hero-section {
-          height:100vh;
           width:100%;
+          height:100vh;
           background:#070707;
           color:white;
           position:relative;
           overflow:hidden;
           display:flex;
           align-items:center;
+          justify-content:center;
         }
 
 
+        /* NOME VERTICALE */
         .hero-name {
-
           position:absolute;
+          left:35px;
+          top:50%;
+          transform:translateY(-50%) rotate(-90deg);
+          
+          font-size:14px;
+          font-weight:600;
+          letter-spacing:8px;
+          color:#888;
 
-          top:40px;
-          left:6vw;
-
-          font-family:monospace;
-          font-size:0.85rem;
-
-          letter-spacing:0.18em;
           text-transform:uppercase;
 
-          color:#777;
-
+          animation:fadeIn 1.5s ease forwards;
         }
 
 
-
+        /* CONTENUTO CENTRALE */
         .hero-content {
 
-          width:88vw;
-          margin:auto;
+          width:90%;
+          max-width:1400px;
 
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+
+          animation:heroReveal 1.5s cubic-bezier(.16,1,.3,1);
         }
-
 
 
         .hero-title {
 
-          font-size:clamp(4rem,9.5vw,10rem);
+          font-size:
+          clamp(3.8rem, 8vw, 9rem);
 
-          line-height:0.88;
-
-          letter-spacing:-0.07em;
+          line-height:.92;
 
           font-weight:900;
+
+          letter-spacing:-0.06em;
+
+          max-width:1200px;
 
           text-transform:uppercase;
 
           margin:0;
 
-          max-width:1400px;
-
         }
 
 
+        .hero-subtitle {
 
-        .hero-role {
+          margin-top:40px;
 
-          margin-top:45px;
-
-          font-family:monospace;
-
-          font-size:1rem;
+          font-size:
+          clamp(1rem,1.5vw,1.4rem);
 
           letter-spacing:0.35em;
 
-          text-transform:uppercase;
-
           color:#888;
+
+          font-weight:500;
 
         }
 
 
 
-        /* elemento tecnico discreto */
+        /* SCROLL INDICATOR */
 
-        .hero-meta {
+        .hero-scroll {
 
           position:absolute;
 
           bottom:45px;
+          right:50%;
 
-          left:6vw;
+          transform:translateX(50%);
 
-          font-family:monospace;
+          font-size:11px;
 
-          font-size:0.75rem;
+          letter-spacing:5px;
 
           color:#555;
 
-          letter-spacing:0.15em;
+          text-transform:uppercase;
 
         }
 
 
+        .hero-scroll::after {
 
-        /* linea verticale */
+          content:"";
 
-        .hero-line {
-
-          position:absolute;
-
-          right:6vw;
-
-          top:20%;
-
-          height:60%;
+          display:block;
 
           width:1px;
 
-          background:#222;
+          height:45px;
+
+          background:#444;
+
+          margin:15px auto 0;
 
         }
 
 
 
-        .hero-dot {
+        @keyframes heroReveal {
 
-          position:absolute;
+          from {
 
-          right:calc(6vw - 3px);
+            opacity:0;
 
-          top:20%;
+            transform:translateY(40px);
 
-          width:7px;
+            filter:blur(12px);
 
-          height:7px;
+          }
 
-          background:white;
+          to {
 
-          border-radius:50%;
+            opacity:1;
 
-        }
+            transform:none;
 
-
-
-        @media(max-width:900px){
-
-          .hero-title{
-
-            font-size:4rem;
+            filter:blur(0);
 
           }
 
         }
 
+
+        @keyframes fadeIn {
+
+          from {
+            opacity:0;
+          }
+
+          to {
+            opacity:1;
+          }
+
+        }
+
+
+
+        @media(max-width:768px){
+
+          .hero-name {
+
+            left:15px;
+
+            font-size:11px;
+
+          }
+
+
+          .hero-title {
+
+            font-size:3.2rem;
+
+          }
+
+
+          .hero-subtitle {
+
+            letter-spacing:.2em;
+
+          }
+
+        }
 
       `}</style>
 
@@ -179,21 +218,21 @@ export const Hero: React.FC = () => {
         </h1>
 
 
-        <div className="hero-role">
-          PRODUCT DESIGNER & MAKER
+        <div className="hero-subtitle">
+
+          PRODUCT DESIGN & MAKER
+
         </div>
 
       </div>
 
 
 
-      <div className="hero-meta">
-        IUAV UNIVERSITY OF VENICE — 2026
+      <div className="hero-scroll">
+
+        SCROLL
+
       </div>
-
-
-      <div className="hero-line"></div>
-      <div className="hero-dot"></div>
 
 
     </section>
