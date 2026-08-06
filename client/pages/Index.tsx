@@ -202,11 +202,11 @@ export default function Index() {
           padding: 0;
         }
 
-        html {
-          scroll-behavior: smooth;
-          scroll-snap-type: y proximity;
-          scroll-padding-top: 70px;
-        }
+       html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 0;
+}
 
         body {
           background-color: #070707;
