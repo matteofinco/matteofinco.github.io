@@ -36,12 +36,10 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
               </clipPath>
             </defs>
 
-            {/* Cerchi guida concentrici */}
             <circle cx={centerX} cy={centerY} r={radius + 18} stroke="rgba(255,255,255,0.1)" strokeWidth="1" fill="none" />
             <circle cx={centerX} cy={centerY} r={radius} stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeDasharray="6,6" fill="none" />
             <circle cx={centerX} cy={centerY} r={radius - 12} stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
 
-            {/* Foto ritagliata all'interno del cerchio */}
             <g clipPath="url(#circleImageClip)">
               {steps.map((step, idx) => (
                 <image
@@ -57,7 +55,6 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
               ))}
             </g>
 
-            {/* 7 Pallini/Nodi interattivi lungo la circonferenza */}
             {steps.map((step, idx) => {
               const angleDeg = -90 + idx * (360 / steps.length);
               const angleRad = (angleDeg * Math.PI) / 180;
@@ -93,7 +90,6 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
               );
             })}
 
-            {/* Mirino centrale */}
             <line x1={centerX - 12} y1={centerY} x2={centerX + 12} y2={centerY} stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
             <line x1={centerX} y1={centerY - 12} x2={centerX} y2={centerY + 12} stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
           </svg>
@@ -107,12 +103,12 @@ export const CircleShowcase: React.FC<ShowcaseProps> = ({ steps, activeStep }) =
         </div>
       </div>
 
-      {/* SCHEDE PROGETTI A DESTRA */}
+      {/* SCHEDE PROGETTI A DESTRA CON STICKY SNAP MAGNETICO */}
       <div className="process-scroll-right">
         {steps.map((step, idx) => (
           <div
             key={step.id}
-            className={`process-card ${activeStep === idx ? 'active-step' : ''}`}
+            className={`process-card snap-center ${activeStep === idx ? 'active-step' : ''}`}
             data-step={idx}
           >
             <div className="phase-number">0{idx + 1} // {step.category}</div>
