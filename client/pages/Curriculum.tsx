@@ -79,6 +79,26 @@ export default function Curriculum() {
   return (
     <div className="bg-[#070707] text-[#e5e5e5] flex flex-col h-screen w-screen overflow-hidden m-0 p-0 relative">
       
+      {/* NOME / PULSANTE TOP LEFT */}
+      <a
+        href="/"
+        style={{
+          position: "fixed",
+          top: "24px",
+          left: "32px",
+          zIndex: 50,
+          textDecoration: "none",
+          color: "#ffffff",
+          fontSize: "13px",
+          fontWeight: "500",
+          letterSpacing: "0.08em",
+          textTransform: "uppercase"
+        }}
+        className="hover:opacity-60 transition-opacity duration-200"
+      >
+        Matteo Finco
+      </a>
+
       {/* HEADER INTEGRATO */}
       <Header 
         showBackToDesigns={false} 
@@ -268,29 +288,15 @@ export default function Curriculum() {
             borderTop: "1px solid #1a1a1a", 
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "flex-end",
+            paddingRight: "32px",
             zIndex: 10
           }}
         >
           <button 
-            onClick={() => window.location.href = "/contact"}
-            className="text-xs font-normal tracking-widest text-[#aaaaaa] uppercase hover:text-[#ffffff] transition-colors duration-200"
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: 0
-            }}
-          >
-            Get in touch
-          </button>
-
-          <button 
             onClick={handleDownload}
             className="text-xs font-normal tracking-widest text-[#aaaaaa] uppercase hover:text-[#ffffff] transition-colors duration-200"
             style={{
-              position: "absolute",
-              right: "32px",
               background: "none",
               border: "none",
               cursor: "pointer",
