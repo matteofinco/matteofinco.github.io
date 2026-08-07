@@ -754,7 +754,7 @@ export default function WaffleMaker({ heroFit = 'cover' }: WaffleMakerProps) {
 
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
-            <img src={IMAGES.solution} alt="Waffle Maker solution" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2aaea207a0de4826b9bf009f52d4f522" alt="Waffle Maker solution" />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
             <h2>{t.solution.title}</h2>
@@ -773,7 +773,7 @@ export default function WaffleMaker({ heroFit = 'cover' }: WaffleMakerProps) {
             <p>{t.research.p2}</p>
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
-            <img src={IMAGES.research} alt="Waffle Maker research" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F48827287d32f4f9d8b7ec3376f37c7e8"alt="Waffle Maker research" />
           </div>
         </section>
 
@@ -796,7 +796,7 @@ export default function WaffleMaker({ heroFit = 'cover' }: WaffleMakerProps) {
         <section className="fullbleed-composite reveal-editorial reveal-from-left">
           <div className="media-composite-box">
             <div className="composite-top">
-              <img src={IMAGES.compositeTop} alt="Waffle Maker assembly" />
+              <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F6c5991568f5c44bc824a39b1b8276df1" alt="Waffle Maker assembly" />
             </div>
             <div className="composite-bottom">
               <div className="composite-square">
