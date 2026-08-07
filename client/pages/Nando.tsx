@@ -769,7 +769,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src={NANDO_IMAGE_URL}
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F3e8c60da3cb54a2fa37de2c2beb5759a"
               alt="Nando solution view"
             />
           </div>
@@ -794,7 +794,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
             <img
-              src={NANDO_IMAGE_URL}
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1d0debfd32fd4c86be35f6caeadf8c32"
               alt="Nando ergonomic research and palmar grasp analysis"
             />
           </div>
@@ -808,7 +808,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src={NANDO_IMAGE_URL}
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fb26e2765f2a2476e906a3a2318199420"
               alt="Nando design detail and internal structure"
             />
           </div>
@@ -829,20 +829,20 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
           <div className="media-composite-box">
             <div className="composite-top">
               <img
-                src={NANDO_IMAGE_URL}
+                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F89f7d25782454ef4b596c9e326f8b335"
                 alt="Nando wide overview"
               />
             </div>
             <div className="composite-bottom">
               <div className="composite-square">
                 <img
-                  src={NANDO_IMAGE_URL}
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fef944a8f91a640e8be5a13154fe7f42d"
                   alt="Nando detail view 1"
                 />
               </div>
               <div className="composite-square">
                 <img
-                  src={NANDO_IMAGE_URL}
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fdaa1cd9647f14d3d834e8a6166f9df97"
                   alt="Nando detail view 2"
                 />
               </div>
