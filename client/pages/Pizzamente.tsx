@@ -778,7 +778,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
         {/* ROW 1: SOLUTION (IMAGE LEFT FULL BLEED) */}
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
-            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fed8a5b2001934388b05a7b4b09cf2343" alt="PizzaMente solution" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F0cf81fd2c1dd4d95838d1c76c1bde212" alt="PizzaMente solution" />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
             <h2>{t.solution.title}</h2>
