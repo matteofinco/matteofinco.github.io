@@ -55,8 +55,8 @@ const content = {
       p2: "The project also pushed me to master the synergy between hardware and digital feedback, focusing on creating an intuitive user experience, thanks primarily to discussions with experts and people in the field. We were honored to present Snake at the Lagazuoi WIMA (Lagazuoi Winning Ideas Mountain Awards 2026)."
     },
     cta: {
-      title: "What's next",
-      subtitle: "Selected projects",
+      title: "What's next?",
+      subtitle: "Projects",
       button: "BACK TO PORTFOLIO"
     }
   },
@@ -99,8 +99,8 @@ const content = {
       p2: "Il progetto ha permesso di approfondire la sinergia tra hardware e feedback digitale, concentrandosi sulla creazione di un'esperienza utente intuitiva, grazie soprattutto al confronto diretto con esperti del settore e atleti. Siamo stati onorati di presentare Snake al Lagazuoi WIMA (Lagazuoi Winning Ideas Mountain Awards 2026)."
     },
     cta: {
-      title: "What's next",
-      subtitle: "Progetti selezionati",
+      title: "What's next?",
+      subtitle: "Progetti",
       button: "TORNA AL PORTFOLIO"
     }
   }
