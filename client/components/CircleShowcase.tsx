@@ -210,49 +210,51 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
         </div>
       </div>
 
-      {/* VISTA MOBILE */}
-      <div className="showcase-mobile-carousel">
-        <div className="carousel-track">
-          {steps.map((st, idx) => {
-            const disciplineText = st.discipline ? st.discipline[currentLang] : st.category?.[currentLang];
-            const contextText = st.context ? st.context[currentLang] : st.tools?.[currentLang];
-            const focusText = st.focus ? st.focus[currentLang] : st.material?.[currentLang];
+      {/* VISTA MOBILE CON EFFETTO MAGNETO STICKY */}
+      <div className="showcase-mobile-wrapper">
+        <div className="showcase-mobile-sticky-inner">
+          <div className="carousel-track">
+            {steps.map((st, idx) => {
+              const disciplineText = st.discipline ? st.discipline[currentLang] : st.category?.[currentLang];
+              const contextText = st.context ? st.context[currentLang] : st.tools?.[currentLang];
+              const focusText = st.focus ? st.focus[currentLang] : st.material?.[currentLang];
 
-            return (
-              <div key={st.id} className="mobile-showcase-card">
-                <div className="mobile-img-wrapper">
-                  <img src={st.img} alt={st.title[currentLang]} className="mobile-card-img" />
-                  <div className="mobile-category-tag">
-                    // {st.id} • {disciplineText} • {st.year}
-                  </div>
-                  <div className="mobile-step-num">
-                    [{String(idx + 1).padStart(2, '0')}]
-                  </div>
-                </div>
-
-                <div className="mobile-card-body">
-                  <h2 className="mobile-main-title">{st.title[currentLang]}</h2>
-                  <div className="mobile-subtitle-text">{st.subtitle[currentLang]}</div>
-                  <p className="mobile-desc-text">{st.desc[currentLang]}</p>
-
-                  <div className="mobile-meta-grid">
-                    <div className="meta-item">
-                      <span className="label">-- {labels[currentLang].context}</span>
-                      <span className="value">{contextText}</span>
+              return (
+                <div key={st.id} className="mobile-showcase-card">
+                  <div className="mobile-img-wrapper">
+                    <img src={st.img} alt={st.title[currentLang]} className="mobile-card-img" />
+                    <div className="mobile-category-tag">
+                      // {st.id} • {disciplineText} • {st.year}
                     </div>
-                    <div className="meta-item">
-                      <span className="label">-- {labels[currentLang].focus}</span>
-                      <span className="value">{focusText}</span>
+                    <div className="mobile-step-num">
+                      [{String(idx + 1).padStart(2, '0')}]
                     </div>
                   </div>
 
-                  <a href={st.link} className="mobile-action-link">
-                    {labels[currentLang].explore} →
-                  </a>
+                  <div className="mobile-card-body">
+                    <h2 className="mobile-main-title">{st.title[currentLang]}</h2>
+                    <div className="mobile-subtitle-text">{st.subtitle[currentLang]}</div>
+                    <p className="mobile-desc-text">{st.desc[currentLang]}</p>
+
+                    <div className="mobile-meta-grid">
+                      <div className="meta-item">
+                        <span className="label">-- {labels[currentLang].context}</span>
+                        <span className="value">{contextText}</span>
+                      </div>
+                      <div className="meta-item">
+                        <span className="label">-- {labels[currentLang].focus}</span>
+                        <span className="value">{focusText}</span>
+                      </div>
+                    </div>
+
+                    <a href={st.link} className="mobile-action-link">
+                      {labels[currentLang].explore} →
+                    </a>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -271,7 +273,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           width: 100%;
         }
 
-        .showcase-mobile-carousel {
+        .showcase-mobile-wrapper {
           display: none;
         }
 
@@ -561,26 +563,44 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           transform: translateX(4px);
         }
 
-        /* Vista Mobile */
+        /* Vista Mobile con Magneto Sticky */
         @media (max-width: 1024px) {
           .showcase-desktop-wrapper {
             display: none !important;
           }
 
-          .showcase-mobile-carousel {
+          /* Container padre che definisce la durata dello "stick" verticale */
+          .showcase-mobile-wrapper {
             display: block;
+            position: relative;
             width: 100%;
-            padding: 40px 0 60px 0;
+            height: 220vh; /* Aumenta/diminuisci questo valore per regolare la quantità di scroll prima di sbloccarsi */
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+          }
+
+          /* Elemento bloccato a schermo intero durante lo scroll */
+          .showcase-mobile-sticky-inner {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
+            box-sizing: border-box;
           }
 
           .carousel-track {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            padding: 0 6vw;
+            padding: 0 8vw;
+            width: 100%;
+            box-sizing: border-box;
             scrollbar-width: none;
           }
 
@@ -589,20 +609,21 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           }
 
           .mobile-showcase-card {
-            flex: 0 0 85vw;
-            max-width: 380px;
+            flex: 0 0 82vw;
+            max-width: 360px;
             display: flex;
             flex-direction: column;
             background: #0d0d0d;
             border: 1px solid rgba(255, 255, 255, 0.12);
             overflow: hidden;
             scroll-snap-align: center;
+            scroll-snap-stop: always;
           }
 
           .mobile-img-wrapper {
             position: relative;
             width: 100%;
-            height: 240px;
+            height: 210px;
             background: #141414;
           }
 
@@ -614,13 +635,13 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
 
           .mobile-category-tag {
             position: absolute;
-            bottom: 12px;
-            left: 12px;
+            bottom: 10px;
+            left: 10px;
             font-family: monospace;
-            font-size: 0.65rem;
+            font-size: 0.62rem;
             color: #ffffff;
-            background: rgba(7, 7, 7, 0.85);
-            padding: 6px 10px;
+            background: rgba(7, 7, 7, 0.88);
+            padding: 4px 8px;
             letter-spacing: 1px;
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -628,25 +649,25 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
 
           .mobile-step-num {
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 10px;
+            right: 10px;
             font-family: monospace;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #ffffff;
-            background: rgba(7, 7, 7, 0.85);
-            padding: 4px 8px;
+            background: rgba(7, 7, 7, 0.88);
+            padding: 3px 7px;
             border: 1px solid rgba(255, 255, 255, 0.1);
           }
 
           .mobile-card-body {
-            padding: 24px 20px;
+            padding: 20px 18px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
           }
 
           .mobile-main-title {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: #ffffff;
             margin: 0;
@@ -654,39 +675,39 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           }
 
           .mobile-subtitle-text {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #cccccc;
             font-weight: 500;
           }
 
           .mobile-desc-text {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: #888888;
-            line-height: 1.6;
+            line-height: 1.5;
             margin: 0;
           }
 
           .mobile-meta-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            padding: 16px 0;
+            gap: 12px;
+            padding: 12px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 4px;
+            margin-top: 2px;
           }
 
           .mobile-action-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 24px;
+            padding: 12px 20px;
             background: #ffffff;
             color: #070707;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             text-decoration: none;
-            margin-top: 8px;
+            margin-top: 6px;
             width: 100%;
             box-sizing: border-box;
           }
