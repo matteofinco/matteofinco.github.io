@@ -584,6 +584,14 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
 
         /* RESPONSIVE BREAKPOINTS */
         @media (max-width: 860px) {
+          .project-page {
+            padding-top: 90px;
+          }
+
+          .project-preview-card {
+            display: none !important;
+          }
+
           .editorial-row-fullbleed {
             display: flex;
             flex-direction: column;
@@ -597,7 +605,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           .editorial-row-fullbleed.row-img-left .row-media,
           .editorial-row-fullbleed.row-img-right .row-media {
             width: 100%;
-            height: 380px;
+            height: 300px;
           }
 
           .editorial-row-fullbleed.row-img-left .row-text,
@@ -605,16 +613,21 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
             padding: 0 4vw;
           }
 
+          .hero-media-fullbleed {
+            height: 300px;
+            margin-top: 24px;
+          }
+
           .composite-bottom {
             grid-template-columns: 1fr;
           }
 
           .composite-top {
-            height: 320px;
+            height: 280px;
           }
 
           .composite-square {
-            height: 250px;
+            height: 220px;
           }
 
           .editorial-divider {
