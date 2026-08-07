@@ -802,7 +802,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1d99a248f2d84634835e00b5d39a76dd"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F763c26f30f5a4017bb454c7961df4a1f"
               alt="Archivia research and desk environment context"
             />
           </div>
