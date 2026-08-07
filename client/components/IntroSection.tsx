@@ -15,13 +15,12 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
         .intro-pinned-container {
           position: relative;
           width: 100%;
-          height: 220vh; /* Crea lo spazio di scroll prolungato stile editoriale */
+          height: 220vh;
           background-color: #070707;
           box-sizing: border-box;
           scroll-snap-align: start;
           scroll-snap-stop: always;
           border-bottom: 1px solid #141414;
-          /* IMPORTANTE: niente overflow: hidden qui, altrimenti position: sticky si disattiva */
         }
 
         .intro-sticky-viewport {
@@ -29,13 +28,14 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           top: 0;
           width: 100%;
           height: 100vh;
-          max-width: 1400px;
-          margin: 0 auto;
+          /* Calcola il padding sinistro per allinearsi con la griglia mantenendo il margine destro a 0 */
+          padding-left: max(6vw, calc((100vw - 1400px) / 2));
+          padding-right: 0;
           display: flex;
           align-items: center;
-          justify-content: center;
-          padding: 0 6vw;
+          justify-content: flex-start;
           box-sizing: border-box;
+          overflow: hidden;
         }
 
         .intro-step-row {
@@ -53,6 +53,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           display: flex;
           flex-direction: column;
           justify-content: center;
+          padding-right: 20px;
         }
 
         .intro-text-box h2 {
@@ -80,7 +81,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           margin: 0;
         }
 
-        /* MEDIA BOX (Destra) */
+        /* MEDIA BOX (Destra - Full Bleed al bordo dello schermo) */
         .intro-media-box {
           position: relative;
           overflow: hidden;
@@ -117,6 +118,9 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
             height: auto;
             gap: 40px;
           }
+          .intro-text-box {
+            padding-right: 0;
+          }
           .intro-media-box {
             height: 380px;
           }
@@ -135,7 +139,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           {/* Immagine a destra */}
           <div className="intro-media-box">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Ffd2f84c112c140578bdb169a972c5725"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F8bb57828b5694c82bd4e123e8d86a466"
               alt="Matteo Finco Studio Work"
             />
           </div>
