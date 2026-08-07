@@ -28,41 +28,41 @@ const PROJECTS_LIST = [
 const content = {
   en: {
     title: "WAFFLE MAKER",
-    subtitle: "Waffle Maker analysis[cite: 2]",
+    subtitle: "Waffle Maker analysis",
     meta: {
       teamLabel: "Designers",
       yearLabel: "Year",
-      yearVal: "2025[cite: 2]",
+      yearVal: "2025",
       awardLabel: "Project Type",
-      awardVal: "Product Analysis & Basic Design[cite: 2]"
+      awardVal: "Product Analysis & Basic Design"
     },
     overview: {
       title: "Overview",
-      subtitle: "Challenge[cite: 2]",
-      p1: "Everyday objects conceal relational and ergonomic complexities that are often invisible to the end user[cite: 2]. The challenge of this Basic Design project was to deconstruct an existing object to map and understand its functional architecture and communicative language[cite: 2].",
-      p2: "The primary objective was to translate the physical and visual interaction between humans and objects into objective data, critically analyzing how form guides action (affordance), how energy and thermal flows are managed, and where there is room for improvement in terms of usability and home security[cite: 2]."
+      subtitle: "Challenge",
+      p1: "Everyday objects conceal relational and ergonomic complexities that are often invisible to the end user. The challenge of this Basic Design project was to deconstruct an existing object to map and understand its functional architecture and communicative language.",
+      p2: "The primary objective was to translate the physical and visual interaction between humans and objects into objective data, critically analyzing how form guides action (affordance), how energy and thermal flows are managed, and where there is room for improvement in terms of usability and home security."
     },
     solution: {
-      title: "Solution[cite: 2]",
-      p1: "The project was structured as a process of morphological and functional decomposition, aimed at producing an editorial analysis[cite: 2].",
-      p2: "The device was broken down into macrosystems: the mechanical locking mechanism, the analog visual interface, the cable management, and the internal cooking architecture[cite: 2].",
-      p3: "The final document serves as a critical analysis of the product, examining how each component responds to specific industrial, construction, and communication logics[cite: 2]."
+      title: "Solution",
+      p1: "The project was structured as a process of morphological and functional decomposition, aimed at producing an editorial analysis.",
+      p2: "The device was broken down into macrosystems: the mechanical locking mechanism, the analog visual interface, the cable management, and the internal cooking architecture.",
+      p3: "The final document serves as a critical analysis of the product, examining how each component responds to specific industrial, construction, and communication logics."
     },
     research: {
-      title: "Research[cite: 2]",
-      p1: "The investigation was conducted in the field by physically disassembling the appliance, a fundamental practice for mapping internal components and understanding industrial assembly sequences[cite: 2]. This reverse engineering process provided significant training, fostering the learning and integration of new digital tools[cite: 2].",
-      p2: "On the one hand, the use of 3D modeling software allowed for the geometric reconstruction of the parts and the study of tolerances; on the other, the application of the Adobe suite was crucial for editorial layout, graphic synthesis, and the management of the visual communication of the collected technical data[cite: 2]."
+      title: "Research",
+      p1: "The investigation was conducted in the field by physically disassembling the appliance, a fundamental practice for mapping internal components and understanding industrial assembly sequences. This reverse engineering process provided significant training, fostering the learning and integration of new digital tools.",
+      p2: "On the one hand, the use of 3D modeling software allowed for the geometric reconstruction of the parts and the study of tolerances; on the other, the application of the Adobe suite was crucial for editorial layout, graphic synthesis, and the management of the visual communication of the collected technical data."
     },
     design: {
-      title: "Design[cite: 2]",
-      p1: "The locking system was analyzed in its dual role as a mechanical constraint and safety interface, validated by the tactile and acoustic feedback (click) of the locking button[cite: 2].",
-      p2: "The visual interface, characterized by two-color light indicators, was examined from a cognitive ergonomics perspective, evaluating its effectiveness in communicating the appliance's thermal status[cite: 2].",
-      p3: "The study highlighted how the curved geometries and glossy finishes of the body visually attenuate the perception of an intrinsically dangerous object, coherently inserting it into a reassuring and playful domestic image[cite: 2]."
+      title: "Design",
+      p1: "The locking system was analyzed in its dual role as a mechanical constraint and safety interface, validated by the tactile and acoustic feedback (click) of the locking button.",
+      p2: "The visual interface, characterized by two-color light indicators, was examined from a cognitive ergonomics perspective, evaluating its effectiveness in communicating the appliance's thermal status.",
+      p3: "The study highlighted how the curved geometries and glossy finishes of the body visually attenuate the perception of an intrinsically dangerous object, coherently inserting it into a reassuring and playful domestic image."
     },
     technical: {
-      title: "Skills & Technical Insights[cite: 2]",
-      p1: "The research demonstrated the crucial importance of the product analysis phase as a fundamental tool for training designers[cite: 2]. Through the deconstruction of the waffle maker, the article highlights how even the simplest mass-produced industrial device requires meticulous coordination between formal language, construction constraints, and usability[cite: 2].",
-      p2: "The findings collected in the analysis book not only document the state of the art of the examined object, but also define a replicable critical methodology, laying the cognitive foundations necessary for the informed design of future, more complex and safer product systems[cite: 2]."
+      title: "Skills & Technical Insights",
+      p1: "The research demonstrated the crucial importance of the product analysis phase as a fundamental tool for training designers. Through the deconstruction of the waffle maker, the article highlights how even the simplest mass-produced industrial device requires meticulous coordination between formal language, construction constraints, and usability.",
+      p2: "The findings collected in the analysis book not only document the state of the art of the examined object, but also define a replicable critical methodology, laying the cognitive foundations necessary for the informed design of future, more complex and safer product systems."
     },
     cta: {
       title: "What's next?",
@@ -72,41 +72,41 @@ const content = {
   },
   it: {
     title: "WAFFLE MAKER",
-    subtitle: "Analisi del Waffle Maker[cite: 2]",
+    subtitle: "Analisi del Waffle Maker",
     meta: {
       teamLabel: "Designer",
       yearLabel: "Anno",
-      yearVal: "2025[cite: 2]",
+      yearVal: "2025",
       awardLabel: "Tipologia Progetto",
-      awardVal: "Analisi di Prodotto & Basic Design[cite: 2]"
+      awardVal: "Analisi di Prodotto & Basic Design"
     },
     overview: {
       title: "Overview",
-      subtitle: "Sfida progettuale[cite: 2]",
-      p1: "Gli oggetti di uso quotidiano celano complessità relazionali ed ergonomiche spesso invisibili all'utente finale[cite: 2]. La sfida di questo progetto di Basic Design è stata quella di decostruire un oggetto esistente per mapparne e comprenderne l'architettura funzionale e il linguaggio comunicativo[cite: 2].",
-      p2: "L'obiettivo primario era tradurre l'interazione fisica e visiva tra uomo e oggetto in dati oggettivi, analizzando criticamente come la forma guida l'azione (affordance), come vengono gestiti i flussi energetici e termici, e dove vi è margine di miglioramento in termini di usabilità e sicurezza domestica[cite: 2]."
+      subtitle: "Sfida progettuale",
+      p1: "Gli oggetti di uso quotidiano celano complessità relazionali ed ergonomiche spesso invisibili all'utente finale. La sfida di questo progetto di Basic Design è stata quella di decostruire un oggetto esistente per mapparne e comprenderne l'architettura funzionale e il linguaggio comunicativo.",
+      p2: "L'obiettivo primario era tradurre l'interazione fisica e visiva tra uomo e oggetto in dati oggettivi, analizzando criticamente come la forma guida l'azione (affordance), come vengono gestiti i flussi energetici e termici, e dove vi è margine di miglioramento in termini di usabilità e sicurezza domestica."
     },
     solution: {
-      title: "Solution[cite: 2]",
-      p1: "Il progetto è stato strutturato come un processo di scomposizione morfologica e funzionale, finalizzato alla produzione di un'analisi editoriale[cite: 2].",
-      p2: "Il dispositivo è stato suddiviso in macrosistemi: il meccanismo di bloccaggio meccanico, l'interfaccia visiva analogica, la gestione dei cavi e l'architettura di cottura interna[cite: 2].",
-      p3: "Il documento finale funge da analisi critica del prodotto, esaminando come ciascun componente risponda a specifiche logiche industriali, costruttive e comunicative[cite: 2]."
+      title: "Solution",
+      p1: "Il progetto è stato strutturato come un processo di scomposizione morfologica e funzionale, finalizzato alla produzione di un'analisi editoriale.",
+      p2: "Il dispositivo è stato suddiviso in macrosistemi: il meccanismo di bloccaggio meccanico, l'interfaccia visiva analogica, la gestione dei cavi e l'architettura di cottura interna.",
+      p3: "Il documento finale funge da analisi critica del prodotto, esaminando come ciascun componente risponda a specifiche logiche industriali, costruttive e comunicative."
     },
     research: {
-      title: "Research[cite: 2]",
-      p1: "L'indagine è stata condotta sul campo mediante lo smontaggio fisico dell'apparecchio, una pratica fondamentale per mappare i componenti interni e comprendere le sequenze di assemblaggio industriale[cite: 2]. Questo processo di reverse engineering ha fornito una formazione significativa, favorendo l'apprendimento e l'integrazione di nuovi strumenti digitali[cite: 2].",
-      p2: "Da un lato, l'uso di software di modellazione 3D ha permesso la ricostruzione geometrica delle parti e lo studio delle tolleranze; dall'altro, l'applicazione della suite Adobe è stata cruciale per l'impaginazione editoriale, la sintesi grafica e la gestione della comunicazione visiva dei dati tecnici raccolti[cite: 2]."
+      title: "Research",
+      p1: "L'indagine è stata condotta sul campo mediante lo smontaggio fisico dell'apparecchio, una pratica fondamentale per mappare i componenti interni e comprendere le sequenze di assemblaggio industriale. Questo processo di reverse engineering ha fornito una formazione significativa, favorendo l'apprendimento e l'integrazione di nuovi strumenti digitali.",
+      p2: "Da un lato, l'uso di software di modellazione 3D ha permesso la ricostruzione geometrica delle parti e lo studio delle tolleranze; dall'altro, l'applicazione della suite Adobe è stata cruciale per l'impaginazione editoriale, la sintesi grafica e la gestione della comunicazione visiva dei dati tecnici raccolti."
     },
     design: {
-      title: "Design[cite: 2]",
-      p1: "Il sistema di bloccaggio è stato analizzato nel suo duplice ruolo di vincolo meccanico e interfaccia di sicurezza, validato dal feedback tattile e acustico (click) del pulsante di chiusura[cite: 2].",
-      p2: "L'interfaccia visiva, caratterizzata da indicatori luminosi bicolore, è stata esaminata da una prospettiva di ergonomia cognitiva, valutandone l'efficacia nel comunicare lo stato termico dell'apparecchio[cite: 2].",
-      p3: "Lo studio ha evidenziato come le geometrie curve e le finiture lucide del corpo attenuino visivamente la percezione di un oggetto intrinsecamente pericoloso, inserendolo coerentemente in un'immagine domestica rassicurante e giocosa[cite: 2]."
+      title: "Design",
+      p1: "Il sistema di bloccaggio è stato analizzato nel suo duplice ruolo di vincolo meccanico e interfaccia di sicurezza, validato dal feedback tattile e acustico (click) del pulsante di chiusura.",
+      p2: "L'interfaccia visiva, caratterizzata da indicatori luminosi bicolore, è stata esaminata da una prospettiva di ergonomia cognitiva, valutandone l'efficacia nel comunicare lo stato termico dell'apparecchio.",
+      p3: "Lo studio ha evidenziato come le geometrie curve e le finiture lucide del corpo attenuino visivamente la percezione di un oggetto intrinsecamente pericoloso, inserendolo coerentemente in un'immagine domestica rassicurante e giocosa."
     },
     technical: {
-      title: "Skills & Technical Insights[cite: 2]",
-      p1: "La ricerca ha dimostrato la cruciale importanza della fase di analisi di prodotto come strumento fondamentale per la formazione dei designer[cite: 2]. Attraverso la decostruzione del waffle maker, l'articolo evidenzia come anche il più semplice dispositivo industriale di massa richieda una meticolosa coordinazione tra linguaggio formale, vincoli costruttivi e usabilità[cite: 2].",
-      p2: "I riscontri raccolti nel libro di analisi non solo documentano lo stato dell'arte dell'oggetto esaminato, ma definiscono anche una metodologia critica replicabile, ponendo le basi cognitive necessarie per la progettazione consapevole di futuri sistemi di prodotto più complessi e sicuri[cite: 2]."
+      title: "Skills & Technical Insights",
+      p1: "La ricerca ha dimostrato la cruciale importanza della fase di analisi di prodotto come strumento fondamentale per la formazione dei designer. Attraverso la decostruzione del waffle maker, l'articolo evidenzia come anche il più semplice dispositivo industriale di massa richieda una meticolosa coordinazione tra linguaggio formale, vincoli costruttivi e usabilità.",
+      p2: "I riscontri raccolti nel libro di analisi non solo documentano lo stato dell'arte dell'oggetto esaminato, ma definiscono anche una metodologia critica replicabile, ponendo le basi cognitive necessarie per la progettazione consapevole di futuri sistemi di prodotto più complessi e sicuri."
     },
     cta: {
       title: "What's next?",
