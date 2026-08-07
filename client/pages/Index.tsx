@@ -211,7 +211,7 @@ const translations = {
     sec1P: "Mi piace capire come funzionano le cose. Ogni progetto nasce dall'osservazione del comportamento delle persone e dalla curiosità verso i meccanismi che rendono un prodotto utile, intuitivo e significativo. Per me progettare significa trasformare un problema reale in un'esperienza concreta.",
     sec2P1: "Lavoro passando continuamente tra ricerca, modellazione CAD, prototipazione rapida e test fisici. Credo che le idee migliori emergano quando possono essere costruite, smontate, migliorate e rimesse alla prova.",
     sec2P2: "Sono interessato al design industriale, ai sistemi interattivi e alla fabbricazione digitale, con particolare attenzione alla semplicità costruttiva, alla sostenibilità e alla qualità dell'esperienza d'uso.",
-    whatsNextSub: "Sempre aperto a nuove collaborazioni, progetti di design.",
+    whatsNextSub: "Sempre aperto a nuove collaborazioni e progetti.",
     aboutBtn: "ABOUT ME",
     cvBtn: "CURRICULUM VITAE",
     infoText: "Info"
@@ -222,7 +222,7 @@ const translations = {
     sec1P: "I like understanding how things work. Every project starts by observing people and questioning the mechanisms that make a product useful, intuitive and meaningful. For me, design is the process of turning real problems into tangible experiences.",
     sec2P1: "My workflow moves continuously between research, CAD modelling, rapid prototyping and physical testing. I believe the best ideas emerge when they can be built, taken apart, refined and tested again.",
     sec2P2: "I'm particularly interested in industrial design, interactive systems and digital fabrication, with a focus on simplicity, sustainability and thoughtful user experiences.",
-    whatsNextSub: "Always open to new collaborations, design projects.",
+    whatsNextSub: "Always open to new collaborations & projects.",
     aboutBtn: "ABOUT ME",
     cvBtn: "CURRICULUM VITAE",
     infoText: "About"
