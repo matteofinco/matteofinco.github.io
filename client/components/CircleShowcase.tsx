@@ -43,13 +43,11 @@ const labels = {
     approach: 'Approccio progettuale',
     materials: 'Materiali & Tecnologie',
     explore: 'ESPLORA PROGETTO',
-    stepPrefix: 'Fase',
   },
   en: {
     approach: 'Design Approach',
     materials: 'Materials & Technologies',
     explore: 'EXPLORE PROJECT',
-    stepPrefix: 'Phase',
   },
 };
 
@@ -101,35 +99,39 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
 
   return (
     <section className="circle-showcase-section" ref={sectionRef}>
-      {/* VISTA DESKTOP (SCROLL STICKY CON CAD VIEWPORT SQUADRATO) */}
-      <div
-        className="showcase-desktop-wrapper"
+      {/* VISTA DESKTOP (CAD VIEWPORT ESSENZIALE) */}
+      <div 
+        className="showcase-desktop-wrapper" 
         style={{ height: `${steps.length * 100}vh` }}
       >
         <div className="showcase-pinned-viewport">
           <div className="showcase-layout-grid">
-
-            {/* COLONNA SINISTRA: CAD VIEWPORT SQUADRATO */}
+            
+            {/* COLONNA SINISTRA: VIEWPORT SQUADRATO */}
             <div className="tech-viewport-wrapper">
               <div className="tech-viewport-container">
-
-                {/* Elementi vettoriali esterni e quote */}
+                
+                {/* Assi cartesiani trasparenti */}
                 <div className="vector-axis-h"></div>
                 <div className="vector-axis-v"></div>
-
+                
+                {/* Crocini di registro agli angoli */}
                 <div className="vector-corner corner-tl">+</div>
                 <div className="vector-corner corner-tr">+</div>
                 <div className="vector-corner corner-bl">+</div>
                 <div className="vector-corner corner-br">+</div>
 
+                {/* Etichette tecniche perimetrali */}
                 <div className="vector-coord-label top-left">
-                  // SYS.GRID.0{activeStep + 1}
+                  // SYS.VIEW.0{activeStep + 1}
                 </div>
+                
+                {/* UNICO SISTEMA DI NUMERAZIONE */}
                 <div className="vector-coord-label bottom-right">
                   [ {String(activeStep + 1).padStart(2, '0')} / {String(steps.length).padStart(2, '0')} ]
                 </div>
 
-                {/* Bordo della cornice e maschera immagine */}
+                {/* Maschera dell'immagine */}
                 <div className="tech-image-mask">
                   <div className="inner-grid-pattern"></div>
 
@@ -149,27 +151,13 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
                     className="tech-project-img tech-img-enter-left"
                   />
 
-                  {/* Reticolo vettoriale sopra l'immagine */}
                   <div className="vector-overlay-crosshair"></div>
-                </div>
-
-                {/* Timeline vettoriale laterale */}
-                <div className="vector-step-indicator">
-                  {steps.map((_, idx) => (
-                    <div
-                      key={idx}
-                      className={`vector-step-tick ${idx === activeStep ? 'active' : ''}`}
-                    >
-                      <span className="tick-line"></span>
-                      <span className="tick-num">{String(idx + 1).padStart(2, '0')}</span>
-                    </div>
-                  ))}
                 </div>
 
               </div>
             </div>
 
-            {/* COLONNA DESTRA: SCHEDE DI TESTO CON ACCENTI VETTORIALI */}
+            {/* COLONNA DESTRA: SCHEDA PROGETTO */}
             <div className="process-text-stage">
               {steps.map((st, index) => {
                 const isActive = index === activeStep;
@@ -217,7 +205,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
         </div>
       </div>
 
-      {/* VISTA MOBILE (CAROSELLO ORIZZONTALE SQUADRATO) */}
+      {/* VISTA MOBILE */}
       <div className="showcase-mobile-carousel">
         <div className="carousel-track">
           {steps.map((st, idx) => (
@@ -266,7 +254,6 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           color: #ffffff;
         }
 
-        /* --- STILI DESKTOP --- */
         .showcase-desktop-wrapper {
           display: block;
           position: relative;
@@ -286,56 +273,57 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          padding: 0 6vw;
+          padding: 0 5vw;
           box-sizing: border-box;
         }
 
+        /* Spaziatura aumentata a 90px tra immagine e testo per dare respiro */
         .showcase-layout-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
           align-items: center;
-          max-width: 1300px;
+          max-width: 1320px;
           width: 100%;
           margin: 0 auto;
-          gap: 60px;
+          gap: 90px;
         }
 
-        /* --- VIEWPORT VETTORIALE SQUADRATO (CAD STYLE) --- */
         .tech-viewport-wrapper {
           display: flex;
           align-items: center;
-          justify-content: center;
+          justify-content: flex-start;
+          width: 100%;
         }
 
         .tech-viewport-container {
           position: relative;
           width: 100%;
-          max-width: 520px;
+          max-width: 490px;
           aspect-ratio: 1 / 1;
-          padding: 24px;
+          padding: 20px;
           box-sizing: border-box;
-          background: rgba(15, 15, 15, 0.4);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(15, 15, 15, 0.3);
+          border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* Assi cartesiani estesi */
+        /* Assi cartesiani esterni */
         .vector-axis-h {
           position: absolute;
           top: 50%;
-          left: -30px;
-          right: -30px;
+          left: -24px;
+          right: -24px;
           height: 1px;
-          background: rgba(255, 255, 255, 0.08);
+          background: rgba(255, 255, 255, 0.06);
           pointer-events: none;
         }
 
         .vector-axis-v {
           position: absolute;
           left: 50%;
-          top: -30px;
-          bottom: -30px;
+          top: -24px;
+          bottom: -24px;
           width: 1px;
-          background: rgba(255, 255, 255, 0.08);
+          background: rgba(255, 255, 255, 0.06);
           pointer-events: none;
         }
 
@@ -343,8 +331,8 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
         .vector-corner {
           position: absolute;
           font-family: monospace;
-          font-size: 14px;
-          color: rgba(255, 255, 255, 0.4);
+          font-size: 13px;
+          color: rgba(255, 255, 255, 0.3);
           line-height: 1;
           user-select: none;
         }
@@ -356,35 +344,35 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
         .vector-coord-label {
           position: absolute;
           font-family: monospace;
-          font-size: 0.7rem;
+          font-size: 0.68rem;
           color: rgba(255, 255, 255, 0.35);
           letter-spacing: 1.5px;
           text-transform: uppercase;
         }
         .vector-coord-label.top-left {
-          top: -20px;
+          top: -22px;
           left: 0;
         }
         .vector-coord-label.bottom-right {
-          bottom: -20px;
+          bottom: -22px;
           right: 0;
         }
 
-        /* Maschera Immagine e Animazioni da Sinistra */
+        /* Maschera e animazioni da sinistra */
         .tech-image-mask {
           position: relative;
           width: 100%;
           height: 100%;
           overflow: hidden;
-          background: #111111;
-          border: 1px solid rgba(255, 255, 255, 0.15);
+          background: #0f0f0f;
+          border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .inner-grid-pattern {
           position: absolute;
           inset: 0;
-          background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
-          background-size: 20px 20px;
+          background-image: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+          background-size: 24px 24px;
           z-index: 1;
           pointer-events: none;
         }
@@ -398,13 +386,11 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           will-change: transform, opacity;
         }
 
-        /* Ingresso da sinistra */
         .tech-img-enter-left {
           animation: slideInFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           z-index: 3;
         }
 
-        /* Uscita verso destra */
         .tech-img-exit-right {
           animation: slideOutToRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           z-index: 2;
@@ -413,7 +399,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
         @keyframes slideInFromLeft {
           from {
             transform: translateX(-100%);
-            opacity: 0.3;
+            opacity: 0.2;
           }
           to {
             transform: translateX(0);
@@ -435,54 +421,12 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
         .vector-overlay-crosshair {
           position: absolute;
           inset: 0;
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.04);
           pointer-events: none;
           z-index: 4;
         }
 
-        /* Timeline laterale vettoriale */
-        .vector-step-indicator {
-          position: absolute;
-          right: -45px;
-          top: 0;
-          bottom: 0;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          padding: 10px 0;
-        }
-
-        .vector-step-tick {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          opacity: 0.25;
-          transition: all 0.4s ease;
-        }
-
-        .vector-step-tick.active {
-          opacity: 1;
-        }
-
-        .tick-line {
-          width: 12px;
-          height: 1px;
-          background: #ffffff;
-        }
-
-        .vector-step-tick.active .tick-line {
-          width: 22px;
-          background: #ffffff;
-          box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-        }
-
-        .tick-num {
-          font-family: monospace;
-          font-size: 0.65rem;
-          color: #ffffff;
-        }
-
-        /* --- COLONNA TESTO DESKTOP --- */
+        /* Colonna Testo */
         .process-text-stage {
           position: relative;
           width: 100%;
@@ -560,10 +504,10 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           grid-template-columns: 1fr 1fr;
           gap: 20px;
           margin-top: 10px;
-          border-top: 1px solid rgba(255, 255, 255, 0.12);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
           padding: 18px 0;
-          max-width: 520px;
+          max-width: 500px;
         }
 
         .meta-item span.label {
@@ -618,7 +562,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           transform: translateX(4px);
         }
 
-        /* --- VISTA MOBILE CAROSELLO (< 1024px) --- */
+        /* Vista Mobile */
         @media (max-width: 1024px) {
           .showcase-desktop-wrapper {
             display: none !important;
