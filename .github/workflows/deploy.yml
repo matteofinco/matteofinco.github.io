@@ -37,18 +37,10 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # Copia automatica dei file compilati nella radice ./dist se creati in client/dist
-      - name: Ensure dist exists
-        run: |
-          if [ -d "client/dist" ]; then
-            echo "Trovata cartella client/dist, la sposto in ./dist"
-            cp -r client/dist ./dist
-          fi
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './dist/spa' # <--- Punta direttamente alla sottocartella generata da Vite
 
       - name: Deploy to GitHub Pages
         id: deployment
