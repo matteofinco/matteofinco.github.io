@@ -781,7 +781,7 @@ export default function WaffleMaker({ heroFit = 'cover' }: WaffleMakerProps) {
 
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
-            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F3c5018637c1c41f08a3fe06be22f70fa" alt="Waffle Maker design" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F744e37ed5b664b4397832a29b1ac1efd" alt="Waffle Maker design" />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
             <h2>{t.design.title}</h2>
@@ -798,7 +798,7 @@ export default function WaffleMaker({ heroFit = 'cover' }: WaffleMakerProps) {
            
             <div className="composite-bottom">
               <div className="composite-square">
-                <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F759fd82ca742478ba679933b69aec93f" alt="Waffle Maker detail" />
+                <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fd97aec9313f746dbb3791b98685a20a8" alt="Waffle Maker detail" />
               </div>
               <div className="composite-square">
                 <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fedbb2046d3db4d549f4da864fca20382" alt="Waffle Maker detail" />
