@@ -545,7 +545,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         <section className="editorial-row">
           <div className="row-media bleed-left reveal-editorial reveal-from-left">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fbc9f3399c1c0420197306c2acf3ef25e"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fd825333b798942f5addf7b89bba2e3ff"
               alt="Archivia design mechanics"
               style={{ objectFit: 'cover', objectPosition: 'center top' }}
             />
