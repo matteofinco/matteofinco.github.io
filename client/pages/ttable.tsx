@@ -5,785 +5,1857 @@ interface TTableProps {
   heroFit?: 'contain' | 'cover';
 }
 
+
+// ======================================================
+// IMAGES
+// ======================================================
+
 const IMAGES = {
   hero: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc",
+
   solution: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc",
+
   research: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc",
+
   design: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc",
+
   compositeTop: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc",
+
   compositeBottomLeft: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc",
-  compositeBottomRight: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc",
+
+  compositeBottomRight: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc"
 };
+
+
+
+// ======================================================
+// PROJECT NAVIGATION
+// ======================================================
 
 const PROJECTS_LIST = [
-  { id: "archivia", title: "Archivia", subtitle: "Pen holder", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e", path: "/archivia" },
-  { id: "pizzamente", title: "PizzaMente", subtitle: "Academic Workshop", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2e3383ac1e3348f0bc9a80ad0e830913", path: "/pizzamente" },
-  { id: "nando", title: "Nando", subtitle: "Hyperplastic cutlery handle", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F58faeaf495544fe5a8367b24177ac088", path: "/nando" },
-  { id: "snake", title: "Snake", subtitle: "Hockey stickhandling trainer", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e", path: "/snake" },
-  { id: "wafflemaker", title: "Waffle Maker", subtitle: "Waffle Maker analysis", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fedbb2046d3db4d549f4da864fca20382", path: "/wafflemaker" },
-  { id: "prop", title: "Prop", subtitle: "3D-Printed Emergency Crutch", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5ea37818589140f49395200bfbdbbb41", path: "/prop" },
-  { id: "ttable", title: "T-Table", subtitle: "Interactive table attentive to nutrition", imageUrl: IMAGES.hero, path: "/ttable" }
+  {
+    id: "archivia",
+    title: "Archivia",
+    subtitle: "Pen holder",
+    imageUrl:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e",
+    path: "/archivia"
+  },
+  {
+    id: "pizzamente",
+    title: "PizzaMente",
+    subtitle: "Academic Workshop",
+    imageUrl:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2e3383ac1e3348f0bc9a80ad0e830913",
+    path: "/pizzamente"
+  },
+  {
+    id: "nando",
+    title: "Nando",
+    subtitle: "Hyperplastic cutlery handle",
+    imageUrl:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F58faeaf495544fe5a8367b24177ac088",
+    path: "/nando"
+  },
+  {
+    id: "snake",
+    title: "Snake",
+    subtitle: "Hockey stickhandling trainer",
+    imageUrl:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e",
+    path: "/snake"
+  },
+  {
+    id: "wafflemaker",
+    title: "Waffle Maker",
+    subtitle: "Product analysis",
+    imageUrl:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fedbb2046d3db4d549f4da864fca20382",
+    path: "/wafflemaker"
+  },
+  {
+    id: "prop",
+    title: "Prop",
+    subtitle: "3D Printed Emergency Crutch",
+    imageUrl:
+      "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5ea37818589140f49395200bfbdbbb41",
+    path: "/prop"
+  },
+  {
+    id: "ttable",
+    title: "T-Table",
+    subtitle: "Interactive dining system",
+    imageUrl: IMAGES.hero,
+    path: "/ttable"
+  }
 ];
 
+
+
+// ======================================================
+// CONTENT
+// ======================================================
+
 const content = {
-  en: {
-    title: "T-TABLE",
-    subtitle: "Interactive table attentive to nutrition",
-    meta: {
-      teamLabel: "Designers",
-      yearLabel: "Year",
-      yearVal: "2026",
-      awardLabel: "Project Type",
-      awardVal: "Product Design & Interactive Table"
-    },
-    overview: {
-      title: "Overview",
-      subtitle: "Challenge",
-      p1: "The growing pervasiveness of screens during mealtimes has fueled the phenomenon of distracted eating, a behavior that alters natural satiety cues and compromises meal memory, resulting in so-called food amnesia.",
-      p2: "Although many restaurant chains have introduced touchscreen tables to enrich the experience, these interfaces often end up completely absorbing the user's attention, alienating them from the very act of eating. The project's challenge was to overturn this paradigm within a high-traffic setting, integrating technology harmoniously and non-invasively to restore awareness to the meal ritual and foster social interaction."
-    },
-    solution: {
-      title: "Solution",
-      p1: "T-Table is a smart, interactive table concept designed for fast-food environments, aimed at eliminating visual overstimulation and food amnesia. The project is born in the course Approfondimento tematico per il Design at the università Iuav di Venezia (Vicenza design campus).",
-      p2: "The system acts as a coordinated ecosystem that adapts its interface in real time based on the meal phases. Before service, the surface entertains families with cooperative mini-games related to the brand; as soon as the food is served, the table recognizes the presence of smart placemats and deactivates the interactive areas occupied by the trays.",
-      p3: "The screen thus transforms into a natural, discreet, low-stimulation backdrop, refocusing people's visual, sensorial, and relational attention on the food and the conversation at the table."
-    },
-    research: {
-      title: "Research",
-      p1: "With this project, we uncovered the phenomenon of distracted eating, focusing on the impact digital stimuli have on feelings of satiety and meal memory. The scientific studies analyzed demonstrate that distraction at the table increases both immediate and delayed caloric intake, weakening children's ability to listen to their body's signals.",
-      p2: "By mapping the restaurant experience, we realized that the problem wasn't the entertainment itself, but the temporal overlap with food: from an ergonomic perspective, continuous interaction with screens positioned on the table top forces the user to adopt incorrect postures and constantly disregard food, altering the proxemics of the convivial ritual. Hence the design breakthrough: the research highlighted the need to decouple play from consumption, defining the specifications for a system of smart tables capable of sensing the arrival of an order and deactivating themselves to rekindle social interaction."
-    },
-    design: {
-      title: "Design",
-      p1: "T-Table translates the dictates of Calm Technology into precise engineering choices. The screen abandons traditional glossy glass in favor of a special anti-reflective matte finish that simulates wood both visually and haptically, offering unprecedented sensory stimulation in interactive displays.",
-      p2: "Display is provided by a low-density LED matrix with a narrow color gamut to reduce visual impact. Communication between the table and the objects occurs via placemats printed with Touchcode conductive ink, which exchange information with the screen's capacitive sensors to map the exact position of the food.",
-      p3: "At the same time, the food packaging has been redesigned from recycled kraft cardboard, using digitally embossed graphics to amplify tactile contrast and stimulate 360° visual and olfactory satiety."
-    },
-    technical: {
-      title: "Skills & Technical Insights",
-      p1: "Experience has taught me to design human-machine interfaces (HMIs) not to capture the user's attention, but to support it, learning to apply technology subtractively and contextually.",
-      p2: "Coordinating such diverse touchpoints has allowed me to combine traditional materials and electronics to generate a positive and ethical behavioral impact."
-    },
-    cta: {
-      title: "What's next?",
-      subtitle: "Projects",
-      button: "BACK TO PORTFOLIO"
-    }
-  },
-  it: {
-    title: "T-TABLE",
-    subtitle: "Tavolo interattivo attento alla nutrizione",
-    meta: {
-      teamLabel: "Designer",
-      yearLabel: "Anno",
-      yearVal: "2026",
-      awardLabel: "Tipologia Progetto",
-      awardVal: "Product Design & Tavolo Interattivo"
-    },
-    overview: {
-      title: "Overview",
-      subtitle: "Sfida progettuale",
-      p1: "La crescente pervasività degli schermi durante i pasti ha alimentato il fenomeno della distrazione a tavola (distracted eating), un comportamento che altera i segnali naturali di sazietà e compromette la memoria del pasto, dando luogo alla cosiddetta amnesia alimentare.",
-      p2: "Sebbene molte catene di ristorazione abbiano introdotto tavoli touchscreen per arricchire l'esperienza, queste interfacce finiscono spesso per assorbire completamente l'attenzione dell'utente, alienandolo dall'atto stesso del mangiare. La sfida del progetto è stata quella di ribaltare questo paradigma in un contesto ad alto traffico, integrando la tecnologia in modo armonioso e non invasivo per restituire consapevolezza al rito del pasto e favorire l'interazione sociale."
-    },
-    solution: {
-      title: "Solution",
-      p1: "T-Table è un concept di tavolo smart e interattivo progettato per ambienti fast-food, volto ad eliminare la sovrastimolazione visiva e l'amnesia alimentare. Il progetto nasce all'interno del corso di Approfondimento tematico per il Design presso l'Università Iuav di Venezia (sede di Vicenza).",
-      p2: "Il sistema agisce come un ecosistema coordinato che adatta la sua interfaccia in tempo reale in base alle fasi del pasto. Prima del servizio, la superficie intrattiene le famiglie con mini-giochi cooperativi legati al brand; non appena il cibo viene servito, il tavolo riconosce la presenza di tovagliette smart e disattiva le aree interattive occupate dai vassoi.",
-      p3: "Lo schermo si trasforma così in uno sfondo naturale, discreto e a bassa stimolazione, rifocalizzando l'attenzione visiva, sensoriale e relazionale delle persone sul cibo e sulla conversazione a tavola."
-    },
-    research: {
-      title: "Research",
-      p1: "Con questo progetto abbiamo approfondito il fenomeno del distracted eating, concentrandoci sull'impatto che gli stimoli digitali hanno sul senso di sazietà e sulla memoria del pasto. Gli studi scientifici analizzati dimostrano che la distrazione a tavola aumenta l'apporto calorico sia immediato che ritardato, indebolendo la capacità dei bambini di ascoltare i segnali del proprio corpo.",
-      p2: "Mappando l'esperienza nella ristorazione, ci siamo resi conto che il problema non era l'intrattenimento in sé, ma la sovrapposizione temporale con il cibo: da una prospettiva ergonomica, l'interazione continua con gli schermi sul piano del tavolo costringe l'utente ad assumere posture scorrette e a ignorare costantemente il cibo, alterando la prossemica del rito conviviale. Da qui la svolta progettuale: la ricerca ha evidenziato la necessità di disaccoppiare il gioco dal consumo, definendo le specifiche per un sistema di tavoli smart in grado di percepire l'arrivo di un ordine e disattivarsi per riaccendere l'interazione sociale."
-    },
-    design: {
-      title: "Design",
-      p1: "T-Table traduce i dettami della Calm Technology in precise scelte ingegneristiche. Lo schermo abbandona il tradizionale vetro lucido a favore di una speciale finitura opaca antiriflesso che simula il legno sia visivamente che tattilmente, offrendo una stimolazione sensoriale senza precedenti nei display interattivi.",
-      p2: "La visualizzazione è affidata a una matrice LED a bassa densità con un gamut di colori ristretto per ridurre l'impatto visivo. La comunicazione tra il tavolo e gli oggetti avviene tramite tovagliette stampate con inchiostro conduttivo Touchcode, che scambiano informazioni con i sensori capacitivi dello schermo per mappare l'esatta posizione del cibo.",
-      p3: "Allo stesso tempo, il packaging alimentare è stato ridisegnato in cartoncino kraft riciclato, utilizzando grafiche goffratte digitalmente per amplificare il contrasto tattile e stimolare la sazietà visiva e olfattiva a 360°."
-    },
-    technical: {
-      title: "Skills & Technical Insights",
-      p1: "L'esperienza mi ha insegnato a progettare interfacce uomo-macchina (HMI) non per catturare l'attenzione dell'utente, ma per supportarla, imparando ad applicare la tecnologia in modo sottrattivo e contestuale.",
-      p2: "Coordinare touchpoint così diversi mi ha permesso di combinare materiali tradizionali ed elettronica per generare un impatto comportamentale positivo ed etico."
-    },
-    cta: {
-      title: "What's next?",
-      subtitle: "Progetti",
-      button: "TORNA AL PORTFOLIO"
-    }
-  }
+
+en: {
+
+title: "T-TABLE",
+
+subtitle:
+"Interactive table designed to improve awareness during meals",
+
+
+meta: {
+
+teamLabel: "Designers",
+
+yearLabel: "Year",
+
+yearVal: "2026",
+
+awardLabel: "Project Type",
+
+awardVal:
+"Product Design & Interactive System"
+
+},
+
+
+overview: {
+
+title: "Overview",
+
+subtitle: "Challenge",
+
+p1:
+"The increasing presence of digital screens during meals has contributed to the phenomenon of distracted eating: a behaviour that affects natural satiety perception and weakens memory of the eating experience.",
+
+p2:
+"Although touchscreen tables were introduced in restaurants to enhance interaction, they often absorb the user's attention completely, moving focus away from food and social relationships. The challenge was therefore to rethink interactive technology as a discreet tool capable of supporting the meal ritual instead of replacing it."
+
+},
+
+
+solution: {
+
+title: "Solution",
+
+p1:
+"T-Table is a smart dining system developed for fast-food environments, designed to reduce visual overstimulation and restore attention to the act of eating.",
+
+p2:
+"The project explores a new relationship between digital interfaces and physical objects, creating a table that adapts its behaviour according to the different phases of the meal.",
+
+p3:
+"Before food arrives, the surface becomes an interactive environment for cooperative activities. Once trays and smart placemats are detected, the system automatically reduces interaction and transforms into a calm background."
+
+},
+
+
+research: {
+
+title: "Research",
+
+p1:
+"The research focused on the relationship between digital distraction, eating behaviour and social interaction. Scientific studies showed how continuous screen stimulation can increase consumption while reducing awareness of hunger signals.",
+
+p2:
+"Analysing restaurant environments revealed that the problem was not entertainment itself, but its overlap with eating. This led to the definition of a system able to separate play and consumption, activating technology only when it improves the experience."
+
+},
+
+
+design: {
+
+title: "Design",
+
+p1:
+"T-Table translates the principles of Calm Technology into a physical and interactive product language.",
+
+p2:
+"The surface combines a tactile material perception with a low-impact digital interface, reducing the visual dominance usually associated with traditional touchscreen products.",
+
+p3:
+"Through sensors, smart objects and adaptive feedback, the table creates a balanced interaction between technology, food and social behaviour."
+
+},
+
+
+technical: {
+
+title: "Technical Insights",
+
+p1:
+"The project explored the design of human-machine interactions focused on supporting users rather than capturing their attention.",
+
+p2:
+"Combining materials, electronics and behavioural research allowed the development of a more responsible approach to interactive product design."
+
+},
+
+
+cta: {
+
+title: "What's next?",
+
+subtitle:
+"Explore other projects",
+
+button:
+"BACK TO PORTFOLIO"
+
+}
+
+},
+
+
+
+it: {
+
+title: "T-TABLE",
+
+subtitle:
+"Tavolo interattivo progettato per migliorare la consapevolezza durante il pasto",
+
+
+meta: {
+
+teamLabel: "Designer",
+
+yearLabel: "Anno",
+
+yearVal: "2026",
+
+awardLabel: "Tipologia Progetto",
+
+awardVal:
+"Product Design & Sistema Interattivo"
+
+},
+
+
+overview: {
+
+title: "Overview",
+
+subtitle: "Sfida progettuale",
+
+p1:
+"La crescente presenza degli schermi durante i pasti ha contribuito alla diffusione del fenomeno del distracted eating, un comportamento che influenza la percezione della sazietà e riduce la memoria dell'esperienza alimentare.",
+
+p2:
+"Nonostante i tavoli touchscreen siano stati introdotti per arricchire l'esperienza nei ristoranti, spesso finiscono per assorbire completamente l'attenzione dell'utente, allontanandolo dal cibo e dalla relazione con gli altri."
+
+},
+
+solution: {
+
+title: "Solution",
+
+p1:
+"T-Table è un sistema smart progettato per ambienti fast-food con l'obiettivo di ridurre la sovrastimolazione visiva e riportare attenzione al rito del pasto.",
+
+p2:
+"Il progetto sviluppa una nuova relazione tra interfacce digitali e oggetti fisici, creando un tavolo capace di adattarsi alle diverse fasi dell'esperienza.",
+
+p3:
+"Prima dell'arrivo del cibo la superficie permette attività interattive cooperative; successivamente riconosce la presenza dei vassoi e riduce automaticamente l'interazione."
+
+},
+
+
+research: {
+
+title: "Research",
+
+subtitle: "Research",
+
+p1:
+"La ricerca ha analizzato il rapporto tra distrazione digitale, comportamento alimentare e interazione sociale.",
+
+p2:
+"L'analisi dell'esperienza nella ristorazione ha evidenziato la necessità di separare il momento del gioco da quello del consumo, progettando una tecnologia più discreta e consapevole."
+
+},
+
+
+design: {
+
+title: "Design",
+
+p1:
+"T-Table traduce i principi della Calm Technology in un sistema fisico e digitale equilibrato.",
+
+p2:
+"La superficie combina percezione tattile e interazione digitale riducendo l'impatto visivo tipico dei prodotti touchscreen.",
+
+p3:
+"Attraverso sensori, oggetti intelligenti e feedback adattivi il tavolo crea un equilibrio tra tecnologia, cibo e comportamento umano."
+
+},
+
+
+technical: {
+
+title: "Technical Insights",
+
+p1:
+"Il progetto ha permesso di approfondire la progettazione di interazioni uomo-macchina orientate al supporto dell'utente.",
+
+p2:
+"La combinazione tra materiali, elettronica e ricerca comportamentale ha portato allo sviluppo di un approccio più responsabile al design interattivo."
+
+},
+
+
+cta: {
+
+title: "What's next?",
+
+subtitle:
+"Esplora altri progetti",
+
+button:
+"TORNA AL PORTFOLIO"
+
+}
+
+}
+
+};<style>{`
+
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background: #070707;
+}
+
+
+.project-page * {
+  box-sizing: border-box;
+}
+
+
+.project-page {
+
+  background:#070707;
+
+  color:#e5e5e5;
+
+  min-height:100vh;
+
+  width:100%;
+
+  padding-top:120px;
+
+  padding-bottom:80px;
+
+  font-family:
+  system-ui,
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  sans-serif;
+
+}
+
+
+
+.project-container {
+
+  width:100%;
+
+  overflow:hidden;
+
+}
+
+
+
+.editorial-content {
+
+  width:100%;
+
+  max-width:1200px;
+
+  margin:0 auto;
+
+  padding:
+  0 4vw;
+
+}
+
+
+
+
+/* DIVIDER */
+
+
+.editorial-divider {
+
+  border:none;
+
+  height:1px;
+
+  background:#1b1b1b;
+
+  margin:70px 0;
+
+}
+
+
+
+
+
+/* HERO */
+
+
+.project-hero {
+
+  padding-bottom:20px;
+
+}
+
+
+
+.project-hero h1 {
+
+  margin:0 0 15px;
+
+  font-size:
+  clamp(3rem,7vw,6rem);
+
+  font-weight:900;
+
+  line-height:.9;
+
+  letter-spacing:-3px;
+
+  color:white;
+
+}
+
+
+
+.project-subtitle {
+
+  font-size:
+  clamp(1.1rem,2vw,1.5rem);
+
+  color:#888;
+
+  margin-bottom:45px;
+
+}
+
+
+
+
+
+.hero-info {
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(200px,1fr));
+
+  gap:35px;
+
+  padding-top:30px;
+
+  border-top:1px solid #1c1c1c;
+
+}
+
+
+
+.info-block span {
+
+  display:block;
+
+  font-family:monospace;
+
+  font-size:.75rem;
+
+  text-transform:uppercase;
+
+  letter-spacing:1px;
+
+  color:#666;
+
+  margin-bottom:10px;
+
+}
+
+
+
+.info-block p {
+
+  margin:0;
+
+  color:#ddd;
+
+  line-height:1.5;
+
+}
+
+
+
+
+
+/* HERO FULL WIDTH */
+
+
+.hero-media-fullbleed {
+
+  width:100vw;
+
+  margin-left:0;
+
+  height:
+  clamp(420px,65vh,800px);
+
+  overflow:hidden;
+
+  background:#111;
+
+}
+
+
+
+.hero-media-fullbleed img {
+
+  width:100%;
+
+  height:100%;
+
+  display:block;
+
+  object-fit:${heroFit};
+
+}
+
+
+
+
+
+/* OVERVIEW */
+
+
+.overview-section {
+
+  max-width:850px;
+
+}
+
+
+
+.overview-section h2,
+.row-text h2,
+.technical-section h2 {
+
+  color:white;
+
+  font-size:
+  clamp(1.8rem,3vw,2.7rem);
+
+  line-height:1.1;
+
+  letter-spacing:-1px;
+
+  font-weight:800;
+
+}
+
+
+
+.section-label {
+
+  display:block;
+
+  font-family:monospace;
+
+  text-transform:uppercase;
+
+  color:#777;
+
+  font-size:.8rem;
+
+  margin-bottom:25px;
+
+}
+
+
+
+.overview-section p,
+.row-text p,
+.technical-section p {
+
+  color:#aaa;
+
+  font-size:1.05rem;
+
+  line-height:1.8;
+
+}
+
+
+
+
+
+/* ================================================= */
+/* FULL BLEED IMAGE + TEXT SECTIONS */
+/* ================================================= */
+
+
+
+.editorial-row-fullbleed {
+
+  width:100vw;
+
+  margin-left:0;
+
+  display:grid;
+
+  grid-template-columns:
+
+  minmax(0,50vw)
+
+  minmax(0,50vw);
+
+  align-items:center;
+
+  margin-bottom:80px;
+
+}
+
+
+
+/*
+IMMAGINE A SINISTRA
+*/
+
+
+.row-img-left .row-media {
+
+  grid-column:1;
+
+}
+
+
+
+.row-img-left .row-text {
+
+  grid-column:2;
+
+  padding-left:clamp(40px,6vw,100px);
+
+  padding-right:5vw;
+
+}
+
+
+
+
+/*
+IMMAGINE A DESTRA
+*/
+
+
+.row-img-right .row-text {
+
+  grid-column:1;
+
+  padding-left:5vw;
+
+  padding-right:clamp(40px,6vw,100px);
+
+}
+
+
+
+.row-img-right .row-media {
+
+  grid-column:2;
+
+}
+
+
+
+
+/* IMAGE BOX */
+
+
+.row-media {
+
+  width:100%;
+
+  height:
+  clamp(400px,55vh,650px);
+
+  overflow:hidden;
+
+  background:#111;
+
+}
+
+
+
+.row-media img {
+
+  width:100%;
+
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
+
+  transition:
+  transform .8s cubic-bezier(.16,1,.3,1);
+
+}
+
+
+
+.row-media:hover img {
+
+  transform:scale(1.04);
+
+}
+
+
+
+
+
+/* COMPOSITE */
+
+
+.fullbleed-composite {
+
+  width:100vw;
+
+}
+
+
+
+.media-composite-box {
+
+  width:100%;
+
+}
+
+
+
+.composite-top {
+
+  width:100%;
+
+  height:
+  clamp(400px,60vh,700px);
+
+  overflow:hidden;
+
+}
+
+
+
+.composite-bottom {
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:12px;
+
+  margin-top:12px;
+
+}
+
+
+
+.composite-square {
+
+  height:
+  clamp(280px,40vh,450px);
+
+  overflow:hidden;
+
+}
+
+
+
+.media-composite-box img {
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+  display:block;
+
+}
+
+
+
+
+
+
+/* NAVIGATOR */
+
+
+.project-navigator {
+
+  margin-top:40px;
+
+  display:flex;
+
+  justify-content:center;
+
+  position:relative;
+
+}
+
+
+
+.dots-container {
+
+  display:flex;
+
+  gap:15px;
+
+  padding:12px 25px;
+
+  border:1px solid #222;
+
+  background:#111;
+
+  border-radius:40px;
+
+}
+
+
+
+.dot-item {
+
+  width:12px;
+
+  height:12px;
+
+  border-radius:50%;
+
+  border:none;
+
+  background:#444;
+
+  cursor:pointer;
+
+}
+
+
+
+.dot-item.active {
+
+  background:white;
+
+}
+
+
+
+
+
+.project-preview-card {
+
+  position:absolute;
+
+  bottom:60px;
+
+  width:280px;
+
+  background:#111;
+
+  border:1px solid #333;
+
+  overflow:hidden;
+
+}
+
+
+
+.preview-img-box {
+
+  height:160px;
+
+}
+
+
+
+.preview-img-box img {
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+}
+
+
+
+
+
+/* REVEAL */
+
+
+.reveal-editorial {
+
+  opacity:0;
+
+  transform:translateY(35px);
+
+  filter:blur(8px);
+
+  transition:
+  opacity .8s ease,
+  transform .8s ease,
+  filter .8s ease;
+
+}
+
+
+
+.reveal-active {
+
+  opacity:1;
+
+  transform:none;
+
+  filter:none;
+
+}
+
+
+
+
+
+/* CTA */
+
+
+.project-cta {
+
+  text-align:center;
+
+  padding-top:50px;
+
+}
+
+
+
+.cta-button {
+
+  display:inline-block;
+
+  margin-top:35px;
+
+  padding:15px 40px;
+
+  background:white;
+
+  color:black;
+
+  text-decoration:none;
+
+  font-weight:700;
+
+  font-size:.85rem;
+
+  letter-spacing:1px;
+
+}
+
+
+
+
+/* MOBILE */
+
+
+@media(max-width:860px){
+
+
+.project-page {
+
+padding-top:80px;
+
+}
+
+
+
+.editorial-row-fullbleed {
+
+display:flex;
+
+flex-direction:column;
+
+width:100%;
+
+}
+
+
+
+.row-media {
+
+height:350px;
+
+}
+
+
+
+.row-text,
+.row-img-left .row-text,
+.row-img-right .row-text {
+
+padding:40px 4vw;
+
+}
+
+
+
+.row-img-right {
+
+flex-direction:column-reverse;
+
+}
+
+
+
+.composite-bottom {
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.hero-media-fullbleed {
+
+height:320px;
+
+}
+
+
+
+}
+
+`}</style>
+export default function TTable({ heroFit = "cover" }: TTableProps) {
+
+
+const [language] = useState<'it' | 'en'>('en');
+
+
+const [hoveredProject, setHoveredProject] =
+useState<typeof PROJECTS_LIST[0] | null>(null);
+
+
+const t = content[language];
+
+
+
+useEffect(() => {
+
+
+const elements =
+document.querySelectorAll(".reveal-editorial");
+
+
+const observer =
+new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add(
+"reveal-active"
+);
+
+observer.unobserve(
+entry.target
+);
+
+}
+
+});
+
+},
+
+{
+threshold:.08
+}
+
+);
+
+
+
+elements.forEach(el=>{
+
+const rect =
+el.getBoundingClientRect();
+
+
+if(rect.top < window.innerHeight){
+
+el.classList.add(
+"reveal-active"
+);
+
+}
+else{
+
+observer.observe(el);
+
+}
+
+});
+
+
+
+return()=>{
+
+observer.disconnect();
+
 };
 
-export default function TTable({ heroFit = 'cover' }: TTableProps) {
-  const [language, setLanguage] = useState<'it' | 'en'>('en');
-  const [hoveredProject, setHoveredProject] = useState<typeof PROJECTS_LIST[0] | null>(null);
-  const t = content[language];
-
-  useEffect(() => {
-    const revealElements = document.querySelectorAll('.reveal-editorial');
-    
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('reveal-active');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.05 }
-    );
-
-    revealElements.forEach((el) => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
-        el.classList.add('reveal-active');
-      } else {
-        revealObserver.observe(el);
-      }
-    });
-
-    return () => {
-      revealObserver.disconnect();
-    };
-  }, [language]);
-
-  return (
-    <div className="project-page editorial-portfolio">
-      <Header
-        showBackToDesigns={true}
-        currentLang={language}
-        onLanguageChange={setLanguage}
-      />
-
-      <style>{`
-        html, body {
-          overflow-x: hidden;
-          margin: 0;
-          padding: 0;
-          background-color: #070707;
-        }
-
-        .project-page * {
-          box-sizing: border-box;
-        }
-
-        .project-page {
-          background-color: #070707;
-          color: #e5e5e5;
-          min-height: 100vh;
-          width: 100%;
-          max-width: 100%;
-          overflow-x: hidden;
-          padding-top: 120px;
-          padding-bottom: 80px;
-          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
-        .project-container {
-          width: 100%;
-          margin: 0;
-          padding: 0;
-        }
-
-        .editorial-content {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 4vw;
-        }
-
-        .editorial-divider {
-          border: none;
-          height: 1px;
-          background-color: #1a1a1a;
-          margin: 60px 0;
-        }
-
-        .project-hero {
-          padding-bottom: 10px;
-        }
-
-        .project-hero h1 {
-          font-size: clamp(3rem, 7vw, 5.5rem);
-          font-weight: 900;
-          line-height: 0.95;
-          color: #ffffff;
-          margin-bottom: 12px;
-          letter-spacing: -2px;
-          text-transform: uppercase;
-        }
-
-        .project-subtitle {
-          font-size: clamp(1.1rem, 2vw, 1.5rem);
-          color: #888888;
-          margin-bottom: 40px;
-          font-weight: 400;
-        }
-
-        .hero-info {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-          gap: 30px;
-          padding-top: 25px;
-          border-top: 1px solid #1a1a1a;
-        }
-
-        .info-block span {
-          display: block;
-          font-size: 0.75rem;
-          font-family: monospace;
-          text-transform: uppercase;
-          letter-spacing: 1.2px;
-          color: #666666;
-          margin-bottom: 8px;
-        }
-
-        .info-block p {
-          font-size: 0.95rem;
-          line-height: 1.5;
-          color: #cccccc;
-          margin: 0;
-          font-weight: 500;
-        }
-
-        .hero-media-fullbleed {
-          width: 100%;
-          height: clamp(420px, 65vh, 800px);
-          background: #0d0d0d;
-          overflow: hidden;
-          margin-top: 40px;
-          border-radius: 0;
-        }
-
-        .hero-media-fullbleed img {
-          width: 100%;
-          height: 100%;
-          display: block;
-          object-fit: ${heroFit};
-          object-position: center;
-        }
-
-        .overview-section {
-          max-width: 800px;
-        }
-
-        .overview-section h2 {
-          font-size: clamp(1.8rem, 3vw, 2.6rem);
-          font-weight: 800;
-          color: #ffffff;
-          margin-bottom: 8px;
-          letter-spacing: -0.8px;
-        }
-
-        .overview-section .section-label {
-          font-size: 0.85rem;
-          font-family: monospace;
-          text-transform: uppercase;
-          letter-spacing: 1.2px;
-          color: #777777;
-          margin-bottom: 24px;
-          display: block;
-        }
-
-        .overview-section p {
-          color: #aaaaaa;
-          font-size: 1.08rem;
-          line-height: 1.8;
-          margin-bottom: 18px;
-        }
-
-        .editorial-row-fullbleed {
-          width: 100%;
-          display: grid;
-          grid-template-columns: minmax(4vw, 1fr) minmax(0, 560px) minmax(0, 560px) minmax(4vw, 1fr);
-          align-items: center;
-        }
-
-        .editorial-row-fullbleed.row-img-left .row-media {
-          grid-column: 1 / 3;
-          width: 100%;
-          height: 520px;
-          overflow: hidden;
-          background: #0d0d0d;
-          border-radius: 0;
-        }
-
-        .editorial-row-fullbleed.row-img-left .row-text {
-          grid-column: 3 / 4;
-          padding-left: 60px;
-          padding-right: 20px;
-        }
-
-        .editorial-row-fullbleed.row-img-right .row-text {
-          grid-column: 2 / 3;
-          padding-right: 60px;
-          padding-left: 20px;
-        }
-
-        .editorial-row-fullbleed.row-img-right .row-media {
-          grid-column: 3 / 5;
-          width: 100%;
-          height: 520px;
-          overflow: hidden;
-          background: #0d0d0d;
-          border-radius: 0;
-        }
-
-        .row-text h2 {
-          font-size: clamp(1.8rem, 3vw, 2.5rem);
-          font-weight: 800;
-          line-height: 1.15;
-          margin-bottom: 18px;
-          color: #ffffff;
-          letter-spacing: -0.8px;
-        }
-
-        .row-text p {
-          color: #aaaaaa;
-          font-size: 1.05rem;
-          line-height: 1.8;
-          margin-bottom: 16px;
-        }
-
-        .row-media img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-          display: block;
-          transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-          border-radius: 0;
-        }
-
-        .row-media:hover img {
-          transform: scale(1.03);
-        }
-
-        .fullbleed-composite {
-          width: 100%;
-          background: #070707;
-          padding: 0;
-        }
-
-        .media-composite-box {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          padding: 0;
-          margin: 0;
-        }
-
-        .composite-top {
-          width: 100%;
-          height: clamp(380px, 55vh, 600px);
-          overflow: hidden;
-          background: #0d0d0d;
-          border-radius: 0;
-        }
-
-        .composite-bottom {
-          width: 100%;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 12px;
-        }
-
-        .composite-square {
-          width: 100%;
-          height: clamp(280px, 42vh, 400px);
-          overflow: hidden;
-          background: #0d0d0d;
-          border-radius: 0;
-        }
-
-        .media-composite-box img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-          display: block;
-          transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-          border-radius: 0;
-        }
-
-        .media-composite-box img:hover {
-          transform: scale(1.03);
-        }
-
-        .technical-section {
-          max-width: 800px;
-        }
-
-        .technical-section h2 {
-          font-size: clamp(1.8rem, 3vw, 2.5rem);
-          font-weight: 800;
-          color: #ffffff;
-          margin-bottom: 24px;
-          letter-spacing: -0.8px;
-        }
-
-        .technical-section p {
-          color: #aaaaaa;
-          font-size: 1.05rem;
-          line-height: 1.8;
-          margin-bottom: 18px;
-        }
-
-        .project-navigator {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          position: relative;
-          margin-top: 20px;
-        }
-
-        .dots-container {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          padding: 12px 24px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 40px;
-          backdrop-filter: blur(8px);
-        }
-
-        .dot-item {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background: #333333;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          padding: 0;
-          position: relative;
-        }
-
-        .dot-item:hover, .dot-item.active {
-          background: #ffffff;
-          transform: scale(1.3);
-          box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
-        }
-
-        .dot-item.active {
-          border: 2px solid #070707;
-        }
-
-        .project-preview-card {
-          position: absolute;
-          bottom: 60px;
-          width: 280px;
-          background: #111111;
-          border: 1px solid #262626;
-          border-radius: 0;
-          overflow: hidden;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-          pointer-events: none;
-          animation: fadeIn 0.25s ease-out forwards;
-          z-index: 100;
-        }
-
-        .preview-img-box {
-          width: 100%;
-          height: 160px;
-          overflow: hidden;
-          background: #000;
-        }
-
-        .preview-img-box img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-          border-radius: 0;
-        }
-
-        .preview-details {
-          padding: 12px 16px;
-          text-align: left;
-        }
-
-        .preview-details h4 {
-          font-size: 1.1rem;
-          font-weight: 800;
-          color: #ffffff;
-          margin: 0 0 4px 0;
-          letter-spacing: -0.5px;
-        }
-
-        .preview-details p {
-          font-size: 0.75rem;
-          color: #888888;
-          font-family: monospace;
-          margin: 0;
-          text-transform: uppercase;
-        }
-
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .reveal-editorial {
-          opacity: 0;
-          filter: blur(6px);
-          transition: opacity 0.8s cubic-bezier(.22,.61,.36,1), 
-                      filter 0.8s cubic-bezier(.22,.61,.36,1), 
-                      transform 0.8s cubic-bezier(.22,.61,.36,1);
-        }
-
-        .reveal-editorial.reveal-from-right {
-          transform: translateX(40px);
-        }
-
-        .reveal-editorial.reveal-from-left {
-          transform: translateX(-40px);
-        }
-
-        .reveal-editorial.reveal-active {
-          opacity: 1;
-          filter: blur(0);
-          transform: translateX(0);
-        }
-
-        .project-cta {
-          text-align: center;
-          padding-top: 40px;
-        }
-
-        .project-cta h2 {
-          font-size: clamp(2rem, 4vw, 3.2rem);
-          font-weight: 900;
-          color: #ffffff;
-          margin-bottom: 8px;
-          letter-spacing: -1.2px;
-          text-transform: uppercase;
-        }
-
-        .cta-subtitle {
-          color: #666666;
-          font-size: 0.8rem;
-          font-family: monospace;
-          text-transform: uppercase;
-          letter-spacing: 1.5px;
-          margin: 0 auto 24px;
-        }
-
-        .cta-button {
-          display: inline-block;
-          padding: 14px 36px;
-          background: #ffffff;
-          color: #070707;
-          font-weight: 700;
-          text-decoration: none;
-          transition: all 0.3s ease;
-          letter-spacing: 0.8px;
-          font-size: 0.82rem;
-          margin-top: 30px;
-        }
-
-        .cta-button:hover {
-          background: #070707;
-          color: #ffffff;
-          border: 1px solid #ffffff;
-          transform: translateY(-2px);
-        }
-
-        @media (max-width: 860px) {
-          .project-page {
-            padding-top: 90px;
-          }
-
-          .project-preview-card {
-            display: none !important;
-          }
-
-          .editorial-row-fullbleed {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-          }
-
-          .editorial-row-fullbleed.row-img-right {
-            flex-direction: column-reverse;
-          }
-
-          .editorial-row-fullbleed.row-img-left .row-media,
-          .editorial-row-fullbleed.row-img-right .row-media {
-            width: 100%;
-            height: 280px;
-          }
-
-          .hero-media-fullbleed {
-            height: 280px;
-            margin-top: 24px;
-          }
-
-          .composite-bottom {
-            grid-template-columns: 1fr;
-            gap: 12px;
-          }
-
-          .composite-top {
-            height: 280px;
-          }
-
-          .composite-square {
-            height: 280px;
-          }
-
-          .editorial-divider {
-            margin: 40px 0;
-          }
-        }
-      `}</style>
-
-      <div className="project-container">
-        <div className="editorial-content">
-          <section className="project-hero reveal-editorial reveal-from-left">
-            <h1>{t.title}</h1>
-            <p className="project-subtitle">{t.subtitle}</p>
-
-            <div className="hero-info">
-              <div className="info-block">
-                <span>{t.meta.teamLabel}</span>
-                <p>Matteo Finco, Anna Foresto, Paolo Levorato, Andrea Melchiori, Giulia Pettenò</p>
-              </div>
-
-              <div className="info-block">
-                <span>{t.meta.yearLabel}</span>
-                <p>{t.meta.yearVal}</p>
-              </div>
-
-              <div className="info-block">
-                <span>{t.meta.awardLabel}</span>
-                <p>{t.meta.awardVal}</p>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
-          <img src={IMAGES.hero} alt="T-Table hero" />
-        </section>
-
-        <div className="editorial-content">
-          <hr className="editorial-divider" />
-          <section className="overview-section reveal-editorial reveal-from-left">
-            <h2>{t.overview.title}</h2>
-            <span className="section-label">{t.overview.subtitle}</span>
-            <p>{t.overview.p1}</p>
-            <p>{t.overview.p2}</p>
-          </section>
-          <hr className="editorial-divider" />
-        </div>
-
-        <section className="editorial-row-fullbleed row-img-left">
-          <div className="row-media reveal-editorial reveal-from-left">
-            <img src={IMAGES.solution} alt="T-Table solution" />
-          </div>
-          <div className="row-text reveal-editorial reveal-from-right">
-            <h2>{t.solution.title}</h2>
-            <p>{t.solution.p1}</p>
-            <p>{t.solution.p2}</p>
-            <p>{t.solution.p3}</p>
-          </div>
-        </section>
-
-        <div className="editorial-content"><hr className="editorial-divider" /></div>
-
-        <section className="editorial-row-fullbleed row-img-right">
-          <div className="row-text reveal-editorial reveal-from-left">
-            <h2>{t.research.title}</h2>
-            <p>{t.research.p1}</p>
-            <p>{t.research.p2}</p>
-          </div>
-          <div className="row-media reveal-editorial reveal-from-right">
-            <img src={IMAGES.research} alt="T-Table research" />
-          </div>
-        </section>
-
-        <div className="editorial-content"><hr className="editorial-divider" /></div>
-
-        <section className="editorial-row-fullbleed row-img-left">
-          <div className="row-media reveal-editorial reveal-from-left">
-            <img src={IMAGES.design} alt="T-Table design" />
-          </div>
-          <div className="row-text reveal-editorial reveal-from-right">
-            <h2>{t.design.title}</h2>
-            <p>{t.design.p1}</p>
-            <p>{t.design.p2}</p>
-            <p>{t.design.p3}</p>
-          </div>
-        </section>
-
-        <div className="editorial-content"><hr className="editorial-divider" /></div>
-
-        <section className="fullbleed-composite reveal-editorial reveal-from-left">
-          <div className="media-composite-box">
-            <div className="composite-top">
-              <img src={IMAGES.compositeTop} alt="T-Table assembly" />
-            </div>
-            <div className="composite-bottom">
-              <div className="composite-square">
-                <img src={IMAGES.compositeBottomLeft} alt="T-Table detail" />
-              </div>
-              <div className="composite-square">
-                <img src={IMAGES.compositeBottomRight} alt="T-Table detail" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div className="editorial-content">
-          <hr className="editorial-divider" />
-          <section className="technical-section reveal-editorial reveal-from-left">
-            <h2>{t.technical.title}</h2>
-            <p>{t.technical.p1}</p>
-            <p>{t.technical.p2}</p>
-          </section>
-
-          <hr className="editorial-divider" />
-
-          <section className="project-cta reveal-editorial reveal-from-left">
-            <h2>{t.cta.title}</h2>
-            <p className="cta-subtitle">{t.cta.subtitle}</p>
-
-            <div className="project-navigator">
-              {hoveredProject && (
-                <div className="project-preview-card">
-                  <div className="preview-img-box">
-                    <img src={hoveredProject.imageUrl} alt={hoveredProject.title} />
-                  </div>
-                  <div className="preview-details">
-                    <h4>{hoveredProject.title}</h4>
-                    <p>{hoveredProject.subtitle}</p>
-                  </div>
-                </div>
-              )}
-
-              <div className="dots-container">
-                {PROJECTS_LIST.map((proj) => (
-                  <button
-                    key={proj.id}
-                    className={`dot-item ${proj.id === 'ttable' ? 'active' : ''}`}
-                    onMouseEnter={() => setHoveredProject(proj)}
-                    onMouseLeave={() => setHoveredProject(null)}
-                    onClick={() => window.location.href = proj.path}
-                    aria-label={`Vai al progetto ${proj.title}`}
-                  />
-                ))}
-              </div>
-            </div>
-
-            <a href="/" className="cta-button">{t.cta.button}</a>
-          </section>
-        </div>
-      </div>
-    </div>
-  );
+
+},[]);
+
+
+
+
+
+return (
+
+<div className="project-page">
+
+
+<div className="project-container">
+
+
+
+{/* ================= HERO ================= */}
+
+
+
+<div className="editorial-content">
+
+
+<section className="
+project-hero
+reveal-editorial
+">
+
+
+<h1>
+{t.title}
+</h1>
+
+
+<p className="project-subtitle">
+{t.subtitle}
+</p>
+
+
+
+<div className="hero-info">
+
+
+<div className="info-block">
+
+<span>
+{t.meta.teamLabel}
+</span>
+
+<p>
+Matteo Finco<br/>
+Anna Foresto<br/>
+Paolo Levorato<br/>
+Andrea Melchiori<br/>
+Giulia Pettenò
+</p>
+
+</div>
+
+
+
+<div className="info-block">
+
+<span>
+{t.meta.yearLabel}
+</span>
+
+<p>
+{t.meta.yearVal}
+</p>
+
+</div>
+
+
+
+<div className="info-block">
+
+<span>
+{t.meta.awardLabel}
+</span>
+
+<p>
+{t.meta.awardVal}
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+</div>
+
+
+
+
+
+
+<section className="
+hero-media-fullbleed
+reveal-editorial
+">
+
+
+<img
+src={IMAGES.hero}
+alt="T-Table hero"
+/>
+
+
+</section>
+
+
+
+
+
+
+{/* ================= OVERVIEW ================= */}
+
+
+
+<div className="editorial-content">
+
+
+<hr className="editorial-divider"/>
+
+
+<section className="
+overview-section
+reveal-editorial
+">
+
+
+<h2>
+{t.overview.title}
+</h2>
+
+
+<span className="section-label">
+{t.overview.subtitle}
+</span>
+
+
+
+<p>
+{t.overview.p1}
+</p>
+
+
+<p>
+{t.overview.p2}
+</p>
+
+
+</section>
+
+
+
+<hr className="editorial-divider"/>
+
+
+</div>
+
+
+
+
+
+
+
+
+{/* ================= SOLUTION ================= */}
+
+
+
+<section className="
+editorial-row-fullbleed
+row-img-left
+">
+
+
+
+<div className="
+row-media
+reveal-editorial
+">
+
+
+<img
+
+src={IMAGES.solution}
+
+alt="T-Table solution"
+
+/>
+
+
+</div>
+
+
+
+
+<div className="
+row-text
+reveal-editorial
+">
+
+
+<h2>
+{t.solution.title}
+</h2>
+
+
+
+<p>
+{t.solution.p1}
+</p>
+
+
+<p>
+{t.solution.p2}
+</p>
+
+
+<p>
+{t.solution.p3}
+</p>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+<div className="editorial-content">
+
+<hr className="editorial-divider"/>
+
+</div>
+
+
+
+
+
+
+{/* ================= RESEARCH ================= */}
+
+
+
+<section className="
+editorial-row-fullbleed
+row-img-right
+">
+
+
+<div className="
+row-text
+reveal-editorial
+">
+
+
+<h2>
+{t.research.title}
+</h2>
+
+
+<p>
+{t.research.p1}
+</p>
+
+
+<p>
+{t.research.p2}
+</p>
+
+
+</div>
+
+
+
+
+<div className="
+row-media
+reveal-editorial
+">
+
+
+<img
+
+src={IMAGES.research}
+
+alt="T-Table research"
+
+/>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<div className="editorial-content">
+
+<hr className="editorial-divider"/>
+
+</div>
+
+
+
+
+
+
+
+
+{/* ================= DESIGN ================= */}
+
+
+
+<section className="
+editorial-row-fullbleed
+row-img-left
+">
+
+
+
+<div className="
+row-media
+reveal-editorial
+">
+
+
+<img
+
+src={IMAGES.design}
+
+alt="T-Table design"
+
+/>
+
+
+</div>
+
+
+
+
+
+
+<div className="
+row-text
+reveal-editorial
+">
+
+
+<h2>
+{t.design.title}
+</h2>
+
+
+<p>
+{t.design.p1}
+</p>
+
+
+<p>
+{t.design.p2}
+</p>
+
+
+<p>
+{t.design.p3}
+</p>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<div className="editorial-content">
+
+<hr className="editorial-divider"/>
+
+</div>
+
+
+
+
+
+
+
+{/* ================= COMPOSITE ================= */}
+
+
+
+<section className="
+fullbleed-composite
+reveal-editorial
+">
+
+
+
+<div className="
+media-composite-box
+">
+
+
+
+<div className="composite-top">
+
+
+<img
+
+src={IMAGES.compositeTop}
+
+alt="T-Table assembly"
+
+/>
+
+
+</div>
+
+
+
+
+
+<div className="
+composite-bottom
+">
+
+
+
+<div className="composite-square">
+
+<img
+
+src={IMAGES.compositeBottomLeft}
+
+alt="T-Table detail"
+
+/>
+
+</div>
+
+
+
+
+
+<div className="composite-square">
+
+
+<img
+
+src={IMAGES.compositeBottomRight}
+
+alt="T-Table detail"
+
+/>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+{/* ================= TECHNICAL ================= */}
+
+
+
+<div className="editorial-content">
+
+
+
+<hr className="editorial-divider"/>
+
+
+
+<section className="
+technical-section
+reveal-editorial
+">
+
+
+<h2>
+{t.technical.title}
+</h2>
+
+
+
+<p>
+{t.technical.p1}
+</p>
+
+
+
+<p>
+{t.technical.p2}
+</p>
+
+
+
+</section>
+
+
+
+
+<hr className="editorial-divider"/>
+
+
+
+
+
+
+
+{/* ================= CTA ================= */}
+
+
+
+<section className="
+project-cta
+reveal-editorial
+">
+
+
+<h2>
+{t.cta.title}
+</h2>
+
+
+
+<p className="cta-subtitle">
+{t.cta.subtitle}
+</p>
+
+
+
+
+<div className="project-navigator">
+
+
+
+{hoveredProject && (
+
+
+<div className="
+project-preview-card
+">
+
+
+<div className="preview-img-box">
+
+
+<img
+
+src={hoveredProject.imageUrl}
+
+alt={hoveredProject.title}
+
+/>
+
+
+</div>
+
+
+
+<div className="preview-details">
+
+
+<h4>
+{hoveredProject.title}
+</h4>
+
+
+<p>
+{hoveredProject.subtitle}
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+)}
+
+
+
+
+
+
+
+<div className="dots-container">
+
+
+
+{
+PROJECTS_LIST.map(project=>(
+
+
+<button
+
+key={project.id}
+
+className={
+
+`dot-item ${
+project.id==="ttable"
+?
+"active"
+:
+""
+}`
+
+}
+
+
+onMouseEnter={()=>setHoveredProject(project)}
+
+
+onMouseLeave={()=>setHoveredProject(null)}
+
+
+onClick={()=>
+window.location.href = project.path
+}
+
+
+/>
+
+
+
+))
+
+}
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+<a
+
+href="/"
+
+className="cta-button"
+
+>
+
+{t.cta.button}
+
+</a>
+
+
+
+
+</section>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+);
+
 }
