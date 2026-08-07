@@ -58,11 +58,9 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
   const [prevStep, setPrevStep] = useState<number | null>(null);
   const triggerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Garantisce che il fallback funzioni sempre anche se lang viene passato non valido
   const currentLang = PROCESS_STEPS[lang] ? lang : 'it';
   const steps = PROCESS_STEPS[currentLang];
 
-  // Quando la lingua cambia dinamicamente, resetta la memoria dello step precedente
   useEffect(() => {
     setPrevStep(null);
   }, [lang]);
@@ -106,79 +104,101 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
     }
   };
 
-  // Previene crash in caso di indici fuori range
   const safeActiveStep = Math.min(activeStep, steps.length - 1);
   const currentStepData = steps[safeActiveStep];
   const prevStepData = prevStep !== null && prevStep < steps.length ? steps[prevStep] : null;
 
   return (
     <section className="process-section">
-      {/* FRAME STICKY FULL-BLEED A SINISTRA */}
-      <div className="process-sticky-frame">
-        <div className="process-media">
-          {/* Vecchia immagine */}
-          {prevStepData && (
+      {/* VISTA DESKTOP (STICKY INTERATTIVO) */}
+      <div className="process-desktop-wrapper">
+        <div className="process-sticky-frame">
+          <div className="process-media">
+            {prevStepData && (
+              <img
+                key={`prev-${currentLang}-${prevStep}`}
+                src={prevStepData.image}
+                alt=""
+                className="process-img img-fade-out"
+              />
+            )}
+
             <img
-              key={`prev-${currentLang}-${prevStep}`}
-              src={prevStepData.image}
-              alt=""
-              className="process-img img-fade-out"
+              key={`curr-${currentLang}-${safeActiveStep}`}
+              src={currentStepData.image}
+              alt={currentStepData.step}
+              className="process-img img-fade-in"
             />
-          )}
 
-          {/* Nuova immagine */}
-          <img
-            key={`curr-${currentLang}-${safeActiveStep}`}
-            src={currentStepData.image}
-            alt={currentStepData.step}
-            className="process-img img-fade-in"
-          />
-
-          <div key={`tag-${currentLang}-${safeActiveStep}`} className="process-tag animate-tag-smooth">
-            {currentStepData.tag}
+            <div key={`tag-${currentLang}-${safeActiveStep}`} className="process-tag animate-tag-smooth">
+              {currentStepData.tag}
+            </div>
           </div>
-        </div>
 
-        {/* COLONNA TESTO DESTRA */}
-        <div className="process-text-column">
-          <div key={`content-${currentLang}-${safeActiveStep}`} className="process-content-block animate-text-smooth">
-            <span className="step-number">{currentStepData.step}</span>
+          <div className="process-text-column">
+            <div key={`content-${currentLang}-${safeActiveStep}`} className="process-content-block animate-text-smooth">
+              <span className="step-number">{currentStepData.step}</span>
 
-            <h3 className="step-title">
-              {currentStepData.title.split('\n').map((line, i) => (
-                <React.Fragment key={i}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
-            </h3>
+              <h3 className="step-title">
+                {currentStepData.title.split('\n').map((line, i) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </h3>
 
-            <p className="step-description">{currentStepData.desc}</p>
+              <p className="step-description">{currentStepData.desc}</p>
 
-            <div className="step-indicators">
-              {steps.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  aria-label={`Go to step ${i + 1}`}
-                  onClick={() => handleStepClick(i)}
-                  className={`indicator-dot ${i === safeActiveStep ? 'active' : ''}`}
-                />
-              ))}
+              <div className="step-indicators">
+                {steps.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    aria-label={`Go to step ${i + 1}`}
+                    onClick={() => handleStepClick(i)}
+                    className={`indicator-dot ${i === safeActiveStep ? 'active' : ''}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
+
+        <div className="process-triggers-overlay">
+          {steps.map((_, index) => (
+            <div
+              key={index}
+              data-step-index={index}
+              ref={(el) => (triggerRefs.current[index] = el)}
+              className="step-trigger"
+            />
+          ))}
+        </div>
       </div>
 
-      {/* STRATO SCROLLABILE TRASPARENTE */}
-      <div className="process-triggers-overlay">
-        {steps.map((_, index) => (
-          <div
-            key={index}
-            data-step-index={index}
-            ref={(el) => (triggerRefs.current[index] = el)}
-            className="step-trigger"
-          />
+      {/* VISTA MOBILE (SEQUENZIALE LINEARE PARETE) */}
+      <div className="process-mobile-list">
+        {steps.map((item, idx) => (
+          <div key={idx} className="process-mobile-card">
+            <div className="mobile-media-container">
+              <img src={item.image} alt={item.step} className="mobile-process-img" />
+              <div className="mobile-process-tag">{item.tag}</div>
+            </div>
+
+            <div className="mobile-text-content">
+              <span className="step-number">{item.step}</span>
+              <h3 className="step-title">
+                {item.title.split('\n').map((line, i) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </h3>
+              <p className="step-description">{item.desc}</p>
+            </div>
+          </div>
         ))}
       </div>
 
@@ -187,8 +207,19 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           position: relative;
           width: 100%;
           background-color: #070707;
-          padding: 0 4vw 0 0;
           box-sizing: border-box;
+        }
+
+        /* --- STILI DESKTOP --- */
+        .process-desktop-wrapper {
+          display: block;
+          position: relative;
+          width: 100%;
+          padding: 0 4vw 0 0;
+        }
+
+        .process-mobile-list {
+          display: none;
         }
 
         .process-sticky-frame {
@@ -263,12 +294,8 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
         }
 
         @keyframes tagSmooth {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
 
         .process-tag {
@@ -304,12 +331,8 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
         }
 
         @keyframes textSmooth {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
 
         .step-number {
@@ -380,18 +403,69 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           height: 140vh;
         }
 
-        @media (max-width: 900px) {
-          .process-section {
-            padding: 0 4vw;
+        /* --- STILI RESPONSIVE MOBILE (< 1024px) --- */
+        @media (max-width: 1024px) {
+          .process-desktop-wrapper {
+            display: none !important;
           }
-          .process-sticky-frame {
-            grid-template-columns: 1fr;
-            top: 70px;
-            height: auto;
-            max-height: none;
+
+          .process-mobile-list {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            padding: 40px 6vw;
           }
-          .process-media {
-            height: 350px;
+
+          .process-mobile-card {
+            display: flex;
+            flex-direction: column;
+            background: #0b0b0b;
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            overflow: hidden;
+          }
+
+          .mobile-media-container {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background: #141414;
+          }
+
+          .mobile-process-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          .mobile-process-tag {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            font-family: monospace;
+            font-size: 0.65rem;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.75);
+            padding: 6px 12px;
+            letter-spacing: 1px;
+            backdrop-filter: blur(4px);
+          }
+
+          .mobile-text-content {
+            padding: 24px 20px;
+          }
+
+          .mobile-text-content .step-title {
+            font-size: 1.5rem;
+            line-height: 1.25;
+            margin-bottom: 12px;
+          }
+
+          .mobile-text-content .step-description {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+            color: #888888;
           }
         }
       `}</style>
