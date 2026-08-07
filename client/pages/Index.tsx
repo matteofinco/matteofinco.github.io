@@ -215,9 +215,9 @@ const translations = {
     aboutBtn: "ABOUT ME",
     cvBtn: "CURRICULUM VITAE",
     infoText: "Info",
-    projectsBadge: "PORTFOLIO",
+    projectsBadge: "",
     projectsTitle: "PROJECTS",
-    projectsSub: "Una selezione di lavori tra prodotto, meccatronica e design di servizio."
+    projectsSub: ""
   },
   en: {
     sec1Title: "Matteo Finco",
@@ -229,9 +229,9 @@ const translations = {
     aboutBtn: "ABOUT ME",
     cvBtn: "CURRICULUM VITAE",
     infoText: "About",
-    projectsBadge: "PORTFOLIO",
+    projectsBadge: "",
     projectsTitle: "PROJECTS",
-    projectsSub: "A selection of works spanning product design, mechatronics and service design."
+    projectsSub: ""
   }
 };
 
