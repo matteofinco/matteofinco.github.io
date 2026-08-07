@@ -11,7 +11,7 @@ const PROCESS_STEPS = {
       title: 'Ogni progetto parte\nda una domanda.',
       desc: 'Prima di cercare soluzioni, dedico tempo a comprendere le persone, i contesti e i comportamenti. Analizzo come vengono usati i prodotti, dove nascono le difficoltà e quali vincoli guidano ogni decisione progettuale.',
       tag: 'IMMAGINE 01 // RICERCA E OSSERVAZIONE',
-      image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F0a6666a4c3754165bf5a7b9831b66b28',
+      image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Ff5c97c63b81e4bcc9e0ffb49878a09be',
     },
     {
       step: '02 / CREA E TESTA',
