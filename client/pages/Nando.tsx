@@ -746,7 +746,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
         {/* HERO PRODUCT IMAGE (FULL BLEED) */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
           <img
-            src={NANDO_IMAGE_URL}
+            src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F89f7d25782454ef4b596c9e326f8b335"
             alt="Nando hero product shot"
           />
         </section>
