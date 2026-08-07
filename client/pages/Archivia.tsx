@@ -55,8 +55,8 @@ const content = {
       p2: "The project provided experience in understanding polymer behavior, injection molding requirements, and the relationship between geometry, assembly, and manufacturing processes."
     },
     cta: {
-      title: "What's next",
-      subtitle: "Selected projects",
+      title: "What's next?",
+      subtitle: "Projects",
       button: "BACK TO PORTFOLIO"
     }
   },
@@ -99,8 +99,8 @@ const content = {
       p2: "Il progetto ha permesso di approfondire il comportamento dei materiali polimerici, i requisiti dello stampaggio a iniezione e la relazione tra geometria, assemblaggio e processo produttivo."
     },
     cta: {
-      title: "What's next",
-      subtitle: "Progetti selezionati",
+      title: "What's next?",
+      subtitle: "Progetti",
       button: "TORNA AL PORTFOLIO"
     }
   }
