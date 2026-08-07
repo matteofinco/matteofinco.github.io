@@ -14,44 +14,40 @@ const content = {
       teamVal: "Matteo Finco, Giulia Pettenò, Nadia Zanella",
       yearLabel: "Year",
       yearVal: "2025",
-      awardLabel: "Award",
-      awardVal: "Plastic European Innovation Award"
+      awardLabel: "Competition",
+      awardVal: "PLEIADES • Plastic European Innovation Award"
     },
     overview: {
       title: "Overview",
-      p1: "Developing a small everyday object made from recycled polymers for PLEIADES (Plastic European Innovation Award for Design and Sustainability), organized by Università Iuav di Venezia (Vicenza campus) with Ewikon, Arburg, and Uniform.",
-      p2: "The main goal was to balance creative expression with the rigorous technical constraints of mass industrial production, optimizing the object for injection molding."
+      p1: "Archivia was developed for PLEIADES (Plastic European Innovation Award for Design and Sustainability), an international competition organized by the Università Iuav di Venezia (Vicenza campus) in partnership with industry leaders in polymer processing and molding: Ewikon, Arburg, and Uniform.",
+      p2: "The project addresses the challenge of designing a daily-use desktop object entirely from recycled polyamide, balancing conceptual identity with strict industrial constraints required for high-volume injection molding."
     },
     solution: {
-      title: "Solution",
-      p1: "Archivia is a compact desk pen holder that creates a symbolic parallel between digital preservation and analog transcription. Taking visual inspiration from a classic USB flash drive, it translates file storage into a physical workspace organizer.",
-      p2: "Composed of three monomaterial parts that lock together without screws or adhesives. The main body consists of two mirrored halves connected to a 90° rotating cover via integrated mechanical interlocks."
+      title: "Solution & Mechanics",
+      p1: "The product creates a direct conceptual parallel between digital storage and analog writing tools. Taking functional and visual cues from a classic rotating USB flash drive, Archivia organizes pens and tools within a compact desktop footprint.",
+      p2: "The assembly consists of exactly three monomaterial polymer parts engineered to lock together without adhesives, metal screws, or secondary fasteners. The central container is split into two symmetrical shell halves that interlock securely and pivot inside a 90° rotating outer cover through integrated mechanical snap-fit joints."
     },
     research: {
-      title: "Research & Concept",
-      p1: "Initial research focused on desk organization and daily routines to find a typology capable of leveraging recycled polyamide's physical properties.",
-      p2: "Desk optimization emerged as the primary focus, leading to detailed work on wall thickness, snap-fit tolerances, and rotational mechanics."
-    },
-    process: {
-      title: "Engineering",
-      p1: "Archivia's architecture mirrors the mechanical movement of a rotating flash drive. The assembly is optimized for single-mold production, ensuring structural stability purely through precision interlocks."
+      title: "Material & Engineering",
+      p1: "Research focused on the physical behavior of recycled polyamide, analyzing material shrinkage, draft angles, and structural wall consistency required for precision injection molding.",
+      p2: "By designing the entire assembly to be produced within a single optimized mold layout, the project reduces production steps and ensures straightforward end-of-life mono-material recycling."
     },
     bottomSection: {
-      title: "Project Takeaways & Tools",
-      toolsTitle: "Tools & Technologies",
-      toolsDesc: "Rhino 7, KeyShot, Adobe Illustrator, FDM 3D Printing (Prototyping)",
+      title: "Technical Specifications & Insights",
+      toolsTitle: "Software & Prototyping",
+      toolsDesc: "McNeel Rhino 7, KeyShot, Adobe Illustrator, FDM Functional Prototyping",
       insights: [
         {
-          title: "Creative & Technical Balance",
-          desc: "Combining creative freedom with industrial rigor through direct exchange with molding and plastics manufacturers."
+          title: "Industrial Molding Constraints",
+          desc: "Direct integration of mold parting lines, draft angles, and constant wall thicknesses suitable for mass injection molding."
         },
         {
-          title: "Material Efficiency",
-          desc: "Optimizing polymer volume and mold geometry for sustainable, low-impact production."
+          title: "Mono-material Assembly",
+          desc: "Complete elimination of secondary hardware by relying strictly on mechanical interlocks and elastic snap-fit joints."
         },
         {
-          title: "Mechanical Interlocks",
-          desc: "Designing high-precision snap fits to eliminate hardware and simplify single-material recycling."
+          title: "Design for Circularity",
+          desc: "Simplified recycling workflow enabled by single-polymer construction and non-permanent mechanical assembly."
         }
       ]
     },
@@ -69,44 +65,40 @@ const content = {
       teamVal: "Matteo Finco, Giulia Pettenò, Nadia Zanella",
       yearLabel: "Anno",
       yearVal: "2025",
-      awardLabel: "Riconoscimento",
-      awardVal: "Plastic European Innovation Award"
+      awardLabel: "Concorso",
+      awardVal: "PLEIADES • Plastic European Innovation Award"
     },
     overview: {
       title: "Panoramica",
-      p1: "Sviluppo di un oggetto d'uso quotidiano in polimeri riciclati per il concorso PLEIADES (Plastic European Innovation Award for Design and Sustainability), organizzato dall'Università Iuav di Venezia (sede di Vicenza) con Ewikon, Arburg e Uniform.",
-      p2: "L'obiettivo principale era bilanciare la ricerca formale con i rigidi vincoli tecnici dello stampaggio ad iniezione per la produzione industriale su larga scala."
+      p1: "Archivia nasce all'interno del concorso PLEIADES (Plastic European Innovation Award for Design and Sustainability), promosso dall'Università Iuav di Venezia (sede di Vicenza) in collaborazione con tre aziende leader nel settore dello stampaggio e dei polimeri: Ewikon, Arburg e Uniform.",
+      p2: "Il progetto risponde alla richiesta di ideare un oggetto d'uso quotidiano in poliammide riciclata, coniugando la ricerca formale con i rigidi vincoli tecnici imposti dallo stampaggio ad iniezione ad alta produttività."
     },
     solution: {
-      title: "Soluzione",
-      p1: "Archivia è un portapenne da scrivania che crea un parallelo tra archiviazione digitale e scrittura analogica. La forma riprende l'iconica pendrive USB, trasformando il concetto di memoria digitale in un organizzatore fisico.",
-      p2: "È composto da tre parti monomateriale assemblate senza viti né collanti. Il corpo centrale si divide in due metà speculari unite alla calotta ruotabile a 90° tramite incastri meccanici integrati."
+      title: "Soluzione e Cinematismo",
+      p1: "L'oggetto stabilisce una corrispondenza concettuale tra la memorizzazione digitale dei dati e la scrittura analogica. Riprendendo le forme e il meccanismo di apertura delle classiche chiavette USB a rotazione, Archivia organizza le penne e la cancelleria in una struttura compatta da scrivania.",
+      p2: "La struttura è composta da tre soli pezzi monomateriale progettati per assemblarsi ad incastro, senza l'impiego di componenti metallici o collanti. Il corpo centrale è suddiviso in due metà speculari che si uniscono e si vincolano alla calotta esterna ruotabile a 90° tramite perni e snap-fit integrati nella geometria del pezzo."
     },
     research: {
-      title: "Ricerca & Concept",
-      p1: "La ricerca iniziale ha analizzato lo spazio di lavoro per identificare una tipologia di prodotto capace di valorizzare le caratteristiche meccaniche della poliammide riciclata.",
-      p2: "L'organizzazione della scrivania si è rivelata la direzione ideale, portando allo studio degli spessori di parete, delle tolleranze degli snap-fit e dei cinetismi di rotazione."
-    },
-    process: {
-      title: "Ingegnerizzazione",
-      p1: "L'architettura di Archivia rispecchia il movimento di una chiavetta rotante. Il prodotto è ottimizzato per essere realizzato in un unico stampo, garantendo tenuta strutturale solo tramite incastri di precisione."
+      title: "Ingegnerizzazione del Materiale",
+      p1: "La fase di sviluppo si è concentrata sullo studio della poliammide riciclata, definendo gli spessori di parete omogenei, gli angoli di sformo e le tolleranze di accoppiamento per garantire la tenuta meccanica dei componenti.",
+      p2: "I tre elementi sono stati ottimizzati per essere realizzati all'interno di un unico stampo, riducendo i tempi di ciclo produttivo e garantendo la totale riciclabilità del prodotto a fine vita."
     },
     bottomSection: {
       title: "Dettagli Tecnici & Insights",
-      toolsTitle: "Strumenti Utilizzati",
-      toolsDesc: "Rhino 7, KeyShot, Adobe Illustrator, Stampa 3D FDM (Prototipazione)",
+      toolsTitle: "Strumenti di Sviluppo",
+      toolsDesc: "McNeel Rhino 7, KeyShot, Adobe Illustrator, Prototipazione Funzionale FDM",
       insights: [
         {
-          title: "Equilibrio Tecnico e Formale",
-          desc: "Sintesi tra libertà espressiva e rigore industriale grazie al confronto diretto con le aziende del settore."
+          title: "Vincoli di Stampaggio",
+          desc: "Gestione delle linee di giunzione dello stampo, degli angoli di sformo e del ritiro del materiale polimerico."
         },
         {
-          title: "Efficienza del Materiale",
-          desc: "Ottimizzazione dei volumi di polimero e delle geometrie dello stampo per una produzione sostenibile."
+          title: "Incastri Meccanici Integrati",
+          desc: "Eliminazione di viti e inserti in metallo a favore di snodi e snap-fit modellati direttamente sulla parte."
         },
         {
-          title: "Incastri Meccanici",
-          desc: "Progettazione di snap-fit ad alta precisione per eliminare componenti metallici e facilitare il riciclo."
+          title: "Design per la Circolarità",
+          desc: "Facilità di disassemblaggio e riciclo garantite dall'impiego di una singola tipologia di polimero."
         }
       ]
     },
@@ -132,7 +124,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.12 }
     );
     revealElements.forEach((el) => revealObserver.observe(el));
 
@@ -167,7 +159,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
         /* HERO SECTION */
         .project-hero {
           padding-top: 40px;
-          padding-bottom: 60px;
+          padding-bottom: 40px;
         }
 
         .project-hero h1 {
@@ -195,7 +187,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           padding: 20px 0;
           border-top: 1px solid #1a1a1a;
           border-bottom: 1px solid #1a1a1a;
-          margin-bottom: 50px;
+          margin-bottom: 60px;
         }
 
         .meta-block h4 {
@@ -214,21 +206,22 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           font-weight: 500;
         }
 
-        /* HERO IMAGE CONTAINER */
-        .project-hero-image {
-          width: 100%;
-          height: 62vh;
-          min-height: 400px;
-          max-height: 700px;
+        /* 100VW HERO IMAGE (TOUCHES SCREEN EDGES) */
+        .project-hero-image-fullbleed {
+          width: 100vw;
+          margin-left: calc(50% - 50vw);
+          height: 68vh;
+          min-height: 420px;
+          max-height: 750px;
           background-color: #0b0b0b;
           overflow: hidden;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 90px;
+          margin-bottom: 100px;
         }
 
-        .project-hero-image img {
+        .project-hero-image-fullbleed img {
           width: 100%;
           height: 100%;
           display: block;
@@ -252,65 +245,76 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           color: #aaaaaa;
           font-size: 1.15rem;
           line-height: 1.85;
-          margin-bottom: 20px;
+          margin-bottom: 22px;
         }
 
-        /* EDITORIAL COLUMN ROWS (TEXT + IMAGE) */
-        .editorial-rows {
+        /* FULLBLEED EDITORIAL ROWS (IMAGE BLEEDS TO WINDOW EDGE) */
+        .editorial-rows-fullbleed {
           display: flex;
           flex-direction: column;
-          gap: 120px;
+          gap: 140px;
           margin-bottom: 120px;
+          width: 100vw;
+          margin-left: calc(50% - 50vw);
         }
 
-        .project-row {
+        .fullbleed-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 60px;
           align-items: center;
+          width: 100%;
         }
 
-        .project-row.reverse {
-          direction: rtl;
+        .fullbleed-row.media-right .row-text {
+          padding: 0 6vw 0 calc((100vw - 1300px) / 2 + 6vw);
         }
 
-        .project-row.reverse .project-text,
-        .project-row.reverse .project-media {
-          direction: ltr;
+        .fullbleed-row.media-right .row-media {
+          width: 100%;
+          height: 58vh;
+          min-height: 420px;
         }
 
-        .project-text h2 {
+        .fullbleed-row.media-left .row-media {
+          width: 100%;
+          height: 58vh;
+          min-height: 420px;
+        }
+
+        .fullbleed-row.media-left .row-text {
+          padding: 0 calc((100vw - 1300px) / 2 + 6vw) 0 6vw;
+        }
+
+        .row-text h2 {
           font-size: clamp(2rem, 3.5vw, 3rem);
           font-weight: 800;
           line-height: 1.15;
-          margin-bottom: 20px;
+          margin-bottom: 22px;
           color: #ffffff;
           letter-spacing: -1px;
         }
 
-        .project-text p {
+        .row-text p {
           color: #aaaaaa;
           font-size: 1.08rem;
-          line-height: 1.8;
+          line-height: 1.85;
           margin-bottom: 18px;
         }
 
-        .project-media {
-          width: 100%;
-          height: 480px;
+        .row-media {
           background: #0d0d0d;
           overflow: hidden;
         }
 
-        .project-media img {
+        .row-media img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           display: block;
-          transition: transform 0.8s ease;
+          transition: transform 0.9s cubic-bezier(.22,.61,.36,1);
         }
 
-        .project-media:hover img {
+        .row-media:hover img {
           transform: scale(1.02);
         }
 
@@ -324,11 +328,11 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
         }
 
         .reveal-editorial.reveal-from-right {
-          transform: translateX(35px);
+          transform: translateX(40px);
         }
 
         .reveal-editorial.reveal-from-left {
-          transform: translateX(-35px);
+          transform: translateX(-40px);
         }
 
         .reveal-editorial.reveal-active {
@@ -337,9 +341,9 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           transform: translateX(0);
         }
 
-        /* BOTTOM SECTION (INSIGHTS & TOOLS GRID) */
+        /* BOTTOM SECTION (INSIGHTS & TOOLS) */
         .bottom-section {
-          margin-top: 80px;
+          margin-top: 60px;
           padding-top: 80px;
           border-top: 1px solid #1a1a1a;
         }
@@ -365,7 +369,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
         }
 
         .bottom-card.tools-card {
-          border-color: #262626;
+          border-color: #2a2a2a;
           background: rgba(255, 255, 255, 0.025);
         }
 
@@ -384,9 +388,10 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
         }
 
         .bottom-card.tools-card p {
-          color: #cccccc;
+          color: #dddddd;
           font-family: monospace;
-          font-size: 0.9rem;
+          font-size: 0.88rem;
+          line-height: 1.6;
         }
 
         /* CTA SECTION */
@@ -427,41 +432,49 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
         }
 
         /* RESPONSIVE */
-        @media (max-width: 900px) {
-          .project-row,
-          .project-row.reverse {
+        @media (max-width: 1024px) {
+          .fullbleed-row.media-right .row-text,
+          .fullbleed-row.media-left .row-text {
+            padding: 0 6vw;
+          }
+
+          .fullbleed-row {
             grid-template-columns: 1fr;
-            gap: 35px;
-            direction: ltr;
+            gap: 40px;
           }
 
-          .project-row.reverse .project-text,
-          .project-row.reverse .project-media {
-            direction: ltr;
+          .fullbleed-row.media-left .row-media {
+            order: 2;
           }
 
-          .project-media {
-            height: 380px;
+          .fullbleed-row.media-left .row-text {
+            order: 1;
           }
 
-          .editorial-rows {
-            gap: 80px;
+          .fullbleed-row.media-right .row-media,
+          .fullbleed-row.media-left .row-media {
+            height: 42vh;
+            min-height: 320px;
+          }
+
+          .editorial-rows-fullbleed {
+            gap: 90px;
           }
 
           .hero-minimal-meta {
-            gap: 20px;
+            gap: 24px;
           }
 
-          .project-hero-image {
-            height: 45vh;
-            min-height: 300px;
-            margin-bottom: 60px;
+          .project-hero-image-fullbleed {
+            height: 48vh;
+            min-height: 320px;
+            margin-bottom: 70px;
           }
         }
       `}</style>
 
       <div className="project-container">
-        {/* HERO SECTION */}
+        {/* HERO HEADER */}
         <section className="project-hero reveal-editorial reveal-from-left">
           <h1>{t.title}</h1>
           <p className="project-subtitle">{t.subtitle}</p>
@@ -480,70 +493,61 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
               <p>{t.meta.awardVal}</p>
             </div>
           </div>
-
-          <div className="project-hero-image">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e"
-              alt="Archivia Hero Render"
-              style={{ objectFit: heroFit }}
-            />
-          </div>
         </section>
+      </div>
 
+      {/* 100VW HERO IMAGE */}
+      <div className="project-hero-image-fullbleed reveal-editorial reveal-from-left">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e"
+          alt="Archivia Hero Render"
+          style={{ objectFit: heroFit }}
+        />
+      </div>
+
+      <div className="project-container">
         {/* OVERVIEW */}
         <section className="overview-section reveal-editorial reveal-from-left">
           <h2>{t.overview.title}</h2>
           <p>{t.overview.p1}</p>
           <p>{t.overview.p2}</p>
         </section>
+      </div>
 
-        {/* EDITORIAL COLUMN ROWS */}
-        <div className="editorial-rows">
-          {/* SOLUTION ROW */}
-          <section className="project-row">
-            <div className="project-text reveal-editorial reveal-from-left">
-              <h2>{t.solution.title}</h2>
-              <p>{t.solution.p1}</p>
-              <p>{t.solution.p2}</p>
-            </div>
-            <div className="project-media reveal-editorial reveal-from-right">
-              <img
-                src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80"
-                alt="Archivia solution detail"
-              />
-            </div>
-          </section>
+      {/* FULLBLEED EDITORIAL ROWS */}
+      <div className="editorial-rows-fullbleed">
+        {/* SOLUTION ROW (IMAGE TOUCHES RIGHT EDGE) */}
+        <section className="fullbleed-row media-right">
+          <div className="row-text reveal-editorial reveal-from-left">
+            <h2>{t.solution.title}</h2>
+            <p>{t.solution.p1}</p>
+            <p>{t.solution.p2}</p>
+          </div>
+          <div className="row-media reveal-editorial reveal-from-right">
+            <img
+              src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1400&q=80"
+              alt="Archivia mechanical solution details"
+            />
+          </div>
+        </section>
 
-          {/* RESEARCH ROW */}
-          <section className="project-row reverse">
-            <div className="project-text reveal-editorial reveal-from-right">
-              <h2>{t.research.title}</h2>
-              <p>{t.research.p1}</p>
-              <p>{t.research.p2}</p>
-            </div>
-            <div className="project-media reveal-editorial reveal-from-left">
-              <img
-                src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1200&q=80"
-                alt="Archivia research process"
-              />
-            </div>
-          </section>
+        {/* RESEARCH ROW (IMAGE TOUCHES LEFT EDGE) */}
+        <section className="fullbleed-row media-left">
+          <div className="row-media reveal-editorial reveal-from-left">
+            <img
+              src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1400&q=80"
+              alt="Archivia material and engineering analysis"
+            />
+          </div>
+          <div className="row-text reveal-editorial reveal-from-right">
+            <h2>{t.research.title}</h2>
+            <p>{t.research.p1}</p>
+            <p>{t.research.p2}</p>
+          </div>
+        </section>
+      </div>
 
-          {/* PROCESS ROW */}
-          <section className="project-row">
-            <div className="project-text reveal-editorial reveal-from-left">
-              <h2>{t.process.title}</h2>
-              <p>{t.process.p1}</p>
-            </div>
-            <div className="project-media reveal-editorial reveal-from-right">
-              <img
-                src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80"
-                alt="Archivia engineering detail"
-              />
-            </div>
-          </section>
-        </div>
-
+      <div className="project-container">
         {/* BOTTOM SECTION (INSIGHTS & TOOLS) */}
         <section className="bottom-section">
           <h2 className="reveal-editorial reveal-from-left">{t.bottomSection.title}</h2>
