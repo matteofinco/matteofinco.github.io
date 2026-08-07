@@ -844,13 +844,13 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             <div className="composite-bottom">
               <div className="composite-square">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fb8ef76dbdd4f4619959ec6122f1096c8"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e"
                   alt="Archivia detailed view 1"
                 />
               </div>
               <div className="composite-square">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F4894abf6b091470cbbc3233eb674a6b9"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2faa4e82bbab4ae0855f90d86d10ef06"
                   alt="Archivia detailed view 2"
                 />
               </div>
