@@ -8,47 +8,45 @@ interface ArchiviaProps {
 const content = {
   en: {
     title: "ARCHIVIA",
-    subtitle: "Flash drive shaped pen holder",
+    subtitle: "Flash drive inspired pen holder",
     meta: {
       teamLabel: "Designers",
       yearLabel: "Year",
       yearVal: "2025",
       awardLabel: "Competition",
-      awardVal: "PLEIADES"
+      awardVal: "PLEIADES Competition"
     },
     overview: {
       title: "Overview",
-      p1: "Archivia was developed for PLEIADES (Plastic European Innovation Award for Design and Sustainability), an international competition organized by the Università Iuav di Venezia (Vicenza campus) in partnership with Ewikon, Arburg, and Uniform.",
-      p2: "The project addresses the challenge of designing a daily-use desktop object entirely from recycled polyamide, balancing conceptual identity with strict industrial constraints required for high-volume injection molding."
+      subtitle: "Challenge",
+      p1: "Archivia was developed for PLEIADES (Plastic European Innovation Award for Design and Sustainability), a design competition organized by the Università Iuav di Venezia, Vicenza campus, in collaboration with Ewikon, Arburg, and Uniform.",
+      p2: "The project focused on designing a small everyday object made from recycled polyamide, balancing conceptual research, product identity, and the technical requirements of industrial injection molding."
     },
     solution: {
-      title: "Solution & Concept",
-      p1: "The product creates a direct conceptual parallel between digital storage and analog writing tools. Taking functional and visual cues from a classic rotating USB flash drive, Archivia organizes pens and tools within a compact desktop footprint.",
-      p2: "The assembly consists of exactly three monomaterial polymer parts engineered to lock together without adhesives, metal screws, or secondary fasteners."
+      title: "Solution",
+      p1: "Archivia is a desk organizer that explores the relationship between digital storage and physical writing tools.",
+      p2: "Inspired by the shape and interaction of a rotating USB flash drive, the project translates the idea of digital memory into a tangible object for everyday use.",
+      p3: "The product is composed of three monomaterial components designed to assemble through integrated mechanical connections, eliminating the need for screws or adhesives."
     },
     research: {
-      title: "Research & Kinematics",
-      p1: "The central container is split into two symmetrical shell halves that interlock securely and pivot inside a 90° rotating outer cover through integrated mechanical snap-fit joints.",
-      p2: "By optimizing draft angles, wall thicknesses, and rotational tolerances, the entire assembly is designed to be produced within a single mold layout, reducing production steps and ensuring straightforward end-of-life mono-material recycling."
+      title: "Research",
+      p1: "The research phase started from the analysis of everyday environments such as home, office, and shared workspaces, with the aim of identifying a product category suitable for the technical constraints of the competition.",
+      p2: "After exploring different typologies, the desk environment emerged as the most effective context, leading to a deeper investigation of recycled polyamide behavior, structural optimization, and mechanical assembly systems."
     },
-    bottomSection: {
+    design: {
+      title: "Design",
+      p1: "Archivia's structure takes inspiration from the opening mechanism of traditional rotating USB drives.",
+      p2: "The main body is divided into two symmetrical shells that interlock together, while the external cover rotates through a 90° movement.",
+      p3: "The final configuration combines a recognizable visual language with an efficient assembly system based on integrated mechanical joints."
+    },
+    technical: {
       title: "Technical Insights",
-      toolsTitle: "Software & Tools",
-      toolsList: ["McNeel Rhino 7", "KeyShot Render", "Adobe Illustrator", "FDM Prototyping"],
-      insights: [
-        {
-          title: "Industrial Constraints",
-          desc: "Direct integration of mold parting lines, draft angles, and constant wall thicknesses optimized for mass injection molding."
-        },
-        {
-          title: "Mono-material & Circularity",
-          desc: "Complete elimination of secondary hardware by relying strictly on 90° mechanical interlocks and elastic snap-fit joints."
-        }
-      ]
+      p1: "Developing Archivia highlighted the importance of balancing creative exploration with industrial constraints.",
+      p2: "The project provided experience in understanding polymer behavior, injection molding requirements, and the relationship between geometry, assembly, and manufacturing processes."
     },
     cta: {
-      title: "Next Project",
-      subtitle: "Explore more design projects and methodologies in the portfolio.",
+      title: "What's next?",
+      subtitle: "Explore more projects and design methodologies in the portfolio.",
       button: "BACK TO PORTFOLIO"
     }
   },
@@ -60,41 +58,39 @@ const content = {
       yearLabel: "Anno",
       yearVal: "2025",
       awardLabel: "Concorso",
-      awardVal: "PLEIADES"
+      awardVal: "Concorso PLEIADES"
     },
     overview: {
       title: "Panoramica",
-      p1: "Archivia nasce all'interno del concorso PLEIADES (Plastic European Innovation Award for Design and Sustainability), promosso dall'Università Iuav di Venezia (sede di Vicenza) in collaborazione con Ewikon, Arburg e Uniform.",
-      p2: "Il progetto risponde alla richiesta di ideare un oggetto d'uso quotidiano in poliammide riciclata, coniugando la ricerca formale con i rigidi vincoli tecnici imposti dallo stampaggio ad iniezione ad alta produttività."
+      subtitle: "Sfida progettuale",
+      p1: "Archivia nasce all'interno di PLEIADES (Plastic European Innovation Award for Design and Sustainability), un concorso di design promosso dall'Università Iuav di Venezia, sede di Vicenza, in collaborazione con Ewikon, Arburg e Uniform.",
+      p2: "Il progetto affronta lo sviluppo di un piccolo oggetto d'uso quotidiano realizzato in poliammide riciclata, cercando un equilibrio tra ricerca concettuale, identità del prodotto e vincoli tecnici dello stampaggio industriale a iniezione."
     },
     solution: {
-      title: "Soluzione e Concept",
-      p1: "L'oggetto stabilisce una corrispondenza concettuale tra la memorizzazione digitale dei dati e la scrittura analogica. Riprendendo le forme e il meccanismo di apertura delle classiche chiavette USB a rotazione, Archivia organizza la cancelleria in una struttura compatta da scrivania.",
-      p2: "La struttura è composta da tre soli pezzi monomateriale progettati per assemblarsi ad incastro, senza l'impiego di componenti metallici o collanti."
+      title: "Soluzione",
+      p1: "Archivia esplora la relazione tra memoria digitale e strumenti analogici di scrittura.",
+      p2: "Ispirandosi alla forma e al gesto di apertura delle chiavette USB rotanti, il progetto traduce il concetto di archiviazione digitale in un oggetto fisico destinato all'ambiente della scrivania.",
+      p3: "Il prodotto è composto da tre componenti monomateriale progettati per assemblarsi attraverso connessioni meccaniche integrate, senza l'utilizzo di viti o collanti."
     },
     research: {
-      title: "Ricerca e Cinematismo",
-      p1: "Il corpo centrale si suddivide in due metà speculari che si uniscono e si vincolano alla calotta esterna ruotabile a 90° tramite perni e snap-fit integrati nella geometria del pezzo.",
-      p2: "L'ottimizzazione degli spessori di parete, degli angoli di sformo e delle tolleranze di accoppiamento permette la produzione in un unico stampo, garantendo la totale riciclabilità del prodotto a fine vita."
+      title: "Ricerca",
+      p1: "La fase iniziale della ricerca si è concentrata sull'analisi degli ambienti quotidiani, come casa, ufficio e spazi condivisi, con l'obiettivo di individuare una tipologia di prodotto coerente con i vincoli tecnici del concorso.",
+      p2: "Dopo l'esplorazione di diverse categorie di oggetti, l'ambiente della scrivania è risultato il contesto più adatto, portando allo studio del comportamento della poliammide riciclata, dell'ottimizzazione strutturale e dei sistemi di assemblaggio meccanico."
     },
-    bottomSection: {
-      title: "Dettagli Tecnici",
-      toolsTitle: "Software e Strumenti",
-      toolsList: ["McNeel Rhino 7", "KeyShot Render", "Adobe Illustrator", "Prototipazione FDM"],
-      insights: [
-        {
-          title: "Vincoli Industriali",
-          desc: "Integrazione diretta delle linee di giunzione dello stampo, angoli di sformo e spessori di parete costanti per lo stampaggio ad iniezione."
-        },
-        {
-          title: "Monomateriale e Circolarità",
-          desc: "Eliminazione completa di componenti metallici o collanti grazie a snodi a 90° e snap-fit integrati nel polimero."
-        }
-      ]
+    design: {
+      title: "Design",
+      p1: "La struttura di Archivia riprende il principio di apertura delle tradizionali chiavette USB rotanti.",
+      p2: "Il corpo principale è suddiviso in due gusci simmetrici che si uniscono tramite incastri integrati, mentre la calotta esterna permette un movimento rotazionale di 90°.",
+      p3: "Il risultato combina un'identità visiva riconoscibile con un sistema costruttivo semplice basato su connessioni meccaniche integrate."
+    },
+    technical: {
+      title: "Dettagli tecnici",
+      p1: "Lo sviluppo di Archivia ha evidenziato l'importanza dell'equilibrio tra ricerca creativa e vincoli produttivi.",
+      p2: "Il progetto ha permesso di approfondire il comportamento dei materiali polimerici, i requisiti dello stampaggio a iniezione e la relazione tra geometria, assemblaggio e processo produttivo."
     },
     cta: {
       title: "Prossimo Progetto",
-      subtitle: "Esplora altri progetti di design e metodologie all'interno del portfolio.",
+      subtitle: "Esplora altri progetti e metodologie di design nel portfolio.",
       button: "TORNA AL PORTFOLIO"
     }
   }
@@ -231,8 +227,18 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           font-size: clamp(1.8rem, 3vw, 2.6rem);
           font-weight: 800;
           color: #ffffff;
-          margin-bottom: 20px;
+          margin-bottom: 8px;
           letter-spacing: -0.8px;
+        }
+
+        .overview-section .section-label {
+          font-size: 0.85rem;
+          font-family: monospace;
+          text-transform: uppercase;
+          letter-spacing: 1.2px;
+          color: #777777;
+          margin-bottom: 24px;
+          display: block;
         }
 
         .overview-section p {
@@ -285,7 +291,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transform: scale(1.02);
         }
 
-        /* EXACT MATHEMATICAL SCREEN BLEED WITHOUT BREAKING GRID COLUMNS */
         @media (min-width: 861px) {
           .row-media.bleed-left {
             margin-left: calc(-1 * (100vw - 100%) / 2);
@@ -341,6 +346,26 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transform: scale(1.02);
         }
 
+        /* TECHNICAL NARRATIVE CARD */
+        .technical-section {
+          max-width: 800px;
+        }
+
+        .technical-section h2 {
+          font-size: clamp(1.8rem, 3vw, 2.5rem);
+          font-weight: 800;
+          color: #ffffff;
+          margin-bottom: 24px;
+          letter-spacing: -0.8px;
+        }
+
+        .technical-section p {
+          color: #aaaaaa;
+          font-size: 1.05rem;
+          line-height: 1.8;
+          margin-bottom: 18px;
+        }
+
         /* REVEAL ANIMATIONS */
         .reveal-editorial {
           opacity: 0;
@@ -362,65 +387,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           opacity: 1;
           filter: blur(0);
           transform: translateX(0);
-        }
-
-        /* TECHNICAL INSIGHTS GRID - EXACTLY 3 BOXES */
-        .technical-section h2 {
-          font-size: clamp(1.8rem, 3vw, 2.5rem);
-          font-weight: 800;
-          color: #ffffff;
-          margin-bottom: 35px;
-          letter-spacing: -0.8px;
-        }
-
-        .insights-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
-        }
-
-        .insight-card {
-          padding: 32px 28px;
-          border-radius: 0;
-          border: 1px solid #1a1a1a;
-          background: #0d0d0d;
-        }
-
-        .insight-card.tools-accent {
-          border-color: #2a2a2a;
-          background: #111111;
-        }
-
-        .insight-card h3 {
-          font-size: 1.05rem;
-          font-weight: 700;
-          color: #ffffff;
-          margin-bottom: 16px;
-        }
-
-        .insight-card p {
-          color: #888888;
-          font-size: 0.92rem;
-          line-height: 1.65;
-          margin: 0;
-        }
-
-        .tools-list {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-
-        .tools-list li {
-          font-family: monospace;
-          font-size: 0.88rem;
-          color: #cccccc;
-          padding: 6px 0;
-          border-bottom: 1px solid #1a1a1a;
-        }
-
-        .tools-list li:last-child {
-          border-bottom: none;
         }
 
         /* CTA SECTION */
@@ -476,10 +442,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             grid-template-columns: 1fr;
           }
 
-          .insights-grid {
-            grid-template-columns: 1fr;
-          }
-
           .editorial-divider {
             margin: 50px 0;
           }
@@ -525,9 +487,10 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* OVERVIEW */}
+        {/* OVERVIEW / CHALLENGE */}
         <section className="overview-section reveal-editorial reveal-from-left">
           <h2>{t.overview.title}</h2>
+          <span className="section-label">{t.overview.subtitle}</span>
           <p>{t.overview.p1}</p>
           <p>{t.overview.p2}</p>
         </section>
@@ -546,6 +509,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             <h2>{t.solution.title}</h2>
             <p>{t.solution.p1}</p>
             <p>{t.solution.p2}</p>
+            <p>{t.solution.p3}</p>
           </div>
         </section>
 
@@ -568,10 +532,27 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* SECTION 3: COMPOSITE 3-IMAGE GRID BOX (CLEAN, NO CAPTION) */}
+        {/* ROW 3: DESIGN (IMAGE LEFT, TEXT RIGHT) */}
+        <section className="editorial-row">
+          <div className="row-media bleed-left reveal-editorial reveal-from-left">
+            <img
+              src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80"
+              alt="Archivia design mechanics"
+            />
+          </div>
+          <div className="row-text reveal-editorial reveal-from-right">
+            <h2>{t.design.title}</h2>
+            <p>{t.design.p1}</p>
+            <p>{t.design.p2}</p>
+            <p>{t.design.p3}</p>
+          </div>
+        </section>
+
+        <hr className="editorial-divider" />
+
+        {/* COMPOSITE 3-IMAGE GRID BOX */}
         <section className="reveal-editorial reveal-from-left">
           <div className="media-composite-box">
-            {/* TOP HORIZONTAL IMAGE */}
             <div className="composite-top">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e"
@@ -579,18 +560,16 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
                 style={{ objectFit: heroFit }}
               />
             </div>
-
-            {/* BOTTOM 2 SQUARE IMAGES */}
             <div className="composite-bottom">
               <div className="composite-square">
                 <img
-                  src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+                  src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80"
                   alt="Archivia detail square 1"
                 />
               </div>
               <div className="composite-square">
                 <img
-                  src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80"
+                  src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80"
                   alt="Archivia detail square 2"
                 />
               </div>
@@ -600,29 +579,11 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* TECHNICAL INSIGHTS GRID - EXACTLY 3 BOXES */}
-        <section className="technical-section">
-          <h2 className="reveal-editorial reveal-from-left">{t.bottomSection.title}</h2>
-
-          <div className="insights-grid">
-            {/* BOX 1: SOFTWARE / TOOLS */}
-            <div className="insight-card tools-accent reveal-editorial reveal-from-left">
-              <h3>{t.bottomSection.toolsTitle}</h3>
-              <ul className="tools-list">
-                {t.bottomSection.toolsList.map((tool, idx) => (
-                  <li key={idx}>↓ {tool}</li>
-                ))}
-              </ul>
-            </div>
-
-            {/* BOX 2 & BOX 3: TECHNICAL INSIGHTS */}
-            {t.bottomSection.insights.map((item, idx) => (
-              <div key={idx} className="insight-card reveal-editorial reveal-from-left">
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
-              </div>
-            ))}
-          </div>
+        {/* TECHNICAL INSIGHTS */}
+        <section className="technical-section reveal-editorial reveal-from-left">
+          <h2>{t.technical.title}</h2>
+          <p>{t.technical.p1}</p>
+          <p>{t.technical.p2}</p>
         </section>
 
         <hr className="editorial-divider" />
