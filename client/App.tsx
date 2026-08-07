@@ -9,6 +9,8 @@ import WaffleMaker from "./pages/WaffleMaker";
 
 import Snake from "./pages/Snake";
 import TTable from "./pages/ttable";
+import Pizzamente from "./pages/Pizzamente";
+
 
 import Prop from "./pages/Prop";
 import Nando from "./pages/Nando";
@@ -55,6 +57,9 @@ export default function App() {
 
       if (path.includes("/wafflemaker")) {
       return <WaffleMaker />;
+      }
+     if (path.includes("/pizzamente")) {
+      return <Pizzamente />;
     }
 
 
