@@ -215,7 +215,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           font-weight: 500;
         }
 
-        /* HERO FULL BLEED - BLOCCO CON ALTEZZA CALIBRATA (16:9 MAX 60VH) */
+        /* HERO FULL BLEED - VIEWPORT SAFE FULLBLEED */
         .hero-media-fullbleed {
           width: 100vw;
           position: relative;
@@ -268,12 +268,12 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           margin-bottom: 18px;
         }
 
-        /* EDITORIAL GRID ROWS - ANCORATE IN ALTO (ALIGN-ITEMS: START) */
+        /* EDITORIAL GRID ROWS */
         .editorial-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 60px;
-          align-items: start;
+          align-items: center;
         }
 
         .row-text h2 {
@@ -292,7 +292,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           margin-bottom: 16px;
         }
 
-        /* BOX IMMAGINE RIGIDO 4:3 SENZA BLEED PROBLEMATICI */
+        /* BOX IMMAGINE 4:3 PRECISI CON BORDER RENDER CLEAN */
         .row-media {
           background: #0d0d0d;
           overflow: hidden;
@@ -302,7 +302,8 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1px solid #141414;
+          border: 1px solid #1a1a1a;
+          border-radius: 4px;
         }
 
         .row-media img {
@@ -315,10 +316,10 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         }
 
         .row-media:hover img {
-          transform: scale(1.02);
+          transform: scale(1.03);
         }
 
-        /* COMPOSITE GRID FULL BLEED EDGE-TO-EDGE CON ALTEZZA MASSIMA RIGIDA */
+        /* COMPOSITE GRID FULL BLEED EDGE-TO-EDGE */
         .fullbleed-composite {
           width: 100vw;
           position: relative;
@@ -594,7 +595,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           </div>
         </section>
 
-        {/* HERO PRODUCT IMAGE (16:9 MAX 60VH) */}
+        {/* HERO PRODUCT IMAGE */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
           <img
             src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fb8ef76dbdd4f4619959ec6122f1096c8"
@@ -615,12 +616,12 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* ROW 1: SOLUTION (BOX 4:3 LEFT, TEXT RIGHT) */}
+        {/* ROW 1: SOLUTION (MEDIA LEFT, TEXT RIGHT) */}
         <section className="editorial-row">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1b0a4b6f9bb84630b2d4b1bb8716ab11"
-              alt="Archivia solution concept"
+              alt="Archivia solution overview"
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -633,7 +634,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* ROW 2: RESEARCH (TEXT LEFT, BOX 4:3 RIGHT) */}
+        {/* ROW 2: RESEARCH (TEXT LEFT, MEDIA RIGHT) */}
         <section className="editorial-row">
           <div className="row-text reveal-editorial reveal-from-left">
             <h2>{t.research.title}</h2>
@@ -642,20 +643,20 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1b0a4b6f9bb84630b2d4b1bb8716ab11"
-              alt="Archivia research details"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F863e0bdf77e44519b6628999a8739214"
+              alt="Archivia research and desk environment context"
             />
           </div>
         </section>
 
         <hr className="editorial-divider" />
 
-        {/* ROW 3: DESIGN (BOX 4:3 LEFT, TEXT RIGHT) */}
+        {/* ROW 3: DESIGN (MEDIA LEFT, TEXT RIGHT) */}
         <section className="editorial-row">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1b0a4b6f9bb84630b2d4b1bb8716ab11"
-              alt="Archivia design mechanics"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F8e4089261fe741a580f79ee17d2c5cbe"
+              alt="Archivia rotating mechanism and shell structure"
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -668,26 +669,26 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* COMPOSITE 3-IMAGE GRID BOX (16:9 + TWO 1:1 SQUARES) */}
+        {/* COMPOSITE 3-IMAGE GRID BOX (16:9 TOP + TWO 1:1 SQUARES BOTTOM) */}
         <section className="fullbleed-composite reveal-editorial reveal-from-left">
           <div className="media-composite-box">
             <div className="composite-top">
               <img
-                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F863e0bdf77e44519b6628999a8739214"
-                alt="Archivia exploded view wide"
+                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1b0a4b6f9bb84630b2d4b1bb8716ab11"
+                alt="Archivia wide view"
               />
             </div>
             <div className="composite-bottom">
               <div className="composite-square">
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F8e4089261fe741a580f79ee17d2c5cbe"
-                  alt="Archivia detail square 1"
+                  alt="Archivia detailed view 1"
                 />
               </div>
               <div className="composite-square">
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F4894abf6b091470cbbc3233eb674a6b9"
-                  alt="Archivia detail square 2"
+                  alt="Archivia detailed view 2"
                 />
               </div>
             </div>
