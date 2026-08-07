@@ -479,7 +479,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         {/* FULLBLEED HERO PRODUCT IMAGE */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
           <img
-            src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=2000&q=80"
+            src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e"
             alt="Archivia hero product shot"
             style={{ objectFit: heroFit }}
           />
@@ -501,7 +501,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         <section className="editorial-row">
           <div className="row-media bleed-left reveal-editorial reveal-from-left">
             <img
-              src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1229dcf2c6644f4285aae97571ad2947"
               alt="Archivia solution concept"
             />
           </div>
@@ -524,7 +524,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           </div>
           <div className="row-media bleed-right reveal-editorial reveal-from-right">
             <img
-              src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1200&q=80"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1229dcf2c6644f4285aae97571ad2947"
               alt="Archivia research details"
             />
           </div>
@@ -555,7 +555,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           <div className="media-composite-box">
             <div className="composite-top">
               <img
-                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e"
+                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F42f618d85fbd458988c33e9f58f1edce"
                 alt="Archivia exploded view wide"
                 style={{ objectFit: heroFit }}
               />
@@ -563,13 +563,13 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             <div className="composite-bottom">
               <div className="composite-square">
                 <img
-                  src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c52dcd39b4945a6985cf49b519c0b51"
                   alt="Archivia detail square 1"
                 />
               </div>
               <div className="composite-square">
                 <img
-                  src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F45d6dba0e50c4ff090637ec48f2cec1a"
                   alt="Archivia detail square 2"
                 />
               </div>
