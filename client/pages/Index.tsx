@@ -88,7 +88,7 @@ const projectList: ProjectStep[] = [
       en: 'Inclusive handle designed to improve the use of cutlery and everyday tools for people with reduced hand strength. Through flexible geometry and parametric design, Nando adapts to different users while improving comfort, grip stability and independence.'
     },
     link: '/nando',
-    img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc0f4e7d3aae149a3991d8adb72655af3'
+    img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5cdc7719da0c413d9e444dfccaa36d3a'
   },
   {
     id: '04',
@@ -144,7 +144,7 @@ const projectList: ProjectStep[] = [
       en: 'Critical analysis of a domestic appliance through morphological and functional decomposition. The project investigates how components, mechanisms, materials and visual language define the relationship between users and everyday objects.'
     },
     link: '/wafflemaker',
-    img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fedbb2046d3db4d549f4da864fca20382'
+    img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F3a822d198e0a451c859170a4c51e8367'
   },
   {
     id: '06',
@@ -172,7 +172,7 @@ const projectList: ProjectStep[] = [
       en: 'Interactive table concept designed to reduce distracted eating in fast-food environments. T-Table uses adaptive technology to support social interaction and restore attention to the meal experience.'
     },
     link: '/ttable',
-    img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc'
+    img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F8c7e5ac2dbcc429b8c3808887abfb51a'
   },
   {
     id: '07',
