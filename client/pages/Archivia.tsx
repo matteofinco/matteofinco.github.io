@@ -56,7 +56,9 @@ const content = {
     },
     cta: {
       title: "What's next?",
-      subtitle: "Projects",
+      subtitle: "Explore Projects",
+      prevLabel: "Previous",
+      nextLabel: "Next",
       button: "BACK TO PORTFOLIO"
     }
   },
@@ -100,7 +102,9 @@ const content = {
     },
     cta: {
       title: "What's next?",
-      subtitle: "Progetti",
+      subtitle: "Esplora i progetti",
+      prevLabel: "Precedente",
+      nextLabel: "Successivo",
       button: "TORNA AL PORTFOLIO"
     }
   }
@@ -108,8 +112,12 @@ const content = {
 
 export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
   const [language, setLanguage] = useState<'it' | 'en'>('en');
-  const [hoveredProject, setHoveredProject] = useState<typeof PROJECTS_LIST[0] | null>(null);
   const t = content[language];
+
+  // Identificazione del progetto corrente e calcolo di Prev / Next
+  const currentIndex = PROJECTS_LIST.findIndex((p) => p.id === 'archivia');
+  const prevProject = PROJECTS_LIST[(currentIndex - 1 + PROJECTS_LIST.length) % PROJECTS_LIST.length];
+  const nextProject = PROJECTS_LIST[(currentIndex + 1) % PROJECTS_LIST.length];
 
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal-editorial');
@@ -418,103 +426,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           margin-bottom: 18px;
         }
 
-        /* PROJECT NAVIGATOR */
-        .project-navigator {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          position: relative;
-          margin-top: 20px;
-        }
-
-        .dots-container {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          padding: 12px 24px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 40px;
-          backdrop-filter: blur(8px);
-        }
-
-        .dot-item {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background: #333333;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          padding: 0;
-          position: relative;
-        }
-
-        .dot-item:hover, .dot-item.active {
-          background: #ffffff;
-          transform: scale(1.3);
-          box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
-        }
-
-        .dot-item.active {
-          border: 2px solid #070707;
-        }
-
-        .project-preview-card {
-          position: absolute;
-          bottom: 60px;
-          width: 280px;
-          background: #111111;
-          border: 1px solid #262626;
-          border-radius: 0;
-          overflow: hidden;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-          pointer-events: none;
-          animation: fadeIn 0.25s ease-out forwards;
-          z-index: 100;
-        }
-
-        .preview-img-box {
-          width: 100%;
-          height: 160px;
-          overflow: hidden;
-          background: #000;
-        }
-
-        .preview-img-box img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-          border-radius: 0;
-        }
-
-        .preview-details {
-          padding: 12px 16px;
-          text-align: left;
-        }
-
-        .preview-details h4 {
-          font-size: 1.1rem;
-          font-weight: 800;
-          color: #ffffff;
-          margin: 0 0 4px 0;
-          letter-spacing: -0.5px;
-        }
-
-        .preview-details p {
-          font-size: 0.75rem;
-          color: #888888;
-          font-family: monospace;
-          margin: 0;
-          text-transform: uppercase;
-        }
-
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
         /* REVEAL ANIMATIONS */
         .reveal-editorial {
           opacity: 0;
@@ -538,10 +449,10 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transform: translateX(0);
         }
 
-        /* CTA SECTION */
+        /* CTA SECTION & NEW NAVIGATION */
         .project-cta {
           text-align: center;
-          padding-top: 40px;
+          padding-top: 20px;
         }
 
         .project-cta h2 {
@@ -559,7 +470,164 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           font-family: monospace;
           text-transform: uppercase;
           letter-spacing: 1.5px;
-          margin: 0 auto 24px;
+          margin: 0 auto 30px;
+        }
+
+        /* FRECCE DI NAVIGAZIONE VELOCE (PREV / NEXT) */
+        .quick-project-nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 16px;
+          max-width: 1000px;
+          margin: 0 auto 30px auto;
+        }
+
+        .nav-btn-link {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          background: #111111;
+          border: 1px solid #222222;
+          padding: 12px 20px;
+          color: #ffffff;
+          text-decoration: none;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          max-width: 48%;
+          text-align: left;
+        }
+
+        .nav-btn-link.next {
+          text-align: right;
+          flex-direction: row-reverse;
+        }
+
+        .nav-btn-link:hover {
+          background: #1a1a1a;
+          border-color: #444444;
+          transform: translateY(-2px);
+        }
+
+        .nav-arrow-icon {
+          font-size: 1.2rem;
+          color: #888888;
+        }
+
+        .nav-btn-text span {
+          display: block;
+          font-size: 0.68rem;
+          font-family: monospace;
+          text-transform: uppercase;
+          color: #666666;
+          letter-spacing: 1px;
+        }
+
+        .nav-btn-text strong {
+          display: block;
+          font-size: 0.92rem;
+          font-weight: 700;
+          color: #ffffff;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        /* STRIP CAROSELLO SWIPEABLE PER SMARTPHONE E DESKTOP */
+        .projects-carousel-container {
+          width: 100%;
+          position: relative;
+          margin-bottom: 40px;
+        }
+
+        .projects-scroll-strip {
+          display: flex;
+          gap: 16px;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          padding: 10px 4vw 20px 4vw;
+          margin-left: -4vw;
+          margin-right: -4vw;
+          width: calc(100% + 8vw);
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE */
+        }
+
+        .projects-scroll-strip::-webkit-scrollbar {
+          display: none; /* Chrome, Safari */
+        }
+
+        .carousel-card-item {
+          flex: 0 0 220px;
+          scroll-snap-align: center;
+          background: #0d0d0d;
+          border: 1px solid #1f1f1f;
+          text-decoration: none;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          text-align: left;
+        }
+
+        .carousel-card-item.active {
+          border-color: #ffffff;
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .carousel-card-item:hover {
+          border-color: #555555;
+          transform: translateY(-4px);
+        }
+
+        .card-img-wrapper {
+          width: 100%;
+          height: 130px;
+          overflow: hidden;
+          background: #000000;
+          position: relative;
+        }
+
+        .card-img-wrapper img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .card-active-badge {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          background: #ffffff;
+          color: #000000;
+          font-size: 0.6rem;
+          font-family: monospace;
+          padding: 2px 6px;
+          font-weight: 700;
+          letter-spacing: 0.5px;
+        }
+
+        .card-content-wrapper {
+          padding: 12px 14px;
+        }
+
+        .card-content-wrapper h4 {
+          font-size: 0.95rem;
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0 0 4px 0;
+          letter-spacing: -0.3px;
+        }
+
+        .card-content-wrapper p {
+          font-size: 0.72rem;
+          color: #777777;
+          font-family: monospace;
+          margin: 0;
+          text-transform: uppercase;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
 
         .cta-button {
@@ -572,7 +640,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transition: all 0.3s ease;
           letter-spacing: 0.8px;
           font-size: 0.82rem;
-          margin-top: 30px;
+          margin-top: 10px;
         }
 
         .cta-button:hover {
@@ -594,7 +662,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             flex-direction: column-reverse;
           }
 
-          /* Mantieni le proporzioni ed evita il taglio a quadrato su mobile */
           .hero-media-fullbleed {
             height: auto;
             aspect-ratio: 16 / 9;
@@ -645,6 +712,22 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
           .editorial-divider {
             margin: 40px 0;
+          }
+
+          .carousel-card-item {
+            flex: 0 0 170px;
+          }
+
+          .card-img-wrapper {
+            height: 105px;
+          }
+
+          .quick-project-nav {
+            flex-direction: row;
+          }
+          
+          .nav-btn-link {
+            padding: 10px 14px;
           }
         }
       `}</style>
@@ -798,35 +881,52 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
           <hr className="editorial-divider" />
 
-          {/* NEXT PROJECT / CTA */}
+          {/* NEXT PROJECT / CTA & MOBILE-FRIENDLY NAVIGATOR */}
           <section className="project-cta reveal-editorial reveal-from-left">
             <h2>{t.cta.title}</h2>
             <p className="cta-subtitle">{t.cta.subtitle}</p>
 
-            <div className="project-navigator">
-              {hoveredProject && (
-                <div className="project-preview-card">
-                  <div className="preview-img-box">
-                    <img src={hoveredProject.imageUrl} alt={hoveredProject.title} />
-                  </div>
-                  <div className="preview-details">
-                    <h4>{hoveredProject.title}</h4>
-                    <p>{hoveredProject.subtitle}</p>
-                  </div>
+            {/* PULSANTI PRECEDENTE / SUCCESSIVO */}
+            <div className="quick-project-nav">
+              <a href={prevProject.path} className="nav-btn-link prev">
+                <span className="nav-arrow-icon">←</span>
+                <div className="nav-btn-text">
+                  <span>{t.cta.prevLabel}</span>
+                  <strong>{prevProject.title}</strong>
                 </div>
-              )}
+              </a>
 
-              <div className="dots-container">
-                {PROJECTS_LIST.map((proj) => (
-                  <button
-                    key={proj.id}
-                    className={`dot-item ${proj.id === 'archivia' ? 'active' : ''}`}
-                    onMouseEnter={() => setHoveredProject(proj)}
-                    onMouseLeave={() => setHoveredProject(null)}
-                    onClick={() => window.location.href = proj.path}
-                    aria-label={`Vai al progetto ${proj.title}`}
-                  />
-                ))}
+              <a href={nextProject.path} className="nav-btn-link next">
+                <span className="nav-arrow-icon">→</span>
+                <div className="nav-btn-text">
+                  <span>{t.cta.nextLabel}</span>
+                  <strong>{nextProject.title}</strong>
+                </div>
+              </a>
+            </div>
+
+            {/* MINI CAROSELLO CON ANTEPRIME (SWIPEABLE SU SMARTPHONE) */}
+            <div className="projects-carousel-container">
+              <div className="projects-scroll-strip">
+                {PROJECTS_LIST.map((proj) => {
+                  const isCurrent = proj.id === 'archivia';
+                  return (
+                    <a
+                      key={proj.id}
+                      href={proj.path}
+                      className={`carousel-card-item ${isCurrent ? 'active' : ''}`}
+                    >
+                      <div className="card-img-wrapper">
+                        <img src={proj.imageUrl} alt={proj.title} />
+                        {isCurrent && <span className="card-active-badge">NOW</span>}
+                      </div>
+                      <div className="card-content-wrapper">
+                        <h4>{proj.title}</h4>
+                        <p>{proj.subtitle}</p>
+                      </div>
+                    </a>
+                  );
+                })}
               </div>
             </div>
 
