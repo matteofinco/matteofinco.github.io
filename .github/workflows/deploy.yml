@@ -45,3 +45,14 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+        - name: Build project
+        run: npm run build
+
+      - name: Create 404 fallback for SPA routing
+        run: cp dist/spa/index.html dist/spa/404.html # Copia l'index.html come 404.html prima dell'upload
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist/spa'
