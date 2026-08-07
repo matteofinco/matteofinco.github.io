@@ -7,47 +7,47 @@ interface StickyObjectProps {
 const PROCESS_STEPS = {
   it: [
     {
-      step: '01 / OSSERVA E COMPRENDI',
-      title: 'Ogni progetto parte\nda una domanda.',
-      desc: 'Prima di cercare soluzioni, dedico tempo a comprendere le persone, i contesti e i comportamenti. Analizzo come vengono usati i prodotti, dove nascono le difficoltà e quali vincoli guidano ogni decisione progettuale.',
-      tag: 'IMMAGINE 01 // RICERCA E OSSERVAZIONE',
+      step: '01 / OSSERVA',
+      title: 'Capire prima\ndi progettare.',
+      desc: 'Ogni progetto nasce dall’osservazione. Mi interessa capire perché un oggetto funziona in un certo modo, quali vincoli ne hanno guidato lo sviluppo e come le persone lo utilizzano nella realtà. Solo dopo inizio a cercare una soluzione.',
+      tag: 'Ricerca sul campo',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fccebb9ded9f64abab522b395bbbad713',
     },
     {
-      step: '02 / CREA E TESTA',
-      title: 'Le idee prendono forma\nattraverso i prototipi.',
-      desc: 'Gli schizzi diventano modelli CAD, prototipi funzionali ed esperimenti fisici. Costruire le idee permette di validare le ipotesi, scoprire problemi inattesi e migliorare ogni iterazione attraverso test diretti.',
-      tag: 'IMMAGINE 02 // PROTOTIPAZIONE E TEST',
+      step: '02 / COSTRUISCI',
+      title: 'Costruire per\nverificare.',
+      desc: 'Passo continuamente dal modello digitale al prototipo fisico. Ogni test mette in discussione le decisioni prese, evidenzia nuovi problemi e suggerisce miglioramenti che sullo schermo non sarebbero evidenti.',
+      tag: 'Prototipo funzionale',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F0427482a7b374ef1b727ec74983b63d8',
     },
     {
-      step: '03 / AFFINA E SEMPLIFICA',
-      title: 'Il buon design è\nsemplicità consapevole.',
-      desc: 'Ogni componente deve avere uno scopo chiaro. Affino geometrie, materiali e processi produttivi finché la complessità scompare e rimane solo ciò che migliora davvero l’esperienza d’uso.',
-      tag: 'IMMAGINE 03 // AFFINAMENTO E DETTAGLIO',
+      step: '03 / AFFINA',
+      title: 'Ridurre il\nsuperfluo.',
+      desc: 'Cerco soluzioni semplici, non perché siano facili da progettare, ma perché richiedono più attenzione. Ogni dettaglio deve avere una funzione precisa e contribuire a rendere il prodotto più chiaro da costruire e da utilizzare.',
+      tag: 'Dettaglio costruttivo',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F4894abf6b091470cbbc3233eb674a6b9',
     },
   ],
   en: [
     {
-      step: '01 / OBSERVE & UNDERSTAND',
-      title: 'Every project starts\nwith a question.',
-      desc: 'Before searching for solutions, I spend time understanding people, contexts and behaviours. I like analysing how products are used, where friction appears and which constraints influence every design decision.',
-      tag: 'IMAGE 01 // RESEARCH & OBSERVATION',
+      step: '01 / OBSERVE',
+      title: 'Understand before\ndesigning.',
+      desc: 'Every project stems from observation. I aim to understand why an object works in a certain way, what constraints guided its development, and how people actually use it. Only then do I start searching for a solution.',
+      tag: 'Field research',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fccebb9ded9f64abab522b395bbbad713',
     },
     {
-      step: '02 / MAKE & TEST',
-      title: 'Ideas become real\nthrough prototyping.',
-      desc: 'Sketches evolve into CAD models, functional prototypes and physical experiments. Building ideas allows me to validate assumptions, discover unexpected problems and improve every iteration through direct testing.',
-      tag: 'IMAGE 02 // PROTOTYPING & TESTING',
+      step: '02 / BUILD',
+      title: 'Build to\nverify.',
+      desc: 'I constantly move between digital models and physical prototypes. Every test challenges previous decisions, highlights unexpected problems, and reveals improvements that would never be visible on a screen.',
+      tag: 'Functional prototype',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F0427482a7b374ef1b727ec74983b63d8',
     },
     {
-      step: '03 / REFINE & SIMPLIFY',
-      title: 'Good design is\nthoughtful simplicity.',
-      desc: 'Every component should have a clear purpose. I refine geometry, materials and manufacturing processes until complexity disappears and only what truly improves the user experience remains.',
-      tag: 'IMAGE 03 // REFINEMENT & DETAIL',
+      step: '03 / REFINE',
+      title: 'Reduce the\nsuperfluous.',
+      desc: 'I strive for simple solutions—not because they are easy to design, but because they require more care. Every detail must serve a precise purpose, making the product clearer to build and use.',
+      tag: 'Constructive detail',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F4894abf6b091470cbbc3233eb674a6b9',
     },
   ],
@@ -303,13 +303,15 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
           bottom: 24px;
           left: 24px;
           font-family: monospace;
-          font-size: 0.75rem;
-          color: rgba(255, 255, 255, 0.9);
+          font-size: 0.72rem;
+          color: rgba(255, 255, 255, 0.85);
           letter-spacing: 1.5px;
+          text-transform: uppercase;
           background: rgba(0, 0, 0, 0.65);
           padding: 8px 16px;
           border-radius: 0;
           backdrop-filter: blur(8px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
           z-index: 3;
         }
 
@@ -448,7 +450,9 @@ export const StickyObject: React.FC<StickyObjectProps> = ({ lang = 'it' }) => {
             background: rgba(0, 0, 0, 0.75);
             padding: 6px 12px;
             letter-spacing: 1px;
+            text-transform: uppercase;
             backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
           }
 
           .mobile-text-content {
