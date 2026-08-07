@@ -55,7 +55,7 @@ export default function Archivia() {
           left: 0;
           right: 0;
           bottom: 0;
-          background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1920&q=80');
+          background: url('https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e');
           background-size: cover;
           background-position: center;
           opacity: 0.15;
