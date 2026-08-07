@@ -5,6 +5,8 @@ import About from "./pages/About";
 import Curriculum from "./pages/Curriculum";
 
 import Archivia from "./pages/Archivia";
+import WaffleMaker from "./pages/WaffleMaker";
+
 import Snake from "./pages/Snake";
 import TTable from "./pages/ttable";
 
@@ -49,6 +51,10 @@ export default function App() {
 
     if (path.includes("/snake")) {
       return <Snake />;
+    }
+
+      if (path.includes("/wafflemaker")) {
+      return <WaffleMaker />;
     }
 
 
