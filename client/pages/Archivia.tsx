@@ -37,20 +37,16 @@ const content = {
     },
     bottomSection: {
       title: "Technical Insights",
-      toolsTitle: "Tools & Software",
+      toolsTitle: "Software & Tools",
       toolsList: ["McNeel Rhino 7", "KeyShot Render", "Adobe Illustrator", "FDM Prototyping"],
       insights: [
         {
-          title: "Injection Molding",
-          desc: "Direct integration of mold parting lines, draft angles, and constant wall thicknesses suitable for mass injection molding."
+          title: "Industrial Constraints",
+          desc: "Direct integration of mold parting lines, draft angles, and constant wall thicknesses optimized for mass injection molding."
         },
         {
-          title: "Mono-material Assembly",
-          desc: "Complete elimination of secondary hardware by relying strictly on mechanical interlocks and elastic snap-fit joints."
-        },
-        {
-          title: "Design for Circularity",
-          desc: "Simplified recycling workflow enabled by single-polymer construction and non-permanent mechanical assembly."
+          title: "Mono-material & Circularity",
+          desc: "Complete elimination of secondary hardware by relying strictly on 90° mechanical interlocks and elastic snap-fit joints."
         }
       ]
     },
@@ -91,20 +87,16 @@ const content = {
     },
     bottomSection: {
       title: "Dettagli Tecnici",
-      toolsTitle: "Strumenti Utilizzati",
+      toolsTitle: "Software e Strumenti",
       toolsList: ["McNeel Rhino 7", "KeyShot Render", "Adobe Illustrator", "Prototipazione FDM"],
       insights: [
         {
-          title: "Stampaggio ad Iniezione",
-          desc: "Gestione delle linee di giunzione dello stampo, degli angoli di sformo e del ritiro del materiale polimerico."
+          title: "Vincoli Industriali",
+          desc: "Integrazione diretta delle linee di giunzione dello stampo, angoli di sformo e spessori di parete costanti per lo stampaggio ad iniezione."
         },
         {
-          title: "Assemblaggio Monomateriale",
-          desc: "Eliminazione di viti e inserti in metallo a favore di snodi e snap-fit modellati direttamente sulla parte."
-        },
-        {
-          title: "Design per la Circolarità",
-          desc: "Facilità di disassemblaggio e riciclo garantite dall'impiego di una singola tipologia di polimero."
+          title: "Monomateriale e Circolarità",
+          desc: "Eliminazione completa di componenti metallici o collanti grazie a snodi a 90° e snap-fit integrati nel polimero."
         }
       ]
     },
@@ -116,7 +108,7 @@ const content = {
   }
 };
 
-export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
+export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
   const [language, setLanguage] = useState<'it' | 'en'>('en');
   const t = content[language];
 
@@ -174,7 +166,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
 
         /* HERO HEADER */
         .project-hero {
-          padding-bottom: 30px;
+          padding-bottom: 10px;
         }
 
         .project-hero h1 {
@@ -190,7 +182,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
         .project-subtitle {
           font-size: clamp(1.1rem, 2vw, 1.5rem);
           color: #888888;
-          margin-bottom: 45px;
+          margin-bottom: 40px;
           font-weight: 400;
         }
 
@@ -220,6 +212,24 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           font-weight: 500;
         }
 
+        /* FULLBLEED HERO IMAGE */
+        .hero-media-fullbleed {
+          width: 100vw;
+          margin-left: calc(50% - 50vw);
+          height: clamp(400px, 65vh, 650px);
+          background: #111111;
+          overflow: hidden;
+          margin-top: 45px;
+          border-radius: 0;
+        }
+
+        .hero-media-fullbleed img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
         /* OVERVIEW SECTION */
         .overview-section {
           max-width: 800px;
@@ -240,7 +250,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           margin-bottom: 18px;
         }
 
-        /* EDITORIAL ROWS (DIVERSE IMAGES) */
+        /* EDITORIAL ROWS WITH EDGE-BLEED IMAGES */
         .editorial-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -273,21 +283,11 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           margin-bottom: 16px;
         }
 
-        /* MEDIA CARDS WITH FIXED HEIGHT & BREATHING SPACE */
         .row-media {
-          width: 100%;
           background: #111111;
-          border-radius: 6px;
+          border-radius: 0;
           overflow: hidden;
-          border: 1px solid #1a1a1a;
-        }
-
-        .row-media.landscape {
-          height: 420px;
-        }
-
-        .row-media.portrait {
-          height: 460px;
+          height: 440px;
         }
 
         .row-media img {
@@ -302,15 +302,28 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           transform: scale(1.02);
         }
 
-        /* WIDE BANNER IMAGE SECTION */
+        /* BLEED TO SCREEN EDGES */
+        @media (min-width: 861px) {
+          .row-media.bleed-left {
+            margin-left: calc(100% - 50vw);
+            width: calc(50vw - 25px);
+          }
+
+          .row-media.bleed-right {
+            margin-right: calc(100% - 50vw);
+            width: calc(50vw - 25px);
+          }
+        }
+
+        /* WIDE BANNER FULL BLEED */
         .wide-media-container {
-          width: 100%;
+          width: 100vw;
+          margin-left: calc(50% - 50vw);
+          height: clamp(380px, 55vh, 520px);
           background: #111111;
-          border-radius: 6px;
           overflow: hidden;
-          border: 1px solid #1a1a1a;
-          height: 440px;
-          margin-bottom: 14px;
+          border-radius: 0;
+          margin-bottom: 16px;
         }
 
         .wide-media-container img {
@@ -337,11 +350,11 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
         }
 
         .reveal-editorial.reveal-from-right {
-          transform: translateX(35px);
+          transform: translateX(40px);
         }
 
         .reveal-editorial.reveal-from-left {
-          transform: translateX(-35px);
+          transform: translateX(-40px);
         }
 
         .reveal-editorial.reveal-active {
@@ -350,7 +363,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           transform: translateX(0);
         }
 
-        /* TECHNICAL INSIGHTS GRID */
+        /* TECHNICAL INSIGHTS GRID - 3 BOXES */
         .technical-section h2 {
           font-size: clamp(1.8rem, 3vw, 2.5rem);
           font-weight: 800;
@@ -361,13 +374,13 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
 
         .insights-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-          gap: 20px;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
         }
 
         .insight-card {
-          padding: 30px;
-          border-radius: 6px;
+          padding: 32px 28px;
+          border-radius: 0;
           border: 1px solid #1a1a1a;
           background: #0d0d0d;
         }
@@ -381,7 +394,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           font-size: 1.05rem;
           font-weight: 700;
           color: #ffffff;
-          margin-bottom: 14px;
+          margin-bottom: 16px;
         }
 
         .insight-card p {
@@ -431,7 +444,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           font-weight: 700;
           text-decoration: none;
           transition: all 0.3s ease;
-          border-radius: 4px;
+          border-radius: 0;
           letter-spacing: 0.8px;
           font-size: 0.82rem;
         }
@@ -457,10 +470,19 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
             direction: ltr;
           }
 
-          .row-media.landscape,
-          .row-media.portrait,
+          .row-media.bleed-left,
+          .row-media.bleed-right {
+            margin-left: calc(50% - 50vw);
+            width: 100vw;
+            height: 320px;
+          }
+
           .wide-media-container {
             height: 320px;
+          }
+
+          .insights-grid {
+            grid-template-columns: 1fr;
           }
 
           .editorial-divider {
@@ -470,7 +492,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
       `}</style>
 
       <div className="project-container">
-        {/* HEADER & LIGHTWEIGHT METADATA */}
+        {/* HEADER & METADATA */}
         <section className="project-hero reveal-editorial reveal-from-left">
           <h1>{t.title}</h1>
           <p className="project-subtitle">{t.subtitle}</p>
@@ -497,6 +519,15 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           </div>
         </section>
 
+        {/* FULLBLEED HERO PRODUCT IMAGE */}
+        <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
+          <img
+            src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=2000&q=80"
+            alt="Archivia product shot"
+            style={{ objectFit: heroFit }}
+          />
+        </section>
+
         <hr className="editorial-divider" />
 
         {/* OVERVIEW */}
@@ -508,11 +539,11 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* SECTION 1: SOLUTION (IMAGE LEFT, TEXT RIGHT) */}
+        {/* SECTION 1: SOLUTION (LEFT BLEED IMAGE, RIGHT TEXT) */}
         <section className="editorial-row">
-          <div className="row-media landscape reveal-editorial reveal-from-left">
+          <div className="row-media bleed-left reveal-editorial reveal-from-left">
             <img
-              src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1000&q=80"
+              src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80"
               alt="Archivia solution concept"
             />
           </div>
@@ -525,16 +556,16 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* SECTION 2: RESEARCH (TEXT LEFT, IMAGE RIGHT - PORTRAIT ASPECT) */}
+        {/* SECTION 2: RESEARCH (TEXT LEFT, RIGHT BLEED IMAGE) */}
         <section className="editorial-row reverse">
           <div className="row-text reveal-editorial reveal-from-left">
             <h2>{t.research.title}</h2>
             <p>{t.research.p1}</p>
             <p>{t.research.p2}</p>
           </div>
-          <div className="row-media portrait reveal-editorial reveal-from-right">
+          <div className="row-media bleed-right reveal-editorial reveal-from-right">
             <img
-              src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1000&q=80"
+              src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1200&q=80"
               alt="Archivia research details"
             />
           </div>
@@ -556,12 +587,12 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* TECHNICAL INSIGHTS GRID */}
+        {/* TECHNICAL INSIGHTS GRID - EXACTLY 3 BOXES */}
         <section className="technical-section">
           <h2 className="reveal-editorial reveal-from-left">{t.bottomSection.title}</h2>
 
           <div className="insights-grid">
-            {/* SOFTWARE / TOOLS CARD */}
+            {/* BOX 1: SOFTWARE / TOOLS */}
             <div className="insight-card tools-accent reveal-editorial reveal-from-left">
               <h3>{t.bottomSection.toolsTitle}</h3>
               <ul className="tools-list">
@@ -571,7 +602,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
               </ul>
             </div>
 
-            {/* INSIGHT CARDS */}
+            {/* BOX 2 & BOX 3: TECHNICAL INSIGHTS */}
             {t.bottomSection.insights.map((item, idx) => (
               <div key={idx} className="insight-card reveal-editorial reveal-from-left">
                 <h3>{item.title}</h3>
