@@ -831,15 +831,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
             <div className="composite-top">
               <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fdf97611c3532461faf7b91926a23b288" alt="PizzaMente assembly" />
             </div>
-            <div className="composite-bottom">
-              <div className="composite-square">
-                <img src={IMAGES.compositeBottomLeft} alt="PizzaMente detail" />
-              </div>
-              <div className="composite-square">
-                <img src={IMAGES.compositeBottomRight} alt="PizzaMente detail" />
-              </div>
-            </div>
-          </div>
+            
         </section>
 
         <div className="editorial-content">
