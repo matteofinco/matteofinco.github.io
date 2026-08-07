@@ -781,7 +781,7 @@ export default function WaffleMaker({ heroFit = 'cover' }: WaffleMakerProps) {
 
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
-            <img src=https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F6c5991568f5c44bc824a39b1b8276df1 alt="Waffle Maker design" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F6c5991568f5c44bc824a39b1b8276df1" alt="Waffle Maker design" />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
             <h2>{t.design.title}</h2>
