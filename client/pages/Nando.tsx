@@ -808,7 +808,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fb26e2765f2a2476e906a3a2318199420"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F020a08494a0c49bd8213c70c0130f2d8"
               alt="Nando design detail and internal structure"
             />
           </div>
