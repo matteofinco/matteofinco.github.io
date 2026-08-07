@@ -5,6 +5,11 @@ interface CurriculumProps {
   heroFit?: 'contain' | 'cover';
 }
 
+const cvPdfUrls = {
+  en: "https://cdn.builder.io/o/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5b03c6980928461fa8fa8a0014ada7e3?alt=media&token=2845f631-5854-4563-8874-d2d6487327f3&apiKey=b117f80db1214c899c967fecfbdcaa25",
+  it: "https://cdn.builder.io/o/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Febb4af0f796e4a149200098cc754c84d?alt=media&token=0437e3df-064c-45d1-8bcf-fc07f569c2c3&apiKey=b117f80db1214c899c967fecfbdcaa25"
+};
+
 const content = {
   en: {
     title: "CURRICULUM VITAE",
@@ -109,7 +114,8 @@ const content = {
       items: ["Fire Safety Level 3", "HACCP certification"]
     },
     cta: {
-      button: "BACK TO PORTFOLIO"
+      button: "BACK TO PORTFOLIO",
+      download: "DOWNLOAD PDF"
     }
   },
   it: {
@@ -215,7 +221,8 @@ const content = {
       items: ["Antincendio Livello 3", "Certificazione HACCP"]
     },
     cta: {
-      button: "TORNA AL PORTFOLIO"
+      button: "TORNA AL PORTFOLIO",
+      download: "SCARICA PDF"
     }
   }
 };
@@ -226,7 +233,7 @@ export default function Curriculum() {
 
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal-editorial');
-
+    
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -519,6 +526,10 @@ export default function Curriculum() {
         .project-cta {
           text-align: center;
           padding-top: 20px;
+          display: flex;
+          justify-content: center;
+          gap: 16px;
+          flex-wrap: wrap;
         }
 
         .cta-button {
@@ -531,6 +542,7 @@ export default function Curriculum() {
           transition: all 0.3s ease;
           letter-spacing: 0.8px;
           font-size: 0.82rem;
+          border: 1px solid #ffffff;
         }
 
         .cta-button:hover {
@@ -538,6 +550,18 @@ export default function Curriculum() {
           color: #ffffff;
           border: 1px solid #ffffff;
           transform: translateY(-2px);
+        }
+
+        .cta-secondary {
+          background: transparent;
+          color: #ffffff;
+          border: 1px solid #333333;
+        }
+
+        .cta-secondary:hover {
+          background: #ffffff;
+          color: #070707;
+          border: 1px solid #ffffff;
         }
 
         @media (max-width: 768px) {
@@ -564,11 +588,11 @@ export default function Curriculum() {
 
       <div className="project-container">
         <div className="editorial-content">
-
+          
           {/* Hero & Profile Photo Section */}
           <section className="cv-hero reveal-editorial">
             <div className="cv-avatar-container">
-              <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2e3383ac1e3348f0bc9a80ad0e830913" alt="Matteo Finco" />
+              <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2b39f4853ae34125aca28b9bbaa6d0ba" alt="Matteo Finco" />
             </div>
             <div className="cv-hero-info">
               <h1>Matteo Finco</h1>
@@ -578,7 +602,7 @@ export default function Curriculum() {
                 <span>•</span>
                 <a href="mailto:matteofinco05@gmail.com">matteofinco05@gmail.com</a>
                 <span>•</span>
-                <a href="https://linkedin.com/in/Matteo Finco" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/finco-matteo-2k05/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               </div>
             </div>
           </section>
@@ -682,8 +706,16 @@ export default function Curriculum() {
 
           <hr className="editorial-divider" />
 
-          {/* Back to Portfolio CTA */}
+          {/* CTA & Download Section */}
           <section className="project-cta reveal-editorial">
+            <a 
+              href={cvPdfUrls[language]} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="cta-button cta-secondary"
+            >
+              {t.cta.download}
+            </a>
             <a href="/" className="cta-button">{t.cta.button}</a>
           </section>
 
