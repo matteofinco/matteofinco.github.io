@@ -37,13 +37,17 @@ jobs:
 
       - name: Build project
         working-directory: ./client
-        run: npm run build
+        run: npx vite build --outDir dist
+
+      - name: Verify build output
+        run: |
+          echo "Contenuto della cartella client/dist:"
+          ls -la client/dist
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Questo punta esattamente alla cartella dist generata da Vite dentro client
-          path: ${{ github.workspace }}/client/dist
+          path: './client/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
