@@ -314,20 +314,23 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           }
         }
 
-        /* COMPOSITE 3-IMAGE GRID BOX */
+        /* COMPOSITE 3-IMAGE GRID BOX (FULL BLEED) */
         .media-composite-box {
+          width: 100vw;
+          margin-left: calc(50% - 50vw);
           background: #0d0d0d;
-          border: 1px solid #1a1a1a;
-          padding: 12px;
+          border-top: 1px solid #1a1a1a;
+          border-bottom: 1px solid #1a1a1a;
+          padding: 16px 5vw;
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          gap: 16px;
         }
 
         .composite-top {
           width: 100%;
           aspect-ratio: 16 / 9;
-          max-height: 480px;
+          max-height: 620px;
           overflow: hidden;
           background: #000000;
           display: flex;
@@ -338,13 +341,13 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         .composite-bottom {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 12px;
+          gap: 16px;
         }
 
         .composite-square {
           width: 100%;
           aspect-ratio: 1 / 1;
-          max-height: 340px;
+          max-height: 420px;
           overflow: hidden;
           background: #111111;
         }
@@ -568,7 +571,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* COMPOSITE 3-IMAGE GRID BOX */}
+        {/* COMPOSITE 3-IMAGE GRID BOX (FULL BLEED) */}
         <section className="reveal-editorial reveal-from-left">
           <div className="media-composite-box">
             <div className="composite-top">
