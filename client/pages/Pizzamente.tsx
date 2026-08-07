@@ -758,7 +758,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
 
         {/* HERO PRODUCT IMAGE (FULL BLEED) */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
-          <img src="https://cdn.builder.io/api/v1/file/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fef788ba34cdd4e62a1c02f2341367f29" alt="PizzaMente hero" />
+          <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fce4c6818bf4b4d9ea6c8ad340e5919d8" alt="PizzaMente hero" />
         </section>
 
         <div className="editorial-content">
