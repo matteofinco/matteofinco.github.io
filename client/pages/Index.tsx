@@ -243,6 +243,8 @@ export default function Index() {
     let hasMovedToSticky = false;
 
     const handleWheel = (e: WheelEvent) => {
+      // Attiva il blocco wheel SOLO su Desktop (> 1024px)
+      if (window.innerWidth < 1024) return;
       if (hasMovedToSticky) return;
 
       const introBottom = intro.getBoundingClientRect().bottom;
@@ -443,8 +445,12 @@ export default function Index() {
         }
 
         @media (max-width: 1024px) {
-          .section-divider-gap { height: 80px; }
-          .whats-next-section { padding: 80px 6vw 60px; }
+          .section-divider-gap { height: 60px; }
+          .whats-next-section { padding: 60px 6vw 50px; }
+          .whats-next-section h2 { font-size: 2.8rem; }
+          .whats-next-section p.sub-lead { font-size: 1.05rem; margin-bottom: 35px; }
+          .footer-actions { width: 100%; flex-direction: column; gap: 12px; }
+          .btn-footer-link, .btn-footer-outline { text-align: center; width: 100%; padding: 14px 20px; }
         }
       `}</style>
 
