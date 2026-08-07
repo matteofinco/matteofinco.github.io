@@ -36,36 +36,35 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           padding-top: 120px;
         }
 
-        /* HERO SECTION (MINIMAL / APPLE STYLE) */
+        /* HERO SECTION (IMPOSING & CLEAN) */
         .project-hero {
-          max-width: 1400px;
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 0 6vw 60px;
+          padding: 0 6vw 80px;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          text-align: left;
         }
 
         .project-hero-text {
-          margin-bottom: 40px;
+          margin-bottom: 50px;
           max-width: 900px;
         }
 
         .project-hero h1 {
-          font-size: clamp(3rem, 7vw, 5.5rem);
+          font-size: clamp(3.2rem, 8vw, 6rem);
           font-weight: 900;
-          line-height: 1.05;
+          line-height: 1.02;
           color: #ffffff;
-          margin-bottom: 16px;
-          letter-spacing: -1.5px;
+          margin-bottom: 18px;
+          letter-spacing: -2px;
           text-transform: uppercase;
         }
 
         .project-subtitle {
           font-size: clamp(1.2rem, 2.5vw, 1.8rem);
           color: #aaaaaa;
-          margin-bottom: 20px;
+          margin-bottom: 22px;
           font-weight: 400;
         }
 
@@ -81,12 +80,12 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           border-radius: 4px;
         }
 
-        /* HERO IMAGE CONTAINER */
+        /* HERO IMAGE CONTAINER (DOMINANT) */
         .project-hero-image-wrapper {
           width: 100%;
-          height: 65vh;
-          max-height: 750px;
-          min-height: 380px;
+          height: 75vh;
+          max-height: 850px;
+          min-height: 450px;
           background-color: #0d0d0d;
           border-radius: 8px;
           overflow: hidden;
@@ -100,16 +99,30 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           width: 100%;
           height: 100%;
           display: block;
-          transition: transform 0.8s ease;
         }
 
-        /* METADATA GRID IN OVERVIEW */
+        /* OVERVIEW TEXT SECTION (NO IMAGE INTERRUPT) */
+        .overview-intro-section {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 100px 6vw 60px;
+        }
+
+        .overview-intro-section h2 {
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          font-weight: 800;
+          color: #ffffff;
+          margin-bottom: 40px;
+          letter-spacing: -1px;
+        }
+
+        /* METADATA GRID */
         .project-metadata-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-          gap: 25px;
-          padding: 30px 0;
-          margin-bottom: 40px;
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+          gap: 30px;
+          padding: 35px 0;
+          margin-bottom: 50px;
           border-top: 1px solid #1a1a1a;
           border-bottom: 1px solid #1a1a1a;
         }
@@ -124,16 +137,34 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
         }
 
         .metadata-item p {
-          font-size: 0.95rem;
+          font-size: 1rem;
           color: #dddddd;
           line-height: 1.5;
           margin: 0;
         }
 
+        .overview-text-content {
+          max-width: 800px;
+        }
+
+        .overview-text-content h3 {
+          font-size: clamp(1.3rem, 2vw, 1.8rem);
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 20px;
+        }
+
+        .overview-text-content p {
+          color: #aaaaaa;
+          font-size: 1.15rem;
+          line-height: 1.85;
+          margin-bottom: 25px;
+        }
+
         /* FULLBLEED EDITORIAL STRUCTURE */
         .project-fullbleed-wrapper {
           width: 100%;
-          padding: 60px 0 100px;
+          padding: 40px 0 100px;
           display: flex;
           flex-direction: column;
           gap: 120px;
@@ -151,7 +182,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
         /* Media left - image touches left edge */
         .project-row.media-left .project-media {
           width: 100%;
-          height: 580px;
+          height: 560px;
           padding-left: 0;
         }
         .project-row.media-left .project-text {
@@ -161,7 +192,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
         /* Media right - image touches right edge */
         .project-row.media-right .project-media {
           width: 100%;
-          height: 580px;
+          height: 560px;
           padding-right: 0;
         }
         .project-row.media-right .project-text {
@@ -188,14 +219,6 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           line-height: 1.15;
           margin-bottom: 25px;
           color: #ffffff;
-        }
-
-        .project-text h3 {
-          font-size: clamp(1.1rem, 1.8vw, 1.5rem);
-          font-weight: 500;
-          color: #888888;
-          margin-bottom: 20px;
-          line-height: 1.4;
         }
 
         .project-text p {
@@ -364,8 +387,8 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           }
 
           .project-hero-image-wrapper {
-            height: 45vh;
-            min-height: 300px;
+            height: 50vh;
+            min-height: 320px;
           }
         }
 
@@ -387,6 +410,10 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
             font-size: 1.1rem;
           }
 
+          .overview-intro-section {
+            padding: 60px 6vw 40px;
+          }
+
           .project-metadata-grid {
             grid-template-columns: 1fr 1fr;
             gap: 20px;
@@ -403,7 +430,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
 
           .project-fullbleed-wrapper {
             gap: 60px;
-            padding: 40px 0;
+            padding: 20px 0;
           }
 
           .project-row {
@@ -411,7 +438,7 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
           }
 
           .project-hero-image-wrapper {
-            height: 35vh;
+            height: 40vh;
           }
         }
       `}</style>
@@ -434,49 +461,42 @@ export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
         </div>
       </section>
 
+      {/* OVERVIEW INTRO (TEXT & METADATA BREAK) */}
+      <section className="overview-intro-section reveal-editorial reveal-from-left">
+        <h2>Overview</h2>
+
+        <div className="project-metadata-grid">
+          <div className="metadata-item">
+            <h4>Role</h4>
+            <p>Product Designer</p>
+          </div>
+          <div className="metadata-item">
+            <h4>Team</h4>
+            <p>Matteo Finco<br />Giulia Pettenò<br />Nadia Zanella</p>
+          </div>
+          <div className="metadata-item">
+            <h4>Year</h4>
+            <p>2025</p>
+          </div>
+          <div className="metadata-item">
+            <h4>Photo</h4>
+            <p>Nadia Zanella</p>
+          </div>
+        </div>
+
+        <div className="overview-text-content">
+          <h3>The Challenge</h3>
+          <p>
+            Developing a small everyday object made from recycled polymers for PLEIADES (Plastic European Innovation Award for Design and Sustainability), a design competition organized by the Università Iuav di Venezia (Vicenza campus) in partnership with global leaders in the plastics and molding sectors: Ewikon, Arburg, and Uniform.
+          </p>
+          <p>
+            The core challenge was to balance high creative freedom with the rigorous technical constraints of mass industrial production, optimizing the object for advanced injection molding.
+          </p>
+        </div>
+      </section>
+
       {/* FULLBLEED CONTENT */}
       <div className="project-fullbleed-wrapper">
-        {/* OVERVIEW & METADATA SECTION */}
-        <section className="project-row media-left">
-          <div className="project-media reveal-editorial reveal-from-left">
-            <img
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80"
-              alt="Archivia product overview"
-            />
-          </div>
-          <div className="project-text reveal-editorial reveal-from-right">
-            <h2>Overview</h2>
-
-            {/* METADATA GRID */}
-            <div className="project-metadata-grid">
-              <div className="metadata-item">
-                <h4>Role</h4>
-                <p>Product Designer</p>
-              </div>
-              <div className="metadata-item">
-                <h4>Team</h4>
-                <p>Matteo Finco<br />Giulia Pettenò<br />Nadia Zanella</p>
-              </div>
-              <div className="metadata-item">
-                <h4>Year</h4>
-                <p>2025</p>
-              </div>
-              <div className="metadata-item">
-                <h4>Photo</h4>
-                <p>Nadia Zanella</p>
-              </div>
-            </div>
-
-            <h3>Challenge</h3>
-            <p>
-              Developing a small everyday object made from recycled polymers for PLEIADES (Plastic European Innovation Award for Design and Sustainability), a design competition organized by the Università Iuav di Venezia (Vicenza campus) in partnership with global leaders in the plastics and molding sectors: Ewikon, Arburg, and Uniform.
-            </p>
-            <p>
-              The core challenge was to balance high creative freedom with the rigorous technical constraints of mass industrial production, optimizing the object for advanced injection molding.
-            </p>
-          </div>
-        </section>
-
         {/* SOLUTION SECTION */}
         <section className="project-row media-right">
           <div className="project-text reveal-editorial reveal-from-left">
