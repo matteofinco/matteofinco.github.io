@@ -23,7 +23,7 @@ const translations = {
     collaborationTitle: "Il Design come Collaborazione",
     collaborationText1: "Nel design vedo la stessa dinamica: le soluzioni efficaci sono raramente individuali. Nascono dal confronto e dalla capacità di unire competenze diverse mantenendo una visione d'insieme chiara del sistema.",
     collaborationText2: "Oggi continuo a vedere il design come un modo per comprendere il mondo prima di cambiarlo. Ogni progetto è un'occasione per imparare qualcosa di nuovo e trasformare un problema complesso in una soluzione chiara.",
-    ctaTitle: "What's next?",
+    ctaTitle: "WHAT'S NEXT?",
     ctaSub: "Per ulteriori informazioni sul mio percorso, competenze e dettagli tecnici, consulta il mio CV completo.",
     ctaButton: "CURRICULUM VITAE"
   },
@@ -47,7 +47,7 @@ const translations = {
     collaborationTitle: "Design as Collaboration",
     collaborationText1: "In design, I see the same dynamic: effective solutions are rarely individual. They come from discussion and from the ability to combine different skills while keeping a clear overall vision of the system.",
     collaborationText2: "Today, I still see design as a way to understand the world before changing it. Every project is a chance to learn something new and to turn a complex problem into a clear solution.",
-    ctaTitle: "What's next?",
+    ctaTitle: "WHAT'S NEXT?",
     ctaSub: "For additional information about my background, technical skills, and experience, view my CV.",
     ctaButton: "CURRICULUM VITAE"
   }
