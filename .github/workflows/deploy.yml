@@ -21,9 +21,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./client
 
     steps:
       - name: Checkout
@@ -35,15 +32,18 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
+        working-directory: ./client
         run: npm install
 
       - name: Build project
+        working-directory: ./client
         run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Corretto: punta a ./client/dist rispetto alla root della repo
+          # Questo punta esattamente alla cartella dist generata da Vite dentro client
+          path: ${{ github.workspace }}/client/dist
 
       - name: Deploy to GitHub Pages
         id: deployment
