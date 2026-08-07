@@ -31,9 +31,9 @@ const content = {
       p1: "The central container is split into two symmetrical shell halves that interlock securely and pivot inside a 90° rotating outer cover through integrated mechanical snap-fit joints.",
       p2: "By optimizing draft angles, wall thicknesses, and rotational tolerances, the entire assembly is designed to be produced within a single mold layout, reducing production steps and ensuring straightforward end-of-life mono-material recycling."
     },
-    wideSection: {
-      title: "Exploded View & Mechanics",
-      caption: "Single-mold layout with integrated 90° mechanical pivot interlocks and snap-fit joints."
+    compositeSection: {
+      title: "Visual & Technical Breakdown",
+      caption: "Single-mold layout with integrated 90° mechanical pivot interlocks, volumetric study, and final prototyping."
     },
     bottomSection: {
       title: "Technical Insights",
@@ -81,9 +81,9 @@ const content = {
       p1: "Il corpo centrale si suddivide in due metà speculari che si uniscono e si vincolano alla calotta esterna ruotabile a 90° tramite perni e snap-fit integrati nella geometria del pezzo.",
       p2: "L'ottimizzazione degli spessori di parete, degli angoli di sformo e delle tolleranze di accoppiamento permette la produzione in un unico stampo, garantendo la totale riciclabilità del prodotto a fine vita."
     },
-    wideSection: {
-      title: "Vista Esplosa e Meccanica",
-      caption: "Layout ad unico stampo con cinetismo di rotazione a 90° e incastri meccanici snap-fit integrati."
+    compositeSection: {
+      title: "Analisi Visiva e Tecnica",
+      caption: "Layout ad unico stampo con cinetismo di rotazione a 90°, studio volumetrico e prototipazione finale."
     },
     bottomSection: {
       title: "Dettagli Tecnici",
@@ -212,7 +212,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           font-weight: 500;
         }
 
-        /* FULLBLEED HERO IMAGE */
+        /* FULLBLEED HERO PRODUCT IMAGE */
         .hero-media-fullbleed {
           width: 100vw;
           margin-left: calc(50% - 50vw);
@@ -250,21 +250,12 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           margin-bottom: 18px;
         }
 
-        /* EDITORIAL ROWS WITH EDGE-BLEED IMAGES */
+        /* EDITORIAL ROWS (FIXED NO-OVERLAP GRID) */
         .editorial-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 50px;
           align-items: center;
-        }
-
-        .editorial-row.reverse {
-          direction: rtl;
-        }
-
-        .editorial-row.reverse .row-text,
-        .editorial-row.reverse .row-media {
-          direction: ltr;
         }
 
         .row-text h2 {
@@ -302,38 +293,64 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transform: scale(1.02);
         }
 
-        /* BLEED TO SCREEN EDGES */
+        /* EXACT EDGE-BLEED WITHOUT OVERLAPPING ADJACENT COLUMNS */
         @media (min-width: 861px) {
           .row-media.bleed-left {
-            margin-left: calc(100% - 50vw);
             width: calc(50vw - 25px);
+            margin-left: calc(-1 * (50vw - 50% - 25px));
           }
 
           .row-media.bleed-right {
-            margin-right: calc(100% - 50vw);
             width: calc(50vw - 25px);
+            margin-right: calc(-1 * (50vw - 50% - 25px));
           }
         }
 
-        /* WIDE BANNER FULL BLEED */
-        .wide-media-container {
-          width: 100vw;
-          margin-left: calc(50% - 50vw);
-          height: clamp(380px, 55vh, 520px);
-          background: #111111;
-          overflow: hidden;
+        /* COMPOSITE 3-IMAGE GRID BOX */
+        .media-composite-box {
+          background: #0d0d0d;
+          border: 1px solid #1a1a1a;
+          padding: 12px;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
           border-radius: 0;
           margin-bottom: 16px;
         }
 
-        .wide-media-container img {
+        .composite-top {
+          width: 100%;
+          height: clamp(280px, 45vh, 420px);
+          overflow: hidden;
+          background: #111111;
+        }
+
+        .composite-bottom {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+
+        .composite-square {
+          width: 100%;
+          height: clamp(200px, 30vh, 300px);
+          overflow: hidden;
+          background: #111111;
+        }
+
+        .media-composite-box img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           display: block;
+          transition: transform 0.6s ease;
         }
 
-        .wide-caption {
+        .media-composite-box img:hover {
+          transform: scale(1.02);
+        }
+
+        .composite-caption {
           font-size: 0.85rem;
           color: #777777;
           font-family: monospace;
@@ -458,27 +475,21 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         /* RESPONSIVE */
         @media (max-width: 860px) {
-          .editorial-row,
-          .editorial-row.reverse {
+          .editorial-row {
             grid-template-columns: 1fr;
             gap: 30px;
-            direction: ltr;
-          }
-
-          .editorial-row.reverse .row-text,
-          .editorial-row.reverse .row-media {
-            direction: ltr;
           }
 
           .row-media.bleed-left,
           .row-media.bleed-right {
-            margin-left: calc(50% - 50vw);
             width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: 0;
             height: 320px;
           }
 
-          .wide-media-container {
-            height: 320px;
+          .composite-bottom {
+            grid-template-columns: 1fr;
           }
 
           .insights-grid {
@@ -523,7 +534,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
           <img
             src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=2000&q=80"
-            alt="Archivia product shot"
+            alt="Archivia hero product shot"
             style={{ objectFit: heroFit }}
           />
         </section>
@@ -539,7 +550,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* SECTION 1: SOLUTION (LEFT BLEED IMAGE, RIGHT TEXT) */}
+        {/* ROW 1: SOLUTION (IMAGE LEFT, TEXT RIGHT) */}
         <section className="editorial-row">
           <div className="row-media bleed-left reveal-editorial reveal-from-left">
             <img
@@ -556,8 +567,8 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* SECTION 2: RESEARCH (TEXT LEFT, RIGHT BLEED IMAGE) */}
-        <section className="editorial-row reverse">
+        {/* ROW 2: RESEARCH (TEXT LEFT, IMAGE RIGHT) */}
+        <section className="editorial-row">
           <div className="row-text reveal-editorial reveal-from-left">
             <h2>{t.research.title}</h2>
             <p>{t.research.p1}</p>
@@ -573,21 +584,40 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* SECTION 3: WIDE MEDIA BANNER WITH CAPTION */}
+        {/* SECTION 3: COMPOSITE 3-IMAGE GRID BOX */}
         <section className="reveal-editorial reveal-from-left">
-          <div className="wide-media-container">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e"
-              alt="Archivia exploded view"
-              style={{ objectFit: heroFit }}
-            />
+          <div className="media-composite-box">
+            {/* TOP HORIZONTAL IMAGE */}
+            <div className="composite-top">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e"
+                alt="Archivia exploded view wide"
+                style={{ objectFit: heroFit }}
+              />
+            </div>
+
+            {/* BOTTOM 2 SQUARE IMAGES */}
+            <div className="composite-bottom">
+              <div className="composite-square">
+                <img
+                  src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+                  alt="Archivia detail square 1"
+                />
+              </div>
+              <div className="composite-square">
+                <img
+                  src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80"
+                  alt="Archivia detail square 2"
+                />
+              </div>
+            </div>
           </div>
-          <p className="wide-caption">↑ {t.wideSection.caption}</p>
+          <p className="composite-caption">↑ {t.compositeSection.caption}</p>
         </section>
 
         <hr className="editorial-divider" />
 
-        {/* TECHNICAL INSIGHTS GRID - EXACTLY 3 BOXES */}
+        {/* TECHNICAL INSIGHTS GRID - 3 BOXES */}
         <section className="technical-section">
           <h2 className="reveal-editorial reveal-from-left">{t.bottomSection.title}</h2>
 
