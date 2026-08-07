@@ -4,6 +4,7 @@ import About from "./pages/About";
 import Curriculum from "./pages/Curriculum";
 import Archivia from "./pages/Archivia";
 import Snake from "./pages/Snake";
+import Prop from "./pages/Prop";
 import { Footer } from "./components/Footer";
 
 export default function App() {
@@ -27,7 +28,9 @@ export default function App() {
     if (path.includes("/snake")) {
       return <Snake />;
     }
-
+ if (path.includes("/prop")) {
+      return <Prop />;
+    }
     return <Index />;
   };
 
