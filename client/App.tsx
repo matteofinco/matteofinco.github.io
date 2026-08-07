@@ -3,6 +3,8 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Curriculum from "./pages/Curriculum";
 import Archivia from "./pages/Archivia";
+import Snake from "./pages/Snake";
+
 
 export default function App() {
   // Legge l'URL attuale convertendolo in minuscolo
@@ -21,6 +23,11 @@ export default function App() {
   // Mostra la pagina Archivia (progetto)
   if (path.includes("/archivia")) {
     return <Archivia />;
+  }
+
+   // Mostra la pagina Snake (progetto)
+  if (path.includes("/snake")) {
+    return <Snake />;
   }
 
   // Fallback sulla Home Page
