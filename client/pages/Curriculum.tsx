@@ -86,15 +86,15 @@ const content = {
       categories: [
         {
           name: "Analysis",
-          items: ["Reverse engineering", "Product analysis", "Design research", "Materials and manufacturing processes"]
+          items: ["Reverse engineering, Product analysis, Design research, Materials and manufacturing processes"]
         },
         {
-          name: "Design",
-          items: ["CAD and 3D modeling", "Technical drawings", "Design for Manufacturing"]
+          name: "Software",
+          items: ["Rhino 3D", "Fusion 360", "Adobe Suite", "KeyShot Blender (basic)", "Arduino", "Processing"]
         },
         {
           name: "Prototyping",
-          items: ["Rapid prototyping", "FDM 3D printing", "Material experimentation"]
+          items: ["FDM 3D printing", "Physical mock-ups", "Material experimentation"]
         },
         {
           name: "Cooperation & Leadership",
@@ -193,19 +193,19 @@ const content = {
       categories: [
         {
           name: "Analisi",
-          items: ["Reverse engineering", "Analisi di prodotto", "Ricerca progettuale", "Materiali e processi produttivi"]
+          items: ["Reverse engineering", "Analisi del prodotto", "Ricerca", "Materiali e processi di produzione"]
         },
         {
-          name: "Progettazione",
-          items: ["CAD e 3D", "Disegni tecnici", "Design for Manufacturing"]
+          name: "Software",
+          items: ["Rhino 3D", "Fusion 360", "Adobe Suite", "KeyShot Blender (base)", "Arduino", "Processing"]
         },
         {
           name: "Prototipazione",
-          items: ["Prototipazione rapida", "Stampa 3D FDM", "Sperimentazione materica"]
+          items: ["Stampa 3D FDM", "Mock-ups fisici", "Sperimentazioni materiali"]
         },
         {
-          name: "Collaborazione",
-          items: ["Coordinamento progettuale", "Leadership", "Collaborazione multidisciplinare"]
+          name: "Cooperation & Leadership",
+          items: ["Project coordination", "Teamwork", "Collaborazione multidisciplinare"]
         }
       ]
     },
