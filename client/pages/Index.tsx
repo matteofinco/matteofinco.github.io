@@ -15,8 +15,8 @@ const projectList: ProjectStep[] = [
       en: 'Interactive hockey training system'
     },
     category: {
-      it: 'DESIGN DI PRODOTTO SPORTIVO',
-      en: 'SPORT PRODUCT DESIGN'
+      it: 'PRODOTTO SPORTIVO',
+      en: 'SPORT PRODUCT'
     },
     tools: {
       it: 'Design di prodotto / Modellazione CAD / Meccatronica / Prototipazione',
@@ -32,7 +32,7 @@ const projectList: ProjectStep[] = [
       en: 'Interactive training system developed for inline and ice hockey players. Snake combines modular mechanical components, sensors and real-time feedback to create adaptive exercises focused on puck control, reaction speed and cognitive agility.'
     },
     link: '/snake',
-    img: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1400&q=80'
+    img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e'
   },
   {
     id: '02',
@@ -60,7 +60,7 @@ const projectList: ProjectStep[] = [
       en: 'Desk organizer developed for the PLEIADES design competition with Ewikon, Arburg and Uniform. Archivia translates the logic of digital storage devices into a physical object assembled through integrated mechanical connections.'
     },
     link: '/archivia',
-    img: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1400&q=80'
+    img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fb8ef76dbdd4f4619959ec6122f1096c8'
   },
   {
     id: '03',
@@ -88,7 +88,7 @@ const projectList: ProjectStep[] = [
       en: 'Inclusive handle designed to improve the use of cutlery and everyday tools for people with reduced hand strength. Through flexible geometry and parametric design, Nando adapts to different users while improving comfort, grip stability and independence.'
     },
     link: '/nando',
-    img: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1400&q=80'
+    img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc0f4e7d3aae149a3991d8adb72655af3'
   },
   {
     id: '04',
@@ -116,7 +116,7 @@ const projectList: ProjectStep[] = [
       en: 'Automated pizza service concept developed during a workshop with Daint. PizzaMente redesigns food automation by integrating ordering, preparation, consumption and disposal into a single system that transforms waiting time into engagement.'
     },
     link: '/pizzamente',
-    img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1400&q=80'
+    img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fe186b1b1b013459f94a05a22f6ea48e5'
   },
   {
     id: '05',
@@ -144,7 +144,7 @@ const projectList: ProjectStep[] = [
       en: 'Critical analysis of a domestic appliance through morphological and functional decomposition. The project investigates how components, mechanisms, materials and visual language define the relationship between users and everyday objects.'
     },
     link: '/wafflemaker',
-    img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1400&q=80'
+    img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fedbb2046d3db4d549f4da864fca20382'
   },
   {
     id: '06',
@@ -172,7 +172,7 @@ const projectList: ProjectStep[] = [
       en: 'Interactive table concept designed to reduce distracted eating in fast-food environments. T-Table uses adaptive technology to support social interaction and restore attention to the meal experience.'
     },
     link: '/ttable',
-    img: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80'
+    img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc'
   },
   {
     id: '07',
@@ -191,7 +191,7 @@ const projectList: ProjectStep[] = [
       en: 'Open Source Design / CAD Modelling / FDM Manufacturing'
     },
     material: {
-      it: 'Connettori PETG / Fissaggi in nylon / Struttura adattabile',
+      it: 'Connettori PETG / Fascette in nylon / Struttura adattabile',
       en: 'PETG Connectors / Nylon Fasteners / Adaptable Structure'
     },
     year: '2026',
@@ -200,7 +200,7 @@ const projectList: ProjectStep[] = [
       en: 'Open-source emergency crutch system developed during the Ánako Design Challenge with Prusa Research. Prop uses 3D printed connectors to transform locally available sticks into functional mobility aids, enabling rapid and accessible production in crisis contexts.'
     },
     link: '/prop',
-    img: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1400&q=80'
+    img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5ea37818589140f49395200bfbdbbb41'
   }
 ];
 
