@@ -420,13 +420,14 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           margin-bottom: 18px;
         }
 
-        /* PROJECT NAVIGATOR */
+        /* PROJECT NAVIGATOR & CAROUSEL */
         .project-navigator {
           display: flex;
           flex-direction: column;
           align-items: center;
           position: relative;
           margin-top: 20px;
+          width: 100%;
         }
 
         .dots-container {
@@ -438,6 +439,14 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 40px;
           backdrop-filter: blur(8px);
+          max-width: 100%;
+          overflow-x: auto;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .dots-container::-webkit-scrollbar {
+          display: none;
         }
 
         .dot-item {
@@ -450,6 +459,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           padding: 0;
           position: relative;
+          flex-shrink: 0;
         }
 
         .dot-item:hover, .dot-item.active {
@@ -584,7 +594,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           transform: translateY(-2px);
         }
 
-        /* RESPONSIVE BREAKPOINTS */
+        /* RESPONSIVE BREAKPOINTS & MOBILE CAROUSEL OPTIMIZATIONS */
         @media (max-width: 860px) {
           .editorial-row-fullbleed {
             display: flex;
@@ -621,6 +631,25 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
 
           .editorial-divider {
             margin: 40px 0;
+          }
+
+          /* Adattamento Carousel per Schermi Mobile */
+          .dots-container {
+            width: 100%;
+            justify-content: flex-start;
+            padding: 12px 16px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          .dot-item {
+            scroll-snap-align: center;
+            width: 16px;
+            height: 16px;
+          }
+
+          .project-preview-card {
+            display: none; /* Disattiva la card in hover fisso su touch/mobile */
           }
         }
       `}</style>
@@ -774,7 +803,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
 
           <hr className="editorial-divider" />
 
-          {/* NEXT PROJECT / CTA */}
+          {/* NEXT PROJECT / CTA CAROUSEL */}
           <section className="project-cta reveal-editorial reveal-from-left">
             <h2>{t.cta.title}</h2>
             <p className="cta-subtitle">{t.cta.subtitle}</p>
