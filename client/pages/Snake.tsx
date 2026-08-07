@@ -821,20 +821,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
                 alt="Snake training context layout"
               />
             </div>
-            <div className="composite-bottom">
-              <div className="composite-square">
-                <img
-                  src={SNAKE_IMAGE_URL}
-                  alt="Snake joint mechanism detail"
-                />
-              </div>
-              <div className="composite-square">
-                <img
-                  src={SNAKE_IMAGE_URL}
-                  alt="Snake material texture detail"
-                />
-              </div>
-            </div>
+     
           </div>
         </section>
 
