@@ -56,18 +56,21 @@ export const Footer: React.FC = () => {
       <div className="footer-inner">
         <span className="footer-brand">2026 MATTEO FINCO // PRODUCT DESIGN &amp; MAKER</span>
         <div className="footer-links">
+          <a href="/#projects">
+            Projects
+          </a>
+          <a href="/about">
+            About
+          </a>
+          <a href="/cv">
+            CV
+          </a>
           <a 
             href="https://www.linkedin.com/in/finco-matteo-2k05/" 
             target="_blank" 
             rel="noopener noreferrer"
           >
             LinkedIn
-          </a>
-          <a href="/info">
-            Info
-          </a>
-          <a href="/cv">
-            CV
           </a>
         </div>
       </div>
