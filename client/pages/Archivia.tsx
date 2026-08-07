@@ -61,19 +61,19 @@ const content = {
       awardVal: "Concorso PLEIADES"
     },
     overview: {
-      title: "Panoramica",
+      title: "Overview",
       subtitle: "Sfida progettuale",
       p1: "Archivia nasce all'interno di PLEIADES (Plastic European Innovation Award for Design and Sustainability), un concorso di design promosso dall'Università Iuav di Venezia, sede di Vicenza, in collaborazione con Ewikon, Arburg e Uniform.",
       p2: "Il progetto affronta lo sviluppo di un piccolo oggetto d'uso quotidiano realizzato in poliammide riciclata, cercando un equilibrio tra ricerca concettuale, identità del prodotto e vincoli tecnici dello stampaggio industriale a iniezione."
     },
     solution: {
-      title: "Soluzione",
+      title: "Solution",
       p1: "Archivia esplora la relazione tra memoria digitale e strumenti analogici di scrittura.",
       p2: "Ispirandosi alla forma e al gesto di apertura delle chiavette USB rotanti, il progetto traduce il concetto di archiviazione digitale in un oggetto fisico destinato all'ambiente della scrivania.",
       p3: "Il prodotto è composto da tre componenti monomateriale progettati per assemblarsi attraverso connessioni meccaniche integrate, senza l'utilizzo di viti o collanti."
     },
     research: {
-      title: "Ricerca",
+      title: "Research",
       p1: "La fase iniziale della ricerca si è concentrata sull'analisi degli ambienti quotidiani, come casa, ufficio e spazi condivisi, con l'obiettivo di individuare una tipologia di prodotto coerente con i vincoli tecnici del concorso.",
       p2: "Dopo l'esplorazione di diverse categorie di oggetti, l'ambiente della scrivania è risultato il contesto più adatto, portando allo studio del comportamento della poliammide riciclata, dell'ottimizzazione strutturale e dei sistemi di assemblaggio meccanico."
     },
@@ -84,12 +84,12 @@ const content = {
       p3: "Il risultato combina un'identità visiva riconoscibile con un sistema costruttivo semplice basato su connessioni meccaniche integrate."
     },
     technical: {
-      title: "Dettagli tecnici",
+      title: "Technical Insights",
       p1: "Lo sviluppo di Archivia ha evidenziato l'importanza dell'equilibrio tra ricerca creativa e vincoli produttivi.",
       p2: "Il progetto ha permesso di approfondire il comportamento dei materiali polimerici, i requisiti dello stampaggio a iniezione e la relazione tra geometria, assemblaggio e processo produttivo."
     },
     cta: {
-      title: "Prossimo Progetto",
+      title: "What's next?",
       subtitle: "Esplora altri progetti e metodologie di design nel portfolio.",
       button: "TORNA AL PORTFOLIO"
     }
@@ -518,6 +518,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1229dcf2c6644f4285aae97571ad2947"
               alt="Archivia solution concept"
+              style={{ objectFit: 'cover', objectPosition: 'center center' }}
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -541,6 +542,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1229dcf2c6644f4285aae97571ad2947"
               alt="Archivia research details"
+              style={{ objectFit: 'cover', objectPosition: 'center center' }}
             />
           </div>
         </section>
@@ -553,7 +555,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fd825333b798942f5addf7b89bba2e3ff"
               alt="Archivia design mechanics"
-              style={{ objectPosition: 'center top' }}
+              style={{ objectFit: 'cover', objectPosition: 'center center' }}
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -573,6 +575,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F66215330a01245928bfd982a4e89a724"
                 alt="Archivia exploded view wide"
+                style={{ objectFit: 'cover', objectPosition: 'center center' }}
               />
             </div>
             <div className="composite-bottom">
@@ -580,12 +583,14 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F42f618d85fbd458988c33e9f58f1edce"
                   alt="Archivia detail square 1"
+                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
                 />
               </div>
               <div className="composite-square">
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c52dcd39b4945a6985cf49b519c0b51"
                   alt="Archivia detail square 2"
+                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
                 />
               </div>
             </div>
