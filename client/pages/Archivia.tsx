@@ -6,13 +6,13 @@ interface ArchiviaProps {
 }
 
 const PROJECTS_LIST = [
-  { id: "archivia", title: "Archivia", subtitle: "Pen holder", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e", path: "/archivia", areaClass: "area-archivia" },
-  { id: "pizzamente", title: "PizzaMente", subtitle: "Academic Workshop", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2e3383ac1e3348f0bc9a80ad0e830913", path: "/pizzamente", areaClass: "area-pizza" },
-  { id: "nando", title: "Nando", subtitle: "Hyperplastic cutlery handle", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F58faeaf495544fe5a8367b24177ac088", path: "/nando", areaClass: "area-nando" },
-  { id: "snake", title: "Snake", subtitle: "Hockey stickhandling trainer", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e", path: "/snake", areaClass: "area-snake" },
-  { id: "wafflemaker", title: "Waffle Maker", subtitle: "Waffle Maker analysis", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fedbb2046d3db4d549f4da864fca20382", path: "/wafflemaker", areaClass: "area-waffle" },
-  { id: "prop", title: "Prop", subtitle: "3D-Printed Emergency Crutch", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5ea37818589140f49395200bfbdbbb41", path: "/prop", areaClass: "area-prop" },
-  { id: "ttable", title: "T-Table", subtitle: "Interactive feeding-friendly table", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc", path: "/ttable", areaClass: "area-ttable" }
+  { id: "archivia", title: "Archivia", subtitle: "Pen holder", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e", path: "/archivia" },
+  { id: "pizzamente", title: "PizzaMente", subtitle: "Academic Workshop", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2e3383ac1e3348f0bc9a80ad0e830913", path: "/pizzamente" },
+  { id: "nando", title: "Nando", subtitle: "Hyperplastic cutlery handle", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F58faeaf495544fe5a8367b24177ac088", path: "/nando" },
+  { id: "snake", title: "Snake", subtitle: "Hockey stickhandling trainer", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e", path: "/snake" },
+  { id: "wafflemaker", title: "Waffle Maker", subtitle: "Waffle Maker analysis", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fedbb2046d3db4d549f4da864fca20382", path: "/wafflemaker" },
+  { id: "prop", title: "Prop", subtitle: "3D-Printed Emergency Crutch", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5ea37818589140f49395200bfbdbbb41", path: "/prop" },
+  { id: "ttable", title: "T-Table", subtitle: "Interactive feeding-friendly table", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc", path: "/ttable" }
 ];
 
 const content = {
@@ -106,7 +106,7 @@ const content = {
   }
 };
 
-export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
+export default function Archivia({ heroFit = 'contain' }: ArchiviaProps) {
   const [language, setLanguage] = useState<'it' | 'en'>('en');
   const [hoveredProject, setHoveredProject] = useState<typeof PROJECTS_LIST[0] | null>(null);
   const t = content[language];
@@ -141,6 +141,9 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
       <style>{`
         html, body {
           overflow-x: hidden;
+          margin: 0;
+          padding: 0;
+          background-color: #070707;
         }
 
         .project-page * {
@@ -159,7 +162,15 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
+        /* OUTER CONTAINER: FULL VIEWPORT WIDTH */
         .project-container {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+        }
+
+        /* INNER CONTAINER: CENTERED EDITORIAL TEXT & GRID CONTENT */
+        .editorial-content {
           max-width: 1200px;
           margin: 0 auto;
           padding: 0 4vw;
@@ -221,11 +232,10 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           font-weight: 500;
         }
 
-        /* HERO FULL BLEED - RELATIVE TO CONTAINER PADDING (PREVENTS SCROLLBAR OVERFLOW) */
+        /* REAL 100% FULL BLEED (OUTSIDE EDITORIAL CONTENT) */
         .hero-media-fullbleed {
-          width: calc(100% + 8vw);
-          margin-left: -4vw;
-          height: clamp(420px, 60vh, 700px);
+          width: 100%;
+          height: clamp(420px, 60vh, 750px);
           background: #0d0d0d;
           overflow: hidden;
           margin-top: 40px;
@@ -235,7 +245,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           width: 100%;
           height: 100%;
           display: block;
-          object-fit: cover;
+          object-fit: ${heroFit};
           object-position: center;
         }
 
@@ -269,7 +279,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           margin-bottom: 18px;
         }
 
-        /* EDITORIAL GRID ROWS & ASYMMETRIC EDGE BLEEDS */
+        /* EDITORIAL GRID ROWS */
         .editorial-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -299,36 +309,24 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           overflow: hidden;
           background: #0d0d0d;
           border: none;
-          border-radius: 0;
-        }
-
-        .editorial-row.media-left .row-media {
-          width: calc(100% + 4vw);
-          margin-left: calc(-4vw);
-        }
-
-        .editorial-row.media-right .row-media {
-          width: calc(100% + 4vw);
-          margin-right: calc(-4vw);
         }
 
         .row-media img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
           object-position: center;
           display: block;
           transition: transform 0.8s ease;
         }
 
         .row-media:hover img {
-          transform: scale(1.03);
+          transform: scale(1.02);
         }
 
-        /* COMPOSITE GRID FULL BLEED */
+        /* REAL 100% COMPOSITE FULL BLEED */
         .fullbleed-composite {
-          width: calc(100% + 8vw);
-          margin-left: -4vw;
+          width: 100%;
           background: #070707;
           padding: 0;
         }
@@ -346,7 +344,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           width: 100%;
           height: clamp(380px, 55vh, 600px);
           overflow: hidden;
-          background: #000000;
+          background: #0d0d0d;
         }
 
         .composite-bottom {
@@ -360,13 +358,13 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           width: 100%;
           height: clamp(260px, 40vh, 350px);
           overflow: hidden;
-          background: #111111;
+          background: #0d0d0d;
         }
 
         .media-composite-box img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
           object-position: center;
           display: block;
           transition: transform 0.6s ease;
@@ -376,7 +374,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transform: scale(1.02);
         }
 
-        /* TECHNICAL NARRATIVE CARD */
+        /* TECHNICAL SECTION */
         .technical-section {
           max-width: 800px;
         }
@@ -438,7 +436,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           border: 2px solid #070707;
         }
 
-        /* PREVIEW CARD HOVER */
         .project-preview-card {
           position: absolute;
           bottom: 60px;
@@ -557,11 +554,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             gap: 30px;
           }
 
-          .editorial-row.media-left .row-media,
-          .editorial-row.media-right .row-media {
-            width: calc(100% + 8vw);
-            margin-left: -4vw;
-            margin-right: -4vw;
+          .row-media {
             height: 380px;
           }
 
@@ -584,108 +577,111 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
       `}</style>
 
       <div className="project-container">
-        {/* HEADER & METADATA */}
-        <section className="project-hero reveal-editorial reveal-from-left">
-          <h1>{t.title}</h1>
-          <p className="project-subtitle">{t.subtitle}</p>
+        {/* HEADER & METADATA (CENTERED EDITORIAL) */}
+        <div className="editorial-content">
+          <section className="project-hero reveal-editorial reveal-from-left">
+            <h1>{t.title}</h1>
+            <p className="project-subtitle">{t.subtitle}</p>
 
-          <div className="hero-info">
-            <div className="info-block">
-              <span>{t.meta.teamLabel}</span>
-              <p>
-                Matteo Finco<br />
-                Giulia Pettenò<br />
-                Nadia Zanella
-              </p>
+            <div className="hero-info">
+              <div className="info-block">
+                <span>{t.meta.teamLabel}</span>
+                <p>
+                  Matteo Finco<br />
+                  Giulia Pettenò<br />
+                  Nadia Zanella
+                </p>
+              </div>
+
+              <div className="info-block">
+                <span>{t.meta.yearLabel}</span>
+                <p>{t.meta.yearVal}</p>
+              </div>
+
+              <div className="info-block">
+                <span>{t.meta.awardLabel}</span>
+                <p>{t.meta.awardVal}</p>
+              </div>
             </div>
+          </section>
+        </div>
 
-            <div className="info-block">
-              <span>{t.meta.yearLabel}</span>
-              <p>{t.meta.yearVal}</p>
-            </div>
-
-            <div className="info-block">
-              <span>{t.meta.awardLabel}</span>
-              <p>{t.meta.awardVal}</p>
-            </div>
-          </div>
-        </section>
-
-        {/* HERO PRODUCT IMAGE */}
+        {/* HERO PRODUCT IMAGE (100% REAL FULL BLEED) */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
           <img
             src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fb8ef76dbdd4f4619959ec6122f1096c8"
             alt="Archivia hero product shot"
-            style={{ objectFit: heroFit, objectPosition: 'center' }}
           />
         </section>
 
-        <hr className="editorial-divider" />
+        <div className="editorial-content">
+          <hr className="editorial-divider" />
 
-        {/* OVERVIEW / CHALLENGE */}
-        <section className="overview-section reveal-editorial reveal-from-left">
-          <h2>{t.overview.title}</h2>
-          <span className="section-label">{t.overview.subtitle}</span>
-          <p>{t.overview.p1}</p>
-          <p>{t.overview.p2}</p>
-        </section>
+          {/* OVERVIEW / CHALLENGE */}
+          <section className="overview-section reveal-editorial reveal-from-left">
+            <h2>{t.overview.title}</h2>
+            <span className="section-label">{t.overview.subtitle}</span>
+            <p>{t.overview.p1}</p>
+            <p>{t.overview.p2}</p>
+          </section>
 
-        <hr className="editorial-divider" />
+          <hr className="editorial-divider" />
 
-        {/* ROW 1: SOLUTION (MEDIA LEFT EDGE BLEED) */}
-        <section className="editorial-row media-left">
-          <div className="row-media reveal-editorial reveal-from-left">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1b0a4b6f9bb84630b2d4b1bb8716ab11"
-              alt="Archivia solution overview"
-            />
-          </div>
-          <div className="row-text reveal-editorial reveal-from-right">
-            <h2>{t.solution.title}</h2>
-            <p>{t.solution.p1}</p>
-            <p>{t.solution.p2}</p>
-            <p>{t.solution.p3}</p>
-          </div>
-        </section>
+          {/* ROW 1: SOLUTION */}
+          <section className="editorial-row">
+            <div className="row-media reveal-editorial reveal-from-left">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1b0a4b6f9bb84630b2d4b1bb8716ab11"
+                alt="Archivia solution overview"
+              />
+            </div>
+            <div className="row-text reveal-editorial reveal-from-right">
+              <h2>{t.solution.title}</h2>
+              <p>{t.solution.p1}</p>
+              <p>{t.solution.p2}</p>
+              <p>{t.solution.p3}</p>
+            </div>
+          </section>
 
-        <hr className="editorial-divider" />
+          <hr className="editorial-divider" />
 
-        {/* ROW 2: RESEARCH (MEDIA RIGHT EDGE BLEED) */}
-        <section className="editorial-row media-right">
-          <div className="row-text reveal-editorial reveal-from-left">
-            <h2>{t.research.title}</h2>
-            <p>{t.research.p1}</p>
-            <p>{t.research.p2}</p>
-          </div>
-          <div className="row-media reveal-editorial reveal-from-right">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F863e0bdf77e44519b6628999a8739214"
-              alt="Archivia research and desk environment context"
-            />
-          </div>
-        </section>
+          {/* ROW 2: RESEARCH */}
+          <section className="editorial-row">
+            <div className="row-text reveal-editorial reveal-from-left">
+              <h2>{t.research.title}</h2>
+              <p>{t.research.p1}</p>
+              <p>{t.research.p2}</p>
+            </div>
+            <div className="row-media reveal-editorial reveal-from-right">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F863e0bdf77e44519b6628999a8739214"
+                alt="Archivia research and desk environment context"
+              />
+            </div>
+          </section>
 
-        <hr className="editorial-divider" />
+          <hr className="editorial-divider" />
 
-        {/* ROW 3: DESIGN (MEDIA LEFT EDGE BLEED) */}
-        <section className="editorial-row media-left">
-          <div className="row-media reveal-editorial reveal-from-left">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F8e4089261fe741a580f79ee17d2c5cbe"
-              alt="Archivia rotating mechanism and shell structure"
-            />
-          </div>
-          <div className="row-text reveal-editorial reveal-from-right">
-            <h2>{t.design.title}</h2>
-            <p>{t.design.p1}</p>
-            <p>{t.design.p2}</p>
-            <p>{t.design.p3}</p>
-          </div>
-        </section>
+          {/* ROW 3: DESIGN */}
+          <section className="editorial-row">
+            <div className="row-media reveal-editorial reveal-from-left">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F8e4089261fe741a580f79ee17d2c5cbe"
+                alt="Archivia rotating mechanism and shell structure"
+              />
+            </div>
+            <div className="row-text reveal-editorial reveal-from-right">
+              <h2>{t.design.title}</h2>
+              <p>{t.design.p1}</p>
+              <p>{t.design.p2}</p>
+              <p>{t.design.p3}</p>
+            </div>
+          </section>
 
-        <hr className="editorial-divider" />
+          <hr className="editorial-divider" />
+        </div>
 
-        {/* COMPOSITE 3-IMAGE GRID BOX */}
+        {/* COMPOSITE 3-IMAGE GRID BOX (100% REAL FULL BLEED) */}
         <section className="fullbleed-composite reveal-editorial reveal-from-left">
           <div className="media-composite-box">
             <div className="composite-top">
@@ -711,53 +707,55 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           </div>
         </section>
 
-        <hr className="editorial-divider" />
+        <div className="editorial-content">
+          <hr className="editorial-divider" />
 
-        {/* TECHNICAL INSIGHTS */}
-        <section className="technical-section reveal-editorial reveal-from-left">
-          <h2>{t.technical.title}</h2>
-          <p>{t.technical.p1}</p>
-          <p>{t.technical.p2}</p>
-        </section>
+          {/* TECHNICAL INSIGHTS */}
+          <section className="technical-section reveal-editorial reveal-from-left">
+            <h2>{t.technical.title}</h2>
+            <p>{t.technical.p1}</p>
+            <p>{t.technical.p2}</p>
+          </section>
 
-        <hr className="editorial-divider" />
+          <hr className="editorial-divider" />
 
-        {/* NEXT PROJECT / CTA + PROJECT NAVIGATOR */}
-        <section className="project-cta reveal-editorial reveal-from-left">
-          <h2>{t.cta.title}</h2>
-          <p style={{ color: '#aaaaaa', fontSize: '1rem', maxWidth: '500px', margin: '0 auto 20px', lineHeight: '1.6' }}>
-            {t.cta.subtitle}
-          </p>
+          {/* NEXT PROJECT / CTA + PROJECT NAVIGATOR */}
+          <section className="project-cta reveal-editorial reveal-from-left">
+            <h2>{t.cta.title}</h2>
+            <p style={{ color: '#aaaaaa', fontSize: '1rem', maxWidth: '500px', margin: '0 auto 20px', lineHeight: '1.6' }}>
+              {t.cta.subtitle}
+            </p>
 
-          <div className="project-navigator">
-            {hoveredProject && (
-              <div className="project-preview-card">
-                <div className="preview-img-box">
-                  <img src={hoveredProject.imageUrl} alt={hoveredProject.title} />
+            <div className="project-navigator">
+              {hoveredProject && (
+                <div className="project-preview-card">
+                  <div className="preview-img-box">
+                    <img src={hoveredProject.imageUrl} alt={hoveredProject.title} />
+                  </div>
+                  <div className="preview-details">
+                    <h4>{hoveredProject.title}</h4>
+                    <p>{hoveredProject.subtitle}</p>
+                  </div>
                 </div>
-                <div className="preview-details">
-                  <h4>{hoveredProject.title}</h4>
-                  <p>{hoveredProject.subtitle}</p>
-                </div>
+              )}
+
+              <div className="dots-container">
+                {PROJECTS_LIST.map((proj) => (
+                  <button
+                    key={proj.id}
+                    className={`dot-item ${proj.id === 'archivia' ? 'active' : ''}`}
+                    onMouseEnter={() => setHoveredProject(proj)}
+                    onMouseLeave={() => setHoveredProject(null)}
+                    onClick={() => window.location.href = proj.path}
+                    aria-label={`Vai al progetto ${proj.title}`}
+                  />
+                ))}
               </div>
-            )}
-
-            <div className="dots-container">
-              {PROJECTS_LIST.map((proj) => (
-                <button
-                  key={proj.id}
-                  className={`dot-item ${proj.id === 'archivia' ? 'active' : ''}`}
-                  onMouseEnter={() => setHoveredProject(proj)}
-                  onMouseLeave={() => setHoveredProject(null)}
-                  onClick={() => window.location.href = proj.path}
-                  aria-label={`Vai al progetto ${proj.title}`}
-                />
-              ))}
             </div>
-          </div>
 
-          <a href="/" className="cta-button">{t.cta.button}</a>
-        </section>
+            <a href="/" className="cta-button">{t.cta.button}</a>
+          </section>
+        </div>
       </div>
     </div>
   );
