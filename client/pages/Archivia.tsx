@@ -31,10 +31,6 @@ const content = {
       p1: "The central container is split into two symmetrical shell halves that interlock securely and pivot inside a 90° rotating outer cover through integrated mechanical snap-fit joints.",
       p2: "By optimizing draft angles, wall thicknesses, and rotational tolerances, the entire assembly is designed to be produced within a single mold layout, reducing production steps and ensuring straightforward end-of-life mono-material recycling."
     },
-    compositeSection: {
-      title: "Visual & Technical Breakdown",
-      caption: "Single-mold layout with integrated 90° mechanical pivot interlocks, volumetric study, and final prototyping."
-    },
     bottomSection: {
       title: "Technical Insights",
       toolsTitle: "Software & Tools",
@@ -80,10 +76,6 @@ const content = {
       title: "Ricerca e Cinematismo",
       p1: "Il corpo centrale si suddivide in due metà speculari che si uniscono e si vincolano alla calotta esterna ruotabile a 90° tramite perni e snap-fit integrati nella geometria del pezzo.",
       p2: "L'ottimizzazione degli spessori di parete, degli angoli di sformo e delle tolleranze di accoppiamento permette la produzione in un unico stampo, garantendo la totale riciclabilità del prodotto a fine vita."
-    },
-    compositeSection: {
-      title: "Analisi Visiva e Tecnica",
-      caption: "Layout ad unico stampo con cinetismo di rotazione a 90°, studio volumetrico e prototipazione finale."
     },
     bottomSection: {
       title: "Dettagli Tecnici",
@@ -250,7 +242,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           margin-bottom: 18px;
         }
 
-        /* EDITORIAL ROWS (FIXED NO-OVERLAP GRID) */
+        /* EDITORIAL GRID ROWS */
         .editorial-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -293,16 +285,16 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transform: scale(1.02);
         }
 
-        /* EXACT EDGE-BLEED WITHOUT OVERLAPPING ADJACENT COLUMNS */
+        /* EXACT MATHEMATICAL SCREEN BLEED WITHOUT BREAKING GRID COLUMNS */
         @media (min-width: 861px) {
           .row-media.bleed-left {
-            width: calc(50vw - 25px);
-            margin-left: calc(-1 * (50vw - 50% - 25px));
+            margin-left: calc(-1 * (100vw - 100%) / 2);
+            width: calc(100% + (100vw - 100%) / 2);
           }
 
           .row-media.bleed-right {
-            width: calc(50vw - 25px);
-            margin-right: calc(-1 * (50vw - 50% - 25px));
+            margin-right: calc(-1 * (100vw - 100%) / 2);
+            width: calc(100% + (100vw - 100%) / 2);
           }
         }
 
@@ -315,7 +307,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           flex-direction: column;
           gap: 12px;
           border-radius: 0;
-          margin-bottom: 16px;
         }
 
         .composite-top {
@@ -350,13 +341,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transform: scale(1.02);
         }
 
-        .composite-caption {
-          font-size: 0.85rem;
-          color: #777777;
-          font-family: monospace;
-          margin: 0;
-        }
-
         /* REVEAL ANIMATIONS */
         .reveal-editorial {
           opacity: 0;
@@ -380,7 +364,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transform: translateX(0);
         }
 
-        /* TECHNICAL INSIGHTS GRID - 3 BOXES */
+        /* TECHNICAL INSIGHTS GRID - EXACTLY 3 BOXES */
         .technical-section h2 {
           font-size: clamp(1.8rem, 3vw, 2.5rem);
           font-weight: 800;
@@ -584,7 +568,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* SECTION 3: COMPOSITE 3-IMAGE GRID BOX */}
+        {/* SECTION 3: COMPOSITE 3-IMAGE GRID BOX (CLEAN, NO CAPTION) */}
         <section className="reveal-editorial reveal-from-left">
           <div className="media-composite-box">
             {/* TOP HORIZONTAL IMAGE */}
@@ -612,12 +596,11 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
               </div>
             </div>
           </div>
-          <p className="composite-caption">↑ {t.compositeSection.caption}</p>
         </section>
 
         <hr className="editorial-divider" />
 
-        {/* TECHNICAL INSIGHTS GRID - 3 BOXES */}
+        {/* TECHNICAL INSIGHTS GRID - EXACTLY 3 BOXES */}
         <section className="technical-section">
           <h2 className="reveal-editorial reveal-from-left">{t.bottomSection.title}</h2>
 
