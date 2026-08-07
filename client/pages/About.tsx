@@ -114,7 +114,15 @@ export default function About() {
       />
 
       <style>{`
-        .about-page { padding-top: 80px; }
+        body {
+          background-color: #070707 !important;
+        }
+
+        .about-page { 
+          padding-top: 80px; 
+          background-color: #070707;
+        }
+
         .about-hero {
           min-height: 75vh;
           display: flex;
@@ -124,11 +132,14 @@ export default function About() {
           border-bottom: 1px solid #1a1a1a;
           position: relative;
           width: 100%;
+          background-color: #070707;
         }
+
         .about-hero > div {
           width: 100%;
           max-width: 1200px;
         }
+
         .about-hero h1 {
           font-size: clamp(4rem, 9vw, 9rem);
           font-weight: 900;
@@ -138,6 +149,7 @@ export default function About() {
           margin-bottom: 40px;
           text-align: left;
         }
+
         .about-hero p {
           white-space: pre-line;
           font-size: clamp(1.3rem, 2vw, 2rem);
@@ -147,7 +159,6 @@ export default function About() {
           text-align: left;
         }
         
-        /* Centratura assoluta rispetto alla larghezza dello schermo */
         .hero-arrow {
           position: absolute;
           bottom: 35px;
@@ -159,13 +170,23 @@ export default function About() {
           justify-content: center;
           pointer-events: none;
         }
+
         .hero-arrow svg {
           width: 28px;
           height: 28px;
           stroke: #ffffff;
         }
 
-        .about-fullbleed-wrapper { width: 100%; padding: 100px 0; display: flex; flex-direction: column; gap: 120px; box-sizing: border-box; }
+        .about-fullbleed-wrapper { 
+          width: 100%; 
+          padding: 100px 0; 
+          display: flex; 
+          flex-direction: column; 
+          gap: 120px; 
+          box-sizing: border-box; 
+          background-color: #070707;
+        }
+
         .about-row { display: grid; grid-template-columns: 1fr 1fr; align-items: center; width: 100%; min-height: 70vh; }
         .about-row.media-left .about-media { width: 100%; height: 620px; padding-left: 0; }
         .about-row.media-left .about-text { padding: 0 8vw 0 6vw; }
@@ -182,7 +203,15 @@ export default function About() {
         .reveal-editorial.reveal-from-left { transform: translateX(-35px); }
         .reveal-editorial.reveal-active { opacity: 1; filter: blur(0); transform: translateX(0); }
 
-        .about-cta-section { width: 100%; padding: 100px 6vw; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 40px; }
+        .about-cta-section { 
+          width: 100%; 
+          padding: 120px 6vw; 
+          text-align: center; 
+          border-top: 1px solid #1a1a1a; 
+          margin: 0; 
+          background-color: #070707;
+        }
+
         .about-cta-section h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; color: #ffffff; margin-bottom: 16px; letter-spacing: -0.02em; }
         .about-cta-section p { font-size: 1.1rem; color: #aaaaaa; max-width: 580px; margin: 0 auto 36px; line-height: 1.6; }
         .cta-button { display: inline-block; padding: 16px 40px; background: #ffffff; color: #070707; font-weight: 700; text-decoration: none; transition: all 0.3s ease; border: 1px solid #ffffff; border-radius: 8px; letter-spacing: 0.03em; }
@@ -193,7 +222,7 @@ export default function About() {
           .about-row.media-left .about-text, .about-row.media-right .about-text { padding: 0 6vw; }
           .about-row.media-left .about-media, .about-row.media-right .about-media { height: 420px; }
           .about-hero { padding: 60px 6vw; }
-          .about-cta-section { padding: 70px 6vw; }
+          .about-cta-section { padding: 80px 6vw; }
         }
       `}</style>
 
@@ -204,7 +233,6 @@ export default function About() {
           <p>{t.heroSub}</p>
         </div>
         
-        {/* Freccia Chevron a V centrata nello schermo */}
         <div className="hero-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="6 9 12 15 18 9" />
