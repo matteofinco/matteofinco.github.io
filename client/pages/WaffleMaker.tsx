@@ -798,7 +798,7 @@ export default function WaffleMaker({ heroFit = 'cover' }: WaffleMakerProps) {
            
             <div className="composite-bottom">
               <div className="composite-square">
-                <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fd97aec9313f746dbb3791b98685a20a8" alt="Waffle Maker detail" />
+                <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc625ebf70ff440bf8787b595bbe36210" alt="Waffle Maker detail" />
               </div>
               <div className="composite-square">
                 <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fedbb2046d3db4d549f4da864fca20382" alt="Waffle Maker detail" />
