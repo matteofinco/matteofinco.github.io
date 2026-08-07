@@ -123,27 +123,17 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
 
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal-editorial');
-    
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('reveal-active');
-            revealObserver.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.05 }
+      { threshold: 0.12 }
     );
-
-    revealElements.forEach((el) => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
-        el.classList.add('reveal-active');
-      } else {
-        revealObserver.observe(el);
-      }
-    });
+    revealElements.forEach((el) => revealObserver.observe(el));
 
     return () => {
       revealObserver.disconnect();
@@ -201,6 +191,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           margin: 60px 0;
         }
 
+        /* HERO HEADER */
         .project-hero {
           padding-bottom: 10px;
         }
@@ -222,7 +213,6 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           font-weight: 400;
         }
 
-        /* Reorganized hero info columns for multiple designers */
         .hero-info.pizza-hero-info {
           display: flex;
           flex-direction: column;
@@ -259,6 +249,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           font-weight: 500;
         }
 
+        /* HERO MEDIA FULL BLEED */
         .hero-media-fullbleed {
           width: 100%;
           height: clamp(420px, 65vh, 800px);
@@ -276,6 +267,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           object-position: center;
         }
 
+        /* OVERVIEW SECTION */
         .overview-section {
           max-width: 800px;
         }
@@ -305,6 +297,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           margin-bottom: 18px;
         }
 
+        /* FULL-BLEED GRID ROWS FOR SIDE-BY-SIDE SECTIONS */
         .editorial-row-fullbleed {
           width: 100%;
           display: grid;
@@ -372,6 +365,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           transform: scale(1.03);
         }
 
+        /* 100% COMPOSITE GRID BOX */
         .fullbleed-composite {
           width: 100%;
           background: #070707;
@@ -424,6 +418,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           transform: scale(1.03);
         }
 
+        /* TECHNICAL SECTION */
         .technical-section {
           max-width: 800px;
         }
@@ -443,12 +438,81 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           margin-bottom: 18px;
         }
 
-        .project-navigator {
+        /* REVEAL ANIMATIONS */
+        .reveal-editorial {
+          opacity: 0;
+          filter: blur(6px);
+          transition: opacity 0.8s cubic-bezier(.22,.61,.36,1), 
+                      filter 0.8s cubic-bezier(.22,.61,.36,1), 
+                      transform 0.8s cubic-bezier(.22,.61,.36,1);
+        }
+
+        .reveal-editorial.reveal-from-right {
+          transform: translateX(40px);
+        }
+
+        .reveal-editorial.reveal-from-left {
+          transform: translateX(-40px);
+        }
+
+        .reveal-editorial.reveal-active {
+          opacity: 1;
+          filter: blur(0);
+          transform: translateX(0);
+        }
+
+        /* CTA SECTION */
+        .project-cta {
+          text-align: center;
+          padding-top: 40px;
+        }
+
+        .project-cta h2 {
+          font-size: clamp(2rem, 4vw, 3.2rem);
+          font-weight: 900;
+          color: #ffffff;
+          margin-bottom: 8px;
+          letter-spacing: -1.2px;
+          text-transform: uppercase;
+        }
+
+        .cta-subtitle {
+          color: #666666;
+          font-size: 0.8rem;
+          font-family: monospace;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          margin: 0 auto 24px;
+        }
+
+        .cta-button {
+          display: inline-block;
+          padding: 14px 36px;
+          background: #ffffff;
+          color: #070707;
+          font-weight: 700;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          letter-spacing: 0.8px;
+          font-size: 0.82rem;
+          margin-top: 30px;
+        }
+
+        .cta-button:hover {
+          background: #070707;
+          color: #ffffff;
+          border: 1px solid #ffffff;
+          transform: translateY(-2px);
+        }
+
+        /* DESKTOP NAVIGATOR (DOTS + PREVIEW CARD) */
+        .desktop-navigator {
           display: flex;
           flex-direction: column;
           align-items: center;
           position: relative;
           margin-top: 20px;
+          width: 100%;
         }
 
         .dots-container {
@@ -510,7 +574,6 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           height: 100%;
           object-fit: cover;
           object-position: center;
-          border-radius: 0;
         }
 
         .preview-details {
@@ -539,78 +602,77 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           to { opacity: 1; transform: translateY(0); }
         }
 
-        .reveal-editorial {
-          opacity: 0;
-          filter: blur(6px);
-          transition: opacity 0.8s cubic-bezier(.22,.61,.36,1), 
-                      filter 0.8s cubic-bezier(.22,.61,.36,1), 
-                      transform 0.8s cubic-bezier(.22,.61,.36,1);
+        /* MOBILE IMAGE CAROUSEL */
+        .mobile-carousel-container {
+          display: none;
+          width: 100vw;
+          margin-left: calc(-50vw + 50%);
+          margin-right: calc(-50vw + 50%);
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          padding: 20px 4vw;
+          gap: 16px;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
         }
 
-        .reveal-editorial.reveal-from-right {
-          transform: translateX(40px);
+        .mobile-carousel-container::-webkit-scrollbar {
+          display: none;
         }
 
-        .reveal-editorial.reveal-from-left {
-          transform: translateX(-40px);
-        }
-
-        .reveal-editorial.reveal-active {
-          opacity: 1;
-          filter: blur(0);
-          transform: translateX(0);
-        }
-
-        .project-cta {
-          text-align: center;
-          padding-top: 40px;
-        }
-
-        .project-cta h2 {
-          font-size: clamp(2rem, 4vw, 3.2rem);
-          font-weight: 900;
-          color: #ffffff;
-          margin-bottom: 8px;
-          letter-spacing: -1.2px;
-          text-transform: uppercase;
-        }
-
-        .cta-subtitle {
-          color: #666666;
-          font-size: 0.8rem;
-          font-family: monospace;
-          text-transform: uppercase;
-          letter-spacing: 1.5px;
-          margin: 0 auto 24px;
-        }
-
-        .cta-button {
-          display: inline-block;
-          padding: 14px 36px;
-          background: #ffffff;
-          color: #070707;
-          font-weight: 700;
+        .mobile-project-card {
+          flex: 0 0 78vw;
+          max-width: 300px;
+          scroll-snap-align: center;
+          background: #111111;
+          border: 1px solid #222222;
           text-decoration: none;
-          transition: all 0.3s ease;
-          letter-spacing: 0.8px;
-          font-size: 0.82rem;
-          margin-top: 30px;
+          text-align: left;
+          overflow: hidden;
+          transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        .cta-button:hover {
-          background: #070707;
+        .mobile-project-card.active-card {
+          border-color: #ffffff;
+        }
+
+        .mobile-card-img-box {
+          width: 100%;
+          height: 180px;
+          overflow: hidden;
+          background: #0d0d0d;
+        }
+
+        .mobile-card-img-box img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        .mobile-card-info {
+          padding: 16px;
+        }
+
+        .mobile-card-info h4 {
+          font-size: 1.15rem;
+          font-weight: 800;
           color: #ffffff;
-          border: 1px solid #ffffff;
-          transform: translateY(-2px);
+          margin: 0 0 4px 0;
         }
 
+        .mobile-card-info p {
+          font-size: 0.78rem;
+          color: #888888;
+          font-family: monospace;
+          margin: 0;
+          text-transform: uppercase;
+        }
+
+        /* RESPONSIVE TOGGLES */
         @media (max-width: 860px) {
           .project-page {
             padding-top: 90px;
-          }
-
-          .project-preview-card {
-            display: none !important;
           }
 
           .editorial-row-fullbleed {
@@ -626,7 +688,12 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           .editorial-row-fullbleed.row-img-left .row-media,
           .editorial-row-fullbleed.row-img-right .row-media {
             width: 100%;
-            height: 280px;
+            height: 380px;
+          }
+
+          .editorial-row-fullbleed.row-img-left .row-text,
+          .editorial-row-fullbleed.row-img-right .row-text {
+            padding: 0 4vw;
           }
 
           .hero-media-fullbleed {
@@ -636,24 +703,33 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
 
           .composite-bottom {
             grid-template-columns: 1fr;
-            gap: 12px;
           }
 
           .composite-top {
-            height: 280px;
+            height: 320px;
           }
 
           .composite-square {
-            height: 280px;
+            height: 250px;
           }
 
           .editorial-divider {
             margin: 40px 0;
           }
+
+          /* SWAP DESKTOP DOTS WITH MOBILE IMAGE CAROUSEL */
+          .desktop-navigator {
+            display: none !important;
+          }
+
+          .mobile-carousel-container {
+            display: flex !important;
+          }
         }
       `}</style>
 
       <div className="project-container">
+        {/* HEADER & METADATA */}
         <div className="editorial-content">
           <section className="project-hero reveal-editorial reveal-from-left">
             <h1>{t.title}</h1>
@@ -680,21 +756,26 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           </section>
         </div>
 
+        {/* HERO PRODUCT IMAGE (FULL BLEED) */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
           <img src={IMAGES.hero} alt="PizzaMente hero" />
         </section>
 
         <div className="editorial-content">
           <hr className="editorial-divider" />
+
+          {/* OVERVIEW / CHALLENGE */}
           <section className="overview-section reveal-editorial reveal-from-left">
             <h2>{t.overview.title}</h2>
             <span className="section-label">{t.overview.subtitle}</span>
             <p>{t.overview.p1}</p>
             <p>{t.overview.p2}</p>
           </section>
+
           <hr className="editorial-divider" />
         </div>
 
+        {/* ROW 1: SOLUTION (IMAGE LEFT FULL BLEED) */}
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img src={IMAGES.solution} alt="PizzaMente solution" />
@@ -707,8 +788,11 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           </div>
         </section>
 
-        <div className="editorial-content"><hr className="editorial-divider" /></div>
+        <div className="editorial-content">
+          <hr className="editorial-divider" />
+        </div>
 
+        {/* ROW 2: RESEARCH (IMAGE RIGHT FULL BLEED) */}
         <section className="editorial-row-fullbleed row-img-right">
           <div className="row-text reveal-editorial reveal-from-left">
             <h2>{t.research.title}</h2>
@@ -720,8 +804,11 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           </div>
         </section>
 
-        <div className="editorial-content"><hr className="editorial-divider" /></div>
+        <div className="editorial-content">
+          <hr className="editorial-divider" />
+        </div>
 
+        {/* ROW 3: DESIGN (IMAGE LEFT FULL BLEED) */}
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img src={IMAGES.design} alt="PizzaMente design" />
@@ -734,8 +821,11 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           </div>
         </section>
 
-        <div className="editorial-content"><hr className="editorial-divider" /></div>
+        <div className="editorial-content">
+          <hr className="editorial-divider" />
+        </div>
 
+        {/* COMPOSITE GRID BOX (FULL BLEED) */}
         <section className="fullbleed-composite reveal-editorial reveal-from-left">
           <div className="media-composite-box">
             <div className="composite-top">
@@ -754,6 +844,8 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
 
         <div className="editorial-content">
           <hr className="editorial-divider" />
+
+          {/* TECHNICAL INSIGHTS / SKILLS */}
           <section className="technical-section reveal-editorial reveal-from-left">
             <h2>{t.technical.title}</h2>
             <p>{t.technical.p1}</p>
@@ -762,11 +854,13 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
 
           <hr className="editorial-divider" />
 
+          {/* NEXT PROJECT / CTA CAROUSEL SECTION */}
           <section className="project-cta reveal-editorial reveal-from-left">
             <h2>{t.cta.title}</h2>
             <p className="cta-subtitle">{t.cta.subtitle}</p>
 
-            <div className="project-navigator">
+            {/* 1. DESKTOP NAVIGATOR: DOTS WITH HOVER PREVIEW */}
+            <div className="desktop-navigator">
               {hoveredProject && (
                 <div className="project-preview-card">
                   <div className="preview-img-box">
@@ -791,6 +885,25 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
                   />
                 ))}
               </div>
+            </div>
+
+            {/* 2. MOBILE CAROUSEL: TOUCH IMAGE CARDS */}
+            <div className="mobile-carousel-container">
+              {PROJECTS_LIST.map((proj) => (
+                <a
+                  key={proj.id}
+                  href={proj.path}
+                  className={`mobile-project-card ${proj.id === 'pizzamente' ? 'active-card' : ''}`}
+                >
+                  <div className="mobile-card-img-box">
+                    <img src={proj.imageUrl} alt={proj.title} />
+                  </div>
+                  <div className="mobile-card-info">
+                    <h4>{proj.title}</h4>
+                    <p>{proj.subtitle}</p>
+                  </div>
+                </a>
+              ))}
             </div>
 
             <a href="/" className="cta-button">{t.cta.button}</a>
