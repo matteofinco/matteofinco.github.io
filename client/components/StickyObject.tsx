@@ -25,7 +25,7 @@ const PROCESS_STEPS = {
       title: 'Il buon design è\nsemplicità consapevole.',
       desc: 'Ogni componente deve avere uno scopo chiaro. Affino geometrie, materiali e processi produttivi finché la complessità scompare e rimane solo ciò che migliora davvero l’esperienza d’uso.',
       tag: 'IMMAGINE 03 // AFFINAMENTO E DETTAGLIO',
-      image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2faa4e82bbab4ae0855f90d86d10ef06',
+      image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F4894abf6b091470cbbc3233eb674a6b9',
     },
   ],
   en: [
