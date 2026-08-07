@@ -5,6 +5,17 @@ interface ArchiviaProps {
   heroFit?: 'contain' | 'cover';
 }
 
+// Struttura dati per la navigazione rapida tra i progetti
+const PROJECTS_LIST = [
+  { id: 'archivia', title: 'ARCHIVIA', category: 'Product Design', year: '2025', image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e', link: '/archivia' },
+  { id: 'snake', title: 'SNAKE', category: 'Sports Equipment', year: '2026', image: 'https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=600&q=80', link: '/snake' },
+  { id: 'myceil', title: 'MYCEIL', category: 'Acoustic Panel', year: '2026', image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80', link: '/myceil' },
+  { id: 'plastix', title: 'PLASTIX GADGET', category: 'Sustainable Design', year: '2025', image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80', link: '/plastix' },
+  { id: 'project5', title: 'PROJECT FIVE', category: 'Industrial Design', year: '2025', image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80', link: '/project-5' },
+  { id: 'project6', title: 'PROJECT SIX', category: 'Concept Design', year: '2025', image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80', link: '/project-6' },
+  { id: 'project7', title: 'PROJECT SEVEN', category: 'Research', year: '2024', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80', link: '/project-7' }
+];
+
 const content = {
   en: {
     title: "ARCHIVIA",
@@ -45,8 +56,8 @@ const content = {
       p2: "The project provided experience in understanding polymer behavior, injection molding requirements, and the relationship between geometry, assembly, and manufacturing processes."
     },
     cta: {
-      title: "What's next?",
-      subtitle: "Explore more projects and design methodologies in the portfolio.",
+      title: "Explore Projects",
+      subtitle: "Hover over the indicators to preview and navigate directly to other works.",
       button: "BACK TO PORTFOLIO"
     }
   },
@@ -89,8 +100,8 @@ const content = {
       p2: "Il progetto ha permesso di approfondire il comportamento dei materiali polimerici, i requisiti dello stampaggio a iniezione e la relazione tra geometria, assemblaggio e processo produttivo."
     },
     cta: {
-      title: "What's next?",
-      subtitle: "Esplora altri progetti e metodologie di design nel portfolio.",
+      title: "Esplora i Progetti",
+      subtitle: "Passa il mouse sui pallini per vedere l'anteprima e navigare direttamente tra i lavori.",
       button: "TORNA AL PORTFOLIO"
     }
   }
@@ -98,6 +109,7 @@ const content = {
 
 export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
   const [language, setLanguage] = useState<'it' | 'en'>('en');
+  const [hoveredProject, setHoveredProject] = useState<typeof PROJECTS_LIST[0] | null>(null);
   const t = content[language];
 
   useEffect(() => {
@@ -204,10 +216,14 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           font-weight: 500;
         }
 
-        /* FULLBLEED HERO PRODUCT IMAGE */
+        /* HERO FULL BLEED */
         .hero-media-fullbleed {
           width: 100vw;
-          margin-left: calc(50% - 50vw);
+          position: relative;
+          left: 50%;
+          right: 50%;
+          margin-left: -50vw;
+          margin-right: -50vw;
           height: clamp(380px, 60vh, 650px);
           background: #0d0d0d;
           overflow: hidden;
@@ -301,7 +317,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transform: scale(1.02);
         }
 
-        /* BLEED ADATTATO AL BORDO SCHERMO */
         @media (min-width: 861px) {
           .row-media.bleed-left {
             margin-left: calc(-1 * (100vw - 100%) / 2);
@@ -314,28 +329,35 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           }
         }
 
-        /* COMPOSITE 3-IMAGE GRID BOX (FULL BLEED) */
-        .media-composite-box {
+        /* COMPOSITE GRID FULL BLEED DEFINTIVO */
+        .fullbleed-composite {
           width: 100vw;
-          margin-left: calc(50% - 50vw);
+          position: relative;
+          left: 50%;
+          right: 50%;
+          margin-left: -50vw;
+          margin-right: -50vw;
           background: #0d0d0d;
           border-top: 1px solid #1a1a1a;
           border-bottom: 1px solid #1a1a1a;
-          padding: 16px 5vw;
+          padding: 24px 0;
+        }
+
+        .media-composite-box {
+          max-width: 100%;
+          margin: 0 auto;
           display: flex;
           flex-direction: column;
           gap: 16px;
+          padding: 0 16px;
         }
 
         .composite-top {
           width: 100%;
           aspect-ratio: 16 / 9;
-          max-height: 620px;
+          max-height: 650px;
           overflow: hidden;
           background: #000000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
         }
 
         .composite-bottom {
@@ -347,7 +369,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         .composite-square {
           width: 100%;
           aspect-ratio: 1 / 1;
-          max-height: 420px;
+          max-height: 480px;
           overflow: hidden;
           background: #111111;
         }
@@ -383,6 +405,103 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           font-size: 1.05rem;
           line-height: 1.8;
           margin-bottom: 18px;
+        }
+
+        /* PROJECT NAVIGATOR (DOTS + PREVIEW) */
+        .project-navigator {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position: relative;
+          margin-top: 30px;
+        }
+
+        .dots-container {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 12px 24px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 40px;
+          backdrop-filter: blur(8px);
+        }
+
+        .dot-item {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #333333;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          padding: 0;
+          position: relative;
+        }
+
+        .dot-item:hover, .dot-item.active {
+          background: #ffffff;
+          transform: scale(1.3);
+          box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+        }
+
+        .dot-item.active {
+          border: 2px solid #070707;
+        }
+
+        /* PREVIEW CARD HOVER */
+        .project-preview-card {
+          position: absolute;
+          bottom: 60px;
+          width: 280px;
+          background: #111111;
+          border: 1px solid #262626;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+          pointer-events: none;
+          animation: fadeIn 0.25s ease-out forwards;
+          z-index: 100;
+        }
+
+        .preview-img-box {
+          width: 100%;
+          height: 160px;
+          overflow: hidden;
+          background: #000;
+        }
+
+        .preview-img-box img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        .preview-details {
+          padding: 12px 16px;
+          text-align: left;
+        }
+
+        .preview-details h4 {
+          font-size: 1.1rem;
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0 0 4px 0;
+          letter-spacing: -0.5px;
+        }
+
+        .preview-details p {
+          font-size: 0.75rem;
+          color: #888888;
+          font-family: monospace;
+          margin: 0;
+          text-transform: uppercase;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
         /* REVEAL ANIMATIONS */
@@ -432,6 +551,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transition: all 0.3s ease;
           letter-spacing: 0.8px;
           font-size: 0.82rem;
+          margin-top: 25px;
         }
 
         .cta-button:hover {
@@ -442,18 +562,10 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         }
 
         /* RESPONSIVE */
-        @media (max-width: 860px) {
+        @max-width: 860px {
           .editorial-row {
             grid-template-columns: 1fr;
             gap: 30px;
-          }
-
-          .row-media.bleed-left,
-          .row-media.bleed-right {
-            width: 100vw;
-            margin-left: calc(50% - 50vw);
-            margin-right: 0;
-            padding: 0;
           }
 
           .composite-bottom {
@@ -571,8 +683,8 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* COMPOSITE 3-IMAGE GRID BOX (FULL BLEED) */}
-        <section className="reveal-editorial reveal-from-left">
+        {/* COMPOSITE 3-IMAGE GRID BOX (FULL BLEED REALE) */}
+        <section className="fullbleed-composite reveal-editorial reveal-from-left">
           <div className="media-composite-box">
             <div className="composite-top">
               <img
@@ -611,12 +723,41 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* NEXT PROJECT / CTA */}
+        {/* NEXT PROJECT / CTA + PROJECT NAVIGATOR */}
         <section className="project-cta reveal-editorial reveal-from-left">
           <h2>{t.cta.title}</h2>
-          <p style={{ color: '#aaaaaa', fontSize: '1rem', maxWidth: '500px', margin: '0 auto 30px', lineHeight: '1.6' }}>
+          <p style={{ color: '#aaaaaa', fontSize: '1rem', maxWidth: '500px', margin: '0 auto 20px', lineHeight: '1.6' }}>
             {t.cta.subtitle}
           </p>
+
+          {/* PROJECT NAVIGATOR DOTS WITH HOVER PREVIEW */}
+          <div className="project-navigator">
+            {hoveredProject && (
+              <div className="project-preview-card">
+                <div className="preview-img-box">
+                  <img src={hoveredProject.image} alt={hoveredProject.title} />
+                </div>
+                <div className="preview-details">
+                  <h4>{hoveredProject.title}</h4>
+                  <p>{hoveredProject.category} — {hoveredProject.year}</p>
+                </div>
+              </div>
+            )}
+
+            <div className="dots-container">
+              {PROJECTS_LIST.map((proj) => (
+                <button
+                  key={proj.id}
+                  className={`dot-item ${proj.id === 'archivia' ? 'active' : ''}`}
+                  onMouseEnter={() => setHoveredProject(proj)}
+                  onMouseLeave={() => setHoveredProject(null)}
+                  onClick={() => window.location.href = proj.link}
+                  aria-label={`Vai al progetto ${proj.title}`}
+                />
+              ))}
+            </div>
+          </div>
+
           <a href="/" className="cta-button">{t.cta.button}</a>
         </section>
       </div>
