@@ -370,21 +370,18 @@ export default function Index() {
           background-color: #040404;
         }
 
-        .whats-next-footer {
-          min-height: 100vh;
-          height: 100vh;
+        .whats-next-section {
+          padding: 120px 6vw 100px;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          padding: 60px 6vw 40px;
           text-align: center;
           position: relative;
-          scroll-snap-align: start;
           box-sizing: border-box;
         }
 
-        .whats-next-footer h2 {
+        .whats-next-section h2 {
           font-size: clamp(3.2rem, 7.5vw, 6.5rem);
           font-weight: 900;
           color: #ffffff;
@@ -399,7 +396,7 @@ export default function Index() {
           color: #ffffff;
         }
 
-        .whats-next-footer p.sub-lead {
+        .whats-next-section p.sub-lead {
           font-size: 1.25rem;
           color: #888888;
           max-width: 620px;
@@ -412,7 +409,6 @@ export default function Index() {
           justify-content: center;
           gap: 20px;
           flex-wrap: wrap;
-          margin-bottom: 80px;
         }
 
         .btn-footer-link {
@@ -446,40 +442,13 @@ export default function Index() {
           transform: translateY(-2px);
         }
 
-        .footer-bottom-info {
-          position: absolute;
-          bottom: 40px;
-          left: 6vw;
-          right: 6vw;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          border-top: 1px solid #141414;
-          padding-top: 25px;
-          font-family: monospace;
-          font-size: 0.82rem;
-          color: #666666;
-        }
-        .footer-contacts-list { display: flex; gap: 30px; }
-        .footer-contacts-list a { color: #888888; text-decoration: none; transition: color 0.3s; }
-        .footer-contacts-list a:hover { color: #ffffff; }
-
         @media (max-width: 1024px) {
           .section-divider-gap { height: 80px; }
-          .footer-bottom-info {
-            position: relative;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            flex-direction: column;
-            gap: 15px;
-            text-align: center;
-            margin-top: 40px;
-          }
+          .whats-next-section { padding: 80px 6vw 60px; }
         }
       `}</style>
 
-      {/* HEADER CORRETTO */}
+      {/* HEADER */}
       <Header 
         currentLang={lang} 
         onLanguageChange={handleLanguageChange} 
@@ -504,8 +473,9 @@ export default function Index() {
         <CircleShowcase steps={projectList} activeStep={activeStep} lang={lang} />
       </div>
 
+      {/* SEZIONE CALL-TO-ACTION (WHAT'S NEXT) */}
       <div className="whats-next-wrapper">
-        <footer className="whats-next-footer">
+        <section className="whats-next-section">
           <h2>
             WHAT&apos;S NEXT
             <span className="question-mark-styled">?</span>
@@ -523,16 +493,7 @@ export default function Index() {
               {t.cvBtn}
             </a>
           </div>
-
-          <div className="footer-bottom-info">
-            <div>2026 MATTEO FINCO // PRODUCT DESIGN &amp; MAKER</div>
-            <div className="footer-contacts-list">
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="/about">{t.infoText}</a>
-              <a href="/cv">CV</a>
-            </div>
-          </div>
-        </footer>
+        </section>
       </div>
     </div>
   );
