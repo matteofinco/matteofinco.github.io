@@ -34,33 +34,33 @@ export interface ProjectStep {
 
 interface CircleShowcaseProps {
   steps: ProjectStep[];
-  activeStep: number;
-  lang: 'it' | 'en';
+  activeStep?: number;
+  lang?: 'it' | 'en';
 }
 
 const labels = {
   it: {
     approach: 'Approccio progettuale',
     materials: 'Materiali & Tecnologie',
-    explore: 'ESPLORA PROGETTO'
+    explore: 'ESPLORA PROGETTO',
   },
   en: {
     approach: 'Design Approach',
     materials: 'Materials & Technologies',
-    explore: 'EXPLORE PROJECT'
-  }
+    explore: 'EXPLORE PROJECT',
+  },
 };
 
-export const CircleShowcase: React.FC<CircleShowcaseProps> = ({ 
-  steps, 
+export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
+  steps,
   activeStep: parentActiveStep,
-  lang
+  lang = 'it',
 }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [internalActiveStep, setInternalActiveStep] = useState(0);
   const [prevStep, setPrevStep] = useState<number | null>(null);
 
-  // Sincronizza lo step corrente tra lo scroll interno e la callback del genitore
+  const currentLang = labels[lang] ? lang : 'it';
   const activeStep = parentActiveStep !== undefined ? parentActiveStep : internalActiveStep;
 
   useEffect(() => {
@@ -75,11 +75,9 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
 
       if (totalScrollableHeight <= 0) return;
 
-      // Calcola quanto siamo entrati nella sezione (da 0 a 1)
       const currentScroll = -rect.top;
       const progress = Math.max(0, Math.min(1, currentScroll / totalScrollableHeight));
 
-      // Calcola l'indice dello step in base alla percentuale di scroll
       const stepIndex = Math.min(
         steps.length - 1,
         Math.floor(progress * steps.length)
@@ -100,11 +98,145 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
   const previousProject = prevStep !== null && prevStep !== activeStep ? steps[prevStep] : null;
 
   return (
-    <section 
-      className="circle-showcase-section" 
+    <section
+      className="circle-showcase-section"
       ref={sectionRef}
-      style={{ height: `${steps.length * 100}vh` }} // Genera l'altezza necessaria per lo scroll a step
     >
+      {/* VISTA DESKTOP (SCROLL STICKY CON HUD CIRCOLARE) */}
+      <div 
+        className="showcase-desktop-wrapper" 
+        style={{ height: `${steps.length * 100}vh` }}
+      >
+        <div className="showcase-pinned-viewport">
+          <div className="showcase-layout-grid">
+            {/* COLONNA SINISTRA: HUD FISSO */}
+            <div className="hud-wrapper">
+              <div className="hud-container">
+                <div className="hud-ring-base hud-outer-ring"></div>
+                <div className="hud-ring-base hud-dashed-ring"></div>
+                <div className="hud-ring-base hud-inner-dashed"></div>
+                <div className="hud-tech-arc-1"></div>
+                <div className="hud-tech-arc-2"></div>
+
+                <div className="hud-curved-dots-wrapper">
+                  {steps.map((_, dotIdx) => (
+                    <div
+                      key={dotIdx}
+                      className={`curved-dot ${
+                        dotIdx === activeStep
+                          ? 'active'
+                          : dotIdx === activeStep - 1 || dotIdx === activeStep + 1
+                          ? 'highlight'
+                          : ''
+                      }`}
+                    ></div>
+                  ))}
+                </div>
+
+                <div className="hud-pointer-group">
+                  <div className="hud-pointer-line"></div>
+                  <div className="hud-pointer-node"></div>
+                </div>
+
+                <div className="hud-center-circle">
+                  <div className="inner-grid-pattern"></div>
+
+                  {previousProject && (
+                    <img
+                      key={`prev-${previousProject.id}`}
+                      src={previousProject.img}
+                      alt=""
+                      className="hud-project-img hud-img-exit"
+                    />
+                  )}
+
+                  <img
+                    key={`curr-${currentProject.id}`}
+                    src={currentProject.img}
+                    alt={currentProject.title[currentLang]}
+                    className="hud-project-img hud-img-enter"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* COLONNA DESTRA: SCHEDE DI TESTO IN DISSOLVENZA */}
+            <div className="process-text-stage">
+              {steps.map((st, index) => {
+                const isActive = index === activeStep;
+                return (
+                  <div
+                    key={st.id}
+                    className={`process-card-item ${isActive ? 'active' : ''}`}
+                  >
+                    <div className="project-category-tag">
+                      {st.id} // {st.category[currentLang]} // {st.year}
+                    </div>
+
+                    <h2 className="project-main-title">{st.title[currentLang]}</h2>
+
+                    <div className="project-subtitle-text">{st.subtitle[currentLang]}</div>
+
+                    <p className="project-desc-text">{st.desc[currentLang]}</p>
+
+                    <div className="project-meta-grid">
+                      <div className="meta-item">
+                        <span className="label">{labels[currentLang].approach}</span>
+                        <span className="value">{st.tools[currentLang]}</span>
+                      </div>
+
+                      <div className="meta-item">
+                        <span className="label">{labels[currentLang].materials}</span>
+                        <span className="value">{st.material[currentLang]}</span>
+                      </div>
+                    </div>
+
+                    <a href={st.link} className="project-action-link">
+                      {labels[currentLang].explore} →
+                    </a>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* VISTA MOBILE (SEQUENZIALE LINEARE) */}
+      <div className="showcase-mobile-list">
+        {steps.map((st) => (
+          <div key={st.id} className="mobile-showcase-card">
+            <div className="mobile-img-wrapper">
+              <img src={st.img} alt={st.title[currentLang]} className="mobile-card-img" />
+              <div className="mobile-category-tag">
+                {st.id} // {st.category[currentLang]} // {st.year}
+              </div>
+            </div>
+
+            <div className="mobile-card-body">
+              <h2 className="mobile-main-title">{st.title[currentLang]}</h2>
+              <div className="mobile-subtitle-text">{st.subtitle[currentLang]}</div>
+              <p className="mobile-desc-text">{st.desc[currentLang]}</p>
+
+              <div className="mobile-meta-grid">
+                <div className="meta-item">
+                  <span className="label">{labels[currentLang].approach}</span>
+                  <span className="value">{st.tools[currentLang]}</span>
+                </div>
+                <div className="meta-item">
+                  <span className="label">{labels[currentLang].materials}</span>
+                  <span className="value">{st.material[currentLang]}</span>
+                </div>
+              </div>
+
+              <a href={st.link} className="mobile-action-link">
+                {labels[currentLang].explore} →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
       <style>{`
         .circle-showcase-section {
           position: relative;
@@ -113,7 +245,17 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           box-sizing: border-box;
         }
 
-        /* L'INTERO CONTAINER RIMANE STICKY AL CENTRO SCHERMO */
+        /* --- STILI DESKTOP --- */
+        .showcase-desktop-wrapper {
+          display: block;
+          position: relative;
+          width: 100%;
+        }
+
+        .showcase-mobile-list {
+          display: none;
+        }
+
         .showcase-pinned-viewport {
           position: sticky;
           top: 0;
@@ -137,7 +279,6 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           gap: 60px;
         }
 
-        /* COLONNA SINISTRA: HUD CENTRATO */
         .hud-wrapper {
           display: flex;
           align-items: center;
@@ -153,7 +294,6 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           justify-content: center;
         }
 
-        /* CERCHIO CENTRALE E DISSOLVENZA IMMAGINE (CROSS-FADE) */
         .hud-center-circle {
           position: relative;
           width: 440px;
@@ -219,7 +359,6 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           }
         }
 
-        /* GEOMETRIE HUD ESTERNE */
         .hud-ring-base {
           position: absolute;
           border-radius: 50%;
@@ -346,7 +485,6 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           100% { transform: rotate(0deg); }
         }
 
-        /* COLONNA DESTRA: STRUTTURA A SOVRAPPOSIZIONE FISSA */
         .process-text-stage {
           position: relative;
           width: 100%;
@@ -452,115 +590,109 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           transform: translateY(-2px);
         }
 
+        /* --- STILI RESPONSIVE MOBILE (< 1024px) --- */
         @media (max-width: 1024px) {
-          .showcase-layout-grid {
-            grid-template-columns: 1fr;
+          .showcase-desktop-wrapper {
+            display: none !important;
           }
-          .process-text-stage {
-            height: auto;
-            min-height: 400px;
+
+          .showcase-mobile-list {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            padding: 40px 6vw;
+          }
+
+          .mobile-showcase-card {
+            display: flex;
+            flex-direction: column;
+            background: #0b0b0b;
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            overflow: hidden;
+          }
+
+          .mobile-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 240px;
+            background: #141414;
+          }
+
+          .mobile-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          .mobile-category-tag {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            font-family: monospace;
+            font-size: 0.65rem;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.75);
+            padding: 6px 12px;
+            letter-spacing: 1px;
+            backdrop-filter: blur(4px);
+            text-transform: uppercase;
+          }
+
+          .mobile-card-body {
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+          }
+
+          .mobile-main-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0;
+            line-height: 1.15;
+          }
+
+          .mobile-subtitle-text {
+            font-size: 1rem;
+            color: #cccccc;
+            font-weight: 500;
+          }
+
+          .mobile-desc-text {
+            font-size: 0.9rem;
+            color: #888888;
+            line-height: 1.6;
+            margin: 0;
+          }
+
+          .mobile-meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            padding: 16px 0;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+            margin-top: 4px;
+          }
+
+          .mobile-action-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            background: #ffffff;
+            color: #070707;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            margin-top: 8px;
+            width: 100%;
+            box-sizing: border-box;
           }
         }
       `}</style>
-
-      {/* VIEWPORT FISSO AL CENTRO DELLO SCHERMO */}
-      <div className="showcase-pinned-viewport">
-        <div className="showcase-layout-grid">
-          
-          {/* COLONNA SINISTRA: HUD FISSO */}
-          <div className="hud-wrapper">
-            <div className="hud-container">
-              <div className="hud-ring-base hud-outer-ring"></div>
-              <div className="hud-ring-base hud-dashed-ring"></div>
-              <div className="hud-ring-base hud-inner-dashed"></div>
-              <div className="hud-tech-arc-1"></div>
-              <div className="hud-tech-arc-2"></div>
-
-              <div className="hud-curved-dots-wrapper">
-                {steps.map((_, dotIdx) => (
-                  <div
-                    key={dotIdx}
-                    className={`curved-dot ${
-                      dotIdx === activeStep
-                        ? 'active'
-                        : dotIdx === activeStep - 1 || dotIdx === activeStep + 1
-                        ? 'highlight'
-                        : ''
-                    }`}
-                  ></div>
-                ))}
-              </div>
-
-              <div className="hud-pointer-group">
-                <div className="hud-pointer-line"></div>
-                <div className="hud-pointer-node"></div>
-              </div>
-
-              <div className="hud-center-circle">
-                <div className="inner-grid-pattern"></div>
-
-                {/* Immagine precedente in dissolvenza di uscita */}
-                {previousProject && (
-                  <img
-                    key={`prev-${previousProject.id}`}
-                    src={previousProject.img}
-                    alt=""
-                    className="hud-project-img hud-img-exit"
-                  />
-                )}
-
-                {/* Immagine corrente in dissolvenza di ingresso */}
-                <img
-                  key={`curr-${currentProject.id}`}
-                  src={currentProject.img}
-                  alt={currentProject.title[lang]}
-                  className="hud-project-img hud-img-enter"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* COLONNA DESTRA: SCHEDA DI TESTO FISSA SULLO STESSO PUNTO */}
-          <div className="process-text-stage">
-            {steps.map((st, index) => {
-              const isActive = index === activeStep;
-              return (
-                <div
-                  key={st.id}
-                  className={`process-card-item ${isActive ? 'active' : ''}`}
-                >
-                  <div className="project-category-tag">
-                    {st.id} // {st.category[lang]} // {st.year}
-                  </div>
-
-                  <h2 className="project-main-title">{st.title[lang]}</h2>
-
-                  <div className="project-subtitle-text">{st.subtitle[lang]}</div>
-
-                  <p className="project-desc-text">{st.desc[lang]}</p>
-
-                  <div className="project-meta-grid">
-                    <div className="meta-item">
-                      <span className="label">{labels[lang].approach}</span>
-                      <span className="value">{st.tools[lang]}</span>
-                    </div>
-
-                    <div className="meta-item">
-                      <span className="label">{labels[lang].materials}</span>
-                      <span className="value">{st.material[lang]}</span>
-                    </div>
-                  </div>
-
-                  <a href={st.link} className="project-action-link">
-                    {labels[lang].explore} →
-                  </a>
-                </div>
-              );
-            })}
-          </div>
-
-        </div>
-      </div>
     </section>
   );
 };
