@@ -259,7 +259,7 @@ export default function About() {
 
         <section className="about-row media-left">
           <div className="about-media reveal-editorial reveal-from-left">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80" alt="Teamwork" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F56ebc115e06b4b6792acd21e0f8ddc79" alt="Teamwork" />
           </div>
           <div className="about-text reveal-editorial reveal-from-right">
             <h2>{t.beyondTitle}</h2>
@@ -275,7 +275,7 @@ export default function About() {
             <p>{t.collaborationText2}</p>
           </div>
           <div className="about-media reveal-editorial reveal-from-right">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80" alt="Collaboration" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fccebb9ded9f64abab522b395bbbad713" alt="Collaboration" />
           </div>
         </section>
       </div>
