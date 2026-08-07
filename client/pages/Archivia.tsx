@@ -57,8 +57,6 @@ const content = {
     cta: {
       title: "What's next?",
       subtitle: "Explore Projects",
-      prevLabel: "Previous",
-      nextLabel: "Next",
       button: "BACK TO PORTFOLIO"
     }
   },
@@ -103,8 +101,6 @@ const content = {
     cta: {
       title: "What's next?",
       subtitle: "Esplora i progetti",
-      prevLabel: "Precedente",
-      nextLabel: "Successivo",
       button: "TORNA AL PORTFOLIO"
     }
   }
@@ -113,10 +109,6 @@ const content = {
 export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
   const [language, setLanguage] = useState<'it' | 'en'>('en');
   const t = content[language];
-
-  const currentIndex = PROJECTS_LIST.findIndex((p) => p.id === 'archivia');
-  const prevProject = PROJECTS_LIST[(currentIndex - 1 + PROJECTS_LIST.length) % PROJECTS_LIST.length];
-  const nextProject = PROJECTS_LIST[(currentIndex + 1) % PROJECTS_LIST.length];
 
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal-editorial');
@@ -464,7 +456,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         }
 
         /* ===================================================
-           1) NAVIGATION DESKTOP: NAVIGATORE A PALLINI (DOTS)
+           1) DESKTOP: NAVIGATORE A PALLINI (DOTS)
            =================================================== */
         .desktop-dots-nav-wrapper {
           display: flex;
@@ -498,7 +490,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           border-radius: 20px;
         }
 
-        /* Tooltip hover su desktop */
         .desktop-dot-item .dot-tooltip {
           position: absolute;
           bottom: 150%;
@@ -528,68 +519,17 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transform: translateX(-50%) translateY(0);
         }
 
-
         /* ===================================================
-           2) NAVIGATION MOBILE: CAROSELLO & TASTI VELOCI
+           2) MOBILE: CAROSELLO SWIPEABLE A 7 PROGETTI
            =================================================== */
         .mobile-nav-wrapper {
-          display: none; /* Nascosto su desktop di default */
-        }
-
-        .quick-project-nav {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 12px;
-          width: 100%;
-          margin-bottom: 24px;
-        }
-
-        .nav-btn-link {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          background: #111111;
-          border: 1px solid #222222;
-          padding: 10px 14px;
-          color: #ffffff;
-          text-decoration: none;
-          flex: 1;
-          text-align: left;
-        }
-
-        .nav-btn-link.next {
-          text-align: right;
-          flex-direction: row-reverse;
-        }
-
-        .nav-arrow-icon {
-          font-size: 1.1rem;
-          color: #888888;
-        }
-
-        .nav-btn-text span {
-          display: block;
-          font-size: 0.65rem;
-          font-family: monospace;
-          text-transform: uppercase;
-          color: #666666;
-        }
-
-        .nav-btn-text strong {
-          display: block;
-          font-size: 0.85rem;
-          font-weight: 700;
-          color: #ffffff;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          display: none;
         }
 
         .projects-carousel-container {
           width: 100%;
           position: relative;
-          margin-bottom: 30px;
+          margin-bottom: 35px;
         }
 
         .projects-scroll-strip {
@@ -603,6 +543,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           width: calc(100% + 8vw);
           scrollbar-width: none;
           -ms-overflow-style: none;
+          -webkit-overflow-scrolling: touch;
         }
 
         .projects-scroll-strip::-webkit-scrollbar {
@@ -610,7 +551,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         }
 
         .carousel-card-item {
-          flex: 0 0 170px;
+          flex: 0 0 200px;
           scroll-snap-align: center;
           background: #0d0d0d;
           border: 1px solid #1f1f1f;
@@ -619,6 +560,11 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           flex-direction: column;
           overflow: hidden;
           text-align: left;
+          transition: border-color 0.2s ease;
+        }
+
+        .carousel-card-item:active {
+          border-color: #888888;
         }
 
         .carousel-card-item.active {
@@ -627,7 +573,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         .card-img-wrapper {
           width: 100%;
-          height: 105px;
+          height: 120px;
           overflow: hidden;
           background: #000000;
           position: relative;
@@ -653,18 +599,18 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         }
 
         .card-content-wrapper {
-          padding: 10px 12px;
+          padding: 12px 14px;
         }
 
         .card-content-wrapper h4 {
-          font-size: 0.88rem;
+          font-size: 0.9rem;
           font-weight: 800;
           color: #ffffff;
-          margin: 0 0 3px 0;
+          margin: 0 0 4px 0;
         }
 
         .card-content-wrapper p {
-          font-size: 0.68rem;
+          font-size: 0.7rem;
           color: #777777;
           font-family: monospace;
           margin: 0;
@@ -696,15 +642,13 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         }
 
         /* ===================================================
-           SWITCH RESPONSIVE (DESKTOP VS MOBILE)
+           BREAKPOINT RESPONSIVE
            =================================================== */
         @media (max-width: 860px) {
-          /* Nascondi pallini su mobile */
           .desktop-dots-nav-wrapper {
             display: none;
           }
 
-          /* Mostra carosello e pulsanti swipe su mobile */
           .mobile-nav-wrapper {
             display: block;
           }
@@ -946,26 +890,8 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
               })}
             </div>
 
-            {/* --- VERSIONE MOBILE: TASTI PREV/NEXT + CAROSELLO SWIPEABLE --- */}
+            {/* --- VERSIONE MOBILE: SOLTANTO CAROSELLO SWIPEABLE A 7 PROGETTI --- */}
             <div className="mobile-nav-wrapper">
-              <div className="quick-project-nav">
-                <a href={prevProject.path} className="nav-btn-link prev">
-                  <span className="nav-arrow-icon">←</span>
-                  <div className="nav-btn-text">
-                    <span>{t.cta.prevLabel}</span>
-                    <strong>{prevProject.title}</strong>
-                  </div>
-                </a>
-
-                <a href={nextProject.path} className="nav-btn-link next">
-                  <span className="nav-arrow-icon">→</span>
-                  <div className="nav-btn-text">
-                    <span>{t.cta.nextLabel}</span>
-                    <strong>{nextProject.title}</strong>
-                  </div>
-                </a>
-              </div>
-
               <div className="projects-carousel-container">
                 <div className="projects-scroll-strip">
                   {PROJECTS_LIST.map((proj) => {
