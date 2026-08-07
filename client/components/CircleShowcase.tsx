@@ -43,11 +43,13 @@ const labels = {
     approach: 'Approccio progettuale',
     materials: 'Materiali & Tecnologie',
     explore: 'ESPLORA PROGETTO',
+    stepPrefix: 'Fase',
   },
   en: {
     approach: 'Design Approach',
     materials: 'Materials & Technologies',
     explore: 'EXPLORE PROJECT',
+    stepPrefix: 'Phase',
   },
 };
 
@@ -98,47 +100,37 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
   const previousProject = prevStep !== null && prevStep !== activeStep ? steps[prevStep] : null;
 
   return (
-    <section
-      className="circle-showcase-section"
-      ref={sectionRef}
-    >
-      {/* VISTA DESKTOP (SCROLL STICKY CON HUD CIRCOLARE) */}
-      <div 
-        className="showcase-desktop-wrapper" 
+    <section className="circle-showcase-section" ref={sectionRef}>
+      {/* VISTA DESKTOP (SCROLL STICKY CON CAD VIEWPORT SQUADRATO) */}
+      <div
+        className="showcase-desktop-wrapper"
         style={{ height: `${steps.length * 100}vh` }}
       >
         <div className="showcase-pinned-viewport">
           <div className="showcase-layout-grid">
-            {/* COLONNA SINISTRA: HUD FISSO */}
-            <div className="hud-wrapper">
-              <div className="hud-container">
-                <div className="hud-ring-base hud-outer-ring"></div>
-                <div className="hud-ring-base hud-dashed-ring"></div>
-                <div className="hud-ring-base hud-inner-dashed"></div>
-                <div className="hud-tech-arc-1"></div>
-                <div className="hud-tech-arc-2"></div>
 
-                <div className="hud-curved-dots-wrapper">
-                  {steps.map((_, dotIdx) => (
-                    <div
-                      key={dotIdx}
-                      className={`curved-dot ${
-                        dotIdx === activeStep
-                          ? 'active'
-                          : dotIdx === activeStep - 1 || dotIdx === activeStep + 1
-                          ? 'highlight'
-                          : ''
-                      }`}
-                    ></div>
-                  ))}
+            {/* COLONNA SINISTRA: CAD VIEWPORT SQUADRATO */}
+            <div className="tech-viewport-wrapper">
+              <div className="tech-viewport-container">
+
+                {/* Elementi vettoriali esterni e quote */}
+                <div className="vector-axis-h"></div>
+                <div className="vector-axis-v"></div>
+
+                <div className="vector-corner corner-tl">+</div>
+                <div className="vector-corner corner-tr">+</div>
+                <div className="vector-corner corner-bl">+</div>
+                <div className="vector-corner corner-br">+</div>
+
+                <div className="vector-coord-label top-left">
+                  // SYS.GRID.0{activeStep + 1}
+                </div>
+                <div className="vector-coord-label bottom-right">
+                  [ {String(activeStep + 1).padStart(2, '0')} / {String(steps.length).padStart(2, '0')} ]
                 </div>
 
-                <div className="hud-pointer-group">
-                  <div className="hud-pointer-line"></div>
-                  <div className="hud-pointer-node"></div>
-                </div>
-
-                <div className="hud-center-circle">
+                {/* Bordo della cornice e maschera immagine */}
+                <div className="tech-image-mask">
                   <div className="inner-grid-pattern"></div>
 
                   {previousProject && (
@@ -146,7 +138,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
                       key={`prev-${previousProject.id}`}
                       src={previousProject.img}
                       alt=""
-                      className="hud-project-img hud-img-exit"
+                      className="tech-project-img tech-img-exit-right"
                     />
                   )}
 
@@ -154,13 +146,30 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
                     key={`curr-${currentProject.id}`}
                     src={currentProject.img}
                     alt={currentProject.title[currentLang]}
-                    className="hud-project-img hud-img-enter"
+                    className="tech-project-img tech-img-enter-left"
                   />
+
+                  {/* Reticolo vettoriale sopra l'immagine */}
+                  <div className="vector-overlay-crosshair"></div>
                 </div>
+
+                {/* Timeline vettoriale laterale */}
+                <div className="vector-step-indicator">
+                  {steps.map((_, idx) => (
+                    <div
+                      key={idx}
+                      className={`vector-step-tick ${idx === activeStep ? 'active' : ''}`}
+                    >
+                      <span className="tick-line"></span>
+                      <span className="tick-num">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  ))}
+                </div>
+
               </div>
             </div>
 
-            {/* COLONNA DESTRA: SCHEDE DI TESTO IN DISSOLVENZA */}
+            {/* COLONNA DESTRA: SCHEDE DI TESTO CON ACCENTI VETTORIALI */}
             <div className="process-text-stage">
               {steps.map((st, index) => {
                 const isActive = index === activeStep;
@@ -170,7 +179,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
                     className={`process-card-item ${isActive ? 'active' : ''}`}
                   >
                     <div className="project-category-tag">
-                      {st.id} // {st.category[currentLang]} // {st.year}
+                      <span className="vector-slash">//</span> {st.id} <span className="vector-bullet">•</span> {st.category[currentLang]} <span className="vector-bullet">•</span> {st.year}
                     </div>
 
                     <h2 className="project-main-title">{st.title[currentLang]}</h2>
@@ -181,36 +190,45 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
 
                     <div className="project-meta-grid">
                       <div className="meta-item">
-                        <span className="label">{labels[currentLang].approach}</span>
+                        <span className="label">
+                          <span className="vector-mini-dash">--</span> {labels[currentLang].approach}
+                        </span>
                         <span className="value">{st.tools[currentLang]}</span>
                       </div>
 
                       <div className="meta-item">
-                        <span className="label">{labels[currentLang].materials}</span>
+                        <span className="label">
+                          <span className="vector-mini-dash">--</span> {labels[currentLang].materials}
+                        </span>
                         <span className="value">{st.material[currentLang]}</span>
                       </div>
                     </div>
 
                     <a href={st.link} className="project-action-link">
-                      {labels[currentLang].explore} →
+                      <span>{labels[currentLang].explore}</span>
+                      <span className="vector-arrow">→</span>
                     </a>
                   </div>
                 );
               })}
             </div>
+
           </div>
         </div>
       </div>
 
-      {/* VISTA MOBILE (CAROSELLO ORIZZONTALE) */}
+      {/* VISTA MOBILE (CAROSELLO ORIZZONTALE SQUADRATO) */}
       <div className="showcase-mobile-carousel">
         <div className="carousel-track">
-          {steps.map((st) => (
+          {steps.map((st, idx) => (
             <div key={st.id} className="mobile-showcase-card">
               <div className="mobile-img-wrapper">
                 <img src={st.img} alt={st.title[currentLang]} className="mobile-card-img" />
                 <div className="mobile-category-tag">
-                  {st.id} // {st.category[currentLang]} // {st.year}
+                  // {st.id} • {st.year}
+                </div>
+                <div className="mobile-step-num">
+                  [{String(idx + 1).padStart(2, '0')}]
                 </div>
               </div>
 
@@ -221,11 +239,11 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
 
                 <div className="mobile-meta-grid">
                   <div className="meta-item">
-                    <span className="label">{labels[currentLang].approach}</span>
+                    <span className="label">-- {labels[currentLang].approach}</span>
                     <span className="value">{st.tools[currentLang]}</span>
                   </div>
                   <div className="meta-item">
-                    <span className="label">{labels[currentLang].materials}</span>
+                    <span className="label">-- {labels[currentLang].materials}</span>
                     <span className="value">{st.material[currentLang]}</span>
                   </div>
                 </div>
@@ -245,6 +263,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           width: 100%;
           background-color: #070707;
           box-sizing: border-box;
+          color: #ffffff;
         }
 
         /* --- STILI DESKTOP --- */
@@ -281,212 +300,189 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           gap: 60px;
         }
 
-        .hud-wrapper {
+        /* --- VIEWPORT VETTORIALE SQUADRATO (CAD STYLE) --- */
+        .tech-viewport-wrapper {
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
-        .hud-container {
+        .tech-viewport-container {
           position: relative;
-          width: 540px;
-          height: 540px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          width: 100%;
+          max-width: 520px;
+          aspect-ratio: 1 / 1;
+          padding: 24px;
+          box-sizing: border-box;
+          background: rgba(15, 15, 15, 0.4);
+          border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .hud-center-circle {
+        /* Assi cartesiani estesi */
+        .vector-axis-h {
+          position: absolute;
+          top: 50%;
+          left: -30px;
+          right: -30px;
+          height: 1px;
+          background: rgba(255, 255, 255, 0.08);
+          pointer-events: none;
+        }
+
+        .vector-axis-v {
+          position: absolute;
+          left: 50%;
+          top: -30px;
+          bottom: -30px;
+          width: 1px;
+          background: rgba(255, 255, 255, 0.08);
+          pointer-events: none;
+        }
+
+        /* Crocini d'angolo */
+        .vector-corner {
+          position: absolute;
+          font-family: monospace;
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.4);
+          line-height: 1;
+          user-select: none;
+        }
+        .corner-tl { top: 6px; left: 8px; }
+        .corner-tr { top: 6px; right: 8px; }
+        .corner-bl { bottom: 6px; left: 8px; }
+        .corner-br { bottom: 6px; right: 8px; }
+
+        .vector-coord-label {
+          position: absolute;
+          font-family: monospace;
+          font-size: 0.7rem;
+          color: rgba(255, 255, 255, 0.35);
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+        }
+        .vector-coord-label.top-left {
+          top: -20px;
+          left: 0;
+        }
+        .vector-coord-label.bottom-right {
+          bottom: -20px;
+          right: 0;
+        }
+
+        /* Maschera Immagine e Animazioni da Sinistra */
+        .tech-image-mask {
           position: relative;
-          width: 440px;
-          height: 440px;
-          background: #111111;
-          border-radius: 50%;
+          width: 100%;
+          height: 100%;
           overflow: hidden;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 2;
-          box-shadow: 0 0 80px rgba(0, 0, 0, 0.9);
+          background: #111111;
+          border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .inner-grid-pattern {
           position: absolute;
           inset: 0;
-          background-image: radial-gradient(circle, #444444 1px, transparent 1px);
-          background-size: 16px 16px;
-          opacity: 0.3;
+          background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+          background-size: 20px 20px;
           z-index: 1;
+          pointer-events: none;
         }
 
-        .hud-project-img {
+        .tech-project-img {
           position: absolute;
           inset: 0;
-          z-index: 2;
           width: 100%;
           height: 100%;
           object-fit: cover;
-          will-change: opacity, transform;
+          will-change: transform, opacity;
         }
 
-        .hud-img-enter {
-          animation: hudImgFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        /* Ingresso da sinistra */
+        .tech-img-enter-left {
+          animation: slideInFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           z-index: 3;
         }
 
-        .hud-img-exit {
-          animation: hudImgFadeOut 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        /* Uscita verso destra */
+        .tech-img-exit-right {
+          animation: slideOutToRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           z-index: 2;
         }
 
-        @keyframes hudImgFadeIn {
+        @keyframes slideInFromLeft {
           from {
-            opacity: 0;
-            transform: scale(1.04);
+            transform: translateX(-100%);
+            opacity: 0.3;
           }
           to {
+            transform: translateX(0);
             opacity: 1;
-            transform: scale(1);
           }
         }
 
-        @keyframes hudImgFadeOut {
+        @keyframes slideOutToRight {
           from {
+            transform: translateX(0);
             opacity: 1;
-            transform: scale(1);
           }
           to {
+            transform: translateX(100%);
             opacity: 0;
-            transform: scale(0.96);
           }
         }
 
-        .hud-ring-base {
+        .vector-overlay-crosshair {
           position: absolute;
-          border-radius: 50%;
+          inset: 0;
+          border: 1px solid rgba(255, 255, 255, 0.05);
           pointer-events: none;
+          z-index: 4;
         }
 
-        .hud-outer-ring {
-          width: 520px;
-          height: 520px;
-          border: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .hud-dashed-ring {
-          width: 480px;
-          height: 480px;
-          border: 1px dashed rgba(255, 255, 255, 0.2);
-          animation: hud-spin 80s linear infinite;
-        }
-
-        .hud-inner-dashed {
-          width: 460px;
-          height: 460px;
-          border: 1px dashed rgba(255, 255, 255, 0.15);
-          animation: hud-spin-reverse 60s linear infinite;
-        }
-
-        .hud-tech-arc-1 {
+        /* Timeline laterale vettoriale */
+        .vector-step-indicator {
           position: absolute;
-          width: 540px;
-          height: 540px;
-          border-radius: 50%;
-          border: 2px solid transparent;
-          border-top-color: rgba(255, 255, 255, 0.6);
-          border-right-color: rgba(255, 255, 255, 0.1);
-          transform: rotate(-30deg);
-          pointer-events: none;
-        }
-
-        .hud-tech-arc-2 {
-          position: absolute;
-          width: 460px;
-          height: 460px;
-          border-radius: 50%;
-          border: 2px solid transparent;
-          border-bottom-color: rgba(255, 255, 255, 0.4);
-          border-left-color: rgba(255, 255, 255, 0.1);
-          transform: rotate(45deg);
-          pointer-events: none;
-        }
-
-        .hud-curved-dots-wrapper {
-          position: absolute;
-          width: 480px;
-          height: 480px;
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 5;
-          transform: rotate(-35deg);
-        }
-
-        .curved-dot {
-          position: absolute;
-          width: 4px;
-          height: 4px;
-          background: rgba(255, 255, 255, 0.25);
-          border-radius: 50%;
+          right: -45px;
           top: 0;
-          left: 50%;
-          transform-origin: 50% 240px;
-          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          bottom: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 10px 0;
         }
 
-        .curved-dot:nth-child(1) { transform: rotate(0deg); }
-        .curved-dot:nth-child(2) { transform: rotate(5deg); }
-        .curved-dot:nth-child(3) { transform: rotate(10deg); }
-        .curved-dot:nth-child(4) { transform: rotate(15deg); }
-        .curved-dot:nth-child(5) { transform: rotate(20deg); }
-        .curved-dot:nth-child(6) { transform: rotate(25deg); }
-        .curved-dot:nth-child(7) { transform: rotate(30deg); }
-
-        .curved-dot.active {
-          width: 6px;
-          height: 6px;
-          background: #ffffff;
-          box-shadow: 0 0 10px #ffffff;
-        }
-
-        .curved-dot.highlight {
-          background: #ffffff;
-          opacity: 0.8;
-        }
-
-        .hud-pointer-group {
-          position: absolute;
-          right: -25px;
-          top: 50%;
+        .vector-step-tick {
           display: flex;
           align-items: center;
-          pointer-events: none;
-          z-index: 5;
+          gap: 8px;
+          opacity: 0.25;
+          transition: all 0.4s ease;
         }
 
-        .hud-pointer-line {
-          width: 60px;
+        .vector-step-tick.active {
+          opacity: 1;
+        }
+
+        .tick-line {
+          width: 12px;
           height: 1px;
-          background: rgba(255, 255, 255, 0.4);
-        }
-
-        .hud-pointer-node {
-          width: 6px;
-          height: 6px;
           background: #ffffff;
-          border-radius: 50%;
-          box-shadow: 0 0 10px #ffffff;
         }
 
-        @keyframes hud-spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+        .vector-step-tick.active .tick-line {
+          width: 22px;
+          background: #ffffff;
+          box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
         }
 
-        @keyframes hud-spin-reverse {
-          0% { transform: rotate(360deg); }
-          100% { transform: rotate(0deg); }
+        .tick-num {
+          font-family: monospace;
+          font-size: 0.65rem;
+          color: #ffffff;
         }
 
+        /* --- COLONNA TESTO DESKTOP --- */
         .process-text-stage {
           position: relative;
           width: 100%;
@@ -505,7 +501,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           opacity: 0;
           transform: translateY(20px);
           pointer-events: none;
-          transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
           will-change: opacity, transform;
         }
 
@@ -517,15 +513,28 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
 
         .project-category-tag {
           font-family: monospace;
-          font-size: 0.85rem;
+          font-size: 0.8rem;
           color: #888888;
-          letter-spacing: 2px;
+          letter-spacing: 1.5px;
           text-transform: uppercase;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .vector-slash {
+          color: #ffffff;
+          font-weight: 700;
+        }
+
+        .vector-bullet {
+          font-size: 0.6rem;
+          color: #444444;
         }
 
         .project-main-title {
-          font-size: clamp(2rem, 3vw, 3rem);
-          font-weight: 900;
+          font-size: clamp(2.2rem, 3.2vw, 3.2rem);
+          font-weight: 800;
           color: #ffffff;
           line-height: 1.05;
           letter-spacing: -1px;
@@ -534,14 +543,14 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
 
         .project-subtitle-text {
           font-size: 1.15rem;
-          color: #cccccc;
+          color: #dddddd;
           font-weight: 500;
         }
 
         .project-desc-text {
           font-size: clamp(0.85rem, 1vw, 0.95rem);
           color: #999999;
-          line-height: 1.6;
+          line-height: 1.65;
           max-width: 480px;
           margin: 0;
         }
@@ -551,48 +560,65 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           grid-template-columns: 1fr 1fr;
           gap: 20px;
           margin-top: 10px;
-          border-top: 1px solid #1a1a1a;
-          border-bottom: 1px solid #1a1a1a;
-          padding: 16px 0;
+          border-top: 1px solid rgba(255, 255, 255, 0.12);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+          padding: 18px 0;
           max-width: 520px;
         }
 
         .meta-item span.label {
-          display: block;
-          font-size: 0.75rem;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.72rem;
           color: #666666;
           font-family: monospace;
-          margin-bottom: 4px;
+          margin-bottom: 6px;
           text-transform: uppercase;
+        }
+
+        .vector-mini-dash {
+          color: #444444;
         }
 
         .meta-item span.value {
           font-size: 0.95rem;
-          color: #dddddd;
+          color: #eeeeee;
           font-weight: 600;
         }
 
         .project-action-link {
           display: inline-flex;
           align-items: center;
-          gap: 10px;
+          gap: 12px;
           margin-top: 6px;
           padding: 14px 28px;
           background: #ffffff;
           color: #070707;
           font-weight: 700;
-          font-size: 0.9rem;
+          font-size: 0.85rem;
+          letter-spacing: 1px;
           text-decoration: none;
           width: fit-content;
-          transition: background 0.3s ease, transform 0.3s ease;
+          border: 1px solid #ffffff;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .project-action-link:hover {
-          background: #dcdcdc;
+          background: #070707;
+          color: #ffffff;
           transform: translateY(-2px);
         }
 
-        /* --- STILI RESPONSIVE MOBILE (< 1024px): CAROSELLO ORIZZONTALE --- */
+        .vector-arrow {
+          transition: transform 0.3s ease;
+        }
+
+        .project-action-link:hover .vector-arrow {
+          transform: translateX(4px);
+        }
+
+        /* --- VISTA MOBILE CAROSELLO (< 1024px) --- */
         @media (max-width: 1024px) {
           .showcase-desktop-wrapper {
             display: none !important;
@@ -612,11 +638,11 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             padding: 0 6vw;
-            scrollbar-width: none; /* Nasconde la scrollbar su Firefox */
+            scrollbar-width: none;
           }
 
           .carousel-track::-webkit-scrollbar {
-            display: none; /* Nasconde la scrollbar su Chrome/Safari */
+            display: none;
           }
 
           .mobile-showcase-card {
@@ -624,9 +650,8 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
             max-width: 380px;
             display: flex;
             flex-direction: column;
-            background: #0b0b0b;
-            border: 1px solid #1a1a1a;
-            border-radius: 4px;
+            background: #0d0d0d;
+            border: 1px solid rgba(255, 255, 255, 0.12);
             overflow: hidden;
             scroll-snap-align: center;
           }
@@ -651,11 +676,23 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
             font-family: monospace;
             font-size: 0.65rem;
             color: #ffffff;
-            background: rgba(0, 0, 0, 0.75);
-            padding: 6px 12px;
+            background: rgba(7, 7, 7, 0.85);
+            padding: 6px 10px;
             letter-spacing: 1px;
             backdrop-filter: blur(4px);
-            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+          }
+
+          .mobile-step-num {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: #ffffff;
+            background: rgba(7, 7, 7, 0.85);
+            padding: 4px 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
           }
 
           .mobile-card-body {
@@ -674,13 +711,13 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           }
 
           .mobile-subtitle-text {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #cccccc;
             font-weight: 500;
           }
 
           .mobile-desc-text {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #888888;
             line-height: 1.6;
             margin: 0;
@@ -691,8 +728,8 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
             grid-template-columns: 1fr 1fr;
             gap: 16px;
             padding: 16px 0;
-            border-top: 1px solid #1a1a1a;
-            border-bottom: 1px solid #1a1a1a;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             margin-top: 4px;
           }
 
