@@ -32,22 +32,15 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        working-directory: ./client
         run: npm install
 
       - name: Build project
-        working-directory: ./client
-        run: npx vite build --outDir dist
-
-      - name: Verify build output
-        run: |
-          echo "Contenuto della cartella client/dist:"
-          ls -la client/dist
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './client/dist'
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
