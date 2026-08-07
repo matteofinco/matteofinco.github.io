@@ -63,7 +63,7 @@ const projectList: ProjectStep[] = [
     tools: { it: 'Concorso PLEIADES', en: 'PLEIADES Competition' },
     material: { it: 'Injection Moulding & Desk Storage', en: 'Injection Moulding & Desk Storage' },
     desc: {
-      it: 'Portapenne sviluppato per il concorso PLEIADES con Ewikon, Arburg e Uniform. Il progetto reinterpreta la memoria USB trasformandone il principio di funzionamento in un oggetto da scrivania semplice da assemblare e produrre.',
+      it: 'Portapenne sviluppato per il concorso PLEIADES con Ewikon, Arburg e Uniform. Il progetto è ispirato a una memoria USB trasformandone il principio di funzionamento in un oggetto da scrivania semplice da assemblare e produrre.',
       en: 'Desk organiser developed for the PLEIADES competition with Ewikon, Arburg and Uniform. The project reinterprets the USB flash drive, translating its working principle into a simple and efficient desk object.'
     },
     link: '/archivia',
@@ -105,8 +105,8 @@ const projectList: ProjectStep[] = [
     slug: 'pizzamente',
     title: { it: 'PizzaMente', en: 'PizzaMente' },
     subtitle: {
-      it: 'Esperienza automatizzata multisensoriale della pizza',
-      en: 'Automated multisensory pizza experience'
+      it: 'Sviluppo distributore automatico di pizza',
+      en: 'Development of an automatic pizza vending machine'
     },
     year: '2026',
     discipline: {
@@ -136,8 +136,8 @@ const projectList: ProjectStep[] = [
     slug: 'wafflemaker',
     title: { it: 'Waffle Maker', en: 'Waffle Maker' },
     subtitle: {
-      it: 'Analisi e decomposizione di un prodotto',
-      en: 'Product analysis and decomposition study'
+      it: 'Analisi di un prodotto',
+      en: 'Product analysis'
     },
     year: '2025',
     discipline: {
@@ -167,8 +167,8 @@ const projectList: ProjectStep[] = [
     slug: 'ttable',
     title: { it: 'T-Table', en: 'T-Table' },
     subtitle: {
-      it: 'Tavolo interattivo per la consapevolezza digitale',
-      en: 'Interactive table for digital awareness'
+      it: 'Tavolo interattivo per la consapevolezza alimentare',
+      en: 'Interactive table focused on food awareness'
     },
     year: '2026',
     discipline: {
@@ -187,8 +187,8 @@ const projectList: ProjectStep[] = [
     tools: { it: 'Progetto Accademico (IUAV)', en: 'Academic Project (IUAV)' },
     material: { it: 'Human Behaviour & Calm Tech', en: 'Human Behaviour & Calm Tech' },
     desc: {
-      it: 'Concept di tavolo interattivo progettato per ridurre la distrazione digitale durante il pasto. Il sistema riconosce automaticamente l’arrivo del cibo e modifica il comportamento dell’interfaccia per riportare l’attenzione sulle persone e sulla conversazione.',
-      en: 'Interactive table concept designed to reduce digital distraction during meals. The system detects when food is served and adapts its interface to encourage conversation and focus on the dining experience.'
+      it: 'Concept di tavolo interattivo progettato per ridurre la distrazione digitale durante il pasto nel fast food. Il sistema riconosce automaticamente l’arrivo del cibo e modifica il comportamento dell’interfaccia per riportare l’attenzione sulle persone e sulla conversazione.',
+      en: 'Interactive table concept designed to reduce digital distraction during meals at the fast-food restaurant. The system detects when food is served and adapts its interface to encourage conversation and focus on the dining experience.'
     },
     link: '/ttable',
     img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F8c7e5ac2dbcc429b8c3808887abfb51a'
@@ -218,8 +218,8 @@ const projectList: ProjectStep[] = [
     tools: { it: 'Ánako Design Challenge', en: 'Ánako Design Challenge' },
     material: { it: 'Open-Source Emergency Aid', en: 'Open-Source Emergency Aid' },
     desc: {
-      it: 'Sistema open-source sviluppato durante la Ánako Design Challenge con Prusa Research. Attraverso connettori stampati in 3D permette di realizzare stampelle utilizzando materiali facilmente reperibili sul territorio.',
-      en: 'Open-source mobility aid developed during the Ánako Design Challenge with Prusa Research. 3D-printed connectors make it possible to build crutches using locally available materials.'
+      it: 'Sistema open-source sviluppato durante la Ánako Design Challenge con Prusa Research. Attraverso componenti stampati in 3D permette di realizzare stampelle utilizzando materiali facilmente reperibili sul territorio.',
+      en: 'Open-source mobility aid developed during the Ánako Design Challenge with Prusa Research. 3D-printed components make it possible to build crutches using locally available materials.'
     },
     link: '/prop',
     img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5ea37818589140f49395200bfbdbbb41'
