@@ -33,10 +33,11 @@ export default function App() {
       return <Prop />;
     }
     return <Index />;
-  };
+  }
 if (path.includes("/nando")) {
       return <Nando />;
-    }
+  };
+    
     return <Index />;
   };
 
