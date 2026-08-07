@@ -7,22 +7,22 @@ interface StickyObjectProps {
 const PROCESS_STEPS = {
   it: [
     {
-      step: '01 / OSSERVA',
-      title: 'Capire prima\ndi progettare.',
+      step: '01 / OSSERVARE',
+      title: 'Capire prima\ndi progettare',
       desc: 'Ogni progetto nasce dall’osservazione. Mi interessa capire perché un oggetto funziona in un certo modo, quali vincoli ne hanno guidato lo sviluppo e come le persone lo utilizzano nella realtà. Solo dopo inizio a cercare una soluzione.',
-      tag: 'Ricerca sul campo',
+      tag: 'Brainstorming',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fccebb9ded9f64abab522b395bbbad713',
     },
     {
-      step: '02 / COSTRUISCI',
-      title: 'Costruire per\nverificare.',
+      step: '02 / COSTRUIRE',
+      title: 'Costruire per\nverificare',
       desc: 'Passo continuamente dal modello digitale al prototipo fisico. Ogni test mette in discussione le decisioni prese, evidenzia nuovi problemi e suggerisce miglioramenti che sullo schermo non sarebbero evidenti.',
       tag: 'Prototipo funzionale',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F0427482a7b374ef1b727ec74983b63d8',
     },
     {
-      step: '03 / AFFINA',
-      title: 'Ridurre il\nsuperfluo.',
+      step: '03 / AFFINARE',
+      title: 'Ridurre il\nsuperfluo',
       desc: 'Cerco soluzioni semplici, non perché siano facili da progettare, ma perché richiedono più attenzione. Ogni dettaglio deve avere una funzione precisa e contribuire a rendere il prodotto più chiaro da costruire e da utilizzare.',
       tag: 'Dettaglio costruttivo',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F4894abf6b091470cbbc3233eb674a6b9',
@@ -33,7 +33,7 @@ const PROCESS_STEPS = {
       step: '01 / OBSERVE',
       title: 'Understand before\ndesigning.',
       desc: 'Every project stems from observation. I aim to understand why an object works in a certain way, what constraints guided its development, and how people actually use it. Only then do I start searching for a solution.',
-      tag: 'Field research',
+      tag: 'Brainstorming',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fccebb9ded9f64abab522b395bbbad713',
     },
     {
