@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from '../components/Header';
 
-interface SnakeProps {
+interface ArchiviaProps {
   heroFit?: 'contain' | 'cover';
 }
 
@@ -15,101 +15,100 @@ const PROJECTS_LIST = [
   { id: "ttable", title: "T-Table", subtitle: "Interactive feeding-friendly table", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc", path: "/ttable" }
 ];
 
-const SNAKE_IMAGE_URL = "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e";
-
 const content = {
   en: {
-    title: "SNAKE",
-    subtitle: "Hockey stickhandling trainer",
+    title: "ARCHIVIA",
+    subtitle: "Flash drive inspired pen holder",
     meta: {
       teamLabel: "Designers",
       yearLabel: "Year",
-      yearVal: "2026",
-      awardLabel: "Award / Context",
-      awardVal: "Lagazuoi WIMA Award & Sports Equipment"
+      yearVal: "2025",
+      awardLabel: "Competition",
+      awardVal: "PLEIADES Competition"
     },
     overview: {
       title: "Overview",
       subtitle: "Challenge",
-      p1: "In modern ice and roller hockey, stickhandling precision, coordination, and reaction speed are critical performance differentiators. Traditional training aids are often rigid, bulky, or limited to fixed geometries, failing to replicate the dynamic, unpredictable nature of game situations.",
-      p2: "The design challenge was to create a modular, adaptable training tool that challenges athletes of all levels, combining durability with intuitive reconfiguration to enhance stickhandling agility."
+      p1: "Archivia was developed for PLEIADES (Plastic European Innovation Award for Design and Sustainability), a design competition organized by the Università Iuav di Venezia, Vicenza campus, in collaboration with Ewikon, Arburg, and Uniform.",
+      p2: "The project focused on designing a small everyday object made from recycled polyamide, balancing conceptual research, product identity, and the technical requirements of industrial injection molding."
     },
     solution: {
       title: "Solution",
-      p1: "Snake is an innovative, modular hockey stickhandling trainer engineered to adapt to diverse training routines and spatial configurations.",
-      p2: "Featuring interconnecting modular segments, the system allows athletes and coaches to rapidly alter the layout, creating custom zigzag, linear, or complex obstacle courses.",
-      p3: "Designed for high-impact athletic environments, Snake balances structural rigidity with lightweight portability, ensuring seamless setup both on and off the ice."
+      p1: "Archivia is a desk organizer that explores the relationship between digital storage and physical writing tools.",
+      p2: "Inspired by the shape and interaction of a rotating USB flash drive, the project translates the idea of digital memory into a tangible object for everyday use.",
+      p3: "The product is composed of three monomaterial components designed to assemble through integrated mechanical connections, eliminating the need for screws or adhesives."
     },
     research: {
       title: "Research",
-      p1: "The development began with ergonomic studies of hockey players' puck-handling reach, sweeping motions, and typical clearance heights during rapid drills. Analyzing athletic feedback highlighted the necessity for variable angles and impact-resistant materials.",
-      p2: "Prototyping focused on mechanical interlocking joints that provide tactile and acoustic feedback upon assembly while maintaining absolute stability during high-speed stick impacts."
+      p1: "The research phase started from the analysis of everyday environments such as home, office, and shared workspaces, with the aim of identifying a product category suitable for the technical constraints of the competition.",
+      p2: "After exploring different typologies, the desk environment emerged as the most effective context, leading to a deeper investigation of recycled polyamide behavior, structural optimization, and mechanical assembly systems."
     },
     design: {
       title: "Design",
-      p1: "Snake’s aesthetic and structural language is defined by clean, aerodynamic lines and high-contrast color accents optimized for visibility under various lighting conditions.",
-      p2: "The modular joints utilize a robust snap-fit mechanism engineered specifically for rapid assembly and disassembly without tools, ensuring maximum field adaptability.",
-      p3: "Every component is optimized for additive manufacturing and durable polymer production, balancing weight reduction with extreme resistance to repetitive mechanical stress and harsh weather conditions."
+      p1: "Archivia's structure takes inspiration from the opening mechanism of traditional rotating USB drives.",
+      p2: "The main body is divided into two symmetrical shells that interlock together, while the external cover rotates through a 90° movement.",
+      p3: "The final configuration combines a recognizable visual language with an efficient assembly system based on integrated mechanical joints."
     },
     technical: {
-      title: "Skills & Technical Insights",
-      p1: "Snake bridges the gap between digital prototyping and athletic performance equipment, demonstrating how parametric modularity can elevate sports training tools.",
-      p2: "Presented at the prestigious Lagazuoi WIMA awards, the project underscores the integration of advanced manufacturing techniques and user-centered sports equipment engineering."
+      title: "Technical Insights",
+      p1: "Developing Archivia highlighted the importance of balancing creative exploration with industrial constraints.",
+      p2: "The project provided experience in understanding polymer behavior, injection molding requirements, and the relationship between geometry, assembly, and manufacturing processes."
     },
     cta: {
       title: "What's next?",
-      subtitle: "Projects",
+      subtitle: "Explore Projects",
       button: "BACK TO PORTFOLIO"
     }
   },
   it: {
-    title: "SNAKE",
-    subtitle: "Allenatore per il controllo del bastone da hockey",
+    title: "ARCHIVIA",
+    subtitle: "Portapenne ispirato alle chiavette USB",
     meta: {
       teamLabel: "Designer",
       yearLabel: "Anno",
-      yearVal: "2026",
-      awardLabel: "Premio / Contesto",
-      awardVal: "Premio Lagazuoi WIMA & Attrezzatura Sportiva"
+      yearVal: "2025",
+      awardLabel: "Concorso",
+      awardVal: "Concorso PLEIADES"
     },
     overview: {
       title: "Overview",
       subtitle: "Sfida progettuale",
-      p1: "Nell'hockey moderno su ghiaccio e in linea, la precisione nel controllo del puck, la coordinazione e la velocità di reazione sono fattori determinanti per la performance. I tradizionali attrezzi di allenamento risultano spesso rigidi, ingombranti o limitati a geometrie fisse, incapaci di replicare la natura dinamica e imprevedibile delle situazioni di gioco.",
-      p2: "La sfida progettuale è consistita nel creare uno strumento di allenamento modulare e adattabile, capace di stimolare atleti di ogni livello coniugando durabilità e riconfigurabilità intuitiva."
+      p1: "Archivia nasce all'interno di PLEIADES (Plastic European Innovation Award for Design and Sustainability), un concorso di design promosso dall'Università Iuav di Venezia, sede di Vicenza, in collaborazione con Ewikon, Arburg e Uniform.",
+      p2: "Il progetto affronta lo sviluppo di un piccolo oggetto d'uso quotidiano realizzato in poliammide riciclata, cercando un equilibrio tra ricerca concettuale, identità del prodotto e vincoli tecnici dello stampaggio industriale a iniezione."
     },
     solution: {
       title: "Solution",
-      p1: "Snake è un innovativo allenatore modulare per l'hockey, progettato per adattarsi a diverse routine di allenamento e configurazioni spaziali.",
-      p2: "Caratterizzato da segmenti modulari interconnessi, il sistema permette ad atleti e allenatori di modificarne rapidamente il layout, creando percorsi a ostacoli personalizzati, lineari o a zigzag.",
-      p3: "Progettato per ambienti agonistici ad alto impatto, Snake bilancia rigidità strutturale e leggerezza, garantendo un'installazione agevole sia su ghiaccio che a secco."
+      p1: "Archivia esplora la relazione tra memoria digitale e strumenti analogici di scrittura.",
+      p2: "Ispirandosi alla forma e al gesto di apertura delle chiavette USB rotanti, il progetto traduce il concetto di archiviazione digitale in un oggetto fisico destinato all'ambiente della scrivania.",
+      p3: "Il prodotto è composto da tre componenti monomateriale progettati per assemblarsi attraverso connessioni meccaniche integrate, senza l'utilizzo di viti o collanti."
     },
     research: {
       title: "Research",
-      p1: "Lo sviluppo è iniziato con studi ergonomici sull'ampiezza d'azione dei giocatori di hockey, sui movimenti di spazzata e sulle altezze di passaggio durante gli esercizi rapidi. L'analisi del feedback degli atleti ha evidenziato la necessità di angoli variabili e materiali resistenti agli urti.",
-      p2: "La prototipazione si è concentrata su giunti a incastro meccanico che offrono un feedback tattile e acustico durante l'assemblaggio, mantenendo una stabilità assoluta durante gli impatti ad alta velocità."
+      p1: "La fase iniziale della ricerca si è concentrata sull'analisi degli ambienti quotidiani, come casa, ufficio e spazi condivisi, con l'obiettivo di individuare una tipologia di prodotto coerente con i vincoli tecnici del concorso.",
+      p2: "Dopo l'esplorazione di diverse categorie di oggetti, l'ambiente della scrivania è risultato il contesto più adatto, portando allo studio del comportamento della poliammide riciclata, dell'ottimizzazione strutturale e dei sistemi di assemblaggio meccanico."
     },
     design: {
       title: "Design",
-      p1: "Il linguaggio estetico e strutturale di Snake è definito da linee pulite e aerodinamiche, con accenti cromatici ad alto contrasto ottimizzati per la visibilità in diverse condizioni di luce.",
-      p2: "I giunti modulari utilizzano un robusto meccanismo a scatto ingegnerizzato appositamente per un montaggio e smontaggio rapido senza attrezzi, garantendo la massima adattabilità sul campo.",
-      p3: "Ogni componente è ottimizzato per la produzione additiva e polimeri durevoli, bilanciando la riduzione del peso con un'estrema resistenza agli stress meccanici ripetuti e alle condizioni atmosferiche avverse."
+      p1: "La struttura di Archivia riprende il principio di apertura delle tradizionali chiavette USB rotanti.",
+      p2: "Il corpo principale è suddiviso in due gusci simmetrici che si uniscono tramite incastri integrati, mentre la calotta esterna permette un movimento rotazionale di 90°.",
+      p3: "Il risultato combina un'identità visiva riconoscibile con un sistema costruttivo semplice basato su connessioni meccaniche integrate."
     },
     technical: {
-      title: "Skills & Technical Insights",
-      p1: "Snake unisce la prototipazione digitale e le attrezzature per la performance atletica, dimostrando come la modularità parametrica possa elevare gli strumenti di allenamento sportivo.",
-      p2: "Presentato al prestigioso premio Lagazuoi WIMA, il progetto sottolinea l'integrazione di tecniche di produzione avanzate e ingegneria sportiva centrata sull'utente."
+      title: "Technical Insights",
+      p1: "Lo sviluppo di Archivia ha evidenziato l'importanza dell'equilibrio tra ricerca creativa e vincoli produttivi.",
+      p2: "Il progetto ha permesso di approfondire il comportamento dei materiali polimerici, i requisiti dello stampaggio a iniezione e la relazione tra geometria, assemblaggio e processo produttivo."
     },
     cta: {
       title: "What's next?",
-      subtitle: "Progetti",
+      subtitle: "Esplora i progetti",
       button: "TORNA AL PORTFOLIO"
     }
   }
 };
 
-export default function Snake({ heroFit = 'cover' }: SnakeProps) {
+export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
   const [language, setLanguage] = useState<'it' | 'en'>('en');
+  const [hoveredProject, setHoveredProject] = useState<typeof PROJECTS_LIST[0] | null>(null);
   const t = content[language];
 
   useEffect(() => {
@@ -292,6 +291,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           height: 520px;
           overflow: hidden;
           background: #0d0d0d;
+          border-radius: 0;
         }
 
         .editorial-row-fullbleed.row-img-left .row-text {
@@ -312,6 +312,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           height: 520px;
           overflow: hidden;
           background: #0d0d0d;
+          border-radius: 0;
         }
 
         .row-text h2 {
@@ -337,6 +338,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           object-position: center;
           display: block;
           transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+          border-radius: 0;
         }
 
         .row-media:hover img {
@@ -347,6 +349,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
         .fullbleed-composite {
           width: 100%;
           background: #070707;
+          padding: 0;
         }
 
         .media-composite-box {
@@ -354,6 +357,8 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           display: flex;
           flex-direction: column;
           gap: 12px;
+          padding: 0;
+          margin: 0;
         }
 
         .composite-top {
@@ -361,6 +366,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           height: clamp(380px, 55vh, 600px);
           overflow: hidden;
           background: #0d0d0d;
+          border-radius: 0;
         }
 
         .composite-bottom {
@@ -375,6 +381,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           height: clamp(280px, 42vh, 400px);
           overflow: hidden;
           background: #0d0d0d;
+          border-radius: 0;
         }
 
         .media-composite-box img {
@@ -384,6 +391,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           object-position: center;
           display: block;
           transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          border-radius: 0;
         }
 
         .media-composite-box img:hover {
@@ -436,7 +444,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
         /* CTA SECTION */
         .project-cta {
           text-align: center;
-          padding-top: 20px;
+          padding-top: 40px;
         }
 
         .project-cta h2 {
@@ -454,171 +462,9 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           font-family: monospace;
           text-transform: uppercase;
           letter-spacing: 1.5px;
-          margin: 0 auto 35px;
+          margin: 0 auto 24px;
         }
 
-        /* DESKTOP NAVIGATOR (DOTS) */
-        .desktop-dots-nav-wrapper {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 16px;
-          margin-bottom: 40px;
-        }
-
-        .desktop-dot-item {
-          position: relative;
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background: #2a2a2a;
-          border: 1px solid #444444;
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          text-decoration: none;
-          cursor: pointer;
-        }
-
-        .desktop-dot-item:hover {
-          background: #888888;
-          transform: scale(1.3);
-        }
-
-        .desktop-dot-item.active {
-          background: #ffffff;
-          border-color: #ffffff;
-          width: 32px;
-          border-radius: 20px;
-        }
-
-        .desktop-dot-item .dot-tooltip {
-          position: absolute;
-          bottom: 150%;
-          left: 50%;
-          transform: translateX(-50%) translateY(10px);
-          background: #111111;
-          border: 1px solid #333333;
-          padding: 6px 12px;
-          border-radius: 4px;
-          white-space: nowrap;
-          opacity: 0;
-          pointer-events: none;
-          transition: all 0.25s ease;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-          z-index: 10;
-        }
-
-        .desktop-dot-item .dot-tooltip span {
-          display: block;
-          font-size: 0.75rem;
-          font-weight: 700;
-          color: #ffffff;
-        }
-
-        .desktop-dot-item:hover .dot-tooltip {
-          opacity: 1;
-          transform: translateX(-50%) translateY(0);
-        }
-
-        /* MOBILE CAROUSEL NAVIGATOR */
-        .mobile-nav-wrapper {
-          display: none;
-        }
-
-        .projects-carousel-container {
-          width: 100%;
-          position: relative;
-          margin-bottom: 35px;
-        }
-
-        .projects-scroll-strip {
-          display: flex;
-          gap: 14px;
-          overflow-x: auto;
-          scroll-snap-type: x mandatory;
-          padding: 10px 4vw 20px 4vw;
-          margin-left: -4vw;
-          margin-right: -4vw;
-          width: calc(100% + 8vw);
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-          -webkit-overflow-scrolling: touch;
-        }
-
-        .projects-scroll-strip::-webkit-scrollbar {
-          display: none;
-        }
-
-        .carousel-card-item {
-          flex: 0 0 200px;
-          scroll-snap-align: center;
-          background: #0d0d0d;
-          border: 1px solid #1f1f1f;
-          text-decoration: none;
-          display: flex;
-          flex-direction: column;
-          overflow: hidden;
-          text-align: left;
-          transition: border-color 0.2s ease;
-        }
-
-        .carousel-card-item:active {
-          border-color: #888888;
-        }
-
-        .carousel-card-item.active {
-          border-color: #ffffff;
-        }
-
-        .card-img-wrapper {
-          width: 100%;
-          height: 120px;
-          overflow: hidden;
-          background: #000000;
-          position: relative;
-        }
-
-        .card-img-wrapper img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-        }
-
-        .card-active-badge {
-          position: absolute;
-          top: 6px;
-          right: 6px;
-          background: #ffffff;
-          color: #000000;
-          font-size: 0.55rem;
-          font-family: monospace;
-          padding: 2px 5px;
-          font-weight: 700;
-        }
-
-        .card-content-wrapper {
-          padding: 12px 14px;
-        }
-
-        .card-content-wrapper h4 {
-          font-size: 0.9rem;
-          font-weight: 800;
-          color: #ffffff;
-          margin: 0 0 4px 0;
-        }
-
-        .card-content-wrapper p {
-          font-size: 0.7rem;
-          color: #777777;
-          font-family: monospace;
-          margin: 0;
-          text-transform: uppercase;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        /* BUTTON PORTFOLIO */
         .cta-button {
           display: inline-block;
           padding: 14px 36px;
@@ -629,7 +475,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           transition: all 0.3s ease;
           letter-spacing: 0.8px;
           font-size: 0.82rem;
-          margin-top: 10px;
+          margin-top: 30px;
         }
 
         .cta-button:hover {
@@ -639,16 +485,172 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           transform: translateY(-2px);
         }
 
+        /* DESKTOP NAVIGATOR (DOTS + PREVIEW CARD) */
+        .desktop-navigator {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position: relative;
+          margin-top: 20px;
+          width: 100%;
+        }
+
+        .dots-container {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 12px 24px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 40px;
+          backdrop-filter: blur(8px);
+        }
+
+        .dot-item {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #333333;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          padding: 0;
+          position: relative;
+        }
+
+        .dot-item:hover, .dot-item.active {
+          background: #ffffff;
+          transform: scale(1.3);
+          box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+        }
+
+        .dot-item.active {
+          border: 2px solid #070707;
+        }
+
+        .project-preview-card {
+          position: absolute;
+          bottom: 60px;
+          width: 280px;
+          background: #111111;
+          border: 1px solid #262626;
+          border-radius: 0;
+          overflow: hidden;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+          pointer-events: none;
+          animation: fadeIn 0.25s ease-out forwards;
+          z-index: 100;
+        }
+
+        .preview-img-box {
+          width: 100%;
+          height: 160px;
+          overflow: hidden;
+          background: #000;
+        }
+
+        .preview-img-box img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        .preview-details {
+          padding: 12px 16px;
+          text-align: left;
+        }
+
+        .preview-details h4 {
+          font-size: 1.1rem;
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0 0 4px 0;
+          letter-spacing: -0.5px;
+        }
+
+        .preview-details p {
+          font-size: 0.75rem;
+          color: #888888;
+          font-family: monospace;
+          margin: 0;
+          text-transform: uppercase;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* MOBILE IMAGE CAROUSEL */
+        .mobile-carousel-container {
+          display: none;
+          width: 100vw;
+          margin-left: calc(-50vw + 50%);
+          margin-right: calc(-50vw + 50%);
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          padding: 20px 4vw;
+          gap: 16px;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+        }
+
+        .mobile-carousel-container::-webkit-scrollbar {
+          display: none;
+        }
+
+        .mobile-project-card {
+          flex: 0 0 78vw;
+          max-width: 300px;
+          scroll-snap-align: center;
+          background: #111111;
+          border: 1px solid #222222;
+          text-decoration: none;
+          text-align: left;
+          overflow: hidden;
+          transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .mobile-project-card.active-card {
+          border-color: #ffffff;
+        }
+
+        .mobile-card-img-box {
+          width: 100%;
+          height: 180px;
+          overflow: hidden;
+          background: #0d0d0d;
+        }
+
+        .mobile-card-img-box img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        .mobile-card-info {
+          padding: 16px;
+        }
+
+        .mobile-card-info h4 {
+          font-size: 1.15rem;
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0 0 4px 0;
+        }
+
+        .mobile-card-info p {
+          font-size: 0.78rem;
+          color: #888888;
+          font-family: monospace;
+          margin: 0;
+          text-transform: uppercase;
+        }
+
         /* BREAKPOINT RESPONSIVE */
         @media (max-width: 860px) {
-          .desktop-dots-nav-wrapper {
-            display: none;
-          }
-
-          .mobile-nav-wrapper {
-            display: block;
-          }
-
           .editorial-row-fullbleed {
             display: flex;
             flex-direction: column;
@@ -671,8 +673,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           .editorial-row-fullbleed.row-img-left .row-media,
           .editorial-row-fullbleed.row-img-right .row-media {
             width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9;
+            height: 380px;
           }
 
           .editorial-row-fullbleed.row-img-left .row-media img,
@@ -690,8 +691,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           }
 
           .composite-top {
-            height: auto;
-            aspect-ratio: 16 / 9;
+            height: 320px;
           }
 
           .composite-top img {
@@ -699,8 +699,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           }
 
           .composite-square {
-            height: auto;
-            aspect-ratio: 4 / 3;
+            height: 250px;
           }
 
           .composite-square img {
@@ -709,6 +708,15 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
 
           .editorial-divider {
             margin: 40px 0;
+          }
+
+          /* SWAP DESKTOP DOTS WITH MOBILE IMAGE CAROUSEL */
+          .desktop-navigator {
+            display: none !important;
+          }
+
+          .mobile-carousel-container {
+            display: flex !important;
           }
         }
       `}</style>
@@ -724,9 +732,9 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
               <div className="info-block">
                 <span>{t.meta.teamLabel}</span>
                 <p>
-                  Finco Matteo<br />
-                  Contato Chiara<br />
-                  Liani Valentina
+                  Matteo Finco<br />
+                  Giulia Pettenò<br />
+                  Nadia Zanella
                 </p>
               </div>
 
@@ -746,8 +754,8 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
         {/* HERO PRODUCT IMAGE (FULL BLEED) */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
           <img
-            src={SNAKE_IMAGE_URL}
-            alt="Snake hero product shot"
+            src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fb8ef76dbdd4f4619959ec6122f1096c8"
+            alt="Archivia hero product shot"
           />
         </section>
 
@@ -769,8 +777,8 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src={SNAKE_IMAGE_URL}
-              alt="Snake solution overview"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1b0a4b6f9bb84630b2d4b1bb8716ab11"
+              alt="Archivia solution overview"
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -794,8 +802,8 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
             <img
-              src={SNAKE_IMAGE_URL}
-              alt="Snake research and ergonomic analysis"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F863e0bdf77e44519b6628999a8739214"
+              alt="Archivia research and desk environment context"
             />
           </div>
         </section>
@@ -808,8 +816,8 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src={SNAKE_IMAGE_URL}
-              alt="Snake modular connection detail"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F8e4089261fe741a580f79ee17d2c5cbe"
+              alt="Archivia rotating mechanism and shell structure"
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -829,21 +837,21 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           <div className="media-composite-box">
             <div className="composite-top">
               <img
-                src={SNAKE_IMAGE_URL}
-                alt="Snake wide view"
+                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1b0a4b6f9bb84630b2d4b1bb8716ab11"
+                alt="Archivia wide view"
               />
             </div>
             <div className="composite-bottom">
               <div className="composite-square">
                 <img
-                  src={SNAKE_IMAGE_URL}
-                  alt="Snake detailed view 1"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F8e4089261fe741a580f79ee17d2c5cbe"
+                  alt="Archivia detailed view 1"
                 />
               </div>
               <div className="composite-square">
                 <img
-                  src={SNAKE_IMAGE_URL}
-                  alt="Snake detailed view 2"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F4894abf6b091470cbbc3233eb674a6b9"
+                  alt="Archivia detailed view 2"
                 />
               </div>
             </div>
@@ -867,50 +875,56 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
             <h2>{t.cta.title}</h2>
             <p className="cta-subtitle">{t.cta.subtitle}</p>
 
-            {/* VERSIONE DESKTOP: NAVIGATORE A PALLINI */}
-            <div className="desktop-dots-nav-wrapper">
+            {/* DESKTOP NAVIGATOR (DOTS + PREVIEW CARD) */}
+            <div className="desktop-navigator">
+              {hoveredProject && (
+                <div className="project-preview-card">
+                  <div className="preview-img-box">
+                    <img src={hoveredProject.imageUrl} alt={hoveredProject.title} />
+                  </div>
+                  <div className="preview-details">
+                    <h4>{hoveredProject.title}</h4>
+                    <p>{hoveredProject.subtitle}</p>
+                  </div>
+                </div>
+              )}
+              <div className="dots-container">
+                {PROJECTS_LIST.map((proj) => {
+                  const isCurrent = proj.id === 'archivia';
+                  return (
+                    <a
+                      key={proj.id}
+                      href={proj.path}
+                      className={`dot-item ${isCurrent ? 'active' : ''}`}
+                      aria-label={proj.title}
+                      onMouseEnter={() => setHoveredProject(proj)}
+                      onMouseLeave={() => setHoveredProject(null)}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* MOBILE IMAGE CAROUSEL */}
+            <div className="mobile-carousel-container">
               {PROJECTS_LIST.map((proj) => {
-                const isCurrent = proj.id === 'snake';
+                const isCurrent = proj.id === 'archivia';
                 return (
                   <a
                     key={proj.id}
                     href={proj.path}
-                    className={`desktop-dot-item ${isCurrent ? 'active' : ''}`}
-                    aria-label={proj.title}
+                    className={`mobile-project-card ${isCurrent ? 'active-card' : ''}`}
                   >
-                    <div className="dot-tooltip">
-                      <span>{proj.title}</span>
+                    <div className="mobile-card-img-box">
+                      <img src={proj.imageUrl} alt={proj.title} />
+                    </div>
+                    <div className="mobile-card-info">
+                      <h4>{proj.title}</h4>
+                      <p>{proj.subtitle}</p>
                     </div>
                   </a>
                 );
               })}
-            </div>
-
-            {/* VERSIONE MOBILE: CAROSELLO SWIPEABLE A 7 PROGETTI */}
-            <div className="mobile-nav-wrapper">
-              <div className="projects-carousel-container">
-                <div className="projects-scroll-strip">
-                  {PROJECTS_LIST.map((proj) => {
-                    const isCurrent = proj.id === 'snake';
-                    return (
-                      <a
-                        key={proj.id}
-                        href={proj.path}
-                        className={`carousel-card-item ${isCurrent ? 'active' : ''}`}
-                      >
-                        <div className="card-img-wrapper">
-                          <img src={proj.imageUrl} alt={proj.title} />
-                          {isCurrent && <span className="card-active-badge">NOW</span>}
-                        </div>
-                        <div className="card-content-wrapper">
-                          <h4>{proj.title}</h4>
-                          <p>{proj.subtitle}</p>
-                        </div>
-                      </a>
-                    );
-                  })}
-                </div>
-              </div>
             </div>
 
             <a href="/" className="cta-button">{t.cta.button}</a>
