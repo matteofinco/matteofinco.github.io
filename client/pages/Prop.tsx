@@ -605,21 +605,17 @@ export default function Prop({ heroFit = 'cover' }: PropProps) {
           .editorial-row-fullbleed.row-img-left .row-media,
           .editorial-row-fullbleed.row-img-right .row-media {
             width: 100%;
-            height: 300px;
-          }
-
-          .editorial-row-fullbleed.row-img-left .row-text,
-          .editorial-row-fullbleed.row-img-right .row-text {
-            padding: 0 4vw;
+            height: 280px;
           }
 
           .hero-media-fullbleed {
-            height: 300px;
+            height: 280px;
             margin-top: 24px;
           }
 
           .composite-bottom {
             grid-template-columns: 1fr;
+            gap: 12px;
           }
 
           .composite-top {
@@ -627,7 +623,7 @@ export default function Prop({ heroFit = 'cover' }: PropProps) {
           }
 
           .composite-square {
-            height: 220px;
+            height: 280px;
           }
 
           .editorial-divider {
