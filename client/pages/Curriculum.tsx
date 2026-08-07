@@ -86,7 +86,7 @@ const content = {
       categories: [
         {
           name: "Analysis",
-          items: ["Reverse engineering, Product analysis, Design research, Materials and manufacturing processes"]
+          items: ["Reverse engineering", "Product analysis", "Design research", "Materials and manufacturing processes"]
         },
         {
           name: "Software",
