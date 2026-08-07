@@ -39,30 +39,30 @@ const content = {
     overview: {
       title: "Overview",
       subtitle: "Challenge",
-      p1: "The growing pervasiveness of screens during mealtimes has fueled the phenomenon of distracted eating, a behavior that alters natural satiety cues and compromises meal memory, resulting in so-called food amnesia[cite: 1].",
-      p2: "Although many restaurant chains have introduced touchscreen tables to enrich the experience, these interfaces often end up completely absorbing the user's attention, alienating them from the very act of eating[cite: 1]. The project's challenge was to overturn this paradigm within a high-traffic setting, integrating technology harmoniously and non-invasively to restore awareness to the meal ritual and foster social interaction[cite: 1]."
+      p1: "The growing pervasiveness of screens during mealtimes has fueled the phenomenon of distracted eating, a behavior that alters natural satiety cues and compromises meal memory, resulting in so-called food amnesia.",
+      p2: "Although many restaurant chains have introduced touchscreen tables to enrich the experience, these interfaces often end up completely absorbing the user's attention, alienating them from the very act of eating. The project's challenge was to overturn this paradigm within a high-traffic setting, integrating technology harmoniously and non-invasively to restore awareness to the meal ritual and foster social interaction."
     },
     solution: {
       title: "Solution",
-      p1: "T-Table is a smart, interactive table concept designed for fast-food environments, aimed at eliminating visual overstimulation and food amnesia[cite: 1]. The project is born in the course Approfondimento tematico per il Design at the università Iuav di Venezia (Vicenza design campus)[cite: 1].",
-      p2: "The system acts as a coordinated ecosystem that adapts its interface in real time based on the meal phases[cite: 1]. Before service, the surface entertains families with cooperative mini-games related to the brand; as soon as the food is served, the table recognizes the presence of smart placemats and deactivates the interactive areas occupied by the trays[cite: 1].",
-      p3: "The screen thus transforms into a natural, discreet, low-stimulation backdrop, refocusing people's visual, sensorial, and relational attention on the food and the conversation at the table[cite: 1]."
+      p1: "T-Table is a smart, interactive table concept designed for fast-food environments, aimed at eliminating visual overstimulation and food amnesia. The project is born in the course Approfondimento tematico per il Design at the università Iuav di Venezia (Vicenza design campus).",
+      p2: "The system acts as a coordinated ecosystem that adapts its interface in real time based on the meal phases. Before service, the surface entertains families with cooperative mini-games related to the brand; as soon as the food is served, the table recognizes the presence of smart placemats and deactivates the interactive areas occupied by the trays.",
+      p3: "The screen thus transforms into a natural, discreet, low-stimulation backdrop, refocusing people's visual, sensorial, and relational attention on the food and the conversation at the table."
     },
     research: {
       title: "Research",
-      p1: "With this project, we uncovered the phenomenon of distracted eating, focusing on the impact digital stimuli have on feelings of satiety and meal memory[cite: 1]. The scientific studies analyzed demonstrate that distraction at the table increases both immediate and delayed caloric intake, weakening children's ability to listen to their body's signals[cite: 1].",
-      p2: "By mapping the restaurant experience, we realized that the problem wasn't the entertainment itself, but the temporal overlap with food: from an ergonomic perspective, continuous interaction with screens positioned on the table top forces the user to adopt incorrect postures and constantly disregard food, altering the proxemics of the convivial ritual[cite: 1]. Hence the design breakthrough: the research highlighted the need to decouple play from consumption, defining the specifications for a system of smart tables capable of sensing the arrival of an order and deactivating themselves to rekindle social interaction[cite: 1]."
+      p1: "With this project, we uncovered the phenomenon of distracted eating, focusing on the impact digital stimuli have on feelings of satiety and meal memory. The scientific studies analyzed demonstrate that distraction at the table increases both immediate and delayed caloric intake, weakening children's ability to listen to their body's signals.",
+      p2: "By mapping the restaurant experience, we realized that the problem wasn't the entertainment itself, but the temporal overlap with food: from an ergonomic perspective, continuous interaction with screens positioned on the table top forces the user to adopt incorrect postures and constantly disregard food, altering the proxemics of the convivial ritual. Hence the design breakthrough: the research highlighted the need to decouple play from consumption, defining the specifications for a system of smart tables capable of sensing the arrival of an order and deactivating themselves to rekindle social interaction."
     },
     design: {
       title: "Design",
-      p1: "T-Table translates the dictates of Calm Technology into precise engineering choices[cite: 1]. The screen abandons traditional glossy glass in favor of a special anti-reflective matte finish that simulates wood both visually and haptically, offering unprecedented sensory stimulation in interactive displays[cite: 1].",
-      p2: "Display is provided by a low-density LED matrix with a narrow color gamut to reduce visual impact[cite: 1]. Communication between the table and the objects occurs via placemats printed with Touchcode conductive ink, which exchange information with the screen's capacitive sensors to map the exact position of the food[cite: 1].",
-      p3: "At the same time, the food packaging has been redesigned from recycled kraft cardboard, using digitally embossed graphics to amplify tactile contrast and stimulate 360° visual and olfactory satiety[cite: 1]."
+      p1: "T-Table translates the dictates of Calm Technology into precise engineering choices. The screen abandons traditional glossy glass in favor of a special anti-reflective matte finish that simulates wood both visually and haptically, offering unprecedented sensory stimulation in interactive displays.",
+      p2: "Display is provided by a low-density LED matrix with a narrow color gamut to reduce visual impact. Communication between the table and the objects occurs via placemats printed with Touchcode conductive ink, which exchange information with the screen's capacitive sensors to map the exact position of the food.",
+      p3: "At the same time, the food packaging has been redesigned from recycled kraft cardboard, using digitally embossed graphics to amplify tactile contrast and stimulate 360° visual and olfactory satiety."
     },
     technical: {
       title: "Skills & Technical Insights",
-      p1: "Experience has taught me to design human-machine interfaces (HMIs) not to capture the user's attention, but to support it, learning to apply technology subtractively and contextually[cite: 1].",
-      p2: "Coordinating such diverse touchpoints has allowed me to combine traditional materials and electronics to generate a positive and ethical behavioral impact[cite: 1]."
+      p1: "Experience has taught me to design human-machine interfaces (HMIs) not to capture the user's attention, but to support it, learning to apply technology subtractively and contextually.",
+      p2: "Coordinating such diverse touchpoints has allowed me to combine traditional materials and electronics to generate a positive and ethical behavioral impact."
     },
     cta: {
       title: "What's next?",
@@ -83,30 +83,30 @@ const content = {
     overview: {
       title: "Overview",
       subtitle: "Sfida progettuale",
-      p1: "La crescente pervasività degli schermi durante i pasti ha alimentato il fenomeno della distrazione a tavola (distracted eating), un comportamento che altera i segnali naturali di sazietà e compromette la memoria del pasto, dando luogo alla cosiddetta amnesia alimentare[cite: 1].",
-      p2: "Sebbene molte catene di ristorazione abbiano introdotto tavoli touchscreen per arricchire l'esperienza, queste interfacce finiscono spesso per assorbire completamente l'attenzione dell'utente, alienandolo dall'atto stesso del mangiare[cite: 1]. La sfida del progetto è stata quella di ribaltare questo paradigma in un contesto ad alto traffico, integrando la tecnologia in modo armonioso e non invasivo per restituire consapevolezza al rito del pasto e favorire l'interazione sociale[cite: 1]."
+      p1: "La crescente pervasività degli schermi durante i pasti ha alimentato il fenomeno della distrazione a tavola (distracted eating), un comportamento che altera i segnali naturali di sazietà e compromette la memoria del pasto, dando luogo alla cosiddetta amnesia alimentare.",
+      p2: "Sebbene molte catene di ristorazione abbiano introdotto tavoli touchscreen per arricchire l'esperienza, queste interfacce finiscono spesso per assorbire completamente l'attenzione dell'utente, alienandolo dall'atto stesso del mangiare. La sfida del progetto è stata quella di ribaltare questo paradigma in un contesto ad alto traffico, integrando la tecnologia in modo armonioso e non invasivo per restituire consapevolezza al rito del pasto e favorire l'interazione sociale."
     },
     solution: {
       title: "Solution",
-      p1: "T-Table è un concept di tavolo smart e interattivo progettato per ambienti fast-food, volto ad eliminare la sovrastimolazione visiva e l'amnesia alimentare[cite: 1]. Il progetto nasce all'interno del corso di Approfondimento tematico per il Design presso l'Università Iuav di Venezia (sede di Vicenza)[cite: 1].",
-      p2: "Il sistema agisce come un ecosistema coordinato che adatta la sua interfaccia in tempo reale in base alle fasi del pasto[cite: 1]. Prima del servizio, la superficie intrattiene le famiglie con mini-giochi cooperativi legati al brand; non appena il cibo viene servito, il tavolo riconosce la presenza di tovagliette smart e disattiva le aree interattive occupate dai vassoi[cite: 1].",
-      p3: "Lo schermo si trasforma così in uno sfondo naturale, discreto e a bassa stimolazione, rifocalizzando l'attenzione visiva, sensoriale e relazionale delle persone sul cibo e sulla conversazione a tavola[cite: 1]."
+      p1: "T-Table è un concept di tavolo smart e interattivo progettato per ambienti fast-food, volto ad eliminare la sovrastimolazione visiva e l'amnesia alimentare. Il progetto nasce all'interno del corso di Approfondimento tematico per il Design presso l'Università Iuav di Venezia (sede di Vicenza).",
+      p2: "Il sistema agisce come un ecosistema coordinato che adatta la sua interfaccia in tempo reale in base alle fasi del pasto. Prima del servizio, la superficie intrattiene le famiglie con mini-giochi cooperativi legati al brand; non appena il cibo viene servito, il tavolo riconosce la presenza di tovagliette smart e disattiva le aree interattive occupate dai vassoi.",
+      p3: "Lo schermo si trasforma così in uno sfondo naturale, discreto e a bassa stimolazione, rifocalizzando l'attenzione visiva, sensoriale e relazionale delle persone sul cibo e sulla conversazione a tavola."
     },
     research: {
       title: "Research",
-      p1: "Con questo progetto abbiamo approfondito il fenomeno del distracted eating, concentrandoci sull'impatto che gli stimoli digitali hanno sul senso di sazietà e sulla memoria del pasto[cite: 1]. Gli studi scientifici analizzati dimostrano che la distrazione a tavola aumenta l'apporto calorico sia immediato che ritardato, indebolendo la capacità dei bambini di ascoltare i segnali del proprio corpo[cite: 1].",
-      p2: "Mappando l'esperienza nella ristorazione, ci siamo resi conto che il problema non era l'intrattenimento in sé, ma la sovrapposizione temporale con il cibo: da una prospettiva ergonomica, l'interazione continua con gli schermi sul piano del tavolo costringe l'utente ad assumere posture scorrette e a ignorare costantemente il cibo, alterando la prossemica del rito conviviale[cite: 1]. Da qui la svolta progettuale: la ricerca ha evidenziato la necessità di disaccoppiare il gioco dal consumo, definendo le specifiche per un sistema di tavoli smart in grado di percepire l'arrivo di un ordine e disattivarsi per riaccendere l'interazione sociale[cite: 1]."
+      p1: "Con questo progetto abbiamo approfondito il fenomeno del distracted eating, concentrandoci sull'impatto che gli stimoli digitali hanno sul senso di sazietà e sulla memoria del pasto. Gli studi scientifici analizzati dimostrano che la distrazione a tavola aumenta l'apporto calorico sia immediato che ritardato, indebolendo la capacità dei bambini di ascoltare i segnali del proprio corpo.",
+      p2: "Mappando l'esperienza nella ristorazione, ci siamo resi conto che il problema non era l'intrattenimento in sé, ma la sovrapposizione temporale con il cibo: da una prospettiva ergonomica, l'interazione continua con gli schermi sul piano del tavolo costringe l'utente ad assumere posture scorrette e a ignorare costantemente il cibo, alterando la prossemica del rito conviviale. Da qui la svolta progettuale: la ricerca ha evidenziato la necessità di disaccoppiare il gioco dal consumo, definendo le specifiche per un sistema di tavoli smart in grado di percepire l'arrivo di un ordine e disattivarsi per riaccendere l'interazione sociale."
     },
     design: {
       title: "Design",
-      p1: "T-Table traduce i dettami della Calm Technology in precise scelte ingegneristiche[cite: 1]. Lo schermo abbandona il tradizionale vetro lucido a favore di una speciale finitura opaca antiriflesso che simula il legno sia visivamente che tattilmente, offrendo una stimolazione sensoriale senza precedenti nei display interattivi[cite: 1].",
-      p2: "La visualizzazione è affidata a una matrice LED a bassa densità con un gamut di colori ristretto per ridurre l'impatto visivo[cite: 1]. La comunicazione tra il tavolo e gli oggetti avviene tramite tovagliette stampate con inchiostro conduttivo Touchcode, che scambiano informazioni con i sensori capacitivi dello schermo per mappare l'esatta posizione del cibo[cite: 1].",
-      p3: "Allo stesso tempo, il packaging alimentare è stato ridisegnato in cartoncino kraft riciclato, utilizzando grafiche goffratte digitalmente per amplificare il contrasto tattile e stimolare la sazietà visiva e olfattiva a 360°[cite: 1]."
+      p1: "T-Table traduce i dettami della Calm Technology in precise scelte ingegneristiche. Lo schermo abbandona il tradizionale vetro lucido a favore di una speciale finitura opaca antiriflesso che simula il legno sia visivamente che tattilmente, offrendo una stimolazione sensoriale senza precedenti nei display interattivi.",
+      p2: "La visualizzazione è affidata a una matrice LED a bassa densità con un gamut di colori ristretto per ridurre l'impatto visivo. La comunicazione tra il tavolo e gli oggetti avviene tramite tovagliette stampate con inchiostro conduttivo Touchcode, che scambiano informazioni con i sensori capacitivi dello schermo per mappare l'esatta posizione del cibo.",
+      p3: "Allo stesso tempo, il packaging alimentare è stato ridisegnato in cartoncino kraft riciclato, utilizzando grafiche goffratte digitalmente per amplificare il contrasto tattile e stimolare la sazietà visiva e olfattiva a 360°."
     },
     technical: {
       title: "Skills & Technical Insights",
-      p1: "L'esperienza mi ha insegnato a progettare interfacce uomo-macchina (HMI) non per catturare l'attenzione dell'utente, ma per supportarla, imparando ad applicare la tecnologia in modo sottrattivo e contestuale[cite: 1].",
-      p2: "Coordinare touchpoint così diversi mi ha permesso di combinare materiali tradizionali ed elettronica per generare un impatto comportamentale positivo ed etico[cite: 1]."
+      p1: "L'esperienza mi ha insegnato a progettare interfacce uomo-macchina (HMI) non per catturare l'attenzione dell'utente, ma per supportarla, imparando ad applicare la tecnologia in modo sottrattivo e contestuale.",
+      p2: "Coordinare touchpoint così diversi mi ha permesso di combinare materiali tradizionali ed elettronica per generare un impatto comportamentale positivo ed etico."
     },
     cta: {
       title: "What's next?",
@@ -123,17 +123,27 @@ export default function TTable({ heroFit = 'cover' }: TTableProps) {
 
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal-editorial');
+    
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('reveal-active');
+            revealObserver.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.05 }
     );
-    revealElements.forEach((el) => revealObserver.observe(el));
+
+    revealElements.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        el.classList.add('reveal-active');
+      } else {
+        revealObserver.observe(el);
+      }
+    });
 
     return () => {
       revealObserver.disconnect();
