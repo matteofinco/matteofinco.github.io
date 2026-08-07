@@ -15,6 +15,8 @@ const PROJECTS_LIST = [
   { id: "ttable", title: "T-Table", subtitle: "Interactive feeding-friendly table", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc", path: "/ttable" }
 ];
 
+const SNAKE_IMAGE_URL = "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e";
+
 const content = {
   en: {
     title: "SNAKE",
@@ -23,36 +25,36 @@ const content = {
       teamLabel: "Designers",
       yearLabel: "Year",
       yearVal: "2026",
-      awardLabel: "Recognition",
-      awardVal: "Lagazuoi WIMA 2026"
+      awardLabel: "Award / Context",
+      awardVal: "Lagazuoi WIMA Award & Sports Equipment"
     },
     overview: {
       title: "Overview",
       subtitle: "Challenge",
-      p1: "Developed within the Product Design and Technology Laboratory at the Università Iuav di Venezia (Vicenza design campus), the project challenged us to transform a traditional, static hockey stickhandling obstacle into an intelligent, interactive training system.",
-      p2: "The primary difficulty lay in embedding complex mechatronic components including laser sensors, custom PCBs, and motorized actuators, into a highly dynamic sports tool. The product needed to remain completely modular and adaptive while structurally enduring the severe, repetitive impacts of high-speed hockey pucks on both inline rinks and ice surfaces."
+      p1: "In modern ice and roller hockey, stickhandling precision, coordination, and reaction speed are critical performance differentiators. Traditional training aids are often rigid, bulky, or limited to fixed geometries, failing to replicate the dynamic, unpredictable nature of game situations.",
+      p2: "The design challenge was to create a modular, adaptable training tool that challenges athletes of all levels, combining durability with intuitive reconfiguration to enhance stickhandling agility."
     },
     solution: {
       title: "Solution",
-      p1: "Snake is an interactive, articulated training device engineered for inline and ice hockey players of all skill levels.",
-      p2: "Composed of an expandable kit of interconnected modules, the system uses integrated laser sensors to detect puck passages and dynamic RGB LEDs to guide athletes through cognitive agility drills via real-time visual cues.",
-      p3: "Featuring a physical interface and a smartphone application, Snake bridges the gap between hardware and software, allowing players to track performance data, customize training routines, and analyze precision and speed history."
+      p1: "Snake is an innovative, modular hockey stickhandling trainer engineered to adapt to diverse training routines and spatial configurations.",
+      p2: "Featuring interconnecting modular segments, the system allows athletes and coaches to rapidly alter the layout, creating custom zigzag, linear, or complex obstacle courses.",
+      p3: "Designed for high-impact athletic environments, Snake balances structural rigidity with lightweight portability, ensuring seamless setup both on and off the ice."
     },
     research: {
       title: "Research",
-      p1: "The project began with an in-depth investigation into inline hockey training methodologies. Through on-site visits to facilities and interviews with former professional players and Serie A coaches, we mapped the physical and cognitive pain points encountered during technical practice.",
-      p2: "We identified the critical need for a tool capable of improving muscle memory by offering varied and unpredictable training patterns. This research validated the choice of a highly modular and responsive architecture, capable of seamlessly adapting to different athletic contexts."
+      p1: "The development began with ergonomic studies of hockey players' puck-handling reach, sweeping motions, and typical clearance heights during rapid drills. Analyzing athletic feedback highlighted the necessity for variable angles and impact-resistant materials.",
+      p2: "Prototyping focused on mechanical interlocking joints that provide tactile and acoustic feedback upon assembly while maintaining absolute stability during high-speed stick impacts."
     },
     design: {
       title: "Design",
-      p1: "Snake is engineered as a responsive kinetic system built for demanding sports environments.",
-      p2: "Its chassis pairs CNC-milled aluminum bars for structural lightness and moisture protection with high-impact PA6 nylon for the injection-molded base enclosures.",
-      p3: "The internal mechatronics seamlessly coordinate embedded stepper motors and tracking sensors to manage the device's physical articulation. To maximize unpredictability during agility drills, the system incorporates adjustable telescopic modules that expand and contract, continuously redefining the exercise layout and challenging the player’s reaction times."
+      p1: "Snake’s aesthetic and structural language is defined by clean, aerodynamic lines and high-contrast color accents optimized for visibility under various lighting conditions.",
+      p2: "The modular joints utilize a robust snap-fit mechanism engineered specifically for rapid assembly and disassembly without tools, ensuring maximum field adaptability.",
+      p3: "Every component is optimized for additive manufacturing and durable polymer production, balancing weight reduction with extreme resistance to repetitive mechanical stress and harsh weather conditions."
     },
     technical: {
       title: "Skills & Technical Insights",
-      p1: "Working on Snake taught me that industrial design isn't just about form, but also the reliability of the system as a whole. I learned to design for high-stress scenarios, leveraging specific material properties to protect delicate elements.",
-      p2: "The project also pushed me to master the synergy between hardware and digital feedback, focusing on creating an intuitive user experience, thanks primarily to discussions with experts and people in the field. We were honored to present Snake at the Lagazuoi WIMA (Lagazuoi Winning Ideas Mountain Awards 2026)."
+      p1: "Snake bridges the gap between digital prototyping and athletic performance equipment, demonstrating how parametric modularity can elevate sports training tools.",
+      p2: "Presented at the prestigious Lagazuoi WIMA awards, the project underscores the integration of advanced manufacturing techniques and user-centered sports equipment engineering."
     },
     cta: {
       title: "What's next?",
@@ -62,41 +64,41 @@ const content = {
   },
   it: {
     title: "SNAKE",
-    subtitle: "Allenatore per lo stickhandling nell'hockey",
+    subtitle: "Allenatore per il controllo del bastone da hockey",
     meta: {
       teamLabel: "Designer",
       yearLabel: "Anno",
       yearVal: "2026",
-      awardLabel: "Riconoscimento",
-      awardVal: "Lagazuoi WIMA 2026"
+      awardLabel: "Premio / Contesto",
+      awardVal: "Premio Lagazuoi WIMA & Attrezzatura Sportiva"
     },
     overview: {
       title: "Overview",
       subtitle: "Sfida progettuale",
-      p1: "Sviluppato all'interno del Laboratorio di Design e Tecnologia del Prodotto presso l'Università Iuav di Venezia (sede di Vicenza), il progetto ha affrontato la sfida di trasformare un ostacolo tradizionale e statico per lo stickhandling nell'hockey in un sistema di allenamento intelligente e interattivo.",
-      p2: "La difficoltà principale è stata l'integrazione di complessi componenti meccatronici, tra cui sensori laser, PCB personalizzate e attuatori motorizzati, in uno strumento sportivo altamente dinamico. Il prodotto doveva rimanere completamente modulare e adattabile, resistendo al contempo ai forti e ripetuti impatti dei dischi ad alta velocità sia su pista in-line che su ghiaccio."
+      p1: "Nell'hockey moderno su ghiaccio e in linea, la precisione nel controllo del puck, la coordinazione e la velocità di reazione sono fattori determinanti per la performance. I tradizionali attrezzi di allenamento risultano spesso rigidi, ingombranti o limitati a geometrie fisse, incapaci di replicare la natura dinamica e imprevedibile delle situazioni di gioco.",
+      p2: "La sfida progettuale è consistita nel creare uno strumento di allenamento modulare e adattabile, capace di stimolare atleti di ogni livello coniugando durabilità e riconfigurabilità intuitiva."
     },
     solution: {
       title: "Solution",
-      p1: "Snake è un dispositivo di allenamento interattivo e articolato progettato per giocatori di hockey in-line e su ghiaccio di tutti i livelli.",
-      p2: "Composto da un kit espandibile di moduli interconnessi, il sistema utilizza sensori laser integrati per rilevare il passaggio del disco e LED RGB dinamici per guidare gli atleti in esercizi di agilità cognitiva tramite segnali visivi in tempo reale.",
-      p3: "Caratterizzato da un'interfaccia fisica e un'applicazione per smartphone, Snake unisce hardware e software, consentendo ai giocatori di monitorare i dati sulle prestazioni, personalizzare le routine di allenamento e analizzare lo storico di precisione e velocità."
+      p1: "Snake è un innovativo allenatore modulare per l'hockey, progettato per adattarsi a diverse routine di allenamento e configurazioni spaziali.",
+      p2: "Caratterizzato da segmenti modulari interconnessi, il sistema permette ad atleti e allenatori di modificarne rapidamente il layout, creando percorsi a ostacoli personalizzati, lineari o a zigzag.",
+      p3: "Progettato per ambienti agonistici ad alto impatto, Snake bilancia rigidità strutturale e leggerezza, garantendo un'installazione agevole sia su ghiaccio che a secco."
     },
     research: {
       title: "Research",
-      p1: "Il progetto è iniziato con un'approfondita indagine sulle metodologie di allenamento nell'hockey in-line. Attraverso visite alle strutture e interviste ad ex giocatori professionisti e allenatori di Serie A, abbiamo mappato i punti critici fisici e cognitivi riscontrati durante la pratica tecnica.",
-      p2: "Abbiamo individuato la necessità fondamentale di uno strumento capace di migliorare la memoria muscolare offrendo schemi di allenamento vari e imprevedibili. Questa ricerca ha validato la scelta di un'architettura altamente modulare e reattiva, in grado di adattarsi perfettamente a diversi contesti atletici."
+      p1: "Lo sviluppo è iniziato con studi ergonomici sull'ampiezza d'azione dei giocatori di hockey, sui movimenti di spazzata e sulle altezze di passaggio durante gli esercizi rapidi. L'analisi del feedback degli atleti ha evidenziato la necessità di angoli variabili e materiali resistenti agli urti.",
+      p2: "La prototipazione si è concentrata su giunti a incastro meccanico che offrono un feedback tattile e acustico durante l'assemblaggio, mantenendo una stabilità assoluta durante gli impatti ad alta velocità."
     },
     design: {
       title: "Design",
-      p1: "Snake è progettato come un sistema cinetico reattivo pensato per ambienti sportivi ad alte prestazioni.",
-      p2: "Il suo telaio combina barre in alluminio fresate a CNC per garantire leggerezza strutturale e protezione dall'umidità con nylon PA6 ad alta resistenza agli urti per gli involucri della base stampati a iniezione.",
-      p3: "La meccatronica interna coordina perfettamente motori passo-passo e sensori di tracciamento per gestire l'articolazione fisica del dispositivo. Per massimizzare l'imprevedibilità durante gli esercizi di agilità, il sistema integra moduli telescopici regolabili che si espandono e contraggono, ridefinendo continuamente il layout dell'esercizio e sfidando i tempi di reazione del giocatore."
+      p1: "Il linguaggio estetico e strutturale di Snake è definito da linee pulite e aerodinamiche, con accenti cromatici ad alto contrasto ottimizzati per la visibilità in diverse condizioni di luce.",
+      p2: "I giunti modulari utilizzano un robusto meccanismo a scatto ingegnerizzato appositamente per un montaggio e smontaggio rapido senza attrezzi, garantendo la massima adattabilità sul campo.",
+      p3: "Ogni componente è ottimizzato per la produzione additiva e polimeri durevoli, bilanciando la riduzione del peso con un'estrema resistenza agli stress meccanici ripetuti e alle condizioni atmosferiche avverse."
     },
     technical: {
       title: "Skills & Technical Insights",
-      p1: "Lavorare su Snake ha dimostrato che il design industriale non riguarda solo la forma, ma la risposta e l'affidabilità dell'intero sistema. Ho imparato a progettare per scenari ad alto stress meccanico, sfruttando le proprietà specifiche dei materiali per proteggere gli elementi più delicati.",
-      p2: "Il progetto ha permesso di approfondire la sinergia tra hardware e feedback digitale, concentrandosi sulla creazione di un'esperienza utente intuitiva, grazie soprattutto al confronto diretto con esperti del settore e atleti. Siamo stati onorati di presentare Snake al Lagazuoi WIMA (Lagazuoi Winning Ideas Mountain Awards 2026)."
+      p1: "Snake unisce la prototipazione digitale e le attrezzature per la performance atletica, dimostrando come la modularità parametrica possa elevare gli strumenti di allenamento sportivo.",
+      p2: "Presentato al prestigioso premio Lagazuoi WIMA, il progetto sottolinea l'integrazione di tecniche di produzione avanzate e ingegneria sportiva centrata sull'utente."
     },
     cta: {
       title: "What's next?",
@@ -418,103 +420,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           margin-bottom: 18px;
         }
 
-        /* PROJECT NAVIGATOR */
-        .project-navigator {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          position: relative;
-          margin-top: 20px;
-        }
-
-        .dots-container {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          padding: 12px 24px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 40px;
-          backdrop-filter: blur(8px);
-        }
-
-        .dot-item {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background: #333333;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          padding: 0;
-          position: relative;
-        }
-
-        .dot-item:hover, .dot-item.active {
-          background: #ffffff;
-          transform: scale(1.3);
-          box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
-        }
-
-        .dot-item.active {
-          border: 2px solid #070707;
-        }
-
-        .project-preview-card {
-          position: absolute;
-          bottom: 60px;
-          width: 280px;
-          background: #111111;
-          border: 1px solid #262626;
-          border-radius: 0;
-          overflow: hidden;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-          pointer-events: none;
-          animation: fadeIn 0.25s ease-out forwards;
-          z-index: 100;
-        }
-
-        .preview-img-box {
-          width: 100%;
-          height: 160px;
-          overflow: hidden;
-          background: #000;
-        }
-
-        .preview-img-box img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-          border-radius: 0;
-        }
-
-        .preview-details {
-          padding: 12px 16px;
-          text-align: left;
-        }
-
-        .preview-details h4 {
-          font-size: 1.1rem;
-          font-weight: 800;
-          color: #ffffff;
-          margin: 0 0 4px 0;
-          letter-spacing: -0.5px;
-        }
-
-        .preview-details p {
-          font-size: 0.75rem;
-          color: #888888;
-          font-family: monospace;
-          margin: 0;
-          text-transform: uppercase;
-        }
-
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
         /* REVEAL ANIMATIONS */
         .reveal-editorial {
           opacity: 0;
@@ -582,16 +487,172 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           transform: translateY(-2px);
         }
 
-        /* RESPONSIVE BREAKPOINTS */
+        /* DESKTOP NAVIGATOR (DOTS + PREVIEW CARD) */
+        .desktop-navigator {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position: relative;
+          margin-top: 20px;
+          width: 100%;
+        }
+
+        .dots-container {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 12px 24px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 40px;
+          backdrop-filter: blur(8px);
+        }
+
+        .dot-item {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #333333;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          padding: 0;
+          position: relative;
+        }
+
+        .dot-item:hover, .dot-item.active {
+          background: #ffffff;
+          transform: scale(1.3);
+          box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+        }
+
+        .dot-item.active {
+          border: 2px solid #070707;
+        }
+
+        .project-preview-card {
+          position: absolute;
+          bottom: 60px;
+          width: 280px;
+          background: #111111;
+          border: 1px solid #262626;
+          border-radius: 0;
+          overflow: hidden;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+          pointer-events: none;
+          animation: fadeIn 0.25s ease-out forwards;
+          z-index: 100;
+        }
+
+        .preview-img-box {
+          width: 100%;
+          height: 160px;
+          overflow: hidden;
+          background: #000;
+        }
+
+        .preview-img-box img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        .preview-details {
+          padding: 12px 16px;
+          text-align: left;
+        }
+
+        .preview-details h4 {
+          font-size: 1.1rem;
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0 0 4px 0;
+          letter-spacing: -0.5px;
+        }
+
+        .preview-details p {
+          font-size: 0.75rem;
+          color: #888888;
+          font-family: monospace;
+          margin: 0;
+          text-transform: uppercase;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* MOBILE IMAGE CAROUSEL */
+        .mobile-carousel-container {
+          display: none;
+          width: 100vw;
+          margin-left: calc(-50vw + 50%);
+          margin-right: calc(-50vw + 50%);
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          padding: 20px 4vw;
+          gap: 16px;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+        }
+
+        .mobile-carousel-container::-webkit-scrollbar {
+          display: none;
+        }
+
+        .mobile-project-card {
+          flex: 0 0 78vw;
+          max-width: 300px;
+          scroll-snap-align: center;
+          background: #111111;
+          border: 1px solid #222222;
+          text-decoration: none;
+          text-align: left;
+          overflow: hidden;
+          transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .mobile-project-card.active-card {
+          border-color: #ffffff;
+        }
+
+        .mobile-card-img-box {
+          width: 100%;
+          height: 180px;
+          overflow: hidden;
+          background: #0d0d0d;
+        }
+
+        .mobile-card-img-box img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        .mobile-card-info {
+          padding: 16px;
+        }
+
+        .mobile-card-info h4 {
+          font-size: 1.15rem;
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0 0 4px 0;
+        }
+
+        .mobile-card-info p {
+          font-size: 0.78rem;
+          color: #888888;
+          font-family: monospace;
+          margin: 0;
+          text-transform: uppercase;
+        }
+
+        /* RESPONSIVE TOGGLES */
         @media (max-width: 860px) {
-          .project-page {
-            padding-top: 90px;
-          }
-
-          .project-preview-card {
-            display: none !important;
-          }
-
           .editorial-row-fullbleed {
             display: flex;
             flex-direction: column;
@@ -605,7 +666,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           .editorial-row-fullbleed.row-img-left .row-media,
           .editorial-row-fullbleed.row-img-right .row-media {
             width: 100%;
-            height: 300px;
+            height: 380px;
           }
 
           .editorial-row-fullbleed.row-img-left .row-text,
@@ -613,25 +674,29 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
             padding: 0 4vw;
           }
 
-          .hero-media-fullbleed {
-            height: 300px;
-            margin-top: 24px;
-          }
-
           .composite-bottom {
             grid-template-columns: 1fr;
           }
 
           .composite-top {
-            height: 280px;
+            height: 320px;
           }
 
           .composite-square {
-            height: 220px;
+            height: 250px;
           }
 
           .editorial-divider {
             margin: 40px 0;
+          }
+
+          /* SWAP DESKTOP DOTS WITH MOBILE IMAGE CAROUSEL */
+          .desktop-navigator {
+            display: none !important;
+          }
+
+          .mobile-carousel-container {
+            display: flex !important;
           }
         }
       `}</style>
@@ -647,9 +712,9 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
               <div className="info-block">
                 <span>{t.meta.teamLabel}</span>
                 <p>
-                  Chiara Contato<br />
-                  Valentina Liani<br />
-                  Matteo Finco
+                  Finco Matteo<br />
+                  Contato Chiara<br />
+                  Liani Valentina
                 </p>
               </div>
 
@@ -669,8 +734,8 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
         {/* HERO PRODUCT IMAGE (FULL BLEED) */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
           <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e"
-            alt="Snake hero product shot"
+            src={SNAKE_IMAGE_URL}
+            alt="Snake hockey stickhandling trainer hero shot"
           />
         </section>
 
@@ -692,7 +757,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e"
+              src={SNAKE_IMAGE_URL}
               alt="Snake solution overview"
             />
           </div>
@@ -717,8 +782,8 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e"
-              alt="Snake research and hockey training context"
+              src={SNAKE_IMAGE_URL}
+              alt="Snake research and ergonomic analysis"
             />
           </div>
         </section>
@@ -731,8 +796,8 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e"
-              alt="Snake mechatronic articulation structure"
+              src={SNAKE_IMAGE_URL}
+              alt="Snake modular connection detail"
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -752,21 +817,21 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           <div className="media-composite-box">
             <div className="composite-top">
               <img
-                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e"
-                alt="Snake full assembly"
+                src={SNAKE_IMAGE_URL}
+                alt="Snake training context layout"
               />
             </div>
             <div className="composite-bottom">
               <div className="composite-square">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e"
-                  alt="Snake internal component detail"
+                  src={SNAKE_IMAGE_URL}
+                  alt="Snake joint mechanism detail"
                 />
               </div>
               <div className="composite-square">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e"
-                  alt="Snake digital interface preview"
+                  src={SNAKE_IMAGE_URL}
+                  alt="Snake material texture detail"
                 />
               </div>
             </div>
@@ -785,12 +850,13 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
 
           <hr className="editorial-divider" />
 
-          {/* NEXT PROJECT / CTA */}
+          {/* NEXT PROJECT / CTA CAROUSEL SECTION */}
           <section className="project-cta reveal-editorial reveal-from-left">
             <h2>{t.cta.title}</h2>
             <p className="cta-subtitle">{t.cta.subtitle}</p>
 
-            <div className="project-navigator">
+            {/* 1. DESKTOP NAVIGATOR: DOTS WITH HOVER PREVIEW */}
+            <div className="desktop-navigator">
               {hoveredProject && (
                 <div className="project-preview-card">
                   <div className="preview-img-box">
@@ -815,6 +881,25 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
                   />
                 ))}
               </div>
+            </div>
+
+            {/* 2. MOBILE CAROUSEL: TOUCH IMAGE CARDS */}
+            <div className="mobile-carousel-container">
+              {PROJECTS_LIST.map((proj) => (
+                <a
+                  key={proj.id}
+                  href={proj.path}
+                  className={`mobile-project-card ${proj.id === 'snake' ? 'active-card' : ''}`}
+                >
+                  <div className="mobile-card-img-box">
+                    <img src={proj.imageUrl} alt={proj.title} />
+                  </div>
+                  <div className="mobile-card-info">
+                    <h4>{proj.title}</h4>
+                    <p>{proj.subtitle}</p>
+                  </div>
+                </a>
+              ))}
             </div>
 
             <a href="/" className="cta-button">{t.cta.button}</a>
