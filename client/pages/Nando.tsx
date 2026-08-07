@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from '../components/Header';
 
-interface NandoProps {
+interface SnakeProps {
   heroFit?: 'contain' | 'cover';
 }
 
@@ -15,46 +15,46 @@ const PROJECTS_LIST = [
   { id: "ttable", title: "T-Table", subtitle: "Interactive feeding-friendly table", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc", path: "/ttable" }
 ];
 
-const NANDO_IMAGE_URL = "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F58faeaf495544fe5a8367b24177ac088";
+const SNAKE_IMAGE_URL = "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e";
 
 const content = {
   en: {
-    title: "NANDO",
-    subtitle: "Hyperplastic cutlery handle",
+    title: "SNAKE",
+    subtitle: "Hockey stickhandling trainer",
     meta: {
       teamLabel: "Designers",
       yearLabel: "Year",
-      yearVal: "2025",
-      awardLabel: "Workshop / Context",
-      awardVal: "Inclusive Design & Parametric Modeling"
+      yearVal: "2026",
+      awardLabel: "Award / Context",
+      awardVal: "Lagazuoi WIMA Award & Sports Equipment"
     },
     overview: {
       title: "Overview",
       subtitle: "Challenge",
-      p1: "For people with conditions like osteoarthritis or reduced muscle strength in the upper limbs, performing everyday tasks like eating a meal can be a complex challenge. Traditional cutlery requires a tight grip and fine motor control; when the ability to make a fist is lacking or causes discomfort, utensils tend to slip and move uncontrollably, frequently falling.",
-      p2: "The design challenge was to transform a standardized everyday tool into an inclusive system capable of compensating for grip deficits without compromising the object's aesthetics."
+      p1: "In modern ice and roller hockey, stickhandling precision, coordination, and reaction speed are critical performance differentiators. Traditional training aids are often rigid, bulky, or limited to fixed geometries, failing to replicate the dynamic, unpredictable nature of game situations.",
+      p2: "The design challenge was to create a modular, adaptable training tool that challenges athletes of all levels, combining durability with intuitive reconfiguration to enhance stickhandling agility."
     },
     solution: {
       title: "Solution",
-      p1: "Nando is a concept for a hyperplastic, flexible, and adaptable handle, designed as a universal aid for the use of traditional cutlery and other thin items such as razors or toothbrushes.",
-      p2: "Featuring a symmetrical geometric shape that allows for both right- and left-handed use, the object features a generous volume designed to offer comfort and immediate relief to the hand.",
-      p3: "Made entirely of ELASTO-1000, Nando ensures flexibility, hygienic use, and intuitive maintenance, making it fully dishwasher safe."
+      p1: "Snake is an innovative, modular hockey stickhandling trainer engineered to adapt to diverse training routines and spatial configurations.",
+      p2: "Featuring interconnecting modular segments, the system allows athletes and coaches to rapidly alter the layout, creating custom zigzag, linear, or complex obstacle courses.",
+      p3: "Designed for high-impact athletic environments, Snake balances structural rigidity with lightweight portability, ensuring seamless setup both on and off the ice."
     },
     research: {
       title: "Research",
-      p1: "The preliminary investigation focused on the dynamics of the palmar grip and the ergonomic limitations imposed by micromotor disabilities. By analyzing pressure points and the pain resulting from forced fist closure, the research highlighted the need for a large and soft contact surface.",
-      p2: "The project's turning point lies in its parametric design approach: through digital mapping and scanning of the hand's anthropometric parameters, the system allows for the generation of a personalized configuration tailored to the specific needs of each user."
+      p1: "The development began with ergonomic studies of hockey players' puck-handling reach, sweeping motions, and typical clearance heights during rapid drills. Analyzing athletic feedback highlighted the necessity for variable angles and impact-resistant materials.",
+      p2: "Prototyping focused on mechanical interlocking joints that provide tactile and acoustic feedback upon assembly while maintaining absolute stability during high-speed stick impacts."
     },
     design: {
       title: "Design",
-      p1: "Nando’s morphological configuration responds to precise functional constraints through simple, sinuous lines. Its generous volume facilitates palmar grasp, significantly reducing the required muscular effort, while a calibrated lateral protrusion ensures hand stability during use.",
-      p2: "Internally, the gripping architecture is engineered to flex and mechanically adapt to cutlery of various shapes and thicknesses, securing them firmly in place. This complex, adaptable geometry is explicitly optimized for additive manufacturing, leveraging 3D printing to achieve the necessary structural compliance.",
-      p3: "From a tactile perspective, the surface features a granular texture to maximize friction and prevent slippage. While the curated color palette ensures seamless integration into domestic environments, Nando’s versatility extends into public and dining spaces. By acting as a portable, hygienic interface, it eliminates the ergonomic barriers of standard public tableware, offering a discrete and independent solution that removes the need to carry complex or soiled personal utensils."
+      p1: "Snake’s aesthetic and structural language is defined by clean, aerodynamic lines and high-contrast color accents optimized for visibility under various lighting conditions.",
+      p2: "The modular joints utilize a robust snap-fit mechanism engineered specifically for rapid assembly and disassembly without tools, ensuring maximum field adaptability.",
+      p3: "Every component is optimized for additive manufacturing and durable polymer production, balancing weight reduction with extreme resistance to repetitive mechanical stress and harsh weather conditions."
     },
     technical: {
       title: "Skills & Technical Insights",
-      p1: "The combination of digital manufacturing and inclusive design can solve complex problems through simple gestures. Nando redefines the concept of accessibility, restoring complete autonomy and safety during mealtimes to those with reduced mobility.",
-      p2: "Thanks to the flexible production of the parametric model, the device overcomes the limitations of mass-produced industrial products, offering a hygienic, long-lasting solution tailored to the unique needs of each individual."
+      p1: "Snake bridges the gap between digital prototyping and athletic performance equipment, demonstrating how parametric modularity can elevate sports training tools.",
+      p2: "Presented at the prestigious Lagazuoi WIMA awards, the project underscores the integration of advanced manufacturing techniques and user-centered sports equipment engineering."
     },
     cta: {
       title: "What's next?",
@@ -63,42 +63,42 @@ const content = {
     }
   },
   it: {
-    title: "NANDO",
-    subtitle: "Impugnatura iperplastica per posate",
+    title: "SNAKE",
+    subtitle: "Allenatore per il controllo del bastone da hockey",
     meta: {
       teamLabel: "Designer",
       yearLabel: "Anno",
-      yearVal: "2025",
-      awardLabel: "Workshop / Contesto",
-      awardVal: "Design Inclusivo & Modellazione Parametrica"
+      yearVal: "2026",
+      awardLabel: "Premio / Contesto",
+      awardVal: "Premio Lagazuoi WIMA & Attrezzatura Sportiva"
     },
     overview: {
       title: "Overview",
       subtitle: "Sfida progettuale",
-      p1: "Per le persone affette da patologie come l'osteoartrite o la riduzione della forza muscolare agli arti superiori, compiere gesti quotidiani come mangiare può trasformarsi in una sfida complessa. Le posate tradizionali richiedono una presa salda e un controllo motorio fine; quando la capacità di chiudere il pugno manca o causa dolore, gli utensili tendono a scivolare e muoversi in modo incontrollato, cadendo frequentemente.",
-      p2: "La sfida progettuale è stata quella di trasformare uno strumento di uso comune e standardizzato in un sistema inclusivo capace di compensare i deficit di presa senza compromettere l'estetica dell'oggetto."
+      p1: "Nell'hockey moderno su ghiaccio e in linea, la precisione nel controllo del puck, la coordinazione e la velocità di reazione sono fattori determinanti per la performance. I tradizionali attrezzi di allenamento risultano spesso rigidi, ingombranti o limitati a geometrie fisse, incapaci di replicare la natura dinamica e imprevedibile delle situazioni di gioco.",
+      p2: "La sfida progettuale è consistita nel creare uno strumento di allenamento modulare e adattabile, capace di stimolare atleti di ogni livello coniugando durabilità e riconfigurabilità intuitiva."
     },
     solution: {
       title: "Solution",
-      p1: "Nando è un concetto di impugnatura iperplastica, flessibile e adattabile, progettata come ausilio universale per l'utilizzo di posate tradizionali e altri oggetti sottili come rasoi o spazzolini da denti.",
-      p2: "Caratterizzato da una forma geometrica simmetrica che ne consente l'uso sia a destrimani che a mancini, l'oggetto presenta un volume generoso pensato per offrire comfort e sollievo immediato alla mano.",
-      p3: "Realizzato interamente in ELASTO-1000, Nando garantisce flessibilità, igiene e una manutenzione intuitiva, risultando completamente lavabile in lavastoviglie."
+      p1: "Snake è un innovativo allenatore modulare per l'hockey, progettato per adattarsi a diverse routine di allenamento e configurazioni spaziali.",
+      p2: "Caratterizzato da segmenti modulari interconnessi, il sistema permette ad atleti e allenatori di modificarne rapidamente il layout, creando percorsi a ostacoli personalizzati, lineari o a zigzag.",
+      p3: "Progettato per ambienti agonistici ad alto impatto, Snake bilancia rigidità strutturale e leggerezza, garantendo un'installazione agevole sia su ghiaccio che a secco."
     },
     research: {
       title: "Research",
-      p1: "L'indagine preliminare si è concentrata sulle dinamiche della presa palmare e sui limiti ergonomici imposti dalle disabilità micromotorie. Analizzando i punti di pressione e il dolore derivante dalla chiusura forzata del pugno, la ricerca ha evidenziato la necessità di una superficie di contatto ampia e morbida.",
-      p2: "Il punto di svolta del progetto risiede nel suo approccio alla progettazione parametrica: attraverso la mappatura digitale e la scansione dei parametri antropometrici della mano, il sistema permette di generare una configurazione personalizzata sulle specifiche esigenze di ciascun utente."
+      p1: "Lo sviluppo è iniziato con studi ergonomici sull'ampiezza d'azione dei giocatori di hockey, sui movimenti di spazzata e sulle altezze di passaggio durante gli esercizi rapidi. L'analisi del feedback degli atleti ha evidenziato la necessità di angoli variabili e materiali resistenti agli urti.",
+      p2: "La prototipazione si è concentrata su giunti a incastro meccanico che offrono un feedback tattile e acustico durante l'assemblaggio, mantenendo una stabilità assoluta durante gli impatti ad alta velocità."
     },
     design: {
       title: "Design",
-      p1: "La configurazione morfologica di Nando risponde a precisi vincoli funzionali attraverso linee semplici e sinuose. Il suo volume generoso facilita la presa palmare, riducendo significativamente lo sforzo muscolare richiesto, mentre una sporgenza laterale calibrata assicura la stabilità della mano durante l'uso.",
-      p2: "All'interno, l'architettura di bloccaggio è ingegnerizzata per flettersi e adattarsi meccanicamente a posate di varie forme e spessori, bloccandole saldamente. Questa geometria complessa e adattabile è esplicitamente ottimizzata per la produzione additiva, sfruttando la stampa 3D per ottenere la conformità strutturale necessaria.",
-      p3: "Dal punto di vista tattile, la superficie presenta una texture granulare per massimizzare l'attrito ed evitare lo scivolamento. Se la palette cromatica curata garantisce un'integrazione armonica negli ambienti domestici, la versatilità di Nando si estende anche agli spazi pubblici e alla ristorazione. Agendo come un'interfaccia portatile e igienica, elimina le barriere ergonomiche delle posate standard, offrendo una soluzione discreta e indipendente che evita di dover trasportare utensili personali complessi o sporchi."
+      p1: "Il linguaggio estetico e strutturale di Snake è definito da linee pulite e aerodinamiche, con accenti cromatici ad alto contrasto ottimizzati per la visibilità in diverse condizioni di luce.",
+      p2: "I giunti modulari utilizzano un robusto meccanismo a scatto ingegnerizzato appositamente per un montaggio e smontaggio rapido senza attrezzi, garantendo la massima adattabilità sul campo.",
+      p3: "Ogni componente è ottimizzato per la produzione additiva e polimeri durevoli, bilanciando la riduzione del peso con un'estrema resistenza agli stress meccanici ripetuti e alle condizioni atmosferiche avverse."
     },
     technical: {
       title: "Skills & Technical Insights",
-      p1: "La combinazione di produzione digitale e design inclusivo può risolvere problemi complessi attraverso gesti semplici. Nando ridefinisce il concetto di accessibilità, restituendo piena autonomia e sicurezza durante i pasti a chi ha una mobilità ridotta.",
-      p2: "Grazie alla produzione flessibile del modello parametrico, il dispositivo supera i limiti dei prodotti industriali di massa, offrendo una soluzione igienica, duratura e su misura per le esigenze uniche di ogni individuo."
+      p1: "Snake unisce la prototipazione digitale e le attrezzature per la performance atletica, dimostrando come la modularità parametrica possa elevare gli strumenti di allenamento sportivo.",
+      p2: "Presentato al prestigioso premio Lagazuoi WIMA, il progetto sottolinea l'integrazione di tecniche di produzione avanzate e ingegneria sportiva centrata sull'utente."
     },
     cta: {
       title: "What's next?",
@@ -108,7 +108,7 @@ const content = {
   }
 };
 
-export default function Nando({ heroFit = 'cover' }: NandoProps) {
+export default function Snake({ heroFit = 'cover' }: SnakeProps) {
   const [language, setLanguage] = useState<'it' | 'en'>('en');
   const [hoveredProject, setHoveredProject] = useState<typeof PROJECTS_LIST[0] | null>(null);
   const t = content[language];
@@ -637,8 +637,8 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
                 <span>{t.meta.teamLabel}</span>
                 <p>
                   Finco Matteo<br />
-                  Stecco Dario<br />
-                  Vecoli Beatrice
+                  Contato Chiara<br />
+                  Liani Valentina
                 </p>
               </div>
 
@@ -658,8 +658,8 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
         {/* HERO PRODUCT IMAGE (FULL BLEED) */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
           <img
-            src={NANDO_IMAGE_URL}
-            alt="Nando hyperplastic cutlery handle hero shot"
+            src={SNAKE_IMAGE_URL}
+            alt="Snake hockey stickhandling trainer hero shot"
           />
         </section>
 
@@ -681,8 +681,8 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src={NANDO_IMAGE_URL}
-              alt="Nando solution overview"
+              src={SNAKE_IMAGE_URL}
+              alt="Snake solution overview"
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -706,8 +706,8 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
             <img
-              src={NANDO_IMAGE_URL}
-              alt="Nando research and ergonomic analysis"
+              src={SNAKE_IMAGE_URL}
+              alt="Snake research and ergonomic analysis"
             />
           </div>
         </section>
@@ -720,8 +720,8 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src={NANDO_IMAGE_URL}
-              alt="Nando internal gripping architecture detail"
+              src={SNAKE_IMAGE_URL}
+              alt="Snake modular connection detail"
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -741,21 +741,21 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
           <div className="media-composite-box">
             <div className="composite-top">
               <img
-                src={NANDO_IMAGE_URL}
-                alt="Nando ergonomic usage context"
+                src={SNAKE_IMAGE_URL}
+                alt="Snake training context layout"
               />
             </div>
             <div className="composite-bottom">
               <div className="composite-square">
                 <img
-                  src={NANDO_IMAGE_URL}
-                  alt="Nando surface texture detail"
+                  src={SNAKE_IMAGE_URL}
+                  alt="Snake joint mechanism detail"
                 />
               </div>
               <div className="composite-square">
                 <img
-                  src={NANDO_IMAGE_URL}
-                  alt="Nando internal flexible structure"
+                  src={SNAKE_IMAGE_URL}
+                  alt="Snake material texture detail"
                 />
               </div>
             </div>
@@ -796,7 +796,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
                 {PROJECTS_LIST.map((proj) => (
                   <button
                     key={proj.id}
-                    className={`dot-item ${proj.id === 'nando' ? 'active' : ''}`}
+                    className={`dot-item ${proj.id === 'snake' ? 'active' : ''}`}
                     onMouseEnter={() => setHoveredProject(proj)}
                     onMouseLeave={() => setHoveredProject(null)}
                     onClick={() => window.location.href = proj.path}
