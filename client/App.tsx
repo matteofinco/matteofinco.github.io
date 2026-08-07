@@ -7,16 +7,16 @@ import Snake from "./pages/Snake";
 import { Footer } from "./components/Footer";
 
 export default function App() {
-  // Legge l'URL attuale convertendolo in minuscolo
   const path = window.location.pathname.toLowerCase();
 
-  // Determina quale pagina mostrare
+  const isCurriculum = path.includes("/curriculum") || path.includes("/cv");
+
   const renderPage = () => {
     if (path.includes("/about")) {
       return <About />;
     }
 
-    if (path.includes("/curriculum") || path.includes("/cv")) {
+    if (isCurriculum) {
       return <Curriculum />;
     }
 
@@ -32,11 +32,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between">
+    <div className="min-h-screen flex flex-col justify-between bg-[#070707] text-[#e5e5e5]">
       <main className="flex-grow">
         {renderPage()}
       </main>
-      <Footer />
+      {/* Il Footer viene nascosto automaticamente se ci troviamo nella pagina Curriculum */}
+      {!isCurriculum && <Footer />}
     </div>
   );
 }
