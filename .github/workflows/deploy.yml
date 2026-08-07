@@ -21,6 +21,10 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client # Imposta la cartella di lavoro principale su client
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,11 +32,10 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: 22
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build project
         run: npm run build
@@ -40,7 +43,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Se il tuo comando di build genera la cartella 'dist' (standard Vite)
+          path: './client/dist' # Cartella di output all'interno di client
 
       - name: Deploy to GitHub Pages
         id: deployment
