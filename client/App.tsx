@@ -5,6 +5,7 @@ import Curriculum from "./pages/Curriculum";
 import Archivia from "./pages/Archivia";
 import Snake from "./pages/Snake";
 import Prop from "./pages/Prop";
+import Nando from "./pages/Nando";
 import { Footer } from "./components/Footer";
 
 export default function App() {
@@ -30,6 +31,11 @@ export default function App() {
     }
  if (path.includes("/prop")) {
       return <Prop />;
+    }
+    return <Index />;
+  };
+if (path.includes("/nando")) {
+      return <Nando />;
     }
     return <Index />;
   };
