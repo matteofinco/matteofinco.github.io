@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from '../components/Header';
 
-interface SnakeProps {
+interface NandoProps {
   heroFit?: 'contain' | 'cover';
 }
 
@@ -15,46 +15,46 @@ const PROJECTS_LIST = [
   { id: "ttable", title: "T-Table", subtitle: "Interactive feeding-friendly table", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc", path: "/ttable" }
 ];
 
-const SNAKE_IMAGE_URL = "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e";
+const NANDO_IMAGE_URL = "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F58faeaf495544fe5a8367b24177ac088";
 
 const content = {
   en: {
-    title: "SNAKE",
-    subtitle: "Hockey stickhandling trainer",
+    title: "NANDO",
+    subtitle: "Hyperplastic cutlery handle",
     meta: {
       teamLabel: "Designers",
       yearLabel: "Year",
       yearVal: "2026",
-      awardLabel: "Award / Context",
-      awardVal: "Lagazuoi WIMA Award & Sports Equipment"
+      awardLabel: "Context",
+      awardVal: "Inclusive Design & Parametric Aids"
     },
     overview: {
       title: "Overview",
       subtitle: "Challenge",
-      p1: "In modern ice and roller hockey, stickhandling precision, coordination, and reaction speed are critical performance differentiators. Traditional training aids are often rigid, bulky, or limited to fixed geometries, failing to replicate the dynamic, unpredictable nature of game situations.",
-      p2: "The design challenge was to create a modular, adaptable training tool that challenges athletes of all levels, combining durability with intuitive reconfiguration to enhance stickhandling agility."
+      p1: "For people with conditions like osteoarthritis or reduced muscle strength in the upper limbs, performing everyday tasks like eating a meal can be a complex challenge. Traditional cutlery requires a tight grip and fine motor control; when the ability to make a fist is lacking or causes discomfort, utensils tend to slip and move uncontrollably, frequently falling.",
+      p2: "The design challenge was to transform a standardized everyday tool into an inclusive system capable of compensating for grip deficits without compromising the object's aesthetics."
     },
     solution: {
       title: "Solution",
-      p1: "Snake is an innovative, modular hockey stickhandling trainer engineered to adapt to diverse training routines and spatial configurations.",
-      p2: "Featuring interconnecting modular segments, the system allows athletes and coaches to rapidly alter the layout, creating custom zigzag, linear, or complex obstacle courses.",
-      p3: "Designed for high-impact athletic environments, Snake balances structural rigidity with lightweight portability, ensuring seamless setup both on and off the ice."
+      p1: "Nando is a concept for a hyperplastic, flexible, and adaptable handle, designed as a universal aid for the use of traditional cutlery and other thin items such as razors or toothbrushes.",
+      p2: "Featuring a symmetrical geometric shape that allows for both right- and left-handed use, the object features a generous volume designed to offer comfort and immediate relief to the hand.",
+      p3: "Made entirely of ELASTO-1000, Nando ensures flexibility, hygienic use, and intuitive maintenance, making it fully dishwasher safe."
     },
     research: {
       title: "Research",
-      p1: "The development began with ergonomic studies of hockey players' puck-handling reach, sweeping motions, and typical clearance heights during rapid drills. Analyzing athletic feedback highlighted the necessity for variable angles and impact-resistant materials.",
-      p2: "Prototyping focused on mechanical interlocking joints that provide tactile and acoustic feedback upon assembly while maintaining absolute stability during high-speed stick impacts."
+      p1: "The preliminary investigation focused on the dynamics of the palmar grip and the ergonomic limitations imposed by micromotor disabilities. By analyzing pressure points and the pain resulting from forced fist closure, the research highlighted the need for a large and soft contact surface.",
+      p2: "The project's turning point lies in its parametric design approach: through digital mapping and scanning of the hand's anthropometric parameters, the system allows for the generation of a personalized configuration tailored to the specific needs of each user."
     },
     design: {
       title: "Design",
-      p1: "Snake’s aesthetic and structural language is defined by clean, aerodynamic lines and high-contrast color accents optimized for visibility under various lighting conditions.",
-      p2: "The modular joints utilize a robust snap-fit mechanism engineered specifically for rapid assembly and disassembly without tools, ensuring maximum field adaptability.",
-      p3: "Every component is optimized for additive manufacturing and durable polymer production, balancing weight reduction with extreme resistance to repetitive mechanical stress and harsh weather conditions."
+      p1: "Nando’s morphological configuration responds to precise functional constraints through simple, sinuous lines. Its generous volume facilitates palmar grasp, significantly reducing the required muscular effort, while a calibrated lateral protrusion ensures hand stability during use.",
+      p2: "Internally, the gripping architecture is engineered to flex and mechanically adapt to cutlery of various shapes and thicknesses, securing them firmly in place. This complex, adaptable geometry is explicitly optimized for additive manufacturing, leveraging 3D printing to achieve the necessary structural compliance.",
+      p3: "From a tactile perspective, the surface features a granular texture to maximize friction and prevent slippage. While the curated color palette ensures seamless integration into domestic environments, Nando’s versatility extends into public and dining spaces. By acting as a portable, hygienic interface, it eliminates the ergonomic barriers of standard public tableware, offering a discrete and independent solution that removes the need to carry complex or soiled personal utensils."
     },
     technical: {
       title: "Skills & Technical Insights",
-      p1: "Snake bridges the gap between digital prototyping and athletic performance equipment, demonstrating how parametric modularity can elevate sports training tools.",
-      p2: "Presented at the prestigious Lagazuoi WIMA awards, the project underscores the integration of advanced manufacturing techniques and user-centered sports equipment engineering."
+      p1: "The combination of digital manufacturing and inclusive design can solve complex problems through simple gestures. Nando redefines the concept of accessibility, restoring complete autonomy and safety during mealtimes to those with reduced mobility.",
+      p2: "Thanks to the flexible production of the parametric model, the device overcomes the limitations of mass-produced industrial products, offering a hygienic, long-lasting solution tailored to the unique needs of each individual."
     },
     cta: {
       title: "What's next?",
@@ -63,42 +63,42 @@ const content = {
     }
   },
   it: {
-    title: "SNAKE",
-    subtitle: "Allenatore per il controllo del bastone da hockey",
+    title: "NANDO",
+    subtitle: "Impugnatura iperplastica per posate",
     meta: {
       teamLabel: "Designer",
       yearLabel: "Anno",
       yearVal: "2026",
-      awardLabel: "Premio / Contesto",
-      awardVal: "Premio Lagazuoi WIMA & Attrezzatura Sportiva"
+      awardLabel: "Contesto",
+      awardVal: "Design Inclusivo & Ausili Parametrici"
     },
     overview: {
       title: "Overview",
       subtitle: "Sfida progettuale",
-      p1: "Nell'hockey moderno su ghiaccio e in linea, la precisione nel controllo del puck, la coordinazione e la velocità di reazione sono fattori determinanti per la performance. I tradizionali attrezzi di allenamento risultano spesso rigidi, ingombranti o limitati a geometrie fisse, incapaci di replicare la natura dinamica e imprevedibile delle situazioni di gioco.",
-      p2: "La sfida progettuale è consistita nel creare uno strumento di allenamento modulare e adattabile, capace di stimolare atleti di ogni livello coniugando durabilità e riconfigurabilità intuitiva."
+      p1: "Per le persone con patologie come l'osteoartrite o con una ridotta forza muscolare agli arti superiori, svolgere attività quotidiane come mangiare può rappresentare una sfida complessa. Le posate tradizionali richiedono una presa salda e un controllo motorio fine; quando la capacità di stringere il pugno manca o causa disagio, gli utensili tendono a scivolare e muoversi in modo incontrollato, cadendo frequentemente.",
+      p2: "La sfida progettuale è stata quella di trasformare uno strumento quotidiano standardizzato in un sistema inclusivo capace di compensare i deficit di presa senza compromettere l'estetica dell'oggetto."
     },
     solution: {
       title: "Solution",
-      p1: "Snake è un innovativo allenatore modulare per l'hockey, progettato per adattarsi a diverse routine di allenamento e configurazioni spaziali.",
-      p2: "Caratterizzato da segmenti modulari interconnessi, il sistema permette ad atleti e allenatori di modificarne rapidamente il layout, creando percorsi a ostacoli personalizzati, lineari o a zigzag.",
-      p3: "Progettato per ambienti agonistici ad alto impatto, Snake bilancia rigidità strutturale e leggerezza, garantendo un'installazione agevole sia su ghiaccio che a secco."
+      p1: "Nando è un concept per un'impugnatura iperplastica, flessibile e adattabile, progettata come ausilio universale per l'uso di posate tradizionali e altri oggetti sottili come rasoi o spazzolini da denti.",
+      p2: "Caratterizzato da una forma geometrica simmetrica che consente l'uso sia con la mano destra che con la sinistra, l'oggetto presenta un volume generoso studiato per offrire comfort e sollievo immediato alla mano.",
+      p3: "Realizzato interamente in ELASTO-1000, Nando garantisce flessibilità, un utilizzo igienico e una manutenzione intuitiva, risultando completamente lavabile in lavastoviglie."
     },
     research: {
       title: "Research",
-      p1: "Lo sviluppo è iniziato con studi ergonomici sull'ampiezza d'azione dei giocatori di hockey, sui movimenti di spazzata e sulle altezze di passaggio durante gli esercizi rapidi. L'analisi del feedback degli atleti ha evidenziato la necessità di angoli variabili e materiali resistenti agli urti.",
-      p2: "La prototipazione si è concentrata su giunti a incastro meccanico che offrono un feedback tattile e acustico durante l'assemblaggio, mantenendo una stabilità assoluta durante gli impatti ad alta velocità."
+      p1: "L'indagine preliminare si è concentrata sulle dinamiche della presa palmare e sui limiti ergonomici imposti dalle disabilità micromotorie. Analizzando i punti di pressione e il dolore derivante dalla chiusura forzata del pugno, la ricerca ha evidenziato la necessità di un'ampia e morbida superficie di contatto.",
+      p2: "Il punto di svolta del progetto risiede nel suo approccio di design parametrico: attraverso la mappatura digitale e la scansione dei parametri antropometrici della mano, il sistema consente di generare una configurazione personalizzata e su misura per le esigenze specifiche di ciascun utente."
     },
     design: {
       title: "Design",
-      p1: "Il linguaggio estetico e strutturale di Snake è definito da linee pulite e aerodinamiche, con accenti cromatici ad alto contrasto ottimizzati per la visibilità in diverse condizioni di luce.",
-      p2: "I giunti modulari utilizzano un robusto meccanismo a scatto ingegnerizzato appositamente per un montaggio e smontaggio rapido senza attrezzi, garantendo la massima adattabilità sul campo.",
-      p3: "Ogni componente è ottimizzato per la produzione additiva e polimeri durevoli, bilanciando la riduzione del peso con un'estrema resistenza agli stress meccanici ripetuti e alle condizioni atmosferiche avverse."
+      p1: "La configurazione morfologica di Nando risponde a precisi vincoli funzionali attraverso linee semplici e sinuose. Il suo volume generoso facilita la presa palmare, riducendo significativamente lo sforzo muscolare richiesto, mentre una sporgenza laterale calibrata assicura la stabilità della mano durante l'uso.",
+      p2: "All'interno, l'architettura di serraggio è ingegnerizzata per flettersi e adattarsi meccanicamente a posate di varie forme e spessori, bloccandole saldamente in posizione. Questa geometria complessa e adattabile è esplicitamente ottimizzata per la produzione additiva, sfruttando la stampa 3D per ottenere la cedevolezza strutturale necessaria.",
+      p3: "Dal punto di vista tattile, la superficie presenta una texture granulare per massimizzare l'attrito e prevenire lo scivolamento. Sebbene la palette cromatica curata ne assicuri un'integrazione armoniosa negli ambienti domestici, la versatilità di Nando si estende anche agli spazi pubblici e di ristorazione. Agendo come un'interfaccia portatile e igienica, elimina le barriere ergonomiche delle posate standard, offrendo una soluzione discreta e indipendente che evita la necessità di trasportare utensili personali complessi o sporchi."
     },
     technical: {
       title: "Skills & Technical Insights",
-      p1: "Snake unisce la prototipazione digitale e le attrezzature per la performance atletica, dimostrando come la modularità parametrica possa elevare gli strumenti di allenamento sportivo.",
-      p2: "Presentato al prestigioso premio Lagazuoi WIMA, il progetto sottolinea l'integrazione di tecniche di produzione avanzate e ingegneria sportiva centrata sull'utente."
+      p1: "La combinazione di produzione digitale e design inclusivo può risolvere problemi complessi attraverso semplici gesti. Nando ridefinisce il concetto di accessibilità, restituendo completa autonomia e sicurezza durante i pasti a chi ha una mobilità ridotta.",
+      p2: "Grazie alla produzione flessibile del modello parametrico, il dispositivo supera i limiti dei prodotti industriali di massa, offrendo una soluzione igienica, duratura e personalizzata per le esigenze uniche di ogni individuo."
     },
     cta: {
       title: "What's next?",
@@ -108,9 +108,8 @@ const content = {
   }
 };
 
-export default function Snake({ heroFit = 'cover' }: SnakeProps) {
+export default function Nando({ heroFit = 'cover' }: NandoProps) {
   const [language, setLanguage] = useState<'it' | 'en'>('en');
-  const [hoveredProject, setHoveredProject] = useState<typeof PROJECTS_LIST[0] | null>(null);
   const t = content[language];
 
   useEffect(() => {
@@ -279,7 +278,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           margin-bottom: 18px;
         }
 
-        /* FULL-BLEED GRID ROWS FOR SIDE-BY-SIDE SECTIONS */
+        /* FULL-BLEED GRID ROWS */
         .editorial-row-fullbleed {
           width: 100%;
           display: grid;
@@ -293,7 +292,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           height: 520px;
           overflow: hidden;
           background: #0d0d0d;
-          border-radius: 0;
         }
 
         .editorial-row-fullbleed.row-img-left .row-text {
@@ -314,7 +312,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           height: 520px;
           overflow: hidden;
           background: #0d0d0d;
-          border-radius: 0;
         }
 
         .row-text h2 {
@@ -340,18 +337,16 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           object-position: center;
           display: block;
           transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-          border-radius: 0;
         }
 
         .row-media:hover img {
           transform: scale(1.03);
         }
 
-        /* 100% COMPOSITE GRID BOX */
+        /* COMPOSITE GRID BOX */
         .fullbleed-composite {
           width: 100%;
           background: #070707;
-          padding: 0;
         }
 
         .media-composite-box {
@@ -359,8 +354,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           display: flex;
           flex-direction: column;
           gap: 12px;
-          padding: 0;
-          margin: 0;
         }
 
         .composite-top {
@@ -368,7 +361,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           height: clamp(380px, 55vh, 600px);
           overflow: hidden;
           background: #0d0d0d;
-          border-radius: 0;
         }
 
         .composite-bottom {
@@ -383,7 +375,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           height: clamp(280px, 42vh, 400px);
           overflow: hidden;
           background: #0d0d0d;
-          border-radius: 0;
         }
 
         .media-composite-box img {
@@ -393,7 +384,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           object-position: center;
           display: block;
           transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-          border-radius: 0;
         }
 
         .media-composite-box img:hover {
@@ -418,103 +408,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           font-size: 1.05rem;
           line-height: 1.8;
           margin-bottom: 18px;
-        }
-
-        /* PROJECT NAVIGATOR */
-        .project-navigator {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          position: relative;
-          margin-top: 20px;
-        }
-
-        .dots-container {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          padding: 12px 24px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 40px;
-          backdrop-filter: blur(8px);
-        }
-
-        .dot-item {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background: #333333;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          padding: 0;
-          position: relative;
-        }
-
-        .dot-item:hover, .dot-item.active {
-          background: #ffffff;
-          transform: scale(1.3);
-          box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
-        }
-
-        .dot-item.active {
-          border: 2px solid #070707;
-        }
-
-        .project-preview-card {
-          position: absolute;
-          bottom: 60px;
-          width: 280px;
-          background: #111111;
-          border: 1px solid #262626;
-          border-radius: 0;
-          overflow: hidden;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-          pointer-events: none;
-          animation: fadeIn 0.25s ease-out forwards;
-          z-index: 100;
-        }
-
-        .preview-img-box {
-          width: 100%;
-          height: 160px;
-          overflow: hidden;
-          background: #000;
-        }
-
-        .preview-img-box img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-          border-radius: 0;
-        }
-
-        .preview-details {
-          padding: 12px 16px;
-          text-align: left;
-        }
-
-        .preview-details h4 {
-          font-size: 1.1rem;
-          font-weight: 800;
-          color: #ffffff;
-          margin: 0 0 4px 0;
-          letter-spacing: -0.5px;
-        }
-
-        .preview-details p {
-          font-size: 0.75rem;
-          color: #888888;
-          font-family: monospace;
-          margin: 0;
-          text-transform: uppercase;
-        }
-
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
         }
 
         /* REVEAL ANIMATIONS */
@@ -543,7 +436,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
         /* CTA SECTION */
         .project-cta {
           text-align: center;
-          padding-top: 40px;
+          padding-top: 20px;
         }
 
         .project-cta h2 {
@@ -561,9 +454,171 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           font-family: monospace;
           text-transform: uppercase;
           letter-spacing: 1.5px;
-          margin: 0 auto 24px;
+          margin: 0 auto 35px;
         }
 
+        /* DESKTOP NAVIGATOR (DOTS) */
+        .desktop-dots-nav-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 16px;
+          margin-bottom: 40px;
+        }
+
+        .desktop-dot-item {
+          position: relative;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #2a2a2a;
+          border: 1px solid #444444;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        .desktop-dot-item:hover {
+          background: #888888;
+          transform: scale(1.3);
+        }
+
+        .desktop-dot-item.active {
+          background: #ffffff;
+          border-color: #ffffff;
+          width: 32px;
+          border-radius: 20px;
+        }
+
+        .desktop-dot-item .dot-tooltip {
+          position: absolute;
+          bottom: 150%;
+          left: 50%;
+          transform: translateX(-50%) translateY(10px);
+          background: #111111;
+          border: 1px solid #333333;
+          padding: 6px 12px;
+          border-radius: 4px;
+          white-space: nowrap;
+          opacity: 0;
+          pointer-events: none;
+          transition: all 0.25s ease;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+          z-index: 10;
+        }
+
+        .desktop-dot-item .dot-tooltip span {
+          display: block;
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: #ffffff;
+        }
+
+        .desktop-dot-item:hover .dot-tooltip {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+
+        /* MOBILE CAROUSEL NAVIGATOR */
+        .mobile-nav-wrapper {
+          display: none;
+        }
+
+        .projects-carousel-container {
+          width: 100%;
+          position: relative;
+          margin-bottom: 35px;
+        }
+
+        .projects-scroll-strip {
+          display: flex;
+          gap: 14px;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          padding: 10px 4vw 20px 4vw;
+          margin-left: -4vw;
+          margin-right: -4vw;
+          width: calc(100% + 8vw);
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .projects-scroll-strip::-webkit-scrollbar {
+          display: none;
+        }
+
+        .carousel-card-item {
+          flex: 0 0 200px;
+          scroll-snap-align: center;
+          background: #0d0d0d;
+          border: 1px solid #1f1f1f;
+          text-decoration: none;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          text-align: left;
+          transition: border-color 0.2s ease;
+        }
+
+        .carousel-card-item:active {
+          border-color: #888888;
+        }
+
+        .carousel-card-item.active {
+          border-color: #ffffff;
+        }
+
+        .card-img-wrapper {
+          width: 100%;
+          height: 120px;
+          overflow: hidden;
+          background: #000000;
+          position: relative;
+        }
+
+        .card-img-wrapper img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .card-active-badge {
+          position: absolute;
+          top: 6px;
+          right: 6px;
+          background: #ffffff;
+          color: #000000;
+          font-size: 0.55rem;
+          font-family: monospace;
+          padding: 2px 5px;
+          font-weight: 700;
+        }
+
+        .card-content-wrapper {
+          padding: 12px 14px;
+        }
+
+        .card-content-wrapper h4 {
+          font-size: 0.9rem;
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0 0 4px 0;
+        }
+
+        .card-content-wrapper p {
+          font-size: 0.7rem;
+          color: #777777;
+          font-family: monospace;
+          margin: 0;
+          text-transform: uppercase;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        /* BUTTON PORTFOLIO */
         .cta-button {
           display: inline-block;
           padding: 14px 36px;
@@ -574,7 +629,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           transition: all 0.3s ease;
           letter-spacing: 0.8px;
           font-size: 0.82rem;
-          margin-top: 30px;
+          margin-top: 10px;
         }
 
         .cta-button:hover {
@@ -584,8 +639,16 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           transform: translateY(-2px);
         }
 
-        /* RESPONSIVE BREAKPOINTS */
+        /* BREAKPOINT RESPONSIVE */
         @media (max-width: 860px) {
+          .desktop-dots-nav-wrapper {
+            display: none;
+          }
+
+          .mobile-nav-wrapper {
+            display: block;
+          }
+
           .editorial-row-fullbleed {
             display: flex;
             flex-direction: column;
@@ -596,10 +659,25 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
             flex-direction: column-reverse;
           }
 
+          .hero-media-fullbleed {
+            height: auto;
+            aspect-ratio: 16 / 9;
+          }
+
+          .hero-media-fullbleed img {
+            object-fit: contain;
+          }
+
           .editorial-row-fullbleed.row-img-left .row-media,
           .editorial-row-fullbleed.row-img-right .row-media {
             width: 100%;
-            height: 380px;
+            height: auto;
+            aspect-ratio: 16 / 9;
+          }
+
+          .editorial-row-fullbleed.row-img-left .row-media img,
+          .editorial-row-fullbleed.row-img-right .row-media img {
+            object-fit: contain;
           }
 
           .editorial-row-fullbleed.row-img-left .row-text,
@@ -612,11 +690,21 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           }
 
           .composite-top {
-            height: 320px;
+            height: auto;
+            aspect-ratio: 16 / 9;
+          }
+
+          .composite-top img {
+            object-fit: contain;
           }
 
           .composite-square {
-            height: 250px;
+            height: auto;
+            aspect-ratio: 4 / 3;
+          }
+
+          .composite-square img {
+            object-fit: contain;
           }
 
           .editorial-divider {
@@ -637,8 +725,8 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
                 <span>{t.meta.teamLabel}</span>
                 <p>
                   Finco Matteo<br />
-                  Contato Chiara<br />
-                  Liani Valentina
+                  Stecco Dario<br />
+                  Vecoli Beatrice
                 </p>
               </div>
 
@@ -658,8 +746,8 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
         {/* HERO PRODUCT IMAGE (FULL BLEED) */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
           <img
-            src={SNAKE_IMAGE_URL}
-            alt="Snake hockey stickhandling trainer hero shot"
+            src={NANDO_IMAGE_URL}
+            alt="Nando hero product shot"
           />
         </section>
 
@@ -677,12 +765,12 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           <hr className="editorial-divider" />
         </div>
 
-        {/* ROW 1: SOLUTION (IMAGE LEFT FULL BLEED) */}
+        {/* ROW 1: SOLUTION */}
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src={SNAKE_IMAGE_URL}
-              alt="Snake solution overview"
+              src={NANDO_IMAGE_URL}
+              alt="Nando solution view"
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -697,7 +785,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           <hr className="editorial-divider" />
         </div>
 
-        {/* ROW 2: RESEARCH (IMAGE RIGHT FULL BLEED) */}
+        {/* ROW 2: RESEARCH */}
         <section className="editorial-row-fullbleed row-img-right">
           <div className="row-text reveal-editorial reveal-from-left">
             <h2>{t.research.title}</h2>
@@ -706,8 +794,8 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
             <img
-              src={SNAKE_IMAGE_URL}
-              alt="Snake research and ergonomic analysis"
+              src={NANDO_IMAGE_URL}
+              alt="Nando ergonomic research and palmar grasp analysis"
             />
           </div>
         </section>
@@ -716,12 +804,12 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           <hr className="editorial-divider" />
         </div>
 
-        {/* ROW 3: DESIGN (IMAGE LEFT FULL BLEED) */}
+        {/* ROW 3: DESIGN */}
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src={SNAKE_IMAGE_URL}
-              alt="Snake modular connection detail"
+              src={NANDO_IMAGE_URL}
+              alt="Nando design detail and internal structure"
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -736,26 +824,26 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           <hr className="editorial-divider" />
         </div>
 
-        {/* COMPOSITE GRID BOX (FULL BLEED) */}
+        {/* COMPOSITE GRID BOX */}
         <section className="fullbleed-composite reveal-editorial reveal-from-left">
           <div className="media-composite-box">
             <div className="composite-top">
               <img
-                src={SNAKE_IMAGE_URL}
-                alt="Snake training context layout"
+                src={NANDO_IMAGE_URL}
+                alt="Nando wide overview"
               />
             </div>
             <div className="composite-bottom">
               <div className="composite-square">
                 <img
-                  src={SNAKE_IMAGE_URL}
-                  alt="Snake joint mechanism detail"
+                  src={NANDO_IMAGE_URL}
+                  alt="Nando detail view 1"
                 />
               </div>
               <div className="composite-square">
                 <img
-                  src={SNAKE_IMAGE_URL}
-                  alt="Snake material texture detail"
+                  src={NANDO_IMAGE_URL}
+                  alt="Nando detail view 2"
                 />
               </div>
             </div>
@@ -765,7 +853,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
         <div className="editorial-content">
           <hr className="editorial-divider" />
 
-          {/* TECHNICAL INSIGHTS / SKILLS */}
+          {/* TECHNICAL INSIGHTS */}
           <section className="technical-section reveal-editorial reveal-from-left">
             <h2>{t.technical.title}</h2>
             <p>{t.technical.p1}</p>
@@ -774,35 +862,54 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
 
           <hr className="editorial-divider" />
 
-          {/* NEXT PROJECT / CTA */}
+          {/* NEXT PROJECT / CTA SECTION */}
           <section className="project-cta reveal-editorial reveal-from-left">
             <h2>{t.cta.title}</h2>
             <p className="cta-subtitle">{t.cta.subtitle}</p>
 
-            <div className="project-navigator">
-              {hoveredProject && (
-                <div className="project-preview-card">
-                  <div className="preview-img-box">
-                    <img src={hoveredProject.imageUrl} alt={hoveredProject.title} />
-                  </div>
-                  <div className="preview-details">
-                    <h4>{hoveredProject.title}</h4>
-                    <p>{hoveredProject.subtitle}</p>
-                  </div>
-                </div>
-              )}
-
-              <div className="dots-container">
-                {PROJECTS_LIST.map((proj) => (
-                  <button
+            {/* DESKTOP DOTS NAVIGATION */}
+            <div className="desktop-dots-nav-wrapper">
+              {PROJECTS_LIST.map((proj) => {
+                const isCurrent = proj.id === 'nando';
+                return (
+                  <a
                     key={proj.id}
-                    className={`dot-item ${proj.id === 'snake' ? 'active' : ''}`}
-                    onMouseEnter={() => setHoveredProject(proj)}
-                    onMouseLeave={() => setHoveredProject(null)}
-                    onClick={() => window.location.href = proj.path}
-                    aria-label={`Vai al progetto ${proj.title}`}
-                  />
-                ))}
+                    href={proj.path}
+                    className={`desktop-dot-item ${isCurrent ? 'active' : ''}`}
+                    aria-label={proj.title}
+                  >
+                    <div className="dot-tooltip">
+                      <span>{proj.title}</span>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+
+            {/* MOBILE CAROUSEL NAVIGATION */}
+            <div className="mobile-nav-wrapper">
+              <div className="projects-carousel-container">
+                <div className="projects-scroll-strip">
+                  {PROJECTS_LIST.map((proj) => {
+                    const isCurrent = proj.id === 'nando';
+                    return (
+                      <a
+                        key={proj.id}
+                        href={proj.path}
+                        className={`carousel-card-item ${isCurrent ? 'active' : ''}`}
+                      >
+                        <div className="card-img-wrapper">
+                          <img src={proj.imageUrl} alt={proj.title} />
+                          {isCurrent && <span className="card-active-badge">NOW</span>}
+                        </div>
+                        <div className="card-content-wrapper">
+                          <h4>{proj.title}</h4>
+                          <p>{proj.subtitle}</p>
+                        </div>
+                      </a>
+                    );
+                  })}
+                </div>
               </div>
             </div>
 
