@@ -43,7 +43,7 @@ const projectList: ProjectStep[] = [
     slug: 'archivia',
     title: { it: 'Archivia', en: 'Archivia' },
     subtitle: {
-      it: 'Portapenne ispirato alla memoria digitale',
+      it: 'Portapenne ispirato a una chiavetta USB',
       en: 'USB flash drive inspired pen holder'
     },
     year: '2026',
