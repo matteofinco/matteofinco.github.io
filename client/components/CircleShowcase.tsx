@@ -202,39 +202,41 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
         </div>
       </div>
 
-      {/* VISTA MOBILE (SEQUENZIALE LINEARE) */}
-      <div className="showcase-mobile-list">
-        {steps.map((st) => (
-          <div key={st.id} className="mobile-showcase-card">
-            <div className="mobile-img-wrapper">
-              <img src={st.img} alt={st.title[currentLang]} className="mobile-card-img" />
-              <div className="mobile-category-tag">
-                {st.id} // {st.category[currentLang]} // {st.year}
-              </div>
-            </div>
-
-            <div className="mobile-card-body">
-              <h2 className="mobile-main-title">{st.title[currentLang]}</h2>
-              <div className="mobile-subtitle-text">{st.subtitle[currentLang]}</div>
-              <p className="mobile-desc-text">{st.desc[currentLang]}</p>
-
-              <div className="mobile-meta-grid">
-                <div className="meta-item">
-                  <span className="label">{labels[currentLang].approach}</span>
-                  <span className="value">{st.tools[currentLang]}</span>
-                </div>
-                <div className="meta-item">
-                  <span className="label">{labels[currentLang].materials}</span>
-                  <span className="value">{st.material[currentLang]}</span>
+      {/* VISTA MOBILE (CAROSELLO ORIZZONTALE) */}
+      <div className="showcase-mobile-carousel">
+        <div className="carousel-track">
+          {steps.map((st) => (
+            <div key={st.id} className="mobile-showcase-card">
+              <div className="mobile-img-wrapper">
+                <img src={st.img} alt={st.title[currentLang]} className="mobile-card-img" />
+                <div className="mobile-category-tag">
+                  {st.id} // {st.category[currentLang]} // {st.year}
                 </div>
               </div>
 
-              <a href={st.link} className="mobile-action-link">
-                {labels[currentLang].explore} →
-              </a>
+              <div className="mobile-card-body">
+                <h2 className="mobile-main-title">{st.title[currentLang]}</h2>
+                <div className="mobile-subtitle-text">{st.subtitle[currentLang]}</div>
+                <p className="mobile-desc-text">{st.desc[currentLang]}</p>
+
+                <div className="mobile-meta-grid">
+                  <div className="meta-item">
+                    <span className="label">{labels[currentLang].approach}</span>
+                    <span className="value">{st.tools[currentLang]}</span>
+                  </div>
+                  <div className="meta-item">
+                    <span className="label">{labels[currentLang].materials}</span>
+                    <span className="value">{st.material[currentLang]}</span>
+                  </div>
+                </div>
+
+                <a href={st.link} className="mobile-action-link">
+                  {labels[currentLang].explore} →
+                </a>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       <style>{`
@@ -252,7 +254,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           width: 100%;
         }
 
-        .showcase-mobile-list {
+        .showcase-mobile-carousel {
           display: none;
         }
 
@@ -590,26 +592,43 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           transform: translateY(-2px);
         }
 
-        /* --- STILI RESPONSIVE MOBILE (< 1024px) --- */
+        /* --- STILI RESPONSIVE MOBILE (< 1024px): CAROSELLO ORIZZONTALE --- */
         @media (max-width: 1024px) {
           .showcase-desktop-wrapper {
             display: none !important;
           }
 
-          .showcase-mobile-list {
+          .showcase-mobile-carousel {
+            display: block;
+            width: 100%;
+            padding: 40px 0 60px 0;
+            overflow: hidden;
+          }
+
+          .carousel-track {
             display: flex;
-            flex-direction: column;
-            gap: 50px;
-            padding: 40px 6vw;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 0 6vw;
+            scrollbar-width: none; /* Nasconde la scrollbar su Firefox */
+          }
+
+          .carousel-track::-webkit-scrollbar {
+            display: none; /* Nasconde la scrollbar su Chrome/Safari */
           }
 
           .mobile-showcase-card {
+            flex: 0 0 85vw;
+            max-width: 380px;
             display: flex;
             flex-direction: column;
             background: #0b0b0b;
             border: 1px solid #1a1a1a;
             border-radius: 4px;
             overflow: hidden;
+            scroll-snap-align: center;
           }
 
           .mobile-img-wrapper {
