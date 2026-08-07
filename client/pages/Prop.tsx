@@ -804,22 +804,7 @@ export default function Prop({ heroFit = 'cover' }: PropProps) {
           <hr className="editorial-divider" />
         </div>
 
-        {/* COMPOSITE GRID BOX (FULL BLEED) */}
-        <section className="fullbleed-composite reveal-editorial reveal-from-left">
-          <div className="media-composite-box">
-            <div className="composite-top">
-              <img src={IMAGES.compositeTop} alt="Prop assembly" />
-            </div>
-            <div className="composite-bottom">
-              <div className="composite-square">
-                <img src={IMAGES.compositeBottomLeft} alt="Prop detail" />
-              </div>
-              <div className="composite-square">
-                <img src={IMAGES.compositeBottomRight} alt="Prop detail" />
-              </div>
-            </div>
-          </div>
-        </section>
+       
 
         <div className="editorial-content">
           <hr className="editorial-divider" />
