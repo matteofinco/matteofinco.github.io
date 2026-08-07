@@ -216,7 +216,7 @@ export default function About() {
       <div className="about-fullbleed-wrapper">
         <section className="about-row media-left">
           <div className="about-media reveal-editorial reveal-from-left">
-            <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1600&q=80" alt="Studio workspace" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F11c931d1f0994238986b7122f30709a0" alt="Studio workspace" />
           </div>
           <div className="about-text reveal-editorial reveal-from-right">
             <h2>{t.curiosityTitle}</h2>
@@ -238,7 +238,7 @@ export default function About() {
 
         <section className="about-row media-left">
           <div className="about-media reveal-editorial reveal-from-left">
-            <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1600&q=80" alt="Product research" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F48827287d32f4f9d8b7ec3376f37c7e8" alt="Product research" />
           </div>
           <div className="about-text reveal-editorial reveal-from-right">
             <h2>{t.learningTitle}</h2>
@@ -253,7 +253,7 @@ export default function About() {
             <p>{t.digitalText2}</p>
           </div>
           <div className="about-media reveal-editorial reveal-from-right">
-            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1600&q=80" alt="Materials and prototyping" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fbf54c799fe944d5b8dd071d09cc0d178" alt="Materials and prototyping" />
           </div>
         </section>
 
