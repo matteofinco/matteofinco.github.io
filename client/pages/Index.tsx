@@ -214,7 +214,10 @@ const translations = {
     whatsNextSub: "Sempre aperto a nuove collaborazioni e progetti.",
     aboutBtn: "ABOUT ME",
     cvBtn: "CURRICULUM VITAE",
-    infoText: "Info"
+    infoText: "Info",
+    projectsBadge: "PORTFOLIO",
+    projectsTitle: "PROJECTS",
+    projectsSub: "Una selezione di lavori tra prodotto, meccatronica e design di servizio."
   },
   en: {
     sec1Title: "Matteo Finco",
@@ -225,7 +228,10 @@ const translations = {
     whatsNextSub: "Always open to new collaborations & projects.",
     aboutBtn: "ABOUT ME",
     cvBtn: "CURRICULUM VITAE",
-    infoText: "About"
+    infoText: "About",
+    projectsBadge: "PORTFOLIO",
+    projectsTitle: "PROJECTS",
+    projectsSub: "A selection of works spanning product design, mechatronics and service design."
   }
 };
 
@@ -327,6 +333,7 @@ export default function Index() {
 
         html {
           scroll-behavior: smooth;
+          scroll-snap-type: y proximity;
         }
 
         body {
@@ -361,9 +368,53 @@ export default function Index() {
           z-index: 5;
         }
 
+        /* HEADER SEZIONE PROGETTI */
+        .projects-header-section {
+          padding: 100px 6vw 40px;
+          text-align: center;
+          position: relative;
+          z-index: 4;
+        }
+
+        .projects-badge {
+          display: inline-block;
+          font-size: 0.75rem;
+          font-weight: 700;
+          letter-spacing: 3px;
+          color: #888888;
+          text-transform: uppercase;
+          margin-bottom: 12px;
+        }
+
+        .projects-section-title {
+          font-size: clamp(2.5rem, 7vw, 5.5rem);
+          font-weight: 900;
+          color: #ffffff;
+          letter-spacing: -2px;
+          text-transform: uppercase;
+          line-height: 1;
+          margin-bottom: 16px;
+        }
+
+        .projects-section-sub {
+          font-size: 1.15rem;
+          color: #888888;
+          max-width: 580px;
+          margin: 0 auto;
+          line-height: 1.6;
+        }
+
+        /* CAROSELLO PROGETTI CON EFFETTO CALAMITA / MAGNET SNAP */
         .showcase-wrapper {
           position: relative;
           z-index: 2;
+          scroll-snap-type: y mandatory;
+        }
+
+        .showcase-wrapper .process-card,
+        .showcase-wrapper .circle-showcase-container {
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
         }
 
         .whats-next-wrapper {
@@ -444,14 +495,28 @@ export default function Index() {
           transform: translateY(-2px);
         }
 
-        /* NASCONDE LE DESCRIZIONI ESTESE DEI PROGETTI DA SMARTPHONE */
+        /* REGOLAZIONI MOBILE / SMARTPHONE */
         @media (max-width: 1024px) {
+          /* RIMUOVE LA PRIMA FOTO (HERO / INTRO) IN VERSIONE SMARTPHONE */
+          #hero-section img,
+          .hero img,
+          .hero-image,
+          #intro-transition img:first-of-type,
+          .intro-section img:first-of-type {
+            display: none !important;
+          }
+
+          /* NASCONDE LE DESCRIZIONI ESTESE DEI PROGETTI DA SMARTPHONE */
           .showcase-wrapper p:not(.subtitle):not(.category),
           .circle-showcase p,
           .project-card-desc {
             display: none !important;
           }
           
+          .projects-header-section { padding: 60px 6vw 20px; }
+          .projects-section-title { font-size: clamp(2rem, 8vw, 3.5rem); }
+          .projects-section-sub { font-size: 1rem; }
+
           .section-divider-gap { height: 60px; }
           .whats-next-section { padding: 60px 6vw 50px; }
           .whats-next-section h2 { font-size: clamp(1.8rem, 7.5vw, 3.8rem); }
@@ -482,6 +547,14 @@ export default function Index() {
 
       <div className="section-divider-gap" />
 
+      {/* TITOLO PROJECTS SEZIONE PROGETTI */}
+      <div className="projects-header-section reveal-editorial">
+        <span className="projects-badge">{t.projectsBadge}</span>
+        <h2 className="projects-section-title">{t.projectsTitle}</h2>
+        <p className="projects-section-sub">{t.projectsSub}</p>
+      </div>
+
+      {/* CIRCLE SHOWCASE CON EFFETTO CALAMITA */}
       <div className="showcase-wrapper">
         <CircleShowcase steps={projectList} activeStep={activeStep} lang={lang} />
       </div>
