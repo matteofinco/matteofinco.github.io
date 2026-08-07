@@ -734,7 +734,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
         {/* HERO PRODUCT IMAGE (FULL BLEED) */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
           <img
-            src={SNAKE_IMAGE_URL}
+            src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fd1ecc3c7a4a944519dd5d81fb7bca591"
             alt="Snake hockey stickhandling trainer hero shot"
           />
         </section>
