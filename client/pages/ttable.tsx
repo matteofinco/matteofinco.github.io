@@ -800,7 +800,7 @@ export default function TTable({ heroFit = 'cover' }: TTableProps) {
         {/* ROW 3: DESIGN (IMAGE LEFT FULL BLEED) */}
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
-            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F69c8dc7e6cd34d41be491c894af5bf74" alt="T-Table design" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fac344dead84c457f9148a80a2f60a001" alt="T-Table design" />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
             <h2>{t.design.title}</h2>
