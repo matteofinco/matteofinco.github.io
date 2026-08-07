@@ -737,7 +737,7 @@ export default function Prop({ heroFit = 'cover' }: PropProps) {
 
         {/* HERO PRODUCT IMAGE (FULL BLEED) */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
-          <img src={IMAGES.hero} alt="Prop hero" />
+          <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2fc11284345345e4adbe50568f458dc4" alt="Prop hero" />
         </section>
 
         <div className="editorial-content">
@@ -757,7 +757,7 @@ export default function Prop({ heroFit = 'cover' }: PropProps) {
         {/* ROW 1: SOLUTION (IMAGE LEFT FULL BLEED) */}
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
-            <img src={IMAGES.solution} alt="Prop solution" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F3d148d3c4ddf42d38fd262595c21d673" alt="Prop solution" />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
             <h2>{t.solution.title}</h2>
