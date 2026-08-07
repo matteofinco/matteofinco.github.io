@@ -211,7 +211,7 @@ const translations = {
     sec1P: "Mi piace capire come funzionano le cose. Ogni progetto nasce dall'osservazione del comportamento delle persone e dalla curiosità verso i meccanismi che rendono un prodotto utile, intuitivo e significativo. Per me progettare significa trasformare un problema reale in un'esperienza concreta.",
     sec2P1: "Lavoro passando continuamente tra ricerca, modellazione CAD, prototipazione rapida e test fisici. Credo che le idee migliori emergano quando possono essere costruite, smontate, migliorate e rimesse alla prova.",
     sec2P2: "Sono interessato al design industriale, ai sistemi interattivi e alla fabbricazione digitale, con particolare attenzione alla semplicità costruttiva, alla sostenibilità e alla qualità dell'esperienza d'uso.",
-    whatsNextSub: "Sempre aperto a nuove collaborazioni, progetti di design industriale e sperimentazioni di fabbricazione digitale.",
+    whatsNextSub: "Sempre aperto a nuove collaborazioni, progetti di design.",
     aboutBtn: "ABOUT ME",
     cvBtn: "CURRICULUM VITAE",
     infoText: "Info"
@@ -222,7 +222,7 @@ const translations = {
     sec1P: "I like understanding how things work. Every project starts by observing people and questioning the mechanisms that make a product useful, intuitive and meaningful. For me, design is the process of turning real problems into tangible experiences.",
     sec2P1: "My workflow moves continuously between research, CAD modelling, rapid prototyping and physical testing. I believe the best ideas emerge when they can be built, taken apart, refined and tested again.",
     sec2P2: "I'm particularly interested in industrial design, interactive systems and digital fabrication, with a focus on simplicity, sustainability and thoughtful user experiences.",
-    whatsNextSub: "Always open to new collaborations, industrial design projects, and digital fabrication experiments.",
+    whatsNextSub: "Always open to new collaborations, design projects.",
     aboutBtn: "ABOUT ME",
     cvBtn: "CURRICULUM VITAE",
     infoText: "About"
@@ -243,7 +243,6 @@ export default function Index() {
     let hasMovedToSticky = false;
 
     const handleWheel = (e: WheelEvent) => {
-      // Attiva il blocco wheel SOLO su Desktop (> 1024px)
       if (window.innerWidth < 1024) return;
       if (hasMovedToSticky) return;
 
@@ -384,12 +383,13 @@ export default function Index() {
         }
 
         .whats-next-section h2 {
-          font-size: clamp(3.2rem, 7.5vw, 6.5rem);
+          font-size: clamp(2rem, 6.5vw, 6.2rem);
           font-weight: 900;
           color: #ffffff;
           letter-spacing: -2px;
           margin-bottom: 20px;
           line-height: 1;
+          white-space: nowrap;
         }
         
         .question-mark-styled {
@@ -444,10 +444,17 @@ export default function Index() {
           transform: translateY(-2px);
         }
 
+        /* NASCONDE LE DESCRIZIONI ESTESE DEI PROGETTI DA SMARTPHONE */
         @media (max-width: 1024px) {
+          .showcase-wrapper p:not(.subtitle):not(.category),
+          .circle-showcase p,
+          .project-card-desc {
+            display: none !important;
+          }
+          
           .section-divider-gap { height: 60px; }
           .whats-next-section { padding: 60px 6vw 50px; }
-          .whats-next-section h2 { font-size: 2.8rem; }
+          .whats-next-section h2 { font-size: clamp(1.8rem, 7.5vw, 3.8rem); }
           .whats-next-section p.sub-lead { font-size: 1.05rem; margin-bottom: 35px; }
           .footer-actions { width: 100%; flex-direction: column; gap: 12px; }
           .btn-footer-link, .btn-footer-outline { text-align: center; width: 100%; padding: 14px 20px; }
@@ -455,18 +462,18 @@ export default function Index() {
       `}</style>
 
       {/* HEADER */}
-      <Header 
-        currentLang={lang} 
-        onLanguageChange={handleLanguageChange} 
-        showName={showNavName} 
+      <Header
+        currentLang={lang}
+        onLanguageChange={handleLanguageChange}
+        showName={showNavName}
       />
-      
+
       <Hero />
-      
+
       <div id="intro-transition">
         <IntroSection t={t} />
       </div>
-      
+
       <div className="section-divider-gap" />
 
       <div id="sticky-transition">
