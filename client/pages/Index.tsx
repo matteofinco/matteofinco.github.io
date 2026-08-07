@@ -11,25 +11,25 @@ const projectList: ProjectStep[] = [
     slug: 'snake',
     title: { it: 'Snake', en: 'Snake' },
     subtitle: {
-      it: 'Sistema interattivo per l’allenamento hockey',
+      it: 'Sistema interattivo per l’allenamento nell’hockey',
       en: 'Interactive hockey training system'
     },
     category: {
-      it: 'PRODOTTO SPORTIVO',
-      en: 'SPORT PRODUCT'
+      it: 'SPORTS PRODUCT',
+      en: 'SPORTS PRODUCT'
     },
     tools: {
-      it: 'Design di prodotto / Modellazione CAD / Meccatronica / Prototipazione',
-      en: 'Product Design / CAD Modelling / Mechatronics / Prototyping'
+      it: 'Product Design / Mechanical Design / Electronics / Prototyping',
+      en: 'Product Design / Mechanical Design / Electronics / Prototyping'
     },
     material: {
-      it: 'Sensori laser / Feedback RGB / Sistema meccanico modulare',
-      en: 'Laser Sensors / RGB Feedback / Modular Mechanical System'
+      it: 'Laser Sensors / RGB LEDs / Modular Aluminium Structure',
+      en: 'Laser Sensors / RGB LEDs / Modular Aluminium Structure'
     },
     year: '2026',
     desc: {
-      it: 'Sistema di allenamento interattivo sviluppato per giocatori di hockey su ghiaccio e inline. Snake combina componenti meccanici modulari, sensori e feedback luminosi in tempo reale per creare esercizi adattivi focalizzati sul controllo del disco, velocità di reazione e agilità cognitiva.',
-      en: 'Interactive training system developed for inline and ice hockey players. Snake combines modular mechanical components, sensors and real-time feedback to create adaptive exercises focused on puck control, reaction speed and cognitive agility.'
+      it: 'Snake è un sistema di allenamento interattivo pensato per hockey su ghiaccio e inline. Sensori, feedback luminosi e moduli riconfigurabili permettono di creare esercizi che allenano controllo del disco, tempi di reazione e capacità decisionale.',
+      en: 'Snake is an interactive training system for ice and inline hockey. Sensors, light feedback and configurable modules create exercises that improve puck control, reaction time and decision-making.'
     },
     link: '/snake',
     img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fe5a19d0f69c144558eb6c865747a9536'
@@ -43,21 +43,21 @@ const projectList: ProjectStep[] = [
       en: 'USB flash drive inspired pen holder'
     },
     category: {
-      it: 'DESIGN DI PRODOTTO & PRODUZIONE INDUSTRIALE',
-      en: 'PRODUCT DESIGN & INDUSTRIAL PRODUCTION'
+      it: 'PRODUCT DESIGN',
+      en: 'PRODUCT DESIGN'
     },
     tools: {
-      it: 'Design industriale / Stampaggio a iniezione / Connessioni snap-fit',
-      en: 'Industrial Design / Injection Moulding / Snap-fit Engineering'
+      it: 'Industrial Design / Injection Moulding / Mechanical Assembly',
+      en: 'Industrial Design / Injection Moulding / Mechanical Assembly'
     },
     material: {
-      it: 'Polimero riciclato / Costruzione monomateriale / Assemblaggio meccanico',
-      en: 'Recycled Polymer / Monomaterial Construction / Mechanical Assembly'
+      it: 'Recycled Polymer / Snap-fit Joints / Monomaterial Construction',
+      en: 'Recycled Polymer / Snap-fit Joints / Monomaterial Construction'
     },
     year: '2026',
     desc: {
-      it: 'Organizzatore da scrivania sviluppato per il concorso PLEIADES con Ewikon, Arburg e Uniform. Archivia traduce la logica della memoria USB in un oggetto fisico caratterizzato da connessioni meccaniche integrate e semplicità costruttiva.',
-      en: 'Desk organizer developed for the PLEIADES design competition with Ewikon, Arburg and Uniform. Archivia translates the logic of digital storage devices into a physical object assembled through integrated mechanical connections.'
+      it: 'Portapenne sviluppato per il concorso PLEIADES con Ewikon, Arburg e Uniform. Il progetto reinterpreta la memoria USB trasformandone il principio di funzionamento in un oggetto da scrivania semplice da assemblare e produrre.',
+      en: 'Desk organiser developed for the PLEIADES competition with Ewikon, Arburg and Uniform. The project reinterprets the USB flash drive, translating its working principle into a simple and efficient desk object.'
     },
     link: '/archivia',
     img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fb8ef76dbdd4f4619959ec6122f1096c8'
@@ -71,21 +71,21 @@ const projectList: ProjectStep[] = [
       en: 'Hyperplastic adaptive handle'
     },
     category: {
-      it: 'DESIGN INCLUSIVO & DESIGN PARAMETRICO',
-      en: 'INCLUSIVE DESIGN & PARAMETRIC DESIGN'
+      it: 'INCLUSIVE DESIGN',
+      en: 'INCLUSIVE DESIGN'
     },
     tools: {
-      it: 'Design inclusivo / Ricerca ergonomica / Modellazione parametrica',
-      en: 'Inclusive Design / Ergonomic Research / Parametric Modelling'
+      it: 'Inclusive Design / Ergonomics / Parametric Modelling',
+      en: 'Inclusive Design / Ergonomics / Parametric Modelling'
     },
     material: {
-      it: 'Polimero flessibile ELASTO-1000 / Stampa 3D FDM',
-      en: 'ELASTO-1000 Flexible Polymer / FDM 3D Printing'
+      it: 'Flexible Polymer / FDM 3D Printing',
+      en: 'Flexible Polymer / FDM 3D Printing'
     },
     year: '2026',
     desc: {
-      it: 'Impugnatura inclusiva progettata per migliorare l’utilizzo di posate e strumenti quotidiani da parte di persone con ridotta forza nella mano. Attraverso geometrie flessibili e progettazione parametrica, Nando si adatta a diversi utenti migliorando comfort, stabilità e autonomia.',
-      en: 'Inclusive handle designed to improve the use of cutlery and everyday tools for people with reduced hand strength. Through flexible geometry and parametric design, Nando adapts to different users while improving comfort, grip stability and independence.'
+      it: 'Impugnatura adattiva progettata per facilitare l’utilizzo di posate e strumenti quotidiani da parte di persone con ridotta forza nella mano. La geometria parametrica permette di adattare il prodotto a esigenze differenti.',
+      en: 'Adaptive handle designed to make cutlery and everyday tools easier to use for people with reduced hand strength. Its parametric geometry allows the product to be adapted to different users.'
     },
     link: '/nando',
     img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5cdc7719da0c413d9e444dfccaa36d3a'
@@ -99,21 +99,21 @@ const projectList: ProjectStep[] = [
       en: 'Automated multisensory pizza experience'
     },
     category: {
-      it: 'SERVICE & SYSTEM DESIGN',
-      en: 'SERVICE & SYSTEM DESIGN'
+      it: 'SERVICE DESIGN',
+      en: 'SERVICE DESIGN'
     },
     tools: {
-      it: 'Service Design / UX-UI Design / System Thinking',
-      en: 'Service Design / UX-UI Design / System Thinking'
+      it: 'Service Design / UX Design / System Thinking',
+      en: 'Service Design / UX Design / System Thinking'
     },
     material: {
-      it: 'Sistema alimentare automatizzato / Interfaccia interattiva / Architettura modulare',
-      en: 'Automated Food System / Interactive Interface / Modular Architecture'
+      it: 'Interactive Ordering System / Automated Kitchen',
+      en: 'Interactive Ordering System / Automated Kitchen'
     },
     year: '2026',
     desc: {
-      it: 'Concept di servizio automatizzato sviluppato durante un workshop con Daint. PizzaMente ripensa il processo della pizza integrando ordinazione, preparazione, consumo e smaltimento in un unico sistema capace di trasformare l’attesa in esperienza.',
-      en: 'Automated pizza service concept developed during a workshop with Daint. PizzaMente redesigns food automation by integrating ordering, preparation, consumption and disposal into a single system that transforms waiting time into engagement.'
+      it: 'Concept sviluppato durante un workshop con Daint che ripensa l’esperienza della pizza integrando ordinazione, preparazione, consumo e smaltimento in un unico sistema.',
+      en: 'Concept developed during a workshop with Daint that redesigns the pizza experience by integrating ordering, preparation, dining and disposal into one coherent system.'
     },
     link: '/pizzamente',
     img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fe186b1b1b013459f94a05a22f6ea48e5'
@@ -127,21 +127,21 @@ const projectList: ProjectStep[] = [
       en: 'Product analysis and decomposition study'
     },
     category: {
-      it: 'DESIGN DI BASE & ANALISI DEL PRODOTTO',
-      en: 'BASIC DESIGN & PRODUCT ANALYSIS'
+      it: 'PRODUCT ANALYSIS',
+      en: 'PRODUCT ANALYSIS'
     },
     tools: {
-      it: 'Reverse Engineering / Analisi del prodotto / Design editoriale',
+      it: 'Reverse Engineering / Product Analysis / Editorial Design',
       en: 'Reverse Engineering / Product Analysis / Editorial Design'
     },
     material: {
-      it: 'Componenti meccanici / Sistemi termici / Linguaggio del prodotto',
-      en: 'Mechanical Components / Thermal Systems / Product Language'
+      it: 'Mechanical Components / Manufacturing Processes',
+      en: 'Mechanical Components / Manufacturing Processes'
     },
     year: '2025',
     desc: {
-      it: 'Analisi critica di un elettrodomestico attraverso la decomposizione morfologica e funzionale. Il progetto esplora il rapporto tra componenti, meccanismi, materiali e linguaggio visivo nella relazione tra utenti e oggetti quotidiani.',
-      en: 'Critical analysis of a domestic appliance through morphological and functional decomposition. The project investigates how components, mechanisms, materials and visual language define the relationship between users and everyday objects.'
+      it: 'Analisi di un piccolo elettrodomestico attraverso smontaggio, studio dei componenti e valutazione delle scelte costruttive, funzionali e formali.',
+      en: 'Analysis of a household appliance through disassembly, component study and evaluation of its construction, functionality and formal design.'
     },
     link: '/wafflemaker',
     img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F3a822d198e0a451c859170a4c51e8367'
@@ -155,21 +155,21 @@ const projectList: ProjectStep[] = [
       en: 'Interactive table for digital awareness'
     },
     category: {
-      it: 'INTERACTION DESIGN & HMI',
-      en: 'INTERACTION DESIGN & HMI'
+      it: 'INTERACTION DESIGN',
+      en: 'INTERACTION DESIGN'
     },
     tools: {
-      it: 'Interaction Design / HMI / Calm Technology',
-      en: 'Interaction Design / HMI / Calm Technology'
+      it: 'Interaction Design / HMI / User Research',
+      en: 'Interaction Design / HMI / User Research'
     },
     material: {
-      it: 'Touchcode Ink / Matrice LED / Sistema smart surface',
-      en: 'Touchcode Ink / LED Matrix / Smart Surface System'
+      it: 'LED Matrix / Capacitive Surface / Touchcode Markers',
+      en: 'LED Matrix / Capacitive Surface / Touchcode Markers'
     },
     year: '2026',
     desc: {
-      it: 'Concept di tavolo interattivo progettato per ridurre la distrazione digitale negli ambienti fast-food. T-Table utilizza tecnologie adattive per favorire l’interazione sociale e riportare attenzione all’esperienza del pasto.',
-      en: 'Interactive table concept designed to reduce distracted eating in fast-food environments. T-Table uses adaptive technology to support social interaction and restore attention to the meal experience.'
+      it: 'Concept di tavolo interattivo progettato per ridurre la distrazione digitale durante il pasto. Il sistema riconosce automaticamente l’arrivo del cibo e modifica il comportamento dell’interfaccia per riportare l’attenzione sulle persone e sulla conversazione.',
+      en: 'Interactive table concept designed to reduce digital distraction during meals. The system detects when food is served and adapts its interface to encourage conversation and focus on the dining experience.'
     },
     link: '/ttable',
     img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F8c7e5ac2dbcc429b8c3808887abfb51a'
@@ -183,21 +183,21 @@ const projectList: ProjectStep[] = [
       en: 'Open-source 3D printed crutch system'
     },
     category: {
-      it: 'SOCIAL DESIGN & OPEN SOURCE',
-      en: 'SOCIAL DESIGN & OPEN SOURCE'
+      it: 'SOCIAL DESIGN',
+      en: 'SOCIAL DESIGN'
     },
     tools: {
-      it: 'Design open source / Modellazione CAD / Produzione FDM',
-      en: 'Open Source Design / CAD Modelling / FDM Manufacturing'
+      it: 'Open-source Design / CAD Modelling / FDM Manufacturing',
+      en: 'Open-source Design / CAD Modelling / FDM Manufacturing'
     },
     material: {
-      it: 'Connettori PETG / Fascette in nylon / Struttura adattabile',
-      en: 'PETG Connectors / Nylon Fasteners / Adaptable Structure'
+      it: 'PETG Connectors / Wooden Sticks / Nylon Straps',
+      en: 'PETG Connectors / Wooden Sticks / Nylon Straps'
     },
     year: '2026',
     desc: {
-      it: 'Sistema open-source di stampelle sviluppato durante la Ánako Design Challenge con Prusa Research. Prop utilizza connettori stampati in 3D per trasformare bastoni disponibili localmente in ausili funzionali, permettendo una produzione rapida e accessibile in contesti di emergenza.',
-      en: 'Open-source emergency crutch system developed during the Ánako Design Challenge with Prusa Research. Prop uses 3D printed connectors to transform locally available sticks into functional mobility aids, enabling rapid and accessible production in crisis contexts.'
+      it: 'Sistema open-source sviluppato durante la Ánako Design Challenge con Prusa Research. Attraverso connettori stampati in 3D permette di realizzare stampelle utilizzando materiali facilmente reperibili sul territorio.',
+      en: 'Open-source mobility aid developed during the Ánako Design Challenge with Prusa Research. 3D-printed connectors make it possible to build crutches using locally available materials.'
     },
     link: '/prop',
     img: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5ea37818589140f49395200bfbdbbb41'
@@ -208,9 +208,9 @@ const translations = {
   it: {
     sec1Title: "Matteo Finco",
     sec1Sub: "Product Designer. Studente presso l'Università IUAV di Venezia.",
-    sec1P: "Mi piace capire come funzionano le cose. Ogni progetto nasce dall'osservazione del comportamento delle persone e dalla curiosità verso i meccanismi che rendono un prodotto utile, intuitivo e significativo. Per me progettare significa trasformare un problema reale in un'esperienza concreta.",
-    sec2P1: "Lavoro passando continuamente tra ricerca, modellazione CAD, prototipazione rapida e test fisici. Credo che le idee migliori emergano quando possono essere costruite, smontate, migliorate e rimesse alla prova.",
-    sec2P2: "Sono interessato al design industriale, ai sistemi interattivi e alla fabbricazione digitale, con particolare attenzione alla semplicità costruttiva, alla sostenibilità e alla qualità dell'esperienza d'uso.",
+    sec1P: "Mi piace capire come funzionano le cose. Davanti a un oggetto mi interessa capire perché è stato progettato in quel modo, quali vincoli hanno guidato le scelte e quali compromessi si nascondono dietro una forma apparentemente semplice. È questo modo di osservare che mi ha portato al product design.",
+    sec2P1: "Il mio modo di progettare alterna continuamente ricerca, modellazione 3D, prototipazione e test. Preferisco verificare le idee costruendole: ogni prototipo diventa un'occasione per mettere in discussione le scelte fatte, correggerle e migliorare il progetto.",
+    sec2P2: "Sono interessato al design industriale, ai sistemi interattivi e ai processi di fabbricazione digitale. Cerco di sviluppare oggetti che siano semplici da comprendere, coerenti da costruire e piacevoli da utilizzare, senza perdere di vista i vincoli produttivi e l'impatto delle scelte progettuali.",
     whatsNextSub: "Sempre aperto a nuove collaborazioni e progetti.",
     aboutBtn: "ABOUT ME",
     cvBtn: "CURRICULUM VITAE",
@@ -222,9 +222,9 @@ const translations = {
   en: {
     sec1Title: "Matteo Finco",
     sec1Sub: "Product Designer. Student at IUAV University of Venice.",
-    sec1P: "I like understanding how things work. Every project starts by observing people and questioning the mechanisms that make a product useful, intuitive and meaningful. For me, design is the process of turning real problems into tangible experiences.",
-    sec2P1: "My workflow moves continuously between research, CAD modelling, rapid prototyping and physical testing. I believe the best ideas emerge when they can be built, taken apart, refined and tested again.",
-    sec2P2: "I'm particularly interested in industrial design, interactive systems and digital fabrication, with a focus on simplicity, sustainability and thoughtful user experiences.",
+    sec1P: "I like understanding how things work. I'm interested in why it was designed that way, which constraints shaped its development, and what compromises lie behind an apparently simple form. This way of observing the world is what led me to product design.",
+    sec2P1: "My design process moves constantly between research, 3D modelling, prototyping and testing. I prefer to validate ideas by building them. Every prototype is an opportunity to question previous decisions, refine them and improve the final outcome.",
+    sec2P2: "I'm particularly interested in product design, interactive systems and digital fabrication. I aim to create products that are easy to understand, coherent to manufacture and enjoyable to use, while always considering production constraints and the impact of design decisions.",
     whatsNextSub: "Always open to new collaborations & projects.",
     aboutBtn: "ABOUT ME",
     cvBtn: "CURRICULUM VITAE",
@@ -549,9 +549,9 @@ export default function Index() {
 
       {/* TITOLO PROJECTS SEZIONE PROGETTI */}
       <div className="projects-header-section reveal-editorial">
-        <span className="projects-badge">{t.projectsBadge}</span>
+        {t.projectsBadge && <span className="projects-badge">{t.projectsBadge}</span>}
         <h2 className="projects-section-title">{t.projectsTitle}</h2>
-        <p className="projects-section-sub">{t.projectsSub}</p>
+        {t.projectsSub && <p className="projects-section-sub">{t.projectsSub}</p>}
       </div>
 
       {/* CIRCLE SHOWCASE CON EFFETTO CALAMITA */}
