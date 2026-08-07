@@ -55,8 +55,8 @@ const content = {
       p2: "The project provided experience in understanding polymer behavior, injection molding requirements, and the relationship between geometry, assembly, and manufacturing processes."
     },
     cta: {
-      title: "Explore Projects",
-      subtitle: "Hover over the dots to preview and navigate to other works.",
+      title: "What's next",
+      subtitle: "Selected projects",
       button: "BACK TO PORTFOLIO"
     }
   },
@@ -99,8 +99,8 @@ const content = {
       p2: "Il progetto ha permesso di approfondire il comportamento dei materiali polimerici, i requisiti dello stampaggio a iniezione e la relazione tra geometria, assemblaggio e processo produttivo."
     },
     cta: {
-      title: "Esplora i Progetti",
-      subtitle: "Passa il mouse sui pallini per vedere l'anteprima e navigare direttamente tra i lavori.",
+      title: "What's next",
+      subtitle: "Progetti selezionati",
       button: "TORNA AL PORTFOLIO"
     }
   }
@@ -285,7 +285,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           align-items: center;
         }
 
-        /* Row Image Left -> Extends to absolute left screen edge */
         .editorial-row-fullbleed.row-img-left .row-media {
           grid-column: 1 / 3;
           width: 100%;
@@ -301,7 +300,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           padding-right: 20px;
         }
 
-        /* Row Image Right -> Extends to absolute right screen edge */
         .editorial-row-fullbleed.row-img-right .row-text {
           grid-column: 2 / 3;
           padding-right: 60px;
@@ -426,7 +424,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           flex-direction: column;
           align-items: center;
           position: relative;
-          margin-top: 30px;
+          margin-top: 20px;
         }
 
         .dots-container {
@@ -547,11 +545,21 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         }
 
         .project-cta h2 {
-          font-size: clamp(1.8rem, 3vw, 2.6rem);
-          font-weight: 800;
+          font-size: clamp(2rem, 4vw, 3.2rem);
+          font-weight: 900;
           color: #ffffff;
-          margin-bottom: 14px;
-          letter-spacing: -0.8px;
+          margin-bottom: 8px;
+          letter-spacing: -1.2px;
+          text-transform: uppercase;
+        }
+
+        .cta-subtitle {
+          color: #666666;
+          font-size: 0.8rem;
+          font-family: monospace;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          margin: 0 auto 24px;
         }
 
         .cta-button {
@@ -564,7 +572,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transition: all 0.3s ease;
           letter-spacing: 0.8px;
           font-size: 0.82rem;
-          margin-top: 25px;
+          margin-top: 30px;
         }
 
         .cta-button:hover {
@@ -767,9 +775,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           {/* NEXT PROJECT / CTA */}
           <section className="project-cta reveal-editorial reveal-from-left">
             <h2>{t.cta.title}</h2>
-            <p style={{ color: '#aaaaaa', fontSize: '1rem', maxWidth: '500px', margin: '0 auto 20px', lineHeight: '1.6' }}>
-              {t.cta.subtitle}
-            </p>
+            <p className="cta-subtitle">{t.cta.subtitle}</p>
 
             <div className="project-navigator">
               {hoveredProject && (
