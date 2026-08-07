@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from '../components/Header';
 
-interface SnakeProps {
+interface TTableProps {
   heroFit?: 'contain' | 'cover';
 }
+
+const IMAGES = {
+  hero: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc",
+  solution: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc",
+  research: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc",
+  design: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc",
+  compositeTop: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc",
+  compositeBottomLeft: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc",
+  compositeBottomRight: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc",
+};
 
 const PROJECTS_LIST = [
   { id: "archivia", title: "Archivia", subtitle: "Pen holder", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e", path: "/archivia" },
@@ -12,47 +22,47 @@ const PROJECTS_LIST = [
   { id: "snake", title: "Snake", subtitle: "Hockey stickhandling trainer", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e", path: "/snake" },
   { id: "wafflemaker", title: "Waffle Maker", subtitle: "Waffle Maker analysis", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fedbb2046d3db4d549f4da864fca20382", path: "/wafflemaker" },
   { id: "prop", title: "Prop", subtitle: "3D-Printed Emergency Crutch", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5ea37818589140f49395200bfbdbbb41", path: "/prop" },
-  { id: "ttable", title: "T-Table", subtitle: "Interactive feeding-friendly table", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc", path: "/ttable" }
+  { id: "ttable", title: "T-Table", subtitle: "Interactive table attentive to nutrition", imageUrl: IMAGES.hero, path: "/ttable" }
 ];
 
 const content = {
   en: {
-    title: "SNAKE",
-    subtitle: "Hockey stickhandling trainer",
+    title: "T-TABLE",
+    subtitle: "Interactive table attentive to nutrition",
     meta: {
       teamLabel: "Designers",
       yearLabel: "Year",
       yearVal: "2026",
-      awardLabel: "Recognition",
-      awardVal: "Lagazuoi WIMA 2026"
+      awardLabel: "Project Type",
+      awardVal: "Product Design & Interactive Table"
     },
     overview: {
       title: "Overview",
       subtitle: "Challenge",
-      p1: "Developed within the Product Design and Technology Laboratory at the Università Iuav di Venezia (Vicenza design campus), the project challenged us to transform a traditional, static hockey stickhandling obstacle into an intelligent, interactive training system.",
-      p2: "The primary difficulty lay in embedding complex mechatronic components including laser sensors, custom PCBs, and motorized actuators, into a highly dynamic sports tool. The product needed to remain completely modular and adaptive while structurally enduring the severe, repetitive impacts of high-speed hockey pucks on both inline rinks and ice surfaces."
+      p1: "The growing pervasiveness of screens during mealtimes has fueled the phenomenon of distracted eating, a behavior that alters natural satiety cues and compromises meal memory, resulting in so-called food amnesia.",
+      p2: "Although many restaurant chains have introduced touchscreen tables to enrich the experience, these interfaces often end up completely absorbing the user's attention, alienating them from the very act of eating. The project's challenge was to overturn this paradigm within a high-traffic setting, integrating technology harmoniously and non-invasively to restore awareness to the meal ritual and foster social interaction."
     },
     solution: {
       title: "Solution",
-      p1: "Snake is an interactive, articulated training device engineered for inline and ice hockey players of all skill levels.",
-      p2: "Composed of an expandable kit of interconnected modules, the system uses integrated laser sensors to detect puck passages and dynamic RGB LEDs to guide athletes through cognitive agility drills via real-time visual cues.",
-      p3: "Featuring a physical interface and a smartphone application, Snake bridges the gap between hardware and software, allowing players to track performance data, customize training routines, and analyze precision and speed history."
+      p1: "T-Table is a smart, interactive table concept designed for fast-food environments, aimed at eliminating visual overstimulation and food amnesia. The project is born in the course Approfondimento tematico per il Design at the università Iuav di Venezia (Vicenza design campus).",
+      p2: "The system acts as a coordinated ecosystem that adapts its interface in real time based on the meal phases. Before service, the surface entertains families with cooperative mini-games related to the brand; as soon as the food is served, the table recognizes the presence of smart placemats and deactivates the interactive areas occupied by the trays.",
+      p3: "The screen thus transforms into a natural, discreet, low-stimulation backdrop, refocusing people's visual, sensorial, and relational attention on the food and the conversation at the table."
     },
     research: {
       title: "Research",
-      p1: "The project began with an in-depth investigation into inline hockey training methodologies. Through on-site visits to facilities and interviews with former professional players and Serie A coaches, we mapped the physical and cognitive pain points encountered during technical practice.",
-      p2: "We identified the critical need for a tool capable of improving muscle memory by offering varied and unpredictable training patterns. This research validated the choice of a highly modular and responsive architecture, capable of seamlessly adapting to different athletic contexts."
+      p1: "With this project, we uncovered the phenomenon of distracted eating, focusing on the impact digital stimuli have on feelings of satiety and meal memory. The scientific studies analyzed demonstrate that distraction at the table increases both immediate and delayed caloric intake, weakening children's ability to listen to their body's signals.",
+      p2: "By mapping the restaurant experience, we realized that the problem wasn't the entertainment itself, but the temporal overlap with food: from an ergonomic perspective, continuous interaction with screens positioned on the table top forces the user to adopt incorrect postures and constantly disregard food, altering the proxemics of the convivial ritual. Hence the design breakthrough: the research highlighted the need to decouple play from consumption, defining the specifications for a system of smart tables capable of sensing the arrival of an order and deactivating themselves to rekindle social interaction."
     },
     design: {
       title: "Design",
-      p1: "Snake is engineered as a responsive kinetic system built for demanding sports environments.",
-      p2: "Its chassis pairs CNC-milled aluminum bars for structural lightness and moisture protection with high-impact PA6 nylon for the injection-molded base enclosures.",
-      p3: "The internal mechatronics seamlessly coordinate embedded stepper motors and tracking sensors to manage the device's physical articulation. To maximize unpredictability during agility drills, the system incorporates adjustable telescopic modules that expand and contract, continuously redefining the exercise layout and challenging the player’s reaction times."
+      p1: "T-Table translates the dictates of Calm Technology into precise engineering choices. The screen abandons traditional glossy glass in favor of a special anti-reflective matte finish that simulates wood both visually and haptically, offering unprecedented sensory stimulation in interactive displays.",
+      p2: "Display is provided by a low-density LED matrix with a narrow color gamut to reduce visual impact. Communication between the table and the objects occurs via placemats printed with Touchcode conductive ink, which exchange information with the screen's capacitive sensors to map the exact position of the food.",
+      p3: "At the same time, the food packaging has been redesigned from recycled kraft cardboard, using digitally embossed graphics to amplify tactile contrast and stimulate 360° visual and olfactory satiety."
     },
     technical: {
       title: "Skills & Technical Insights",
-      p1: "Working on Snake taught me that industrial design isn't just about form, but also the reliability of the system as a whole. I learned to design for high-stress scenarios, leveraging specific material properties to protect delicate elements.",
-      p2: "The project also pushed me to master the synergy between hardware and digital feedback, focusing on creating an intuitive user experience, thanks primarily to discussions with experts and people in the field. We were honored to present Snake at the Lagazuoi WIMA (Lagazuoi Winning Ideas Mountain Awards 2026)."
+      p1: "Experience has taught me to design human-machine interfaces (HMIs) not to capture the user's attention, but to support it, learning to apply technology subtractively and contextually.",
+      p2: "Coordinating such diverse touchpoints has allowed me to combine traditional materials and electronics to generate a positive and ethical behavioral impact."
     },
     cta: {
       title: "What's next?",
@@ -61,42 +71,42 @@ const content = {
     }
   },
   it: {
-    title: "SNAKE",
-    subtitle: "Allenatore per lo stickhandling nell'hockey",
+    title: "T-TABLE",
+    subtitle: "Tavolo interattivo attento alla nutrizione",
     meta: {
       teamLabel: "Designer",
       yearLabel: "Anno",
       yearVal: "2026",
-      awardLabel: "Riconoscimento",
-      awardVal: "Lagazuoi WIMA 2026"
+      awardLabel: "Tipologia Progetto",
+      awardVal: "Product Design & Tavolo Interattivo"
     },
     overview: {
       title: "Overview",
       subtitle: "Sfida progettuale",
-      p1: "Sviluppato all'interno del Laboratorio di Design e Tecnologia del Prodotto presso l'Università Iuav di Venezia (sede di Vicenza), il progetto ha affrontato la sfida di trasformare un ostacolo tradizionale e statico per lo stickhandling nell'hockey in un sistema di allenamento intelligente e interattivo.",
-      p2: "La difficoltà principale è stata l'integrazione di complessi componenti meccatronici, tra cui sensori laser, PCB personalizzate e attuatori motorizzati, in uno strumento sportivo altamente dinamico. Il prodotto doveva rimanere completamente modulare e adattabile, resistendo al contempo ai forti e ripetuti impatti dei dischi ad alta velocità sia su pista in-line che su ghiaccio."
+      p1: "La crescente pervasività degli schermi durante i pasti ha alimentato il fenomeno della distrazione a tavola (distracted eating), un comportamento che altera i segnali naturali di sazietà e compromette la memoria del pasto, dando luogo alla cosiddetta amnesia alimentare.",
+      p2: "Sebbene molte catene di ristorazione abbiano introdotto tavoli touchscreen per arricchire l'esperienza, queste interfacce finiscono spesso per assorbire completamente l'attenzione dell'utente, alienandolo dall'atto stesso del mangiare. La sfida del progetto è stata quella di ribaltare questo paradigma in un contesto ad alto traffico, integrando la tecnologia in modo armonioso e non invasivo per restituire consapevolezza al rito del pasto e favorire l'interazione sociale."
     },
     solution: {
       title: "Solution",
-      p1: "Snake è un dispositivo di allenamento interattivo e articolato progettato per giocatori di hockey in-line e su ghiaccio di tutti i livelli.",
-      p2: "Composto da un kit espandibile di moduli interconnessi, il sistema utilizza sensori laser integrati per rilevare il passaggio del disco e LED RGB dinamici per guidare gli atleti in esercizi di agilità cognitiva tramite segnali visivi in tempo reale.",
-      p3: "Caratterizzato da un'interfaccia fisica e un'applicazione per smartphone, Snake unisce hardware e software, consentendo ai giocatori di monitorare i dati sulle prestazioni, personalizzare le routine di allenamento e analizzare lo storico di precisione e velocità."
+      p1: "T-Table è un concept di tavolo smart e interattivo progettato per ambienti fast-food, volto ad eliminare la sovrastimolazione visiva e l'amnesia alimentare. Il progetto nasce all'interno del corso di Approfondimento tematico per il Design presso l'Università Iuav di Venezia (sede di Vicenza).",
+      p2: "Il sistema agisce come un ecosistema coordinato che adatta la sua interfaccia in tempo reale in base alle fasi del pasto. Prima del servizio, la superficie intrattiene le famiglie con mini-giochi cooperativi legati al brand; non appena il cibo viene servito, il tavolo riconosce la presenza di tovagliette smart e disattiva le aree interattive occupate dai vassoi.",
+      p3: "Lo schermo si trasforma così in uno sfondo naturale, discreto e a bassa stimolazione, rifocalizzando l'attenzione visiva, sensoriale e relazionale delle persone sul cibo e sulla conversazione a tavola."
     },
     research: {
       title: "Research",
-      p1: "Il progetto è iniziato con un'approfondita indagine sulle metodologie di allenamento nell'hockey in-line. Attraverso visite alle strutture e interviste ad ex giocatori professionisti e allenatori di Serie A, abbiamo mappato i punti critici fisici e cognitivi riscontrati durante la pratica tecnica.",
-      p2: "Abbiamo individuato la necessità fondamentale di uno strumento capace di migliorare la memoria muscolare offrendo schemi di allenamento vari e imprevedibili. Questa ricerca ha validato la scelta di un'architettura altamente modulare e reattiva, in grado di adattarsi perfettamente a diversi contesti atletici."
+      p1: "Con questo progetto abbiamo approfondito il fenomeno del distracted eating, concentrandoci sull'impatto che gli stimoli digitali hanno sul senso di sazietà e sulla memoria del pasto. Gli studi scientifici analizzati dimostrano che la distrazione a tavola aumenta l'apporto calorico sia immediato che ritardato, indebolendo la capacità dei bambini di ascoltare i segnali del proprio corpo.",
+      p2: "Mappando l'esperienza nella ristorazione, ci siamo resi conto che il problema non era l'intrattenimento in sé, ma la sovrapposizione temporale con il cibo: da una prospettiva ergonomica, l'interazione continua con gli schermi sul piano del tavolo costringe l'utente ad assumere posture scorrette e a ignorare costantemente il cibo, alterando la prossemica del rito conviviale. Da qui la svolta progettuale: la ricerca ha evidenziato la necessità di disaccoppiare il gioco dal consumo, definendo le specifiche per un sistema di tavoli smart in grado di percepire l'arrivo di un ordine e disattivarsi per riaccendere l'interazione sociale."
     },
     design: {
       title: "Design",
-      p1: "Snake è progettato come un sistema cinetico reattivo pensato per ambienti sportivi ad alte prestazioni.",
-      p2: "Il suo telaio combina barre in alluminio fresate a CNC per garantire leggerezza strutturale e protezione dall'umidità con nylon PA6 ad alta resistenza agli urti per gli involucri della base stampati a iniezione.",
-      p3: "La meccatronica interna coordina perfettamente motori passo-passo e sensori di tracciamento per gestire l'articolazione fisica del dispositivo. Per massimizzare l'imprevedibilità durante gli esercizi di agilità, il sistema integra moduli telescopici regolabili che si espandono e contraggono, ridefinendo continuamente il layout dell'esercizio e sfidando i tempi di reazione del giocatore."
+      p1: "T-Table traduce i dettami della Calm Technology in precise scelte ingegneristiche. Lo schermo abbandona il tradizionale vetro lucido a favore di una speciale finitura opaca antiriflesso che simula il legno sia visivamente che tattilmente, offrendo una stimolazione sensoriale senza precedenti nei display interattivi.",
+      p2: "La visualizzazione è affidata a una matrice LED a bassa densità con un gamut di colori ristretto per ridurre l'impatto visivo. La comunicazione tra il tavolo e gli oggetti avviene tramite tovagliette stampate con inchiostro conduttivo Touchcode, che scambiano informazioni con i sensori capacitivi dello schermo per mappare l'esatta posizione del cibo.",
+      p3: "Allo stesso tempo, il packaging alimentare è stato ridisegnato in cartoncino kraft riciclato, utilizzando grafiche goffratte digitalmente per amplificare il contrasto tattile e stimolare la sazietà visiva e olfattiva a 360°."
     },
     technical: {
       title: "Skills & Technical Insights",
-      p1: "Lavorare su Snake ha dimostrato che il design industriale non riguarda solo la forma, ma la risposta e l'affidabilità dell'intero sistema. Ho imparato a progettare per scenari ad alto stress meccanico, sfruttando le proprietà specifiche dei materiali per proteggere gli elementi più delicati.",
-      p2: "Il progetto ha permesso di approfondire la sinergia tra hardware e feedback digitale, concentrandosi sulla creazione di un'esperienza utente intuitiva, grazie soprattutto al confronto diretto con esperti del settore e atleti. Siamo stati onorati di presentare Snake al Lagazuoi WIMA (Lagazuoi Winning Ideas Mountain Awards 2026)."
+      p1: "L'esperienza mi ha insegnato a progettare interfacce uomo-macchina (HMI) non per catturare l'attenzione dell'utente, ma per supportarla, imparando ad applicare la tecnologia in modo sottrattivo e contestuale.",
+      p2: "Coordinare touchpoint così diversi mi ha permesso di combinare materiali tradizionali ed elettronica per generare un impatto comportamentale positivo ed etico."
     },
     cta: {
       title: "What's next?",
@@ -106,24 +116,34 @@ const content = {
   }
 };
 
-export default function Snake({ heroFit = 'cover' }: SnakeProps) {
+export default function TTable({ heroFit = 'cover' }: TTableProps) {
   const [language, setLanguage] = useState<'it' | 'en'>('en');
   const [hoveredProject, setHoveredProject] = useState<typeof PROJECTS_LIST[0] | null>(null);
   const t = content[language];
 
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal-editorial');
+    
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('reveal-active');
+            revealObserver.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.05 }
     );
-    revealElements.forEach((el) => revealObserver.observe(el));
+
+    revealElements.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        el.classList.add('reveal-active');
+      } else {
+        revealObserver.observe(el);
+      }
+    });
 
     return () => {
       revealObserver.disconnect();
@@ -181,7 +201,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           margin: 60px 0;
         }
 
-        /* HERO HEADER */
         .project-hero {
           padding-bottom: 10px;
         }
@@ -229,7 +248,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           font-weight: 500;
         }
 
-        /* HERO MEDIA FULL BLEED */
         .hero-media-fullbleed {
           width: 100%;
           height: clamp(420px, 65vh, 800px);
@@ -247,7 +265,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           object-position: center;
         }
 
-        /* OVERVIEW SECTION */
         .overview-section {
           max-width: 800px;
         }
@@ -277,7 +294,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           margin-bottom: 18px;
         }
 
-        /* FULL-BLEED GRID ROWS FOR SIDE-BY-SIDE SECTIONS */
         .editorial-row-fullbleed {
           width: 100%;
           display: grid;
@@ -345,7 +361,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           transform: scale(1.03);
         }
 
-        /* 100% COMPOSITE GRID BOX */
         .fullbleed-composite {
           width: 100%;
           background: #070707;
@@ -398,7 +413,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           transform: scale(1.03);
         }
 
-        /* TECHNICAL SECTION */
         .technical-section {
           max-width: 800px;
         }
@@ -418,7 +432,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           margin-bottom: 18px;
         }
 
-        /* PROJECT NAVIGATOR */
         .project-navigator {
           display: flex;
           flex-direction: column;
@@ -515,7 +528,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           to { opacity: 1; transform: translateY(0); }
         }
 
-        /* REVEAL ANIMATIONS */
         .reveal-editorial {
           opacity: 0;
           filter: blur(6px);
@@ -538,7 +550,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           transform: translateX(0);
         }
 
-        /* CTA SECTION */
         .project-cta {
           text-align: center;
           padding-top: 40px;
@@ -582,7 +593,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           transform: translateY(-2px);
         }
 
-        /* RESPONSIVE BREAKPOINTS */
         @media (max-width: 860px) {
           .project-page {
             padding-top: 90px;
@@ -605,21 +615,17 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           .editorial-row-fullbleed.row-img-left .row-media,
           .editorial-row-fullbleed.row-img-right .row-media {
             width: 100%;
-            height: 300px;
-          }
-
-          .editorial-row-fullbleed.row-img-left .row-text,
-          .editorial-row-fullbleed.row-img-right .row-text {
-            padding: 0 4vw;
+            height: 280px;
           }
 
           .hero-media-fullbleed {
-            height: 300px;
+            height: 280px;
             margin-top: 24px;
           }
 
           .composite-bottom {
             grid-template-columns: 1fr;
+            gap: 12px;
           }
 
           .composite-top {
@@ -627,7 +633,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           }
 
           .composite-square {
-            height: 220px;
+            height: 280px;
           }
 
           .editorial-divider {
@@ -637,7 +643,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
       `}</style>
 
       <div className="project-container">
-        {/* HEADER & METADATA */}
         <div className="editorial-content">
           <section className="project-hero reveal-editorial reveal-from-left">
             <h1>{t.title}</h1>
@@ -646,11 +651,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
             <div className="hero-info">
               <div className="info-block">
                 <span>{t.meta.teamLabel}</span>
-                <p>
-                  Chiara Contato<br />
-                  Valentina Liani<br />
-                  Matteo Finco
-                </p>
+                <p>Matteo Finco, Anna Foresto, Paolo Levorato, Andrea Melchiori, Giulia Pettenò</p>
               </div>
 
               <div className="info-block">
@@ -666,35 +667,24 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           </section>
         </div>
 
-        {/* HERO PRODUCT IMAGE (FULL BLEED) */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e"
-            alt="Snake hero product shot"
-          />
+          <img src={IMAGES.hero} alt="T-Table hero" />
         </section>
 
         <div className="editorial-content">
           <hr className="editorial-divider" />
-
-          {/* OVERVIEW / CHALLENGE */}
           <section className="overview-section reveal-editorial reveal-from-left">
             <h2>{t.overview.title}</h2>
             <span className="section-label">{t.overview.subtitle}</span>
             <p>{t.overview.p1}</p>
             <p>{t.overview.p2}</p>
           </section>
-
           <hr className="editorial-divider" />
         </div>
 
-        {/* ROW 1: SOLUTION (IMAGE LEFT FULL BLEED) */}
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e"
-              alt="Snake solution overview"
-            />
+            <img src={IMAGES.solution} alt="T-Table solution" />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
             <h2>{t.solution.title}</h2>
@@ -704,11 +694,8 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           </div>
         </section>
 
-        <div className="editorial-content">
-          <hr className="editorial-divider" />
-        </div>
+        <div className="editorial-content"><hr className="editorial-divider" /></div>
 
-        {/* ROW 2: RESEARCH (IMAGE RIGHT FULL BLEED) */}
         <section className="editorial-row-fullbleed row-img-right">
           <div className="row-text reveal-editorial reveal-from-left">
             <h2>{t.research.title}</h2>
@@ -716,24 +703,15 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
             <p>{t.research.p2}</p>
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e"
-              alt="Snake research and hockey training context"
-            />
+            <img src={IMAGES.research} alt="T-Table research" />
           </div>
         </section>
 
-        <div className="editorial-content">
-          <hr className="editorial-divider" />
-        </div>
+        <div className="editorial-content"><hr className="editorial-divider" /></div>
 
-        {/* ROW 3: DESIGN (IMAGE LEFT FULL BLEED) */}
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e"
-              alt="Snake mechatronic articulation structure"
-            />
+            <img src={IMAGES.design} alt="T-Table design" />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
             <h2>{t.design.title}</h2>
@@ -743,31 +721,19 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           </div>
         </section>
 
-        <div className="editorial-content">
-          <hr className="editorial-divider" />
-        </div>
+        <div className="editorial-content"><hr className="editorial-divider" /></div>
 
-        {/* COMPOSITE GRID BOX (FULL BLEED) */}
         <section className="fullbleed-composite reveal-editorial reveal-from-left">
           <div className="media-composite-box">
             <div className="composite-top">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e"
-                alt="Snake full assembly"
-              />
+              <img src={IMAGES.compositeTop} alt="T-Table assembly" />
             </div>
             <div className="composite-bottom">
               <div className="composite-square">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e"
-                  alt="Snake internal component detail"
-                />
+                <img src={IMAGES.compositeBottomLeft} alt="T-Table detail" />
               </div>
               <div className="composite-square">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e"
-                  alt="Snake digital interface preview"
-                />
+                <img src={IMAGES.compositeBottomRight} alt="T-Table detail" />
               </div>
             </div>
           </div>
@@ -775,8 +741,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
 
         <div className="editorial-content">
           <hr className="editorial-divider" />
-
-          {/* TECHNICAL INSIGHTS / SKILLS */}
           <section className="technical-section reveal-editorial reveal-from-left">
             <h2>{t.technical.title}</h2>
             <p>{t.technical.p1}</p>
@@ -785,7 +749,6 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
 
           <hr className="editorial-divider" />
 
-          {/* NEXT PROJECT / CTA */}
           <section className="project-cta reveal-editorial reveal-from-left">
             <h2>{t.cta.title}</h2>
             <p className="cta-subtitle">{t.cta.subtitle}</p>
@@ -807,7 +770,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
                 {PROJECTS_LIST.map((proj) => (
                   <button
                     key={proj.id}
-                    className={`dot-item ${proj.id === 'snake' ? 'active' : ''}`}
+                    className={`dot-item ${proj.id === 'ttable' ? 'active' : ''}`}
                     onMouseEnter={() => setHoveredProject(proj)}
                     onMouseLeave={() => setHoveredProject(null)}
                     onClick={() => window.location.href = proj.path}
