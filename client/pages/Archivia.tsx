@@ -204,17 +204,15 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         .hero-media-fullbleed {
           width: 100vw;
           margin-left: calc(50% - 50vw);
-          height: clamp(400px, 65vh, 650px);
-          background: #111111;
+          height: clamp(380px, 60vh, 650px);
+          background: #0d0d0d;
           overflow: hidden;
           margin-top: 45px;
-          border-radius: 0;
         }
 
         .hero-media-fullbleed img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
           display: block;
         }
 
@@ -273,16 +271,19 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         }
 
         .row-media {
-          background: #111111;
-          border-radius: 0;
+          background: #0d0d0d;
           overflow: hidden;
-          height: 440px;
+          aspect-ratio: 4 / 3;
+          max-height: 520px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #141414;
         }
 
         .row-media img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
           display: block;
           transition: transform 0.8s ease;
         }
@@ -291,15 +292,18 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transform: scale(1.02);
         }
 
+        /* OTTIMIZZAZIONE BLEED PER NON TAGLIARE I LATI */
         @media (min-width: 861px) {
           .row-media.bleed-left {
             margin-left: calc(-1 * (100vw - 100%) / 2);
             width: calc(100% + (100vw - 100%) / 2);
+            padding-left: 2vw; /* Un piccolo respiro per evitare il taglio a filo schermo */
           }
 
           .row-media.bleed-right {
             margin-right: calc(-1 * (100vw - 100%) / 2);
             width: calc(100% + (100vw - 100%) / 2);
+            padding-right: 2vw;
           }
         }
 
@@ -311,14 +315,17 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           display: flex;
           flex-direction: column;
           gap: 12px;
-          border-radius: 0;
         }
 
         .composite-top {
           width: 100%;
-          height: clamp(280px, 45vh, 420px);
+          aspect-ratio: 16 / 9;
+          max-height: 480px;
           overflow: hidden;
-          background: #111111;
+          background: #000000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .composite-bottom {
@@ -329,7 +336,8 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         .composite-square {
           width: 100%;
-          height: clamp(200px, 30vh, 300px);
+          aspect-ratio: 1 / 1;
+          max-height: 340px;
           overflow: hidden;
           background: #111111;
         }
@@ -337,7 +345,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         .media-composite-box img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
           display: block;
           transition: transform 0.6s ease;
         }
@@ -411,7 +418,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           font-weight: 700;
           text-decoration: none;
           transition: all 0.3s ease;
-          border-radius: 0;
           letter-spacing: 0.8px;
           font-size: 0.82rem;
         }
@@ -435,7 +441,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             width: 100vw;
             margin-left: calc(50% - 50vw);
             margin-right: 0;
-            height: 320px;
+            padding: 0;
           }
 
           .composite-bottom {
@@ -481,7 +487,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           <img
             src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e"
             alt="Archivia hero product shot"
-            style={{ objectFit: heroFit }}
+            style={{ objectFit: heroFit, objectPosition: 'center center' }}
           />
         </section>
 
@@ -503,6 +509,8 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1229dcf2c6644f4285aae97571ad2947"
               alt="Archivia solution concept"
+              style={{ objectFit: 'contain', objectPosition: 'center center' }} 
+              /* 'contain' garantisce che l'intero render sia visibile senza tagli ai lati */
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -526,6 +534,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1229dcf2c6644f4285aae97571ad2947"
               alt="Archivia research details"
+              style={{ objectFit: 'cover', objectPosition: 'center center' }}
             />
           </div>
         </section>
@@ -538,6 +547,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             <img
               src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80"
               alt="Archivia design mechanics"
+              style={{ objectFit: 'cover', objectPosition: 'center top' }}
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -557,7 +567,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F45d6dba0e50c4ff090637ec48f2cec1a"
                 alt="Archivia exploded view wide"
-                style={{ objectFit: heroFit }}
+                style={{ objectFit: 'contain', objectPosition: 'center center' }}
               />
             </div>
             <div className="composite-bottom">
@@ -565,12 +575,14 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F42f618d85fbd458988c33e9f58f1edce"
                   alt="Archivia detail square 1"
+                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
                 />
               </div>
               <div className="composite-square">
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c52dcd39b4945a6985cf49b519c0b51"
                   alt="Archivia detail square 2"
+                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
                 />
               </div>
             </div>
