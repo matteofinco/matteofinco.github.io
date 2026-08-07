@@ -215,7 +215,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           font-weight: 500;
         }
 
-        /* HERO FULL BLEED - VIEWPORT SAFE FULLBLEED */
+        /* HERO FULL BLEED - DYNAMIC HEIGHT WITHOUT STRICT ASPECT RATIO */
         .hero-media-fullbleed {
           width: 100vw;
           position: relative;
@@ -223,8 +223,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           right: 50%;
           margin-left: -50vw;
           margin-right: -50vw;
-          aspect-ratio: 16 / 9;
-          max-height: 60vh;
+          height: min(75vh, 850px);
           background: #0d0d0d;
           overflow: hidden;
           margin-top: 40px;
@@ -235,7 +234,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           height: 100%;
           display: block;
           object-fit: cover;
-          object-position: center center;
+          object-position: center;
         }
 
         /* OVERVIEW SECTION */
@@ -268,7 +267,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           margin-bottom: 18px;
         }
 
-        /* EDITORIAL GRID ROWS */
+        /* EDITORIAL GRID ROWS & ASYMMETRIC EDGE BLEEDS */
         .editorial-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -292,25 +291,28 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           margin-bottom: 16px;
         }
 
-        /* BOX IMMAGINE 4:3 PRECISI CON BORDER RENDER CLEAN */
         .row-media {
-          background: #0d0d0d;
+          width: calc(100% + 4vw);
+          height: 520px;
           overflow: hidden;
-          aspect-ratio: 4 / 3;
-          width: 100%;
-          max-height: 480px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid #1a1a1a;
-          border-radius: 4px;
+          background: #0d0d0d;
+          border: none;
+          border-radius: 0;
+        }
+
+        .editorial-row.media-left .row-media {
+          margin-left: calc(-4vw);
+        }
+
+        .editorial-row.media-right .row-media {
+          margin-right: calc(-4vw);
         }
 
         .row-media img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center center;
+          object-position: center;
           display: block;
           transition: transform 0.8s ease;
         }
@@ -319,7 +321,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transform: scale(1.03);
         }
 
-        /* COMPOSITE GRID FULL BLEED EDGE-TO-EDGE */
+        /* COMPOSITE GRID FULL BLEED (HEIGHT BASED, NO ASPECT RATIOS) */
         .fullbleed-composite {
           width: 100vw;
           position: relative;
@@ -342,8 +344,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         .composite-top {
           width: 100vw;
-          aspect-ratio: 16 / 9;
-          max-height: 55vh;
+          height: min(65vh, 600px);
           overflow: hidden;
           background: #000000;
         }
@@ -357,8 +358,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         .composite-square {
           width: 100%;
-          aspect-ratio: 1 / 1;
-          max-height: 45vh;
+          height: min(45vh, 350px);
           overflow: hidden;
           background: #111111;
         }
@@ -367,7 +367,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center center;
+          object-position: center;
           display: block;
           transition: transform 0.6s ease;
         }
@@ -396,7 +396,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           margin-bottom: 18px;
         }
 
-        /* PROJECT NAVIGATOR (DOTS + PREVIEW) */
+        /* PROJECT NAVIGATOR */
         .project-navigator {
           display: flex;
           flex-direction: column;
@@ -557,8 +557,23 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             gap: 30px;
           }
 
+          .row-media {
+            width: 100vw;
+            height: 380px;
+            margin-left: -4vw !important;
+            margin-right: -4vw !important;
+          }
+
           .composite-bottom {
             grid-template-columns: 1fr;
+          }
+
+          .composite-top {
+            height: 350px;
+          }
+
+          .composite-square {
+            height: 260px;
           }
 
           .editorial-divider {
@@ -616,8 +631,8 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* ROW 1: SOLUTION (MEDIA LEFT, TEXT RIGHT) */}
-        <section className="editorial-row">
+        {/* ROW 1: SOLUTION (MEDIA LEFT EDGE BLEED) */}
+        <section className="editorial-row media-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1b0a4b6f9bb84630b2d4b1bb8716ab11"
@@ -634,8 +649,8 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* ROW 2: RESEARCH (TEXT LEFT, MEDIA RIGHT) */}
-        <section className="editorial-row">
+        {/* ROW 2: RESEARCH (MEDIA RIGHT EDGE BLEED) */}
+        <section className="editorial-row media-right">
           <div className="row-text reveal-editorial reveal-from-left">
             <h2>{t.research.title}</h2>
             <p>{t.research.p1}</p>
@@ -651,8 +666,8 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* ROW 3: DESIGN (MEDIA LEFT, TEXT RIGHT) */}
-        <section className="editorial-row">
+        {/* ROW 3: DESIGN (MEDIA LEFT EDGE BLEED) */}
+        <section className="editorial-row media-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F8e4089261fe741a580f79ee17d2c5cbe"
@@ -669,7 +684,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* COMPOSITE 3-IMAGE GRID BOX (16:9 TOP + TWO 1:1 SQUARES BOTTOM) */}
+        {/* COMPOSITE 3-IMAGE GRID BOX */}
         <section className="fullbleed-composite reveal-editorial reveal-from-left">
           <div className="media-composite-box">
             <div className="composite-top">
