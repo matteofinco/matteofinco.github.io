@@ -232,7 +232,7 @@ export default function About() {
             <p>{t.methodText2}</p>
           </div>
           <div className="about-media reveal-editorial reveal-from-right">
-            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Ffe00d2a2166f40bdb9808c4ccfa5e4e9" alt="Digital fabrication" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F7543c099c9c24e2dbd91042fc5765fa2" alt="Digital fabrication" />
           </div>
         </section>
 
@@ -253,7 +253,7 @@ export default function About() {
             <p>{t.digitalText2}</p>
           </div>
           <div className="about-media reveal-editorial reveal-from-right">
-            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fbf54c799fe944d5b8dd071d09cc0d178" alt="Materials and prototyping" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F8fefd46ecd304a14a53069548f8eaf66" alt="Materials and prototyping" />
           </div>
         </section>
 
