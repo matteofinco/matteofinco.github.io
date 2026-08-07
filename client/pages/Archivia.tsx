@@ -154,9 +154,9 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         }
 
         .project-container {
-          max-width: 1140px;
+          max-width: 1200px;
           margin: 0 auto;
-          padding: 0 5vw;
+          padding: 0 4vw;
         }
 
         /* DIVIDERS */
@@ -164,7 +164,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           border: none;
           height: 1px;
           background-color: #1a1a1a;
-          margin: 70px 0;
+          margin: 60px 0;
         }
 
         /* HERO HEADER */
@@ -215,7 +215,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           font-weight: 500;
         }
 
-        /* HERO FULL BLEED */
+        /* HERO FULL BLEED - BLOCCO CON ALTEZZA CALIBRATA (16:9 MAX 60VH) */
         .hero-media-fullbleed {
           width: 100vw;
           position: relative;
@@ -223,10 +223,11 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           right: 50%;
           margin-left: -50vw;
           margin-right: -50vw;
-          height: clamp(380px, 60vh, 650px);
+          aspect-ratio: 16 / 9;
+          max-height: 60vh;
           background: #0d0d0d;
           overflow: hidden;
-          margin-top: 45px;
+          margin-top: 40px;
         }
 
         .hero-media-fullbleed img {
@@ -267,12 +268,12 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           margin-bottom: 18px;
         }
 
-        /* EDITORIAL GRID ROWS */
+        /* EDITORIAL GRID ROWS - ANCORATE IN ALTO (ALIGN-ITEMS: START) */
         .editorial-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 50px;
-          align-items: center;
+          gap: 60px;
+          align-items: start;
         }
 
         .row-text h2 {
@@ -291,12 +292,13 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           margin-bottom: 16px;
         }
 
+        /* BOX IMMAGINE RIGIDO 4:3 SENZA BLEED PROBLEMATICI */
         .row-media {
           background: #0d0d0d;
           overflow: hidden;
           aspect-ratio: 4 / 3;
-          max-height: 520px;
           width: 100%;
+          max-height: 480px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -316,19 +318,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transform: scale(1.02);
         }
 
-        @media (min-width: 861px) {
-          .row-media.bleed-left {
-            margin-left: calc(-1 * (100vw - 100%) / 2);
-            width: calc(100% + (100vw - 100%) / 2);
-          }
-
-          .row-media.bleed-right {
-            margin-right: calc(-1 * (100vw - 100%) / 2);
-            width: calc(100% + (100vw - 100%) / 2);
-          }
-        }
-
-        /* COMPOSITE GRID FULL BLEED (AZZERAMENTO MARGINI TOTALE) */
+        /* COMPOSITE GRID FULL BLEED EDGE-TO-EDGE CON ALTEZZA MASSIMA RIGIDA */
         .fullbleed-composite {
           width: 100vw;
           position: relative;
@@ -336,12 +326,8 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           right: 50%;
           margin-left: -50vw;
           margin-right: -50vw;
-          background: #0d0d0d;
-          border-top: 1px solid #1a1a1a;
-          border-bottom: 1px solid #1a1a1a;
+          background: #070707;
           padding: 0;
-          margin-top: 0;
-          margin-bottom: 0;
         }
 
         .media-composite-box {
@@ -356,7 +342,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         .composite-top {
           width: 100vw;
           aspect-ratio: 16 / 9;
-          max-height: 680px;
+          max-height: 55vh;
           overflow: hidden;
           background: #000000;
         }
@@ -371,7 +357,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         .composite-square {
           width: 100%;
           aspect-ratio: 1 / 1;
-          max-height: 520px;
+          max-height: 45vh;
           overflow: hidden;
           background: #111111;
         }
@@ -575,7 +561,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           }
 
           .editorial-divider {
-            margin: 50px 0;
+            margin: 40px 0;
           }
         }
       `}</style>
@@ -608,10 +594,10 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           </div>
         </section>
 
-        {/* FULLBLEED HERO PRODUCT IMAGE */}
+        {/* HERO PRODUCT IMAGE (16:9 MAX 60VH) */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
           <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e"
+            src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fb8ef76dbdd4f4619959ec6122f1096c8"
             alt="Archivia hero product shot"
             style={{ objectFit: heroFit, objectPosition: 'center center' }}
           />
@@ -629,13 +615,12 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* ROW 1: SOLUTION (IMAGE LEFT, TEXT RIGHT) */}
+        {/* ROW 1: SOLUTION (BOX 4:3 LEFT, TEXT RIGHT) */}
         <section className="editorial-row">
-          <div className="row-media bleed-left reveal-editorial reveal-from-left">
+          <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1229dcf2c6644f4285aae97571ad2947"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1b0a4b6f9bb84630b2d4b1bb8716ab11"
               alt="Archivia solution concept"
-              style={{ objectFit: 'cover', objectPosition: 'center center' }}
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -648,31 +633,29 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* ROW 2: RESEARCH (TEXT LEFT, IMAGE RIGHT) */}
+        {/* ROW 2: RESEARCH (TEXT LEFT, BOX 4:3 RIGHT) */}
         <section className="editorial-row">
           <div className="row-text reveal-editorial reveal-from-left">
             <h2>{t.research.title}</h2>
             <p>{t.research.p1}</p>
             <p>{t.research.p2}</p>
           </div>
-          <div className="row-media bleed-right reveal-editorial reveal-from-right">
+          <div className="row-media reveal-editorial reveal-from-right">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1229dcf2c6644f4285aae97571ad2947"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1b0a4b6f9bb84630b2d4b1bb8716ab11"
               alt="Archivia research details"
-              style={{ objectFit: 'cover', objectPosition: 'center center' }}
             />
           </div>
         </section>
 
         <hr className="editorial-divider" />
 
-        {/* ROW 3: DESIGN (IMAGE LEFT, TEXT RIGHT) */}
+        {/* ROW 3: DESIGN (BOX 4:3 LEFT, TEXT RIGHT) */}
         <section className="editorial-row">
-          <div className="row-media bleed-left reveal-editorial reveal-from-left">
+          <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fd825333b798942f5addf7b89bba2e3ff"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1b0a4b6f9bb84630b2d4b1bb8716ab11"
               alt="Archivia design mechanics"
-              style={{ objectFit: 'cover', objectPosition: 'center center' }}
             />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
@@ -685,29 +668,26 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* COMPOSITE 3-IMAGE GRID BOX (EDGE-TO-EDGE) */}
+        {/* COMPOSITE 3-IMAGE GRID BOX (16:9 + TWO 1:1 SQUARES) */}
         <section className="fullbleed-composite reveal-editorial reveal-from-left">
           <div className="media-composite-box">
             <div className="composite-top">
               <img
-                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F66215330a01245928bfd982a4e89a724"
+                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F863e0bdf77e44519b6628999a8739214"
                 alt="Archivia exploded view wide"
-                style={{ objectFit: 'cover', objectPosition: 'center center' }}
               />
             </div>
             <div className="composite-bottom">
               <div className="composite-square">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F42f618d85fbd458988c33e9f58f1edce"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F8e4089261fe741a580f79ee17d2c5cbe"
                   alt="Archivia detail square 1"
-                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
                 />
               </div>
               <div className="composite-square">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c52dcd39b4945a6985cf49b519c0b51"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F4894abf6b091470cbbc3233eb674a6b9"
                   alt="Archivia detail square 2"
-                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
                 />
               </div>
             </div>
@@ -732,7 +712,6 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             {t.cta.subtitle}
           </p>
 
-          {/* PROJECT NAVIGATOR DOTS WITH HOVER PREVIEW */}
           <div className="project-navigator">
             {hoveredProject && (
               <div className="project-preview-card">
