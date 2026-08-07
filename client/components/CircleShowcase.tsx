@@ -574,7 +574,7 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
             display: block;
             position: relative;
             width: 100%;
-            height: 155vh; /* Aumenta/diminuisci questo valore per regolare la quantità di scroll prima di sbloccarsi */
+            height: 170vh; /* Aumenta/diminuisci questo valore per regolare la quantità di scroll prima di sbloccarsi */
             scroll-snap-align: start;
             scroll-snap-stop: always;
           }
