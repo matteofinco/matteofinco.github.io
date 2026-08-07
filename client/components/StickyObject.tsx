@@ -11,7 +11,7 @@ const PROCESS_STEPS = {
       title: 'Ogni progetto parte\nda una domanda.',
       desc: 'Prima di cercare soluzioni, dedico tempo a comprendere le persone, i contesti e i comportamenti. Analizzo come vengono usati i prodotti, dove nascono le difficoltà e quali vincoli guidano ogni decisione progettuale.',
       tag: 'IMMAGINE 01 // RICERCA E OSSERVAZIONE',
-      image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Ff5c97c63b81e4bcc9e0ffb49878a09be',
+      image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fccebb9ded9f64abab522b395bbbad713',
     },
     {
       step: '02 / CREA E TESTA',
@@ -34,21 +34,21 @@ const PROCESS_STEPS = {
       title: 'Every project starts\nwith a question.',
       desc: 'Before searching for solutions, I spend time understanding people, contexts and behaviours. I like analysing how products are used, where friction appears and which constraints influence every design decision.',
       tag: 'IMAGE 01 // RESEARCH & OBSERVATION',
-      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80',
+      image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fccebb9ded9f64abab522b395bbbad713',
     },
     {
       step: '02 / MAKE & TEST',
       title: 'Ideas become real\nthrough prototyping.',
       desc: 'Sketches evolve into CAD models, functional prototypes and physical experiments. Building ideas allows me to validate assumptions, discover unexpected problems and improve every iteration through direct testing.',
       tag: 'IMAGE 02 // PROTOTYPING & TESTING',
-      image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80',
+      image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F0427482a7b374ef1b727ec74983b63d8',
     },
     {
       step: '03 / REFINE & SIMPLIFY',
       title: 'Good design is\nthoughtful simplicity.',
       desc: 'Every component should have a clear purpose. I refine geometry, materials and manufacturing processes until complexity disappears and only what truly improves the user experience remains.',
       tag: 'IMAGE 03 // REFINEMENT & DETAIL',
-      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+      image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F4894abf6b091470cbbc3233eb674a6b9',
     },
   ],
 };
