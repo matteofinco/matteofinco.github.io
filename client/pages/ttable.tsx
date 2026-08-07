@@ -800,7 +800,7 @@ export default function TTable({ heroFit = 'cover' }: TTableProps) {
         {/* ROW 3: DESIGN (IMAGE LEFT FULL BLEED) */}
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
-            <img src={IMAGES.design} alt="T-Table design" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F69c8dc7e6cd34d41be491c894af5bf74" alt="T-Table design" />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
             <h2>{t.design.title}</h2>
@@ -814,22 +814,6 @@ export default function TTable({ heroFit = 'cover' }: TTableProps) {
           <hr className="editorial-divider" />
         </div>
 
-        {/* COMPOSITE GRID BOX (FULL BLEED) */}
-        <section className="fullbleed-composite reveal-editorial reveal-from-left">
-          <div className="media-composite-box">
-            <div className="composite-top">
-              <img src={IMAGES.compositeTop} alt="T-Table assembly" />
-            </div>
-            <div className="composite-bottom">
-              <div className="composite-square">
-                <img src={IMAGES.compositeBottomLeft} alt="T-Table detail" />
-              </div>
-              <div className="composite-square">
-                <img src={IMAGES.compositeBottomRight} alt="T-Table detail" />
-              </div>
-            </div>
-          </div>
-        </section>
 
         <div className="editorial-content">
           <hr className="editorial-divider" />
