@@ -216,7 +216,7 @@ export default function About() {
       <div className="about-fullbleed-wrapper">
         <section className="about-row media-left">
           <div className="about-media reveal-editorial reveal-from-left">
-            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F11c931d1f0994238986b7122f30709a0" alt="Studio workspace" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2384c8c54fac4c19bd6981e876dba4bb" alt="Studio workspace" />
           </div>
           <div className="about-text reveal-editorial reveal-from-right">
             <h2>{t.curiosityTitle}</h2>
@@ -232,7 +232,7 @@ export default function About() {
             <p>{t.methodText2}</p>
           </div>
           <div className="about-media reveal-editorial reveal-from-right">
-            <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1600&q=80" alt="Digital fabrication" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Ffe00d2a2166f40bdb9808c4ccfa5e4e9" alt="Digital fabrication" />
           </div>
         </section>
 
