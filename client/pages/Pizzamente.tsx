@@ -758,7 +758,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
 
         {/* HERO PRODUCT IMAGE (FULL BLEED) */}
         <section className="hero-media-fullbleed reveal-editorial reveal-from-left">
-          <img src={IMAGES.hero} alt="PizzaMente hero" />
+          <img src="https://cdn.builder.io/api/v1/file/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fef788ba34cdd4e62a1c02f2341367f29" alt="PizzaMente hero" />
         </section>
 
         <div className="editorial-content">
@@ -778,7 +778,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
         {/* ROW 1: SOLUTION (IMAGE LEFT FULL BLEED) */}
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
-            <img src={IMAGES.solution} alt="PizzaMente solution" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fed8a5b2001934388b05a7b4b09cf2343" alt="PizzaMente solution" />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
             <h2>{t.solution.title}</h2>
@@ -800,7 +800,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
             <p>{t.research.p2}</p>
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
-            <img src={IMAGES.research} alt="PizzaMente research" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F526c333013a34f329ab65c19febf8b01" alt="PizzaMente research" />
           </div>
         </section>
 
@@ -811,7 +811,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
         {/* ROW 3: DESIGN (IMAGE LEFT FULL BLEED) */}
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
-            <img src={IMAGES.design} alt="PizzaMente design" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fdf97611c3532461faf7b91926a23b288" alt="PizzaMente design" />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
             <h2>{t.design.title}</h2>
@@ -829,7 +829,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
         <section className="fullbleed-composite reveal-editorial reveal-from-left">
           <div className="media-composite-box">
             <div className="composite-top">
-              <img src={IMAGES.compositeTop} alt="PizzaMente assembly" />
+              <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fdf97611c3532461faf7b91926a23b288" alt="PizzaMente assembly" />
             </div>
             <div className="composite-bottom">
               <div className="composite-square">
