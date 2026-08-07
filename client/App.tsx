@@ -4,6 +4,8 @@ import About from "./pages/About";
 import Curriculum from "./pages/Curriculum";
 import Archivia from "./pages/Archivia";
 import Snake from "./pages/Snake";
+import ttable from "./pages/ttable";
+
 import Prop from "./pages/Prop";
 import Nando from "./pages/Nando";
 import { Footer } from "./components/Footer";
@@ -21,9 +23,13 @@ export default function App() {
     if (isCurriculum) {
       return <Curriculum />;
     }
+    
 
     if (path.includes("/archivia")) {
       return <Archivia />;
+    }
+    if (path.includes("/ttable")) {
+      return <ttable />;
     }
 
     if (path.includes("/snake")) {
