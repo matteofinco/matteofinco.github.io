@@ -830,7 +830,6 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
           <div className="media-composite-box">
             <div className="composite-top">
               <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fdf97611c3532461faf7b91926a23b288" alt="PizzaMente assembly" />
-            </div>
             
         </section>
 
