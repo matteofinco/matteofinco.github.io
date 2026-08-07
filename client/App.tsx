@@ -6,7 +6,7 @@ import Curriculum from "./pages/Curriculum";
 
 import Archivia from "./pages/Archivia";
 import Snake from "./pages/Snake";
-import TTable from "./pages/TTable";
+import TTable from "./pages/ttable";
 
 import Prop from "./pages/Prop";
 import Nando from "./pages/Nando";
