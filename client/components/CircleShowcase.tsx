@@ -11,15 +11,15 @@ export interface ProjectStep {
     it: string;
     en: string;
   };
-  category: {
+  discipline: {
     it: string;
     en: string;
   };
-  tools: {
+  context: {
     it: string;
     en: string;
   };
-  material: {
+  focus: {
     it: string;
     en: string;
   };
@@ -30,6 +30,10 @@ export interface ProjectStep {
   };
   link: string;
   img: string;
+  // Proprietà opzionali per retrocompatibilità
+  category?: { it: string; en: string };
+  tools?: { it: string; en: string };
+  material?: { it: string; en: string };
 }
 
 interface CircleShowcaseProps {
@@ -40,13 +44,13 @@ interface CircleShowcaseProps {
 
 const labels = {
   it: {
-    approach: 'Approccio progettuale',
-    materials: 'Materiali & Tecnologie',
+    context: 'CONTESTO',
+    focus: 'FOCUS',
     explore: 'ESPLORA PROGETTO',
   },
   en: {
-    approach: 'Design Approach',
-    materials: 'Materials & Technologies',
+    context: 'CONTEXT',
+    focus: 'FOCUS',
     explore: 'EXPLORE PROJECT',
   },
 };
@@ -158,13 +162,17 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
             <div className="process-text-stage">
               {steps.map((st, index) => {
                 const isActive = index === activeStep;
+                const disciplineText = st.discipline ? st.discipline[currentLang] : st.category?.[currentLang];
+                const contextText = st.context ? st.context[currentLang] : st.tools?.[currentLang];
+                const focusText = st.focus ? st.focus[currentLang] : st.material?.[currentLang];
+
                 return (
                   <div
                     key={st.id}
                     className={`process-card-item ${isActive ? 'active' : ''}`}
                   >
                     <div className="project-category-tag">
-                      <span className="vector-slash">//</span> {st.id} <span className="vector-bullet">•</span> {st.category[currentLang]} <span className="vector-bullet">•</span> {st.year}
+                      <span className="vector-slash">//</span> {st.id} <span className="vector-bullet">•</span> {disciplineText} <span className="vector-bullet">•</span> {st.year}
                     </div>
 
                     <h2 className="project-main-title">{st.title[currentLang]}</h2>
@@ -176,16 +184,16 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
                     <div className="project-meta-grid">
                       <div className="meta-item">
                         <span className="label">
-                          <span className="vector-mini-dash">--</span> {labels[currentLang].approach}
+                          <span className="vector-mini-dash">--</span> {labels[currentLang].context}
                         </span>
-                        <span className="value">{st.tools[currentLang]}</span>
+                        <span className="value">{contextText}</span>
                       </div>
 
                       <div className="meta-item">
                         <span className="label">
-                          <span className="vector-mini-dash">--</span> {labels[currentLang].materials}
+                          <span className="vector-mini-dash">--</span> {labels[currentLang].focus}
                         </span>
-                        <span className="value">{st.material[currentLang]}</span>
+                        <span className="value">{focusText}</span>
                       </div>
                     </div>
 
@@ -205,40 +213,46 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
       {/* VISTA MOBILE */}
       <div className="showcase-mobile-carousel">
         <div className="carousel-track">
-          {steps.map((st, idx) => (
-            <div key={st.id} className="mobile-showcase-card">
-              <div className="mobile-img-wrapper">
-                <img src={st.img} alt={st.title[currentLang]} className="mobile-card-img" />
-                <div className="mobile-category-tag">
-                  // {st.id} • {st.year}
-                </div>
-                <div className="mobile-step-num">
-                  [{String(idx + 1).padStart(2, '0')}]
-                </div>
-              </div>
+          {steps.map((st, idx) => {
+            const disciplineText = st.discipline ? st.discipline[currentLang] : st.category?.[currentLang];
+            const contextText = st.context ? st.context[currentLang] : st.tools?.[currentLang];
+            const focusText = st.focus ? st.focus[currentLang] : st.material?.[currentLang];
 
-              <div className="mobile-card-body">
-                <h2 className="mobile-main-title">{st.title[currentLang]}</h2>
-                <div className="mobile-subtitle-text">{st.subtitle[currentLang]}</div>
-                <p className="mobile-desc-text">{st.desc[currentLang]}</p>
-
-                <div className="mobile-meta-grid">
-                  <div className="meta-item">
-                    <span className="label">-- {labels[currentLang].approach}</span>
-                    <span className="value">{st.tools[currentLang]}</span>
+            return (
+              <div key={st.id} className="mobile-showcase-card">
+                <div className="mobile-img-wrapper">
+                  <img src={st.img} alt={st.title[currentLang]} className="mobile-card-img" />
+                  <div className="mobile-category-tag">
+                    // {st.id} • {disciplineText} • {st.year}
                   </div>
-                  <div className="meta-item">
-                    <span className="label">-- {labels[currentLang].materials}</span>
-                    <span className="value">{st.material[currentLang]}</span>
+                  <div className="mobile-step-num">
+                    [{String(idx + 1).padStart(2, '0')}]
                   </div>
                 </div>
 
-                <a href={st.link} className="mobile-action-link">
-                  {labels[currentLang].explore} →
-                </a>
+                <div className="mobile-card-body">
+                  <h2 className="mobile-main-title">{st.title[currentLang]}</h2>
+                  <div className="mobile-subtitle-text">{st.subtitle[currentLang]}</div>
+                  <p className="mobile-desc-text">{st.desc[currentLang]}</p>
+
+                  <div className="mobile-meta-grid">
+                    <div className="meta-item">
+                      <span className="label">-- {labels[currentLang].context}</span>
+                      <span className="value">{contextText}</span>
+                    </div>
+                    <div className="meta-item">
+                      <span className="label">-- {labels[currentLang].focus}</span>
+                      <span className="value">{focusText}</span>
+                    </div>
+                  </div>
+
+                  <a href={st.link} className="mobile-action-link">
+                    {labels[currentLang].explore} →
+                  </a>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -298,7 +312,6 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           aspect-ratio: 1 / 1;
           padding: 16px;
           box-sizing: border-box;
-          /* Rimosso sfondo e bordo esterno */
         }
 
         /* Assi cartesiani passanti leggerissimi */
@@ -360,7 +373,6 @@ export const CircleShowcase: React.FC<CircleShowcaseProps> = ({
           height: 100%;
           overflow: hidden;
           background: #0f0f0f;
-          /* Rimosso il bordo bianco attorno all'immagine */
         }
 
         .inner-grid-pattern {
