@@ -545,7 +545,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         <section className="editorial-row">
           <div className="row-media bleed-left reveal-editorial reveal-from-left">
             <img
-              src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fbc9f3399c1c0420197306c2acf3ef25e"
               alt="Archivia design mechanics"
               style={{ objectFit: 'cover', objectPosition: 'center top' }}
             />
@@ -565,7 +565,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           <div className="media-composite-box">
             <div className="composite-top">
               <img
-                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F45d6dba0e50c4ff090637ec48f2cec1a"
+                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F66215330a01245928bfd982a4e89a724"
                 alt="Archivia exploded view wide"
                 style={{ objectFit: 'contain', objectPosition: 'center center' }}
               />
