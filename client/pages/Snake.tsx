@@ -782,7 +782,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
             <img
-              src={SNAKE_IMAGE_URL}
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F6134266fe042402f9cf34192dc572277"
               alt="Snake research and ergonomic analysis"
             />
           </div>
