@@ -790,7 +790,7 @@ export default function Prop({ heroFit = 'cover' }: PropProps) {
         {/* ROW 3: DESIGN (IMAGE LEFT FULL BLEED) */}
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
-            <img src={IMAGES.design} alt="Prop design" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fb6f09233354c4b449744fc57cd8ad002" alt="Prop design" />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
             <h2>{t.design.title}</h2>
