@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./client # Imposta la cartella di lavoro principale su client
+        working-directory: ./client
 
     steps:
       - name: Checkout
@@ -43,7 +43,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './client/dist' # Cartella di output all'interno di client
+          path: './client/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
