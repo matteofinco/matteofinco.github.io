@@ -135,7 +135,7 @@ export const IntroSection: React.FC<IntroProps> = ({ t }) => {
           {/* Immagine a destra */}
           <div className="intro-media-box">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F8bb57828b5694c82bd4e123e8d86a466"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Ffd2f84c112c140578bdb169a972c5725"
               alt="Matteo Finco Studio Work"
             />
           </div>
