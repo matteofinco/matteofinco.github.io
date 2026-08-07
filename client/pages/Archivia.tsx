@@ -802,7 +802,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1229dcf2c6644f4285aae97571ad2947"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1d99a248f2d84634835e00b5d39a76dd"
               alt="Archivia research and desk environment context"
             />
           </div>
@@ -850,7 +850,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
               </div>
               <div className="composite-square">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2faa4e82bbab4ae0855f90d86d10ef06"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fbbf296775c2a4cc98ba01d64491c56f7"
                   alt="Archivia detailed view 2"
                 />
               </div>
