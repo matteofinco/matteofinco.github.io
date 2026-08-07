@@ -582,7 +582,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           transform: translateY(-2px);
         }
 
-        /* RESPONSIVE BREAKPOINTS */
+        /* RESPONSIVE BREAKPOINTS (MOBILE OPTIMIZED) */
         @media (max-width: 860px) {
           .editorial-row-fullbleed {
             display: flex;
@@ -594,10 +594,26 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             flex-direction: column-reverse;
           }
 
+          /* Mantieni le proporzioni ed evita il taglio a quadrato su mobile */
+          .hero-media-fullbleed {
+            height: auto;
+            aspect-ratio: 16 / 9;
+          }
+
+          .hero-media-fullbleed img {
+            object-fit: contain;
+          }
+
           .editorial-row-fullbleed.row-img-left .row-media,
           .editorial-row-fullbleed.row-img-right .row-media {
             width: 100%;
-            height: 380px;
+            height: auto;
+            aspect-ratio: 16 / 9;
+          }
+
+          .editorial-row-fullbleed.row-img-left .row-media img,
+          .editorial-row-fullbleed.row-img-right .row-media img {
+            object-fit: contain;
           }
 
           .editorial-row-fullbleed.row-img-left .row-text,
@@ -610,11 +626,21 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           }
 
           .composite-top {
-            height: 320px;
+            height: auto;
+            aspect-ratio: 16 / 9;
+          }
+
+          .composite-top img {
+            object-fit: contain;
           }
 
           .composite-square {
-            height: 250px;
+            height: auto;
+            aspect-ratio: 4 / 3;
+          }
+
+          .composite-square img {
+            object-fit: contain;
           }
 
           .editorial-divider {
