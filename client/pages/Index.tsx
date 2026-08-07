@@ -574,10 +574,10 @@ export default function Index() {
         {t.projectsSub && <p className="projects-section-sub">{t.projectsSub}</p>}
       </div>
 
-      {/* CIRCLE SHOWCASE CON EFFETTO CALAMITA */}
-      <div className="showcase-wrapper">
-        <CircleShowcase steps={projectList} activeStep={activeStep} lang={lang} />
-      </div>
+    {/* CIRCLE SHOWCASE CON EFFETTO CALAMITA */}
+<div className="showcase-wrapper" id="projects">
+  <CircleShowcase steps={projectList} activeStep={activeStep} lang={lang} />
+</div>
 
       {/* SEZIONE CALL-TO-ACTION (WHAT'S NEXT) */}
       <div className="whats-next-wrapper">
