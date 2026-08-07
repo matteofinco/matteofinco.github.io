@@ -796,7 +796,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
             <img
-              src={SNAKE_IMAGE_URL}
+              src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F0427482a7b374ef1b727ec74983b63d8"
               alt="Snake modular connection detail"
             />
           </div>
@@ -817,7 +817,7 @@ export default function Snake({ heroFit = 'cover' }: SnakeProps) {
           <div className="media-composite-box">
             <div className="composite-top">
               <img
-                src={SNAKE_IMAGE_URL}
+                src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Ff2f05556ec2444e7a1557788836778c2"
                 alt="Snake training context layout"
               />
             </div>
