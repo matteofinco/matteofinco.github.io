@@ -767,7 +767,7 @@ export default function TTable({ heroFit = 'cover' }: TTableProps) {
         {/* ROW 1: SOLUTION (IMAGE LEFT FULL BLEED) */}
         <section className="editorial-row-fullbleed row-img-left">
           <div className="row-media reveal-editorial reveal-from-left">
-            <img src={IMAGES.solution} alt="T-Table solution" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F7bacb81c9a994432be6ef2d8969f9afd" alt="T-Table solution" />
           </div>
           <div className="row-text reveal-editorial reveal-from-right">
             <h2>{t.solution.title}</h2>
@@ -789,7 +789,7 @@ export default function TTable({ heroFit = 'cover' }: TTableProps) {
             <p>{t.research.p2}</p>
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
-            <img src={IMAGES.research} alt="T-Table research" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F7eea95f2e0634171a31010223df2cb1e" alt="T-Table research" />
           </div>
         </section>
 
