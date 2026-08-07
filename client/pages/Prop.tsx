@@ -779,7 +779,7 @@ export default function Prop({ heroFit = 'cover' }: PropProps) {
             <p>{t.research.p2}</p>
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
-            <img src={IMAGES.research} alt="Prop research" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F94433d18d06e4f57aa4cf9de6c5f787f" alt="Prop research" />
           </div>
         </section>
 
