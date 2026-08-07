@@ -29,15 +29,15 @@ export default function App() {
     if (path.includes("/snake")) {
       return <Snake />;
     }
- if (path.includes("/prop")) {
+
+    if (path.includes("/prop")) {
       return <Prop />;
     }
-    return <Index />;
-  }
-if (path.includes("/nando")) {
+
+    if (path.includes("/nando")) {
       return <Nando />;
-  };
-    
+    }
+
     return <Index />;
   };
 
