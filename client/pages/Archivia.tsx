@@ -5,15 +5,14 @@ interface ArchiviaProps {
   heroFit?: 'contain' | 'cover';
 }
 
-// Struttura dati per la navigazione rapida tra i progetti
 const PROJECTS_LIST = [
-  { id: 'archivia', title: 'ARCHIVIA', category: 'Product Design', year: '2025', image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e', link: '/archivia' },
-  { id: 'snake', title: 'SNAKE', category: 'Sports Equipment', year: '2026', image: 'https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=600&q=80', link: '/snake' },
-  { id: 'myceil', title: 'MYCEIL', category: 'Acoustic Panel', year: '2026', image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80', link: '/myceil' },
-  { id: 'plastix', title: 'PLASTIX GADGET', category: 'Sustainable Design', year: '2025', image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80', link: '/plastix' },
-  { id: 'project5', title: 'PROJECT FIVE', category: 'Industrial Design', year: '2025', image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80', link: '/project-5' },
-  { id: 'project6', title: 'PROJECT SIX', category: 'Concept Design', year: '2025', image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80', link: '/project-6' },
-  { id: 'project7', title: 'PROJECT SEVEN', category: 'Research', year: '2024', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80', link: '/project-7' }
+  { id: "archivia", title: "Archivia", subtitle: "Pen holder", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fc4e5eae770e146cc9e7245b921f5d11e", path: "/archivia", areaClass: "area-archivia" },
+  { id: "pizzamente", title: "PizzaMente", subtitle: "Academic Workshop", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2e3383ac1e3348f0bc9a80ad0e830913", path: "/pizzamente", areaClass: "area-pizza" },
+  { id: "nando", title: "Nando", subtitle: "Hyperplastic cutlery handle", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F58faeaf495544fe5a8367b24177ac088", path: "/nando", areaClass: "area-nando" },
+  { id: "snake", title: "Snake", subtitle: "Hockey stickhandling trainer", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F9366df60acf94b0bacc85252a2e3865e", path: "/snake", areaClass: "area-snake" },
+  { id: "wafflemaker", title: "Waffle Maker", subtitle: "Waffle Maker analysis", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fedbb2046d3db4d549f4da864fca20382", path: "/wafflemaker", areaClass: "area-waffle" },
+  { id: "prop", title: "Prop", subtitle: "3D-Printed Emergency Crutch", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5ea37818589140f49395200bfbdbbb41", path: "/prop", areaClass: "area-prop" },
+  { id: "ttable", title: "T-Table", subtitle: "Interactive feeding-friendly table", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc", path: "/ttable", areaClass: "area-ttable" }
 ];
 
 const content = {
@@ -57,7 +56,7 @@ const content = {
     },
     cta: {
       title: "Explore Projects",
-      subtitle: "Hover over the indicators to preview and navigate directly to other works.",
+      subtitle: "Hover over the dots to preview and navigate to other works.",
       button: "BACK TO PORTFOLIO"
     }
   },
@@ -329,7 +328,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           }
         }
 
-        /* COMPOSITE GRID FULL BLEED DEFINTIVO */
+        /* COMPOSITE GRID FULL BLEED (AZZERAMENTO MARGINI TOTALE) */
         .fullbleed-composite {
           width: 100vw;
           position: relative;
@@ -340,36 +339,39 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           background: #0d0d0d;
           border-top: 1px solid #1a1a1a;
           border-bottom: 1px solid #1a1a1a;
-          padding: 24px 0;
+          padding: 0;
+          margin-top: 0;
+          margin-bottom: 0;
         }
 
         .media-composite-box {
-          max-width: 100%;
-          margin: 0 auto;
+          width: 100vw;
           display: flex;
           flex-direction: column;
-          gap: 16px;
-          padding: 0 16px;
+          gap: 12px;
+          padding: 0;
+          margin: 0;
         }
 
         .composite-top {
-          width: 100%;
+          width: 100vw;
           aspect-ratio: 16 / 9;
-          max-height: 650px;
+          max-height: 680px;
           overflow: hidden;
           background: #000000;
         }
 
         .composite-bottom {
+          width: 100vw;
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 16px;
+          gap: 12px;
         }
 
         .composite-square {
           width: 100%;
           aspect-ratio: 1 / 1;
-          max-height: 480px;
+          max-height: 520px;
           overflow: hidden;
           background: #111111;
         }
@@ -562,7 +564,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
         }
 
         /* RESPONSIVE */
-        @max-width: 860px {
+        @media (max-width: 860px) {
           .editorial-row {
             grid-template-columns: 1fr;
             gap: 30px;
@@ -683,7 +685,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
         <hr className="editorial-divider" />
 
-        {/* COMPOSITE 3-IMAGE GRID BOX (FULL BLEED REALE) */}
+        {/* COMPOSITE 3-IMAGE GRID BOX (EDGE-TO-EDGE) */}
         <section className="fullbleed-composite reveal-editorial reveal-from-left">
           <div className="media-composite-box">
             <div className="composite-top">
@@ -735,11 +737,11 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
             {hoveredProject && (
               <div className="project-preview-card">
                 <div className="preview-img-box">
-                  <img src={hoveredProject.image} alt={hoveredProject.title} />
+                  <img src={hoveredProject.imageUrl} alt={hoveredProject.title} />
                 </div>
                 <div className="preview-details">
                   <h4>{hoveredProject.title}</h4>
-                  <p>{hoveredProject.category} — {hoveredProject.year}</p>
+                  <p>{hoveredProject.subtitle}</p>
                 </div>
               </div>
             )}
@@ -751,7 +753,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
                   className={`dot-item ${proj.id === 'archivia' ? 'active' : ''}`}
                   onMouseEnter={() => setHoveredProject(proj)}
                   onMouseLeave={() => setHoveredProject(null)}
-                  onClick={() => window.location.href = proj.link}
+                  onClick={() => window.location.href = proj.path}
                   aria-label={`Vai al progetto ${proj.title}`}
                 />
               ))}
