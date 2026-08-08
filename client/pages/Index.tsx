@@ -342,15 +342,15 @@ export default function Index() {
       <div className="section-divider-gap" />
 
       {/* TITOLO PROJECTS SEZIONE PROGETTI */}
-      <div 
-        id="projects" 
-        className="projects-header-section reveal-editorial"
-      >
+     
         {t.projectsBadge && <span className="projects-badge">{t.projectsBadge}</span>}
         <h2 className="projects-section-title">{t.projectsTitle}</h2>
         {t.projectsSub && <p className="projects-section-sub">{t.projectsSub}</p>}
       </div>
-
+ <div 
+        id="projects" 
+        className="projects-header-section reveal-editorial"
+      >
       {/* CIRCLE SHOWCASE CON EFFETTO CALAMITA */}
       <div className="showcase-wrapper">
         <CircleShowcase lang={lang} />
