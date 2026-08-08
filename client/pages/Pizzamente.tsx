@@ -519,7 +519,7 @@ export default function PizzaMente({ heroFit = 'cover' }: PizzaMenteProps) {
 
           .editorial-row-fullbleed.row-img-left .row-media img,
           .editorial-row-fullbleed.row-img-right .row-media img {
-            object-fit: contain;
+            object-fit: cover;
           }
 
           .editorial-row-fullbleed.row-img-left .row-text,
