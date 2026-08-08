@@ -657,16 +657,17 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
             flex-direction: column-reverse;
           }
 
-          /* Formato immagini mobile più basso (21/9) */
+          /* HERO MEDIA (MOBILE) */
           .hero-media-fullbleed {
             height: auto;
             aspect-ratio: 21 / 9;
           }
 
           .hero-media-fullbleed img {
-            object-fit: contain;
+            object-fit: cover;
           }
 
+          /* ROW MEDIA (MOBILE) */
           .editorial-row-fullbleed.row-img-left .row-media,
           .editorial-row-fullbleed.row-img-right .row-media {
             width: 100%;
@@ -676,7 +677,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
 
           .editorial-row-fullbleed.row-img-left .row-media img,
           .editorial-row-fullbleed.row-img-right .row-media img {
-            object-fit: contain;
+            object-fit: cover;
           }
 
           .editorial-row-fullbleed.row-img-left .row-text,
@@ -684,6 +685,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
             padding: 0 4vw;
           }
 
+          /* COMPOSITE GRID (MOBILE) */
           .composite-bottom {
             grid-template-columns: 1fr;
           }
@@ -694,7 +696,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
           }
 
           .composite-top img {
-            object-fit: contain;
+            object-fit: cover;
           }
 
           .composite-square {
@@ -703,7 +705,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
           }
 
           .composite-square img {
-            object-fit: contain;
+            object-fit: cover;
           }
 
           .editorial-divider {
@@ -912,7 +914,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
               </div>
             </div>
 
-            <a href="/#portfolio" className="cta-button">
+            <a href="/" className="cta-button">
               {t.cta.button}
             </a>
           </section>
