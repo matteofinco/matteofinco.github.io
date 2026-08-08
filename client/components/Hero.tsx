@@ -61,10 +61,7 @@ export const Hero: React.FC = () => {
           white-space: nowrap;
         }
 
-        /* NOME VERTICALE */
-        .hero-name {
-          display: none;
-        }
+        
 
         @media (min-width: 1024px) {
           .hero-name {
