@@ -40,6 +40,18 @@ export default function Index() {
   const [lang, setLang] = useState<'it' | 'en'>('it');
   const [showNavName, setShowNavName] = useState<boolean>(false);
 
+  // Auto-scroll alla sezione #projects se la pagina viene aperta con l'hash nell'URL
+  useEffect(() => {
+    if (window.location.hash === '#projects') {
+      setTimeout(() => {
+        const el = document.getElementById('projects');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    }
+  }, []);
+
   useEffect(() => {
     const intro = document.getElementById("intro-transition");
     const sticky = document.getElementById("sticky-transition");
@@ -327,14 +339,18 @@ export default function Index() {
       <div className="section-divider-gap" />
 
       {/* TITOLO PROJECTS SEZIONE PROGETTI */}
-      <div className="projects-header-section reveal-editorial">
+      <div 
+        id="projects" 
+        className="projects-header-section reveal-editorial" 
+        style={{ scrollMarginTop: '80px' }}
+      >
         {t.projectsBadge && <span className="projects-badge">{t.projectsBadge}</span>}
         <h2 className="projects-section-title">{t.projectsTitle}</h2>
         {t.projectsSub && <p className="projects-section-sub">{t.projectsSub}</p>}
       </div>
 
       {/* CIRCLE SHOWCASE CON EFFETTO CALAMITA */}
-      <div className="showcase-wrapper" id="projects">
+      <div className="showcase-wrapper">
         <CircleShowcase lang={lang} />
       </div>
 
