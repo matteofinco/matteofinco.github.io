@@ -40,7 +40,7 @@ export default function Index() {
   const [lang, setLang] = useState<'it' | 'en'>('it');
   const [showNavName, setShowNavName] = useState<boolean>(false);
 
-  // Auto-scroll alla sezione #projects se la pagina viene aperta con l'hash nell'URL
+  // Auto-scroll alla sezione #projects se la pagina viene caricata con l'hash nell'URL
   useEffect(() => {
     if (window.location.hash === '#projects') {
       setTimeout(() => {
@@ -167,6 +167,9 @@ export default function Index() {
           text-align: center;
           position: relative;
           z-index: 4;
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
+          scroll-margin-top: 60px;
         }
 
         .projects-badge {
@@ -341,8 +344,7 @@ export default function Index() {
       {/* TITOLO PROJECTS SEZIONE PROGETTI */}
       <div 
         id="projects" 
-        className="projects-header-section reveal-editorial" 
-        style={{ scrollMarginTop: '80px' }}
+        className="projects-header-section reveal-editorial"
       >
         {t.projectsBadge && <span className="projects-badge">{t.projectsBadge}</span>}
         <h2 className="projects-section-title">{t.projectsTitle}</h2>
