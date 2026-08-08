@@ -488,12 +488,12 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           }
 
           .hero-media-fullbleed {
-            height: auto;
-            aspect-ratio: 16 / 9;
+            height: 320px;
           }
 
           .hero-media-fullbleed img {
-            object-fit: contain;
+            object-fit: cover;
+            object-position: center;
           }
 
           .editorial-row-fullbleed.row-img-left .row-media,
@@ -504,7 +504,8 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
           .editorial-row-fullbleed.row-img-left .row-media img,
           .editorial-row-fullbleed.row-img-right .row-media img {
-            object-fit: contain;
+            object-fit: cover;
+            object-position: center;
           }
 
           .editorial-row-fullbleed.row-img-left .row-text,
@@ -521,7 +522,8 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           }
 
           .composite-top img {
-            object-fit: contain;
+            object-fit: cover;
+            object-position: center;
           }
 
           .composite-square {
@@ -529,7 +531,8 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
           }
 
           .composite-square img {
-            object-fit: contain;
+            object-fit: cover;
+            object-position: center;
           }
 
           .editorial-divider {
