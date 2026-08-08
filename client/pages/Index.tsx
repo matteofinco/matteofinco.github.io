@@ -357,8 +357,10 @@ export default function Index() {
 
         className="showcase-wrapper" >
         <CircleShowcase lang={lang} />
-        id="projects" 
-      </div>
+      
+         
+      </div
+      id="projects" >
 
       {/* SEZIONE CALL-TO-ACTION (WHAT'S NEXT) */}
       <div className="whats-next-wrapper">
