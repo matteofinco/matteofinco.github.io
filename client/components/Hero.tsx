@@ -44,7 +44,7 @@ export const Hero: React.FC = () => {
         .hero-title {
           font-size: clamp(1.6rem, 7.5vw, 9rem);
           line-height: 0.88;
-          letter-spacing: -0.06em;
+          letter-spacing: -0.00em;
           font-weight: 900;
           text-transform: uppercase;
           margin: 0;
@@ -103,7 +103,7 @@ export const Hero: React.FC = () => {
             I LIKE<br />
             UNDERSTANDING<br />
             HOW THINGS<br />
-            WORK
+            WORK.
           </h1>
 
           <div className="hero-subtitle">
