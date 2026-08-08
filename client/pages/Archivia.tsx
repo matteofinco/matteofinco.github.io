@@ -504,7 +504,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
           .editorial-row-fullbleed.row-img-left .row-media img,
           .editorial-row-fullbleed.row-img-right .row-media img {
-            object-fit: cover;
+            object-fit: contain;
             object-position: center;
           }
 
