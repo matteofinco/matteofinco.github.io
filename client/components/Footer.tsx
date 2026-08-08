@@ -1,6 +1,22 @@
 import React from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleProjectsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (location.pathname === '/') {
+      const projectsSection = document.getElementById('projects');
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate('/#projects');
+    }
+  };
+
   return (
     <footer className="site-footer">
       <style>{`
@@ -38,6 +54,7 @@ export const Footer: React.FC = () => {
           color: #888888;
           text-decoration: none;
           transition: color 0.2s ease;
+          cursor: pointer;
         }
 
         .footer-links a:hover {
@@ -56,15 +73,15 @@ export const Footer: React.FC = () => {
       <div className="footer-inner">
         <span className="footer-brand">2026 MATTEO FINCO // PRODUCT DESIGN &amp; MAKER</span>
         <div className="footer-links">
-          <a href="/#projects">
+          <a href="/#projects" onClick={handleProjectsClick}>
             Projects
           </a>
-          <a href="/about">
+          <Link to="/about">
             About
-          </a>
-          <a href="/cv">
+          </Link>
+          <Link to="/cv">
             CV
-          </a>
+          </Link>
           <a 
             href="https://www.linkedin.com/in/finco-matteo-2k05/" 
             target="_blank" 
