@@ -353,10 +353,11 @@ export default function Index() {
 
       {/* CIRCLE SHOWCASE CON EFFETTO CALAMITA */}
       <div
-      id="projects" 
+      
 
         className="showcase-wrapper" >
         <CircleShowcase lang={lang} />
+        id="projects" 
       </div>
 
       {/* SEZIONE CALL-TO-ACTION (WHAT'S NEXT) */}
