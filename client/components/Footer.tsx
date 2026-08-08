@@ -11,9 +11,11 @@ export const Footer: React.FC = () => {
         window.scrollTo({ top: y, behavior: 'smooth' });
       } else {
         window.location.href = '/#projects';
+         const yOffset = -120;
       }
     } else {
       window.location.href = '/#projects';
+       const yOffset = -120;
     }
   };
 
