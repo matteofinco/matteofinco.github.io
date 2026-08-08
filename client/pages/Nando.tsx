@@ -637,7 +637,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
           transform: translateY(-2px);
         }
 
-        /* BREAKPOINT RESPONSIVE */
+        /* BREAKPOINT RESPONSIVE (MOBILE) */
         @media (max-width: 860px) {
           .desktop-dots-nav-wrapper {
             display: none;
@@ -657,9 +657,10 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
             flex-direction: column-reverse;
           }
 
+          /* Formato immagini mobile più basso (21/9) */
           .hero-media-fullbleed {
             height: auto;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 21 / 9;
           }
 
           .hero-media-fullbleed img {
@@ -670,7 +671,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
           .editorial-row-fullbleed.row-img-right .row-media {
             width: 100%;
             height: auto;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 21 / 9;
           }
 
           .editorial-row-fullbleed.row-img-left .row-media img,
@@ -689,7 +690,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
 
           .composite-top {
             height: auto;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 21 / 9;
           }
 
           .composite-top img {
@@ -698,7 +699,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
 
           .composite-square {
             height: auto;
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 16 / 9;
           }
 
           .composite-square img {
@@ -911,7 +912,7 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
               </div>
             </div>
 
-            <a href="/" className="cta-button">
+            <a href="/#portfolio" className="cta-button">
               {t.cta.button}
             </a>
           </section>
