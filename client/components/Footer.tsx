@@ -6,7 +6,9 @@ export const Footer: React.FC = () => {
     if (window.location.pathname === '/' || window.location.pathname === '') {
       const projectsSection = document.getElementById('projects');
       if (projectsSection) {
-        projectsSection.scrollIntoView({ behavior: 'smooth' });
+        const yOffset = 120; // Offset per posizionarsi direttamente dopo l'intestazione
+        const y = projectsSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
       } else {
         window.location.href = '/#projects';
       }
