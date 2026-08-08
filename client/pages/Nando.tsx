@@ -15,8 +15,6 @@ const PROJECTS_LIST = [
   { id: "ttable", title: "T-Table", subtitle: "Interactive feeding-friendly table", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2c9ec8a6b5fd4d90bb36506ce7b89adc", path: "/ttable" }
 ];
 
-const NANDO_IMAGE_URL = "https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F3e8c60da3cb54a2fa37de2c2beb5759a";
-
 const content = {
   en: {
     title: "NANDO",
@@ -913,7 +911,9 @@ export default function Nando({ heroFit = 'cover' }: NandoProps) {
               </div>
             </div>
 
-            <a href="/" className="cta-button">{t.cta.button}</a>
+            <a href="/" className="cta-button">
+              {t.cta.button}
+            </a>
           </section>
         </div>
       </div>
