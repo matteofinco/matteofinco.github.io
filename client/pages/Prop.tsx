@@ -511,7 +511,7 @@ export default function Prop({ heroFit = 'cover' }: PropProps) {
           .editorial-row-fullbleed.row-img-right .row-media {
             width: 100%;
             height: auto;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 1 / 1;
           }
 
           .editorial-row-fullbleed.row-img-left .row-media img,
