@@ -1,19 +1,17 @@
 import React from 'react';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
   const handleProjectsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    if (location.pathname === '/') {
+    if (window.location.pathname === '/' || window.location.pathname === '') {
       const projectsSection = document.getElementById('projects');
       if (projectsSection) {
         projectsSection.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.location.href = '/#projects';
       }
     } else {
-      navigate('/#projects');
+      window.location.href = '/#projects';
     }
   };
 
@@ -76,12 +74,12 @@ export const Footer: React.FC = () => {
           <a href="/#projects" onClick={handleProjectsClick}>
             Projects
           </a>
-          <Link to="/about">
+          <a href="/about">
             About
-          </Link>
-          <Link to="/cv">
+          </a>
+          <a href="/cv">
             CV
-          </Link>
+          </a>
           <a 
             href="https://www.linkedin.com/in/finco-matteo-2k05/" 
             target="_blank" 
