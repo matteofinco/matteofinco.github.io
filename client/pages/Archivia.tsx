@@ -498,7 +498,7 @@ export default function Archivia({ heroFit = 'cover' }: ArchiviaProps) {
 
           .editorial-row-fullbleed.row-img-left .row-media,
           .editorial-row-fullbleed.row-img-right .row-media {
-            width: 100%;
+            width: 105%;
             height: 380px;
           }
 
