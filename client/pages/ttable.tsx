@@ -531,7 +531,7 @@ export default function TTable({ heroFit = 'cover' }: TTableProps) {
             <p>{t.research.p2}</p>
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
-            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F7eea95f2e0634171a31010223df2cb1e" alt="T-Table research" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fa0be97adf9fc4f0d83d73411fb52c725" alt="T-Table research" />
           </div>
         </section>
 
