@@ -12,6 +12,7 @@ export const Header: React.FC<HeaderProps> = ({
   onLanguageChange,
 }) => {
   const [showLogo, setShowLogo] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,66 +24,184 @@ export const Header: React.FC<HeaderProps> = ({
       }
     };
 
-    // Controlla subito la posizione di scroll al caricamento della pagina
     handleScroll();
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Blocca lo scroll della pagina sottostante quando il menu overlay è aperto
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
   const handleLogoClick = (e: React.MouseEvent) => {
+    setIsMenuOpen(false);
     const isHomePage =
       window.location.pathname === '/' ||
       window.location.pathname.endsWith('/index.html') ||
       window.location.pathname === '';
 
     if (!isHomePage) {
-      // Se si trova in /about o altra pagina, torna alla Home
       window.location.href = '/';
     } else {
-      // Se è già in Home Page, torna in cima con scroll fluido
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
+  const handleProjectsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setIsMenuOpen(false);
+    const isHomePage =
+      window.location.pathname === '/' ||
+      window.location.pathname.endsWith('/index.html') ||
+      window.location.pathname === '';
+
+    if (isHomePage) {
+      e.preventDefault();
+      const projectsSection = document.getElementById('projects');
+      if (projectsSection) {
+        const yOffset = 120;
+        const y = projectsSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-[#070707]/90 backdrop-blur-md border-b border-[#1a1a1a] px-8 py-5 flex justify-between items-center text-[#ffffff]">
-      {/* NOME / LOGO - Minimal, non bold, con transizione in dissolvenza allo scroll */}
-      <a
-        href="/"
-        onClick={handleLogoClick}
-        className={`text-sm font-normal tracking-widest text-[#ffffff] uppercase transition-all duration-500 ease-in-out cursor-pointer no-underline select-none ${
-          showLogo
-            ? 'opacity-100 translate-y-0 pointer-events-auto'
-            : 'opacity-0 -translate-y-1 pointer-events-none'
+    <>
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#070707]/90 backdrop-blur-md border-b border-[#1a1a1a] px-6 md:px-8 py-5 flex justify-between items-center text-[#ffffff]">
+        {/* NOME / LOGO */}
+        <a
+          href="/"
+          onClick={handleLogoClick}
+          className={`text-sm font-normal tracking-widest text-[#ffffff] uppercase transition-all duration-500 ease-in-out cursor-pointer no-underline select-none ${
+            showLogo || isMenuOpen
+              ? 'opacity-100 translate-y-0 pointer-events-auto'
+              : 'opacity-0 -translate-y-1 pointer-events-none'
+          }`}
+        >
+          MATTEO FINCO
+        </a>
+
+        {/* LINGUA + MENU HAMBURGER */}
+        <div className="flex items-center gap-6">
+          {/* SELETTORE LINGUA */}
+          <div className="flex items-center gap-3 text-xs font-semibold tracking-widest">
+            <button
+              type="button"
+              onClick={() => onLanguageChange('it')}
+              className={`transition-colors cursor-pointer ${
+                currentLang === 'it' ? 'text-[#ffffff] font-bold' : 'text-[#666666] hover:text-[#ffffff]'
+              }`}
+            >
+              IT
+            </button>
+            <span className="text-[#333333]">/</span>
+            <button
+              type="button"
+              onClick={() => onLanguageChange('en')}
+              className={`transition-colors cursor-pointer ${
+                currentLang === 'en' ? 'text-[#ffffff] font-bold' : 'text-[#666666] hover:text-[#ffffff]'
+              }`}
+            >
+              EN
+            </button>
+          </div>
+
+          {/* PULSANTE HAMBURGER */}
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle navigation menu"
+            className="flex flex-col justify-center items-center w-8 h-8 gap-1.5 cursor-pointer z-50 focus:outline-none"
+          >
+            <span
+              className={`block h-[2px] w-6 bg-[#ffffff] transition-all duration-300 ${
+                isMenuOpen ? 'rotate-45 translate-y-[8px]' : ''
+              }`}
+            />
+            <span
+              className={`block h-[2px] w-6 bg-[#ffffff] transition-all duration-300 ${
+                isMenuOpen ? 'opacity-0' : 'opacity-100'
+              }`}
+            />
+            <span
+              className={`block h-[2px] w-6 bg-[#ffffff] transition-all duration-300 ${
+                isMenuOpen ? '-rotate-45 -translate-y-[8px]' : ''
+              }`}
+            />
+          </button>
+        </div>
+      </header>
+
+      {/* OVERLAY MENU NAVIGAZIONE */}
+      <div
+        className={`fixed inset-0 z-40 bg-[#070707] flex flex-col justify-between px-8 md:px-16 pt-28 pb-12 transition-all duration-500 ease-in-out ${
+          isMenuOpen
+            ? 'opacity-100 pointer-events-auto visible'
+            : 'opacity-0 pointer-events-none invisible'
         }`}
       >
-        MATTEO FINCO
-      </a>
+        {/* LINK DI NAVIGAZIONE */}
+        <nav className="flex flex-col gap-6 md:gap-8 max-w-xl my-auto">
+          <a
+            href="/"
+            onClick={handleLogoClick}
+            className="text-3xl md:text-5xl font-light tracking-tight text-[#888888] hover:text-[#ffffff] transition-colors no-underline uppercase"
+          >
+            Home
+          </a>
+          <a
+            href="/about"
+            onClick={() => setIsMenuOpen(false)}
+            className="text-3xl md:text-5xl font-light tracking-tight text-[#888888] hover:text-[#ffffff] transition-colors no-underline uppercase"
+          >
+            About
+          </a>
+          <a
+            href="/#projects"
+            onClick={handleProjectsClick}
+            className="text-3xl md:text-5xl font-light tracking-tight text-[#888888] hover:text-[#ffffff] transition-colors no-underline uppercase"
+          >
+            Projects
+          </a>
+          <a
+            href="/cv"
+            onClick={() => setIsMenuOpen(false)}
+            className="text-3xl md:text-5xl font-light tracking-tight text-[#888888] hover:text-[#ffffff] transition-colors no-underline uppercase"
+          >
+            Curriculum
+          </a>
+          <a
+            href="https://www.linkedin.com/in/finco-matteo-2k05/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsMenuOpen(false)}
+            className="text-3xl md:text-5xl font-light tracking-tight text-[#888888] hover:text-[#ffffff] transition-colors no-underline uppercase"
+          >
+            LinkedIn
+          </a>
+        </nav>
 
-      {/* SELETTORE LINGUA */}
-      <div className="flex items-center gap-3 text-xs font-semibold tracking-widest">
-        <button
-          type="button"
-          onClick={() => onLanguageChange('it')}
-          className={`transition-colors cursor-pointer ${
-            currentLang === 'it' ? 'text-[#ffffff] font-bold' : 'text-[#666666] hover:text-[#ffffff]'
-          }`}
-        >
-          IT
-        </button>
-        <span className="text-[#333333]">/</span>
-        <button
-          type="button"
-          onClick={() => onLanguageChange('en')}
-          className={`transition-colors cursor-pointer ${
-            currentLang === 'en' ? 'text-[#ffffff] font-bold' : 'text-[#666666] hover:text-[#ffffff]'
-          }`}
-        >
-          EN
-        </button>
+        {/* FOOTER INTERNO MENU: WHAT'S NEXT */}
+        <div className="border-t border-[#1a1a1a] pt-6 mt-6">
+          <span className="text-xs font-mono tracking-widest text-[#666666] uppercase block mb-1">
+            WHAT&apos;S NEXT?
+          </span>
+          <p className="text-sm text-[#888888]">
+            {currentLang === 'it'
+              ? 'Sempre aperto a nuove collaborazioni e progetti.'
+              : 'Always open to new collaborations & projects.'}
+          </p>
+        </div>
       </div>
-    </header>
+    </>
   );
 };
