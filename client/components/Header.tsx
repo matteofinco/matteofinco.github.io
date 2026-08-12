@@ -115,26 +115,26 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </div>
 
-          {/* PULSANTE HAMBURGER */}
+          {/* PULSANTE HAMBURGER MINIMAL / MENO INVASIVO */}
           <button
             type="button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle navigation menu"
-            className="flex flex-col justify-center items-center w-8 h-8 gap-1.5 cursor-pointer z-50 focus:outline-none"
+            className="flex flex-col justify-center items-center w-7 h-7 gap-1 cursor-pointer z-50 focus:outline-none opacity-80 hover:opacity-100 transition-opacity"
           >
             <span
-              className={`block h-[2px] w-6 bg-[#ffffff] transition-all duration-300 ${
-                isMenuOpen ? 'rotate-45 translate-y-[8px]' : ''
+              className={`block h-[1px] w-5 bg-[#ffffff] transition-all duration-300 ${
+                isMenuOpen ? 'rotate-45 translate-y-[5px]' : ''
               }`}
             />
             <span
-              className={`block h-[2px] w-6 bg-[#ffffff] transition-all duration-300 ${
+              className={`block h-[1px] w-5 bg-[#ffffff] transition-all duration-300 ${
                 isMenuOpen ? 'opacity-0' : 'opacity-100'
               }`}
             />
             <span
-              className={`block h-[2px] w-6 bg-[#ffffff] transition-all duration-300 ${
-                isMenuOpen ? '-rotate-45 -translate-y-[8px]' : ''
+              className={`block h-[1px] w-5 bg-[#ffffff] transition-all duration-300 ${
+                isMenuOpen ? '-rotate-45 -translate-y-[5px]' : ''
               }`}
             />
           </button>
@@ -192,14 +192,9 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* FOOTER INTERNO MENU: WHAT'S NEXT */}
         <div className="border-t border-[#1a1a1a] pt-6 mt-6">
-          <span className="text-xs font-mono tracking-widest text-[#666666] uppercase block mb-1">
+          <h3 className="text-2xl md:text-4xl font-black tracking-tight text-[#ffffff] uppercase">
             WHAT&apos;S NEXT?
-          </span>
-          <p className="text-sm text-[#888888]">
-            {currentLang === 'it'
-              ? 'Sempre aperto a nuove collaborazioni e progetti.'
-              : 'Always open to new collaborations & projects.'}
-          </p>
+          </h3>
         </div>
       </div>
     </>
