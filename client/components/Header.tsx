@@ -120,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({
             type="button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle navigation menu"
-            className="flex flex-col justify-between items-center w-7 h-7 cursor-pointer z-50 focus:outline-none opacity-80 hover:opacity-100 transition-opacity"
+            className="flex flex-col justify-between items-center w-3 h-3 cursor-pointer z-50 focus:outline-none opacity-80 hover:opacity-100 transition-opacity"
           >
             <span
               className={`block h-[1px] w-full bg-[#ffffff] transition-all duration-300 origin-center ${
