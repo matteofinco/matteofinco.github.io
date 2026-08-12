@@ -115,26 +115,26 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </div>
 
-          {/* PULSANTE HAMBURGER MINIMAL / MENO INVASIVO */}
+          {/* PULSANTE HAMBURGER - INGOMBRO QUADRATO (20px x 20px) */}
           <button
             type="button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle navigation menu"
-            className="flex flex-col justify-center items-center w-8 h-7 gap-1 cursor-pointer z-50 focus:outline-none opacity-80 hover:opacity-100 transition-opacity"
+            className="flex flex-col justify-between items-center w-5 h-5 cursor-pointer z-50 focus:outline-none opacity-80 hover:opacity-100 transition-opacity"
           >
             <span
-              className={`block h-[1px] w-5 bg-[#ffffff] transition-all duration-300 ${
-                isMenuOpen ? 'rotate-45 translate-y-[5px]' : ''
+              className={`block h-[1px] w-full bg-[#ffffff] transition-all duration-300 origin-center ${
+                isMenuOpen ? 'rotate-45 translate-y-[9.5px]' : ''
               }`}
             />
             <span
-              className={`block h-[1px] w-5 bg-[#ffffff] transition-all duration-300 ${
+              className={`block h-[1px] w-full bg-[#ffffff] transition-all duration-300 ${
                 isMenuOpen ? 'opacity-0' : 'opacity-100'
               }`}
             />
             <span
-              className={`block h-[1px] w-5 bg-[#ffffff] transition-all duration-300 ${
-                isMenuOpen ? '-rotate-45 -translate-y-[5px]' : ''
+              className={`block h-[1px] w-full bg-[#ffffff] transition-all duration-300 origin-center ${
+                isMenuOpen ? '-rotate-45 -translate-y-[9.5px]' : ''
               }`}
             />
           </button>
