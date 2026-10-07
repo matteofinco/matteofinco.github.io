@@ -14,13 +14,13 @@ const content = {
       teamLabel: "Designers",
       yearLabel: "Year",
       yearVal: "2025",
-      awardLabel: "Competition",
-      awardVal: "PLEIADES Competition"
+      awardLabel: "Contest",
+      awardVal: "PLEIADES contest"
     },
     overview: {
       title: "Overview",
       subtitle: "Challenge",
-      p1: "Archivia was developed for PLEIADES (Plastic European Innovation Award for Design and Sustainability), a design competition organized by the Università Iuav di Venezia, Vicenza campus, in collaboration with Ewikon, Arburg, and Uniform.",
+      p1: "Archivia was developed for PLEIADES (Plastic European Innovation Award for Design and Sustainability), a design contest organized by the Università Iuav di Venezia, Vicenza campus, in collaboration with Ewikon, Arburg, and Uniform.",
       p2: "The project focused on designing a small everyday object made from recycled polyamide, balancing conceptual research, product identity, and the technical requirements of industrial injection molding."
     },
     solution: {
@@ -41,13 +41,13 @@ const content = {
       p3: "The final configuration combines a recognizable visual language with an efficient assembly system based on integrated mechanical joints."
     },
     technical: {
-      title: "Technical Insights",
+      title: "Skills & technical insights",
       p1: "Developing Archivia highlighted the importance of balancing creative exploration with industrial constraints.",
       p2: "The project provided experience in understanding polymer behavior, injection molding requirements, and the relationship between geometry, assembly, and manufacturing processes."
     },
     cta: {
       title: "What's next?",
-      subtitle: "Explore Projects",
+      subtitle: "Projects",
       button: "BACK TO PORTFOLIO"
     }
   },
@@ -58,12 +58,12 @@ const content = {
       teamLabel: "Designer",
       yearLabel: "Anno",
       yearVal: "2025",
-      awardLabel: "Concorso",
-      awardVal: "Concorso PLEIADES"
+      awardLabel: "Contest",
+      awardVal: "PLEIADES contest"
     },
     overview: {
       title: "Overview",
-      subtitle: "Sfida progettuale",
+      subtitle: "Challenge",
       p1: "Archivia nasce all'interno di PLEIADES (Plastic European Innovation Award for Design and Sustainability), un concorso di design promosso dall'Università Iuav di Venezia, sede di Vicenza, in collaborazione con Ewikon, Arburg e Uniform.",
       p2: "Il progetto affronta lo sviluppo di un piccolo oggetto d'uso quotidiano realizzato in poliammide riciclata, cercando un equilibrio tra ricerca concettuale, identità del prodotto e vincoli tecnici dello stampaggio industriale a iniezione."
     },
@@ -85,13 +85,13 @@ const content = {
       p3: "Il risultato combina un'identità visiva riconoscibile con un sistema costruttivo semplice basato su connessioni meccaniche integrate."
     },
     technical: {
-      title: "Technical Insights",
+      title: "Skills & technical insights",
       p1: "Lo sviluppo di Archivia ha evidenziato l'importanza dell'equilibrio tra ricerca creativa e vincoli produttivi.",
       p2: "Il progetto ha permesso di approfondire il comportamento dei materiali polimerici, i requisiti dello stampaggio a iniezione e la relazione tra geometria, assemblaggio e processo produttivo."
     },
     cta: {
       title: "What's next?",
-      subtitle: "Esplora i progetti",
+      subtitle: "Progetti",
       button: "TORNA AL PORTFOLIO"
     }
   }
