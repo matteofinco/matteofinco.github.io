@@ -46,20 +46,20 @@ export const defaultProjectList: ProjectStep[] = [
     },
     year: '2026',
     discipline: {
-      it: 'Sports Product Design',
-      en: 'Sports Product Design'
+      it: 'Sports product design',
+      en: 'Sports product design'
     },
     context: {
-      it: 'Progetto Accademico (IUAV)',
-      en: 'Academic Project (IUAV)'
+      it: 'Progetto accademico (Iuav)',
+      en: 'Academic project (Iuav)'
     },
     focus: {
-      it: 'Interactive Training System',
-      en: 'Interactive Training System'
+      it: 'Interactive training system',
+      en: 'Interactive training system'
     },
     category: { it: 'SPORTS PRODUCT', en: 'SPORTS PRODUCT' },
-    tools: { it: 'Progetto Accademico (IUAV)', en: 'Academic Project (IUAV)' },
-    material: { it: 'Interactive Training System', en: 'Interactive Training System' },
+    tools: { it: 'Progetto accademico (Iuav)', en: 'Academic project (Iuav)' },
+    material: { it: 'Interactive training system', en: 'Interactive training system' },
     desc: {
       it: 'Snake è un sistema di allenamento interattivo pensato per hockey su ghiaccio e inline. Sensori, feedback luminosi e moduli riconfigurabili permettono di creare esercizi che allenano controllo del disco, tempi di reazione e capacità decisionale.',
       en: 'Snake is an interactive training system for ice and inline hockey. Sensors, light feedback and configurable modules create exercises that improve puck control, reaction time and decision-making.'
@@ -77,20 +77,20 @@ export const defaultProjectList: ProjectStep[] = [
     },
     year: '2026',
     discipline: {
-      it: 'Product Design',
-      en: 'Product Design'
+      it: 'Product design',
+      en: 'Product design'
     },
     context: {
       it: 'Concorso PLEIADES (Ewikon, Arburg, Uniform)',
-      en: 'PLEIADES Competition (Ewikon, Arburg, Uniform)'
+      en: 'PLEIADES contest (Ewikon, Arburg, Uniform)'
     },
     focus: {
-      it: 'Injection Moulding & Industrial Production',
-      en: 'Injection Moulding & Industrial Production'
+      it: 'Injection moulding & industrial production',
+      en: 'Injection moulding & industrial production'
     },
     category: { it: 'PRODUCT DESIGN', en: 'PRODUCT DESIGN' },
-    tools: { it: 'Concorso PLEIADES', en: 'PLEIADES Competition' },
-    material: { it: 'Injection Moulding & Desk Storage', en: 'Injection Moulding & Desk Storage' },
+    tools: { it: 'Concorso PLEIADES', en: 'PLEIADES contest' },
+    material: { it: 'Injection moulding & desk storage', en: 'Injection moulding & desk storage' },
     desc: {
       it: 'Portapenne sviluppato per il concorso PLEIADES con Ewikon, Arburg e Uniform. Il progetto è ispirato a una memoria USB trasformandone il principio di funzionamento in un oggetto da scrivania semplice da assemblare e produrre.',
       en: 'Desk organiser developed for the PLEIADES competition with Ewikon, Arburg and Uniform. The project reinterprets the USB flash drive, translating its working principle into a simple and efficient desk object.'
@@ -108,20 +108,20 @@ export const defaultProjectList: ProjectStep[] = [
     },
     year: '2026',
     discipline: {
-      it: 'Inclusive Design',
-      en: 'Inclusive Design'
+      it: 'Inclusive design',
+      en: 'Inclusive design'
     },
     context: {
-      it: 'Progetto Accademico (IUAV)',
-      en: 'Academic Project (IUAV)'
+      it: 'Progetto accademico (Iuav)',
+      en: 'Academic project (Iuav)'
     },
     focus: {
-      it: 'Ergonomics & Parametric Adaptive Grip',
-      en: 'Ergonomics & Parametric Adaptive Grip'
+      it: 'Ergonomics & parametric adaptive grip',
+      en: 'Ergonomics & parametric adaptive grip'
     },
     category: { it: 'INCLUSIVE DESIGN', en: 'INCLUSIVE DESIGN' },
-    tools: { it: 'Progetto Accademico (IUAV)', en: 'Academic Project (IUAV)' },
-    material: { it: 'Ergonomics & Parametric Design', en: 'Ergonomics & Parametric Design' },
+    tools: { it: 'Progetto accademico (Iuav)', en: 'Academic project (Iuav)' },
+    material: { it: 'Ergonomics & parametric design', en: 'Ergonomics & parametric design' },
     desc: {
       it: 'Impugnatura adattiva progettata per facilitare l’utilizzo di posate e strumenti quotidiani da parte di persone con ridotta forza nella mano. La geometria parametrica permette di adattare il prodotto a esigenze differenti.',
       en: 'Adaptive handle designed to make cutlery and everyday tools easier to use for people with reduced hand strength. Its parametric geometry allows the product to be adapted to different users.'
@@ -139,20 +139,20 @@ export const defaultProjectList: ProjectStep[] = [
     },
     year: '2026',
     discipline: {
-      it: 'Service Design',
-      en: 'Service Design'
+      it: 'Service design',
+      en: 'Service design'
     },
     context: {
       it: 'Workshop con Daint',
       en: 'Workshop with Daint'
     },
     focus: {
-      it: 'Automated Dining & Customer Experience',
-      en: 'Automated Dining & Customer Experience'
+      it: 'Automated dining & customer experience',
+      en: 'Automated dining & customer experience'
     },
     category: { it: 'SERVICE DESIGN', en: 'SERVICE DESIGN' },
     tools: { it: 'Workshop con Daint', en: 'Workshop with Daint' },
-    material: { it: 'Automated Dining & Customer Experience', en: 'Automated Dining & Customer Experience' },
+    material: { it: 'Automated dining & customer experience', en: 'Automated dining & customer experience' },
     desc: {
       it: 'Concept sviluppato durante un workshop con Daint che ripensa l’esperienza della pizza integrando ordinazione, preparazione, consumo e smaltimento in un unico sistema.',
       en: 'Concept developed during a workshop with Daint that redesigns the pizza experience by integrating ordering, preparation, dining and disposal into one coherent system.'
@@ -170,20 +170,20 @@ export const defaultProjectList: ProjectStep[] = [
     },
     year: '2025',
     discipline: {
-      it: 'Product Analysis',
-      en: 'Product Analysis'
+      it: 'Product analysis',
+      en: 'Product analysis'
     },
     context: {
-      it: 'Progetto Accademico (IUAV)',
-      en: 'Academic Project (IUAV)'
+      it: 'Progetto accademico (Iuav)',
+      en: 'Academic project (Iuav)'
     },
     focus: {
-      it: 'Reverse Engineering & Disassembly Study',
-      en: 'Reverse Engineering & Disassembly Study'
+      it: 'Reverse engineering & disassembly study',
+      en: 'Reverse engineering & disassembly study'
     },
     category: { it: 'PRODUCT ANALYSIS', en: 'PRODUCT ANALYSIS' },
-    tools: { it: 'Progetto Accademico (IUAV)', en: 'Academic Project (IUAV)' },
-    material: { it: 'Reverse Engineering & Component Study', en: 'Reverse Engineering & Component Study' },
+    tools: { it: 'Progetto accademico (Iuav)', en: 'Academic project (Iuav)' },
+    material: { it: 'Reverse engineering & component study', en: 'Reverse engineering & component study' },
     desc: {
       it: 'Analisi di un piccolo elettrodomestico attraverso smontaggio, studio dei componenti e valutazione delle scelte costruttive, funzionali e formali.',
       en: 'Analysis of a household appliance through disassembly, component study and evaluation of its construction, functionality and formal design.'
@@ -201,20 +201,20 @@ export const defaultProjectList: ProjectStep[] = [
     },
     year: '2026',
     discipline: {
-      it: 'Interaction Design',
-      en: 'Interaction Design'
+      it: 'Interaction design',
+      en: 'Interaction design'
     },
     context: {
-      it: 'Progetto Accademico (IUAV)',
-      en: 'Academic Project (IUAV)'
+      it: 'Progetto accademico (Iuav)',
+      en: 'Academic project (Iuav)'
     },
     focus: {
-      it: 'Human Behaviour & Calm Technology',
-      en: 'Human Behaviour & Calm Technology'
+      it: 'Human behaviour & calm technology',
+      en: 'Human behaviour & calm technology'
     },
     category: { it: 'INTERACTION DESIGN', en: 'INTERACTION DESIGN' },
-    tools: { it: 'Progetto Accademico (IUAV)', en: 'Academic Project (IUAV)' },
-    material: { it: 'Human Behaviour & Calm Tech', en: 'Human Behaviour & Calm Tech' },
+    tools: { it: 'Progetto accademico (Iuav)', en: 'Academic project (Iuav)' },
+    material: { it: 'Human behaviour & Calm tech', en: 'Human behaviour & calm tech' },
     desc: {
       it: 'Concept di tavolo interattivo progettato per ridurre la distrazione digitale durante il pasto nel fast food. Il sistema riconosce automaticamente l’arrivo del cibo e modifica il comportamento dell’interfaccia per riportare l’attenzione sulle persone e sulla conversazione.',
       en: 'Interactive table concept designed to reduce digital distraction during meals at the fast-food restaurant. The system detects when food is served and adapts its interface to encourage conversation and focus on the dining experience.'
@@ -232,20 +232,20 @@ export const defaultProjectList: ProjectStep[] = [
     },
     year: '2026',
     discipline: {
-      it: 'Social Design',
-      en: 'Social Design'
+      it: 'Social design',
+      en: 'Social design'
     },
     context: {
-      it: 'Ánako Design Challenge (con Prusa Research)',
-      en: 'Ánako Design Challenge (with Prusa Research)'
+      it: 'Ánako design challenge (con Prusa Research)',
+      en: 'Ánako design challenge (with Prusa Research)'
     },
     focus: {
-      it: 'Open-Source Emergency Mobility Aid',
-      en: 'Open-Source Emergency Mobility Aid'
+      it: 'Open-Source emergency mobility aid',
+      en: 'Open-Source emergency mobility aid'
     },
     category: { it: 'SOCIAL DESIGN', en: 'SOCIAL DESIGN' },
-    tools: { it: 'Ánako Design Challenge', en: 'Ánako Design Challenge' },
-    material: { it: 'Open-Source Emergency Aid', en: 'Open-Source Emergency Aid' },
+    tools: { it: 'Ánako design challenge', en: 'Ánako design challenge' },
+    material: { it: 'Open-Source emergency aid', en: 'Open-Source emergency aid' },
     desc: {
       it: 'Sistema open-source sviluppato durante la Ánako Design Challenge con Prusa Research. Attraverso componenti stampati in 3D permette di realizzare stampelle utilizzando materiali facilmente reperibili sul territorio.',
       en: 'Open-source mobility aid developed during the Ánako Design Challenge with Prusa Research. 3D-printed components make it possible to build crutches using locally available materials.'
