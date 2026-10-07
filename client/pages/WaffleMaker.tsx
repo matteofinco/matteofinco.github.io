@@ -24,8 +24,8 @@ const content = {
       teamLabel: "Designers",
       yearLabel: "Year",
       yearVal: "2025",
-      awardLabel: "Project Type",
-      awardVal: "Product Analysis & Basic Design"
+      awardLabel: "Project type",
+      awardVal: "Product analysis & basic design"
     },
     overview: {
       title: "Overview",
@@ -51,7 +51,7 @@ const content = {
       p3: "The study highlighted how the curved geometries and glossy finishes of the body visually attenuate the perception of an intrinsically dangerous object, coherently inserting it into a reassuring and playful domestic image."
     },
     technical: {
-      title: "Skills & Technical Insights",
+      title: "Skills & technical insights",
       p1: "The research demonstrated the crucial importance of the product analysis phase as a fundamental tool for training designers. Through the deconstruction of the waffle maker, the article highlights how even the simplest mass-produced industrial device requires meticulous coordination between formal language, construction constraints, and usability.",
       p2: "The findings collected in the analysis book not only document the state of the art of the examined object, but also define a replicable critical methodology, laying the cognitive foundations necessary for the informed design of future, more complex and safer product systems."
     },
@@ -69,11 +69,11 @@ const content = {
       yearLabel: "Anno",
       yearVal: "2025",
       awardLabel: "Tipologia Progetto",
-      awardVal: "Analisi di Prodotto & Basic Design"
+      awardVal: "Analisi di prodotto & basic design"
     },
     overview: {
       title: "Overview",
-      subtitle: "Sfida progettuale",
+      subtitle: "Challenge",
       p1: "Gli oggetti di uso quotidiano celano complessità relazionali ed ergonomiche spesso invisibili all'utente finale. La sfida di questo progetto di Basic Design è stata quella di decostruire un oggetto esistente per mapparne e comprenderne l'architettura funzionale e il linguaggio comunicativo.",
       p2: "L'obiettivo primario era tradurre l'interazione fisica e visiva tra uomo e oggetto in dati oggettivi, analizzando criticamente come la forma guida l'azione (affordance), come vengono gestiti i flussi energetici e termici, e dove vi è margine di miglioramento in termini di usabilità e sicurezza domestica."
     },
@@ -95,7 +95,7 @@ const content = {
       p3: "Lo studio ha evidenziato come le geometrie curve e le finiture lucide del corpo attenuino visivamente la percezione di un oggetto intrinsecamente pericoloso, inserendolo coerentemente in un'immagine domestica rassicurante e giocosa."
     },
     technical: {
-      title: "Skills & Technical Insights",
+      title: "Skills & technical insights",
       p1: "La ricerca ha dimostrato la cruciale importanza della fase di analisi di prodotto come strumento fondamentale per la formazione dei designer. Attraverso la decostruzione del waffle maker, l'articolo evidenzia come anche il più semplice dispositivo industriale di massa richieda una meticolosa coordinazione tra linguaggio formale, vincoli costruttivi e usabilità.",
       p2: "I riscontri raccolti nel libro di analisi non solo documentano lo stato dell'arte dell'oggetto esaminato, ma definiscono anche una metodologia critica replicabile, ponendo le basi cognitive necessarie per la progettazione consapevole di futuri sistemi di prodotto più complessi e sicuri."
     },
