@@ -24,8 +24,8 @@ const content = {
       teamLabel: "Designer",
       yearLabel: "Year",
       yearVal: "2026",
-      awardLabel: "Project Type",
-      awardVal: "Product Design & Emergency"
+      awardLabel: "Context",
+      awardVal: "Emergency product design"
     },
     overview: {
       title: "Overview",
@@ -51,7 +51,7 @@ const content = {
       p3: "Interlocking modular segments allow for compact storage and scalable height adjustments."
     },
     technical: {
-      title: "Skills & Technical Insights",
+      title: "Skills & technical insights",
       p1: "Designing Prop pushed the limits of additive manufacturing in emergency contexts, balancing print speed with structural safety factors.",
       p2: "It highlighted the immense potential of distributed manufacturing networks in delivering humanitarian design solutions swiftly and efficiently."
     },
@@ -68,12 +68,12 @@ const content = {
       teamLabel: "Designer",
       yearLabel: "Anno",
       yearVal: "2026",
-      awardLabel: "Tipologia Progetto",
-      awardVal: "Product Design & Emergenza"
+      awardLabel: "Context",
+      awardVal: "Emergency product design"
     },
     overview: {
       title: "Overview",
-      subtitle: "Sfida progettuale",
+      subtitle: "Challenge",
       p1: "Prop è una stampella d'emergenza stampata in 3D concepita per offrire un supporto alla mobilità immediato e affidabile in scenari di crisi, calamità naturali o contesti remoti in cui le attrezzature mediche tradizionali non sono disponibili.",
       p2: "La sfida principale si è concentrata sull'ingegnerizzazione di una geometria strutturale capace di sostenere elevati carichi verticali sfruttando parametri di stampa 3D FDM distribuiti e filamenti termoplastici standard e accessibili."
     },
@@ -95,7 +95,7 @@ const content = {
       p3: "Segmenti modulari a incastro consentono uno stoccaggio compatto e regolazioni scalabili dell'altezza."
     },
     technical: {
-      title: "Skills & Technical Insights",
+      title: "Skills & technical insights",
       p1: "Progettare Prop ha spinto al limite le potenzialità della manifattura additiva in contesti d'emergenza, bilanciando la velocità di stampa con i fattori di sicurezza strutturale.",
       p2: "Il progetto ha evidenziato l'immenso potenziale delle reti di produzione distribuita nel fornire soluzioni di design umanitario in modo rapido ed efficiente."
     },
