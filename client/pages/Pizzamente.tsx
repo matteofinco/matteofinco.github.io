@@ -14,8 +14,8 @@ const content = {
       teamLabel: "Designers",
       yearLabel: "Year",
       yearVal: "2025",
-      awardLabel: "Project Type",
-      awardVal: "Academic Workshop & Automated Food Station"
+      awardLabel: "Context",
+      awardVal: "Academic workshop & automated food station"
     },
     overview: {
       title: "Overview",
@@ -41,7 +41,7 @@ const content = {
       p3: "The transition between consumption and subsequent disposal is resolved through the direct integration of a dedicated waste bin module into the chassis; this functional addition completes the service chain in the same physical location, ensuring cleanliness, hygiene, and the decorum of the surrounding space."
     },
     technical: {
-      title: "Skills & Technical Insights",
+      title: "Skills & technical insights",
       p1: "Experience design can elevate a mass-produced industrial service to high-quality and emotional standards. Building on Daint's technological and industrial foundations, PizzaMente transcends the traditional concept of a vending machine to create a self-sufficient and circular system.",
       p2: "The end result is a flexible and ergonomic solution that enhances fast food consumption and demonstrates how technology can evolve to control the entire product lifecycle, respecting the consumer's cultural identity and time."
     },
@@ -58,12 +58,12 @@ const content = {
       teamLabel: "Designer",
       yearLabel: "Anno",
       yearVal: "2025",
-      awardLabel: "Tipologia Progetto",
+      awardLabel: "Context",
       awardVal: "Workshop Accademico & Food Station"
     },
     overview: {
       title: "Overview",
-      subtitle: "Sfida progettuale",
+      subtitle: "Challenge",
       p1: "La riprogettazione di un sistema di automazione alimentare, in particolare se applicato a un prodotto tradizionale come la pizza, richiede di affrontare questioni critiche sia di funzionalità che di percezione. Sviluppato a partire da un brief iniziale fornito da Daint, il progetto è iniziato con l'analisi e lo studio dei distributori automatici di pizza esistenti.",
       p2: "La sfida principale è stata trasformare un'interazione storicamente percepita come fredda e puramente transazionale in un'esperienza utente di livello superiore. L'obiettivo del workshop intensivo è stato quindi rielaborare e riconfigurare le prestazioni di questi dispositivi, decostruendo lo scetticismo dei consumatori e preservando i valori culturali del cibo nel bel mezzo della costante evoluzione tecnologica."
     },
@@ -85,7 +85,7 @@ const content = {
       p3: "La transizione tra consumo e successivo smaltimento viene risolta attraverso l'integrazione diretta di un modulo di raccolta rifiuti dedicato all'interno dello chassis; questa aggiunta funzionale completa la catena di servizio nello stesso luogo fisico, garantendo pulizia, igiene e decoro dello spazio circostante."
     },
     technical: {
-      title: "Skills & Technical Insights",
+      title: "Skills & technical insights",
       p1: "L'experience design può elevare un servizio industriale di massa a standard qualitativi ed emozionali elevati. Basandosi sulle fondamenta tecnologiche e industriali di Daint, PizzaMente trascende il concetto tradizionale di distributore automatico per creare un sistema autosufficiente e circolare.",
       p2: "Il risultato finale è una soluzione flessibile ed ergonomica che valorizza il consumo di fast food e dimostra come la tecnologia possa evolversi per controllare l'intero ciclo di vita del prodotto, rispettando l'identità culturale e il tempo del consumatore."
     },
