@@ -15,7 +15,7 @@ const content = {
     title: "CURRICULUM VITAE",
     subtitle: "Product Designer & Maker",
     profile: {
-      title: "Professional Profile",
+      title: "Professional profile",
       text1: "I aim to work in the field of product design, contributing to the development of products that combine innovation, manufacturing feasibility, and user experience.",
       text2: "I am interested in overseeing the entire project lifecycle—from problem analysis to prototyping—while engaging with materials, production processes, and technologies. I approach every project with an analytical and experimental mindset, combining research, modeling, and prototyping to develop concrete, functional, and user-oriented solutions. I view Design as a tool for understanding problems just as much as for solving them."
     },
@@ -30,7 +30,7 @@ const content = {
         },
         {
           period: "2019 - 2024",
-          title: "Diploma in Industry for 'Made in Italy' Mechanical Production and 3D Design",
+          title: "Diploma in industry for 'Made in Italy' mechanical production and 3D design",
           institution: "Ipsia F. Lampertico",
           location: "Vicenza, Italy"
         }
@@ -41,7 +41,7 @@ const content = {
       items: [
         {
           period: "10/2025 - Current",
-          role: "Scout Leader - L/C Branch",
+          role: "Scout Leader - L/C branch",
           company: "Agesci group 'Santa Maria 1'",
           location: "Camisano Vicentino (VI)",
           tasks: [
@@ -64,7 +64,7 @@ const content = {
         {
           period: "Current",
           role: "Volunteer",
-          company: "Contra Meridiana APS",
+          company: "Contrà Meridiana APS",
           location: "Camisano Vicentino (VI)",
           tasks: [
             "Logistical and operational support in organizing and setting up local public and cultural events."
@@ -73,7 +73,7 @@ const content = {
         {
           period: "01/2024 - 02/2024",
           role: "Internship",
-          company: "Carollo Gessy Auto Repair Shop",
+          company: "Carollo Gessy auto repair shop",
           location: "Grumolo delle Abbadesse (VI)",
           tasks: [
             "Assistance with vehicle maintenance and repair tasks, including scheduled servicing, replacement of mechanical components, tire changes, system repairs, and workshop organization."
@@ -82,15 +82,15 @@ const content = {
       ]
     },
     skills: {
-      title: "Skills & Competencies",
+      title: "Skills",
       categories: [
         {
           name: "Analysis",
-          items: ["Reverse engineering", "Product analysis", "Design research", "Materials and manufacturing processes"]
+          items: ["Reverse engineering", "product analysis", "Design research", "Materials and manufacturing processes"]
         },
         {
           name: "Software",
-          items: ["Rhino 3D", "Fusion 360", "Adobe Suite", "KeyShot Blender (basic)", "Arduino", "Processing"]
+          items: ["Rhino 3D", "Fusion 360", "Adobe Suite", "KeyShot", "Blender (basic)", "Arduino", "Processing"]
         },
         {
           name: "Prototyping",
@@ -98,7 +98,7 @@ const content = {
         },
         {
           name: "Cooperation & Leadership",
-          items: ["Project coordination", "Leadership", "Multidisciplinary collaboration"]
+          items: ["Project coordination", "Leadership", "Teamwork" "Multidisciplinary collaboration"]
         }
       ]
     },
@@ -111,7 +111,7 @@ const content = {
     },
     certifications: {
       title: "Certifications",
-      items: ["Fire Safety Level 3", "HACCP certification"]
+      items: ["Fire safety level 3", "HACCP certification"]
     },
     cta: {
       button: "BACK TO PORTFOLIO",
@@ -122,7 +122,7 @@ const content = {
     title: "CURRICULUM VITAE",
     subtitle: "Product Designer & Maker",
     profile: {
-      title: "Profilo Professionale",
+      title: "Profilo professionale",
       text1: "Desidero lavorare nell'ambito del Product Design, contribuendo allo sviluppo di prodotti che uniscano innovazione, fattibilità produttiva ed esperienza d'uso.",
       text2: "Mi interessa seguire il progetto lungo tutto il suo percorso, dall'analisi del problema alla prototipazione, confrontandomi con materiali, processi produttivi e tecnologie. Affronto ogni progetto con un approccio analitico e sperimentale, combinando ricerca, modellazione e prototipazione per sviluppare soluzioni concrete, funzionali e orientate all'utente. Considero il design uno strumento per comprendere i problemi prima ancora che per risolverli."
     },
@@ -132,12 +132,12 @@ const content = {
         {
           period: "2024 - Attuale",
           title: "Laurea triennale in Product Design",
-          institution: "Università Iuav di Venezia - Sede di Vicenza",
+          institution: "Università Iuav di Venezia - sede di Vicenza",
           location: "Vicenza, Italia"
         },
         {
           period: "2019 - 2024",
-          title: "Diploma: Industria e artigianato per il Made in Italy - Produzioni meccaniche e disegno 3D",
+          title: "Diploma: industria e artigianato per il Made in Italy - produzioni meccaniche e disegno 3D",
           institution: "Ipsia F. Lampertico",
           location: "Vicenza, Italia"
         }
@@ -148,7 +148,7 @@ const content = {
       items: [
         {
           period: "10/2025 - Attuale",
-          role: "Capo Scout - Branca L/C",
+          role: "Capo Scout - branca L/C",
           company: "Agesci gruppo \"Santa Maria 1\"",
           location: "Camisano Vicentino (VI)",
           tasks: [
@@ -171,7 +171,7 @@ const content = {
         {
           period: "Attuale",
           role: "Volontario",
-          company: "Contra Meridiana APS",
+          company: "Contrà Meridiana APS",
           location: "Camisano Vicentino (VI)",
           tasks: [
             "Supporto logistico e operativo nell'organizzazione e allestimento di manifestazioni pubbliche e culturali locali."
@@ -197,7 +197,7 @@ const content = {
         },
         {
           name: "Software",
-          items: ["Rhino 3D", "Fusion 360", "Adobe Suite", "KeyShot Blender (base)", "Arduino", "Processing"]
+          items: ["Rhino 3D", "Fusion 360", "Adobe Suite", "KeyShot", "Blender (base)", "Arduino", "Processing"]
         },
         {
           name: "Prototipazione",
@@ -205,7 +205,7 @@ const content = {
         },
         {
           name: "Cooperation & Leadership",
-          items: ["Project coordination", "Teamwork", "Collaborazione multidisciplinare"]
+          items: ["Project coordination", "Leadership", "Teamwork", "Collaborazione multidisciplinare"]
         }
       ]
     },
@@ -218,7 +218,7 @@ const content = {
     },
     certifications: {
       title: "Certificazioni",
-      items: ["Antincendio Livello 3", "Certificazione HACCP"]
+      items: ["Antincendio livello 3", "Certificazione HACCP"]
     },
     cta: {
       button: "TORNA AL PORTFOLIO",
