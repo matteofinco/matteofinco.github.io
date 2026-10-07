@@ -263,7 +263,7 @@ interface CircleShowcaseProps {
 
 const labels = {
   it: {
-    context: 'CONTESTO',
+    context: 'CONTEXT',
     focus: 'FOCUS',
     explore: 'ESPLORA PROGETTO',
   },
