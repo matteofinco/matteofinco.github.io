@@ -24,7 +24,7 @@ const content = {
       items: [
         {
           period: "2024 - Current",
-          title: "Bachelor's Degree in Product Design",
+          title: "Bachelor's degree in product design",
           institution: "iuav University of Venice - Vicenza Campus",
           location: "Vicenza, Italy"
         },
@@ -41,7 +41,7 @@ const content = {
       items: [
         {
           period: "10/2025 - Current",
-          role: "Scout Leader - L/C branch",
+          role: "Scout leader - L/C branch",
           company: "Agesci group 'Santa Maria 1'",
           location: "Camisano Vicentino (VI)",
           tasks: [
@@ -52,7 +52,7 @@ const content = {
         },
         {
           period: "08/2022 - Current",
-          role: "Cinema Volunteer",
+          role: "Cinema volunteer",
           company: "Cinema Teatro Lux",
           location: "Camisano Vicentino (VI)",
           tasks: [
@@ -131,7 +131,7 @@ const content = {
       items: [
         {
           period: "2024 - Attuale",
-          title: "Laurea triennale in Product Design",
+          title: "Laurea triennale in product design",
           institution: "Università Iuav di Venezia - sede di Vicenza",
           location: "Vicenza, Italia"
         },
