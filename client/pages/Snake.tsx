@@ -16,8 +16,8 @@ const content = {
       teamLabel: "Designers",
       yearLabel: "Year",
       yearVal: "2026",
-      awardLabel: "Award / Context",
-      awardVal: "Lagazuoi WIMA Award & Sports Equipment"
+      awardLabel: "Context / Award",
+      awardVal: "Lagazuoi WIMA award & sports equipment"
     },
     overview: {
       title: "Overview",
@@ -43,7 +43,7 @@ const content = {
       p3: "Every component is optimized for additive manufacturing and durable polymer production, balancing weight reduction with extreme resistance to repetitive mechanical stress and harsh weather conditions."
     },
     technical: {
-      title: "Skills & Technical Insights",
+      title: "Skills & technical insights",
       p1: "Snake bridges the gap between digital prototyping and athletic performance equipment, demonstrating how parametric modularity can elevate sports training tools.",
       p2: "Presented at the prestigious Lagazuoi WIMA awards, the project underscores the integration of advanced manufacturing techniques and user-centered sports equipment engineering."
     },
@@ -55,17 +55,17 @@ const content = {
   },
   it: {
     title: "SNAKE",
-    subtitle: "Allenatore per il controllo del bastone da hockey",
+    subtitle: "Hockey stickhandling trainer",
     meta: {
       teamLabel: "Designer",
       yearLabel: "Anno",
       yearVal: "2026",
-      awardLabel: "Premio / Contesto",
-      awardVal: "Premio Lagazuoi WIMA & Attrezzatura Sportiva"
+      awardLabel: "Context / Award",
+      awardVal: "Lagazuoi WIMA award & sports equipment"
     },
     overview: {
       title: "Overview",
-      subtitle: "Sfida progettuale",
+      subtitle: "Challenge",
       p1: "Nell'hockey moderno su ghiaccio e in linea, la precisione nel controllo del puck, la coordinazione e la velocità di reazione sono fattori determinanti per la performance. I tradizionali attrezzi di allenamento risultano spesso rigidi, ingombranti o limitati a geometrie fisse, incapaci di replicare la natura dinamica e imprevedibile delle situazioni di gioco.",
       p2: "La sfida progettuale è consistita nel creare uno strumento di allenamento modulare e adattabile, capace di stimolare atleti di ogni livello coniugando durabilità e riconfigurabilità intuitiva."
     },
@@ -87,7 +87,7 @@ const content = {
       p3: "Ogni componente è ottimizzato per la produzione additiva e polimeri durevoli, bilanciando la riduzione del peso con un'estrema resistenza agli stress meccanici ripetuti e alle condizioni atmosferiche avverse."
     },
     technical: {
-      title: "Skills & Technical Insights",
+      title: "Skills & technical insights",
       p1: "Snake unisce la prototipazione digitale e le attrezzature per la performance atletica, dimostrando come la modularità parametrica possa elevare gli strumenti di allenamento sportivo.",
       p2: "Presentato al prestigioso premio Lagazuoi WIMA, il progetto sottolinea l'integrazione di tecniche di produzione avanzate e ingegneria sportiva centrata sull'utente."
     },
