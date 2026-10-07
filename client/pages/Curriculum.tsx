@@ -98,7 +98,7 @@ const content = {
         },
         {
           name: "Cooperation & Leadership",
-          items: ["Project coordination", "Leadership", "Teamwork" "Multidisciplinary collaboration"]
+          items: ["Project coordination", "Leadership", "Teamwork", "Multidisciplinary collaboration"]
         }
       ]
     },
