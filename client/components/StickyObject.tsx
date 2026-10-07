@@ -8,21 +8,21 @@ const PROCESS_STEPS = {
   it: [
     {
       step: '01 / OSSERVARE',
-      title: 'Capire prima\ndi progettare',
+      title: 'Understand before\ndesigning.',
       desc: 'Ogni progetto nasce dall’osservazione. Mi interessa capire perché un oggetto funziona in un certo modo, quali vincoli ne hanno guidato lo sviluppo e come le persone lo utilizzano nella realtà. Solo dopo inizio a cercare una soluzione.',
       tag: 'Brainstorming',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fccebb9ded9f64abab522b395bbbad713',
     },
     {
       step: '02 / COSTRUIRE',
-      title: 'Costruire per\nverificare',
+      title: 'Build to\nverify.',
       desc: 'Passo continuamente dal modello digitale al prototipo fisico. Ogni test mette in discussione le decisioni prese, evidenzia nuovi problemi e suggerisce miglioramenti che sullo schermo non sarebbero evidenti.',
       tag: 'Prototipo funzionale',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F0427482a7b374ef1b727ec74983b63d8',
     },
     {
-      step: '03 / AFFINARE',
-      title: 'Ridurre il\nsuperfluo',
+      step: '03 / PERFEZIONARE',
+      title: 'Reduce the\nsuperfluous.',
       desc: 'Cerco soluzioni semplici, non perché siano facili da progettare, ma perché richiedono più attenzione. Ogni dettaglio deve avere una funzione precisa e contribuire a rendere il prodotto più chiaro da costruire e da utilizzare.',
       tag: 'Modello',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F4894abf6b091470cbbc3233eb674a6b9',
