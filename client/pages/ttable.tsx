@@ -15,7 +15,7 @@ const content = {
       yearLabel: "Year",
       yearVal: "2026",
       awardLabel: "Project Type",
-      awardVal: "Product Design & Interactive Table"
+      awardVal: "Product design & interactive table"
     },
     overview: {
       title: "Overview",
@@ -41,7 +41,7 @@ const content = {
       p3: "At the same time, the food packaging has been redesigned from recycled kraft cardboard, using digitally embossed graphics to amplify tactile contrast and stimulate 360° visual and olfactory satiety."
     },
     technical: {
-      title: "Skills & Technical Insights",
+      title: "Skills & technical insights",
       p1: "Experience has taught me to design human-machine interfaces (HMIs) not to capture the user's attention, but to support it, learning to apply technology subtractively and contextually.",
       p2: "Coordinating such diverse touchpoints has allowed me to combine traditional materials and electronics to generate a positive and ethical behavioral impact."
     },
@@ -53,17 +53,17 @@ const content = {
   },
   it: {
     title: "T-TABLE",
-    subtitle: "Tavolo interattivo attento alla nutrizione",
+    subtitle: "Tavolo interattivo attento alla sicurezza nutrizionale",
     meta: {
       teamLabel: "Designer",
       yearLabel: "Anno",
       yearVal: "2026",
-      awardLabel: "Tipologia Progetto",
-      awardVal: "Product Design & Tavolo Interattivo"
+      awardLabel: "Context",
+      awardVal: "Product design & interactive table"
     },
     overview: {
       title: "Overview",
-      subtitle: "Sfida progettuale",
+      subtitle: "Challenge",
       p1: "La crescente pervasività degli schermi durante i pasti ha alimentato il fenomeno della distrazione a tavola (distracted eating), un comportamento che altera i segnali naturali di sazietà e compromette la memoria del pasto, dando luogo alla cosiddetta amnesia alimentare.",
       p2: "Sebbene molte catene di ristorazione abbiano introdotto tavoli touchscreen per arricchire l'esperienza, queste interfacce finiscono spesso per assorbire completamente l'attenzione dell'utente, alienandolo dall'atto stesso del mangiare. La sfida del progetto è stata quella di ribaltare questo paradigma in un contesto ad alto traffico, integrando la tecnologia in modo armonioso e non invasivo per restituire consapevolezza al rito del pasto e favorire l'interazione sociale."
     },
@@ -85,7 +85,7 @@ const content = {
       p3: "Allo stesso tempo, il packaging alimentare è stato ridisegnato in cartoncino kraft riciclato, utilizzando grafiche goffratte digitalmente per amplificare il contrasto tattile e stimolare la sazietà visiva e olfattiva a 360°."
     },
     technical: {
-      title: "Skills & Technical Insights",
+      title: "Skills & technical insights",
       p1: "L'esperienza mi ha insegnato a progettare interfacce uomo-macchina (HMI) non per catturare l'attenzione dell'utente, ma per supportarla, imparando ad applicare la tecnologia in modo sottrattivo e contestuale.",
       p2: "Coordinare touchpoint così diversi mi ha permesso di combinare materiali tradizionali ed elettronica per generare un impatto comportamentale positivo ed etico."
     },
