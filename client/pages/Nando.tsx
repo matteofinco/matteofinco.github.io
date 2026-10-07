@@ -24,7 +24,7 @@ const content = {
       yearLabel: "Year",
       yearVal: "2026",
       awardLabel: "Context",
-      awardVal: "Inclusive Design & Parametric Aids"
+      awardVal: "Inclusive design & parametric aids"
     },
     overview: {
       title: "Overview",
@@ -50,7 +50,7 @@ const content = {
       p3: "From a tactile perspective, the surface features a granular texture to maximize friction and prevent slippage. While the curated color palette ensures seamless integration into domestic environments, Nando’s versatility extends into public and dining spaces. By acting as a portable, hygienic interface, it eliminates the ergonomic barriers of standard public tableware, offering a discrete and independent solution that removes the need to carry complex or soiled personal utensils."
     },
     technical: {
-      title: "Skills & Technical Insights",
+      title: "Skills & technical insights",
       p1: "The combination of digital manufacturing and inclusive design can solve complex problems through simple gestures. Nando redefines the concept of accessibility, restoring complete autonomy and safety during mealtimes to those with reduced mobility.",
       p2: "Thanks to the flexible production of the parametric model, the device overcomes the limitations of mass-produced industrial products, offering a hygienic, long-lasting solution tailored to the unique needs of each individual."
     },
@@ -68,11 +68,11 @@ const content = {
       yearLabel: "Anno",
       yearVal: "2026",
       awardLabel: "Contesto",
-      awardVal: "Design Inclusivo & Ausili Parametrici"
+      awardVal: "Design inclusivo & ausili parametrici"
     },
     overview: {
       title: "Overview",
-      subtitle: "Sfida progettuale",
+      subtitle: "Challenge",
       p1: "Per le persone con patologie come l'osteoartrite o con una ridotta forza muscolare agli arti superiori, svolgere attività quotidiane come mangiare può rappresentare una sfida complessa. Le posate tradizionali richiedono una presa salda e un controllo motorio fine; quando la capacità di stringere il pugno manca o causa disagio, gli utensili tendono a scivolare e muoversi in modo incontrollato, cadendo frequentemente.",
       p2: "La sfida progettuale è stata quella di trasformare uno strumento quotidiano standardizzato in un sistema inclusivo capace di compensare i deficit di presa senza compromettere l'estetica dell'oggetto."
     },
@@ -94,7 +94,7 @@ const content = {
       p3: "Dal punto di vista tattile, la superficie presenta una texture granulare per massimizzare l'attrito e prevenire lo scivolamento. Sebbene la palette cromatica curata ne assicuri un'integrazione armoniosa negli ambienti domestici, la versatilità di Nando si estende anche agli spazi pubblici e di ristorazione. Agendo come un'interfaccia portatile e igienica, elimina le barriere ergonomiche delle posate standard, offrendo una soluzione discreta e indipendente che evita la necessità di trasportare utensili personali complessi o sporchi."
     },
     technical: {
-      title: "Skills & Technical Insights",
+      title: "Skills & technical insights",
       p1: "La combinazione di produzione digitale e design inclusivo può risolvere problemi complessi attraverso semplici gesti. Nando ridefinisce il concetto di accessibilità, restituendo completa autonomia e sicurezza durante i pasti a chi ha una mobilità ridotta.",
       p2: "Grazie alla produzione flessibile del modello parametrico, il dispositivo supera i limiti dei prodotti industriali di massa, offrendo una soluzione igienica, duratura e personalizzata per le esigenze uniche di ogni individuo."
     },
