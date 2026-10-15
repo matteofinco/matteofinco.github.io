@@ -9,21 +9,22 @@ const PROCESS_STEPS = {
     {
       step: '01 / OBSERVE',
       title: 'Understand before\ndesigning.',
-      desc: 'Ogni progetto nasce dall’osservazione. Mi interessa capire perché un oggetto funziona in un certo modo, quali vincoli ne hanno guidato lo sviluppo e come le persone lo utilizzano nella realtà. Solo dopo inizio a cercare una soluzione.',
+      desc: 'L’osservazione è il punto di partenza di ogni mio progetto. Prima di proporre una soluzione, cerco di comprendere a fondo le ragioni del funzionamento di un oggetto, i vincoli che ne hanno plasmato lo sviluppo e l’uso effettivo che le persone ne fanno nella vita quotidiana.',
       tag: 'Brainstorming',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fccebb9ded9f64abab522b395bbbad713',
     },
     {
       step: '02 / BUILD',
       title: 'Build to\nverify.',
-      desc: 'Passo continuamente dal modello digitale al prototipo fisico. Ogni test mette in discussione le decisioni prese, evidenzia nuovi problemi e suggerisce miglioramenti che sullo schermo non sarebbero evidenti.',
+      desc: 'Passo continuamente dal modello digitale al prototipo fisico. Questa alternanza permette di mettere in discussione le scelte effettuate, far emergere criticità inaspettate e individuare soluzioni che non risulterebbero visibili dallo schermo.
+',
       tag: 'Prototipo funzionale',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F0427482a7b374ef1b727ec74983b63d8',
     },
     {
       step: '03 / REFINE',
       title: 'Reduce the\nsuperfluous.',
-      desc: 'Cerco soluzioni semplici, non perché siano facili da progettare, ma perché richiedono più attenzione. Ogni dettaglio deve avere una funzione precisa e contribuire a rendere il prodotto più chiaro da costruire e da utilizzare.',
+      desc: 'Cerco soluzioni semplici, non perché siano facili da progettare, ma perché richiedono più attenzione. Ogni dettaglio deve svolgere un ruolo preciso, rendendo il prodotto più chiaro sia nella realizzazione sia da utilizzare.',
       tag: 'Modello',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F4894abf6b091470cbbc3233eb674a6b9',
     },
@@ -32,7 +33,7 @@ const PROCESS_STEPS = {
     {
       step: '01 / OBSERVE',
       title: 'Understand before\ndesigning.',
-      desc: 'Every project stems from observation. I aim to understand why an object works in a certain way, what constraints guided its development, and how people actually use it. Only then do I start searching for a solution.',
+      desc: 'Every project starts from observation. I aim to understand why an object works in a certain way, what constraints guided its development, and how people actually use it. Only then do I start searching for a solution.',
       tag: 'Brainstorming',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fccebb9ded9f64abab522b395bbbad713',
     },
@@ -46,7 +47,7 @@ const PROCESS_STEPS = {
     {
       step: '03 / REFINE',
       title: 'Reduce the\nsuperfluous.',
-      desc: 'I strive for simple solutions—not because they are easy to design, but because they require more care. Every detail must serve a precise purpose, making the product clearer to build and use.',
+      desc: 'I aim for simple solutions, not because they are easy to design, but because they require greater care. Every detail must serve a specific purpose, making the product clearer to both build and use.',
       tag: 'Physical model',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F4894abf6b091470cbbc3233eb674a6b9',
     },
