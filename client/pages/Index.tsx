@@ -9,7 +9,7 @@ const translations = {
   it: {
     sec1Title: "Matteo Finco",
     sec1Sub: "Product Designer. Studente presso l'Università IUAV di Venezia.",
-    sec1P: "Mi piace capire come funzionano le cose. Davanti a un oggetto mi interessa capire perché è stato progettato in quel modo, quali vincoli hanno guidato le scelte e quali compromessi si nascondono dietro una forma apparentemente semplice. È questo modo di osservare che mi ha portato al product design.",
+    sec1P: "La mia passione per il product design nasce dalla curiosità verso il funzionamento delle cose. Di fronte a un oggetto, infatti, cerco di analizzare le ragioni della sua progettazione, individuando i vincoli che hanno orientato le decisioni e i compromessi celati dietro forme in apparenza semplici. ",
     sec2P1: "Il mio modo di progettare alterna continuamente ricerca, modellazione 3D, prototipazione e test. Preferisco verificare le idee costruendole: ogni prototipo diventa un'occasione per mettere in discussione le scelte fatte, correggerle e migliorare il progetto.",
     sec2P2: "Sono interessato al design industriale, ai sistemi interattivi e ai processi di fabbricazione digitale. Cerco di sviluppare oggetti che siano semplici da comprendere, coerenti da costruire e piacevoli da utilizzare, senza perdere di vista i vincoli produttivi e l'impatto delle scelte progettuali.",
     whatsNextSub: "Sempre aperto a nuove collaborazioni e progetti.",
