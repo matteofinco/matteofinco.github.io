@@ -47,7 +47,7 @@ const content = {
     design: {
       title: "Design",
       p1: "Prop's architecture focuses on assembly simplicity and rapid deployment without requiring specialized tools.",
-      p2: "The grip and underarm support sections incorporate textured elastomeric elements for enhanced comfort and friction control.",
+      p2: "The grip and underarm support sections incorporate textured elements for enhanced comfort and friction control.",
       p3: "Interlocking modular segments allow for compact storage and scalable height adjustments."
     },
     technical: {
@@ -91,7 +91,7 @@ const content = {
     design: {
       title: "Design",
       p1: "L'architettura di Prop punta sulla semplicità di assemblaggio e sulla rapidità di impiego senza la necessità di attrezzi specializzati.",
-      p2: "Le sezioni di impugnatura e supporto ascellare integrano elementi elastomerici testurizzati per un maggiore comfort e controllo dell'attrito.",
+      p2: "Le sezioni di impugnatura e supporto ascellare integrano elementi testurizzati per un maggiore comfort e controllo dell'attrito.",
       p3: "Segmenti modulari a incastro consentono uno stoccaggio compatto e regolazioni scalabili dell'altezza."
     },
     technical: {
@@ -622,7 +622,7 @@ export default function Prop({ heroFit = 'cover' }: PropProps) {
             <p>{t.research.p2}</p>
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
-            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F94433d18d06e4f57aa4cf9de6c5f787f" alt="Prop research" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fe969f34f1f5148d6b1dfcceaf689aeb8" alt="Prop research" />
           </div>
         </section>
 
