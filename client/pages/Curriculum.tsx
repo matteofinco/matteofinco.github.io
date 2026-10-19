@@ -6,8 +6,8 @@ interface CurriculumProps {
 }
 
 const cvPdfUrls = {
-  en: "https://cdn.builder.io/o/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F5b03c6980928461fa8fa8a0014ada7e3?alt=media&token=2845f631-5854-4563-8874-d2d6487327f3&apiKey=b117f80db1214c899c967fecfbdcaa25",
-  it: "https://cdn.builder.io/o/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Febb4af0f796e4a149200098cc754c84d?alt=media&token=0437e3df-064c-45d1-8bcf-fc07f569c2c3&apiKey=b117f80db1214c899c967fecfbdcaa25"
+  en: "https://cdn.builder.io/o/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F3a64502e7d8a44fca78051c33df4871c?alt=media&token=1e942ef5-e315-4b21-ac6e-05753e7f28db&apiKey=b117f80db1214c899c967fecfbdcaa25",
+  it: "https://cdn.builder.io/o/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F6f1c60ec778a43668108f9d207334673?alt=media&token=665d4a41-63a9-4332-8564-59f1269478d7&apiKey=b117f80db1214c899c967fecfbdcaa25"
 };
 
 const content = {
