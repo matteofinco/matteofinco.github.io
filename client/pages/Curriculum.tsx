@@ -17,7 +17,7 @@ const content = {
     profile: {
       title: "Professional profile",
       text1: "I aim to work in the field of product design, contributing to the development of products that combine innovation, manufacturing feasibility, and user experience.",
-      text2: "I am interested in overseeing the entire project lifecycle—from problem analysis to prototyping—while engaging with materials, production processes, and technologies. I approach every project with an analytical and experimental mindset, combining research, modeling, and prototyping to develop concrete, functional, and user-oriented solutions. I view Design as a tool for understanding problems just as much as for solving them."
+      text2: "I am interested in overseeing the entire project lifecycle, from problem analysis to prototyping, while engaging with materials, production processes, and technologies. I approach every project with an analytical and experimental mindset, combining research, modeling, and prototyping to develop concrete, functional, and user-oriented solutions. I view Design as a tool for understanding problems just as much as for solving them."
     },
     education: {
       title: "Education",
