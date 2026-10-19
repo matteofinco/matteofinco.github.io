@@ -17,7 +17,7 @@ const PROCESS_STEPS = {
       step: '02 / BUILD',
       title: 'Build to\nverify.',
       desc: 'Passo continuamente dal modello digitale al prototipo fisico. Questa alternanza permette di mettere in discussione le scelte effettuate, far emergere criticità inaspettate e individuare soluzioni che non risulterebbero visibili dallo schermo.',
-',
+
       tag: 'Prototipo funzionale',
       image: 'https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F0427482a7b374ef1b727ec74983b63d8',
     },
