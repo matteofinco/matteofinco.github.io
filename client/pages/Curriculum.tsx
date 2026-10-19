@@ -592,7 +592,7 @@ export default function Curriculum() {
           {/* Hero & Profile Photo Section */}
           <section className="cv-hero reveal-editorial">
             <div className="cv-avatar-container">
-              <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F2b39f4853ae34125aca28b9bbaa6d0ba" alt="Matteo Finco" />
+              <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F1f4e9b053d3b48de8c5fe795725c1d66" alt="Matteo Finco" />
             </div>
             <div className="cv-hero-info">
               <h1>Matteo Finco</h1>
