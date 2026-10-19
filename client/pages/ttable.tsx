@@ -25,7 +25,7 @@ const content = {
     },
     solution: {
       title: "Solution",
-      p1: "T-Table is a smart, interactive table concept designed for fast-food environments, aimed at eliminating visual overstimulation and food amnesia. The project is born in the course Approfondimento tematico per il Design at the università Iuav di Venezia (Vicenza design campus).",
+      p1: "T-Table is a smart, interactive table concept designed for fast-food environments, aimed at eliminating visual overstimulation and food amnesia.",
       p2: "The system acts as a coordinated ecosystem that adapts its interface in real time based on the meal phases. Before service, the surface entertains families with cooperative mini-games related to the brand; as soon as the food is served, the table recognizes the presence of smart placemats and deactivates the interactive areas occupied by the trays.",
       p3: "The screen thus transforms into a natural, discreet, low-stimulation backdrop, refocusing people's visual, sensorial, and relational attention on the food and the conversation at the table."
     },
@@ -69,7 +69,7 @@ const content = {
     },
     solution: {
       title: "Solution",
-      p1: "T-Table è un concept di tavolo smart e interattivo progettato per ambienti fast-food, volto ad eliminare la sovrastimolazione visiva e l'amnesia alimentare. Il progetto nasce all'interno del corso di Approfondimento tematico per il Design presso l'Università Iuav di Venezia (sede di Vicenza).",
+      p1: "T-Table è un concept di tavolo smart e interattivo progettato per ambienti fast-food, volto ad eliminare la sovrastimolazione visiva e l'amnesia alimentare.",
       p2: "Il sistema agisce come un ecosistema coordinato che adatta la sua interfaccia in tempo reale in base alle fasi del pasto. Prima del servizio, la superficie intrattiene le famiglie con mini-giochi cooperativi legati al brand; non appena il cibo viene servito, il tavolo riconosce la presenza di tovagliette smart e disattiva le aree interattive occupate dai vassoi.",
       p3: "Lo schermo si trasforma così in uno sfondo naturale, discreto e a bassa stimolazione, rifocalizzando l'attenzione visiva, sensoriale e relazionale delle persone sul cibo e sulla conversazione a tavola."
     },
