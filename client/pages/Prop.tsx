@@ -562,7 +562,7 @@ export default function Prop({ heroFit = 'cover' }: PropProps) {
             <div className="hero-info">
               <div className="info-block">
                 <span>{t.meta.teamLabel}</span>
-                <p>Matteo Finco, Giovanni Marcon, Marco Rinaldin</p>
+                <p>Matteo Finco</p>
               </div>
 
               <div className="info-block">
@@ -622,7 +622,7 @@ export default function Prop({ heroFit = 'cover' }: PropProps) {
             <p>{t.research.p2}</p>
           </div>
           <div className="row-media reveal-editorial reveal-from-right">
-            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2Fe969f34f1f5148d6b1dfcceaf689aeb8" alt="Prop research" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Fb117f80db1214c899c967fecfbdcaa25%2F08ba1bb02410456eaae27e11525d71a0" alt="Prop research" />
           </div>
         </section>
 
